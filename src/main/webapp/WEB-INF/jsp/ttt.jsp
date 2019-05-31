@@ -1,16 +1,16 @@
-﻿<!--<%@ page contentType="text/html;charset=UTF-8" language="java" %>-->
-<!--<%-->
-<!--String path = request.getContextPath();-->
-<!--String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";-->
-<!--%>-->
-<!--<base href="<%=basePath%>"/>-->
+﻿<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%
+String path = request.getContextPath();
+String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+%>
+<base href="<%=basePath%>"/>
 <!DOCTYPE html>
 <html lang="zh-cn">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1, user-scalable=no">
     <title>挂号</title>
-    <link rel="stylesheet" type="text/css" href="../css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
 </head>
 <body style="margin-top: 50px">
 <div class="container">
@@ -34,12 +34,12 @@
                 </ul>
             </div>
             <div class="row" ><form class="" role="form">
-                <table class="table table-condensed table-striped table-hover">
+                <table class="table table-condensed table-striped table-hover table-sm">
                     <thead>
                     <tr>
                         <th colspan="3">待诊患者<span class="badge badge-pill badge-danger">4</span></th>
                         <th style="text-align:right;">
-                            <img src="../images/reflush_img.jpg" style="height: 15px;width: 15px">
+                            <img src="../../static/images/reflush_img.jpg" style="height: 15px;width: 15px">
                         </th>
                     </tr>
                     </thead>
@@ -75,7 +75,7 @@
                     <tr>
                         <th colspan="3">已诊患者<span class="badge badge-pill badge-success">3</span></th>
                         <th style="text-align:right;">
-                            <img src="../images/reflush_img.jpg" style="height: 15px;width: 15px">
+                            <img src="../../static/images/reflush_img.jpg" style="height: 15px;width: 15px">
                         </th>
                     </tr>
                     </thead>
@@ -333,8 +333,8 @@
         <li class="disabled"><a href="#">5</a></li>
         <li><a href="#">&raquo;</a></li>
     </ul></div></div>
-<script type="text/javascript" src="../js/jquery.min.js"></script>
-<script type="text/javascript" src="../js/bootstrap.js"></script>
+<script type="text/javascript" src="js/jquery.min.js"></script>
+<script type="text/javascript" src="js/bootstrap.js"></script>
 <script type="text/javascript">
     $(document).ready(function(){
         $("#rfs").click(function(){
