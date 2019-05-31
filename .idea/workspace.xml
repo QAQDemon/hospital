@@ -2,36 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="dbf00169-a8e7-473c-9987-97a8297bcd84" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/images/reflush_img.jpg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/edu/neu/medical/hospital/bean/Department.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/edu/neu/medical/hospital/bean/DepartmentExample.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/edu/neu/medical/hospital/bean/Doctor.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/edu/neu/medical/hospital/bean/DoctorExample.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/edu/neu/medical/hospital/bean/RegistrationInfo.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/edu/neu/medical/hospital/bean/RegistrationInfoExample.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/edu/neu/medical/hospital/controller/DoctorController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/edu/neu/medical/hospital/converter/DateConverter.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/edu/neu/medical/hospital/dao/DepartmentMapper.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/edu/neu/medical/hospital/dao/DoctorMapper.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/edu/neu/medical/hospital/dao/RegistrationInfoMapper.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/edu/neu/medical/hospital/service/DepartmentService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/edu/neu/medical/hospital/service/DoctorService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/edu/neu/medical/hospital/service/RegistrationInfoService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/edu/neu/medical/hospital/service/impl/DepartmentServiceImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/edu/neu/medical/hospital/service/impl/DoctorServiceImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/edu/neu/medical/hospital/service/impl/RegistrationInfoServiceImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/edu/neu/medical/hospital/temp/Doctor.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/edu/neu/medical/hospital/temp/DoctorExample.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/edu/neu/medical/hospital/temp/DoctorMapper.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/edu/neu/medical/hospital/temp/DoctorMapper.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/css/bootstrap.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/static/css/bootstrap.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/css/bootstrap.css.map" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/static/css/bootstrap.css.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/css/bootstrap.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/static/css/bootstrap.min.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/html/ttt.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/static/html/ttt.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/js/bootstrap.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/static/js/bootstrap.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/js/bootstrap.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/static/js/bootstrap.min.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -66,7 +37,7 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/webapp/static/html/ttt.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="200">
+            <state relative-caret-position="350">
               <caret line="47" column="48" selection-start-line="47" selection-start-column="48" selection-end-line="47" selection-end-column="48" />
               <folding>
                 <element signature="n#style#0;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -236,11 +207,11 @@
       <select />
     </treeState>
   </component>
-  <component name="ProjectFrameBounds">
-    <option name="x" value="595" />
-    <option name="y" value="228" />
-    <option name="width" value="1140" />
-    <option name="height" value="772" />
+  <component name="ProjectFrameBounds" extendedState="1">
+    <option name="x" value="447" />
+    <option name="y" value="104" />
+    <option name="width" value="1288" />
+    <option name="height" value="896" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
@@ -535,17 +506,25 @@
       <workItem from="1558406674508" duration="4258000" />
       <workItem from="1558441369735" duration="5766000" />
       <workItem from="1558527413587" duration="2077000" />
-      <workItem from="1559212410715" duration="13290000" />
+      <workItem from="1559212410715" duration="13604000" />
     </task>
+    <task id="LOCAL-00001" summary="html 5-31">
+      <created>1559234916084</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1559234916084</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="34377000" />
+    <option name="totallyTimeSpent" value="34691000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="595" y="228" width="1140" height="772" extended-state="0" />
+    <frame x="447" y="104" width="1288" height="896" extended-state="0" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49608764" visible="true" weight="0.28796297" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49608764" visible="true" weight="0.25325733" />
       <window_info id="Structure" order="1" sideWeight="0.50395256" side_tool="true" weight="0.26203704" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -556,7 +535,7 @@
       <window_info anchor="bottom" id="Messages" weight="0.23040752" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.2539185" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.21259843" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -628,6 +607,10 @@
         <option value="1" />
       </list>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="html 5-31" />
+    <option name="LAST_COMMIT_MESSAGE" value="html 5-31" />
   </component>
   <component name="antWorkspaceConfiguration">
     <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />
@@ -833,7 +816,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/static/html/ttt.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="200">
+        <state relative-caret-position="350">
           <caret line="47" column="48" selection-start-line="47" selection-start-column="48" selection-end-line="47" selection-end-column="48" />
           <folding>
             <element signature="n#style#0;n#body#0;n#html#0;n#!!top" expanded="true" />
