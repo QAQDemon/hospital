@@ -8,9 +8,9 @@ public class MedicalRecordInfo {
         return "MedicalRecordInfo{" +
                 "id=" + id +
                 ", medicalRecordNo=" + medicalRecordNo +
-                ", registrationId=" + registrationId +
                 ", patientId=" + patientId +
                 ", doctorId=" + doctorId +
+                ", departId=" + departId +
                 ", chiefComplaint='" + chiefComplaint + '\'' +
                 ", currentMedicalHistory='" + currentMedicalHistory + '\'' +
                 ", currentTreatmentSituation='" + currentTreatmentSituation + '\'' +
@@ -18,10 +18,7 @@ public class MedicalRecordInfo {
                 ", allergiesHistory='" + allergiesHistory + '\'' +
                 ", physicalExamination='" + physicalExamination + '\'' +
                 ", status='" + status + '\'' +
-                ", dateOfOnset=" + dateOfOnset +
                 ", visitTime=" + visitTime +
-                ", visitDepartName='" + visitDepartName + '\'' +
-                ", visitDoctorName='" + visitDoctorName + '\'' +
                 '}';
     }
 
@@ -29,11 +26,11 @@ public class MedicalRecordInfo {
 
     private Integer medicalRecordNo;
 
-    private Integer registrationId;
-
     private Integer patientId;
 
     private Integer doctorId;
+
+    private Integer departId;
 
     private String chiefComplaint;
 
@@ -49,20 +46,14 @@ public class MedicalRecordInfo {
 
     private String status;
 
-    private Date dateOfOnset;
-
     private Date visitTime;
 
-    private String visitDepartName;
-
-    private String visitDoctorName;
-
-    public MedicalRecordInfo(Integer id, Integer medicalRecordNo, Integer registrationId, Integer patientId, Integer doctorId, String chiefComplaint, String currentMedicalHistory, String currentTreatmentSituation, String pastHistory, String allergiesHistory, String physicalExamination, String status, Date dateOfOnset, Date visitTime, String visitDepartName, String visitDoctorName) {
+    public MedicalRecordInfo(Integer id, Integer medicalRecordNo, Integer patientId, Integer doctorId, Integer departId, String chiefComplaint, String currentMedicalHistory, String currentTreatmentSituation, String pastHistory, String allergiesHistory, String physicalExamination, String status, Date visitTime) {
         this.id = id;
         this.medicalRecordNo = medicalRecordNo;
-        this.registrationId = registrationId;
         this.patientId = patientId;
         this.doctorId = doctorId;
+        this.departId = departId;
         this.chiefComplaint = chiefComplaint;
         this.currentMedicalHistory = currentMedicalHistory;
         this.currentTreatmentSituation = currentTreatmentSituation;
@@ -70,10 +61,7 @@ public class MedicalRecordInfo {
         this.allergiesHistory = allergiesHistory;
         this.physicalExamination = physicalExamination;
         this.status = status;
-        this.dateOfOnset = dateOfOnset;
         this.visitTime = visitTime;
-        this.visitDepartName = visitDepartName;
-        this.visitDoctorName = visitDoctorName;
     }
 
     public MedicalRecordInfo() {
@@ -96,14 +84,6 @@ public class MedicalRecordInfo {
         this.medicalRecordNo = medicalRecordNo;
     }
 
-    public Integer getRegistrationId() {
-        return registrationId;
-    }
-
-    public void setRegistrationId(Integer registrationId) {
-        this.registrationId = registrationId;
-    }
-
     public Integer getPatientId() {
         return patientId;
     }
@@ -118,6 +98,14 @@ public class MedicalRecordInfo {
 
     public void setDoctorId(Integer doctorId) {
         this.doctorId = doctorId;
+    }
+
+    public Integer getDepartId() {
+        return departId;
+    }
+
+    public void setDepartId(Integer departId) {
+        this.departId = departId;
     }
 
     public String getChiefComplaint() {
@@ -176,35 +164,11 @@ public class MedicalRecordInfo {
         this.status = status == null ? null : status.trim();
     }
 
-    public Date getDateOfOnset() {
-        return dateOfOnset;
-    }
-
-    public void setDateOfOnset(Date dateOfOnset) {
-        this.dateOfOnset = dateOfOnset;
-    }
-
     public Date getVisitTime() {
         return visitTime;
     }
 
     public void setVisitTime(Date visitTime) {
         this.visitTime = visitTime;
-    }
-
-    public String getVisitDepartName() {
-        return visitDepartName;
-    }
-
-    public void setVisitDepartName(String visitDepartName) {
-        this.visitDepartName = visitDepartName == null ? null : visitDepartName.trim();
-    }
-
-    public String getVisitDoctorName() {
-        return visitDoctorName;
-    }
-
-    public void setVisitDoctorName(String visitDoctorName) {
-        this.visitDoctorName = visitDoctorName == null ? null : visitDoctorName.trim();
     }
 }

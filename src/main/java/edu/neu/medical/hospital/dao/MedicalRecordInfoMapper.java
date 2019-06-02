@@ -26,9 +26,6 @@ public interface MedicalRecordInfoMapper {
 
 
 
-
-
-
     int countByExample(MedicalRecordInfoExample example);
 
     int deleteByExample(MedicalRecordInfoExample example);
@@ -41,21 +38,19 @@ public interface MedicalRecordInfoMapper {
 
     @Insert({
         "insert into medical_record_info (id, medical_record_no, ",
-        "registration_id, patient_id, ",
-        "doctor_id, chief_complaint, ",
+        "patient_id, doctor_id, ",
+        "depart_id, chief_complaint, ",
         "current_medical_history, current_treatment_situation, ",
         "past_history, allergies_history, ",
         "physical_examination, status, ",
-        "date_of_onset, visit_time, ",
-        "visit_depart_name, \"visit_doctor_ name\")",
+        "visit_time)",
         "values (#{id,jdbcType=INTEGER}, #{medicalRecordNo,jdbcType=INTEGER}, ",
-        "#{registrationId,jdbcType=INTEGER}, #{patientId,jdbcType=INTEGER}, ",
-        "#{doctorId,jdbcType=INTEGER}, #{chiefComplaint,jdbcType=VARCHAR}, ",
+        "#{patientId,jdbcType=INTEGER}, #{doctorId,jdbcType=INTEGER}, ",
+        "#{departId,jdbcType=INTEGER}, #{chiefComplaint,jdbcType=VARCHAR}, ",
         "#{currentMedicalHistory,jdbcType=VARCHAR}, #{currentTreatmentSituation,jdbcType=VARCHAR}, ",
         "#{pastHistory,jdbcType=VARCHAR}, #{allergiesHistory,jdbcType=VARCHAR}, ",
         "#{physicalExamination,jdbcType=VARCHAR}, #{status,jdbcType=CHAR}, ",
-        "#{dateOfOnset,jdbcType=TIMESTAMP}, #{visitTime,jdbcType=TIMESTAMP}, ",
-        "#{visitDepartName,jdbcType=VARCHAR}, #{visitDoctorName,jdbcType=VARCHAR})"
+        "#{visitTime,jdbcType=TIMESTAMP})"
     })
     @SelectKey(statement="SELECT LAST_INSERT_ID()", keyProperty="id", before=true, resultType=Integer.class)
     int insert(MedicalRecordInfo record);
@@ -66,10 +61,9 @@ public interface MedicalRecordInfoMapper {
 
     @Select({
         "select",
-        "id, medical_record_no, registration_id, patient_id, doctor_id, chief_complaint, ",
-        "current_medical_history, current_treatment_situation, past_history, allergies_history, ",
-        "physical_examination, status, date_of_onset, visit_time, visit_depart_name, ",
-        "\"visit_doctor_ name\"",
+        "id, medical_record_no, patient_id, doctor_id, depart_id, chief_complaint, current_medical_history, ",
+        "current_treatment_situation, past_history, allergies_history, physical_examination, ",
+        "status, visit_time",
         "from medical_record_info",
         "where id = #{id,jdbcType=INTEGER}"
     })
@@ -85,9 +79,9 @@ public interface MedicalRecordInfoMapper {
     @Update({
         "update medical_record_info",
         "set medical_record_no = #{medicalRecordNo,jdbcType=INTEGER},",
-          "registration_id = #{registrationId,jdbcType=INTEGER},",
           "patient_id = #{patientId,jdbcType=INTEGER},",
           "doctor_id = #{doctorId,jdbcType=INTEGER},",
+          "depart_id = #{departId,jdbcType=INTEGER},",
           "chief_complaint = #{chiefComplaint,jdbcType=VARCHAR},",
           "current_medical_history = #{currentMedicalHistory,jdbcType=VARCHAR},",
           "current_treatment_situation = #{currentTreatmentSituation,jdbcType=VARCHAR},",
@@ -95,10 +89,7 @@ public interface MedicalRecordInfoMapper {
           "allergies_history = #{allergiesHistory,jdbcType=VARCHAR},",
           "physical_examination = #{physicalExamination,jdbcType=VARCHAR},",
           "status = #{status,jdbcType=CHAR},",
-          "date_of_onset = #{dateOfOnset,jdbcType=TIMESTAMP},",
-          "visit_time = #{visitTime,jdbcType=TIMESTAMP},",
-          "visit_depart_name = #{visitDepartName,jdbcType=VARCHAR},",
-          "\"visit_doctor_ name\" = #{visitDoctorName,jdbcType=VARCHAR}",
+          "visit_time = #{visitTime,jdbcType=TIMESTAMP}",
         "where id = #{id,jdbcType=INTEGER}"
     })
     int updateByPrimaryKey(MedicalRecordInfo record);

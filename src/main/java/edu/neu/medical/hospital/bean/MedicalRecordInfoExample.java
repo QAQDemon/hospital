@@ -225,66 +225,6 @@ public class MedicalRecordInfoExample {
             return (Criteria) this;
         }
 
-        public Criteria andRegistrationIdIsNull() {
-            addCriterion("registration_id is null");
-            return (Criteria) this;
-        }
-
-        public Criteria andRegistrationIdIsNotNull() {
-            addCriterion("registration_id is not null");
-            return (Criteria) this;
-        }
-
-        public Criteria andRegistrationIdEqualTo(Integer value) {
-            addCriterion("registration_id =", value, "registrationId");
-            return (Criteria) this;
-        }
-
-        public Criteria andRegistrationIdNotEqualTo(Integer value) {
-            addCriterion("registration_id <>", value, "registrationId");
-            return (Criteria) this;
-        }
-
-        public Criteria andRegistrationIdGreaterThan(Integer value) {
-            addCriterion("registration_id >", value, "registrationId");
-            return (Criteria) this;
-        }
-
-        public Criteria andRegistrationIdGreaterThanOrEqualTo(Integer value) {
-            addCriterion("registration_id >=", value, "registrationId");
-            return (Criteria) this;
-        }
-
-        public Criteria andRegistrationIdLessThan(Integer value) {
-            addCriterion("registration_id <", value, "registrationId");
-            return (Criteria) this;
-        }
-
-        public Criteria andRegistrationIdLessThanOrEqualTo(Integer value) {
-            addCriterion("registration_id <=", value, "registrationId");
-            return (Criteria) this;
-        }
-
-        public Criteria andRegistrationIdIn(List<Integer> values) {
-            addCriterion("registration_id in", values, "registrationId");
-            return (Criteria) this;
-        }
-
-        public Criteria andRegistrationIdNotIn(List<Integer> values) {
-            addCriterion("registration_id not in", values, "registrationId");
-            return (Criteria) this;
-        }
-
-        public Criteria andRegistrationIdBetween(Integer value1, Integer value2) {
-            addCriterion("registration_id between", value1, value2, "registrationId");
-            return (Criteria) this;
-        }
-
-        public Criteria andRegistrationIdNotBetween(Integer value1, Integer value2) {
-            addCriterion("registration_id not between", value1, value2, "registrationId");
-            return (Criteria) this;
-        }
-
         public Criteria andPatientIdIsNull() {
             addCriterion("patient_id is null");
             return (Criteria) this;
@@ -402,6 +342,66 @@ public class MedicalRecordInfoExample {
 
         public Criteria andDoctorIdNotBetween(Integer value1, Integer value2) {
             addCriterion("doctor_id not between", value1, value2, "doctorId");
+            return (Criteria) this;
+        }
+
+        public Criteria andDepartIdIsNull() {
+            addCriterion("depart_id is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andDepartIdIsNotNull() {
+            addCriterion("depart_id is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andDepartIdEqualTo(Integer value) {
+            addCriterion("depart_id =", value, "departId");
+            return (Criteria) this;
+        }
+
+        public Criteria andDepartIdNotEqualTo(Integer value) {
+            addCriterion("depart_id <>", value, "departId");
+            return (Criteria) this;
+        }
+
+        public Criteria andDepartIdGreaterThan(Integer value) {
+            addCriterion("depart_id >", value, "departId");
+            return (Criteria) this;
+        }
+
+        public Criteria andDepartIdGreaterThanOrEqualTo(Integer value) {
+            addCriterion("depart_id >=", value, "departId");
+            return (Criteria) this;
+        }
+
+        public Criteria andDepartIdLessThan(Integer value) {
+            addCriterion("depart_id <", value, "departId");
+            return (Criteria) this;
+        }
+
+        public Criteria andDepartIdLessThanOrEqualTo(Integer value) {
+            addCriterion("depart_id <=", value, "departId");
+            return (Criteria) this;
+        }
+
+        public Criteria andDepartIdIn(List<Integer> values) {
+            addCriterion("depart_id in", values, "departId");
+            return (Criteria) this;
+        }
+
+        public Criteria andDepartIdNotIn(List<Integer> values) {
+            addCriterion("depart_id not in", values, "departId");
+            return (Criteria) this;
+        }
+
+        public Criteria andDepartIdBetween(Integer value1, Integer value2) {
+            addCriterion("depart_id between", value1, value2, "departId");
+            return (Criteria) this;
+        }
+
+        public Criteria andDepartIdNotBetween(Integer value1, Integer value2) {
+            addCriterion("depart_id not between", value1, value2, "departId");
             return (Criteria) this;
         }
 
@@ -895,66 +895,6 @@ public class MedicalRecordInfoExample {
             return (Criteria) this;
         }
 
-        public Criteria andDateOfOnsetIsNull() {
-            addCriterion("date_of_onset is null");
-            return (Criteria) this;
-        }
-
-        public Criteria andDateOfOnsetIsNotNull() {
-            addCriterion("date_of_onset is not null");
-            return (Criteria) this;
-        }
-
-        public Criteria andDateOfOnsetEqualTo(Date value) {
-            addCriterion("date_of_onset =", value, "dateOfOnset");
-            return (Criteria) this;
-        }
-
-        public Criteria andDateOfOnsetNotEqualTo(Date value) {
-            addCriterion("date_of_onset <>", value, "dateOfOnset");
-            return (Criteria) this;
-        }
-
-        public Criteria andDateOfOnsetGreaterThan(Date value) {
-            addCriterion("date_of_onset >", value, "dateOfOnset");
-            return (Criteria) this;
-        }
-
-        public Criteria andDateOfOnsetGreaterThanOrEqualTo(Date value) {
-            addCriterion("date_of_onset >=", value, "dateOfOnset");
-            return (Criteria) this;
-        }
-
-        public Criteria andDateOfOnsetLessThan(Date value) {
-            addCriterion("date_of_onset <", value, "dateOfOnset");
-            return (Criteria) this;
-        }
-
-        public Criteria andDateOfOnsetLessThanOrEqualTo(Date value) {
-            addCriterion("date_of_onset <=", value, "dateOfOnset");
-            return (Criteria) this;
-        }
-
-        public Criteria andDateOfOnsetIn(List<Date> values) {
-            addCriterion("date_of_onset in", values, "dateOfOnset");
-            return (Criteria) this;
-        }
-
-        public Criteria andDateOfOnsetNotIn(List<Date> values) {
-            addCriterion("date_of_onset not in", values, "dateOfOnset");
-            return (Criteria) this;
-        }
-
-        public Criteria andDateOfOnsetBetween(Date value1, Date value2) {
-            addCriterion("date_of_onset between", value1, value2, "dateOfOnset");
-            return (Criteria) this;
-        }
-
-        public Criteria andDateOfOnsetNotBetween(Date value1, Date value2) {
-            addCriterion("date_of_onset not between", value1, value2, "dateOfOnset");
-            return (Criteria) this;
-        }
-
         public Criteria andVisitTimeIsNull() {
             addCriterion("visit_time is null");
             return (Criteria) this;
@@ -1012,146 +952,6 @@ public class MedicalRecordInfoExample {
 
         public Criteria andVisitTimeNotBetween(Date value1, Date value2) {
             addCriterion("visit_time not between", value1, value2, "visitTime");
-            return (Criteria) this;
-        }
-
-        public Criteria andVisitDepartNameIsNull() {
-            addCriterion("visit_depart_name is null");
-            return (Criteria) this;
-        }
-
-        public Criteria andVisitDepartNameIsNotNull() {
-            addCriterion("visit_depart_name is not null");
-            return (Criteria) this;
-        }
-
-        public Criteria andVisitDepartNameEqualTo(String value) {
-            addCriterion("visit_depart_name =", value, "visitDepartName");
-            return (Criteria) this;
-        }
-
-        public Criteria andVisitDepartNameNotEqualTo(String value) {
-            addCriterion("visit_depart_name <>", value, "visitDepartName");
-            return (Criteria) this;
-        }
-
-        public Criteria andVisitDepartNameGreaterThan(String value) {
-            addCriterion("visit_depart_name >", value, "visitDepartName");
-            return (Criteria) this;
-        }
-
-        public Criteria andVisitDepartNameGreaterThanOrEqualTo(String value) {
-            addCriterion("visit_depart_name >=", value, "visitDepartName");
-            return (Criteria) this;
-        }
-
-        public Criteria andVisitDepartNameLessThan(String value) {
-            addCriterion("visit_depart_name <", value, "visitDepartName");
-            return (Criteria) this;
-        }
-
-        public Criteria andVisitDepartNameLessThanOrEqualTo(String value) {
-            addCriterion("visit_depart_name <=", value, "visitDepartName");
-            return (Criteria) this;
-        }
-
-        public Criteria andVisitDepartNameLike(String value) {
-            addCriterion("visit_depart_name like", value, "visitDepartName");
-            return (Criteria) this;
-        }
-
-        public Criteria andVisitDepartNameNotLike(String value) {
-            addCriterion("visit_depart_name not like", value, "visitDepartName");
-            return (Criteria) this;
-        }
-
-        public Criteria andVisitDepartNameIn(List<String> values) {
-            addCriterion("visit_depart_name in", values, "visitDepartName");
-            return (Criteria) this;
-        }
-
-        public Criteria andVisitDepartNameNotIn(List<String> values) {
-            addCriterion("visit_depart_name not in", values, "visitDepartName");
-            return (Criteria) this;
-        }
-
-        public Criteria andVisitDepartNameBetween(String value1, String value2) {
-            addCriterion("visit_depart_name between", value1, value2, "visitDepartName");
-            return (Criteria) this;
-        }
-
-        public Criteria andVisitDepartNameNotBetween(String value1, String value2) {
-            addCriterion("visit_depart_name not between", value1, value2, "visitDepartName");
-            return (Criteria) this;
-        }
-
-        public Criteria andVisitDoctorNameIsNull() {
-            addCriterion("\"visit_doctor_ name\" is null");
-            return (Criteria) this;
-        }
-
-        public Criteria andVisitDoctorNameIsNotNull() {
-            addCriterion("\"visit_doctor_ name\" is not null");
-            return (Criteria) this;
-        }
-
-        public Criteria andVisitDoctorNameEqualTo(String value) {
-            addCriterion("\"visit_doctor_ name\" =", value, "visitDoctorName");
-            return (Criteria) this;
-        }
-
-        public Criteria andVisitDoctorNameNotEqualTo(String value) {
-            addCriterion("\"visit_doctor_ name\" <>", value, "visitDoctorName");
-            return (Criteria) this;
-        }
-
-        public Criteria andVisitDoctorNameGreaterThan(String value) {
-            addCriterion("\"visit_doctor_ name\" >", value, "visitDoctorName");
-            return (Criteria) this;
-        }
-
-        public Criteria andVisitDoctorNameGreaterThanOrEqualTo(String value) {
-            addCriterion("\"visit_doctor_ name\" >=", value, "visitDoctorName");
-            return (Criteria) this;
-        }
-
-        public Criteria andVisitDoctorNameLessThan(String value) {
-            addCriterion("\"visit_doctor_ name\" <", value, "visitDoctorName");
-            return (Criteria) this;
-        }
-
-        public Criteria andVisitDoctorNameLessThanOrEqualTo(String value) {
-            addCriterion("\"visit_doctor_ name\" <=", value, "visitDoctorName");
-            return (Criteria) this;
-        }
-
-        public Criteria andVisitDoctorNameLike(String value) {
-            addCriterion("\"visit_doctor_ name\" like", value, "visitDoctorName");
-            return (Criteria) this;
-        }
-
-        public Criteria andVisitDoctorNameNotLike(String value) {
-            addCriterion("\"visit_doctor_ name\" not like", value, "visitDoctorName");
-            return (Criteria) this;
-        }
-
-        public Criteria andVisitDoctorNameIn(List<String> values) {
-            addCriterion("\"visit_doctor_ name\" in", values, "visitDoctorName");
-            return (Criteria) this;
-        }
-
-        public Criteria andVisitDoctorNameNotIn(List<String> values) {
-            addCriterion("\"visit_doctor_ name\" not in", values, "visitDoctorName");
-            return (Criteria) this;
-        }
-
-        public Criteria andVisitDoctorNameBetween(String value1, String value2) {
-            addCriterion("\"visit_doctor_ name\" between", value1, value2, "visitDoctorName");
-            return (Criteria) this;
-        }
-
-        public Criteria andVisitDoctorNameNotBetween(String value1, String value2) {
-            addCriterion("\"visit_doctor_ name\" not between", value1, value2, "visitDoctorName");
             return (Criteria) this;
         }
     }

@@ -14,6 +14,18 @@ import org.apache.ibatis.annotations.SelectKey;
 import org.apache.ibatis.annotations.Update;
 
 public interface DiagnosisMapper {
+
+    /*
+     * @Description 将列表插入，使用自增id
+     * @Param [list]
+     * @return int
+     **/
+    int insertForeach(@Param("list") List<Diagnosis> list);
+
+
+
+
+
     int countByExample(DiagnosisExample example);
 
     int deleteByExample(DiagnosisExample example);

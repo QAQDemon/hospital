@@ -2,20 +2,22 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="edu.neu.medical.hospital.dao.MedicalRecordInfoMapper" >
 
-<select id="getMedicalRecordInfoById" resultMap="BaseResultMap">
-  select *
-  from medical_record_info
-  where medical_record_no=#{medicalRecordId}
-  <choose>
-    <when test="isSeen=='1'">
-      and (status='1' or status='2')
-    </when>
-    <otherwise>
-      and status='3'
-      and visit_time=(select max(visit_time) from medical_record_info where medical_record_no=#{medicalRecordId} and status='3' )
-    </otherwise>
-  </choose>
-</select>
+
+  <select id="getMedicalRecordInfoById" resultMap="BaseResultMap">
+    select *
+    from medical_record_info
+    where medical_record_no=#{medicalRecordId}
+    <choose>
+      <when test="isSeen=='1'">
+        and (status='1' or status='2')
+      </when>
+      <otherwise>
+        and status='3'
+        and visit_time=(select max(visit_time) from medical_record_info where medical_record_no=#{medicalRecordId} and status='3' )
+      </otherwise>
+    </choose>
+  </select>
+
 
 
 
@@ -24,9 +26,9 @@
     <constructor >
       <idArg column="id" jdbcType="INTEGER" javaType="java.lang.Integer" />
       <arg column="medical_record_no" jdbcType="INTEGER" javaType="java.lang.Integer" />
-      <arg column="registration_id" jdbcType="INTEGER" javaType="java.lang.Integer" />
       <arg column="patient_id" jdbcType="INTEGER" javaType="java.lang.Integer" />
       <arg column="doctor_id" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="depart_id" jdbcType="INTEGER" javaType="java.lang.Integer" />
       <arg column="chief_complaint" jdbcType="VARCHAR" javaType="java.lang.String" />
       <arg column="current_medical_history" jdbcType="VARCHAR" javaType="java.lang.String" />
       <arg column="current_treatment_situation" jdbcType="VARCHAR" javaType="java.lang.String" />
@@ -34,10 +36,7 @@
       <arg column="allergies_history" jdbcType="VARCHAR" javaType="java.lang.String" />
       <arg column="physical_examination" jdbcType="VARCHAR" javaType="java.lang.String" />
       <arg column="status" jdbcType="CHAR" javaType="java.lang.String" />
-      <arg column="date_of_onset" jdbcType="TIMESTAMP" javaType="java.util.Date" />
       <arg column="visit_time" jdbcType="TIMESTAMP" javaType="java.util.Date" />
-      <arg column="visit_depart_name" jdbcType="VARCHAR" javaType="java.lang.String" />
-      <arg column="visit_doctor_ name" jdbcType="VARCHAR" javaType="java.lang.String" />
     </constructor>
   </resultMap>
   <sql id="Example_Where_Clause" >
@@ -99,9 +98,9 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    id, medical_record_no, registration_id, patient_id, doctor_id, chief_complaint, current_medical_history, 
+    id, medical_record_no, patient_id, doctor_id, depart_id, chief_complaint, current_medical_history, 
     current_treatment_situation, past_history, allergies_history, physical_examination, 
-    status, date_of_onset, visit_time, visit_depart_name, "visit_doctor_ name"
+    status, visit_time
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="edu.neu.medical.hospital.bean.MedicalRecordInfoExample" >
     select
@@ -133,14 +132,14 @@
       <if test="medicalRecordNo != null" >
         medical_record_no,
       </if>
-      <if test="registrationId != null" >
-        registration_id,
-      </if>
       <if test="patientId != null" >
         patient_id,
       </if>
       <if test="doctorId != null" >
         doctor_id,
+      </if>
+      <if test="departId != null" >
+        depart_id,
       </if>
       <if test="chiefComplaint != null" >
         chief_complaint,
@@ -163,17 +162,8 @@
       <if test="status != null" >
         status,
       </if>
-      <if test="dateOfOnset != null" >
-        date_of_onset,
-      </if>
       <if test="visitTime != null" >
         visit_time,
-      </if>
-      <if test="visitDepartName != null" >
-        visit_depart_name,
-      </if>
-      <if test="visitDoctorName != null" >
-        "visit_doctor_ name",
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
@@ -181,14 +171,14 @@
       <if test="medicalRecordNo != null" >
         #{medicalRecordNo,jdbcType=INTEGER},
       </if>
-      <if test="registrationId != null" >
-        #{registrationId,jdbcType=INTEGER},
-      </if>
       <if test="patientId != null" >
         #{patientId,jdbcType=INTEGER},
       </if>
       <if test="doctorId != null" >
         #{doctorId,jdbcType=INTEGER},
+      </if>
+      <if test="departId != null" >
+        #{departId,jdbcType=INTEGER},
       </if>
       <if test="chiefComplaint != null" >
         #{chiefComplaint,jdbcType=VARCHAR},
@@ -211,17 +201,8 @@
       <if test="status != null" >
         #{status,jdbcType=CHAR},
       </if>
-      <if test="dateOfOnset != null" >
-        #{dateOfOnset,jdbcType=TIMESTAMP},
-      </if>
       <if test="visitTime != null" >
         #{visitTime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="visitDepartName != null" >
-        #{visitDepartName,jdbcType=VARCHAR},
-      </if>
-      <if test="visitDoctorName != null" >
-        #{visitDoctorName,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
@@ -240,14 +221,14 @@
       <if test="record.medicalRecordNo != null" >
         medical_record_no = #{record.medicalRecordNo,jdbcType=INTEGER},
       </if>
-      <if test="record.registrationId != null" >
-        registration_id = #{record.registrationId,jdbcType=INTEGER},
-      </if>
       <if test="record.patientId != null" >
         patient_id = #{record.patientId,jdbcType=INTEGER},
       </if>
       <if test="record.doctorId != null" >
         doctor_id = #{record.doctorId,jdbcType=INTEGER},
+      </if>
+      <if test="record.departId != null" >
+        depart_id = #{record.departId,jdbcType=INTEGER},
       </if>
       <if test="record.chiefComplaint != null" >
         chief_complaint = #{record.chiefComplaint,jdbcType=VARCHAR},
@@ -270,17 +251,8 @@
       <if test="record.status != null" >
         status = #{record.status,jdbcType=CHAR},
       </if>
-      <if test="record.dateOfOnset != null" >
-        date_of_onset = #{record.dateOfOnset,jdbcType=TIMESTAMP},
-      </if>
       <if test="record.visitTime != null" >
         visit_time = #{record.visitTime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="record.visitDepartName != null" >
-        visit_depart_name = #{record.visitDepartName,jdbcType=VARCHAR},
-      </if>
-      <if test="record.visitDoctorName != null" >
-        "visit_doctor_ name" = #{record.visitDoctorName,jdbcType=VARCHAR},
       </if>
     </set>
     <if test="_parameter != null" >
@@ -291,9 +263,9 @@
     update medical_record_info
     set id = #{record.id,jdbcType=INTEGER},
       medical_record_no = #{record.medicalRecordNo,jdbcType=INTEGER},
-      registration_id = #{record.registrationId,jdbcType=INTEGER},
       patient_id = #{record.patientId,jdbcType=INTEGER},
       doctor_id = #{record.doctorId,jdbcType=INTEGER},
+      depart_id = #{record.departId,jdbcType=INTEGER},
       chief_complaint = #{record.chiefComplaint,jdbcType=VARCHAR},
       current_medical_history = #{record.currentMedicalHistory,jdbcType=VARCHAR},
       current_treatment_situation = #{record.currentTreatmentSituation,jdbcType=VARCHAR},
@@ -301,10 +273,7 @@
       allergies_history = #{record.allergiesHistory,jdbcType=VARCHAR},
       physical_examination = #{record.physicalExamination,jdbcType=VARCHAR},
       status = #{record.status,jdbcType=CHAR},
-      date_of_onset = #{record.dateOfOnset,jdbcType=TIMESTAMP},
-      visit_time = #{record.visitTime,jdbcType=TIMESTAMP},
-      visit_depart_name = #{record.visitDepartName,jdbcType=VARCHAR},
-      "visit_doctor_ name" = #{record.visitDoctorName,jdbcType=VARCHAR}
+      visit_time = #{record.visitTime,jdbcType=TIMESTAMP}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -315,14 +284,14 @@
       <if test="medicalRecordNo != null" >
         medical_record_no = #{medicalRecordNo,jdbcType=INTEGER},
       </if>
-      <if test="registrationId != null" >
-        registration_id = #{registrationId,jdbcType=INTEGER},
-      </if>
       <if test="patientId != null" >
         patient_id = #{patientId,jdbcType=INTEGER},
       </if>
       <if test="doctorId != null" >
         doctor_id = #{doctorId,jdbcType=INTEGER},
+      </if>
+      <if test="departId != null" >
+        depart_id = #{departId,jdbcType=INTEGER},
       </if>
       <if test="chiefComplaint != null" >
         chief_complaint = #{chiefComplaint,jdbcType=VARCHAR},
@@ -345,17 +314,8 @@
       <if test="status != null" >
         status = #{status,jdbcType=CHAR},
       </if>
-      <if test="dateOfOnset != null" >
-        date_of_onset = #{dateOfOnset,jdbcType=TIMESTAMP},
-      </if>
       <if test="visitTime != null" >
         visit_time = #{visitTime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="visitDepartName != null" >
-        visit_depart_name = #{visitDepartName,jdbcType=VARCHAR},
-      </if>
-      <if test="visitDoctorName != null" >
-        "visit_doctor_ name" = #{visitDoctorName,jdbcType=VARCHAR},
       </if>
     </set>
     where id = #{id,jdbcType=INTEGER}
