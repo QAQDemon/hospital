@@ -96,7 +96,7 @@
         <!-- 数据源 -->
         <property name="dataSource" ref="dataSource"/>
         <property name="mapperLocations" value="classpath:mapper/*.xml"/>
-        <property name="typeAliasesPackage" value="com.neusoft.ssm.bean" />
+        <property name="typeAliasesPackage" value="edu.neu.medical.bean" />
         <property name="plugins">
             <array>
                 <bean class="com.github.pagehelper.PageInterceptor">

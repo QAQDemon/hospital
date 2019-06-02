@@ -1,11 +1,30 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="edu.neu.medical.hospital.dao.DoctorMapper" >
-  <resultMap id="BaseResultMap" type="edu.neu.medical.hospital.bean.Doctor" >
+<mapper namespace="edu.neu.medical.hospital.dao.PatientMapper" >
+
+  <select id="searchPatientList" resultMap="BaseResultMap">
+    select DISTINCT P.id,P.medical_record_no,P.name,P.age,P.gender,P.birthday,P.identity_card_no,P.family_address
+    from patient as P , registration_info as R
+    where P.id=R.patient_id and (R.doctor_id=#{doctorId} or R.depart_id=#{dapartId})
+    and R.is_seen_docator=#{isSeenDocator} and R.status=1
+    and (P.name like #{key,jdbcType=VARCHAR}"%" or R.medical_record_no = #{intKey})
+  </select>
+
+
+
+
+
+
+  <resultMap id="BaseResultMap" type="edu.neu.medical.hospital.bean.Patient" >
     <constructor >
       <idArg column="id" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="medical_record_no" jdbcType="INTEGER" javaType="java.lang.Integer" />
       <arg column="name" jdbcType="VARCHAR" javaType="java.lang.String" />
-      <arg column="level" jdbcType="CHAR" javaType="java.lang.String" />
+      <arg column="age" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="gender" jdbcType="CHAR" javaType="java.lang.String" />
+      <arg column="birthday" jdbcType="DATE" javaType="java.util.Date" />
+      <arg column="identity_card_no" jdbcType="CHAR" javaType="java.lang.String" />
+      <arg column="family_address" jdbcType="VARCHAR" javaType="java.lang.String" />
     </constructor>
   </resultMap>
   <sql id="Example_Where_Clause" >
@@ -67,15 +86,15 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    id, name, level
+    id, medical_record_no, name, age, gender, birthday, identity_card_no, family_address
   </sql>
-  <select id="selectByExample" resultMap="BaseResultMap" parameterType="edu.neu.medical.hospital.bean.DoctorExample" >
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="edu.neu.medical.hospital.bean.PatientExample" >
     select
     <if test="distinct" >
       distinct
     </if>
     <include refid="Base_Column_List" />
-    from doctor
+    from patient
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
@@ -83,53 +102,98 @@
       order by ${orderByClause}
     </if>
   </select>
-  <delete id="deleteByExample" parameterType="edu.neu.medical.hospital.bean.DoctorExample" >
-    delete from doctor
+  <delete id="deleteByExample" parameterType="edu.neu.medical.hospital.bean.PatientExample" >
+    delete from patient
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insertSelective" parameterType="edu.neu.medical.hospital.bean.Doctor" >
+  <insert id="insertSelective" parameterType="edu.neu.medical.hospital.bean.Patient" >
     <selectKey resultType="java.lang.Integer" keyProperty="id" order="BEFORE" >
       SELECT LAST_INSERT_ID()
     </selectKey>
-    insert into doctor
+    insert into patient
     <trim prefix="(" suffix=")" suffixOverrides="," >
       id,
+      <if test="medicalRecordNo != null" >
+        medical_record_no,
+      </if>
       <if test="name != null" >
         name,
       </if>
-      <if test="level != null" >
-        level,
+      <if test="age != null" >
+        age,
+      </if>
+      <if test="gender != null" >
+        gender,
+      </if>
+      <if test="birthday != null" >
+        birthday,
+      </if>
+      <if test="identityCardNo != null" >
+        identity_card_no,
+      </if>
+      <if test="familyAddress != null" >
+        family_address,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       #{id,jdbcType=INTEGER},
+      <if test="medicalRecordNo != null" >
+        #{medicalRecordNo,jdbcType=INTEGER},
+      </if>
       <if test="name != null" >
         #{name,jdbcType=VARCHAR},
       </if>
-      <if test="level != null" >
-        #{level,jdbcType=CHAR},
+      <if test="age != null" >
+        #{age,jdbcType=INTEGER},
+      </if>
+      <if test="gender != null" >
+        #{gender,jdbcType=CHAR},
+      </if>
+      <if test="birthday != null" >
+        #{birthday,jdbcType=DATE},
+      </if>
+      <if test="identityCardNo != null" >
+        #{identityCardNo,jdbcType=CHAR},
+      </if>
+      <if test="familyAddress != null" >
+        #{familyAddress,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="edu.neu.medical.hospital.bean.DoctorExample" resultType="java.lang.Integer" >
-    select count(*) from doctor
+  <select id="countByExample" parameterType="edu.neu.medical.hospital.bean.PatientExample" resultType="java.lang.Integer" >
+    select count(*) from patient
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
   </select>
   <update id="updateByExampleSelective" parameterType="map" >
-    update doctor
+    update patient
     <set >
       <if test="record.id != null" >
         id = #{record.id,jdbcType=INTEGER},
       </if>
+      <if test="record.medicalRecordNo != null" >
+        medical_record_no = #{record.medicalRecordNo,jdbcType=INTEGER},
+      </if>
       <if test="record.name != null" >
         name = #{record.name,jdbcType=VARCHAR},
       </if>
-      <if test="record.level != null" >
-        level = #{record.level,jdbcType=CHAR},
+      <if test="record.age != null" >
+        age = #{record.age,jdbcType=INTEGER},
+      </if>
+      <if test="record.gender != null" >
+        gender = #{record.gender,jdbcType=CHAR},
+      </if>
+      <if test="record.birthday != null" >
+        birthday = #{record.birthday,jdbcType=DATE},
+      </if>
+      <if test="record.identityCardNo != null" >
+        identity_card_no = #{record.identityCardNo,jdbcType=CHAR},
+      </if>
+      <if test="record.familyAddress != null" >
+        family_address = #{record.familyAddress,jdbcType=VARCHAR},
       </if>
     </set>
     <if test="_parameter != null" >
@@ -137,22 +201,42 @@
     </if>
   </update>
   <update id="updateByExample" parameterType="map" >
-    update doctor
+    update patient
     set id = #{record.id,jdbcType=INTEGER},
+      medical_record_no = #{record.medicalRecordNo,jdbcType=INTEGER},
       name = #{record.name,jdbcType=VARCHAR},
-      level = #{record.level,jdbcType=CHAR}
+      age = #{record.age,jdbcType=INTEGER},
+      gender = #{record.gender,jdbcType=CHAR},
+      birthday = #{record.birthday,jdbcType=DATE},
+      identity_card_no = #{record.identityCardNo,jdbcType=CHAR},
+      family_address = #{record.familyAddress,jdbcType=VARCHAR}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="edu.neu.medical.hospital.bean.Doctor" >
-    update doctor
+  <update id="updateByPrimaryKeySelective" parameterType="edu.neu.medical.hospital.bean.Patient" >
+    update patient
     <set >
+      <if test="medicalRecordNo != null" >
+        medical_record_no = #{medicalRecordNo,jdbcType=INTEGER},
+      </if>
       <if test="name != null" >
         name = #{name,jdbcType=VARCHAR},
       </if>
-      <if test="level != null" >
-        level = #{level,jdbcType=CHAR},
+      <if test="age != null" >
+        age = #{age,jdbcType=INTEGER},
+      </if>
+      <if test="gender != null" >
+        gender = #{gender,jdbcType=CHAR},
+      </if>
+      <if test="birthday != null" >
+        birthday = #{birthday,jdbcType=DATE},
+      </if>
+      <if test="identityCardNo != null" >
+        identity_card_no = #{identityCardNo,jdbcType=CHAR},
+      </if>
+      <if test="familyAddress != null" >
+        family_address = #{familyAddress,jdbcType=VARCHAR},
       </if>
     </set>
     where id = #{id,jdbcType=INTEGER}

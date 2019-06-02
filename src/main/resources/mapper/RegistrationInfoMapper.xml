@@ -4,27 +4,20 @@
   <resultMap id="BaseResultMap" type="edu.neu.medical.hospital.bean.RegistrationInfo" >
     <constructor >
       <idArg column="id" jdbcType="INTEGER" javaType="java.lang.Integer" />
-      <arg column="medical_record_no" jdbcType="CHAR" javaType="java.lang.String" />
-      <arg column="patient_name" jdbcType="VARCHAR" javaType="java.lang.String" />
-      <arg column="gender" jdbcType="CHAR" javaType="java.lang.String" />
-      <arg column="age" jdbcType="INTEGER" javaType="java.lang.Integer" />
-      <arg column="birthday" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+      <arg column="medical_record_no" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="patient_id" jdbcType="VARCHAR" javaType="java.lang.String" />
       <arg column="registration_category" jdbcType="CHAR" javaType="java.lang.String" />
       <arg column="medical_category" jdbcType="CHAR" javaType="java.lang.String" />
-      <arg column="identity_card_no" jdbcType="CHAR" javaType="java.lang.String" />
-      <arg column="family_address" jdbcType="VARCHAR" javaType="java.lang.String" />
       <arg column="registration_date" jdbcType="TIMESTAMP" javaType="java.util.Date" />
       <arg column="see_doctor_date" jdbcType="TIMESTAMP" javaType="java.util.Date" />
-      <arg column="department_id" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="depart_id" jdbcType="INTEGER" javaType="java.lang.Integer" />
       <arg column="doctor_id" jdbcType="INTEGER" javaType="java.lang.Integer" />
       <arg column="registration_source" jdbcType="CHAR" javaType="java.lang.String" />
       <arg column="settle_accounts_category" jdbcType="CHAR" javaType="java.lang.String" />
       <arg column="is_seen_docator" jdbcType="CHAR" javaType="java.lang.String" />
       <arg column="status" jdbcType="CHAR" javaType="java.lang.String" />
       <arg column="expense" jdbcType="DECIMAL" javaType="java.math.BigDecimal" />
-      <arg column="reserve1" jdbcType="VARCHAR" javaType="java.lang.String" />
-      <arg column="reserve2" jdbcType="VARCHAR" javaType="java.lang.String" />
-      <arg column="reserve3" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="refund_amount" jdbcType="DECIMAL" javaType="java.math.BigDecimal" />
     </constructor>
   </resultMap>
   <sql id="Example_Where_Clause" >
@@ -86,10 +79,9 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    id, medical_record_no, patient_name, gender, age, birthday, registration_category, 
-    medical_category, identity_card_no, family_address, registration_date, see_doctor_date, 
-    department_id, doctor_id, registration_source, settle_accounts_category, is_seen_docator, 
-    status, expense, reserve1, reserve2, reserve3
+    id, medical_record_no, patient_id, registration_category, medical_category, registration_date, 
+    see_doctor_date, depart_id, doctor_id, registration_source, settle_accounts_category, 
+    is_seen_docator, status, expense, refund_amount
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="edu.neu.medical.hospital.bean.RegistrationInfoExample" >
     select
@@ -121,17 +113,8 @@
       <if test="medicalRecordNo != null" >
         medical_record_no,
       </if>
-      <if test="patientName != null" >
-        patient_name,
-      </if>
-      <if test="gender != null" >
-        gender,
-      </if>
-      <if test="age != null" >
-        age,
-      </if>
-      <if test="birthday != null" >
-        birthday,
+      <if test="patientId != null" >
+        patient_id,
       </if>
       <if test="registrationCategory != null" >
         registration_category,
@@ -139,20 +122,14 @@
       <if test="medicalCategory != null" >
         medical_category,
       </if>
-      <if test="identityCardNo != null" >
-        identity_card_no,
-      </if>
-      <if test="familyAddress != null" >
-        family_address,
-      </if>
       <if test="registrationDate != null" >
         registration_date,
       </if>
       <if test="seeDoctorDate != null" >
         see_doctor_date,
       </if>
-      <if test="departmentId != null" >
-        department_id,
+      <if test="departId != null" >
+        depart_id,
       </if>
       <if test="doctorId != null" >
         doctor_id,
@@ -172,32 +149,17 @@
       <if test="expense != null" >
         expense,
       </if>
-      <if test="reserve1 != null" >
-        reserve1,
-      </if>
-      <if test="reserve2 != null" >
-        reserve2,
-      </if>
-      <if test="reserve3 != null" >
-        reserve3,
+      <if test="refundAmount != null" >
+        refund_amount,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       #{id,jdbcType=INTEGER},
       <if test="medicalRecordNo != null" >
-        #{medicalRecordNo,jdbcType=CHAR},
+        #{medicalRecordNo,jdbcType=INTEGER},
       </if>
-      <if test="patientName != null" >
-        #{patientName,jdbcType=VARCHAR},
-      </if>
-      <if test="gender != null" >
-        #{gender,jdbcType=CHAR},
-      </if>
-      <if test="age != null" >
-        #{age,jdbcType=INTEGER},
-      </if>
-      <if test="birthday != null" >
-        #{birthday,jdbcType=TIMESTAMP},
+      <if test="patientId != null" >
+        #{patientId,jdbcType=VARCHAR},
       </if>
       <if test="registrationCategory != null" >
         #{registrationCategory,jdbcType=CHAR},
@@ -205,20 +167,14 @@
       <if test="medicalCategory != null" >
         #{medicalCategory,jdbcType=CHAR},
       </if>
-      <if test="identityCardNo != null" >
-        #{identityCardNo,jdbcType=CHAR},
-      </if>
-      <if test="familyAddress != null" >
-        #{familyAddress,jdbcType=VARCHAR},
-      </if>
       <if test="registrationDate != null" >
         #{registrationDate,jdbcType=TIMESTAMP},
       </if>
       <if test="seeDoctorDate != null" >
         #{seeDoctorDate,jdbcType=TIMESTAMP},
       </if>
-      <if test="departmentId != null" >
-        #{departmentId,jdbcType=INTEGER},
+      <if test="departId != null" >
+        #{departId,jdbcType=INTEGER},
       </if>
       <if test="doctorId != null" >
         #{doctorId,jdbcType=INTEGER},
@@ -238,14 +194,8 @@
       <if test="expense != null" >
         #{expense,jdbcType=DECIMAL},
       </if>
-      <if test="reserve1 != null" >
-        #{reserve1,jdbcType=VARCHAR},
-      </if>
-      <if test="reserve2 != null" >
-        #{reserve2,jdbcType=VARCHAR},
-      </if>
-      <if test="reserve3 != null" >
-        #{reserve3,jdbcType=VARCHAR},
+      <if test="refundAmount != null" >
+        #{refundAmount,jdbcType=DECIMAL},
       </if>
     </trim>
   </insert>
@@ -262,19 +212,10 @@
         id = #{record.id,jdbcType=INTEGER},
       </if>
       <if test="record.medicalRecordNo != null" >
-        medical_record_no = #{record.medicalRecordNo,jdbcType=CHAR},
+        medical_record_no = #{record.medicalRecordNo,jdbcType=INTEGER},
       </if>
-      <if test="record.patientName != null" >
-        patient_name = #{record.patientName,jdbcType=VARCHAR},
-      </if>
-      <if test="record.gender != null" >
-        gender = #{record.gender,jdbcType=CHAR},
-      </if>
-      <if test="record.age != null" >
-        age = #{record.age,jdbcType=INTEGER},
-      </if>
-      <if test="record.birthday != null" >
-        birthday = #{record.birthday,jdbcType=TIMESTAMP},
+      <if test="record.patientId != null" >
+        patient_id = #{record.patientId,jdbcType=VARCHAR},
       </if>
       <if test="record.registrationCategory != null" >
         registration_category = #{record.registrationCategory,jdbcType=CHAR},
@@ -282,20 +223,14 @@
       <if test="record.medicalCategory != null" >
         medical_category = #{record.medicalCategory,jdbcType=CHAR},
       </if>
-      <if test="record.identityCardNo != null" >
-        identity_card_no = #{record.identityCardNo,jdbcType=CHAR},
-      </if>
-      <if test="record.familyAddress != null" >
-        family_address = #{record.familyAddress,jdbcType=VARCHAR},
-      </if>
       <if test="record.registrationDate != null" >
         registration_date = #{record.registrationDate,jdbcType=TIMESTAMP},
       </if>
       <if test="record.seeDoctorDate != null" >
         see_doctor_date = #{record.seeDoctorDate,jdbcType=TIMESTAMP},
       </if>
-      <if test="record.departmentId != null" >
-        department_id = #{record.departmentId,jdbcType=INTEGER},
+      <if test="record.departId != null" >
+        depart_id = #{record.departId,jdbcType=INTEGER},
       </if>
       <if test="record.doctorId != null" >
         doctor_id = #{record.doctorId,jdbcType=INTEGER},
@@ -315,14 +250,8 @@
       <if test="record.expense != null" >
         expense = #{record.expense,jdbcType=DECIMAL},
       </if>
-      <if test="record.reserve1 != null" >
-        reserve1 = #{record.reserve1,jdbcType=VARCHAR},
-      </if>
-      <if test="record.reserve2 != null" >
-        reserve2 = #{record.reserve2,jdbcType=VARCHAR},
-      </if>
-      <if test="record.reserve3 != null" >
-        reserve3 = #{record.reserve3,jdbcType=VARCHAR},
+      <if test="record.refundAmount != null" >
+        refund_amount = #{record.refundAmount,jdbcType=DECIMAL},
       </if>
     </set>
     <if test="_parameter != null" >
@@ -332,27 +261,20 @@
   <update id="updateByExample" parameterType="map" >
     update registration_info
     set id = #{record.id,jdbcType=INTEGER},
-      medical_record_no = #{record.medicalRecordNo,jdbcType=CHAR},
-      patient_name = #{record.patientName,jdbcType=VARCHAR},
-      gender = #{record.gender,jdbcType=CHAR},
-      age = #{record.age,jdbcType=INTEGER},
-      birthday = #{record.birthday,jdbcType=TIMESTAMP},
+      medical_record_no = #{record.medicalRecordNo,jdbcType=INTEGER},
+      patient_id = #{record.patientId,jdbcType=VARCHAR},
       registration_category = #{record.registrationCategory,jdbcType=CHAR},
       medical_category = #{record.medicalCategory,jdbcType=CHAR},
-      identity_card_no = #{record.identityCardNo,jdbcType=CHAR},
-      family_address = #{record.familyAddress,jdbcType=VARCHAR},
       registration_date = #{record.registrationDate,jdbcType=TIMESTAMP},
       see_doctor_date = #{record.seeDoctorDate,jdbcType=TIMESTAMP},
-      department_id = #{record.departmentId,jdbcType=INTEGER},
+      depart_id = #{record.departId,jdbcType=INTEGER},
       doctor_id = #{record.doctorId,jdbcType=INTEGER},
       registration_source = #{record.registrationSource,jdbcType=CHAR},
       settle_accounts_category = #{record.settleAccountsCategory,jdbcType=CHAR},
       is_seen_docator = #{record.isSeenDocator,jdbcType=CHAR},
       status = #{record.status,jdbcType=CHAR},
       expense = #{record.expense,jdbcType=DECIMAL},
-      reserve1 = #{record.reserve1,jdbcType=VARCHAR},
-      reserve2 = #{record.reserve2,jdbcType=VARCHAR},
-      reserve3 = #{record.reserve3,jdbcType=VARCHAR}
+      refund_amount = #{record.refundAmount,jdbcType=DECIMAL}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -361,19 +283,10 @@
     update registration_info
     <set >
       <if test="medicalRecordNo != null" >
-        medical_record_no = #{medicalRecordNo,jdbcType=CHAR},
+        medical_record_no = #{medicalRecordNo,jdbcType=INTEGER},
       </if>
-      <if test="patientName != null" >
-        patient_name = #{patientName,jdbcType=VARCHAR},
-      </if>
-      <if test="gender != null" >
-        gender = #{gender,jdbcType=CHAR},
-      </if>
-      <if test="age != null" >
-        age = #{age,jdbcType=INTEGER},
-      </if>
-      <if test="birthday != null" >
-        birthday = #{birthday,jdbcType=TIMESTAMP},
+      <if test="patientId != null" >
+        patient_id = #{patientId,jdbcType=VARCHAR},
       </if>
       <if test="registrationCategory != null" >
         registration_category = #{registrationCategory,jdbcType=CHAR},
@@ -381,20 +294,14 @@
       <if test="medicalCategory != null" >
         medical_category = #{medicalCategory,jdbcType=CHAR},
       </if>
-      <if test="identityCardNo != null" >
-        identity_card_no = #{identityCardNo,jdbcType=CHAR},
-      </if>
-      <if test="familyAddress != null" >
-        family_address = #{familyAddress,jdbcType=VARCHAR},
-      </if>
       <if test="registrationDate != null" >
         registration_date = #{registrationDate,jdbcType=TIMESTAMP},
       </if>
       <if test="seeDoctorDate != null" >
         see_doctor_date = #{seeDoctorDate,jdbcType=TIMESTAMP},
       </if>
-      <if test="departmentId != null" >
-        department_id = #{departmentId,jdbcType=INTEGER},
+      <if test="departId != null" >
+        depart_id = #{departId,jdbcType=INTEGER},
       </if>
       <if test="doctorId != null" >
         doctor_id = #{doctorId,jdbcType=INTEGER},
@@ -414,14 +321,8 @@
       <if test="expense != null" >
         expense = #{expense,jdbcType=DECIMAL},
       </if>
-      <if test="reserve1 != null" >
-        reserve1 = #{reserve1,jdbcType=VARCHAR},
-      </if>
-      <if test="reserve2 != null" >
-        reserve2 = #{reserve2,jdbcType=VARCHAR},
-      </if>
-      <if test="reserve3 != null" >
-        reserve3 = #{reserve3,jdbcType=VARCHAR},
+      <if test="refundAmount != null" >
+        refund_amount = #{refundAmount,jdbcType=DECIMAL},
       </if>
     </set>
     where id = #{id,jdbcType=INTEGER}
