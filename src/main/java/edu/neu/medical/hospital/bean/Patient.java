@@ -1,6 +1,7 @@
 package edu.neu.medical.hospital.bean;
 
 import java.util.Date;
+import java.util.Objects;
 
 public class Patient {
     private Integer id;
@@ -110,5 +111,25 @@ public class Patient {
                 ", identityCardNo='" + identityCardNo + '\'' +
                 ", familyAddress='" + familyAddress + '\'' +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Patient patient = (Patient) o;
+        return Objects.equals(id, patient.id) &&
+                Objects.equals(medicalRecordNo, patient.medicalRecordNo) &&
+                Objects.equals(name, patient.name) &&
+                Objects.equals(age, patient.age) &&
+                Objects.equals(gender, patient.gender) &&
+                Objects.equals(birthday, patient.birthday) &&
+                Objects.equals(identityCardNo, patient.identityCardNo) &&
+                Objects.equals(familyAddress, patient.familyAddress);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, medicalRecordNo, name, age, gender, birthday, identityCardNo, familyAddress);
     }
 }

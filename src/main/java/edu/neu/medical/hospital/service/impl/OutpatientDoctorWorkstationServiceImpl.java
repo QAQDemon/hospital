@@ -12,24 +12,27 @@ public class OutpatientDoctorWorkstationServiceImpl implements OutpatientDoctorW
 
     @Autowired
     private PatientMapper patientMapper;
-//    @Autowired
-//    RegistrationInfoMapper registrationInfoMapper;
-
-
 
     /*
-     * @Description 将已诊或待诊病人列表传回，关键词是前几位模糊搜索//TODO
+     * @Description 将已诊或待诊病人列表传回，已诊中会去掉待诊
      * @Param [doctorId id为-1不查, dapartId id为-1不查, isSeenDocator 1：未看诊；2：已看诊, key搜索关键词]
      * @return java.util.List<edu.neu.medical.hospital.bean.Patient>
      **/
     public List<Patient> searchPatientList(int doctorId, int dapartId, char isSeenDocator, String key) {
+        List<Patient> notSeenList;
+        Integer intKey=-1;
+        //关键词整数判断
         try{
-            Integer intKey=Integer.valueOf(key);
-            return patientMapper.searchPatientList(doctorId,  dapartId,  isSeenDocator,  key,intKey);
-        }catch (Exception e){
-            //key不是整数
-            return patientMapper.searchPatientList(doctorId,  dapartId,  isSeenDocator,  key,-1);
+            intKey=Integer.valueOf(key);
+        }catch (Exception e){}
+        notSeenList= patientMapper.searchPatientList(doctorId,  dapartId,  '1',  key,intKey);
+        if(isSeenDocator=='1'){
+            return notSeenList;
         }
-
+        //返回已看诊，并去重
+        List<Patient> isSeenList = patientMapper.searchPatientList(doctorId,  dapartId,  '2',  key,intKey);
+        isSeenList.removeAll(notSeenList);
+        return isSeenList;
     }
+
 }

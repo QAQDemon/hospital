@@ -16,11 +16,13 @@ import org.apache.ibatis.annotations.Update;
 public interface PatientMapper {
 
     /*
-     * @Description 根据医生科室id和关键词，将已诊或待诊病人列表传回，关键词是前几位模糊搜索//TODO
+     * @Description 根据医生科室id和关键词，搜索符合的名字的前几位或绝对符合的病历号，将已诊或待诊病人列表传回
      * @Param [doctorId, dapartId,isSeenDocator, key,intKey]
      * @return java.util.List<edu.neu.medical.hospital.bean.Patient>
      **/
-    List<Patient> searchPatientList(@Param("doctorId")int doctorId,@Param("dapartId") int dapartId, @Param("isSeenDocator") char isSeenDocator, @Param("key") String key,@Param("intKey") int intKey);
+    List<Patient> searchPatientList(@Param("doctorId")int doctorId,@Param("dapartId") int dapartId,
+                                    @Param("isSeenDocator") char isSeenDocator, @Param("key") String key,
+                                    @Param("intKey") int intKey);
 
 
 
