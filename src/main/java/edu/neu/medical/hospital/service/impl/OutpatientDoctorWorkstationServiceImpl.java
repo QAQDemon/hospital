@@ -1,5 +1,8 @@
 package edu.neu.medical.hospital.service.impl;
+import edu.neu.medical.hospital.bean.CommonOption;
+import edu.neu.medical.hospital.bean.CommonOptionExample;
 import edu.neu.medical.hospital.bean.Patient;
+import edu.neu.medical.hospital.dao.CommonOptionMapper;
 import edu.neu.medical.hospital.dao.PatientMapper;
 import edu.neu.medical.hospital.service.OutpatientDoctorWorkstationService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +15,8 @@ public class OutpatientDoctorWorkstationServiceImpl implements OutpatientDoctorW
 
     @Autowired
     private PatientMapper patientMapper;
+    @Autowired
+    private CommonOptionMapper commonOptionMapper;
 
     /*
      * @Description 将已诊或待诊病人列表传回，已诊中会去掉待诊
@@ -33,6 +38,19 @@ public class OutpatientDoctorWorkstationServiceImpl implements OutpatientDoctorW
         List<Patient> isSeenList = patientMapper.searchPatientList(doctorId,  dapartId,  '2',  key,intKey);
         isSeenList.removeAll(notSeenList);
         return isSeenList;
+    }
+
+    /**
+     * @Description 根据类型和医生id获得常用选项
+     * @Param [type 1西医诊断 2中医诊断, doctorId]
+     * @return java.util.List<edu.neu.medical.hospital.bean.CommonOption>
+     **/
+    public List<CommonOption> getCommonOptionById(char type,int doctorId) {
+        CommonOptionExample commonOptionExample=new CommonOptionExample();
+        CommonOptionExample.Criteria criteria=commonOptionExample.createCriteria();
+        criteria.andDoctorIdEqualTo(doctorId);
+        criteria.andTypeEqualTo(type+"");
+        return commonOptionMapper.selectByExample(commonOptionExample);
     }
 
 }
