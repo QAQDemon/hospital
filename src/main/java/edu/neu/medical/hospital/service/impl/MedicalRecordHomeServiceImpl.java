@@ -142,7 +142,7 @@ public class MedicalRecordHomeServiceImpl implements MedicalRecordHomeService {
     }
 
     /*
-     * @Description 增加常用诊断，在常用选项表上//TODO
+     * @Description 增加常用诊断，在常用选项表上
      * @Param [doctorId, diagnosis]
      * @return java.lang.Boolean
      **/

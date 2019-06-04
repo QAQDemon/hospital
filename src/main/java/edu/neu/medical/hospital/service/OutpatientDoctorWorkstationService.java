@@ -2,7 +2,6 @@ package edu.neu.medical.hospital.service;
 
 import edu.neu.medical.hospital.bean.CommonOption;
 import edu.neu.medical.hospital.bean.Patient;
-
 import java.util.List;
 
 public interface OutpatientDoctorWorkstationService {

@@ -1,0 +1,274 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="edu.neu.medical.hospital.dao.MedrecTemplateMapper" >
+  <resultMap id="BaseResultMap" type="edu.neu.medical.hospital.bean.MedrecTemplate" >
+    <constructor >
+      <idArg column="id" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="template_name" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="category" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="belong_id" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="chief_complaint" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="current_medical_history" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="current_treatment_situation" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="past__history" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="allergies_history" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="physical_examination" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="status" jdbcType="CHAR" javaType="java.lang.String" />
+    </constructor>
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    id, template_name, category, belong_id, chief_complaint, current_medical_history, 
+    current_treatment_situation, past__history, allergies_history, physical_examination, 
+    status
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="edu.neu.medical.hospital.bean.MedrecTemplateExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from medrec_template
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <delete id="deleteByExample" parameterType="edu.neu.medical.hospital.bean.MedrecTemplateExample" >
+    delete from medrec_template
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insertSelective" parameterType="edu.neu.medical.hospital.bean.MedrecTemplate" >
+    <selectKey resultType="java.lang.Integer" keyProperty="id" order="BEFORE" >
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into medrec_template
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      id,
+      <if test="templateName != null" >
+        template_name,
+      </if>
+      <if test="category != null" >
+        category,
+      </if>
+      <if test="belongId != null" >
+        belong_id,
+      </if>
+      <if test="chiefComplaint != null" >
+        chief_complaint,
+      </if>
+      <if test="currentMedicalHistory != null" >
+        current_medical_history,
+      </if>
+      <if test="currentTreatmentSituation != null" >
+        current_treatment_situation,
+      </if>
+      <if test="pastHistory != null" >
+        past__history,
+      </if>
+      <if test="allergiesHistory != null" >
+        allergies_history,
+      </if>
+      <if test="physicalExamination != null" >
+        physical_examination,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      #{id,jdbcType=INTEGER},
+      <if test="templateName != null" >
+        #{templateName,jdbcType=VARCHAR},
+      </if>
+      <if test="category != null" >
+        #{category,jdbcType=VARCHAR},
+      </if>
+      <if test="belongId != null" >
+        #{belongId,jdbcType=INTEGER},
+      </if>
+      <if test="chiefComplaint != null" >
+        #{chiefComplaint,jdbcType=VARCHAR},
+      </if>
+      <if test="currentMedicalHistory != null" >
+        #{currentMedicalHistory,jdbcType=VARCHAR},
+      </if>
+      <if test="currentTreatmentSituation != null" >
+        #{currentTreatmentSituation,jdbcType=VARCHAR},
+      </if>
+      <if test="pastHistory != null" >
+        #{pastHistory,jdbcType=VARCHAR},
+      </if>
+      <if test="allergiesHistory != null" >
+        #{allergiesHistory,jdbcType=VARCHAR},
+      </if>
+      <if test="physicalExamination != null" >
+        #{physicalExamination,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=CHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="edu.neu.medical.hospital.bean.MedrecTemplateExample" resultType="java.lang.Integer" >
+    select count(*) from medrec_template
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update medrec_template
+    <set >
+      <if test="record.id != null" >
+        id = #{record.id,jdbcType=INTEGER},
+      </if>
+      <if test="record.templateName != null" >
+        template_name = #{record.templateName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.category != null" >
+        category = #{record.category,jdbcType=VARCHAR},
+      </if>
+      <if test="record.belongId != null" >
+        belong_id = #{record.belongId,jdbcType=INTEGER},
+      </if>
+      <if test="record.chiefComplaint != null" >
+        chief_complaint = #{record.chiefComplaint,jdbcType=VARCHAR},
+      </if>
+      <if test="record.currentMedicalHistory != null" >
+        current_medical_history = #{record.currentMedicalHistory,jdbcType=VARCHAR},
+      </if>
+      <if test="record.currentTreatmentSituation != null" >
+        current_treatment_situation = #{record.currentTreatmentSituation,jdbcType=VARCHAR},
+      </if>
+      <if test="record.pastHistory != null" >
+        past__history = #{record.pastHistory,jdbcType=VARCHAR},
+      </if>
+      <if test="record.allergiesHistory != null" >
+        allergies_history = #{record.allergiesHistory,jdbcType=VARCHAR},
+      </if>
+      <if test="record.physicalExamination != null" >
+        physical_examination = #{record.physicalExamination,jdbcType=VARCHAR},
+      </if>
+      <if test="record.status != null" >
+        status = #{record.status,jdbcType=CHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update medrec_template
+    set id = #{record.id,jdbcType=INTEGER},
+      template_name = #{record.templateName,jdbcType=VARCHAR},
+      category = #{record.category,jdbcType=VARCHAR},
+      belong_id = #{record.belongId,jdbcType=INTEGER},
+      chief_complaint = #{record.chiefComplaint,jdbcType=VARCHAR},
+      current_medical_history = #{record.currentMedicalHistory,jdbcType=VARCHAR},
+      current_treatment_situation = #{record.currentTreatmentSituation,jdbcType=VARCHAR},
+      past__history = #{record.pastHistory,jdbcType=VARCHAR},
+      allergies_history = #{record.allergiesHistory,jdbcType=VARCHAR},
+      physical_examination = #{record.physicalExamination,jdbcType=VARCHAR},
+      status = #{record.status,jdbcType=CHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="edu.neu.medical.hospital.bean.MedrecTemplate" >
+    update medrec_template
+    <set >
+      <if test="templateName != null" >
+        template_name = #{templateName,jdbcType=VARCHAR},
+      </if>
+      <if test="category != null" >
+        category = #{category,jdbcType=VARCHAR},
+      </if>
+      <if test="belongId != null" >
+        belong_id = #{belongId,jdbcType=INTEGER},
+      </if>
+      <if test="chiefComplaint != null" >
+        chief_complaint = #{chiefComplaint,jdbcType=VARCHAR},
+      </if>
+      <if test="currentMedicalHistory != null" >
+        current_medical_history = #{currentMedicalHistory,jdbcType=VARCHAR},
+      </if>
+      <if test="currentTreatmentSituation != null" >
+        current_treatment_situation = #{currentTreatmentSituation,jdbcType=VARCHAR},
+      </if>
+      <if test="pastHistory != null" >
+        past__history = #{pastHistory,jdbcType=VARCHAR},
+      </if>
+      <if test="allergiesHistory != null" >
+        allergies_history = #{allergiesHistory,jdbcType=VARCHAR},
+      </if>
+      <if test="physicalExamination != null" >
+        physical_examination = #{physicalExamination,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=CHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>
