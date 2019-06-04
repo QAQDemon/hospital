@@ -20,7 +20,7 @@ public interface MedicalRecordInfoMapper {
      * @Param [isSeen 1：未看诊；2：已看诊, medicalRecordId]
      * @return edu.neu.medical.hospital.bean.MedicalRecordInfo
      **/
-    MedicalRecordInfo getMedicalRecordInfoById(@Param("isSeen") char isSeen,@Param("medicalRecordId") int medicalRecordId);
+    MedicalRecordInfo getMedicalRecordInfoById(@Param("isSeen") char isSeen,@Param("medicalRecordNo") int medicalRecordNo);
 
 
 

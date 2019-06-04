@@ -25,10 +25,10 @@ public class OutpatientDoctorWorkstationServiceImpl implements OutpatientDoctorW
      **/
     public List<Patient> searchPatientList(int doctorId, int dapartId, char isSeenDocator, String key) {
         List<Patient> notSeenList;
-        Integer intKey=-1;
+        int intKey=-1;
         //关键词整数判断
         try{
-            intKey=Integer.valueOf(key);
+            intKey= Integer.parseInt(key);
         }catch (Exception e){}
         notSeenList= patientMapper.searchPatientList(doctorId,  dapartId,  '1',  key,intKey);
         if(isSeenDocator=='1'){
@@ -40,7 +40,7 @@ public class OutpatientDoctorWorkstationServiceImpl implements OutpatientDoctorW
         return isSeenList;
     }
 
-    /**
+    /*
      * @Description 根据类型和医生id获得常用选项
      * @Param [type 1西医诊断 2中医诊断, doctorId]
      * @return java.util.List<edu.neu.medical.hospital.bean.CommonOption>

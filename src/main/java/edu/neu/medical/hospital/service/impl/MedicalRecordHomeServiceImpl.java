@@ -6,8 +6,11 @@ import edu.neu.medical.hospital.service.MedicalRecordHomeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Service
 public class MedicalRecordHomeServiceImpl implements MedicalRecordHomeService {
@@ -21,14 +24,18 @@ public class MedicalRecordHomeServiceImpl implements MedicalRecordHomeService {
     private DiseaseMapper diseaseMapper;
     @Autowired
     private CommonOptionMapper commonOptionMapper;
+    @Autowired
+    private MedrecTemplateMapper medrecTemplateMapper;
+    @Autowired
+    private DepartMapper departMapper;
 
     /*
      * @Description 根据病历号找到病历信息 未看诊：状态是暂存或完成初诊，需唯一且优先（不存在的情况?）；已看诊：状态是诊毕且显示最近
      * @Param [isSeen 1：未看诊；2：已看诊,medicalRecordId]
      * @return edu.neu.medical.hospital.bean.MedicalRecordInfo
      **/
-    public MedicalRecordInfo getMedicalRecordInfoById(char isSeen,int medicalRecordId) {
-        return medicalRecordInfoMapper.getMedicalRecordInfoById(isSeen,medicalRecordId);
+    public MedicalRecordInfo getMedicalRecordInfoById(char isSeen,int medicalRecordNo) {
+        return medicalRecordInfoMapper.getMedicalRecordInfoById(isSeen,medicalRecordNo);
     }
 
     /*
@@ -115,7 +122,7 @@ public class MedicalRecordHomeServiceImpl implements MedicalRecordHomeService {
     }
 
     /*
-     * @Description 根据常用选项存储的id在疾病表获得常用诊断列表
+     * @Description 根据常用选项存储的id在疾病表获得常用诊断列表(常用选项列表在门诊医生工作站服务类)
      * @Param [commonOptionList]
      * @return java.util.List<edu.neu.medical.hospital.bean.Disease>
      **/
@@ -128,7 +135,7 @@ public class MedicalRecordHomeServiceImpl implements MedicalRecordHomeService {
     }
 
     /*
-     * @Description 删除常用诊断
+     * @Description 删除常用诊断,真删
      * @Param [doctorId, type, diseaseId]
      * @return int
      **/
@@ -166,4 +173,91 @@ public class MedicalRecordHomeServiceImpl implements MedicalRecordHomeService {
         }
     }
 
+    /*
+     * @Description 增加病历模板,判断存在
+     * @Param [templateName, category 1全院 2科室 3个人,belongId 类别为1：空；2：科室id；3：医生id, medicalRecordInfo]
+     * @return java.lang.Boolean ：false已存在，失败；true成功
+     **/
+    public Boolean addMedrecTemplate(String templateName,char category,int belongId,MedicalRecordInfo medicalRecordInfo){
+        MedrecTemplateExample medrecTemplateExample=new MedrecTemplateExample();
+        MedrecTemplateExample.Criteria criteria=medrecTemplateExample.createCriteria();
+        criteria.andTemplateNameEqualTo(templateName);
+        criteria.andCategoryEqualTo(category+"");
+        criteria.andBelongIdEqualTo(belongId);
+        if(medrecTemplateMapper.countByExample(medrecTemplateExample)>0){//存在或异常
+            return false;
+        }
+        MedrecTemplate medrecTemplate=new MedrecTemplate();
+        medrecTemplate.setTemplateName(templateName);
+        medrecTemplate.setCategory(category+"");
+        medrecTemplate.setBelongId(belongId);
+        medrecTemplate.setChiefComplaint(medicalRecordInfo.getChiefComplaint());
+        medrecTemplate.setCurrentMedicalHistory(medicalRecordInfo.getCurrentMedicalHistory());
+        medrecTemplate.setCurrentTreatmentSituation(medicalRecordInfo.getCurrentTreatmentSituation());
+        medrecTemplate.setPastHistory(medicalRecordInfo.getPastHistory());
+        medrecTemplate.setAllergiesHistory(medicalRecordInfo.getAllergiesHistory());
+        medrecTemplate.setPastHistory(medicalRecordInfo.getPastHistory());
+        medrecTemplate.setStatus("1");
+        medrecTemplateMapper.insertSelective(medrecTemplate);
+        return true;
+    }
+
+    /*
+     * @Description 更新病历模板
+     * @Param [medrecTemplate]
+     * @return int
+     **/
+    public int updateMedrecTemplate(MedrecTemplate medrecTemplate){
+        return medrecTemplateMapper.updateByPrimaryKeySelective(medrecTemplate);
+    }
+
+    /*
+     * @Description （删除）将病历模板设为无效状态//TODO 权限控制的删除？
+     * @Param [medrecTemplate]
+     * @return int
+     **/
+    public int cancelMedrecTemplate(MedrecTemplate medrecTemplate){
+        medrecTemplate.setStatus("2");
+        return updateMedrecTemplate(medrecTemplate);
+    }
+
+    /*
+     * @Description 获得指定病历模板列，状态为有效
+     * @Param [category 1全院 2科室 3个人, belongId 类别为1：空；2：科室id；3：医生id]
+     * @return java.util.List<edu.neu.medical.hospital.bean.MedrecTemplate>
+     **/
+    public List<MedrecTemplate> getMedrecTemplateList(char category,int belongId){
+        MedrecTemplateExample medrecTemplateExample=new MedrecTemplateExample();
+        MedrecTemplateExample.Criteria criteria=medrecTemplateExample.createCriteria();
+        criteria.andBelongIdEqualTo(belongId);
+        criteria.andCategoryEqualTo(category+"");
+        criteria.andStatusEqualTo("1");
+        return medrecTemplateMapper.selectByExample(medrecTemplateExample);
+    }
+
+    /*
+     * @Description 根据病历号获得历史病历，所有诊毕status3的
+     * @Param [medicalRecordNo]
+     * @return java.util.Map<java.lang.String,edu.neu.medical.hospital.bean.MedicalRecordInfo>：String是json格式的（time:诊毕时间，name:科室名）
+     **/
+    public Map<String,MedicalRecordInfo> getHistoryMedicalRecordInfo(int medicalRecordNo){
+        MedicalRecordInfoExample medicalRecordInfoExample=new MedicalRecordInfoExample();
+        MedicalRecordInfoExample.Criteria criteria=medicalRecordInfoExample.createCriteria();
+        criteria.andMedicalRecordNoEqualTo(medicalRecordNo);
+        criteria.andStatusEqualTo("3");
+        List<MedicalRecordInfo> list=medicalRecordInfoMapper.selectByExample(medicalRecordInfoExample);
+        Map<String,MedicalRecordInfo> map= new HashMap<>();
+        for(MedicalRecordInfo medicalRecordInfo:list){
+            //日期转换
+            SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+            String label="{\"time\":\""+formatter.format(medicalRecordInfo.getVisitTime())+"\",\"name\":\"";
+            //获得科室名
+            DepartExample departExample=new DepartExample();
+            DepartExample.Criteria criteria1=departExample.createCriteria();
+            criteria1.andIdEqualTo(medicalRecordInfo.getDepartId().shortValue());
+            label=label+departMapper.selectByExample(departExample).get(0).getDeptname()+"\"}";
+            map.put(label,medicalRecordInfo);
+        }
+        return map;
+    }
 }

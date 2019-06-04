@@ -16,7 +16,7 @@ import org.apache.ibatis.annotations.Update;
 public interface PatientMapper {
 
     /*
-     * @Description 根据医生科室id和关键词，搜索符合的名字的前几位或绝对符合的病历号，将已诊或待诊病人列表传回
+     * @Description 根据医生科室id和关键词，搜索符合的名字的前几位或绝对符合的病历号，将已诊或待诊病人列表传回，联表病人和挂号表
      * @Param [doctorId, dapartId,isSeenDocator, key,intKey]
      * @return java.util.List<edu.neu.medical.hospital.bean.Patient>
      **/
