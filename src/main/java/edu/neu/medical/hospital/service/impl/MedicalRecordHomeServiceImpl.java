@@ -193,10 +193,6 @@ public class MedicalRecordHomeServiceImpl implements MedicalRecordHomeService {
         medrecTemplate.setBelongId(belongId);
         medrecTemplate.setChiefComplaint(medicalRecordInfo.getChiefComplaint());
         medrecTemplate.setCurrentMedicalHistory(medicalRecordInfo.getCurrentMedicalHistory());
-        medrecTemplate.setCurrentTreatmentSituation(medicalRecordInfo.getCurrentTreatmentSituation());
-        medrecTemplate.setPastHistory(medicalRecordInfo.getPastHistory());
-        medrecTemplate.setAllergiesHistory(medicalRecordInfo.getAllergiesHistory());
-        medrecTemplate.setPastHistory(medicalRecordInfo.getPastHistory());
         medrecTemplate.setStatus("1");
         medrecTemplateMapper.insertSelective(medrecTemplate);
         return true;

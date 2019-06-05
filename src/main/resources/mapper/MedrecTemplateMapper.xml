@@ -9,9 +9,6 @@
       <arg column="belong_id" jdbcType="INTEGER" javaType="java.lang.Integer" />
       <arg column="chief_complaint" jdbcType="VARCHAR" javaType="java.lang.String" />
       <arg column="current_medical_history" jdbcType="VARCHAR" javaType="java.lang.String" />
-      <arg column="current_treatment_situation" jdbcType="VARCHAR" javaType="java.lang.String" />
-      <arg column="past__history" jdbcType="VARCHAR" javaType="java.lang.String" />
-      <arg column="allergies_history" jdbcType="VARCHAR" javaType="java.lang.String" />
       <arg column="physical_examination" jdbcType="VARCHAR" javaType="java.lang.String" />
       <arg column="status" jdbcType="CHAR" javaType="java.lang.String" />
     </constructor>
@@ -76,8 +73,7 @@
   </sql>
   <sql id="Base_Column_List" >
     id, template_name, category, belong_id, chief_complaint, current_medical_history, 
-    current_treatment_situation, past__history, allergies_history, physical_examination, 
-    status
+    physical_examination, status
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="edu.neu.medical.hospital.bean.MedrecTemplateExample" >
     select
@@ -121,15 +117,6 @@
       <if test="currentMedicalHistory != null" >
         current_medical_history,
       </if>
-      <if test="currentTreatmentSituation != null" >
-        current_treatment_situation,
-      </if>
-      <if test="pastHistory != null" >
-        past__history,
-      </if>
-      <if test="allergiesHistory != null" >
-        allergies_history,
-      </if>
       <if test="physicalExamination != null" >
         physical_examination,
       </if>
@@ -153,15 +140,6 @@
       </if>
       <if test="currentMedicalHistory != null" >
         #{currentMedicalHistory,jdbcType=VARCHAR},
-      </if>
-      <if test="currentTreatmentSituation != null" >
-        #{currentTreatmentSituation,jdbcType=VARCHAR},
-      </if>
-      <if test="pastHistory != null" >
-        #{pastHistory,jdbcType=VARCHAR},
-      </if>
-      <if test="allergiesHistory != null" >
-        #{allergiesHistory,jdbcType=VARCHAR},
       </if>
       <if test="physicalExamination != null" >
         #{physicalExamination,jdbcType=VARCHAR},
@@ -198,15 +176,6 @@
       <if test="record.currentMedicalHistory != null" >
         current_medical_history = #{record.currentMedicalHistory,jdbcType=VARCHAR},
       </if>
-      <if test="record.currentTreatmentSituation != null" >
-        current_treatment_situation = #{record.currentTreatmentSituation,jdbcType=VARCHAR},
-      </if>
-      <if test="record.pastHistory != null" >
-        past__history = #{record.pastHistory,jdbcType=VARCHAR},
-      </if>
-      <if test="record.allergiesHistory != null" >
-        allergies_history = #{record.allergiesHistory,jdbcType=VARCHAR},
-      </if>
       <if test="record.physicalExamination != null" >
         physical_examination = #{record.physicalExamination,jdbcType=VARCHAR},
       </if>
@@ -226,9 +195,6 @@
       belong_id = #{record.belongId,jdbcType=INTEGER},
       chief_complaint = #{record.chiefComplaint,jdbcType=VARCHAR},
       current_medical_history = #{record.currentMedicalHistory,jdbcType=VARCHAR},
-      current_treatment_situation = #{record.currentTreatmentSituation,jdbcType=VARCHAR},
-      past__history = #{record.pastHistory,jdbcType=VARCHAR},
-      allergies_history = #{record.allergiesHistory,jdbcType=VARCHAR},
       physical_examination = #{record.physicalExamination,jdbcType=VARCHAR},
       status = #{record.status,jdbcType=CHAR}
     <if test="_parameter != null" >
@@ -252,15 +218,6 @@
       </if>
       <if test="currentMedicalHistory != null" >
         current_medical_history = #{currentMedicalHistory,jdbcType=VARCHAR},
-      </if>
-      <if test="currentTreatmentSituation != null" >
-        current_treatment_situation = #{currentTreatmentSituation,jdbcType=VARCHAR},
-      </if>
-      <if test="pastHistory != null" >
-        past__history = #{pastHistory,jdbcType=VARCHAR},
-      </if>
-      <if test="allergiesHistory != null" >
-        allergies_history = #{allergiesHistory,jdbcType=VARCHAR},
       </if>
       <if test="physicalExamination != null" >
         physical_examination = #{physicalExamination,jdbcType=VARCHAR},

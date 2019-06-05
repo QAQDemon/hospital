@@ -26,15 +26,11 @@ public interface MedrecTemplateMapper {
         "insert into medrec_template (id, template_name, ",
         "category, belong_id, ",
         "chief_complaint, current_medical_history, ",
-        "current_treatment_situation, past__history, ",
-        "allergies_history, physical_examination, ",
-        "status)",
+        "physical_examination, status)",
         "values (#{id,jdbcType=INTEGER}, #{templateName,jdbcType=VARCHAR}, ",
         "#{category,jdbcType=VARCHAR}, #{belongId,jdbcType=INTEGER}, ",
         "#{chiefComplaint,jdbcType=VARCHAR}, #{currentMedicalHistory,jdbcType=VARCHAR}, ",
-        "#{currentTreatmentSituation,jdbcType=VARCHAR}, #{pastHistory,jdbcType=VARCHAR}, ",
-        "#{allergiesHistory,jdbcType=VARCHAR}, #{physicalExamination,jdbcType=VARCHAR}, ",
-        "#{status,jdbcType=CHAR})"
+        "#{physicalExamination,jdbcType=VARCHAR}, #{status,jdbcType=CHAR})"
     })
     @SelectKey(statement="SELECT LAST_INSERT_ID()", keyProperty="id", before=true, resultType=Integer.class)
     int insert(MedrecTemplate record);
@@ -46,8 +42,7 @@ public interface MedrecTemplateMapper {
     @Select({
         "select",
         "id, template_name, category, belong_id, chief_complaint, current_medical_history, ",
-        "current_treatment_situation, past__history, allergies_history, physical_examination, ",
-        "status",
+        "physical_examination, status",
         "from medrec_template",
         "where id = #{id,jdbcType=INTEGER}"
     })
@@ -67,9 +62,6 @@ public interface MedrecTemplateMapper {
           "belong_id = #{belongId,jdbcType=INTEGER},",
           "chief_complaint = #{chiefComplaint,jdbcType=VARCHAR},",
           "current_medical_history = #{currentMedicalHistory,jdbcType=VARCHAR},",
-          "current_treatment_situation = #{currentTreatmentSituation,jdbcType=VARCHAR},",
-          "past__history = #{pastHistory,jdbcType=VARCHAR},",
-          "allergies_history = #{allergiesHistory,jdbcType=VARCHAR},",
           "physical_examination = #{physicalExamination,jdbcType=VARCHAR},",
           "status = #{status,jdbcType=CHAR}",
         "where id = #{id,jdbcType=INTEGER}"

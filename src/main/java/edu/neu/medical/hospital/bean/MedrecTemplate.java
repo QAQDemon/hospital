@@ -10,14 +10,10 @@ public class MedrecTemplate {
                 ", belongId=" + belongId +
                 ", chiefComplaint='" + chiefComplaint + '\'' +
                 ", currentMedicalHistory='" + currentMedicalHistory + '\'' +
-                ", currentTreatmentSituation='" + currentTreatmentSituation + '\'' +
-                ", pastHistory='" + pastHistory + '\'' +
-                ", allergiesHistory='" + allergiesHistory + '\'' +
                 ", physicalExamination='" + physicalExamination + '\'' +
                 ", status='" + status + '\'' +
                 '}';
     }
-
     private Integer id;
 
     private String templateName;
@@ -30,26 +26,17 @@ public class MedrecTemplate {
 
     private String currentMedicalHistory;
 
-    private String currentTreatmentSituation;
-
-    private String pastHistory;
-
-    private String allergiesHistory;
-
     private String physicalExamination;
 
     private String status;
 
-    public MedrecTemplate(Integer id, String templateName, String category, Integer belongId, String chiefComplaint, String currentMedicalHistory, String currentTreatmentSituation, String pastHistory, String allergiesHistory, String physicalExamination, String status) {
+    public MedrecTemplate(Integer id, String templateName, String category, Integer belongId, String chiefComplaint, String currentMedicalHistory, String physicalExamination, String status) {
         this.id = id;
         this.templateName = templateName;
         this.category = category;
         this.belongId = belongId;
         this.chiefComplaint = chiefComplaint;
         this.currentMedicalHistory = currentMedicalHistory;
-        this.currentTreatmentSituation = currentTreatmentSituation;
-        this.pastHistory = pastHistory;
-        this.allergiesHistory = allergiesHistory;
         this.physicalExamination = physicalExamination;
         this.status = status;
     }
@@ -104,30 +91,6 @@ public class MedrecTemplate {
 
     public void setCurrentMedicalHistory(String currentMedicalHistory) {
         this.currentMedicalHistory = currentMedicalHistory == null ? null : currentMedicalHistory.trim();
-    }
-
-    public String getCurrentTreatmentSituation() {
-        return currentTreatmentSituation;
-    }
-
-    public void setCurrentTreatmentSituation(String currentTreatmentSituation) {
-        this.currentTreatmentSituation = currentTreatmentSituation == null ? null : currentTreatmentSituation.trim();
-    }
-
-    public String getPastHistory() {
-        return pastHistory;
-    }
-
-    public void setPastHistory(String pastHistory) {
-        this.pastHistory = pastHistory == null ? null : pastHistory.trim();
-    }
-
-    public String getAllergiesHistory() {
-        return allergiesHistory;
-    }
-
-    public void setAllergiesHistory(String allergiesHistory) {
-        this.allergiesHistory = allergiesHistory == null ? null : allergiesHistory.trim();
     }
 
     public String getPhysicalExamination() {

@@ -52,7 +52,6 @@
                                 <a class="nav-link font-weight-bold" href="#">科室</a>
                             </li>
                         </ul>
-                        <button type="button" class="btn btn-info btn-sm" style="height: 32px">统计</button>
                     </div>
                     <div class="row" ><form class="" role="form">
                         <table class="table table-condensed table-striped table-hover table-sm">
@@ -155,7 +154,12 @@
             <div class="card"><div class="card-body">
                 <div class="row" >
                     <div class="col-md-11 form-inline" >
-                        <button type="button" class="btn btn-primary" data-toggle="collapse" data-target="#searchCard">搜索</button>&nbsp;&nbsp;
+                        <div class="btn-group">
+                            <button type="button" class="btn btn-primary" data-toggle="collapse" data-target="#searchCard">搜索</button>
+                            <button type="button" class="btn btn-info">统计</button>
+                        </div>
+
+                        &nbsp;&nbsp;
                         <label class="control-label font-weight-bold">就诊状态：</label><span class="text-success font-weight-bold">待诊</span>&nbsp;&nbsp;
                         <label class="control-label font-weight-bold">病历号：</label><span class="">00000000001</span>&nbsp;&nbsp;
                         <label class="control-label font-weight-bold">姓名：</label><span class="">哒哒哒</span>&nbsp;&nbsp;
@@ -212,10 +216,12 @@
                                                 <h4 class="font-weight-bold">病历信息</h4>
                                             </div>
                                             <div class="col-md-5 text-right">
-                                                <button type="button" class="btn btn-outline-danger btn-sm">清屏</button>
-                                                <button type="button" class="btn btn-outline-secondary btn-sm">暂存</button>
-                                                <button type="button" class="btn btn-outline-success btn-sm">提交</button>
-                                                <button type="button" class="btn btn-outline-info btn-sm">存为模板</button>
+                                                <div class="btn-group">
+                                                    <button type="button" class="btn btn-outline-danger btn-sm">清屏</button>
+                                                    <button type="button" class="btn btn-outline-secondary btn-sm">暂存</button>
+                                                    <button type="button" class="btn btn-outline-success btn-sm">提交</button>
+                                                    <button type="button" class="btn btn-outline-info btn-sm">存为模板</button>
+                                                </div>
                                             </div>
                                         </div>
                                         <!--病史输入部分-->
@@ -379,17 +385,114 @@
                                             </ul>
                                             <!-- Tab panes -->
                                             <div class="tab-content">
-                                                <div id="home1_1" class="container tab-pane active"><br>
-                                                    <h3>HOME</h3>
-                                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                                                <!--病历模板部分-->
+                                                <div id="home1_1" class="container tab-pane active">
+                                                    <hr>
+                                                    <!--病历模板分类选择-->
+                                                    <div class="bg-light" style="border: 1px solid rgba(0, 0, 0, 0.125); border-radius: 0.25rem;padding: 0.75rem 0rem;">
+                                                        &nbsp;&nbsp;
+                                                        <div class="custom-control custom-radio custom-control-inline">
+                                                            <input type="radio" class="custom-control-input active" id="wholeRadio" name="medrecTemplateRadioGroup" checked>
+                                                            <label class="custom-control-label" for="wholeRadio">全院</label>
+                                                        </div>
+                                                        <div class="custom-control custom-radio custom-control-inline">
+                                                            <input type="radio" class="custom-control-input" id="departRadio" name="medrecTemplateRadioGroup">
+                                                            <label class="custom-control-label" for="departRadio">科室</label>
+                                                        </div>
+                                                        <div class="custom-control custom-radio custom-control-inline">
+                                                            <input type="radio" class="custom-control-input" id="personRadio" name="medrecTemplateRadioGroup">
+                                                            <label class="custom-control-label" for="personRadio">个人</label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="card">
+                                                        <!--病历模板列表-->
+                                                        <div class="list-group list-group">
+                                                            <a href="#" class="list-group-item list-group-item-action">慢性咽炎模板</a>
+                                                            <a href="#" class="list-group-item list-group-item-action">快速诊断</a>
+                                                            <a href="#" class="list-group-item list-group-item-action">模板二</a>
+                                                            <a href="#" class="list-group-item list-group-item-action">模板三</a>
+                                                        </div>
+                                                    </div>
+                                                    <form id="medrecTemplateForm" role="form">
+                                                        <div class="text-right" style="margin-top: 8px">
+                                                            <div class="btn-group">
+                                                                <button type="button" class="btn btn-outline-danger btn-sm">删除</button>
+                                                                <button type="button" class="btn btn-outline-secondary btn-sm">修改</button>
+                                                                <button type="button" class="btn btn-outline-success btn-sm">引用</button>
+                                                            </div>
+                                                        </div>
+                                                        <!--模板内容-->
+                                                        <div class="card">
+                                                            <div class="card-header"><strong>模板内容：</strong>快速诊断
+                                                                <button type="button" class="btn btn-outline-success btn-sm" style="margin-left: 10px">保存</button>
+                                                            </div>
+                                                            <div class="card-body">
+                                                                <div class="form-group ">
+                                                                    <label class="font-weight-bold" for="chiefComplaintTemplate">主诉：</label>
+                                                                    <input type="text" class="form-control " id="chiefComplaintTemplate" readonly="readonly" value="as">
+                                                                </div>
+                                                                <div class="form-group ">
+                                                                    <label class="font-weight-bold" for="currentMedicalHistoryTemplate">现病史：</label>
+                                                                    <textarea class="form-control " rows="2" id="currentMedicalHistoryTemplate" readonly="readonly"></textarea>
+                                                                </div>
+                                                                <div class="form-group ">
+                                                                    <label class="font-weight-bold" for="physicalExaminationTemplate">体格检查：</label>
+                                                                    <textarea class="form-control " rows="2" id="physicalExaminationTemplate" readonly="readonly"></textarea>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </form>
                                                 </div>
-                                                <div id="home1_2" class="container tab-pane fade"><br>
-                                                    <h3>Menu 1</h3>
-                                                    <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                                                <!--常用诊断部分-->
+                                                <div id="home1_2" class="container tab-pane fade">
+                                                    <hr>
+                                                    <div class="card">
+                                                        <div class="card-header"><strong>西医诊断</strong></div>
+                                                        <!--诊断内容-->
+                                                        <div class="list-group">
+                                                            <a href="#" class="list-group-item list-group-item-action">大肠杆菌感染<span class="badge badge-pill badge-danger">X</span></a>
+                                                            <a href="#" class="list-group-item list-group-item-action">高血压<span class="badge badge-pill badge-danger">X</span></a>
+                                                            <a href="#" class="list-group-item list-group-item-action">伤寒<span class="badge badge-pill badge-danger">X</span></a>
+                                                            <a href="#" class="list-group-item list-group-item-action">呼吸道疾病<span class="badge badge-pill badge-danger">X</span></a>
+                                                            <a href="#" class="list-group-item list-group-item-action">糖尿病<span class="badge badge-pill badge-danger">X</span></a>
+                                                        </div>
+                                                    </div>
+                                                    <div class="card" style="margin-top: 8px">
+                                                        <div class="card-header"><strong>中医诊断</strong></div>
+                                                        <!--诊断内容-->
+                                                        <div class="list-group">
+                                                            <a href="#" class="list-group-item list-group-item-action">大肠杆菌感染<span class="badge badge-pill badge-danger">X</span></a>
+                                                            <a href="#" class="list-group-item list-group-item-action">高血压<span class="badge badge-pill badge-danger">X</span></a>
+                                                            <a href="#" class="list-group-item list-group-item-action">伤寒<span class="badge badge-pill badge-danger">X</span></a>
+                                                            <a href="#" class="list-group-item list-group-item-action">呼吸道疾病<span class="badge badge-pill badge-danger">X</span></a>
+                                                            <a href="#" class="list-group-item list-group-item-action">糖尿病<span class="badge badge-pill badge-danger">X</span></a>
+                                                        </div>
+                                                    </div>
                                                 </div>
-                                                <div id="home1_3" class="container tab-pane fade"><br>
-                                                    <h3>Menu 2</h3>
-                                                    <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam.</p>
+                                                <!--历史病历部分-->
+                                                <div id="home1_3" class="container tab-pane fade" >
+                                                    <hr>
+                                                    <!--历史病历信息部分-->
+                                                    <div class="card">
+                                                        <div class="card-header"><strong>历史病历信息</strong></div>
+                                                        <div class="list-group">
+                                                            <a href="#" class="list-group-item list-group-item-action">2018-02-12 12:10:20 外科</a>
+                                                            <a href="#" class="list-group-item list-group-item-action">2018-02-12 12:10:20 心理科</a>
+                                                            <a href="#" class="list-group-item list-group-item-action">2018-02-12 12:10:20 内科</a>
+                                                        </div>
+                                                    </div>
+                                                    <!--模板内容-->
+                                                    <div class="card" style="margin-top: 8px">
+                                                        <div class="card-header"><strong>历史病历明细</strong></div>
+                                                        <div class="card-body">
+                                                            <p><strong>主诉：</strong>amplet</p>
+                                                            <p><strong>现病史：</strong>ampletaaaaaaaaaaaaaaaaaa</p>
+                                                            <p><strong>现病治疗情况：</strong>ampletaaaaaaaaaaaaaaaaaaaaaaa</p>
+                                                            <p><strong>既往史：</strong>ampletaaaaaaaaaaaaaaaaaaaaaaaaa</p>
+                                                            <p><strong>过敏史：</strong>ampletaaaaaaaaaaaaaaaaaaaaaaaaaaa</p>
+                                                            <p><strong>体格检查：</strong>ampletssssssssssssssssssssssss</p>
+                                                        </div>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
