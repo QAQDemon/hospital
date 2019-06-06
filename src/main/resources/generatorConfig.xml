@@ -61,7 +61,7 @@
              -->
 <!--            <property name="rootInterface" value=""/>-->
         </javaClientGenerator>
-        <table tableName="medrec_template" schema="hospital">
+        <table tableName="visit_item_result" schema="hospital">
             <!-- optional   , only for mybatis3 runtime
                  自动生成的键值（identity,或者序列值）
                如果指定此元素，MBG将会生成<selectKey>元素，然后将此元素插入到SQL Map的<insert> 元素之中

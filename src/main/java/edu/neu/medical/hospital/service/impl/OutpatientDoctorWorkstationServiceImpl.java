@@ -42,7 +42,7 @@ public class OutpatientDoctorWorkstationServiceImpl implements OutpatientDoctorW
 
     /*
      * @Description 根据类型和医生id获得常用选项
-     * @Param [type 1西医诊断 2中医诊断, doctorId]
+     * @Param [type 1西医诊断 2中医诊断 3检查 4检验 5处置 6成药处方 7中药处方, doctorId]
      * @return java.util.List<edu.neu.medical.hospital.bean.CommonOption>
      **/
     public List<CommonOption> getCommonOptionById(char type,int doctorId) {

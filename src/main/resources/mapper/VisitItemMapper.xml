@@ -1,0 +1,272 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="edu.neu.medical.hospital.dao.VisitItemMapper" >
+
+  <select id="getLastId" resultType="int">
+    select max(id) from visit_item where medical_record_info_id=#{medicalRecordInfoId}
+  </select>
+
+
+
+
+
+
+
+
+
+  <resultMap id="BaseResultMap" type="edu.neu.medical.hospital.bean.VisitItem" >
+    <constructor >
+      <idArg column="id" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="medical_record_info_id" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="type" jdbcType="CHAR" javaType="java.lang.String" />
+      <arg column="purpose_requirement" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="status" jdbcType="CHAR" javaType="java.lang.String" />
+      <arg column="application_time" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+      <arg column="application_doctor_id" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="fee_status" jdbcType="CHAR" javaType="java.lang.String" />
+      <arg column="execution_status" jdbcType="CHAR" javaType="java.lang.String" />
+      <arg column="fee" jdbcType="DECIMAL" javaType="java.math.BigDecimal" />
+    </constructor>
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    id, medical_record_info_id, type, purpose_requirement, status, application_time, 
+    application_doctor_id, fee_status, execution_status, fee
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="edu.neu.medical.hospital.bean.VisitItemExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from visit_item
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <delete id="deleteByExample" parameterType="edu.neu.medical.hospital.bean.VisitItemExample" >
+    delete from visit_item
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insertSelective" parameterType="edu.neu.medical.hospital.bean.VisitItem" >
+    <selectKey resultType="java.lang.Integer" keyProperty="id" order="BEFORE" >
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into visit_item
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      id,
+      <if test="medicalRecordInfoId != null" >
+        medical_record_info_id,
+      </if>
+      <if test="type != null" >
+        type,
+      </if>
+      <if test="purposeRequirement != null" >
+        purpose_requirement,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+      <if test="applicationTime != null" >
+        application_time,
+      </if>
+      <if test="applicationDoctorId != null" >
+        application_doctor_id,
+      </if>
+      <if test="feeStatus != null" >
+        fee_status,
+      </if>
+      <if test="executionStatus != null" >
+        execution_status,
+      </if>
+      <if test="fee != null" >
+        fee,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      #{id,jdbcType=INTEGER},
+      <if test="medicalRecordInfoId != null" >
+        #{medicalRecordInfoId,jdbcType=INTEGER},
+      </if>
+      <if test="type != null" >
+        #{type,jdbcType=CHAR},
+      </if>
+      <if test="purposeRequirement != null" >
+        #{purposeRequirement,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=CHAR},
+      </if>
+      <if test="applicationTime != null" >
+        #{applicationTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="applicationDoctorId != null" >
+        #{applicationDoctorId,jdbcType=INTEGER},
+      </if>
+      <if test="feeStatus != null" >
+        #{feeStatus,jdbcType=CHAR},
+      </if>
+      <if test="executionStatus != null" >
+        #{executionStatus,jdbcType=CHAR},
+      </if>
+      <if test="fee != null" >
+        #{fee,jdbcType=DECIMAL},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="edu.neu.medical.hospital.bean.VisitItemExample" resultType="java.lang.Integer" >
+    select count(*) from visit_item
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update visit_item
+    <set >
+      <if test="record.id != null" >
+        id = #{record.id,jdbcType=INTEGER},
+      </if>
+      <if test="record.medicalRecordInfoId != null" >
+        medical_record_info_id = #{record.medicalRecordInfoId,jdbcType=INTEGER},
+      </if>
+      <if test="record.type != null" >
+        type = #{record.type,jdbcType=CHAR},
+      </if>
+      <if test="record.purposeRequirement != null" >
+        purpose_requirement = #{record.purposeRequirement,jdbcType=VARCHAR},
+      </if>
+      <if test="record.status != null" >
+        status = #{record.status,jdbcType=CHAR},
+      </if>
+      <if test="record.applicationTime != null" >
+        application_time = #{record.applicationTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.applicationDoctorId != null" >
+        application_doctor_id = #{record.applicationDoctorId,jdbcType=INTEGER},
+      </if>
+      <if test="record.feeStatus != null" >
+        fee_status = #{record.feeStatus,jdbcType=CHAR},
+      </if>
+      <if test="record.executionStatus != null" >
+        execution_status = #{record.executionStatus,jdbcType=CHAR},
+      </if>
+      <if test="record.fee != null" >
+        fee = #{record.fee,jdbcType=DECIMAL},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update visit_item
+    set id = #{record.id,jdbcType=INTEGER},
+      medical_record_info_id = #{record.medicalRecordInfoId,jdbcType=INTEGER},
+      type = #{record.type,jdbcType=CHAR},
+      purpose_requirement = #{record.purposeRequirement,jdbcType=VARCHAR},
+      status = #{record.status,jdbcType=CHAR},
+      application_time = #{record.applicationTime,jdbcType=TIMESTAMP},
+      application_doctor_id = #{record.applicationDoctorId,jdbcType=INTEGER},
+      fee_status = #{record.feeStatus,jdbcType=CHAR},
+      execution_status = #{record.executionStatus,jdbcType=CHAR},
+      fee = #{record.fee,jdbcType=DECIMAL}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="edu.neu.medical.hospital.bean.VisitItem" >
+    update visit_item
+    <set >
+      <if test="medicalRecordInfoId != null" >
+        medical_record_info_id = #{medicalRecordInfoId,jdbcType=INTEGER},
+      </if>
+      <if test="type != null" >
+        type = #{type,jdbcType=CHAR},
+      </if>
+      <if test="purposeRequirement != null" >
+        purpose_requirement = #{purposeRequirement,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=CHAR},
+      </if>
+      <if test="applicationTime != null" >
+        application_time = #{applicationTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="applicationDoctorId != null" >
+        application_doctor_id = #{applicationDoctorId,jdbcType=INTEGER},
+      </if>
+      <if test="feeStatus != null" >
+        fee_status = #{feeStatus,jdbcType=CHAR},
+      </if>
+      <if test="executionStatus != null" >
+        execution_status = #{executionStatus,jdbcType=CHAR},
+      </if>
+      <if test="fee != null" >
+        fee = #{fee,jdbcType=DECIMAL},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

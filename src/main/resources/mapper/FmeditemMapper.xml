@@ -1,0 +1,259 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="edu.neu.medical.hospital.dao.FmeditemMapper" >
+  <resultMap id="BaseResultMap" type="edu.neu.medical.hospital.bean.Fmeditem" >
+    <constructor >
+      <idArg column="Id" jdbcType="SMALLINT" javaType="java.lang.Short" />
+      <arg column="ItemCode" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="ItemName" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="Format" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="Price" jdbcType="REAL" javaType="java.lang.Float" />
+      <arg column="ExpClassID" jdbcType="SMALLINT" javaType="java.lang.Short" />
+      <arg column="DeptID" jdbcType="SMALLINT" javaType="java.lang.Short" />
+      <arg column="MnemonicCode" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="RecordType" jdbcType="SMALLINT" javaType="java.lang.Short" />
+      <arg column="CreationDate" jdbcType="DATE" javaType="java.util.Date" />
+    </constructor>
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    Id, ItemCode, ItemName, Format, Price, ExpClassID, DeptID, MnemonicCode, RecordType, 
+    CreationDate
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="edu.neu.medical.hospital.bean.FmeditemExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from fmeditem
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <delete id="deleteByExample" parameterType="edu.neu.medical.hospital.bean.FmeditemExample" >
+    delete from fmeditem
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insertSelective" parameterType="edu.neu.medical.hospital.bean.Fmeditem" >
+    <selectKey resultType="java.lang.Short" keyProperty="id" order="BEFORE" >
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into fmeditem
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      Id,
+      <if test="itemcode != null" >
+        ItemCode,
+      </if>
+      <if test="itemname != null" >
+        ItemName,
+      </if>
+      <if test="format != null" >
+        Format,
+      </if>
+      <if test="price != null" >
+        Price,
+      </if>
+      <if test="expclassid != null" >
+        ExpClassID,
+      </if>
+      <if test="deptid != null" >
+        DeptID,
+      </if>
+      <if test="mnemoniccode != null" >
+        MnemonicCode,
+      </if>
+      <if test="recordtype != null" >
+        RecordType,
+      </if>
+      <if test="creationdate != null" >
+        CreationDate,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      #{id,jdbcType=SMALLINT},
+      <if test="itemcode != null" >
+        #{itemcode,jdbcType=VARCHAR},
+      </if>
+      <if test="itemname != null" >
+        #{itemname,jdbcType=VARCHAR},
+      </if>
+      <if test="format != null" >
+        #{format,jdbcType=VARCHAR},
+      </if>
+      <if test="price != null" >
+        #{price,jdbcType=REAL},
+      </if>
+      <if test="expclassid != null" >
+        #{expclassid,jdbcType=SMALLINT},
+      </if>
+      <if test="deptid != null" >
+        #{deptid,jdbcType=SMALLINT},
+      </if>
+      <if test="mnemoniccode != null" >
+        #{mnemoniccode,jdbcType=VARCHAR},
+      </if>
+      <if test="recordtype != null" >
+        #{recordtype,jdbcType=SMALLINT},
+      </if>
+      <if test="creationdate != null" >
+        #{creationdate,jdbcType=DATE},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="edu.neu.medical.hospital.bean.FmeditemExample" resultType="java.lang.Integer" >
+    select count(*) from fmeditem
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update fmeditem
+    <set >
+      <if test="record.id != null" >
+        Id = #{record.id,jdbcType=SMALLINT},
+      </if>
+      <if test="record.itemcode != null" >
+        ItemCode = #{record.itemcode,jdbcType=VARCHAR},
+      </if>
+      <if test="record.itemname != null" >
+        ItemName = #{record.itemname,jdbcType=VARCHAR},
+      </if>
+      <if test="record.format != null" >
+        Format = #{record.format,jdbcType=VARCHAR},
+      </if>
+      <if test="record.price != null" >
+        Price = #{record.price,jdbcType=REAL},
+      </if>
+      <if test="record.expclassid != null" >
+        ExpClassID = #{record.expclassid,jdbcType=SMALLINT},
+      </if>
+      <if test="record.deptid != null" >
+        DeptID = #{record.deptid,jdbcType=SMALLINT},
+      </if>
+      <if test="record.mnemoniccode != null" >
+        MnemonicCode = #{record.mnemoniccode,jdbcType=VARCHAR},
+      </if>
+      <if test="record.recordtype != null" >
+        RecordType = #{record.recordtype,jdbcType=SMALLINT},
+      </if>
+      <if test="record.creationdate != null" >
+        CreationDate = #{record.creationdate,jdbcType=DATE},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update fmeditem
+    set Id = #{record.id,jdbcType=SMALLINT},
+      ItemCode = #{record.itemcode,jdbcType=VARCHAR},
+      ItemName = #{record.itemname,jdbcType=VARCHAR},
+      Format = #{record.format,jdbcType=VARCHAR},
+      Price = #{record.price,jdbcType=REAL},
+      ExpClassID = #{record.expclassid,jdbcType=SMALLINT},
+      DeptID = #{record.deptid,jdbcType=SMALLINT},
+      MnemonicCode = #{record.mnemoniccode,jdbcType=VARCHAR},
+      RecordType = #{record.recordtype,jdbcType=SMALLINT},
+      CreationDate = #{record.creationdate,jdbcType=DATE}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="edu.neu.medical.hospital.bean.Fmeditem" >
+    update fmeditem
+    <set >
+      <if test="itemcode != null" >
+        ItemCode = #{itemcode,jdbcType=VARCHAR},
+      </if>
+      <if test="itemname != null" >
+        ItemName = #{itemname,jdbcType=VARCHAR},
+      </if>
+      <if test="format != null" >
+        Format = #{format,jdbcType=VARCHAR},
+      </if>
+      <if test="price != null" >
+        Price = #{price,jdbcType=REAL},
+      </if>
+      <if test="expclassid != null" >
+        ExpClassID = #{expclassid,jdbcType=SMALLINT},
+      </if>
+      <if test="deptid != null" >
+        DeptID = #{deptid,jdbcType=SMALLINT},
+      </if>
+      <if test="mnemoniccode != null" >
+        MnemonicCode = #{mnemoniccode,jdbcType=VARCHAR},
+      </if>
+      <if test="recordtype != null" >
+        RecordType = #{recordtype,jdbcType=SMALLINT},
+      </if>
+      <if test="creationdate != null" >
+        CreationDate = #{creationdate,jdbcType=DATE},
+      </if>
+    </set>
+    where Id = #{id,jdbcType=SMALLINT}
+  </update>
+</mapper>
