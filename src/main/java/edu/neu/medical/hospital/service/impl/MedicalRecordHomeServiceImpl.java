@@ -1,6 +1,5 @@
 package edu.neu.medical.hospital.service.impl;
 
-import com.sun.org.apache.xpath.internal.operations.Bool;
 import edu.neu.medical.hospital.bean.*;
 import edu.neu.medical.hospital.dao.*;
 import edu.neu.medical.hospital.service.MedicalRecordHomeService;
@@ -178,7 +177,7 @@ public class MedicalRecordHomeServiceImpl implements MedicalRecordHomeService {
 
     /*
      * @Description 增加病历模板和诊断列表,判断存在
-     * @Param [medrecTemplate,diagnosisList]
+     * @Param [medrecTemplate 类别为全院时，belongid要为0,diagnosisList]
      * @return java.lang.Boolean ：false已存在，失败；true成功
      **/
     public Boolean addMedrecTemplate(MedrecTemplate medrecTemplate,List<Diagnosis> diagnosisList){
@@ -238,7 +237,7 @@ public class MedicalRecordHomeServiceImpl implements MedicalRecordHomeService {
 
     /*
      * @Description 搜索指定病历模板列，状态为有效(诊断获取方法在上面)
-     * @Param [category 1全院 2科室 3个人, belongId 类别为1：空；2：科室id；3：医生id ，key为空获得全部,搜索名称，编码，创建人]
+     * @Param [category 1全院 2科室 3个人, belongId 类别为1：0；2：科室id；3：医生id ，key为“”获得全部,搜索名称，编码，创建人]
      * @return java.util.List<edu.neu.medical.hospital.bean.MedrecTemplate>
      **/
     public List<MedrecTemplate> searchMedrecTemplateList(char category,int belongId,String key){

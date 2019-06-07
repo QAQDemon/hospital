@@ -82,7 +82,8 @@ public class MedicalRecordHomeServiceImplTest {
 
     @Test
     public void searchMedrecTemplateList(){
-        List<MedrecTemplate> list=medicalRecordHomeService.searchMedrecTemplateList('3',1,"");
+//        List<MedrecTemplate> list=medicalRecordHomeService.searchMedrecTemplateList('3',1,"");
+        List<MedrecTemplate> list1=medicalRecordHomeService.searchMedrecTemplateList('1',0,"");
        // List<MedrecTemplate> list1=medicalRecordHomeService.searchMedrecTemplateList('3',1,"专");//创建人
 //        List<MedrecTemplate> list2=medicalRecordHomeService.searchMedrecTemplateList('3',1,"阿");//名称
 //        List<MedrecTemplate> list3=medicalRecordHomeService.searchMedrecTemplateList('3',1,"d");//编码
