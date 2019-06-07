@@ -3,23 +3,23 @@ package edu.neu.medical.hospital.service.impl;
 import edu.neu.medical.hospital.bean.*;
 import edu.neu.medical.hospital.dao.*;
 import edu.neu.medical.hospital.service.ApplyForFmeditemService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.annotation.Resource;
 import java.util.ArrayList;
 import java.util.List;
 
 @Service
 public class ApplyForFmeditemServiceImpl implements ApplyForFmeditemService {
-    @Autowired
+    @Resource
     FmeditemMapper fmeditemMapper;
-    @Autowired
+    @Resource
     VisitItemMapper visitItemMapper;
-    @Autowired
+    @Resource
     VisitItemDetailMapper visitItemDetailMapper;
-    @Autowired
+    @Resource
     CommonOptionMapper commonOptionMapper;
-    @Autowired
+    @Resource
     VisitItemResultMapper visitItemResultMapper;
 
     //1检查 2检验 3处置
@@ -162,12 +162,6 @@ public class ApplyForFmeditemServiceImpl implements ApplyForFmeditemService {
             return false;
         }
     }
-
-
-
-
-
-
 
     /*
      * @Description 根据明细id获得结果

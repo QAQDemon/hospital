@@ -12,6 +12,10 @@ import org.apache.ibatis.annotations.SelectKey;
 import org.apache.ibatis.annotations.Update;
 
 public interface MedrecTemplateMapper {
+
+    List<MedrecTemplate> searchMedrecTemplate(@Param("belongId")int belongId,@Param("category")char category,@Param("status")char status,@Param("key")String key);
+
+
     int countByExample(MedrecTemplateExample example);
 
     int deleteByExample(MedrecTemplateExample example);
@@ -26,11 +30,13 @@ public interface MedrecTemplateMapper {
         "insert into medrec_template (id, template_name, ",
         "category, belong_id, ",
         "chief_complaint, current_medical_history, ",
-        "physical_examination, status)",
+        "physical_examination, status, ",
+        "template_code, creater_id)",
         "values (#{id,jdbcType=INTEGER}, #{templateName,jdbcType=VARCHAR}, ",
         "#{category,jdbcType=VARCHAR}, #{belongId,jdbcType=INTEGER}, ",
         "#{chiefComplaint,jdbcType=VARCHAR}, #{currentMedicalHistory,jdbcType=VARCHAR}, ",
-        "#{physicalExamination,jdbcType=VARCHAR}, #{status,jdbcType=CHAR})"
+        "#{physicalExamination,jdbcType=VARCHAR}, #{status,jdbcType=CHAR}, ",
+        "#{templateCode,jdbcType=VARCHAR}, #{createrId,jdbcType=INTEGER})"
     })
     @SelectKey(statement="SELECT LAST_INSERT_ID()", keyProperty="id", before=true, resultType=Integer.class)
     int insert(MedrecTemplate record);
@@ -42,7 +48,7 @@ public interface MedrecTemplateMapper {
     @Select({
         "select",
         "id, template_name, category, belong_id, chief_complaint, current_medical_history, ",
-        "physical_examination, status",
+        "physical_examination, status, template_code, creater_id",
         "from medrec_template",
         "where id = #{id,jdbcType=INTEGER}"
     })
@@ -63,7 +69,9 @@ public interface MedrecTemplateMapper {
           "chief_complaint = #{chiefComplaint,jdbcType=VARCHAR},",
           "current_medical_history = #{currentMedicalHistory,jdbcType=VARCHAR},",
           "physical_examination = #{physicalExamination,jdbcType=VARCHAR},",
-          "status = #{status,jdbcType=CHAR}",
+          "status = #{status,jdbcType=CHAR},",
+          "template_code = #{templateCode,jdbcType=VARCHAR},",
+          "creater_id = #{createrId,jdbcType=INTEGER}",
         "where id = #{id,jdbcType=INTEGER}"
     })
     int updateByPrimaryKey(MedrecTemplate record);

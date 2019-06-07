@@ -3,20 +3,6 @@ package edu.neu.medical.hospital.bean;
 import java.util.Date;
 
 public class Diagnosis {
-    @Override
-    public String toString() {
-        return "Diagnosis{" +
-                "id=" + id +
-                ", medicalRecordInfoId=" + medicalRecordInfoId +
-                ", diseaseId=" + diseaseId +
-                ", type='" + type + '\'' +
-                ", isNewMajorDiagnosis='" + isNewMajorDiagnosis + '\'' +
-                ", isNewSuspect='" + isNewSuspect + '\'' +
-                ", isFinalDiagnosis='" + isFinalDiagnosis + '\'' +
-                ", dateOfOnset=" + dateOfOnset +
-                '}';
-    }
-
     private Integer id;
 
     private Integer medicalRecordInfoId;
@@ -33,7 +19,9 @@ public class Diagnosis {
 
     private Date dateOfOnset;
 
-    public Diagnosis(Integer id, Integer medicalRecordInfoId, Integer diseaseId, String type, String isNewMajorDiagnosis, String isNewSuspect, String isFinalDiagnosis, Date dateOfOnset) {
+    private String category;
+
+    public Diagnosis(Integer id, Integer medicalRecordInfoId, Integer diseaseId, String type, String isNewMajorDiagnosis, String isNewSuspect, String isFinalDiagnosis, Date dateOfOnset, String category) {
         this.id = id;
         this.medicalRecordInfoId = medicalRecordInfoId;
         this.diseaseId = diseaseId;
@@ -42,6 +30,7 @@ public class Diagnosis {
         this.isNewSuspect = isNewSuspect;
         this.isFinalDiagnosis = isFinalDiagnosis;
         this.dateOfOnset = dateOfOnset;
+        this.category = category;
     }
 
     public Diagnosis() {
@@ -110,5 +99,13 @@ public class Diagnosis {
 
     public void setDateOfOnset(Date dateOfOnset) {
         this.dateOfOnset = dateOfOnset;
+    }
+
+    public String getCategory() {
+        return category;
+    }
+
+    public void setCategory(String category) {
+        this.category = category == null ? null : category.trim();
     }
 }

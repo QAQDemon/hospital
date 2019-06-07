@@ -1,19 +1,6 @@
 package edu.neu.medical.hospital.bean;
 
 public class MedrecTemplate {
-    @Override
-    public String toString() {
-        return "MedrecTemplate{" +
-                "id=" + id +
-                ", templateName='" + templateName + '\'' +
-                ", category='" + category + '\'' +
-                ", belongId=" + belongId +
-                ", chiefComplaint='" + chiefComplaint + '\'' +
-                ", currentMedicalHistory='" + currentMedicalHistory + '\'' +
-                ", physicalExamination='" + physicalExamination + '\'' +
-                ", status='" + status + '\'' +
-                '}';
-    }
     private Integer id;
 
     private String templateName;
@@ -30,7 +17,11 @@ public class MedrecTemplate {
 
     private String status;
 
-    public MedrecTemplate(Integer id, String templateName, String category, Integer belongId, String chiefComplaint, String currentMedicalHistory, String physicalExamination, String status) {
+    private String templateCode;
+
+    private Integer createrId;
+
+    public MedrecTemplate(Integer id, String templateName, String category, Integer belongId, String chiefComplaint, String currentMedicalHistory, String physicalExamination, String status, String templateCode, Integer createrId) {
         this.id = id;
         this.templateName = templateName;
         this.category = category;
@@ -39,6 +30,8 @@ public class MedrecTemplate {
         this.currentMedicalHistory = currentMedicalHistory;
         this.physicalExamination = physicalExamination;
         this.status = status;
+        this.templateCode = templateCode;
+        this.createrId = createrId;
     }
 
     public MedrecTemplate() {
@@ -107,5 +100,21 @@ public class MedrecTemplate {
 
     public void setStatus(String status) {
         this.status = status == null ? null : status.trim();
+    }
+
+    public String getTemplateCode() {
+        return templateCode;
+    }
+
+    public void setTemplateCode(String templateCode) {
+        this.templateCode = templateCode == null ? null : templateCode.trim();
+    }
+
+    public Integer getCreaterId() {
+        return createrId;
+    }
+
+    public void setCreaterId(Integer createrId) {
+        this.createrId = createrId;
     }
 }

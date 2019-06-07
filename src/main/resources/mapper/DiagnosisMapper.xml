@@ -2,14 +2,27 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="edu.neu.medical.hospital.dao.DiagnosisMapper" >
 
+
   <insert id="insertForeach" parameterType="java.util.List" keyProperty="id" useGeneratedKeys="true">
     insert into diagnosis
-    ( id,medical_record_info_id,disease_id,type,is_new_major_diagnosis,is_new_suspect,is_final_diagnosis,date_of_onset)
+    ( id,medical_record_info_id,disease_id,type,is_new_major_diagnosis,is_new_suspect,is_final_diagnosis,date_of_onset,category)
     values
     <foreach collection="list" item="item" index="index" separator=",">
-      (#{item.id},#{item.medicalRecordInfoId},#{item.diseaseId},#{item.type},#{item.isNewMajorDiagnosis},#{item.isNewSuspect},#{item.isFinalDiagnosis},#{item.dateOfOnset})
+      (#{item.id},#{item.medicalRecordInfoId},#{item.diseaseId},#{item.type},#{item.isNewMajorDiagnosis},#{item.isNewSuspect},#{item.isFinalDiagnosis},#{item.dateOfOnset},#{item.category})
     </foreach>
   </insert>
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -23,6 +36,7 @@
       <arg column="is_new_suspect" jdbcType="CHAR" javaType="java.lang.String" />
       <arg column="is_final_diagnosis" jdbcType="CHAR" javaType="java.lang.String" />
       <arg column="date_of_onset" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+      <arg column="category" jdbcType="CHAR" javaType="java.lang.String" />
     </constructor>
   </resultMap>
   <sql id="Example_Where_Clause" >
@@ -85,7 +99,7 @@
   </sql>
   <sql id="Base_Column_List" >
     id, medical_record_info_id, disease_id, type, is_new_major_diagnosis, is_new_suspect, 
-    is_final_diagnosis, date_of_onset
+    is_final_diagnosis, date_of_onset, category
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="edu.neu.medical.hospital.bean.DiagnosisExample" >
     select
@@ -135,6 +149,9 @@
       <if test="dateOfOnset != null" >
         date_of_onset,
       </if>
+      <if test="category != null" >
+        category,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       #{id,jdbcType=INTEGER},
@@ -158,6 +175,9 @@
       </if>
       <if test="dateOfOnset != null" >
         #{dateOfOnset,jdbcType=TIMESTAMP},
+      </if>
+      <if test="category != null" >
+        #{category,jdbcType=CHAR},
       </if>
     </trim>
   </insert>
@@ -194,6 +214,9 @@
       <if test="record.dateOfOnset != null" >
         date_of_onset = #{record.dateOfOnset,jdbcType=TIMESTAMP},
       </if>
+      <if test="record.category != null" >
+        category = #{record.category,jdbcType=CHAR},
+      </if>
     </set>
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
@@ -208,7 +231,8 @@
       is_new_major_diagnosis = #{record.isNewMajorDiagnosis,jdbcType=CHAR},
       is_new_suspect = #{record.isNewSuspect,jdbcType=CHAR},
       is_final_diagnosis = #{record.isFinalDiagnosis,jdbcType=CHAR},
-      date_of_onset = #{record.dateOfOnset,jdbcType=TIMESTAMP}
+      date_of_onset = #{record.dateOfOnset,jdbcType=TIMESTAMP},
+      category = #{record.category,jdbcType=CHAR}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -236,6 +260,9 @@
       </if>
       <if test="dateOfOnset != null" >
         date_of_onset = #{dateOfOnset,jdbcType=TIMESTAMP},
+      </if>
+      <if test="category != null" >
+        category = #{category,jdbcType=CHAR},
       </if>
     </set>
     where id = #{id,jdbcType=INTEGER}

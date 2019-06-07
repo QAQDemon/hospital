@@ -12,6 +12,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
 
+import javax.annotation.Resource;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,9 +20,9 @@ import java.util.List;
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration("classpath:applicationContext.xml")
 public class ApplyForFmeditemServiceImplTest {
-    @Autowired
+    @Resource
     ApplyForFmeditemService applyForFmeditemService;
-    @Autowired
+    @Resource
     OutpatientDoctorWorkstationService outpatientDoctorWorkstationService;
 
     @Before

@@ -1,11 +1,12 @@
 package edu.neu.medical.hospital.service.impl;
 
+import com.sun.org.apache.xpath.internal.operations.Bool;
 import edu.neu.medical.hospital.bean.*;
 import edu.neu.medical.hospital.dao.*;
 import edu.neu.medical.hospital.service.MedicalRecordHomeService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.annotation.Resource;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -14,19 +15,19 @@ import java.util.Map;
 
 @Service
 public class MedicalRecordHomeServiceImpl implements MedicalRecordHomeService {
-    @Autowired
+    @Resource
     private MedicalRecordInfoMapper medicalRecordInfoMapper;
-    @Autowired
+    @Resource
     private DiagnosisMapper diagnosisMapper;
-    @Autowired
+    @Resource
     private PatientMapper patientMapper;
-    @Autowired
+    @Resource
     private DiseaseMapper diseaseMapper;
-    @Autowired
+    @Resource
     private CommonOptionMapper commonOptionMapper;
-    @Autowired
+    @Resource
     private MedrecTemplateMapper medrecTemplateMapper;
-    @Autowired
+    @Resource
     private DepartMapper departMapper;
 
     /*
@@ -39,21 +40,22 @@ public class MedicalRecordHomeServiceImpl implements MedicalRecordHomeService {
     }
 
     /*
-     * @Description 获得初诊断列表，去掉终诊，分中西
-     * @Param [type 1西医 2中医, medicalRecordInfoId]
+     * @Description 获得初诊断列表，去掉终诊，分中西(也可用在模板）
+     * @Param [category 1正常 2模板,type 1西医 2中医, medicalRecordInfoId]
      * @return java.util.List<edu.neu.medical.hospital.bean.Diagnosis>
      **/
-    public List<Diagnosis> getNewDiagnosisListById(char type,int medicalRecordInfoId) {
+    public List<Diagnosis> getNewDiagnosisListById(char category,char type,int medicalRecordInfoId) {
         DiagnosisExample diagnosisExample=new DiagnosisExample();
         DiagnosisExample.Criteria criteria=diagnosisExample.createCriteria();
         criteria.andIsFinalDiagnosisIsNull();//非终诊
         criteria.andMedicalRecordInfoIdEqualTo(medicalRecordInfoId);
         criteria.andTypeEqualTo(type+"");//确定中西
+        criteria.andCategoryEqualTo(category+"");
         return diagnosisMapper.selectByExample(diagnosisExample);
     }
 
     /*
-     * @Description 获得诊断中的疾病信息
+     * @Description 获得诊断中的疾病信息(可用在模板病历的诊断)
      * @Param [diagnosisList]
      * @return java.util.List<edu.neu.medical.hospital.bean.Disease>
      **/
@@ -88,6 +90,7 @@ public class MedicalRecordHomeServiceImpl implements MedicalRecordHomeService {
             DiagnosisExample diagnosisExample=new DiagnosisExample();
             DiagnosisExample.Criteria criteria1=diagnosisExample.createCriteria();
             criteria1.andMedicalRecordInfoIdEqualTo(medicalRecordInfoId);
+            criteria1.andCategoryEqualTo("1");
             diagnosisMapper.deleteByExample(diagnosisExample);
             diagnosisMapper.insertForeach(diagnosisList);
         }else if(count==0){//无暂存，insert
@@ -174,61 +177,72 @@ public class MedicalRecordHomeServiceImpl implements MedicalRecordHomeService {
     }
 
     /*
-     * @Description 增加病历模板,判断存在
-     * @Param [templateName, category 1全院 2科室 3个人,belongId 类别为1：空；2：科室id；3：医生id, medicalRecordInfo]
+     * @Description 增加病历模板和诊断列表,判断存在
+     * @Param [medrecTemplate,diagnosisList]
      * @return java.lang.Boolean ：false已存在，失败；true成功
      **/
-    public Boolean addMedrecTemplate(String templateName,char category,int belongId,MedicalRecordInfo medicalRecordInfo){
+    public Boolean addMedrecTemplate(MedrecTemplate medrecTemplate,List<Diagnosis> diagnosisList){
         MedrecTemplateExample medrecTemplateExample=new MedrecTemplateExample();
         MedrecTemplateExample.Criteria criteria=medrecTemplateExample.createCriteria();
-        criteria.andTemplateNameEqualTo(templateName);
-        criteria.andCategoryEqualTo(category+"");
-        criteria.andBelongIdEqualTo(belongId);
+        criteria.andTemplateCodeEqualTo(medrecTemplate.getTemplateCode());
+        criteria.andCategoryEqualTo(medrecTemplate.getCategory()+"");
+        criteria.andBelongIdEqualTo(medrecTemplate.getBelongId());
         if(medrecTemplateMapper.countByExample(medrecTemplateExample)>0){//存在或异常
             return false;
         }
-        MedrecTemplate medrecTemplate=new MedrecTemplate();
-        medrecTemplate.setTemplateName(templateName);
-        medrecTemplate.setCategory(category+"");
-        medrecTemplate.setBelongId(belongId);
-        medrecTemplate.setChiefComplaint(medicalRecordInfo.getChiefComplaint());
-        medrecTemplate.setCurrentMedicalHistory(medicalRecordInfo.getCurrentMedicalHistory());
-        medrecTemplate.setStatus("1");
         medrecTemplateMapper.insertSelective(medrecTemplate);
+        //获得插入id
+        int lastId=medrecTemplateMapper.selectByExample(medrecTemplateExample).get(0).getId();
+        for(Diagnosis diagnosis:diagnosisList){
+            diagnosis.setMedicalRecordInfoId(lastId);//设置模板id
+        }
+        diagnosisMapper.insertForeach(diagnosisList);
         return true;
     }
 
     /*
-     * @Description 更新病历模板
-     * @Param [medrecTemplate]
-     * @return int
+     * @Description 判断是否能更新删除病历模板
+     * @Param [doctorId, medrecTemplate]
+     * @return java.lang.Boolean true有权限 false无
      **/
-    public int updateMedrecTemplate(MedrecTemplate medrecTemplate){
-        return medrecTemplateMapper.updateByPrimaryKeySelective(medrecTemplate);
+    public Boolean judgeControlMedrecTemplate(int doctorId,MedrecTemplate medrecTemplate){
+        return doctorId == medrecTemplate.getCreaterId();
     }
 
     /*
-     * @Description （删除）将病历模板设为无效状态//TODO 权限控制的删除？
+     * @Description 更新病历模板,删除并重输入模板诊断
+     * @Param [medrecTemplate,diagnosisList]
+     * @return Boolean
+     **/
+    public Boolean updateMedrecTemplate(MedrecTemplate medrecTemplate, List<Diagnosis> diagnosisList){
+        medrecTemplateMapper.updateByPrimaryKeySelective(medrecTemplate);
+        DiagnosisExample diagnosisExample=new DiagnosisExample();
+        DiagnosisExample.Criteria criteria=diagnosisExample.createCriteria();
+        criteria.andCategoryEqualTo("2");
+        criteria.andMedicalRecordInfoIdEqualTo(medrecTemplate.getId());
+        diagnosisMapper.deleteByExample(diagnosisExample);
+        diagnosisMapper.insertForeach(diagnosisList);
+        return true;
+    }
+
+    /*
+     * @Description （删除）将病历模板设为无效状态
      * @Param [medrecTemplate]
      * @return int
      **/
-    public int cancelMedrecTemplate(MedrecTemplate medrecTemplate){
+    public Boolean cancelMedrecTemplate(MedrecTemplate medrecTemplate){
         medrecTemplate.setStatus("2");
-        return updateMedrecTemplate(medrecTemplate);
+        medrecTemplateMapper.updateByPrimaryKeySelective(medrecTemplate);
+        return true;
     }
 
     /*
-     * @Description 获得指定病历模板列，状态为有效
-     * @Param [category 1全院 2科室 3个人, belongId 类别为1：空；2：科室id；3：医生id]
+     * @Description 搜索指定病历模板列，状态为有效(诊断获取方法在上面)
+     * @Param [category 1全院 2科室 3个人, belongId 类别为1：空；2：科室id；3：医生id ，key为空获得全部,搜索名称，编码，创建人]
      * @return java.util.List<edu.neu.medical.hospital.bean.MedrecTemplate>
      **/
-    public List<MedrecTemplate> getMedrecTemplateList(char category,int belongId){
-        MedrecTemplateExample medrecTemplateExample=new MedrecTemplateExample();
-        MedrecTemplateExample.Criteria criteria=medrecTemplateExample.createCriteria();
-        criteria.andBelongIdEqualTo(belongId);
-        criteria.andCategoryEqualTo(category+"");
-        criteria.andStatusEqualTo("1");
-        return medrecTemplateMapper.selectByExample(medrecTemplateExample);
+    public List<MedrecTemplate> searchMedrecTemplateList(char category,int belongId,String key){
+        return medrecTemplateMapper.searchMedrecTemplate(belongId, category, '1', key);
     }
 
     /*

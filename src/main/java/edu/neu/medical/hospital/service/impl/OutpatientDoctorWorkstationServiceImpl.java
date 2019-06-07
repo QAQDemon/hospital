@@ -5,17 +5,18 @@ import edu.neu.medical.hospital.bean.Patient;
 import edu.neu.medical.hospital.dao.CommonOptionMapper;
 import edu.neu.medical.hospital.dao.PatientMapper;
 import edu.neu.medical.hospital.service.OutpatientDoctorWorkstationService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import javax.annotation.Resource;
 import java.util.List;
 
 
 @Service
 public class OutpatientDoctorWorkstationServiceImpl implements OutpatientDoctorWorkstationService {
 
-    @Autowired
+    @Resource
     private PatientMapper patientMapper;
-    @Autowired
+    @Resource
     private CommonOptionMapper commonOptionMapper;
 
     /*

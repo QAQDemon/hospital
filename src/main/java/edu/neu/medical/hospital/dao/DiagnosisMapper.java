@@ -1,10 +1,8 @@
 package edu.neu.medical.hospital.dao;
 
 import edu.neu.medical.hospital.bean.Diagnosis;
-
-import java.util.List;
-
 import edu.neu.medical.hospital.bean.DiagnosisExample;
+import java.util.List;
 import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Param;
@@ -26,6 +24,8 @@ public interface DiagnosisMapper {
 
 
 
+
+
     int countByExample(DiagnosisExample example);
 
     int deleteByExample(DiagnosisExample example);
@@ -40,11 +40,11 @@ public interface DiagnosisMapper {
         "insert into diagnosis (id, medical_record_info_id, ",
         "disease_id, type, is_new_major_diagnosis, ",
         "is_new_suspect, is_final_diagnosis, ",
-        "date_of_onset)",
+        "date_of_onset, category)",
         "values (#{id,jdbcType=INTEGER}, #{medicalRecordInfoId,jdbcType=INTEGER}, ",
         "#{diseaseId,jdbcType=INTEGER}, #{type,jdbcType=CHAR}, #{isNewMajorDiagnosis,jdbcType=CHAR}, ",
         "#{isNewSuspect,jdbcType=CHAR}, #{isFinalDiagnosis,jdbcType=CHAR}, ",
-        "#{dateOfOnset,jdbcType=TIMESTAMP})"
+        "#{dateOfOnset,jdbcType=TIMESTAMP}, #{category,jdbcType=CHAR})"
     })
     @SelectKey(statement="SELECT LAST_INSERT_ID()", keyProperty="id", before=true, resultType=Integer.class)
     int insert(Diagnosis record);
@@ -56,7 +56,7 @@ public interface DiagnosisMapper {
     @Select({
         "select",
         "id, medical_record_info_id, disease_id, type, is_new_major_diagnosis, is_new_suspect, ",
-        "is_final_diagnosis, date_of_onset",
+        "is_final_diagnosis, date_of_onset, category",
         "from diagnosis",
         "where id = #{id,jdbcType=INTEGER}"
     })
@@ -77,7 +77,8 @@ public interface DiagnosisMapper {
           "is_new_major_diagnosis = #{isNewMajorDiagnosis,jdbcType=CHAR},",
           "is_new_suspect = #{isNewSuspect,jdbcType=CHAR},",
           "is_final_diagnosis = #{isFinalDiagnosis,jdbcType=CHAR},",
-          "date_of_onset = #{dateOfOnset,jdbcType=TIMESTAMP}",
+          "date_of_onset = #{dateOfOnset,jdbcType=TIMESTAMP},",
+          "category = #{category,jdbcType=CHAR}",
         "where id = #{id,jdbcType=INTEGER}"
     })
     int updateByPrimaryKey(Diagnosis record);

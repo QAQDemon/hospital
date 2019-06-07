@@ -1,6 +1,23 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="edu.neu.medical.hospital.dao.MedrecTemplateMapper" >
+
+
+  <select id="searchMedrecTemplate" resultMap="BaseResultMap">
+    select DISTINCT M.id,M.template_name,M.category,M.belong_id,M.chief_complaint,M.current_medical_history,M.physical_examination,M.status,M.template_code,M.creater_id
+    from medrec_template as M,user as U
+    where M.belong_id=#{belongId} and M.category=#{category} and M.status=#{status}
+    and M.creater_id=U.id
+    and (M.template_code like #{key,jdbcType=VARCHAR}"%" or M.template_name like #{key,jdbcType=VARCHAR}"%" or U.trust_name like #{key,jdbcType=VARCHAR}"%")
+  </select>
+
+
+
+
+
+
+
+
   <resultMap id="BaseResultMap" type="edu.neu.medical.hospital.bean.MedrecTemplate" >
     <constructor >
       <idArg column="id" jdbcType="INTEGER" javaType="java.lang.Integer" />
@@ -11,6 +28,8 @@
       <arg column="current_medical_history" jdbcType="VARCHAR" javaType="java.lang.String" />
       <arg column="physical_examination" jdbcType="VARCHAR" javaType="java.lang.String" />
       <arg column="status" jdbcType="CHAR" javaType="java.lang.String" />
+      <arg column="template_code" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="creater_id" jdbcType="INTEGER" javaType="java.lang.Integer" />
     </constructor>
   </resultMap>
   <sql id="Example_Where_Clause" >
@@ -73,7 +92,7 @@
   </sql>
   <sql id="Base_Column_List" >
     id, template_name, category, belong_id, chief_complaint, current_medical_history, 
-    physical_examination, status
+    physical_examination, status, template_code, creater_id
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="edu.neu.medical.hospital.bean.MedrecTemplateExample" >
     select
@@ -123,6 +142,12 @@
       <if test="status != null" >
         status,
       </if>
+      <if test="templateCode != null" >
+        template_code,
+      </if>
+      <if test="createrId != null" >
+        creater_id,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       #{id,jdbcType=INTEGER},
@@ -146,6 +171,12 @@
       </if>
       <if test="status != null" >
         #{status,jdbcType=CHAR},
+      </if>
+      <if test="templateCode != null" >
+        #{templateCode,jdbcType=VARCHAR},
+      </if>
+      <if test="createrId != null" >
+        #{createrId,jdbcType=INTEGER},
       </if>
     </trim>
   </insert>
@@ -182,6 +213,12 @@
       <if test="record.status != null" >
         status = #{record.status,jdbcType=CHAR},
       </if>
+      <if test="record.templateCode != null" >
+        template_code = #{record.templateCode,jdbcType=VARCHAR},
+      </if>
+      <if test="record.createrId != null" >
+        creater_id = #{record.createrId,jdbcType=INTEGER},
+      </if>
     </set>
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
@@ -196,7 +233,9 @@
       chief_complaint = #{record.chiefComplaint,jdbcType=VARCHAR},
       current_medical_history = #{record.currentMedicalHistory,jdbcType=VARCHAR},
       physical_examination = #{record.physicalExamination,jdbcType=VARCHAR},
-      status = #{record.status,jdbcType=CHAR}
+      status = #{record.status,jdbcType=CHAR},
+      template_code = #{record.templateCode,jdbcType=VARCHAR},
+      creater_id = #{record.createrId,jdbcType=INTEGER}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -224,6 +263,12 @@
       </if>
       <if test="status != null" >
         status = #{status,jdbcType=CHAR},
+      </if>
+      <if test="templateCode != null" >
+        template_code = #{templateCode,jdbcType=VARCHAR},
+      </if>
+      <if test="createrId != null" >
+        creater_id = #{createrId,jdbcType=INTEGER},
       </if>
     </set>
     where id = #{id,jdbcType=INTEGER}
