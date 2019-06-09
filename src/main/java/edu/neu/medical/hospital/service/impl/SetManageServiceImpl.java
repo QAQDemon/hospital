@@ -3,12 +3,16 @@ package edu.neu.medical.hospital.service.impl;
 import edu.neu.medical.hospital.bean.SetGroup;
 import edu.neu.medical.hospital.bean.SetGroupExample;
 import edu.neu.medical.hospital.bean.SetSub;
+import edu.neu.medical.hospital.bean.SetSubExample;
+import edu.neu.medical.hospital.dao.DiseaseMapper;
+import edu.neu.medical.hospital.dao.FmeditemMapper;
 import edu.neu.medical.hospital.dao.SetGroupMapper;
 import edu.neu.medical.hospital.dao.SetSubMapper;
 import edu.neu.medical.hospital.service.SetManageService;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -17,17 +21,36 @@ public class SetManageServiceImpl implements SetManageService {
     SetGroupMapper setGroupMapper;
     @Resource
     SetSubMapper setSubMapper;
+    @Resource
+    FmeditemMapper fmeditemMapper;
+    @Resource
+    DiseaseMapper diseaseMapper;
 
-    private char type;//1检查 2检验 3处置 4成药处方 5中药处方
-    private char category;//1全院 2科室 3个人
+    private char type;//business_classify 1检查 2检验 3处置 4成药处方 5中药处方
+    private char category;//use_scope 1全院 2科室 3个人
     private int belongId;//所属_id 根据类别对应id 1为0 2科室 3个人
 
+    /*
+     * @Description business_classify 1检查 2检验 3处置 4成药处方 5中药处方
+     * @Param [type]
+     * @return void
+     **/
     public void setType(char type) {
         this.type=type;
     }
+    /*
+     * @Description use_scope 1全院 2科室 3个人
+     * @Param [category]
+     * @return void
+     **/
     public void setCategory(char category) {
         this.category=category;
     }
+    /*
+     * @Description 所属_id 根据类别对应id 1为0 2科室 3个人
+     * @Param [belongId]
+     * @return void
+     **/
     public void setBelongId(int belongId){
         this.belongId=belongId;
     }
@@ -57,50 +80,75 @@ public class SetManageServiceImpl implements SetManageService {
         return true;
     }
 
+    /*
+     * @Description 判断是否能更新删除组套
+     * @Param [userId, setGroup]
+     * @return java.lang.Boolean true有权限 false无
+     **/
+    public Boolean judgeControlSetGroup(int userId,SetGroup setGroup){
+        return userId == setGroup.getCreaterId();
+    }
 
+    /*
+     * @Description 更新组套,删除并重输入组套子项
+     * @Param [setGroup,setSubList]
+     * @return Boolean
+     **/
+    public Boolean updateSetGroup(SetGroup setGroup, List<SetSub> setSubList){
+        setGroupMapper.updateByPrimaryKeySelective(setGroup);
+        SetSubExample setSubExample = new SetSubExample();
+        SetSubExample.Criteria criteria = setSubExample.createCriteria();
+        criteria.andSetIdEqualTo(setGroup.getId());
+        setSubMapper.deleteByExample(setSubExample);
+        setSubMapper.insertForeach(setSubList);
+        return true;
+    }
 
-//    /*
-//     * @Description 判断是否能更新删除病历模板
-//     * @Param [doctorId, medrecTemplate]
-//     * @return java.lang.Boolean true有权限 false无
-//     **/
-//    public Boolean judgeControlMedrecTemplate(int doctorId,MedrecTemplate medrecTemplate){
-//        return doctorId == medrecTemplate.getCreaterId();
-//    }
-//
-//    /*
-//     * @Description 更新病历模板,删除并重输入模板诊断
-//     * @Param [medrecTemplate,diagnosisList]
-//     * @return Boolean
-//     **/
-//    public Boolean updateMedrecTemplate(MedrecTemplate medrecTemplate, List<Diagnosis> diagnosisList){
-//        medrecTemplateMapper.updateByPrimaryKeySelective(medrecTemplate);
-//        DiagnosisExample diagnosisExample=new DiagnosisExample();
-//        DiagnosisExample.Criteria criteria=diagnosisExample.createCriteria();
-//        criteria.andCategoryEqualTo("2");
-//        criteria.andMedicalRecordInfoIdEqualTo(medrecTemplate.getId());
-//        diagnosisMapper.deleteByExample(diagnosisExample);
-//        diagnosisMapper.insertForeach(diagnosisList);
-//        return true;
-//    }
-//
-//    /*
-//     * @Description （删除）将病历模板设为无效状态
-//     * @Param [medrecTemplate]
-//     * @return int
-//     **/
-//    public Boolean cancelMedrecTemplate(MedrecTemplate medrecTemplate){
-//        medrecTemplate.setStatus("2");
-//        medrecTemplateMapper.updateByPrimaryKeySelective(medrecTemplate);
-//        return true;
-//    }
-//
-//    /*
-//     * @Description 搜索指定病历模板列，状态为有效(诊断获取方法在上面)
-//     * @Param [category 1全院 2科室 3个人, belongId 类别为1：空；2：科室id；3：医生id ，key为空获得全部,搜索名称，编码，创建人]
-//     * @return java.util.List<edu.neu.medical.hospital.bean.MedrecTemplate>
-//     **/
-//    public List<MedrecTemplate> searchMedrecTemplateList(char category,int belongId,String key){
-//        return medrecTemplateMapper.searchMedrecTemplate(belongId, category, '1', key);
-//    }
+    /*
+     * @Description （删除）将组套设为无效状态
+     * @Param [setGroup]
+     * @return Boolean
+     **/
+    public Boolean cancelSetGroup(SetGroup setGroup){
+        setGroup.setStatus("2");
+        setGroupMapper.updateByPrimaryKeySelective(setGroup);
+        return true;
+    }
+
+    /*
+     * @Description 搜索指定组套列，状态为有效(诊断获取方法在上面)
+     * @Param [key为空获得全部,搜索名称，编码，创建人]
+     * @return java.util.List<edu.neu.medical.hospital.bean.MedrecTemplate>
+     **/
+    public List<SetGroup> searchSetGroupList(String key){
+        return setGroupMapper.searchSetGroup(type,category, belongId, '1', key);
+    }
+
+    /*
+     * @Description 根据组套id获得组套子项
+     * @Param [setId]
+     * @return java.util.List<edu.neu.medical.hospital.bean.SetSub>
+     **/
+    public List<SetSub> getSetSubListById(int setId){
+        SetSubExample setSubExample = new SetSubExample();
+        SetSubExample.Criteria criteria = setSubExample.createCriteria();
+        criteria.andSetIdEqualTo(setId);
+        return setSubMapper.selectByExample(setSubExample);
+    }
+
+    /*
+     * @Description 获得组套子项中的项目信息或药品信息
+     * @Param [setSubList]
+     * @return Object
+     **/
+    public List<Object> getSubInfoList(List<SetSub> setSubList) {
+        List<Object> list = new ArrayList<>();
+        for (SetSub setSub : setSubList) {
+            if ((type == '1') || (type == '2') || (type == '3'))
+                list.add(fmeditemMapper.selectByPrimaryKey(setSub.getResponseId().shortValue()));
+            else
+                list.add(diseaseMapper.selectByPrimaryKey(setSub.getResponseId().shortValue()));
+        }
+        return list;
+    }
 }

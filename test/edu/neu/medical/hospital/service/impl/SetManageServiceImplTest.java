@@ -48,4 +48,68 @@ public class SetManageServiceImplTest {
         list.add(setSub1);
         setManageService.addSetAndSub(set, list);
     }
+
+    @Test
+    public void updateMedrecTemplate() {
+        SetGroup set=new SetGroup();
+        set.setId(3);
+        set.setSetCode("aaaa");
+        set.setSetName("leile333");
+        set.setBelongId(1);
+        set.setBusinessClassify("1");
+        set.setUseScope("3");
+        SetSub setSub = new SetSub();
+        setSub.setSetId(3);
+        setSub.setResponseId(4);
+        setSub.setEntrust("hao13");
+        SetSub setSub1 = new SetSub();
+        setSub1.setSetId(3);
+        setSub1.setResponseId(5);
+        setSub1.setEntrust("hao1dd");
+        SetSub setSub2 = new SetSub();
+        setSub2.setSetId(3);
+        setSub2.setResponseId(6);
+        setSub2.setEntrust("33aas");
+        List<SetSub> list=new ArrayList<>();
+        list.add(setSub);
+        list.add(setSub1);
+        list.add(setSub2);
+        setManageService.updateSetGroup(set, list);
+    }
+
+    @Test
+    public void cancelSet (){
+        SetGroup set=new SetGroup();
+        set.setId(3);
+        setManageService.cancelSetGroup(set);
+    }
+
+    @Test
+    public void searchSetGroupList() {
+        List<SetGroup> list = setManageService.searchSetGroupList("a");
+        return;
+    }
+
+    @Test
+    public void getSubInfoList() {
+        setManageService.setType('4');
+        SetSub setSub = new SetSub();
+        setSub.setSetId(3);
+        setSub.setResponseId(4);
+        setSub.setEntrust("hao13");
+        SetSub setSub1 = new SetSub();
+        setSub1.setSetId(3);
+        setSub1.setResponseId(5);
+        setSub1.setEntrust("hao1dd");
+        SetSub setSub2 = new SetSub();
+        setSub2.setSetId(3);
+        setSub2.setResponseId(6);
+        setSub2.setEntrust("33aas");
+        List<SetSub> list=new ArrayList<>();
+        list.add(setSub);
+        list.add(setSub1);
+        list.add(setSub2);
+        List<Object> list1=setManageService.getSubInfoList(list);
+        return;
+    }
 }

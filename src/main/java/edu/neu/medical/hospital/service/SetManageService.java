@@ -13,4 +13,10 @@ public interface SetManageService {
     void setCategory(char category);
     void setBelongId(int belongId);
     Boolean addSetAndSub(SetGroup set, List<SetSub> setSubList);
+    Boolean judgeControlSetGroup(int userId,SetGroup setGroup);
+    Boolean updateSetGroup(SetGroup setGroup, List<SetSub> setSubList);
+    Boolean cancelSetGroup(SetGroup setGroup);
+    List<SetGroup> searchSetGroupList(String key);
+    List<SetSub> getSetSubListById(int setId);
+    List<Object> getSubInfoList(List<SetSub> setSubList);
 }

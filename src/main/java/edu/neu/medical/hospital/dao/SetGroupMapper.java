@@ -12,6 +12,20 @@ import org.apache.ibatis.annotations.SelectKey;
 import org.apache.ibatis.annotations.Update;
 
 public interface SetGroupMapper {
+
+    List<SetGroup> searchSetGroup(@Param("type")char type,@Param("category")char category,@Param("belongId")int belongId,
+                                  @Param("status")char status,@Param("key")String key);
+
+
+
+
+
+
+
+
+
+
+
     int countByExample(SetGroupExample example);
 
     int deleteByExample(SetGroupExample example);
