@@ -1,8 +1,8 @@
 package edu.neu.medical.hospital.service.impl;
-import edu.neu.medical.hospital.bean.CommonOption;
-import edu.neu.medical.hospital.bean.CommonOptionExample;
-import edu.neu.medical.hospital.bean.Patient;
+import edu.neu.medical.hospital.bean.*;
 import edu.neu.medical.hospital.dao.CommonOptionMapper;
+import edu.neu.medical.hospital.dao.DrugsMapper;
+import edu.neu.medical.hospital.dao.FmeditemMapper;
 import edu.neu.medical.hospital.dao.PatientMapper;
 import edu.neu.medical.hospital.service.OutpatientDoctorWorkstationService;
 import org.springframework.stereotype.Service;
@@ -18,6 +18,10 @@ public class OutpatientDoctorWorkstationServiceImpl implements OutpatientDoctorW
     private PatientMapper patientMapper;
     @Resource
     private CommonOptionMapper commonOptionMapper;
+    @Resource
+    private FmeditemMapper  fmeditemMapper;
+    @Resource
+    private DrugsMapper drugsMapper;
 
     /*
      * @Description 将已诊或待诊病人列表传回，已诊中会去掉待诊
@@ -54,4 +58,32 @@ public class OutpatientDoctorWorkstationServiceImpl implements OutpatientDoctorW
         return commonOptionMapper.selectByExample(commonOptionExample);
     }
 
+    /*
+     * @Description 根据type搜索非药品项目，key为空获得全部(可用在组套和申请)
+     * @Param [type 1检查 2检验 3处置,key 拼音首字母转换成大写]
+     * @return java.util.List<edu.neu.medical.hospital.bean.Fmeditem>
+     **/
+    public List<Fmeditem> searchFmeditemList(char type,String key){
+        FmeditemExample fmeditemExample=new FmeditemExample();
+        FmeditemExample.Criteria criteria=fmeditemExample.createCriteria();
+        criteria.andRecordtypeEqualTo((short)type);
+        criteria.andMnemoniccodeLike(key.toUpperCase()+"%");
+        return fmeditemMapper.selectByExample(fmeditemExample);
+    }
+
+    /*
+     * @Description 根据type搜索药品，key为空获得全部(可用在组套和处方)
+     * @Param [type 1西药（101） 2中药（102、103）,key 拼音首字母转换成大写]
+     * @return java.util.List<edu.neu.medical.hospital.bean.Drugs>
+     **/
+    public List<Drugs> searchDrugsList(char type,String key){
+        DrugsExample drugsExample = new DrugsExample();
+        DrugsExample.Criteria criteria = drugsExample.createCriteria();
+        if(type=='1')
+            criteria.andDrugstypeidEqualTo((short) 101);
+        else
+            criteria.andDrugstypeidNotEqualTo((short) 101);
+        criteria.andMnemoniccodeEqualTo(key.toUpperCase() + "%");
+        return drugsMapper.selectByExample(drugsExample);
+    }
 }

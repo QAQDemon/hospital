@@ -4,10 +4,7 @@ import edu.neu.medical.hospital.bean.SetGroup;
 import edu.neu.medical.hospital.bean.SetGroupExample;
 import edu.neu.medical.hospital.bean.SetSub;
 import edu.neu.medical.hospital.bean.SetSubExample;
-import edu.neu.medical.hospital.dao.DiseaseMapper;
-import edu.neu.medical.hospital.dao.FmeditemMapper;
-import edu.neu.medical.hospital.dao.SetGroupMapper;
-import edu.neu.medical.hospital.dao.SetSubMapper;
+import edu.neu.medical.hospital.dao.*;
 import edu.neu.medical.hospital.service.SetManageService;
 import org.springframework.stereotype.Service;
 
@@ -24,7 +21,7 @@ public class SetManageServiceImpl implements SetManageService {
     @Resource
     FmeditemMapper fmeditemMapper;
     @Resource
-    DiseaseMapper diseaseMapper;
+    DrugsMapper drugsMapper;
 
     private char type;//business_classify 1检查 2检验 3处置 4成药处方 5中药处方
     private char category;//use_scope 1全院 2科室 3个人
@@ -147,7 +144,7 @@ public class SetManageServiceImpl implements SetManageService {
             if ((type == '1') || (type == '2') || (type == '3'))
                 list.add(fmeditemMapper.selectByPrimaryKey(setSub.getResponseId().shortValue()));
             else
-                list.add(diseaseMapper.selectByPrimaryKey(setSub.getResponseId().shortValue()));
+                list.add(drugsMapper.selectByPrimaryKey(setSub.getResponseId().shortValue()));
         }
         return list;
     }

@@ -7,7 +7,6 @@ import java.util.List;
 public interface ApplyForFmeditemService {
     char type=0;
     void setType(char type);
-    List<Fmeditem> searchFmeditemList(String key);
     List<VisitItem> getVisitItemListById(int medicalRecordInfoId);
     List<VisitItemDetail> getVisitItemDetailListById(int visitUtemId);
     List<Fmeditem> getFmeditemListByList(List<VisitItemDetail> visitItemDetailList);

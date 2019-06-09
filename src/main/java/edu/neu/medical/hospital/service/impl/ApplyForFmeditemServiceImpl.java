@@ -98,20 +98,6 @@ public class ApplyForFmeditemServiceImpl implements ApplyForFmeditemService {
     }
 
     /*
-     * @Description 根据type搜索非药品项目，key为空获得全部
-     * @Param [key 拼音首字母转换成大写]
-     * @return java.util.List<edu.neu.medical.hospital.bean.Fmeditem>
-     **/
-    public List<Fmeditem> searchFmeditemList(String key){
-        FmeditemExample fmeditemExample=new FmeditemExample();
-        FmeditemExample.Criteria criteria=fmeditemExample.createCriteria();
-        Integer integer=type-'0';
-        criteria.andRecordtypeEqualTo(integer.shortValue());
-        criteria.andMnemoniccodeLike(key.toUpperCase()+"%");
-        return fmeditemMapper.selectByExample(fmeditemExample);
-    }
-
-    /*
      * @Description 根据常用选项存储的id在非药品表获得常用项目列表(常用选项列表在门诊医生工作站服务类)
      * @Param [commonOptionList]
      * @return java.util.List<edu.neu.medical.hospital.bean.Fmeditem>
