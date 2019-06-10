@@ -68,7 +68,7 @@ public class ApplyForFmeditemServiceImpl implements ApplyForFmeditemService {
     }
 
     /*
-     * @Description 设置看诊项目和名称，暂存开立删除作废
+     * @Description 设置看诊项目和明细，暂存开立删除作废
      * @Param [visitItem id为-1则需要创建, visitItemDetailList 前者为-1需要获取对应id]
      * @return java.lang.Boolean
      **/

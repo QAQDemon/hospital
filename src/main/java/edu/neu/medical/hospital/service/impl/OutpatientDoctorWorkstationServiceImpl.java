@@ -1,13 +1,12 @@
 package edu.neu.medical.hospital.service.impl;
 import edu.neu.medical.hospital.bean.*;
-import edu.neu.medical.hospital.dao.CommonOptionMapper;
-import edu.neu.medical.hospital.dao.DrugsMapper;
-import edu.neu.medical.hospital.dao.FmeditemMapper;
-import edu.neu.medical.hospital.dao.PatientMapper;
+import edu.neu.medical.hospital.dao.*;
 import edu.neu.medical.hospital.service.OutpatientDoctorWorkstationService;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.time.LocalDateTime;
+import java.util.Date;
 import java.util.List;
 
 
@@ -22,6 +21,10 @@ public class OutpatientDoctorWorkstationServiceImpl implements OutpatientDoctorW
     private FmeditemMapper  fmeditemMapper;
     @Resource
     private DrugsMapper drugsMapper;
+    @Resource
+    private DiagnosisMapper diagnosisMapper;
+    @Resource
+    private MedicalRecordInfoMapper medicalRecordInfoMapper;
 
     /*
      * @Description 将已诊或待诊病人列表传回，已诊中会去掉待诊
@@ -85,5 +88,33 @@ public class OutpatientDoctorWorkstationServiceImpl implements OutpatientDoctorW
             criteria.andDrugstypeidNotEqualTo((short) 101);
         criteria.andMnemoniccodeEqualTo(key.toUpperCase() + "%");
         return drugsMapper.selectByExample(drugsExample);
+    }
+
+    /*
+     * @Description 门诊确诊，事先设置final和category
+     * @Param [diagnosisList]
+     * @return java.lang.Boolean
+     **/
+    public Boolean setFinalDiagnosisList(List<Diagnosis> diagnosisList) {
+        diagnosisMapper.insertForeach(diagnosisList);
+        return true;
+    }
+
+    /*
+     * @Description 诊毕，设置状态、就诊时间//TODO
+     * @Param [medicalRecordInfoNo]
+     * @return java.lang.Boolean
+     **/
+    public Boolean setCompleteVisit(int medicalRecordInfoId){
+        //更新病历信息表
+        MedicalRecordInfo medicalRecordInfo = new MedicalRecordInfo();
+        medicalRecordInfo.setId(medicalRecordInfoId);
+        medicalRecordInfo.setStatus("3");
+        medicalRecordInfo.setVisitTime(new Date(System.currentTimeMillis()));
+        medicalRecordInfoMapper.updateByPrimaryKeySelective(medicalRecordInfo);
+        //更新挂号表
+        int medicalRecordNo = medicalRecordInfoMapper.selectByPrimaryKey(medicalRecordInfoId).getMedicalRecordNo();
+
+        return true;
     }
 }

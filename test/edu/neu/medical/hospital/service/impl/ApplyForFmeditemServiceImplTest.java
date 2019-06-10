@@ -32,9 +32,9 @@ public class ApplyForFmeditemServiceImplTest {
 
     @Test
     public void searchFmeditemList() {
-        List<Fmeditem>list= applyForFmeditemService.searchFmeditemList("c");
-        List<Fmeditem>list1= applyForFmeditemService.searchFmeditemList("");
-        List<Fmeditem>list3= applyForFmeditemService.searchFmeditemList("C");
+//        List<Fmeditem>list= applyForFmeditemService.searchFmeditemList("c");
+//        List<Fmeditem>list1= applyForFmeditemService.searchFmeditemList("");
+//        List<Fmeditem>list3= applyForFmeditemService.searchFmeditemList("C");
         return;
     }
 
