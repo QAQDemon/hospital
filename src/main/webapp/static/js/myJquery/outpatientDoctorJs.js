@@ -1,3 +1,5 @@
+var patientList;//保存病人信息列表
+var patient;//病人信息
 //设置搜索获得的病人信息 num 1待诊 2已
 function setPatientList(seenList,listName,num){
     var str="";
@@ -30,6 +32,7 @@ function searchPatientAjax(){
         success: function (result) {
             var isSeenList = result.isSeenList;
             var notSeenList = result.notSeenList;
+            patientList=isSeenList.concat(notSeenList);
             setPatientList(isSeenList, "isSeenList", 2);
             setPatientList(notSeenList, "notSeenList", 1);
             $("#notSeenNumSpan").html(notSeenList.length);
@@ -77,6 +80,19 @@ $("*").click(function (event) {
     if(div.hasClass("show")){
         div.removeClass("show");
         clearPatientList();
+    }
+});
+
+//点击表格设置患者信息
+$("#searchPatientTbody1,#searchPatientTbody2").on("click","tr",function () {
+    var radio=$(this).find("input");
+    radio.prop('checked','true');
+    var no=parseInt(radio.val());
+    for (var i=0; i < patientList.length; i++) {
+        if(patientList[i].medicalRecordNo===no){
+            patient=patientList[i];//保存到全局病人信息   //todo可能不需要
+            break;
+        }
     }
 
 });
