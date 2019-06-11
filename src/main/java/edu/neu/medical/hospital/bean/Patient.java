@@ -1,9 +1,10 @@
 package edu.neu.medical.hospital.bean;
 
+import java.io.Serializable;
 import java.util.Date;
 import java.util.Objects;
 
-public class Patient {
+public class Patient implements Serializable {
     private Integer id;
 
     private Integer medicalRecordNo;

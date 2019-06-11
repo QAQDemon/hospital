@@ -5,7 +5,7 @@
   <select id="searchPatientList" resultMap="BaseResultMap">
     select DISTINCT P.id,P.medical_record_no,P.name,P.age,P.gender,P.birthday,P.identity_card_no,P.family_address
     from patient as P , registration_info as R
-    where P.id=R.patient_id and (R.doctor_id=#{doctorId} or R.depart_id=#{dapartId})
+    where P.medical_record_no=R.medical_record_no and (R.doctor_id=#{doctorId} or R.depart_id=#{departId})
     and R.is_seen_docator=#{isSeenDocator} and R.status=1
     and (P.name like #{key,jdbcType=VARCHAR}"%" or R.medical_record_no = #{intKey})
   </select>

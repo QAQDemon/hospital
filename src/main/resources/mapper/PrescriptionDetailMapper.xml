@@ -1,0 +1,282 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="edu.neu.medical.hospital.dao.PrescriptionDetailMapper" >
+
+  <insert id="insertForeach" parameterType="java.util.List" keyProperty="id" useGeneratedKeys="true">
+    insert into prescription_detail
+    (id,prescription_id,drug_id,usage,consumption,frequent,days,amount,entrustment,is_return_medicine)
+    values
+    <foreach collection="list" item="item" index="index" separator=",">
+      (#{item.id},#{item.prescriptionId},#{item.drugId},#{item.usage},#{item.consumption},#{item.frequent},#{item.days},#{item.amount},#{item.entrustment},#{item.isReturnMedicine})
+    </foreach>
+  </insert>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <resultMap id="BaseResultMap" type="edu.neu.medical.hospital.bean.PrescriptionDetail" >
+    <constructor >
+      <idArg column="id" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="prescription_id" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="drug_id" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="usage" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="consumption" jdbcType="DECIMAL" javaType="java.math.BigDecimal" />
+      <arg column="frequent" jdbcType="CHAR" javaType="java.lang.String" />
+      <arg column="days" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="amount" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="entrustment" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="is_return_medicine" jdbcType="CHAR" javaType="java.lang.String" />
+    </constructor>
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    id, prescription_id, drug_id, usage, consumption, frequent, days, amount, entrustment, 
+    is_return_medicine
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="edu.neu.medical.hospital.bean.PrescriptionDetailExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from prescription_detail
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <delete id="deleteByExample" parameterType="edu.neu.medical.hospital.bean.PrescriptionDetailExample" >
+    delete from prescription_detail
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insertSelective" parameterType="edu.neu.medical.hospital.bean.PrescriptionDetail" >
+    <selectKey resultType="java.lang.Integer" keyProperty="id" order="BEFORE" >
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into prescription_detail
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      id,
+      <if test="prescriptionId != null" >
+        prescription_id,
+      </if>
+      <if test="drugId != null" >
+        drug_id,
+      </if>
+      <if test="usage != null" >
+        usage,
+      </if>
+      <if test="consumption != null" >
+        consumption,
+      </if>
+      <if test="frequent != null" >
+        frequent,
+      </if>
+      <if test="days != null" >
+        days,
+      </if>
+      <if test="amount != null" >
+        amount,
+      </if>
+      <if test="entrustment != null" >
+        entrustment,
+      </if>
+      <if test="isReturnMedicine != null" >
+        is_return_medicine,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      #{id,jdbcType=INTEGER},
+      <if test="prescriptionId != null" >
+        #{prescriptionId,jdbcType=INTEGER},
+      </if>
+      <if test="drugId != null" >
+        #{drugId,jdbcType=INTEGER},
+      </if>
+      <if test="usage != null" >
+        #{usage,jdbcType=VARCHAR},
+      </if>
+      <if test="consumption != null" >
+        #{consumption,jdbcType=DECIMAL},
+      </if>
+      <if test="frequent != null" >
+        #{frequent,jdbcType=CHAR},
+      </if>
+      <if test="days != null" >
+        #{days,jdbcType=INTEGER},
+      </if>
+      <if test="amount != null" >
+        #{amount,jdbcType=INTEGER},
+      </if>
+      <if test="entrustment != null" >
+        #{entrustment,jdbcType=VARCHAR},
+      </if>
+      <if test="isReturnMedicine != null" >
+        #{isReturnMedicine,jdbcType=CHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="edu.neu.medical.hospital.bean.PrescriptionDetailExample" resultType="java.lang.Integer" >
+    select count(*) from prescription_detail
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update prescription_detail
+    <set >
+      <if test="record.id != null" >
+        id = #{record.id,jdbcType=INTEGER},
+      </if>
+      <if test="record.prescriptionId != null" >
+        prescription_id = #{record.prescriptionId,jdbcType=INTEGER},
+      </if>
+      <if test="record.drugId != null" >
+        drug_id = #{record.drugId,jdbcType=INTEGER},
+      </if>
+      <if test="record.usage != null" >
+        usage = #{record.usage,jdbcType=VARCHAR},
+      </if>
+      <if test="record.consumption != null" >
+        consumption = #{record.consumption,jdbcType=DECIMAL},
+      </if>
+      <if test="record.frequent != null" >
+        frequent = #{record.frequent,jdbcType=CHAR},
+      </if>
+      <if test="record.days != null" >
+        days = #{record.days,jdbcType=INTEGER},
+      </if>
+      <if test="record.amount != null" >
+        amount = #{record.amount,jdbcType=INTEGER},
+      </if>
+      <if test="record.entrustment != null" >
+        entrustment = #{record.entrustment,jdbcType=VARCHAR},
+      </if>
+      <if test="record.isReturnMedicine != null" >
+        is_return_medicine = #{record.isReturnMedicine,jdbcType=CHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update prescription_detail
+    set id = #{record.id,jdbcType=INTEGER},
+      prescription_id = #{record.prescriptionId,jdbcType=INTEGER},
+      drug_id = #{record.drugId,jdbcType=INTEGER},
+      usage = #{record.usage,jdbcType=VARCHAR},
+      consumption = #{record.consumption,jdbcType=DECIMAL},
+      frequent = #{record.frequent,jdbcType=CHAR},
+      days = #{record.days,jdbcType=INTEGER},
+      amount = #{record.amount,jdbcType=INTEGER},
+      entrustment = #{record.entrustment,jdbcType=VARCHAR},
+      is_return_medicine = #{record.isReturnMedicine,jdbcType=CHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="edu.neu.medical.hospital.bean.PrescriptionDetail" >
+    update prescription_detail
+    <set >
+      <if test="prescriptionId != null" >
+        prescription_id = #{prescriptionId,jdbcType=INTEGER},
+      </if>
+      <if test="drugId != null" >
+        drug_id = #{drugId,jdbcType=INTEGER},
+      </if>
+      <if test="usage != null" >
+        usage = #{usage,jdbcType=VARCHAR},
+      </if>
+      <if test="consumption != null" >
+        consumption = #{consumption,jdbcType=DECIMAL},
+      </if>
+      <if test="frequent != null" >
+        frequent = #{frequent,jdbcType=CHAR},
+      </if>
+      <if test="days != null" >
+        days = #{days,jdbcType=INTEGER},
+      </if>
+      <if test="amount != null" >
+        amount = #{amount,jdbcType=INTEGER},
+      </if>
+      <if test="entrustment != null" >
+        entrustment = #{entrustment,jdbcType=VARCHAR},
+      </if>
+      <if test="isReturnMedicine != null" >
+        is_return_medicine = #{isReturnMedicine,jdbcType=CHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

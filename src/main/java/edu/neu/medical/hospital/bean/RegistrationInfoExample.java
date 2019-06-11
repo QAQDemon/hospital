@@ -1,4 +1,4 @@
-package edu.neu.medical.hospital.temp;
+package edu.neu.medical.hospital.bean;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;

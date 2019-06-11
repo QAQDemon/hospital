@@ -1,7 +1,7 @@
-package edu.neu.medical.hospital.temp;
+package edu.neu.medical.hospital.dao;
 
-import edu.neu.medical.hospital.temp.RegistrationInfo;
-import edu.neu.medical.hospital.temp.RegistrationInfoExample;
+import edu.neu.medical.hospital.bean.RegistrationInfo;
+import edu.neu.medical.hospital.bean.RegistrationInfoExample;
 import java.util.List;
 import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;

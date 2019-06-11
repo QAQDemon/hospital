@@ -1,32 +1,32 @@
-<!--<%@ page contentType="text/html;charset=UTF-8" language="java" %>-->
-<!--<%-->
-<!--String path = request.getContextPath();-->
-<!--String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";-->
-<!--%>-->
-<!--<base href="<%=basePath%>"/>-->
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%
+String path = request.getContextPath();
+String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+%>
+<base href="<%=basePath%>"/>
 <!DOCTYPE html>
 <html lang="zh-cn">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1, user-scalable=no">
     <title>门诊医生工作站</title>
-    <link rel="shortcut icon" href="../images/icon.png" type="image/x-icon"/>
-    <link rel="stylesheet" type="text/css" href="../css/bootstrap.css">
+    <link rel="shortcut icon" href="images/icon.png" type="image/x-icon"/>
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
 </head>
 <body>
 <div class="container">
     <nav class="navbar navbar-expand-md ">
-            <div class="col-md-9">
-                <!-- Brand/logo -->
-                <a class="navbar-brand" href="#">
-                    <img src="../images/logo.png" alt="logo" style="height: 45px;margin-left: -5px;">
-                </a>
-            </div>
-            <div class="col-md-3 text-right" >
-                <span ><strong>门诊医生：</strong></span>
-                <span>哈哈哈</span>&nbsp;
-                <button type="button" class="btn btn-secondary">退出</button>
-            </div>
+        <div class="col-md-9">
+            <!-- Brand/logo -->
+            <a class="navbar-brand" href="#">
+                <img src="images/logo.png" alt="logo" style="height: 45px;margin-left: -5px;">
+            </a>
+        </div>
+        <div class="col-md-3 text-right" >
+            <span ><strong>门诊医生：</strong></span>
+            <span>哈哈哈</span>&nbsp;
+            <button type="button" class="btn btn-secondary">退出</button>
+        </div>
     </nav>
     <div class="row">
         <!--左侧患者搜索卡片-->
@@ -59,7 +59,7 @@
                             <tr>
                                 <th colspan="3">待诊患者<span class="badge badge-pill badge-danger">4</span></th>
                                 <th style="text-align:right;">
-                                    <img src="../../static/images/reflush_img.jpg" alt="刷新" style="height: 15px;width: 15px">
+                                    <img src="images/reflush_img.jpg" alt="刷新" style="height: 15px;width: 15px">
                                 </th>
                             </tr>
                             </thead>
@@ -104,7 +104,7 @@
                             <tr>
                                 <th colspan="3">已诊患者<span class="badge badge-pill badge-success">3</span></th>
                                 <th style="text-align:right;">
-                                    <img src="../../static/images/reflush_img.jpg" style="height: 15px;width: 15px" alt="刷新">
+                                    <img src="images/reflush_img.jpg" style="height: 15px;width: 15px" alt="刷新">
                                 </th>
                             </tr>
                             </thead>
@@ -158,7 +158,6 @@
                             <button type="button" class="btn btn-primary" data-toggle="collapse" data-target="#searchCard" id="searchPatientButton">搜索</button>
                             <button type="button" class="btn btn-info">统计</button>
                         </div>
-
                         &nbsp;&nbsp;
                         <label class="control-label font-weight-bold">就诊状态：</label><span class="text-success font-weight-bold">待诊</span>&nbsp;&nbsp;
                         <label class="control-label font-weight-bold">病历号：</label><span class="">00000000001</span>&nbsp;&nbsp;
@@ -171,7 +170,7 @@
                     </div>
                 </div>
             </div></div>
-           <!--可变部分-->
+            <!--可变部分-->
             <div class="card">
                 <!--功能导航栏-->
                 <div class="card-header">
@@ -270,16 +269,16 @@
                                                     <label class="col-md-2 font-weight-bold" for="physicalExamination">西医诊断</label>
                                                     <table class="table table-condensed table-striped table-hover table-sm table-bordered col-md-10" >
                                                         <thead>
-                                                            <tr>
-                                                                <th>&nbsp;</th>
-                                                                <th>ICD编码</th>
-                                                                <th>名称<span class="text-danger">*</span></th>
-                                                                <th>主诊</th>
-                                                                <th>疑似</th>
-                                                                <th>发病日期</th>
-                                                                <th>&nbsp;</th>
-                                                                <th class="text-center table-primary text-white"><a class="font-weight-bold">+</a></th>
-                                                            </tr>
+                                                        <tr>
+                                                            <th>&nbsp;</th>
+                                                            <th>ICD编码</th>
+                                                            <th>名称<span class="text-danger">*</span></th>
+                                                            <th>主诊</th>
+                                                            <th>疑似</th>
+                                                            <th>发病日期</th>
+                                                            <th>&nbsp;</th>
+                                                            <th class="text-center table-primary text-white"><a class="font-weight-bold">+</a></th>
+                                                        </tr>
                                                         </thead>
                                                         <tbody>
                                                         <tr>
@@ -289,7 +288,7 @@
                                                             <td>35岁</td>
                                                             <td>s</td>
                                                             <td>a</td>
-                                                            <td><img src="../../static/images/save_icon.jpg" style="height: 20px;width: 20px" alt="保存"></td>
+                                                            <td><img src="images/save_icon.jpg" style="height: 20px;width: 20px" alt="保存"></td>
                                                             <td class="text-center table-danger text-white"><a class="font-weight-bold">-</a></td>
                                                         </tr>
                                                         <tr>
@@ -299,7 +298,7 @@
                                                             <td>35岁</td>
                                                             <td>s</td>
                                                             <td>a</td>
-                                                            <td><img src="../../static/images/save_icon.jpg" style="height: 15px;width: 15px" alt="保存"></td>
+                                                            <td><img src="images/save_icon.jpg" style="height: 15px;width: 15px" alt="保存"></td>
                                                             <td class="text-center table-danger text-white"><a class="font-weight-bold">-</a></td>
                                                         </tr>
                                                         <tr>
@@ -309,7 +308,7 @@
                                                             <td>35岁</td>
                                                             <td>s</td>
                                                             <td>a</td>
-                                                            <td><img src="../../static/images/save_icon.jpg" style="height: 15px;width: 15px" alt="保存"></td>
+                                                            <td><img src="images/save_icon.jpg" style="height: 15px;width: 15px" alt="保存"></td>
                                                             <td class="text-center table-danger text-white"><a class="font-weight-bold">-</a></td>
                                                         </tr>
                                                     </table>
@@ -338,7 +337,7 @@
                                                             <td>35岁</td>
                                                             <td>s</td>
                                                             <td>a</td>
-                                                            <td><img src="../../static/images/save_icon.jpg" style="height: 15px;width: 15px" alt="保存"></td>
+                                                            <td><img src="images/save_icon.jpg" style="height: 15px;width: 15px" alt="保存"></td>
                                                             <td class="text-center table-danger text-white"><a class="font-weight-bold">-</a></td>
                                                         </tr>
                                                         <tr>
@@ -348,7 +347,7 @@
                                                             <td>35岁</td>
                                                             <td>s</td>
                                                             <td>a</td>
-                                                            <td><img src="../../static/images/save_icon.jpg" style="height: 15px;width: 15px" alt="保存"></td>
+                                                            <td><img src="images/save_icon.jpg" style="height: 15px;width: 15px" alt="保存"></td>
                                                             <td class="text-center table-danger text-white"><a class="font-weight-bold">-</a></td>
                                                         </tr>
                                                         <tr>
@@ -358,7 +357,7 @@
                                                             <td>35岁</td>
                                                             <td>s</td>
                                                             <td>a</td>
-                                                            <td><img src="../../static/images/save_icon.jpg" style="height: 15px;width: 15px" alt="保存"></td>
+                                                            <td><img src="images/save_icon.jpg" style="height: 15px;width: 15px" alt="保存"></td>
                                                             <td class="text-center table-danger text-white"><a class="font-weight-bold">-</a></td>
                                                         </tr>
                                                     </table>
@@ -533,19 +532,42 @@
 </div>
 
 
-<script type="text/javascript" src="../js/jquery.min.js"></script>
-<script type="text/javascript" src="../js/popper.min.js"></script>
-<script type="text/javascript" src="../js/bootstrap.js"></script>
+<script type="text/javascript" src="js/jquery.min.js"></script>
+<script type="text/javascript" src="js/popper.min.js"></script>
+<script type="text/javascript" src="js/bootstrap.js"></script>
 <script type="text/javascript">
     $(document).ready(function(){
-        $("#searchPatientButton").click(function () {
-            if(!$("#searchCard").hasClass("show")){
-
-            }
-
+        $("#searchPatientButton").click(function(){
+            if($("#searchCard").hasClass("show"))
+                alert("a");
+            else
+                alert("n");
+            // $.ajax({
+            //     type: "POST",//方法类型
+            //     dataType: "json",//预期服务器返回的数据类型
+            //     url: "outpatientDoctorWorkstation/searchPatient/1",//url
+            //     data:{},
+            //     success: function (result) {
+            //         alert(result.isSeenList[0].name);
+            //         alert(result.notSeenList);
+            //     }
+            // });
         });
-
-
+        $("#searchPatientKey").click(function(){
+            alert("outpatientDoctorWorkstation/searchPatient/"+$("#searchPatientKey").val());
+            $.ajax({
+                type: "POST",//方法类型
+                dataType: "json",//预期服务器返回的数据类型
+                url: "outpatientDoctorWorkstation/searchPatient/"+$("#searchPatientKey").val(),//url
+                data:{},
+                success: function (result) {
+                    console.log(result);//打印服务端返回的数据(调试用)
+                    if (result.resultCode == 200) {
+                        alert("SUCCESS");
+                    };
+                }
+            });
+        });
     });
 </script>
 </body>

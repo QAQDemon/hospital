@@ -9,7 +9,7 @@ public interface MedicalRecordHomeService {
     MedicalRecordInfo getMedicalRecordInfoById(char isSeen, int medicalRecordId);
     List<Diagnosis> getNewDiagnosisListById(char category,char type,int medicalRecordInfoId);
     Boolean setMedicalRecordInfoAndDiagnosisList(MedicalRecordInfo medicalRecordInfo, List<Diagnosis> diagnosisList) ;
-    List<Disease> searchDiseaseListByCode(String diseaseCode);
+    List<Disease> searchDiseaseListByCode(char type,String diseaseCode);
     List<Disease> getCommonDiagnosisList(List<CommonOption> commonOptionList);
     int deleteCommonDiagnosis(int doctorId,char type,int diseaseId);
     List<Disease> getDiagnosisDiseaseList(List<Diagnosis> diagnosisList);

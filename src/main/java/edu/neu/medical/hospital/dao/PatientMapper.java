@@ -20,7 +20,7 @@ public interface PatientMapper {
      * @Param [doctorId, dapartId,isSeenDocator, key,intKey]
      * @return java.util.List<edu.neu.medical.hospital.bean.Patient>
      **/
-    List<Patient> searchPatientList(@Param("doctorId")int doctorId,@Param("dapartId") int dapartId,
+    List<Patient> searchPatientList(@Param("doctorId")int doctorId,@Param("departId") int departId,
                                     @Param("isSeenDocator") char isSeenDocator, @Param("key") String key,
                                     @Param("intKey") int intKey);
 

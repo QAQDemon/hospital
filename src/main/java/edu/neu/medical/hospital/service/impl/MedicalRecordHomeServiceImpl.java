@@ -112,14 +112,18 @@ public class MedicalRecordHomeServiceImpl implements MedicalRecordHomeService {
     }
 
     /*
-     * @Description 根据疾病编码,转换大写（拼音首字母）模糊搜索
-     * @Param [diseaseCode]
+     * @Description 根据疾病编码,转换大写（拼音首字母）模糊搜索（判断中西病）
+     * @Param [type 1西病 2中病(472),diseaseCode]
      * @return java.util.List<edu.neu.medical.hospital.bean.Disease>
      **/
-    public List<Disease> searchDiseaseListByCode(String diseaseCode) {
+    public List<Disease> searchDiseaseListByCode(char type,String diseaseCode) {
         DiseaseExample diseaseExample=new DiseaseExample();
         DiseaseExample.Criteria criteria=diseaseExample.createCriteria();
         criteria.andDiseasecodeLike(diseaseCode.toUpperCase()+"%");
+        if(type=='2')
+            criteria.andDisecategoryidEqualTo((short)472);
+        else
+            criteria.andDisecategoryidNotEqualTo((short)472);
         return diseaseMapper.selectByExample(diseaseExample);
     }
 
