@@ -35,10 +35,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 <div class="card-body">
                     <!--患者搜索框-->
                     <div class="row">
-                        <form class="" id="searchPatientForm" role="form">
+                        <form class="" id="searchPatientForm" role="form" onkeypress="return event.keyCode !== 13;">
                             <label class="control-label font-weight-bold" for="searchPatientKey">患者查询：</label>
                             <input type="search" class="form-control" id="searchPatientKey" name="searchPatientKey" style="width: 175px"
-                                   placeholder="输入姓名或病历号"/>
+                                   placeholder="Name or No&Enter"/>
                         </form>
                     </div>
                     <br>
@@ -46,10 +46,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                     <div class="row" >
                         <ul class="nav nav-pills">
                             <li class="nav-item">
-                                <a class="nav-link active font-weight-bold" href="#">本人</a>
+                                <a id="patientSearchCategory1" class="nav-link active font-weight-bold" href="#">本人</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link font-weight-bold" href="#">科室</a>
+                                <a id="patientSearchCategory2" class="nav-link font-weight-bold" href="#">科室</a>
                             </li>
                         </ul>
                     </div>
@@ -57,92 +57,24 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                         <table class="table table-condensed table-striped table-hover table-sm">
                             <thead>
                             <tr>
-                                <th colspan="3">待诊患者<span class="badge badge-pill badge-danger">4</span></th>
+                                <th colspan="3">待诊患者<span id="notSeenNumSpan" class="badge badge-pill badge-danger">0</span></th>
                                 <th style="text-align:right;">
-                                    <img src="images/reflush_img.jpg" alt="刷新" style="height: 15px;width: 15px">
+                                    <a href="#"><img src="images/reflush_img.jpg" alt="刷新" style="height: 15px;width: 15px"></a>
                                 </th>
                             </tr>
                             </thead>
-                            <tbody>
-                            <tr>
-                                <td>
-                                    <div class="custom-control custom-radio">
-                                        <input type="radio" class="custom-control-input" id="customRadio" name="example1" value="customEx">
-                                        <label class="custom-control-label" for="customRadio"></label>
-                                    </div>
-                                </td>
-                                <td>00001</td>
-                                <td>哒哒哒</td>
-                                <td>35岁</td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <div class="custom-control custom-radio">
-                                        <input type="radio" class="custom-control-input" id="customRadio1" name="example1" value="customEx">
-                                        <label class="custom-control-label" for="customRadio1"></label>
-                                    </div>
-                                </td>
-                                <td>00001</td>
-                                <td>哒哒哒</td>
-                                <td>35岁</td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <div class="custom-control custom-radio">
-                                        <input type="radio" class="custom-control-input" id="customRadio2" name="example1" value="customEx">
-                                        <label class="custom-control-label" for="customRadio2"></label>
-                                    </div>
-                                </td>
-                                <td>00001</td>
-                                <td>哒哒哒</td>
-                                <td>35岁</td>
-                            </tr>
-                            </tbody>
+                            <tbody id="searchPatientTbody1"></tbody>
                         </table>
                         <table class="table table-condensed table-striped table-hover table-sm">
                             <thead>
                             <tr>
-                                <th colspan="3">已诊患者<span class="badge badge-pill badge-success">3</span></th>
+                                <th colspan="3">已诊患者<span id="isSeenNumSpan" class="badge badge-pill badge-success">0</span></th>
                                 <th style="text-align:right;">
-                                    <img src="images/reflush_img.jpg" style="height: 15px;width: 15px" alt="刷新">
+                                    <a href="#"><img src="images/reflush_img.jpg" alt="刷新" style="height: 15px;width: 15px"></a>
                                 </th>
                             </tr>
                             </thead>
-                            <tbody>
-                            <tr>
-                                <td>
-                                    <div class="custom-control custom-radio">
-                                        <input type="radio" class="custom-control-input" id="customRadio3" name="example1" value="customEx">
-                                        <label class="custom-control-label" for="customRadio3"></label>
-                                    </div>
-                                </td>
-                                <td>00001</td>
-                                <td>哒哒哒</td>
-                                <td>35岁</td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <div class="custom-control custom-radio">
-                                        <input type="radio" class="custom-control-input" id="customRadio4" name="example1" value="customEx">
-                                        <label class="custom-control-label" for="customRadio4"></label>
-                                    </div>
-                                </td>
-                                <td>00001</td>
-                                <td>哒哒哒</td>
-                                <td>35岁</td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <div class="custom-control custom-radio">
-                                        <input type="radio" class="custom-control-input" id="customRadio5" name="example1" value="customEx">
-                                        <label class="custom-control-label" for="customRadio5"></label>
-                                    </div>
-                                </td>
-                                <td>00001</td>
-                                <td>哒哒哒</td>
-                                <td>35岁</td>
-                            </tr>
-                            </tbody>
+                            <tbody id="searchPatientTbody2"></tbody>
                         </table>
                     </form></div>
                 </div>
@@ -535,40 +467,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <script type="text/javascript" src="js/jquery.min.js"></script>
 <script type="text/javascript" src="js/popper.min.js"></script>
 <script type="text/javascript" src="js/bootstrap.js"></script>
-<script type="text/javascript">
-    $(document).ready(function(){
-        $("#searchPatientButton").click(function(){
-            if($("#searchCard").hasClass("show"))
-                alert("a");
-            else
-                alert("n");
-            // $.ajax({
-            //     type: "POST",//方法类型
-            //     dataType: "json",//预期服务器返回的数据类型
-            //     url: "outpatientDoctorWorkstation/searchPatient/1",//url
-            //     data:{},
-            //     success: function (result) {
-            //         alert(result.isSeenList[0].name);
-            //         alert(result.notSeenList);
-            //     }
-            // });
-        });
-        $("#searchPatientKey").click(function(){
-            alert("outpatientDoctorWorkstation/searchPatient/"+$("#searchPatientKey").val());
-            $.ajax({
-                type: "POST",//方法类型
-                dataType: "json",//预期服务器返回的数据类型
-                url: "outpatientDoctorWorkstation/searchPatient/"+$("#searchPatientKey").val(),//url
-                data:{},
-                success: function (result) {
-                    console.log(result);//打印服务端返回的数据(调试用)
-                    if (result.resultCode == 200) {
-                        alert("SUCCESS");
-                    };
-                }
-            });
-        });
-    });
-</script>
+<script type="text/javascript" src="js/myJquery/outpatientDoctorJs.js"></script>
 </body>
 </html>

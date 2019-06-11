@@ -2,16 +2,11 @@ package edu.neu.medical.hospital.controller;
 
 import edu.neu.medical.hospital.bean.Patient;
 import edu.neu.medical.hospital.service.OutpatientDoctorWorkstationService;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
-
 import javax.annotation.Resource;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -28,7 +23,7 @@ public class OutpatientDoctorWorkstationController {
     }
 
     /*
-     * @Description 患者搜索，全部或部分//TODO
+     * @Description 患者搜索，全部或部分
      * @Param [category 1本人 2科室, key为空搜索全部]
      * @return java.lang.String
      **/
@@ -56,4 +51,6 @@ public class OutpatientDoctorWorkstationController {
         map.put("notSeenList", outpatientDoctorWorkstationService.searchPatientList(doctorId, departID, '1', key));
         return map;
     }
+
+
 }
