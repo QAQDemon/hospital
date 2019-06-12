@@ -85,17 +85,17 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             <!--患者信息-->
             <div class="card"><div class="card-body">
                 <div class="row" >
-                    <div class="col-md-11 form-inline" >
+                    <div id="patientInfoDiv" class="col-md-11 form-inline" >
                         <div class="btn-group">
                             <button type="button" class="btn btn-primary" data-toggle="collapse" data-target="#searchCard" id="searchPatientButton">搜索</button>
                             <button type="button" class="btn btn-info">统计</button>
                         </div>
                         &nbsp;&nbsp;
-                        <label class="control-label font-weight-bold">就诊状态：</label><span class="text-success font-weight-bold">待诊</span>&nbsp;&nbsp;
-                        <label class="control-label font-weight-bold">病历号：</label><span class="">00000000001</span>&nbsp;&nbsp;
-                        <label class="control-label font-weight-bold">姓名：</label><span class="">哒哒哒</span>&nbsp;&nbsp;
-                        <label class="control-label font-weight-bold">性别：</label><span class="">男</span>&nbsp;&nbsp;
-                        <label class="control-label font-weight-bold">年龄：</label><span class="">35岁</span>&nbsp;&nbsp;
+                        <label class="control-label font-weight-bold">就诊状态：</label><span id="visitStatusSpan" class="text-success font-weight-bold"></span>&nbsp;&nbsp;
+                        <label class="control-label font-weight-bold">病单号：</label><span></span>&nbsp;&nbsp;
+                        <label class="control-label font-weight-bold">姓名：</label><span></span>&nbsp;&nbsp;
+                        <label class="control-label font-weight-bold">性别：</label><span></span>&nbsp;&nbsp;
+                        <label class="control-label font-weight-bold">年龄：</label><span></span>&nbsp;&nbsp;
                     </div>
                     <div class="col-md-1 text-right">
                         <button type="button" class="btn btn-danger">诊毕</button>
@@ -156,7 +156,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                             </div>
                                         </div>
                                         <!--病史输入部分-->
-                                        <div class="card">
+                                        <div id="medicalInfoCard1" class="card">
                                             <div class="card-header font-weight-bold">病史内容</div>
                                             <div class="card-body">
                                                 <div class="form-group form-inline">
@@ -183,7 +183,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                         </div>
                                         <br>
                                         <!--检查输入部分-->
-                                        <div class="card">
+                                        <div id="medicalInfoCard2" class="card">
                                             <div class="card-header font-weight-bold">检查及结果</div>
                                             <div class="card-body">
                                                 <div class="form-group form-inline">
@@ -209,41 +209,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                                             <th>疑似</th>
                                                             <th>发病日期</th>
                                                             <th>&nbsp;</th>
-                                                            <th class="text-center table-primary text-white"><a class="font-weight-bold">+</a></th>
+                                                            <th class="text-center table-primary text-white"><a href="#" class="text-white font-weight-bold">+</a></th>
                                                         </tr>
                                                         </thead>
-                                                        <tbody>
-                                                        <tr>
-                                                            <td>1</td>
-                                                            <td>00001</td>
-                                                            <td>哒哒哒</td>
-                                                            <td>35岁</td>
-                                                            <td>s</td>
-                                                            <td>a</td>
-                                                            <td><img src="images/save_icon.jpg" style="height: 20px;width: 20px" alt="保存"></td>
-                                                            <td class="text-center table-danger text-white"><a class="font-weight-bold">-</a></td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>1</td>
-                                                            <td>00001</td>
-                                                            <td>哒哒哒</td>
-                                                            <td>35岁</td>
-                                                            <td>s</td>
-                                                            <td>a</td>
-                                                            <td><img src="images/save_icon.jpg" style="height: 15px;width: 15px" alt="保存"></td>
-                                                            <td class="text-center table-danger text-white"><a class="font-weight-bold">-</a></td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>1</td>
-                                                            <td>00001</td>
-                                                            <td>哒哒哒</td>
-                                                            <td>35岁</td>
-                                                            <td>s</td>
-                                                            <td>a</td>
-                                                            <td><img src="images/save_icon.jpg" style="height: 15px;width: 15px" alt="保存"></td>
-                                                            <td class="text-center table-danger text-white"><a class="font-weight-bold">-</a></td>
-                                                        </tr>
-                                                    </table>
+                                                        <tbody id="diagnosisContextTbody1"></table>
                                                 </div>
                                                 <!--中医诊断输入-->
                                                 <div class="form-group form-inline">
@@ -253,46 +222,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                                         <tr>
                                                             <th>&nbsp;</th>
                                                             <th>ICD编码</th>
-                                                            <th>名称</th>
+                                                            <th>名称<span class="text-danger">*</span></th>
                                                             <th>主诊</th>
                                                             <th>疑似</th>
                                                             <th>发病日期</th>
                                                             <th>&nbsp;</th>
-                                                            <th class="text-center table-primary text-white"><a class="font-weight-bold">+</a></th>
+                                                            <th class="text-center table-primary text-white"><a href="#" class="text-white font-weight-bold">+</a></th>
                                                         </tr>
                                                         </thead>
-                                                        <tbody>
-                                                        <tr>
-                                                            <td>1</td>
-                                                            <td>00001</td>
-                                                            <td>哒哒哒</td>
-                                                            <td>35岁</td>
-                                                            <td>s</td>
-                                                            <td>a</td>
-                                                            <td><img src="images/save_icon.jpg" style="height: 15px;width: 15px" alt="保存"></td>
-                                                            <td class="text-center table-danger text-white"><a class="font-weight-bold">-</a></td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>1</td>
-                                                            <td>00001</td>
-                                                            <td>哒哒哒</td>
-                                                            <td>35岁</td>
-                                                            <td>s</td>
-                                                            <td>a</td>
-                                                            <td><img src="images/save_icon.jpg" style="height: 15px;width: 15px" alt="保存"></td>
-                                                            <td class="text-center table-danger text-white"><a class="font-weight-bold">-</a></td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>1</td>
-                                                            <td>00001</td>
-                                                            <td>哒哒哒</td>
-                                                            <td>35岁</td>
-                                                            <td>s</td>
-                                                            <td>a</td>
-                                                            <td><img src="images/save_icon.jpg" style="height: 15px;width: 15px" alt="保存"></td>
-                                                            <td class="text-center table-danger text-white"><a class="font-weight-bold">-</a></td>
-                                                        </tr>
-                                                    </table>
+                                                        <tbody id="diagnosisContextTbody2"></table>
                                                 </div>
                                             </div>
                                         </div>

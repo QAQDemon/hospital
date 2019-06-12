@@ -52,5 +52,4 @@ public class OutpatientDoctorWorkstationController {
         return map;
     }
 
-
 }

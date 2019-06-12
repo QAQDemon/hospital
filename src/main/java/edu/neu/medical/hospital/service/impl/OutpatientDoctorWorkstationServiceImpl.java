@@ -105,7 +105,7 @@ public class OutpatientDoctorWorkstationServiceImpl implements OutpatientDoctorW
     }
 
     /*
-     * @Description 诊毕，设置状态、就诊时间//TODO
+     * @Description 诊毕，设置状态、就诊时间
      * @Param [medicalRecordInfoNo]
      * @return java.lang.Boolean
      **/

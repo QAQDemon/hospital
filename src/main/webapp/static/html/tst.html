@@ -120,7 +120,7 @@
             <!--患者信息-->
             <div class="card"><div class="card-body">
                 <div class="row" >
-                    <div class="col-md-11 form-inline" >
+                    <div id="patientInfoDiv" class="col-md-11 form-inline" >
                         <div class="btn-group">
                             <button type="button" class="btn btn-primary" data-toggle="collapse" data-target="#searchCard" id="searchPatientButton">搜索</button>
                             <button type="button" class="btn btn-info">统计</button>
@@ -244,8 +244,8 @@
                                                                 <th>主诊</th>
                                                                 <th>疑似</th>
                                                                 <th>发病日期</th>
-                                                                <th>&nbsp;</th>
-                                                                <th class="text-center table-primary text-white"><a class="font-weight-bold">+</a></th>
+                                                                <th >&nbsp;</th>
+                                                                <th class="text-center table-primary text-white"><a href="#" class="text-white font-weight-bold">+</a></th>
                                                             </tr>
                                                         </thead>
                                                         <tbody>
@@ -253,11 +253,23 @@
                                                             <td>1</td>
                                                             <td>00001</td>
                                                             <td>哒哒哒</td>
-                                                            <td>35岁</td>
-                                                            <td>s</td>
-                                                            <td>a</td>
-                                                            <td><img src="../../static/images/save_icon.jpg" style="height: 20px;width: 20px" alt="保存"></td>
-                                                            <td class="text-center table-danger text-white"><a class="font-weight-bold">-</a></td>
+                                                            <td>
+                                                                <div class="custom-control custom-radio">
+                                                                    <input type="radio" class="custom-control-input" id="customRadio" name="x" checked>
+                                                                    <label class="custom-control-label" for="customRadio"></label>
+                                                                </div>
+                                                            </td>
+                                                            <td>
+                                                                <div class="custom-control custom-checkbox ">
+                                                                    <input type="checkbox" class="custom-control-input" id="customCheck" name="example1">
+                                                                    <label class="custom-control-label" for="customCheck"></label>
+                                                                </div>
+                                                            </td>
+                                                            <td><label>
+                                                                <input id="timeloc" type="datetime-local"  value="2014-01-02T11:42" class="form-control" style="width:180px;height: 30px;padding: 0"/>
+                                                            </label></td>
+                                                            <td style="height: 25px;width:35px"><a href="#"><img src="../../static/images/save_icon.jpg" style="height: 100%;width: 100%" alt="保存"></a> </td>
+                                                            <td class="text-center table-danger text-white"><a href="#" class="text-white font-weight-bold">-</a></td>
                                                         </tr>
                                                         <tr>
                                                             <td>1</td>
