@@ -106,7 +106,6 @@ function clearMedicalInfoContext(){
 //放入评估诊断
 function setDiagnosisList(diagnosisList,diseaseList,listName,num){
     var str="";
-    debugger;
     for (var i=0;i<diagnosisList.length;i++) {
         str+='<tr>\n' +
             '<td>'+(i+1)+'</td>\n' +
@@ -199,6 +198,14 @@ $("#searchPatientTbody1,#searchPatientTbody2").on("click","tr",function () {
             setDiagnosisList(zDiagnosisList,zDiagnosisDiseaseList,"zDiagnosisList",2);
         }
     });
-
-
+});
+//诊断删
+$("#diagnosisContextTbody1,#diagnosisContextTbody2").on("click","a:contains('-')",function () {
+    var tbodyNode=$(this).parent().parent().parent();
+    $(this).parent().parent().replaceWith("");
+    //更新序号
+    tbodyNode.children().each(function (index) {
+        $(this).find("td").first().html(index+1);
+    });
+    return false;
 });
