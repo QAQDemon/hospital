@@ -1,5 +1,7 @@
 package edu.neu.medical.hospital.service.impl;
 
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import edu.neu.medical.hospital.bean.*;
 import edu.neu.medical.hospital.dao.*;
 import edu.neu.medical.hospital.service.MedicalRecordHomeService;
@@ -28,6 +30,8 @@ public class MedicalRecordHomeServiceImpl implements MedicalRecordHomeService {
     private MedrecTemplateMapper medrecTemplateMapper;
     @Resource
     private DepartMapper departMapper;
+
+    private final int diagnosisPageShow=10;//诊断一页显示的数量
 
     /*
      * @Description 根据病历号找到病历信息 未看诊：状态是暂存或完成初诊，需唯一且优先（不存在的情况?）；已看诊：状态是诊毕且显示最近
@@ -112,19 +116,20 @@ public class MedicalRecordHomeServiceImpl implements MedicalRecordHomeService {
     }
 
     /*
-     * @Description 根据疾病编码,转换大写（拼音首字母）模糊搜索（判断中西病）
-     * @Param [type 1西病 2中病(472),diseaseCode]
+     * @Description 根据疾病编码,转换大写（拼音首字母）模糊搜索（判断中西病）,分页
+     * @Param [type 1西病 2中病(472),diseaseCode,pageNum]
      * @return java.util.List<edu.neu.medical.hospital.bean.Disease>
      **/
-    public List<Disease> searchDiseaseListByCode(char type,String diseaseCode) {
+    public PageInfo<Disease> searchDiseaseListByCode(char type,String diseaseCode,int pageNum) {
+        PageHelper.startPage(pageNum,diagnosisPageShow);
         DiseaseExample diseaseExample=new DiseaseExample();
         DiseaseExample.Criteria criteria=diseaseExample.createCriteria();
-        criteria.andDiseasecodeLike(diseaseCode.toUpperCase()+"%");
+        criteria.andDiseasecodeLike("%"+diseaseCode.toUpperCase()+"%");
         if(type=='2')
             criteria.andDisecategoryidEqualTo((short)472);
         else
             criteria.andDisecategoryidNotEqualTo((short)472);
-        return diseaseMapper.selectByExample(diseaseExample);
+        return new PageInfo<>(diseaseMapper.selectByExample(diseaseExample));
     }
 
     /*

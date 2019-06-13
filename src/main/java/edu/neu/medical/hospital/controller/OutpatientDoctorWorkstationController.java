@@ -17,6 +17,11 @@ public class OutpatientDoctorWorkstationController {
     @Resource
     OutpatientDoctorWorkstationService outpatientDoctorWorkstationService;
 
+    /*
+     * @Description 第一次跳转到主界面
+     * @Param []
+     * @return org.springframework.web.servlet.ModelAndView
+     **/
     @RequestMapping("first")
     public ModelAndView first(){
         return new ModelAndView("outpatientDoctorWorkstation");

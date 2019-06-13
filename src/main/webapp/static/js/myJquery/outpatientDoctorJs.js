@@ -60,13 +60,11 @@ function clearPatientList(){
     $("#searchPatientTbody1,#searchPatientTbody2").html("");
     $("#notSeenNumSpan,#isSeenNumSpan").html(0);
 }
-$("#searchPatientButton").click(function(){
-    //搜索按钮，生效条件
-    if(!$("#searchCard").hasClass("show"))
-        searchPatientAjax();
-    else
-        clearPatientList();
-});
+// $("#searchPatientButton").click(function(){
+//     //搜索按钮，生效条件
+//     if(!$("#searchCard").hasClass("show"))
+//         searchPatientAjax();
+// });
 $("#patientSearchCategory1,#patientSearchCategory2,[alt='刷新']").click(function () {
     if($(this).is("a")){//切换active
         $("#patientSearchCategory1,#patientSearchCategory2").toggleClass("active");
@@ -91,7 +89,6 @@ $("*").click(function (event) {
     var div=$("#searchCard");
     if(div.hasClass("show")){
         div.removeClass("show");
-        clearPatientList();
     }
 });
 
@@ -199,13 +196,74 @@ $("#searchPatientTbody1,#searchPatientTbody2").on("click","tr",function () {
         }
     });
 });
-//诊断删
+//诊断 删
 $("#diagnosisContextTbody1,#diagnosisContextTbody2").on("click","a:contains('-')",function () {
-    var tbodyNode=$(this).parent().parent().parent();
-    $(this).parent().parent().replaceWith("");
-    //更新序号
-    tbodyNode.children().each(function (index) {
-        $(this).find("td").first().html(index+1);
-    });
+    var res = confirm('确认要删除吗？');
+    if(res === true){
+        var tbodyNode=$(this).closest("tbody");
+        $(this).closest("tr").replaceWith("");
+        //更新序号
+        tbodyNode.find("tr").each(function (index) {
+            $(this).find("td").first().html(index+1);
+        });
+    }
     return false;
 });
+//诊断 增
+var diseaseList;//疾病信息列
+var diseaseFlag;//flag 1创建 2不创建页码并跳过
+function diseasePageselectCallback(page_index,jq){
+    if(!(diseaseFlag===1&&page_index===0)){
+        diseaseFlag=2;
+        searchDiagnosisAjax(page_index+1);
+    }
+    alert(page_index + 1);
+    alert(diseaseList[0].id);
+    return false;
+}
+function searchDiagnosisAjax(pageNum){
+    var urlS="medicalRecordHome/searchDiagnosis/"+(($("#DiagnosisModal").find("h4").html()==="西医诊断")?"1":"2")+"/"+pageNum;
+    var inputKey=$("#diagnosisKey").val();
+    if(inputKey!=="")
+        urlS += ("/" + inputKey);
+    $.ajax({
+        type: "POST",//方法类型
+        dataType: "json",//预期服务器返回的数据类型
+        url: urlS,
+        data: {},
+        success: function (result) {
+            diseaseList=result.diseaseList;
+            if(diseaseFlag===1){
+                var initPagination = function() {
+                    // 创建分页
+                    $("#diagnosisPagination").pagination(result.pages, {
+                        num_edge_entries: 1, //边缘页数
+                        num_display_entries: 4, //主体页数
+                        callback: diseasePageselectCallback,
+                        items_per_page:1 //每页显示1项
+                    });
+                }();
+            }
+        }
+    });
+}
+$("button[data-target='#DiagnosisModal']").click(function () {
+    var node=$("#DiagnosisModal");
+    if($(this).closest("table").prev().html()==="西医诊断")
+        node.find("h4").html("西医诊断");
+    else
+        node.find("h4").html("中医诊断");
+    node.find("tbody:even").html("");
+    node.find("#diagnosisKey").val("");
+});
+$("#diagnosisSearchInput").on("click","button",function () {
+    diseaseFlag=1;
+    searchDiagnosisAjax(1);
+}).on("keyup","input",function (e) {
+    if(e.keyCode===13){
+        diseaseFlag=1;
+        searchDiagnosisAjax(1);
+    }
+});
+
+

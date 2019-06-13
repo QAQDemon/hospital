@@ -12,8 +12,79 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <title>门诊医生工作站</title>
     <link rel="shortcut icon" href="images/icon.png" type="image/x-icon"/>
     <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="css/pagination.css">
 </head>
 <body>
+<!-- 诊断弹窗 -->
+<div class="modal fade" id="DiagnosisModal" style="margin-top: 200px">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <!-- 模态框头部 -->
+            <div class="modal-header">
+                <h4 class="modal-title">诊断</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <!-- 模态框主体 -->
+            <div class="modal-body">
+                <form class="form-inline" onkeypress="return event.keyCode !== 13;">
+                    <label class="control-label font-weight-bold" for="diagnosisKey">诊断查询：</label>
+                    <div  id="diagnosisSearchInput" class="input-group">
+                        <input type="search" class="form-control" id="diagnosisKey" name="searchDiagnosisKey" placeholder="输入拼音首字母"/>
+                        <div class="input-group-append">
+                            <button class="btn btn-primary" type="button">搜索</button>
+                        </div>
+                    </div>
+                </form>
+                <br>
+                <table class="table table-striped table-hover table-sm table-bordered" >
+                    <thead>
+                    <tr>
+                        <th>&nbsp;</th>
+                        <th>ID</th>
+                        <th>ICD编码</th>
+                        <th>名称</th>
+                    </tr>
+                    </thead>
+                    <tbody id="diagnosisCheckedTbody">
+                    <tr>
+                        <td>
+                            <div class="custom-control custom-checkbox" >
+                                <input type="checkbox" class="custom-control-input" id="'+listName+i+'Check" name="'+listName+'CheckGroup">
+                                <label class="custom-control-label" for="'+listName+i+'Check"></label>
+                            </div>
+                        </td>
+                        <td>3</td>
+                        <td>A00.053</td>
+                        <td>重型[暴发型或干性]霍乱</td>
+                    </tr>
+                    </tbody>
+                    <tbody><tr><td class="bg-white" colspan="4">&nbsp;</td></tr></tbody>
+                    <tbody  id="diagnosisNotCheckedTbody">
+                    <tr>
+                        <td>
+                            <div class="custom-control custom-checkbox" >
+                                <input type="checkbox" class="custom-control-input" id="'+listName+i+'Check1" name="'+listName+'CheckGroup">
+                                <label class="custom-control-label" for="'+listName+i+'Check1"></label>
+                            </div>
+                        </td>
+                        <td>a3</td>
+                        <td>aA00.053</td>
+                        <td>a重型[暴发型或干性]霍乱</td>
+                    </tr>
+                    </tbody>
+                </table>
+                <!--分页-->
+                <div id="diagnosisPagination" class="pagination"></div>
+            </div>
+            <!-- 模态框底部 -->
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" >保存</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">取消</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!--整体界面-->
 <div class="container">
     <nav class="navbar navbar-expand-md ">
         <div class="col-md-9">
@@ -37,8 +108,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                     <div class="row">
                         <form class="" id="searchPatientForm" role="form" onkeypress="return event.keyCode !== 13;">
                             <label class="control-label font-weight-bold" for="searchPatientKey">患者查询：</label>
-                            <input type="search" class="form-control" id="searchPatientKey" name="searchPatientKey" style="width: 175px"
-                                   placeholder="Name or No&Enter"/>
+                            <div class="input-group input-group-sm">
+                                <input type="search" class="form-control" id="searchPatientKey" name="searchPatientKey" style="width: 175px"
+                                    placeholder="Name or No&Enter"/>
+                            </div>
                         </form>
                     </div>
                     <br>
@@ -204,12 +277,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                                         <tr>
                                                             <th>&nbsp;</th>
                                                             <th>ICD编码</th>
-                                                            <th>名称<span class="text-danger">*</span></th>
+                                                            <th>名称</th>
                                                             <th>主诊</th>
                                                             <th>疑似</th>
                                                             <th>发病日期</th>
                                                             <th>&nbsp;</th>
-                                                            <th class="text-center table-primary text-white"><a href="#" class="text-white font-weight-bold">+</a></th>
+                                                            <th class="text-center" style="padding: 0"><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#DiagnosisModal" style="width: 100%;height: 100%">+
+                                                            </button></th>
                                                         </tr>
                                                         </thead>
                                                         <tbody id="diagnosisContextTbody1"></table>
@@ -222,12 +296,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                                         <tr>
                                                             <th>&nbsp;</th>
                                                             <th>ICD编码</th>
-                                                            <th>名称<span class="text-danger">*</span></th>
+                                                            <th>名称</th>
                                                             <th>主诊</th>
                                                             <th>疑似</th>
                                                             <th>发病日期</th>
                                                             <th>&nbsp;</th>
-                                                            <th class="text-center table-primary text-white"><a href="#" class="text-white font-weight-bold">+</a></th>
+                                                            <th class="text-center" style="padding: 0"><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#DiagnosisModal" style="width: 100%;height: 100%">+
+                                                            </button></th>
                                                         </tr>
                                                         </thead>
                                                         <tbody id="diagnosisContextTbody2"></table>
@@ -406,5 +481,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <script type="text/javascript" src="js/popper.min.js"></script>
 <script type="text/javascript" src="js/bootstrap.js"></script>
 <script type="text/javascript" src="js/myJquery/outpatientDoctorJs.js"></script>
+<script type="text/javascript" src="js/jquery.pagination.js"></script>
 </body>
 </html>

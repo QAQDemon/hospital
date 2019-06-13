@@ -74,7 +74,7 @@ public class OutpatientDoctorWorkstationServiceImpl implements OutpatientDoctorW
         FmeditemExample fmeditemExample=new FmeditemExample();
         FmeditemExample.Criteria criteria=fmeditemExample.createCriteria();
         criteria.andRecordtypeEqualTo((short)type);
-        criteria.andMnemoniccodeLike(key.toUpperCase()+"%");
+        criteria.andMnemoniccodeLike("%"+key.toUpperCase()+"%");
         return fmeditemMapper.selectByExample(fmeditemExample);
     }
 
@@ -90,7 +90,7 @@ public class OutpatientDoctorWorkstationServiceImpl implements OutpatientDoctorW
             criteria.andDrugstypeidEqualTo((short) 101);
         else
             criteria.andDrugstypeidNotEqualTo((short) 101);
-        criteria.andMnemoniccodeEqualTo(key.toUpperCase() + "%");
+        criteria.andMnemoniccodeEqualTo("%"+key.toUpperCase() + "%");
         return drugsMapper.selectByExample(drugsExample);
     }
 
