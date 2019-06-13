@@ -32,7 +32,7 @@
 <!-- 诊断弹窗 -->
 <div class="modal fade" id="DiagnosisModal" style="margin-top: 200px">
     <div class="modal-dialog">
-        <div class="modal-content">
+        <div class="modal-content" style="width: 1000px;margin-left: -50%">
             <!-- 模态框头部 -->
             <div class="modal-header">
                 <h4 class="modal-title">西医诊断</h4>
@@ -40,53 +40,80 @@
             </div>
             <!-- 模态框主体 -->
             <div class="modal-body">
-                <form class="form-inline" onkeypress="return event.keyCode !== 13;">
-                    <label class="control-label font-weight-bold" for="diagnosisKey">诊断查询：</label>
-                    <div id="diagnosisSearchInput" class="input-group">
-                        <input type="search" class="form-control" id="diagnosisKey" name="searchDiagnosisKey" placeholder="输入拼音首字母"/>
-                        <div class="input-group-append">
-                            <button class="btn btn-primary" type="button">搜索</button>
-                        </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <form class="form-inline" onkeypress="return event.keyCode !== 13;">
+                            <label class="control-label font-weight-bold" for="diagnosisKey">诊断查询：</label>
+                            <div id="diagnosisSearchInput" class="input-group">
+                                <input type="search" class="form-control" id="diagnosisKey" name="searchDiagnosisKey" placeholder="输入拼音首字母"/>
+                                <div class="input-group-append">
+                                    <button class="btn btn-primary" type="button">搜索</button>
+                                </div>
+                            </div>
+                        </form>
+                        <br>
+                        <table class="table table-striped table-hover table-sm table-bordered" >
+                            <thead>
+                            <tr>
+                                <th>&nbsp;</th>
+                                <th>ID</th>
+                                <th>ICD编码</th>
+                                <th>名称</th>
+                            </tr>
+                            </thead>
+                            <tbody id="diagnosisCheckedTbody">
+                            <tr>
+                                <td>
+                                    <div class="custom-control custom-checkbox" >
+                                        <input type="checkbox" class="custom-control-input" id="'+listName+i+'Check" name="'+listName+'CheckGroup">
+                                        <label class="custom-control-label" for="'+listName+i+'Check"></label>
+                                    </div>
+                                </td>
+                                <td>3</td>
+                                <td>A00.053</td>
+                                <td>重型[暴发型或干性]霍乱</td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="custom-control custom-checkbox" >
+                                        <input type="checkbox" class="custom-control-input" id="'+listName+i+'Check" name="'+listName+'CheckGroup">
+                                        <label class="custom-control-label" for="'+listName+i+'Check"></label>
+                                    </div>
+                                </td>
+                                <td>4</td>
+                                <td>A00.053</td>
+                                <td>重型[暴发型或干性]霍乱</td>
+                            </tr>
+                            </tbody>
+                        </table>
                     </div>
-                </form>
-                <br>
-                <table class="table table-striped table-hover table-sm table-bordered" >
-                    <thead>
-                        <tr>
-                            <th>&nbsp;</th>
-                            <th>ID</th>
-                            <th>ICD编码</th>
-                            <th>名称</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>
-                                <div class="custom-control custom-checkbox" >
-                                    <input type="checkbox" class="custom-control-input" id="'+listName+i+'Check" name="'+listName+'CheckGroup">
-                                    <label class="custom-control-label" for="'+listName+i+'Check"></label>
-                                </div>
-                            </td>
-                            <td>3</td>
-                            <td>A00.053</td>
-                            <td>重型[暴发型或干性]霍乱</td>
-                        </tr>
-                    </tbody>
-                    <tbody><tr><td class="bg-white" colspan="4">&nbsp;</td></tr></tbody>
-                    <tbody>
-                        <tr>
-                            <td>
-                                <div class="custom-control custom-checkbox" >
-                                    <input type="checkbox" class="custom-control-input" id="'+listName+i+'Check1" name="'+listName+'CheckGroup">
-                                    <label class="custom-control-label" for="'+listName+i+'Check1"></label>
-                                </div>
-                            </td>
-                            <td>a3</td>
-                            <td>aA00.053</td>
-                            <td>a重型[暴发型或干性]霍乱</td>
-                        </tr>
-                    </tbody>
-                </table>
+                    <div class="col-md-6">
+                        <div style="margin-top: 10px"><label class="control-label font-weight-bold">选择结果</label></div>
+                        <table class="table table-striped table-hover table-sm table-bordered" style="margin-top: 18px">
+                            <thead>
+                            <tr>
+                                <th>&nbsp;</th>
+                                <th>ID</th>
+                                <th>ICD编码</th>
+                                <th>名称</th>
+                            </tr>
+                            </thead>
+                            <tbody id="diagnosisNotCheckedTbody">
+                            <tr>
+                                <td>
+                                    <div class="custom-control custom-checkbox" >
+                                        <input type="checkbox" class="custom-control-input" id="'+listName+i+'Check1" name="'+listName+'CheckGroup">
+                                        <label class="custom-control-label" for="'+listName+i+'Check1"></label>
+                                    </div>
+                                </td>
+                                <td>a3</td>
+                                <td>aA00.053</td>
+                                <td>a重型[暴发型或干性]霍乱</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
                 <div class="row">
                     <div class="col-md-9 text-center">
                         <div id="diagnosisPagination" class="myPagination"></div>

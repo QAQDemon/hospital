@@ -211,7 +211,7 @@ $("#diagnosisContextTbody1,#diagnosisContextTbody2").on("click","a:contains('-')
     }
     return false;
 });
-//诊断 增
+//诊断 搜索
 var diseaseList;//疾病信息列
 var diseaseFlag;//flag 1创建 2不创建页码并跳过
 var pages;//总页数
@@ -273,7 +273,7 @@ $("button[data-target='#DiagnosisModal']").click(function () {
         node.find("h4").html("西医诊断");
     else
         node.find("h4").html("中医诊断");
-    node.find("tbody:even").html("");
+    node.find("tbody").html("");
     node.find("#diagnosisKey").val("");
     $("#diagnosisPagination").html("");
     $("#diseasePageJump").hide();
@@ -324,3 +324,27 @@ $("#diseasePageJump").on("click","button",function () {
     }
 });
 
+//诊断 搜索增加
+$("#diagnosisNotCheckedTbody").on("click","tr",function () {
+    var id=$(this).children().eq(1).html();
+    var oneflag=0;
+    var node=$("#diagnosisCheckedTbody");
+    node.children().each(function () {
+        if($(this).children().eq(1).html()===id){
+            alert("已选择");
+            oneflag=1;
+            return false;
+        }
+    });
+    if(oneflag===1)
+        return;
+    node.append("<tr>"+$(this).html()+"</tr>")
+        .find("input").last().attr("checked",'true');
+});
+//诊断 搜索删除
+$("#diagnosisCheckedTbody").on("click","tr",function () {
+    var res = confirm('确认要删除吗？');
+    if(res === true){
+        $(this).remove();
+    }
+});

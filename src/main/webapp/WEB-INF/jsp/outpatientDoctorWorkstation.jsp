@@ -18,7 +18,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <!-- 诊断弹窗 -->
 <div class="modal fade" id="DiagnosisModal">
     <div class="modal-dialog">
-        <div class="modal-content">
+        <div class="modal-content" style="width: 1000px;margin-left: -50%;margin-top: 20%">
             <!-- 模态框头部 -->
             <div class="modal-header">
                 <h4 class="modal-title">诊断</h4>
@@ -26,49 +26,69 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             </div>
             <!-- 模态框主体 -->
             <div class="modal-body">
-                <form class="form-inline" onkeypress="return event.keyCode !== 13;">
-                    <label class="control-label font-weight-bold" for="diagnosisKey">诊断查询：</label>
-                    <div  id="diagnosisSearchInput" class="input-group">
-                        <input type="search" class="form-control" id="diagnosisKey" name="searchDiagnosisKey" placeholder="输入拼音首字母"/>
-                        <div class="input-group-append">
-                            <button class="btn btn-primary" type="button">搜索</button>
-                        </div>
-                    </div>
-                </form>
-                <br>
-                <table class="table table-striped table-hover table-sm table-bordered" >
-                    <thead>
-                    <tr>
-                        <th>&nbsp;</th>
-                        <th>ID</th>
-                        <th>ICD编码</th>
-                        <th>名称</th>
-                    </tr>
-                    </thead>
-                    <tbody id="diagnosisCheckedTbody"></tbody>
-                    <tbody><tr><td class="bg-white" colspan="4">&nbsp;</td></tr></tbody>
-                    <tbody  id="diagnosisNotCheckedTbody"></tbody>
-                </table>
-                <!--分页-->
                 <div class="row">
-                    <div class="col-md-9 text-center">
-                        <div id="diagnosisPagination" class="myPagination"></div>
+                    <div class="col-md-6">
+                        <form class="form-inline" onkeypress="return event.keyCode !== 13;">
+                            <label class="control-label font-weight-bold" for="diagnosisKey">诊断查询：</label>
+                            <div  id="diagnosisSearchInput" class="input-group">
+                                <input type="search" class="form-control" id="diagnosisKey" name="searchDiagnosisKey" placeholder="输入拼音首字母"/>
+                                <div class="input-group-append">
+                                    <button class="btn btn-primary" type="button">搜索</button>
+                                </div>
+                            </div>
+                        </form>
                     </div>
-                    <div id="diseasePageJump" class="col-md-3">
-                        <div class="input-group input-group-sm">
-                            <label for="searchDiagnosisPage"></label>
-                            <input type="number" class="form-control" id="searchDiagnosisPage" placeholder="页码" style="width: 40px"/>
-                            <div class="input-group-append">
-                                <button class="btn btn-primary" type="button">Go</button>
+                    <div class="col-md-6"><div style="margin-top: 7px">
+                        <label class="control-label font-weight-bold">选择结果</label>
+                    </div></div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <table class="table table-striped table-hover table-sm table-bordered" >
+                            <thead>
+                            <tr>
+                                <th>&nbsp;</th>
+                                <th>ID</th>
+                                <th>ICD编码</th>
+                                <th>名称</th>
+                            </tr>
+                            </thead>
+                            <tbody id="diagnosisNotCheckedTbody"></tbody>
+                        </table>
+                        <!--分页-->
+                        <div class="row">
+                            <div class="col-md-9 text-center">
+                                <div id="diagnosisPagination" class="myPagination"></div>
+                            </div>
+                            <div id="diseasePageJump" class="col-md-3">
+                                <div class="input-group input-group-sm">
+                                    <label for="searchDiagnosisPage"></label>
+                                    <input type="number" class="form-control" id="searchDiagnosisPage" placeholder="页码" style="width: 40px"/>
+                                    <div class="input-group-append">
+                                        <button class="btn btn-primary" type="button">Go</button>
+                                    </div>
+                                </div>
                             </div>
                         </div>
+                    </div>
+                    <div class="col-md-6">
+                        <table class="table table-striped table-hover table-sm table-bordered">
+                            <thead>
+                            <tr>
+                                <th>&nbsp;</th>
+                                <th>ID</th>
+                                <th>ICD编码</th>
+                                <th>名称</th>
+                            </tr>
+                            </thead>
+                            <tbody id="diagnosisCheckedTbody"></tbody>
+                        </table>
                     </div>
                 </div>
             </div>
             <!-- 模态框底部 -->
             <div class="modal-footer">
-                <button type="button" class="btn btn-primary" >保存</button>
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">取消</button>
+                <button type="button" class="btn btn-primary" >确定</button>
             </div>
         </div>
     </div>
