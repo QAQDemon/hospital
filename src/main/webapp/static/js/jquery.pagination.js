@@ -9,10 +9,10 @@
  */
 jQuery.fn.pagination = function(maxentries, opts){
 	opts = jQuery.extend({
-		items_per_page:10,
-		num_display_entries:10,
+		items_per_page:1,//每页显示1项
+		num_display_entries:10,//主体页数
 		current_page:0,
-		num_edge_entries:0,
+		num_edge_entries:0, //边缘页数
 		link_to:"#",
 		prev_text:"Prev",
 		next_text:"Next",
@@ -27,16 +27,16 @@ jQuery.fn.pagination = function(maxentries, opts){
 		 * 计算最大分页显示数目
 		 */
 		function numPages() {
-			return Math.ceil(maxentries/opts.items_per_page);
+			return Math.ceil(maxentries/opts.items_per_page);//2000/1
 		}	
 		/**
 		 * 极端分页的起始和结束点，这取决于current_page 和 num_display_entries.
 		 * @返回 {数组(Array)}
 		 */
 		function getInterval()  {
-			var ne_half = Math.ceil(opts.num_display_entries/2);
-			var np = numPages();
-			var upper_limit = np-opts.num_display_entries;
+			var ne_half = Math.ceil(opts.num_display_entries/2);// 4/2uper  2
+			var np = numPages();//20000
+			var upper_limit = np-opts.num_display_entries;//2000-4=1996
 			var start = current_page>ne_half?Math.max(Math.min(current_page-ne_half, upper_limit), 0):0;
 			var end = current_page>ne_half?Math.min(current_page+ne_half, np):Math.min(opts.num_display_entries, np);
 			return [start,end];

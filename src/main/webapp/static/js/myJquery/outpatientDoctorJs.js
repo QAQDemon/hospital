@@ -214,11 +214,8 @@ $("#diagnosisContextTbody1,#diagnosisContextTbody2").on("click","a:contains('-')
 //诊断 增
 var diseaseList;//疾病信息列
 var diseaseFlag;//flag 1创建 2不创建页码并跳过
-function diseasePageselectCallback(page_index,jq){
-    if(!(diseaseFlag===1&&page_index===0)){
-        diseaseFlag=2;
-        searchDiagnosisAjax(page_index+1);
-    }
+var pages;//总页数
+function addDisease() {
     var str="";
     for(var i=0;i<diseaseList.length;i++){
         str+='<tr>\n' +
@@ -234,6 +231,13 @@ function diseasePageselectCallback(page_index,jq){
             '</tr>';
     }
     $("#diagnosisNotCheckedTbody").html(str);
+}
+function diseasePageselectCallback(page_index,jq){
+    if(!(diseaseFlag===1&&page_index===0)){
+        diseaseFlag=2;
+        searchDiagnosisAjax(page_index+1);
+    }
+    addDisease();
     return false;
 }
 function searchDiagnosisAjax(pageNum){
@@ -249,14 +253,14 @@ function searchDiagnosisAjax(pageNum){
         data: {},
         success: function (result) {
             diseaseList=result.diseaseList;
+            pages=result.pages;
             if(diseaseFlag===1){
                 var initPagination = function() {
                     // 创建分页
-                    $("#diagnosisPagination").pagination(result.pages, {
+                    $("#diagnosisPagination").pagination(pages, {
                         num_edge_entries: 1, //边缘页数
-                        num_display_entries: 5, //主体页数
-                        callback: diseasePageselectCallback,
-                        items_per_page:1 //每页显示1项
+                        num_display_entries: 4, //主体页数
+                        callback: diseasePageselectCallback
                     });
                 }();
             }
@@ -271,12 +275,14 @@ $("button[data-target='#DiagnosisModal']").click(function () {
         node.find("h4").html("中医诊断");
     node.find("tbody:even").html("");
     node.find("#diagnosisKey").val("");
-    $("#diagnosisPagination").hide();
+    $("#diagnosisPagination").html("");
+    $("#diseasePageJump").hide();
+    $("#searchDiagnosisPage").val("");
 });
 function searchDiagMethod(){
     diseaseFlag=1;
     searchDiagnosisAjax(1);
-    $("#diagnosisPagination").show();
+    $("#diseasePageJump").show();
 }
 $("#diagnosisSearchInput").on("click","button",function () {
     searchDiagMethod();
@@ -285,7 +291,36 @@ $("#diagnosisSearchInput").on("click","button",function () {
         searchDiagMethod();
     }
 });
+
+//跳转
+function diseasePageJumpMethod(){
+    var num=$("#searchDiagnosisPage").val();
+    if(num==null||num<=0||num>pages||(num%1 !== 0)){
+        alert("异常页码");
+        return;
+    }
+    var current=$("#diagnosisPagination .current").html();
+    if(current===num)//可排除第一次跳第一页
+        return;
+    diseaseFlag=2;
+    searchDiagnosisAjax(num);
+    $("#diagnosisPagination").html("");
+    var initPagination = function() {
+        // 更改分页
+        $("#diagnosisPagination").pagination(pages, {
+            num_edge_entries: 1, //边缘页数
+            num_display_entries: 4, //主体页数
+            callback: diseasePageselectCallback,
+            current_page:num-1
+        });
+    }();
+    addDisease();
+}
 $("#diseasePageJump").on("click","button",function () {
-    
-})
+    diseasePageJumpMethod();
+}).on("keyup","input",function (e) {
+    if(e.keyCode===13){
+        diseasePageJumpMethod();
+    }
+});
 

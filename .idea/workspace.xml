@@ -8,12 +8,9 @@
   <component name="ChangeListManager">
     <list default="true" id="dbf00169-a8e7-473c-9987-97a8297bcd84" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/edu/neu/medical/hospital/controller/MedicalRecordHomeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/neu/medical/hospital/controller/MedicalRecordHomeController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/outpatientDoctorWorkstation.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/outpatientDoctorWorkstation.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/css/pagination.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/static/css/pagination.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/static/html/tst.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/static/html/tst.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/js/jquery.pagination.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/static/js/jquery.pagination.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/static/js/myJquery/outpatientDoctorJs.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/static/js/myJquery/outpatientDoctorJs.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/edu/neu/medical/hospital/service/impl/MedicalRecordHomeServiceImplTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/edu/neu/medical/hospital/service/impl/MedicalRecordHomeServiceImplTest.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -64,14 +61,14 @@
     <favorites_list name="hospital" />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.4724746">
+    <splitter split-orientation="horizontal" split-proportion="0.49394348">
       <split-first>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
           <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/outpatientDoctorWorkstation.jsp">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="513">
-                  <caret line="61" column="39" selection-start-line="61" selection-start-column="33" selection-end-line="61" selection-end-column="39" />
+                <state relative-caret-position="463">
+                  <caret line="59" column="93" selection-start-line="59" selection-start-column="74" selection-end-line="59" selection-end-column="93" />
                   <folding>
                     <element signature="e#951#958#1#HTML" expanded="true" />
                     <element signature="e#2782#2788#1#HTML" expanded="true" />
@@ -88,9 +85,10 @@
           <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/main/webapp/static/html/tst.html">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="650">
-                  <caret line="89" column="22" lean-forward="true" selection-start-line="75" selection-start-column="16" selection-end-line="89" selection-end-column="22" />
+                <state relative-caret-position="-13">
+                  <caret line="263" selection-start-line="263" selection-end-line="263" />
                   <folding>
+                    <element signature="n#style#0;n#input#0;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
                     <element signature="n#style#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
                     <element signature="n#style#0;n#input#0;n#div#1;n#div#1;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
                     <element signature="n#style#0;n#input#0;n#div#0;n#form#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -110,12 +108,21 @@
           <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/main/webapp/static/js/myJquery/outpatientDoctorJs.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="197">
-                  <caret line="219" column="42" lean-forward="true" selection-start-line="218" selection-start-column="8" selection-end-line="219" selection-end-column="42" />
+                <state relative-caret-position="206">
+                  <caret line="295" column="33" lean-forward="true" selection-start-line="295" selection-start-column="33" selection-end-line="295" selection-end-column="33" />
                   <folding>
                     <element signature="n#style#0;n#td#6;n#tr#0;n#!!top" expanded="true" />
                     <element signature="n#style#0;n#img#0;n#a#0;n#td#6;n#tr#0;n#!!top" expanded="true" />
                   </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/main/webapp/static/js/jquery.pagination.js">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="375">
+                  <caret line="42" column="9" lean-forward="true" selection-start-line="42" selection-start-column="9" selection-end-line="42" selection-end-column="9" />
                 </state>
               </provider>
             </entry>
@@ -139,10 +146,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>全</find>
-      <find>jun</find>
-      <find>spring-test</find>
-      <find>cause</find>
       <find>tomcat</find>
       <find>context:component-scan</find>
       <find>javax.servlet-api</find>
@@ -169,6 +172,10 @@
       <find>class</find>
       <find>callbac</find>
       <find>pagination</find>
+      <find>prevPage</find>
+      <find>current_page</find>
+      <find>show</find>
+      <find>debugger</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -180,7 +187,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/java/edu/neu/medical/hospital/bean/MedrecTemplate.java" />
         <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/src/main/java/edu/neu/medical/hospital/bean/Fmeditem.java" />
         <option value="$PROJECT_DIR$/src/main/resources/mapper/VisitItemMapper.xml" />
@@ -228,8 +234,9 @@
         <option value="$PROJECT_DIR$/test/edu/neu/medical/hospital/service/impl/MedicalRecordHomeServiceImplTest.java" />
         <option value="$PROJECT_DIR$/src/main/webapp/static/css/pagination.css" />
         <option value="$PROJECT_DIR$/src/main/java/edu/neu/medical/hospital/controller/MedicalRecordHomeController.java" />
-        <option value="$PROJECT_DIR$/src/main/webapp/static/html/tst.html" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/outpatientDoctorWorkstation.jsp" />
+        <option value="$PROJECT_DIR$/src/main/webapp/static/html/tst.html" />
+        <option value="$PROJECT_DIR$/src/main/webapp/static/js/jquery.pagination.js" />
         <option value="$PROJECT_DIR$/src/main/webapp/static/js/myJquery/outpatientDoctorJs.js" />
       </list>
     </option>
@@ -288,10 +295,10 @@
     </treeState>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="10" />
-    <option name="y" value="33" />
-    <option name="width" value="1931" />
-    <option name="height" value="972" />
+    <option name="x" value="215" />
+    <option name="y" value="56" />
+    <option name="width" value="1713" />
+    <option name="height" value="922" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
@@ -373,6 +380,23 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="webapp" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="hospital" type="b2602c69:ProjectViewProjectNode" />
+              <item name="hospital" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="webapp" type="462c0819:PsiDirectoryNode" />
+              <item name="static" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="hospital" type="b2602c69:ProjectViewProjectNode" />
+              <item name="hospital" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="webapp" type="462c0819:PsiDirectoryNode" />
+              <item name="static" type="462c0819:PsiDirectoryNode" />
+              <item name="js" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="hospital" type="b2602c69:ProjectViewProjectNode" />
@@ -750,7 +774,7 @@
       <workItem from="1560215866516" duration="27687000" />
       <workItem from="1560264560344" duration="4731000" />
       <workItem from="1560302176097" duration="37143000" />
-      <workItem from="1560389940492" duration="27899000" />
+      <workItem from="1560389940492" duration="38048000" />
     </task>
     <task id="LOCAL-00001" summary="html 5-31">
       <created>1559234916084</created>
@@ -906,7 +930,14 @@
       <option name="project" value="LOCAL" />
       <updated>1560416449089</updated>
     </task>
-    <option name="localTasksCounter" value="23" />
+    <task id="LOCAL-00023" summary="addDiagnosis 6-13-1">
+      <created>1560429567045</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1560429567045</updated>
+    </task>
+    <option name="localTasksCounter" value="24" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -942,7 +973,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="379871000" />
+    <option name="totallyTimeSpent" value="390020000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -954,10 +985,10 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="10" y="33" width="1931" height="972" extended-state="0" />
+    <frame x="215" y="56" width="1713" height="922" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49522674" weight="0.2688402" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49522674" weight="0.26850605" />
       <window_info id="Structure" order="1" sideWeight="0.50477326" side_tool="true" weight="0.18148375" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -967,7 +998,7 @@
       <window_info id="Web" order="7" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.62906724" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49946696" weight="0.41050118" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49946696" weight="0.2956853" />
       <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.49946696" weight="0.6515513" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -1074,7 +1105,8 @@
     <MESSAGE value="medicalinfocontent 6-12" />
     <MESSAGE value="deleteDiagnosis 6-13" />
     <MESSAGE value="addDiagnosis 6-13" />
-    <option name="LAST_COMMIT_MESSAGE" value="addDiagnosis 6-13" />
+    <MESSAGE value="addDiagnosis 6-13-1" />
+    <option name="LAST_COMMIT_MESSAGE" value="addDiagnosis 6-13-1" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1497,13 +1529,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/static/js/jquery.pagination.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="9" column="20" selection-start-line="9" selection-start-column="10" selection-end-line="9" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/static/css/pagination.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="575">
@@ -1538,11 +1563,19 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/static/js/jquery.pagination.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="375">
+          <caret line="42" column="9" lean-forward="true" selection-start-line="42" selection-start-column="9" selection-end-line="42" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/static/html/tst.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="650">
-          <caret line="89" column="22" lean-forward="true" selection-start-line="75" selection-start-column="16" selection-end-line="89" selection-end-column="22" />
+        <state relative-caret-position="-13">
+          <caret line="263" selection-start-line="263" selection-end-line="263" />
           <folding>
+            <element signature="n#style#0;n#input#0;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#input#0;n#div#1;n#div#1;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#input#0;n#div#0;n#form#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -1556,8 +1589,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/outpatientDoctorWorkstation.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="513">
-          <caret line="61" column="39" selection-start-line="61" selection-start-column="33" selection-end-line="61" selection-end-column="39" />
+        <state relative-caret-position="463">
+          <caret line="59" column="93" selection-start-line="59" selection-start-column="74" selection-end-line="59" selection-end-column="93" />
           <folding>
             <element signature="e#951#958#1#HTML" expanded="true" />
             <element signature="e#2782#2788#1#HTML" expanded="true" />
@@ -1572,8 +1605,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/static/js/myJquery/outpatientDoctorJs.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="197">
-          <caret line="219" column="42" lean-forward="true" selection-start-line="218" selection-start-column="8" selection-end-line="219" selection-end-column="42" />
+        <state relative-caret-position="206">
+          <caret line="295" column="33" lean-forward="true" selection-start-line="295" selection-start-column="33" selection-end-line="295" selection-end-column="33" />
           <folding>
             <element signature="n#style#0;n#td#6;n#tr#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#img#0;n#a#0;n#td#6;n#tr#0;n#!!top" expanded="true" />
