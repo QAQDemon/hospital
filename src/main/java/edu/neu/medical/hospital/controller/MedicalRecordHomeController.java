@@ -45,7 +45,7 @@ public class MedicalRecordHomeController {
     }
 
     /*
-     * @Description 返回搜索的诊断信息（疾病）//TODO
+     * @Description 返回搜索的诊断信息（疾病）
      * @Param [type]
      * @return java.util.List<edu.neu.medical.hospital.bean.Disease>
      **/

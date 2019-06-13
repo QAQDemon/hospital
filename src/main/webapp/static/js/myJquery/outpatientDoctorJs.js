@@ -72,7 +72,9 @@ $("#patientSearchCategory1,#patientSearchCategory2,[alt='刷新']").click(functi
     searchPatientAjax();
     return false;
 });
-$("#searchPatientKey").keyup(function(e){
+$("#searchPatientForm").on("click","button",function () {
+    searchPatientAjax();
+}).on("keyup","input",function (e) {
     if(e.keyCode===13){
         searchPatientAjax();
     }
@@ -217,8 +219,21 @@ function diseasePageselectCallback(page_index,jq){
         diseaseFlag=2;
         searchDiagnosisAjax(page_index+1);
     }
-    alert(page_index + 1);
-    alert(diseaseList[0].id);
+    var str="";
+    for(var i=0;i<diseaseList.length;i++){
+        str+='<tr>\n' +
+            '<td>\n' +
+            '<div class="custom-control custom-checkbox" >\n' +
+            '<input type="checkbox" class="custom-control-input" id="diagnosisNotCheck'+i+'" name="diagnosisNotCheckGroup">\n' +
+            '<label class="custom-control-label" for="\'+listName+i+\'Check1"></label>\n' +
+            '</div>\n' +
+            '</td>\n' +
+            '<td>'+diseaseList[i].id+'</td>\n' +
+            '<td>'+diseaseList[i].diseaseicd+'</td>\n' +
+            '<td>'+diseaseList[i].diseasename+'</td>\n' +
+            '</tr>';
+    }
+    $("#diagnosisNotCheckedTbody").html(str);
     return false;
 }
 function searchDiagnosisAjax(pageNum){
@@ -228,6 +243,7 @@ function searchDiagnosisAjax(pageNum){
         urlS += ("/" + inputKey);
     $.ajax({
         type: "POST",//方法类型
+        async:false,
         dataType: "json",//预期服务器返回的数据类型
         url: urlS,
         data: {},
@@ -238,7 +254,7 @@ function searchDiagnosisAjax(pageNum){
                     // 创建分页
                     $("#diagnosisPagination").pagination(result.pages, {
                         num_edge_entries: 1, //边缘页数
-                        num_display_entries: 4, //主体页数
+                        num_display_entries: 5, //主体页数
                         callback: diseasePageselectCallback,
                         items_per_page:1 //每页显示1项
                     });
@@ -255,15 +271,21 @@ $("button[data-target='#DiagnosisModal']").click(function () {
         node.find("h4").html("中医诊断");
     node.find("tbody:even").html("");
     node.find("#diagnosisKey").val("");
+    $("#diagnosisPagination").hide();
 });
-$("#diagnosisSearchInput").on("click","button",function () {
+function searchDiagMethod(){
     diseaseFlag=1;
     searchDiagnosisAjax(1);
+    $("#diagnosisPagination").show();
+}
+$("#diagnosisSearchInput").on("click","button",function () {
+    searchDiagMethod();
 }).on("keyup","input",function (e) {
     if(e.keyCode===13){
-        diseaseFlag=1;
-        searchDiagnosisAjax(1);
+        searchDiagMethod();
     }
 });
-
+$("#diseasePageJump").on("click","button",function () {
+    
+})
 

@@ -16,7 +16,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 </head>
 <body>
 <!-- 诊断弹窗 -->
-<div class="modal fade" id="DiagnosisModal" style="margin-top: 200px">
+<div class="modal fade" id="DiagnosisModal">
     <div class="modal-dialog">
         <div class="modal-content">
             <!-- 模态框头部 -->
@@ -45,36 +45,25 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                         <th>名称</th>
                     </tr>
                     </thead>
-                    <tbody id="diagnosisCheckedTbody">
-                    <tr>
-                        <td>
-                            <div class="custom-control custom-checkbox" >
-                                <input type="checkbox" class="custom-control-input" id="'+listName+i+'Check" name="'+listName+'CheckGroup">
-                                <label class="custom-control-label" for="'+listName+i+'Check"></label>
-                            </div>
-                        </td>
-                        <td>3</td>
-                        <td>A00.053</td>
-                        <td>重型[暴发型或干性]霍乱</td>
-                    </tr>
-                    </tbody>
+                    <tbody id="diagnosisCheckedTbody"></tbody>
                     <tbody><tr><td class="bg-white" colspan="4">&nbsp;</td></tr></tbody>
-                    <tbody  id="diagnosisNotCheckedTbody">
-                    <tr>
-                        <td>
-                            <div class="custom-control custom-checkbox" >
-                                <input type="checkbox" class="custom-control-input" id="'+listName+i+'Check1" name="'+listName+'CheckGroup">
-                                <label class="custom-control-label" for="'+listName+i+'Check1"></label>
-                            </div>
-                        </td>
-                        <td>a3</td>
-                        <td>aA00.053</td>
-                        <td>a重型[暴发型或干性]霍乱</td>
-                    </tr>
-                    </tbody>
+                    <tbody  id="diagnosisNotCheckedTbody"></tbody>
                 </table>
                 <!--分页-->
-                <div id="diagnosisPagination" class="pagination"></div>
+                <div class="row">
+                    <div class="col-md-9 text-center">
+                        <div id="diagnosisPagination" class="myPagination"></div>
+                    </div>
+                    <div id="diseasePageJump" class="col-md-3">
+                        <div class="input-group input-group-sm">
+                            <label for="searchDiagnosisPage"></label>
+                            <input type="number" class="form-control" id="searchDiagnosisPage" placeholder="页码" style="width: 40px"/>
+                            <div class="input-group-append">
+                                <button class="btn btn-primary" type="button">Go</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
             <!-- 模态框底部 -->
             <div class="modal-footer">
@@ -106,11 +95,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 <div class="card-body">
                     <!--患者搜索框-->
                     <div class="row">
-                        <form class="" id="searchPatientForm" role="form" onkeypress="return event.keyCode !== 13;">
+                        <form id="searchPatientForm" role="form" onkeypress="return event.keyCode !== 13;">
                             <label class="control-label font-weight-bold" for="searchPatientKey">患者查询：</label>
                             <div class="input-group input-group-sm">
                                 <input type="search" class="form-control" id="searchPatientKey" name="searchPatientKey" style="width: 175px"
                                     placeholder="Name or No&Enter"/>
+                                <div class="input-group-append">
+                                    <button class="btn btn-primary" type="button">搜索</button>
+                                </div>
                             </div>
                         </form>
                     </div>

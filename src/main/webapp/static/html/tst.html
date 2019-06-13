@@ -73,7 +73,21 @@
                         </tr>
                     </tbody>
                 </table>
-                <div id="Pagination" class="pagination"><!-- 这里显示分页 --></div>
+                <div class="row">
+                    <div class="col-md-9 text-center">
+                        <div id="Pagination" class="myPagination"></div>
+                    </div>
+                    <div class="col-md-3">
+
+                        <div class="input-group input-group-sm">
+                            <label for="searchDiagnosisPage"></label>
+                            <input type="number" class="form-control" id="searchDiagnosisPage" placeholder="页码" style="width: 40px"/>
+                            <div class="input-group-append">
+                                <button class="btn btn-primary" type="button">Go</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
             <!-- 模态框底部 -->
             <div class="modal-footer">
@@ -111,6 +125,9 @@
                             <div class="input-group input-group-sm">
                                 <input type="search" class="form-control" id="searchPatientKey" name="searchPatientKey" style="width: 175px"
                                        placeholder="输入姓名或病历号"/>
+                                <div class="input-group-append">
+                                    <button class="btn btn-primary" type="button">搜索</button>
+                                </div>
                             </div>
                         </form>
                     </div>
@@ -651,7 +668,6 @@
         function pageselectCallback(page_index, jq){
             //var new_content = $("#hiddenresult div.result:eq("+page_index+")").clone();
             //$("#Searchresult").empty().append(new_content); //装载对应分页的内容
-            alert(page_index);
             return false;
         }
     });

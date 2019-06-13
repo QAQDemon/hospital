@@ -1,6 +1,8 @@
 package edu.neu.medical.hospital.service.impl;
 
+import com.github.pagehelper.PageInfo;
 import edu.neu.medical.hospital.bean.Diagnosis;
+import edu.neu.medical.hospital.bean.Disease;
 import edu.neu.medical.hospital.bean.MedrecTemplate;
 import edu.neu.medical.hospital.service.MedicalRecordHomeService;
 import org.junit.Test;
@@ -87,6 +89,15 @@ public class MedicalRecordHomeServiceImplTest {
        // List<MedrecTemplate> list1=medicalRecordHomeService.searchMedrecTemplateList('3',1,"专");//创建人
 //        List<MedrecTemplate> list2=medicalRecordHomeService.searchMedrecTemplateList('3',1,"阿");//名称
 //        List<MedrecTemplate> list3=medicalRecordHomeService.searchMedrecTemplateList('3',1,"d");//编码
+        return;
+    }
+
+    @Test
+    public void searchDiseaseListByCode() {
+        PageInfo<Disease> pageInfo=medicalRecordHomeService.searchDiseaseListByCode('1',"",1);
+        PageInfo<Disease> pageInfo1=medicalRecordHomeService.searchDiseaseListByCode('1',"",2);
+        PageInfo<Disease> pageInfo2=medicalRecordHomeService.searchDiseaseListByCode('1',"",3);
+        PageInfo<Disease> pageInfo3=medicalRecordHomeService.searchDiseaseListByCode('1',"",1);
         return;
     }
 }
