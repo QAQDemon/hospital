@@ -39,7 +39,6 @@ function searchPatientAjax(){
     $.ajax({
         type: "POST",//方法类型
         dataType: "json",//预期服务器返回的数据类型
-        async:false,//同步
         url: urlS,
         data: {},
         success: function (result) {
@@ -110,7 +109,7 @@ function setDiagnosisList(diagnosisList,diseaseList,listName,num){
         str+='<tr>\n' +
             '<td>'+diseaseId+'</td>\n' +
             '<td>'+diseaseList[i].diseaseicd+'</td>\n' +
-            '<td>'+diseaseList[i].diseasename+'</td>\n' +
+            '<td title="'+diseaseList[i].diseasename+'" style="max-width:120px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">'+diseaseList[i].diseasename+'</td>\n' +
             '<td>\n' +
             '<div class="custom-control custom-radio">\n' +
             '<input type="radio" class="custom-control-input" id="'+listName+diseaseId+'Radio" name="'+listName+'RadioGroup" '+((diagnosisList[i].isNewMajorDiagnosis==='1')?'':'checked')+'>\n' +
@@ -123,14 +122,19 @@ function setDiagnosisList(diagnosisList,diseaseList,listName,num){
             '<label class="custom-control-label" for="'+listName+diseaseId+'Check"></label>\n' +
             '</div>\n' +
             '</td>\n' +
-            '<td><label>\n' +
+            '<td style="padding: 0">\n' +
             '<input type="datetime-local"  class="form-control" value="'+getTime(diagnosisList[i].dateOfOnset)+'"/>\n' +
-            '</label></td>\n' +
-            '<td style="height: 25px;width:35px"><a href="#"><img src="images/save_icon.jpg" style="height: 100%;width: 100%" alt="保存"></a> </td>\n' +
-            '<td class="text-center table-danger text-white"><a href="#" class="text-white font-weight-bold">-</a></td>\n' +
+            '</td>\n' +
+            '<td style="padding: 0"><a href="#"><img src="images/save_icon.jpg" style="height:40px;width:40px" alt="保存"></a></td>\n' +
+            '<td class="text-center" style="padding: 0"><button type="button" class="btn btn-danger" style="width: 100%;height: 100%">-\n' +
+            '</button></td>\n' +
             '</tr>';
     }
     $("#diagnosisContextTbody"+num).html(str);
+}
+//禁用和解开病历信息按钮组的暂存和提交
+function disableMedicalInfoBtn(bool){
+    $("#medicalInfoBtnGroup").find(".btn-outline-secondary,.btn-outline-success").attr("disabled",bool);
 }
 //点击表格设置患者信息
 $("#searchPatientTbody1,#searchPatientTbody2").on("click","tr",function () {
@@ -176,9 +180,11 @@ $("#searchPatientTbody1,#searchPatientTbody2").on("click","tr",function () {
             if(visitStatus==="诊毕"){
                 span.addClass("text-danger");
                 span.removeClass("text-success");
+                disableMedicalInfoBtn(false);
             }else {
                 span.removeClass("text-danger");
                 span.addClass("text-success");
+                disableMedicalInfoBtn(true);
             }
             var content=[visitStatus,medicalInfoNo,patient.name,((patient.gender==='1')?"男":"女"),patient.age+"岁"];
             //设置数据
@@ -200,7 +206,7 @@ $("#searchPatientTbody1,#searchPatientTbody2").on("click","tr",function () {
     });
 });
 //诊断 删
-$("#diagnosisContextTbody1,#diagnosisContextTbody2").on("click","a:contains('-')",function () {
+$("#diagnosisContextTbody1,#diagnosisContextTbody2").on("click","button:contains('-')",function () {
     var res = confirm('确认要删除吗？');
     if(res === true){
         // var tbodyNode=$(this).closest("tbody");
@@ -228,7 +234,7 @@ function addDisease() {
             '</td>\n' +
             '<td>'+diseaseList[i].id+'</td>\n' +
             '<td>'+diseaseList[i].diseaseicd+'</td>\n' +
-            '<td>'+diseaseList[i].diseasename+'</td>\n' +
+            '<td title="'+diseaseList[i].diseasename+'" style="max-width:260px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">'+diseaseList[i].diseasename+'</td>\n' +
             '</tr>';
     }
     $("#diagnosisNotCheckedTbody").html(str);
@@ -361,7 +367,6 @@ $("#DiagnosisModal .modal-footer :button").click(function () {
         resultNode=$("#diagnosisContextTbody2");
         listName='zDiagnosisList';
     }
-    debugger;
     $("#diagnosisCheckedTbody tr").each(function () {
         var flag=0;
         var diseaseId=$(this).children().eq(1).html();
@@ -377,7 +382,7 @@ $("#DiagnosisModal .modal-footer :button").click(function () {
         resultNode.append('<tr>\n' +
             '<td>'+(diseaseId)+'</td>\n' +
             '<td>'+$(this).children().eq(2).html()+'</td>\n' +
-            '<td>'+$(this).children().eq(3).html()+'</td>\n' +
+            '<td title="'+$(this).children().eq(3).html()+'" style="max-width:120px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">'+$(this).children().eq(3).html()+'</td>\n' +
             '<td>\n' +
             '<div class="custom-control custom-radio">\n' +
             '<input type="radio" class="custom-control-input" id="'+listName+diseaseId+'Radio" name="'+listName+'RadioGroup" '+'>\n' +
@@ -390,12 +395,25 @@ $("#DiagnosisModal .modal-footer :button").click(function () {
             '<label class="custom-control-label" for="'+listName+diseaseId+'Check"></label>\n' +
             '</div>\n' +
             '</td>\n' +
-            '<td><label>\n' +
+            '<td style="padding: 0">\n' +
             '<input type="datetime-local"  class="form-control" />\n' +
-            '</label></td>\n' +
-            '<td style="height: 25px;width:35px"><a href="#"><img src="images/save_icon.jpg" style="height: 100%;width: 100%" alt="保存"></a> </td>\n' +
-            '<td class="text-center table-danger text-white"><a href="#" class="text-white font-weight-bold">-</a></td>\n' +
+            '</td>\n' +
+            '<td style="padding: 0"><a href="#"><img src="images/save_icon.jpg" style="height:40px;width:40px" alt="保存"></a></td>\n' +
+            '<td class="text-center" style="padding: 0"><button type="button" class="btn btn-danger" style="width: 100%;height: 100%">-\n' +
+            '</button></td>\n' +
             '</tr>');
     });
     $("#DiagnosisModal button[data-dismiss='modal']").click();
+});
+
+//表单功能按键
+//清屏
+$("#medicalInfoBtnGroup :first").click(function () {
+    clearMedicalInfoContext();
+});
+//暂存或提交
+$("#medicalInfoBtnGroup").find(".btn-outline-secondary,.btn-outline-success").click(function () {
+    debugger;
+    var data=$("#medicalRecordInfoForm").serialize();
+    var data1=$("#diagnosisContextTbody1")
 });

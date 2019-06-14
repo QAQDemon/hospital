@@ -114,31 +114,27 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             <div class="card">
                 <div class="card-body">
                     <!--患者搜索框-->
-                    <div class="row">
-                        <form id="searchPatientForm" role="form" onkeypress="return event.keyCode !== 13;">
-                            <label class="control-label font-weight-bold" for="searchPatientKey">患者查询：</label>
-                            <div class="input-group input-group-sm">
-                                <input type="search" class="form-control" id="searchPatientKey" name="searchPatientKey" style="width: 175px"
-                                    placeholder="Name or No&Enter"/>
-                                <div class="input-group-append">
-                                    <button class="btn btn-primary" type="button">搜索</button>
-                                </div>
+                    <form id="searchPatientForm" role="form" onkeypress="return event.keyCode !== 13;">
+                        <label class="control-label font-weight-bold" for="searchPatientKey">患者查询：</label>
+                        <div class="input-group input-group-sm">
+                            <input type="search" class="form-control" id="searchPatientKey" name="searchPatientKey" style="width: 175px"
+                                placeholder="输入姓名或病历号"/>
+                            <div class="input-group-append">
+                                <button class="btn btn-primary" type="button">搜索</button>
                             </div>
-                        </form>
-                    </div>
-                    <br>
+                        </div>
+                    </form>
                     <!--患者搜索结果-->
-                    <div class="row" >
-                        <ul class="nav nav-pills">
-                            <li class="nav-item">
-                                <a id="patientSearchCategory1" class="nav-link active font-weight-bold" href="#">本人</a>
-                            </li>
-                            <li class="nav-item">
-                                <a id="patientSearchCategory2" class="nav-link font-weight-bold" href="#">科室</a>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="row" ><form class="" role="form">
+                    <ul class="nav nav-pills" role="tablist">
+                        <li class="nav-item">
+                            <a id="patientSearchCategory1" class="nav-link active font-weight-bold" href="#emptyDiv1" data-toggle="pill">本人</a>
+                        </li>
+                        <li class="nav-item">
+                            <a id="patientSearchCategory2" class="nav-link font-weight-bold" href="#emptyDiv2" data-toggle="pill">科室</a>
+                        </li>
+                    </ul>
+                    <div id="emptyDiv1"></div> <div id="emptyDiv2"></div>
+                    <form role="form" onkeypress="return event.keyCode !== 13;">
                         <table class="table table-condensed table-striped table-hover table-sm">
                             <thead>
                             <tr>
@@ -161,7 +157,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                             </thead>
                             <tbody id="searchPatientTbody2"></tbody>
                         </table>
-                    </form></div>
+                    </form>
                 </div>
             </div>
         </div>
@@ -226,16 +222,16 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                             <div class="row">
                                 <div class="col-md-8">
                                     <!--病历信息表格-->
-                                    <form id="medicalRecordInfoForm" role="form">
+                                    <form id="medicalRecordInfoForm" role="form" onkeypress="return event.keyCode !== 13;">
                                         <div class="row ">
                                             <div class="col-md-7">
                                                 <h4 class="font-weight-bold">病历信息</h4>
                                             </div>
                                             <div class="col-md-5 text-right">
-                                                <div class="btn-group">
+                                                <div id="medicalInfoBtnGroup" class="btn-group">
                                                     <button type="button" class="btn btn-outline-danger btn-sm">清屏</button>
-                                                    <button type="button" class="btn btn-outline-secondary btn-sm">暂存</button>
-                                                    <button type="button" class="btn btn-outline-success btn-sm">提交</button>
+                                                    <button type="button" class="btn btn-outline-secondary btn-sm" disabled>暂存</button>
+                                                    <button type="button" class="btn btn-outline-success btn-sm" disabled>提交</button>
                                                     <button type="button" class="btn btn-outline-info btn-sm">存为模板</button>
                                                 </div>
                                             </div>
@@ -282,9 +278,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                         <div class="card">
                                             <div class="card-header font-weight-bold">评估诊断</div>
                                             <div class="card-body">
-                                                <div class="form-group form-inline">
-                                                    <label class="col-md-2 font-weight-bold" for="physicalExamination">西医诊断</label>
-                                                    <table class="table table-condensed table-striped table-hover table-sm table-bordered col-md-10" >
+                                                <div class="form-group">
+                                                    <label class="font-weight-bold">西医诊断</label>
+                                                    <table class="table table-condensed table-striped table-hover table-sm table-bordered" >
                                                         <thead>
                                                         <tr>
                                                             <th>ID</th>
@@ -301,9 +297,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                                         <tbody id="diagnosisContextTbody1"></table>
                                                 </div>
                                                 <!--中医诊断输入-->
-                                                <div class="form-group form-inline">
-                                                    <label class="col-md-2 font-weight-bold" for="physicalExamination">中医诊断</label>
-                                                    <table class="table table-condensed table-striped table-hover table-sm table-bordered col-md-10" >
+                                                <div class="form-group ">
+                                                    <label class="font-weight-bold">中医诊断</label>
+                                                    <table class="table table-condensed table-striped table-hover table-sm table-bordered" >
                                                         <thead>
                                                         <tr>
                                                             <th>ID</th>
@@ -372,7 +368,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                                             <a href="#" class="list-group-item list-group-item-action">模板三</a>
                                                         </div>
                                                     </div>
-                                                    <form id="medrecTemplateForm" role="form">
+                                                    <form id="medrecTemplateForm" role="form" onkeypress="return event.keyCode !== 13;">
                                                         <div class="text-right" style="margin-top: 8px">
                                                             <button type="button" class="btn btn-outline-success btn-sm">引用</button>
                                                         </div>
