@@ -112,18 +112,18 @@ function setDiagnosisList(diagnosisList,diseaseList,listName,num){
             '<td title="'+diseaseList[i].diseasename+'" style="max-width:120px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">'+diseaseList[i].diseasename+'</td>\n' +
             '<td>\n' +
             '<div class="custom-control custom-radio">\n' +
-            '<input type="radio" class="custom-control-input" id="'+listName+diseaseId+'Radio" name="'+listName+'RadioGroup" '+((diagnosisList[i].isNewMajorDiagnosis==='1')?'':'checked')+'>\n' +
+            '<input type="radio" class="custom-control-input" id="'+listName+diseaseId+'Radio" name="'+listName+'RadioGroup" value="'+diseaseId+'" '+((diagnosisList[i].isNewMajorDiagnosis==='1')?'':'checked')+'>\n' +
             '<label class="custom-control-label" for="'+listName+diseaseId+'Radio"></label>\n' +
             '</div>\n' +
             '</td>\n' +
             '<td>\n' +
             '<div class="custom-control custom-checkbox ">\n' +
-            '<input type="checkbox" class="custom-control-input" id="'+listName+diseaseId+'Check" name="'+listName+'CheckGroup" '+((diagnosisList[i].isNewSuspect==='1')?'':'checked')+'>\n' +
+            '<input type="checkbox" class="custom-control-input" id="'+listName+diseaseId+'Check" name="'+listName+'CheckGroup" value="'+diseaseId+'" '+((diagnosisList[i].isNewSuspect==='1')?'':'checked')+'>\n' +
             '<label class="custom-control-label" for="'+listName+diseaseId+'Check"></label>\n' +
             '</div>\n' +
             '</td>\n' +
             '<td style="padding: 0">\n' +
-            '<input type="datetime-local"  class="form-control" value="'+getTime(diagnosisList[i].dateOfOnset)+'"/>\n' +
+            '<input type="datetime-local"  name="dateOfOnset'+diseaseId+'" class="form-control" value="'+getTime(diagnosisList[i].dateOfOnset)+'"/>\n' +
             '</td>\n' +
             '<td style="padding: 0"><a href="#"><img src="images/save_icon.jpg" style="height:40px;width:40px" alt="保存"></a></td>\n' +
             '<td class="text-center" style="padding: 0"><button type="button" class="btn btn-danger" style="width: 100%;height: 100%">-\n' +
@@ -385,13 +385,13 @@ $("#DiagnosisModal .modal-footer :button").click(function () {
             '<td title="'+$(this).children().eq(3).html()+'" style="max-width:120px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">'+$(this).children().eq(3).html()+'</td>\n' +
             '<td>\n' +
             '<div class="custom-control custom-radio">\n' +
-            '<input type="radio" class="custom-control-input" id="'+listName+diseaseId+'Radio" name="'+listName+'RadioGroup" '+'>\n' +
+            '<input type="radio" class="custom-control-input" id="'+listName+diseaseId+'Radio" name="'+listName+'RadioGroup" value="'+diseaseId+'">\n' +
             '<label class="custom-control-label" for="'+listName+diseaseId+'Radio"></label>\n' +
             '</div>\n' +
             '</td>\n' +
             '<td>\n' +
             '<div class="custom-control custom-checkbox ">\n' +
-            '<input type="checkbox" class="custom-control-input" id="'+listName+diseaseId+'Check" name="'+listName+'CheckGroup" '+'>\n' +
+            '<input type="checkbox" class="custom-control-input" id="'+listName+diseaseId+'Check" name="'+listName+'CheckGroup" value="'+diseaseId+'">\n' +
             '<label class="custom-control-label" for="'+listName+diseaseId+'Check"></label>\n' +
             '</div>\n' +
             '</td>\n' +
@@ -414,6 +414,6 @@ $("#medicalInfoBtnGroup :first").click(function () {
 //暂存或提交
 $("#medicalInfoBtnGroup").find(".btn-outline-secondary,.btn-outline-success").click(function () {
     debugger;
-    var data=$("#medicalRecordInfoForm").serialize();
-    var data1=$("#diagnosisContextTbody1")
+    var data=$("#medicalRecordInfoForm").serializeArray();
+
 });

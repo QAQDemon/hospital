@@ -242,23 +242,23 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                             <div class="card-body">
                                                 <div class="form-group form-inline">
                                                     <label class="col-md-2 font-weight-bold" for="chiefComplaint">主诉</label>
-                                                    <input type="text" class="form-control col-md-10" id="chiefComplaint">
+                                                    <input type="text" class="form-control col-md-10" id="chiefComplaint" name="chiefComplaint">
                                                 </div>
                                                 <div class="form-group form-inline">
                                                     <label class="col-md-2 font-weight-bold" for="currentMedicalHistory">现病史</label>
-                                                    <textarea class="form-control col-md-10" rows="2" id="currentMedicalHistory"></textarea>
+                                                    <textarea class="form-control col-md-10" rows="2" id="currentMedicalHistory" name="currentMedicalHistory"></textarea>
                                                 </div>
                                                 <div class="form-group form-inline text-center">
                                                     <label class="col-md-2 font-weight-bold" for="currentTreatmentSituation">&nbsp;现病治疗情况</label>
-                                                    <textarea class="form-control col-md-10" rows="2" id="currentTreatmentSituation"></textarea>
+                                                    <textarea class="form-control col-md-10" rows="2" id="currentTreatmentSituation" name="currentTreatmentSituation"></textarea>
                                                 </div>
                                                 <div class="form-group form-inline">
                                                     <label class="col-md-2 font-weight-bold" for="pastHistory">既往史</label>
-                                                    <textarea class="form-control col-md-10" rows="2" id="pastHistory"></textarea>
+                                                    <textarea class="form-control col-md-10" rows="2" id="pastHistory" name="pastHistory"></textarea>
                                                 </div>
                                                 <div class="form-group form-inline">
                                                     <label class="col-md-2 font-weight-bold" for="allergiesHistory">过敏史</label>
-                                                    <textarea class="form-control col-md-10" rows="2" id="allergiesHistory"></textarea>
+                                                    <textarea class="form-control col-md-10" rows="2" id="allergiesHistory" name="allergiesHistory"></textarea>
                                                 </div>
                                             </div>
                                         </div>
@@ -269,55 +269,55 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                             <div class="card-body">
                                                 <div class="form-group form-inline">
                                                     <label class="col-md-2 font-weight-bold" for="physicalExamination">体格检查</label>
-                                                    <textarea class="form-control col-md-10" rows="2" id="physicalExamination"></textarea>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <br>
-                                        <!--诊断输入部分-->
-                                        <div class="card">
-                                            <div class="card-header font-weight-bold">评估诊断</div>
-                                            <div class="card-body">
-                                                <div class="form-group">
-                                                    <label class="font-weight-bold">西医诊断</label>
-                                                    <table class="table table-condensed table-striped table-hover table-sm table-bordered" >
-                                                        <thead>
-                                                        <tr>
-                                                            <th>ID</th>
-                                                            <th>ICD编码</th>
-                                                            <th>名称</th>
-                                                            <th>主诊</th>
-                                                            <th>疑似</th>
-                                                            <th>发病日期</th>
-                                                            <th>&nbsp;</th>
-                                                            <th class="text-center" style="padding: 0"><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#DiagnosisModal" style="width: 100%;height: 100%">+
-                                                            </button></th>
-                                                        </tr>
-                                                        </thead>
-                                                        <tbody id="diagnosisContextTbody1"></table>
-                                                </div>
-                                                <!--中医诊断输入-->
-                                                <div class="form-group ">
-                                                    <label class="font-weight-bold">中医诊断</label>
-                                                    <table class="table table-condensed table-striped table-hover table-sm table-bordered" >
-                                                        <thead>
-                                                        <tr>
-                                                            <th>ID</th>
-                                                            <th>ICD编码</th>
-                                                            <th>名称</th>
-                                                            <th>主诊</th>
-                                                            <th>疑似</th>
-                                                            <th>发病日期</th>
-                                                            <th>&nbsp;</th>
-                                                            <th class="text-center" style="padding: 0"><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#DiagnosisModal" style="width: 100%;height: 100%">+
-                                                            </button></th>
-                                                        </tr>
-                                                        </thead>
-                                                        <tbody id="diagnosisContextTbody2"></table>
+                                                    <textarea class="form-control col-md-10" rows="2" id="physicalExamination" name="physicalExamination"></textarea>
                                                 </div>
                                             </div>
                                         </div>
                                     </form>
+                                    <br>
+                                    <!--诊断输入部分-->
+                                    <div class="card">
+                                        <div class="card-header font-weight-bold">评估诊断</div>
+                                        <div class="card-body">
+                                            <div class="form-group">
+                                                <label class="font-weight-bold">西医诊断</label>
+                                                <table class="table table-condensed table-striped table-hover table-sm table-bordered" >
+                                                    <thead>
+                                                    <tr>
+                                                        <th>ID</th>
+                                                        <th>ICD编码</th>
+                                                        <th>名称</th>
+                                                        <th>主诊</th>
+                                                        <th>疑似</th>
+                                                        <th>发病日期</th>
+                                                        <th>&nbsp;</th>
+                                                        <th class="text-center" style="padding: 0"><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#DiagnosisModal" style="width: 100%;height: 100%">+
+                                                        </button></th>
+                                                    </tr>
+                                                    </thead>
+                                                    <tbody id="diagnosisContextTbody1"></table>
+                                            </div>
+                                            <!--中医诊断输入-->
+                                            <div class="form-group ">
+                                                <label class="font-weight-bold">中医诊断</label>
+                                                <table class="table table-condensed table-striped table-hover table-sm table-bordered" >
+                                                    <thead>
+                                                    <tr>
+                                                        <th>ID</th>
+                                                        <th>ICD编码</th>
+                                                        <th>名称</th>
+                                                        <th>主诊</th>
+                                                        <th>疑似</th>
+                                                        <th>发病日期</th>
+                                                        <th>&nbsp;</th>
+                                                        <th class="text-center" style="padding: 0"><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#DiagnosisModal" style="width: 100%;height: 100%">+
+                                                        </button></th>
+                                                    </tr>
+                                                    </thead>
+                                                    <tbody id="diagnosisContextTbody2"></table>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                                 <!--1.右侧功能-->
                                 <div class="col-md-4">
