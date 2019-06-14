@@ -106,20 +106,21 @@ function clearMedicalInfoContext(){
 function setDiagnosisList(diagnosisList,diseaseList,listName,num){
     var str="";
     for (var i=0;i<diagnosisList.length;i++) {
+        var diseaseId=diseaseList[i].id;
         str+='<tr>\n' +
-            '<td>'+(i+1)+'</td>\n' +
+            '<td>'+diseaseId+'</td>\n' +
             '<td>'+diseaseList[i].diseaseicd+'</td>\n' +
             '<td>'+diseaseList[i].diseasename+'</td>\n' +
             '<td>\n' +
             '<div class="custom-control custom-radio">\n' +
-            '<input type="radio" class="custom-control-input" id="'+listName+i+'Radio" name="'+listName+'RadioGroup" '+((diagnosisList[i].isNewMajorDiagnosis==='1')?'':'checked')+'>\n' +
-            '<label class="custom-control-label" for="'+listName+i+'Radio"></label>\n' +
+            '<input type="radio" class="custom-control-input" id="'+listName+diseaseId+'Radio" name="'+listName+'RadioGroup" '+((diagnosisList[i].isNewMajorDiagnosis==='1')?'':'checked')+'>\n' +
+            '<label class="custom-control-label" for="'+listName+diseaseId+'Radio"></label>\n' +
             '</div>\n' +
             '</td>\n' +
             '<td>\n' +
             '<div class="custom-control custom-checkbox ">\n' +
-            '<input type="checkbox" class="custom-control-input" id="'+listName+i+'Check" name="'+listName+'CheckGroup" '+((diagnosisList[i].isNewSuspect==='1')?'':'checked')+'>\n' +
-            '<label class="custom-control-label" for="'+listName+i+'Check"></label>\n' +
+            '<input type="checkbox" class="custom-control-input" id="'+listName+diseaseId+'Check" name="'+listName+'CheckGroup" '+((diagnosisList[i].isNewSuspect==='1')?'':'checked')+'>\n' +
+            '<label class="custom-control-label" for="'+listName+diseaseId+'Check"></label>\n' +
             '</div>\n' +
             '</td>\n' +
             '<td><label>\n' +
@@ -202,12 +203,12 @@ $("#searchPatientTbody1,#searchPatientTbody2").on("click","tr",function () {
 $("#diagnosisContextTbody1,#diagnosisContextTbody2").on("click","a:contains('-')",function () {
     var res = confirm('确认要删除吗？');
     if(res === true){
-        var tbodyNode=$(this).closest("tbody");
+        // var tbodyNode=$(this).closest("tbody");
         $(this).closest("tr").replaceWith("");
         //更新序号
-        tbodyNode.find("tr").each(function (index) {
-            $(this).find("td").first().html(index+1);
-        });
+        // tbodyNode.find("tr").each(function (index) {
+        //     $(this).find("td").first().html(index+1);
+        // });
     }
     return false;
 });
@@ -273,7 +274,7 @@ $("button[data-target='#DiagnosisModal']").click(function () {
         node.find("h4").html("西医诊断");
     else
         node.find("h4").html("中医诊断");
-    node.find("tbody").html("");
+    node.find("tbody").html("");//清空表格
     node.find("#diagnosisKey").val("");
     $("#diagnosisPagination").html("");
     $("#diseasePageJump").hide();
@@ -347,4 +348,54 @@ $("#diagnosisCheckedTbody").on("click","tr",function () {
     if(res === true){
         $(this).remove();
     }
+});
+
+//导入诊断结果
+$("#DiagnosisModal .modal-footer :button").click(function () {
+    var resultNode;
+    var listName;
+    if($("#DiagnosisModal h4").html()==="西医诊断"){
+        listName='xDiagnosisList';
+        resultNode=$("#diagnosisContextTbody1");
+    } else{
+        resultNode=$("#diagnosisContextTbody2");
+        listName='zDiagnosisList';
+    }
+    debugger;
+    $("#diagnosisCheckedTbody tr").each(function () {
+        var flag=0;
+        var diseaseId=$(this).children().eq(1).html();
+        resultNode.children().each(function () {
+            if($(this).children().eq(0).html()===diseaseId){
+                flag=1;
+                alert($(this).children().eq(2).html()+"重复");
+                return false;//break
+            }
+        });
+        if(flag===1)
+            return true;//continue
+        resultNode.append('<tr>\n' +
+            '<td>'+(diseaseId)+'</td>\n' +
+            '<td>'+$(this).children().eq(2).html()+'</td>\n' +
+            '<td>'+$(this).children().eq(3).html()+'</td>\n' +
+            '<td>\n' +
+            '<div class="custom-control custom-radio">\n' +
+            '<input type="radio" class="custom-control-input" id="'+listName+diseaseId+'Radio" name="'+listName+'RadioGroup" '+'>\n' +
+            '<label class="custom-control-label" for="'+listName+diseaseId+'Radio"></label>\n' +
+            '</div>\n' +
+            '</td>\n' +
+            '<td>\n' +
+            '<div class="custom-control custom-checkbox ">\n' +
+            '<input type="checkbox" class="custom-control-input" id="'+listName+diseaseId+'Check" name="'+listName+'CheckGroup" '+'>\n' +
+            '<label class="custom-control-label" for="'+listName+diseaseId+'Check"></label>\n' +
+            '</div>\n' +
+            '</td>\n' +
+            '<td><label>\n' +
+            '<input type="datetime-local"  class="form-control" />\n' +
+            '</label></td>\n' +
+            '<td style="height: 25px;width:35px"><a href="#"><img src="images/save_icon.jpg" style="height: 100%;width: 100%" alt="保存"></a> </td>\n' +
+            '<td class="text-center table-danger text-white"><a href="#" class="text-white font-weight-bold">-</a></td>\n' +
+            '</tr>');
+    });
+    $("#DiagnosisModal button[data-dismiss='modal']").click();
 });

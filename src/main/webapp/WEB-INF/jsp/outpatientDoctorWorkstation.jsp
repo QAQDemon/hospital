@@ -88,7 +88,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             </div>
             <!-- 模态框底部 -->
             <div class="modal-footer">
-                <button type="button" class="btn btn-primary" >确定</button>
+                <button type="button" class="btn btn-primary" >导入结果</button>
             </div>
         </div>
     </div>
@@ -287,7 +287,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                                     <table class="table table-condensed table-striped table-hover table-sm table-bordered col-md-10" >
                                                         <thead>
                                                         <tr>
-                                                            <th>&nbsp;</th>
+                                                            <th>ID</th>
                                                             <th>ICD编码</th>
                                                             <th>名称</th>
                                                             <th>主诊</th>
@@ -306,7 +306,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                                     <table class="table table-condensed table-striped table-hover table-sm table-bordered col-md-10" >
                                                         <thead>
                                                         <tr>
-                                                            <th>&nbsp;</th>
+                                                            <th>ID</th>
                                                             <th>ICD编码</th>
                                                             <th>名称</th>
                                                             <th>主诊</th>
