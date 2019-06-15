@@ -2,12 +2,11 @@ package edu.neu.medical.hospital.controller;
 
 import com.github.pagehelper.PageInfo;
 import edu.neu.medical.hospital.bean.Diagnosis;
+import edu.neu.medical.hospital.bean.DiagnosisFormDTO;
 import edu.neu.medical.hospital.bean.Disease;
 import edu.neu.medical.hospital.bean.MedicalRecordInfo;
 import edu.neu.medical.hospital.service.MedicalRecordHomeService;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import java.util.HashMap;
@@ -63,5 +62,12 @@ public class MedicalRecordHomeController {
         map.put("pages",pageInfo.getPages());
         map.put("diseaseList",pageInfo.getList());
         return map;
+    }
+
+
+    @RequestMapping("test")
+    public void searchDiagnosis(MedicalRecordInfo medicalRecordInfo, DiagnosisFormDTO diagnosisFormDTO){
+        System.out.printf("medicalRecordInfo");
+        return;
     }
 }

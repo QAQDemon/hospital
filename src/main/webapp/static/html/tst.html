@@ -334,19 +334,19 @@
                                             <div class="card-body">
                                                 <div class="form-group form-inline">
                                                     <label class="col-md-2 font-weight-bold" for="chiefComplaint">主诉</label>
-                                                    <input type="text" class="form-control col-md-10" id="chiefComplaint" name="chiefComplaint">
+                                                    <input type="text" class="form-control col-md-10" id="chiefComplaint" name="chiefComplaint" value="a">
                                                 </div>
                                                 <div class="form-group form-inline">
                                                     <label class="col-md-2 font-weight-bold" for="currentMedicalHistory">现病史</label>
-                                                    <textarea class="form-control col-md-10" rows="2" id="currentMedicalHistory" name="currentMedicalHistory"></textarea>
+                                                    <textarea class="form-control col-md-10" rows="2" id="currentMedicalHistory" name="currentMedicalHistory">s</textarea>
                                                 </div>
                                                 <div class="form-group form-inline text-center">
                                                     <label class="col-md-2 font-weight-bold" for="currentTreatmentSituation">&nbsp;现病治疗情况</label>
-                                                    <textarea class="form-control col-md-10" rows="2" id="currentTreatmentSituation" name="currentTreatmentSituation"></textarea>
+                                                    <textarea class="form-control col-md-10" rows="2" id="currentTreatmentSituation" name="currentTreatmentSituation">d</textarea>
                                                 </div>
                                                 <div class="form-group form-inline">
                                                     <label class="col-md-2 font-weight-bold" for="pastHistory">既往史</label>
-                                                    <textarea class="form-control col-md-10" rows="2" id="pastHistory" name="pastHistory"></textarea>
+                                                    <textarea class="form-control col-md-10" rows="2" id="pastHistory" name="pastHistory">g</textarea>
                                                 </div>
                                                 <div class="form-group form-inline">
                                                     <label class="col-md-2 font-weight-bold" for="allergiesHistory">过敏史</label>
@@ -361,7 +361,7 @@
                                             <div class="card-body">
                                                 <div class="form-group form-inline">
                                                     <label class="col-md-2 font-weight-bold" for="physicalExamination">体格检查</label>
-                                                    <textarea class="form-control col-md-10" rows="2" id="physicalExamination" name="physicalExamination"></textarea>
+                                                    <textarea class="form-control col-md-10" rows="2" id="physicalExamination" name="physicalExamination">h</textarea>
                                                 </div>
                                             </div>
                                         </div>
@@ -388,46 +388,48 @@
                                                         </thead>
                                                         <tbody id="diagnosisContextTbody1">
                                                         <tr>
-                                                            <td>1</td>
+                                                            <td><input type="text" name="xDiagnosisList[0].diseaseId" value="1"></td>
                                                             <td>00001</td>
                                                             <td>哒哒哒</td>
                                                             <td>
                                                                 <div class="custom-control custom-radio">
-                                                                    <input type="radio" class="custom-control-input" id="customRadio" name="xradio" checked>
-                                                                    <label class="custom-control-label" for="customRadio"></label>
+                                                                    <input type="radio" class="custom-control-input" id="customRadio220" name="isNewMajorDiagnosisCheckded" value="1" checked>
+                                                                    <label class="custom-control-label" for="customRadio220"></label>
                                                                 </div>
                                                             </td>
                                                             <td>
                                                                 <div class="custom-control custom-checkbox ">
-                                                                    <input type="checkbox" class="custom-control-input" id="customCheck" name="example1">
-                                                                    <label class="custom-control-label" for="customCheck"></label>
+                                                                    <input type="checkbox" class="custom-control-input" id="customCheck2" name="isNewSuspectChecked" value="1" checked>
+                                                                    <label class="custom-control-label" for="customCheck2"></label>
                                                                 </div>
                                                             </td>
                                                             <td><label>
-                                                                <input id="timeloc" type="datetime-local"  value="2014-01-02T11:42" class="form-control" style="width:180px;height: 30px;padding: 0"/>
+                                                                <input id="timeloc" name="xDiagnosisList[0].dateOfOnset" type="datetime-local"  value="2014-01-02T11:42" class="form-control" style="width:180px;height: 30px;padding: 0"/>
                                                             </label></td>
                                                             <td style="height: 25px;width:35px"><a href="#"><img src="../../static/images/save_icon.jpg" style="height: 100%;width: 100%" alt="保存"></a> </td>
                                                             <td class="text-center table-danger text-white"><a href="#" class="text-white font-weight-bold">-</a></td>
                                                         </tr>
                                                         <tr>
-                                                            <td>1</td>
+                                                            <td><input type="text" name="xDiagnosisList[1].diseaseId" value="2"></td>
                                                             <td>00001</td>
                                                             <td>哒哒哒</td>
-                                                            <td>35岁</td>
-                                                            <td title="aaaaaaaaaaaaaaaaaaaaaaaaa" style="max-width:120px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">重型[暴发型或干性]霍乱aaaaaaaaaaaaaaaa</td>
-                                                            <td>a</td>
-                                                            <td><img src="../../static/images/save_icon.jpg" style="height: 15px;width: 15px" alt="保存"></td>
-                                                            <td class="text-center table-danger text-white"><a class="font-weight-bold">-</a></td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>1</td>
-                                                            <td>00001</td>
-                                                            <td>哒哒哒</td>
-                                                            <td>35岁</td>
-                                                            <td>s</td>
-                                                            <td>a</td>
-                                                            <td><img src="../../static/images/save_icon.jpg" style="height: 15px;width: 15px" alt="保存"></td>
-                                                            <td class="text-center table-danger text-white"><a class="font-weight-bold">-</a></td>
+                                                            <td>
+                                                                <div class="custom-control custom-radio">
+                                                                    <input type="radio" class="custom-control-input" id="customRadio3" name="isNewMajorDiagnosisCheckded" value="2" checked>
+                                                                    <label class="custom-control-label" for="customRadio3"></label>
+                                                                </div>
+                                                            </td>
+                                                            <td>
+                                                                <div class="custom-control custom-checkbox ">
+                                                                    <input type="checkbox" class="custom-control-input" id="customCheck4" name="isNewSuspectChecked" value="2">
+                                                                    <label class="custom-control-label" for="customCheck4"></label>
+                                                                </div>
+                                                            </td>
+                                                            <td><label>
+                                                                <input id="timeloc5" name="xDiagnosisList[1].dateOfOnset" type="datetime-local"  value="2014-01-02T11:42" class="form-control" style="width:180px;height: 30px;padding: 0"/>
+                                                            </label></td>
+                                                            <td style="height: 25px;width:35px"><a href="#"><img src="../../static/images/save_icon.jpg" style="height: 100%;width: 100%" alt="保存"></a> </td>
+                                                            <td class="text-center table-danger text-white"><a href="#" class="text-white font-weight-bold">-</a></td>
                                                         </tr>
                                                     </table>
                                                 </div>
@@ -450,34 +452,48 @@
                                                         </thead>
                                                         <tbody id="diagnosisContextTbody2">
                                                         <tr>
-                                                            <td>1</td>
+                                                            <td><input type="text" name="zDiagnosisList[0].diseaseId" value="3"></td>
                                                             <td>00001</td>
                                                             <td>哒哒哒</td>
-                                                            <td>35岁</td>
-                                                            <td>s</td>
-                                                            <td>a</td>
-                                                            <td><img src="../../static/images/save_icon.jpg" style="height: 15px;width: 15px" alt="保存"></td>
-                                                            <td class="text-center table-danger text-white"><a class="font-weight-bold">-</a></td>
+                                                            <td>
+                                                                <div class="custom-control custom-radio">
+                                                                    <input type="radio" class="custom-control-input" id="customRadio5" name="isNewMajorDiagnosisCheckded" value="3" >
+                                                                    <label class="custom-control-label" for="customRadio5"></label>
+                                                                </div>
+                                                            </td>
+                                                            <td>
+                                                                <div class="custom-control custom-checkbox ">
+                                                                    <input type="checkbox" class="custom-control-input" id="customCheck6" name="isNewSuspectChecked" value="3" checked>
+                                                                    <label class="custom-control-label" for="customCheck6"></label>
+                                                                </div>
+                                                            </td>
+                                                            <td><label>
+                                                                <input id="timeloc6" name="zDiagnosisList[0].dateOfOnset" type="datetime-local"  value="2014-01-02T11:42" class="form-control" style="width:180px;height: 30px;padding: 0"/>
+                                                            </label></td>
+                                                            <td style="height: 25px;width:35px"><a href="#"><img src="../../static/images/save_icon.jpg" style="height: 100%;width: 100%" alt="保存"></a> </td>
+                                                            <td class="text-center table-danger text-white"><a href="#" class="text-white font-weight-bold">-</a></td>
                                                         </tr>
                                                         <tr>
-                                                            <td>1</td>
+                                                            <td><input type="text" name="zDiagnosisList[3].diseaseId" value="4"></td>
                                                             <td>00001</td>
                                                             <td>哒哒哒</td>
-                                                            <td>35岁</td>
-                                                            <td>s</td>
-                                                            <td>a</td>
-                                                            <td><img src="../../static/images/save_icon.jpg" style="height: 15px;width: 15px" alt="保存"></td>
-                                                            <td class="text-center table-danger text-white"><a class="font-weight-bold">-</a></td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>1</td>
-                                                            <td>00001</td>
-                                                            <td>哒哒哒</td>
-                                                            <td>35岁</td>
-                                                            <td>s</td>
-                                                            <td>a</td>
-                                                            <td><img src="../../static/images/save_icon.jpg" style="height: 15px;width: 15px" alt="保存"></td>
-                                                            <td class="text-center table-danger text-white"><a class="font-weight-bold">-</a></td>
+                                                            <td>
+                                                                <div class="custom-control custom-radio">
+                                                                    <input type="radio" class="custom-control-input" id="customRadio7" name="isNewMajorDiagnosisCheckded" value="4" checked>
+                                                                    <label class="custom-control-label" for="customRadio7"></label>
+                                                                </div>
+                                                            </td>
+                                                            <td>
+                                                                <div class="custom-control custom-checkbox ">
+                                                                    <input type="checkbox" class="custom-control-input" id="customCheck" name="isNewSuspectChecked" value="4" checked>
+                                                                    <label class="custom-control-label" for="customCheck"></label>
+                                                                </div>
+                                                            </td>
+                                                            <td><label>
+                                                                <input id="timeloc7" name="zDiagnosisList[3].dateOfOnset" type="datetime-local"  value="2014-01-02T11:42" class="form-control" style="width:180px;height: 30px;padding: 0"/>
+                                                            </label></td>
+                                                            <td style="height: 25px;width:35px"><a href="#"><img src="../../static/images/save_icon.jpg" style="height: 100%;width: 100%" alt="保存"></a> </td>
+                                                            <td class="text-center table-danger text-white"><a href="#" class="text-white font-weight-bold">-</a></td>
                                                         </tr>
                                                     </table>
                                                 </div>

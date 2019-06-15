@@ -8,7 +8,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-public class DateConverter implements Converter<String, Date> {
+public class DateTimeConverter implements Converter<String, Date> {
 
     @Override
     public Date convert(String s) {

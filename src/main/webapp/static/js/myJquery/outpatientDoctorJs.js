@@ -415,5 +415,13 @@ $("#medicalInfoBtnGroup :first").click(function () {
 $("#medicalInfoBtnGroup").find(".btn-outline-secondary,.btn-outline-success").click(function () {
     debugger;
     var data=$("#medicalRecordInfoForm").serializeArray();
-
+    $.ajax({
+        type: "POST",//方法类型
+        dataType: "json",//预期服务器返回的数据类型
+        url: "../medicalRecordHome/test",
+        data: data,
+        success: function (result) {
+            alert(result);
+        }
+    });
 });
