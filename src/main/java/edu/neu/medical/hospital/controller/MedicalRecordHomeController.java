@@ -64,9 +64,13 @@ public class MedicalRecordHomeController {
         return map;
     }
 
-
-    @RequestMapping("test")
-    public void searchDiagnosis(MedicalRecordInfo medicalRecordInfo, DiagnosisFormDTO diagnosisFormDTO){
+    /*
+     * @Description //TODO 
+     * @Param [type 1暂存 2提交,medicalRecordInfo, diagnosisFormDTO]
+     * @return void
+     **/
+    @RequestMapping("saveMedicalRecordInfo/{type}")
+    public void searchDiagnosis(@PathVariable("type")char type,MedicalRecordInfo medicalRecordInfo, DiagnosisFormDTO diagnosisFormDTO){
         System.out.printf("medicalRecordInfo");
         return;
     }
