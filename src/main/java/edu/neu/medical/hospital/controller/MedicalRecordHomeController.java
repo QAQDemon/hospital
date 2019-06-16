@@ -1,10 +1,7 @@
 package edu.neu.medical.hospital.controller;
 
 import com.github.pagehelper.PageInfo;
-import edu.neu.medical.hospital.bean.Diagnosis;
-import edu.neu.medical.hospital.bean.DiagnosisFormDTO;
-import edu.neu.medical.hospital.bean.Disease;
-import edu.neu.medical.hospital.bean.MedicalRecordInfo;
+import edu.neu.medical.hospital.bean.*;
 import edu.neu.medical.hospital.service.MedicalRecordHomeService;
 import org.springframework.web.bind.annotation.*;
 
@@ -65,7 +62,7 @@ public class MedicalRecordHomeController {
     }
 
     /*
-     * @Description 保存病历信息和初诊//TODO
+     * @Description 保存病历信息和初诊
      * @Param [type 1暂存 2提交,infoId -1则不存在,medicalRecordInfo, diagnosisFormDTO]
      * @return string 1成 2 失败
      **/
@@ -93,4 +90,26 @@ public class MedicalRecordHomeController {
             return "2";
     }
 
+    /*
+     * @Description 获得对应类别的模板的名字//TODO
+     * @Param [category 1全院 2科室 3个人]
+     * @return void
+     **/
+    @RequestMapping("getMedrecTemplate/{category}")
+    public Map<Integer ,String> getMedrecTemplate(@PathVariable("category")char category){
+        int doctorId=1;//todo
+        int departID=1;//
+
+        int belongId=0;//1：0；2：科室id；3：医生id
+        if(category=='2')
+            belongId=departID;
+        else if(category=='3')
+            belongId = doctorId;
+        Map<Integer ,String> map=new HashMap<>();
+        List<MedrecTemplate> list=medicalRecordHomeService.searchMedrecTemplateList(category, belongId, "");
+        for (MedrecTemplate medrecTemplate : list) {
+            map.put(medrecTemplate.getId(),medrecTemplate.getTemplateName());
+        }
+        return map;
+    }
 }

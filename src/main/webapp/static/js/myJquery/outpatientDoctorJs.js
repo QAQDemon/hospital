@@ -197,22 +197,28 @@ $("#searchPatientTbody1,#searchPatientTbody2").on("click","tr",function () {
                 xDiagnosisList=result.xDiagnosisList;
                 zDiagnosisDiseaseList=result.zDiagnosisDiseaseList;
                 xDiagnosisDiseaseList=result.xDiagnosisDiseaseList;
-                visitStatus=((medicalRecordInfo.status==='3')?"诊毕":"待诊");
                 medicalInfoNo=medicalRecordInfo.id;
+                if(medicalRecordInfo.status==='3')
+                    visitStatus="诊毕";
+                else if(medicalRecordInfo.status==='2')
+                    visitStatus="初诊完成";
+                else visitStatus="待诊";
+                if(visitStatus==='待诊')
+                    disableMedicalInfoBtn(false);
+                else disableMedicalInfoBtn(true);
             }else {
                 visitStatus="待诊";
                 medicalInfoNo="待创建";
+                disableMedicalInfoBtn(false);
             }
             //变色
             var span=$("#visitStatusSpan");
             if(visitStatus==="诊毕"){
                 span.addClass("text-danger");
                 span.removeClass("text-success");
-                disableMedicalInfoBtn(true);
             }else {
                 span.removeClass("text-danger");
                 span.addClass("text-success");
-                disableMedicalInfoBtn(false);
             }
             var content=[visitStatus,medicalInfoNo,patient.name,((patient.gender==='1')?"男":"女"),patient.age+"岁"];
             //设置数据
@@ -469,10 +475,26 @@ $("#medicalInfoBtnGroup").find(".btn-outline-secondary,.btn-outline-success").cl
         data: $("#medicalRecordInfoForm").serializeArray(),
         success: function (result) {
             closeAlertDiv(alertNum);
-            if(result==="1")
+            if(result==="1"){
                 showAlertDiv("alert-success","成功!","病历信息保存成功。");
+                //提交成功则暂存提交不可用
+                $("#patientListForm :checked").click();
+            }
             else showAlertDiv("alert-warning","警告!","病历信息保存失败。");
         }
     });
 });
 
+//模板类型选择
+$("#medrecTempChooseDiv :radio").click(function () {
+    alert($(this).parent().index()+1);
+    $.ajax({
+        type: "POST",//方法类型
+        dataType: "json",//预期服务器返回的数据类型
+        url: "getMedrecTemplate/"+($(this).parent().index()+1),
+        data: {},
+        success: function (result) {
+            alert(result);
+        }
+    });
+})

@@ -125,12 +125,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                         </div>
                     </form>
                     <!--患者搜索结果-->
-                    <ul class="nav nav-pills" role="tablist">
+                    <ul class="nav nav-pills">
                         <li class="nav-item">
-                            <a id="patientSearchCategory1" class="nav-link active font-weight-bold" >本人</a>
+                            <a id="patientSearchCategory1" class="nav-link active font-weight-bold" href="javascript:void(0)">本人</a>
                         </li>
                         <li class="nav-item">
-                            <a id="patientSearchCategory2" class="nav-link font-weight-bold" >科室</a>
+                            <a id="patientSearchCategory2" class="nav-link font-weight-bold" href="javascript:void(0)">科室</a>
                         </li>
                     </ul>
                     <form id="patientListForm" role="form" onkeypress="return event.keyCode !== 13;">
@@ -350,7 +350,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                                         <button type="button" class="btn btn-outline-secondary btn-sm">模板管理</button>
                                                     </div>
                                                     <!--病历模板分类选择-->
-                                                    <div class="bg-light" style="border: 1px solid rgba(0, 0, 0, 0.125); border-radius: 0.25rem;padding: 0.75rem 0rem;">
+                                                    <div id="medrecTempChooseDiv" class="bg-light" style="border: 1px solid rgba(0, 0, 0, 0.125); border-radius: 0.25rem;padding: 0.75rem 0rem;">
                                                         &nbsp;&nbsp;
                                                         <div class="custom-control custom-radio custom-control-inline">
                                                             <input type="radio" class="custom-control-input active" id="wholeRadio" name="medrecTemplateRadioGroup" checked>
