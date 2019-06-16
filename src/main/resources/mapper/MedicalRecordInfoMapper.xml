@@ -18,6 +18,11 @@
     </choose>
   </select>
 
+  <select id="getLastId" resultType="int">
+    select max(id) from medical_record_info where medical_record_no=#{medicalRecordNo}
+  </select>
+
+
 
 
 

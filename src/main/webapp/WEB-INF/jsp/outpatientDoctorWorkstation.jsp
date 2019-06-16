@@ -292,7 +292,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                                             <th>名称</th>
                                                             <th>主诊</th>
                                                             <th>疑似</th>
-                                                            <th>发病日期</th>
+                                                            <th>发病日期<small>(不完整会丢失)</small></th>
                                                             <th>&nbsp;</th>
                                                             <th class="text-center" style="padding: 0"><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#DiagnosisModal" style="width: 100%;height: 100%">+
                                                             </button></th>
@@ -312,7 +312,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                                             <th>名称</th>
                                                             <th>主诊</th>
                                                             <th>疑似</th>
-                                                            <th>发病日期</th>
+                                                            <th>发病日期<small>(不完整会丢失)</small></th>
                                                             <th>&nbsp;</th>
                                                             <th class="text-center" style="padding: 0"><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#DiagnosisModal" style="width: 100%;height: 100%">+
                                                             </button></th>

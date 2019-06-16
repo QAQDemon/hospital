@@ -2,19 +2,26 @@ var patientList;//保存病人信息列表
 var notSeenListNum;//待诊人数，用来取病历信息
 
 var alertFlag=0;
-//弹出信息提示框
+//弹出信息提示框,返回值可以用来删除
 function showAlertDiv(color,caption,text) {
+    alertFlag++;
     var num=alertFlag+1100;//z-index
     $("body").prepend(
-        '<div class="alert alert-dismissible fade show '+color+'" style="position:fixed;z-index: '+num+';width: 100%;">\n' +
+        '<div id="alertDiv'+num+'" class="alert alert-dismissible fade show '+color+'" style="position:fixed;z-index: '+num+';width: 100%;">\n' +
         '    <button type="button" class="close" data-dismiss="alert">&times;</button>\n' +
         '    <strong>'+caption+'</strong><span>'+text+'</span>\n' +
         '</div>');
-    alertFlag++;
+    return num;
+}
+//关闭提示
+function closeAlertDiv(alertNum) {
+    $("#alertDiv"+alertNum+" :button").click();
 }
 
 //修改时间格式
 function getTime(t){
+    if(t===null)
+        return "";
     var _time=new Date(t);
     var   year=_time.getFullYear();//2017
     var   month=(Array(2).join("0") + (_time.getMonth()+1)).slice(-2);
@@ -124,11 +131,11 @@ function clearMedicalInfoContext(){
 //放入评估诊断
 function setDiagnosisList(diagnosisList,diseaseList,listName,num){
     var str="";
-    for (var i=1;i<diagnosisList.length;i++) {
+    for (var i=0;i<diagnosisList.length;i++) {
         var diseaseId=diseaseList[i].id;
         str+='<tr>\n' +
             '<td>'+(diseaseId)+'</td>\n' +
-            '<td>'+diseaseList[i].diseaseicd+'<input type="hidden" name="'+listName+'['+i+'].diseaseId" value="'+diseaseId+'">'+'+</td>\n' +
+            '<td>'+diseaseList[i].diseaseicd+'<input type="hidden" name="'+listName+'['+(i+1)+'].diseaseId" value="'+diseaseId+'">'+'+</td>\n' +
             '<td title="'+diseaseList[i].diseasename+'" style="max-width:120px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">'+diseaseList[i].diseasename+'</td>\n' +
             '<td>\n' +
             '<div class="custom-control custom-radio">\n' +
@@ -144,7 +151,7 @@ function setDiagnosisList(diagnosisList,diseaseList,listName,num){
             '</td>\n' +
             '<td style="padding: 0">\n' +
             '<input type="datetime-local"  class="form-control" value="'+getTime(diagnosisList[i].dateOfOnset)+'"/>\n' +
-            '<input type="hidden" name="'+listName+'['+i+'].dateOfOnset"/>\n'+
+            '<input type="hidden" name="'+listName+'['+(i+1)+'].dateOfOnset"/>\n'+
             '</td>\n' +
             '<td style="padding: 0"><a href="#"><img src="images/save_icon.jpg" style="height:40px;width:40px" alt="保存"></a></td>\n' +
             '<td class="text-center" style="padding: 0"><button type="button" class="btn btn-danger" style="width: 100%;height: 100%">-\n' +
@@ -454,18 +461,18 @@ $("#medicalInfoBtnGroup").find(".btn-outline-secondary,.btn-outline-success").cl
             $(this).next().val(dateStr.replace("T"," "));
     });
     var infoId=$("#patientInfoDiv span:eq(1)").html();
+    var alertNum=showAlertDiv("alert-secondary","","病历信息保存中...");
     $.ajax({
         type: "POST",//方法类型
-        dataType: "json",//预期服务器返回的数据类型
+        dataType: "text",//预期服务器返回的数据类型
         url: "medicalRecordHome/saveMedicalRecordInfo/"+($(this).hasClass("btn-outline-secondary")?"1":"2")+"/"+$("#patientListForm :checked").val()+"/"+((infoId==="待创建")?"-1":(infoId))+"/"+$("#patientListForm [type='hidden']").val(),
         data: $("#medicalRecordInfoForm").serializeArray(),
         success: function (result) {
-            alert(result);
+            closeAlertDiv(alertNum);
+            if(result==="1")
+                showAlertDiv("alert-success","成功!","病历信息保存成功。");
+            else showAlertDiv("alert-warning","警告!","病历信息保存失败。");
         }
     });
 });
 
-
-$("#tba").click(function () {
-    alert($("#patientListForm :checked").val());
-});

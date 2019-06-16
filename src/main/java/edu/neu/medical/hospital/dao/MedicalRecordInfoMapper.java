@@ -22,7 +22,12 @@ public interface MedicalRecordInfoMapper {
      **/
     MedicalRecordInfo getMedicalRecordInfoById(@Param("isSeen") char isSeen,@Param("medicalRecordNo") int medicalRecordNo);
 
-
+    /*
+     * @Description 获得刚插入的病单号
+     * @Param [medicalRecordNo]
+     * @return int
+     **/
+    int getLastId(@Param("medicalRecordNo")int medicalRecordNo);
 
 
 

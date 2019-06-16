@@ -76,41 +76,40 @@ public class MedicalRecordHomeServiceImpl implements MedicalRecordHomeService {
      * @return java.lang.Boolean
      **/
     public Boolean setMedicalRecordInfoAndDiagnosisList(MedicalRecordInfo medicalRecordInfo, List<Diagnosis> diagnosisList) {
-        //是否有暂存
-        int medicalRecordId=medicalRecordInfo.getMedicalRecordNo();
-        MedicalRecordInfoExample medicalRecordInfoExample=new MedicalRecordInfoExample();
-        MedicalRecordInfoExample.Criteria criteria=medicalRecordInfoExample.createCriteria();
-        criteria.andMedicalRecordNoEqualTo(medicalRecordId);
-        criteria.andStatusEqualTo('1'+"");
-        int count=medicalRecordInfoMapper.countByExample(medicalRecordInfoExample);
-        if(count==1){//有暂存，update
-            medicalRecordInfoMapper.updateByExampleSelective(medicalRecordInfo,medicalRecordInfoExample);
-            int medicalRecordInfoId=medicalRecordInfoMapper.selectByExample(medicalRecordInfoExample).get(0).getId();
-            for (Diagnosis d:diagnosisList) {
-                d.setMedicalRecordInfoId(medicalRecordInfoId);
-            }
+//        //是否有暂存
+//        int medicalRecordId=medicalRecordInfo.getMedicalRecordNo();
+//        MedicalRecordInfoExample medicalRecordInfoExample=new MedicalRecordInfoExample();
+//        MedicalRecordInfoExample.Criteria criteria=medicalRecordInfoExample.createCriteria();
+//        criteria.andMedicalRecordNoEqualTo(medicalRecordId);
+//        criteria.andStatusEqualTo('1'+"");
+//        int count=medicalRecordInfoMapper.countByExample(medicalRecordInfoExample);
+        if(medicalRecordInfo.getId()!=null){//有暂存，update
+//            medicalRecordInfoMapper.updateByExampleSelective(medicalRecordInfo,medicalRecordInfoExample);
+            medicalRecordInfoMapper.updateByPrimaryKeySelective(medicalRecordInfo);
+//            int medicalRecordInfoId=medicalRecordInfo.getId();
+//            for (Diagnosis d:diagnosisList) {
+//                d.setMedicalRecordInfoId(medicalRecordInfoId);
+//            }
             //更新初诊，先删后加
             DiagnosisExample diagnosisExample=new DiagnosisExample();
             DiagnosisExample.Criteria criteria1=diagnosisExample.createCriteria();
-            criteria1.andMedicalRecordInfoIdEqualTo(medicalRecordInfoId);
+            criteria1.andMedicalRecordInfoIdEqualTo(medicalRecordInfo.getId());
             criteria1.andCategoryEqualTo("1");
             diagnosisMapper.deleteByExample(diagnosisExample);
             diagnosisMapper.insertForeach(diagnosisList);
-        }else if(count==0){//无暂存，insert
-            //搜索患者id
-            PatientExample patientExample =new PatientExample();
-            PatientExample.Criteria criteria1=patientExample.createCriteria();
-            criteria1.andMedicalRecordNoEqualTo(medicalRecordId);
-            medicalRecordInfo.setPatientId(patientMapper.selectByExample(patientExample).get(0).getId());
+        }else {//无暂存，insert
+//            //搜索患者id
+//            PatientExample patientExample =new PatientExample();
+//            PatientExample.Criteria criteria1=patientExample.createCriteria();
+//            criteria1.andMedicalRecordNoEqualTo(medicalRecordId);
+//            medicalRecordInfo.setPatientId(patientMapper.selectByExample(patientExample).get(0).getId());
             //增加病历信息和初诊
             medicalRecordInfoMapper.insertSelective(medicalRecordInfo);
-            int medicalRecordInfoId=medicalRecordInfoMapper.selectByExample(medicalRecordInfoExample).get(0).getId();
+            int medicalRecordInfoId=medicalRecordInfoMapper.getLastId(medicalRecordInfo.getMedicalRecordNo());
             for (Diagnosis d:diagnosisList) {
                 d.setMedicalRecordInfoId(medicalRecordInfoId);
             }
             diagnosisMapper.insertForeach(diagnosisList);
-        }else{//可能出问题了
-            return false;
         }
         return true;
     }

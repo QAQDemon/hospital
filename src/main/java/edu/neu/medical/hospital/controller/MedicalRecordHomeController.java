@@ -67,10 +67,10 @@ public class MedicalRecordHomeController {
     /*
      * @Description 保存病历信息和初诊//TODO
      * @Param [type 1暂存 2提交,infoId -1则不存在,medicalRecordInfo, diagnosisFormDTO]
-     * @return void
+     * @return string 1成 2 失败
      **/
     @RequestMapping("saveMedicalRecordInfo/{type}/{medicalRecordNo}/{infoId}/{patientId}")
-    public void searchDiagnosis(@PathVariable("type")char type,@PathVariable("medicalRecordNo")int medicalRecordNo,@PathVariable("infoId")int infoId
+    public String searchDiagnosis(@PathVariable("type")char type,@PathVariable("medicalRecordNo")int medicalRecordNo,@PathVariable("infoId")int infoId
             ,@PathVariable("patientId")int patientId,MedicalRecordInfo medicalRecordInfo, DiagnosisFormDTO diagnosisFormDTO){
         int doctorId=1;//todo
         int departID=1;//
@@ -87,9 +87,10 @@ public class MedicalRecordHomeController {
         medicalRecordInfo.setPatientId(patientId);
         //获得初诊
         List<Diagnosis> diagnosesList = diagnosisFormDTO.getInitialDiagnosisList(infoId);
-
-        System.out.printf("medicalRecordInfo");
-        return;
+        if(medicalRecordHomeService.setMedicalRecordInfoAndDiagnosisList(medicalRecordInfo, diagnosesList))
+            return "1";
+        else
+            return "2";
     }
 
 }
