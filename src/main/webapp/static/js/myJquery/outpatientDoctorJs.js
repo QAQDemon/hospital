@@ -38,6 +38,7 @@ function setPatientList(seenList,listName,num){
         str+="<tr>\n" +
             "<td>\n" +
             "<div class='custom-control custom-radio'>\n" +
+            "<input type='hidden' value='"+seenList[i].id+"' >\n"+
             "<input type='radio' class='custom-control-input' id='customRadio"+listName+i+"' name='seenList' value='"+seenList[i].medicalRecordNo+"'>\n" +
             "<label class='custom-control-label' for='customRadio"+listName+i+"'></label>\n" +
             "</div>\n" +
@@ -123,7 +124,7 @@ function clearMedicalInfoContext(){
 //放入评估诊断
 function setDiagnosisList(diagnosisList,diseaseList,listName,num){
     var str="";
-    for (var i=0;i<diagnosisList.length;i++) {
+    for (var i=1;i<diagnosisList.length;i++) {
         var diseaseId=diseaseList[i].id;
         str+='<tr>\n' +
             '<td>'+(diseaseId)+'</td>\n' +
@@ -158,7 +159,7 @@ function disableMedicalInfoBtn(bool){
 }
 //点击表格设置患者信息
 $("#searchPatientTbody1,#searchPatientTbody2").on("click","tr",function () {
-    var radio=$(this).find("input");
+    var radio=$(this).find("input[type='radio']");
     radio.prop('checked','true');
     var no=parseInt(radio.val());
     var patient;
@@ -402,7 +403,7 @@ $("#DiagnosisModal .modal-footer :button").click(function () {
         var hiddenName=resultNode.find("[type='hidden']:last").attr("name");
         var lastNum;
         if (hiddenName === undefined)
-            lastNum=0;
+            lastNum=1;
         else
             lastNum=getInnerNum(hiddenName)+1;
         resultNode.append('<tr>\n' +
@@ -452,14 +453,19 @@ $("#medicalInfoBtnGroup").find(".btn-outline-secondary,.btn-outline-success").cl
         if(dateStr!=="")
             $(this).next().val(dateStr.replace("T"," "));
     });
-    var str=$("#medicalInfoBtnGroup").
+    var infoId=$("#patientInfoDiv span:eq(1)").html();
     $.ajax({
         type: "POST",//方法类型
         dataType: "json",//预期服务器返回的数据类型
-        url: "medicalRecordHome/saveMedicalRecordInfo/"+($(this).hasClass("btn-outline-secondary")?"1":"2"),
+        url: "medicalRecordHome/saveMedicalRecordInfo/"+($(this).hasClass("btn-outline-secondary")?"1":"2")+"/"+$("#patientListForm :checked").val()+"/"+((infoId==="待创建")?"-1":(infoId))+"/"+$("#patientListForm [type='hidden']").val(),
         data: $("#medicalRecordInfoForm").serializeArray(),
         success: function (result) {
             alert(result);
         }
     });
+});
+
+
+$("#tba").click(function () {
+    alert($("#patientListForm :checked").val());
 });

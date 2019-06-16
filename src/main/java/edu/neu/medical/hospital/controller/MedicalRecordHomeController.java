@@ -65,13 +65,31 @@ public class MedicalRecordHomeController {
     }
 
     /*
-     * @Description //TODO 
-     * @Param [type 1暂存 2提交,medicalRecordInfo, diagnosisFormDTO]
+     * @Description 保存病历信息和初诊//TODO
+     * @Param [type 1暂存 2提交,infoId -1则不存在,medicalRecordInfo, diagnosisFormDTO]
      * @return void
      **/
-    @RequestMapping("saveMedicalRecordInfo/{type}")
-    public void searchDiagnosis(@PathVariable("type")char type,MedicalRecordInfo medicalRecordInfo, DiagnosisFormDTO diagnosisFormDTO){
+    @RequestMapping("saveMedicalRecordInfo/{type}/{medicalRecordNo}/{infoId}/{patientId}")
+    public void searchDiagnosis(@PathVariable("type")char type,@PathVariable("medicalRecordNo")int medicalRecordNo,@PathVariable("infoId")int infoId
+            ,@PathVariable("patientId")int patientId,MedicalRecordInfo medicalRecordInfo, DiagnosisFormDTO diagnosisFormDTO){
+        int doctorId=1;//todo
+        int departID=1;//
+
+        if (type == '1')
+            medicalRecordInfo.setStatus("1");
+        else
+            medicalRecordInfo.setStatus("2");
+        if(infoId!=-1)
+            medicalRecordInfo.setId(infoId);
+        medicalRecordInfo.setDoctorId(doctorId);
+        medicalRecordInfo.setDepartId(departID);
+        medicalRecordInfo.setMedicalRecordNo(medicalRecordNo);
+        medicalRecordInfo.setPatientId(patientId);
+        //获得初诊
+        List<Diagnosis> diagnosesList = diagnosisFormDTO.getInitialDiagnosisList(infoId);
+
         System.out.printf("medicalRecordInfo");
         return;
     }
+
 }

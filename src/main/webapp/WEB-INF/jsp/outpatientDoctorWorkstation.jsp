@@ -127,14 +127,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                     <!--患者搜索结果-->
                     <ul class="nav nav-pills" role="tablist">
                         <li class="nav-item">
-                            <a id="patientSearchCategory1" class="nav-link active font-weight-bold" href="#emptyDiv1" data-toggle="pill">本人</a>
+                            <a id="patientSearchCategory1" class="nav-link active font-weight-bold" >本人</a>
                         </li>
                         <li class="nav-item">
-                            <a id="patientSearchCategory2" class="nav-link font-weight-bold" href="#emptyDiv2" data-toggle="pill">科室</a>
+                            <a id="patientSearchCategory2" class="nav-link font-weight-bold" >科室</a>
                         </li>
                     </ul>
-                    <div id="emptyDiv1"></div> <div id="emptyDiv2"></div>
-                    <form role="form" onkeypress="return event.keyCode !== 13;">
+                    <form id="patientListForm" role="form" onkeypress="return event.keyCode !== 13;">
                         <table class="table table-condensed table-striped table-hover table-sm">
                             <thead>
                             <tr>
@@ -223,6 +222,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                 <div class="col-md-8">
                                     <!--病历信息表格-->
                                     <form id="medicalRecordInfoForm" role="form" onkeypress="return event.keyCode !== 13;">
+                                        <!--空白内容防止出错-->
+                                        <input type="hidden" name="xDiagnosisList[0].diseaseId" value="-1">
+                                        <input type="hidden" name="zDiagnosisList[0].diseaseId" value="-1">
+                                        <input type="hidden" name="isNewMajorDiagnosisCheckded" value="-1">
+                                        <input type="hidden" name="isNewSuspectChecked" value="-1">
                                         <div class="row ">
                                             <div class="col-md-7">
                                                 <h4 class="font-weight-bold">病历信息</h4>

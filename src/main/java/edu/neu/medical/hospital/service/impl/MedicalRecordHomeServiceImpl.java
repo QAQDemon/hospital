@@ -72,7 +72,7 @@ public class MedicalRecordHomeServiceImpl implements MedicalRecordHomeService {
 
     /*
      * @Description 暂存或提交病历信息和诊断，需判断是否已存在信息
-     * @Param [ medicalRecordInfo 应包含状态（1暂存 2提交），病历号，医生id，科室id, diagnosisList 无病历信息id]
+     * @Param [ medicalRecordInfo 应包含状态（1暂存 2提交），病单号可能null,病历号，患者id，医生id，科室id, diagnosisList 可能病单号null]
      * @return java.lang.Boolean
      **/
     public Boolean setMedicalRecordInfoAndDiagnosisList(MedicalRecordInfo medicalRecordInfo, List<Diagnosis> diagnosisList) {
