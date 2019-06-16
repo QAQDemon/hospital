@@ -91,14 +91,14 @@ public class MedicalRecordHomeController {
     }
 
     /*
-     * @Description 获得对应类别的模板的名字//TODO
+     * @Description 获得对应类别的模板的名字
      * @Param [category 1全院 2科室 3个人]
      * @return void
      **/
     @RequestMapping("getMedrecTemplate/{category}")
     public Map<Integer ,String> getMedrecTemplate(@PathVariable("category")char category){
         int doctorId=1;//todo
-        int departID=1;//
+        int departID=2;//
 
         int belongId=0;//1：0；2：科室id；3：医生id
         if(category=='2')
@@ -110,6 +110,20 @@ public class MedicalRecordHomeController {
         for (MedrecTemplate medrecTemplate : list) {
             map.put(medrecTemplate.getId(),medrecTemplate.getTemplateName());
         }
+        return map;
+    }
+
+    /*
+     * @Description 根据id获得病历模板内容//TODO
+     * @Param [medrecTemplateId]
+     * @return java.util.Map<java.lang.String,java.lang.Object>
+     **/
+    @RequestMapping("getMedrecTemplateContent/{medrecTemplateId}")
+    public Map<String,Object> getMedrecTemplateContent(@PathVariable("medrecTemplateId")int medrecTemplateId){
+        Map map = new HashMap<>();
+        map.put("medrecTemplate", medicalRecordHomeService.getMedrecTemplateById(medrecTemplateId));
+        map.put("xDiagnosisDiseaseList",medicalRecordHomeService.getDiagnosisDiseaseList(medicalRecordHomeService.getNewDiagnosisListById('2','1',medrecTemplateId)));
+        map.put("zDiagnosisDiseaseList",medicalRecordHomeService.getDiagnosisDiseaseList(medicalRecordHomeService.getNewDiagnosisListById('2','2',medrecTemplateId)));
         return map;
     }
 }

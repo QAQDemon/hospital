@@ -127,10 +127,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                     <!--患者搜索结果-->
                     <ul class="nav nav-pills">
                         <li class="nav-item">
-                            <a id="patientSearchCategory1" class="nav-link active font-weight-bold" href="javascript:void(0)">本人</a>
+                            <a id="patientSearchCategory1" class="nav-link active font-weight-bold" href="#">本人</a>
                         </li>
                         <li class="nav-item">
-                            <a id="patientSearchCategory2" class="nav-link font-weight-bold" href="javascript:void(0)">科室</a>
+                            <a id="patientSearchCategory2" class="nav-link font-weight-bold" href="#">科室</a>
                         </li>
                     </ul>
                     <form id="patientListForm" role="form" onkeypress="return event.keyCode !== 13;">
@@ -353,7 +353,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                                     <div id="medrecTempChooseDiv" class="bg-light" style="border: 1px solid rgba(0, 0, 0, 0.125); border-radius: 0.25rem;padding: 0.75rem 0rem;">
                                                         &nbsp;&nbsp;
                                                         <div class="custom-control custom-radio custom-control-inline">
-                                                            <input type="radio" class="custom-control-input active" id="wholeRadio" name="medrecTemplateRadioGroup" checked>
+                                                            <input type="radio" class="custom-control-input active" id="wholeRadio" name="medrecTemplateRadioGroup">
                                                             <label class="custom-control-label" for="wholeRadio">全院</label>
                                                         </div>
                                                         <div class="custom-control custom-radio custom-control-inline">
@@ -367,36 +367,58 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                                     </div>
                                                     <div class="card">
                                                         <!--病历模板列表-->
-                                                        <div class="list-group list-group">
-                                                            <a href="#" class="list-group-item list-group-item-action">慢性咽炎模板</a>
-                                                            <a href="#" class="list-group-item list-group-item-action">快速诊断</a>
-                                                            <a href="#" class="list-group-item list-group-item-action">模板二</a>
-                                                            <a href="#" class="list-group-item list-group-item-action">模板三</a>
-                                                        </div>
+                                                        <div id="MedrecTempListDiv" class="list-group list-group"></div>
                                                     </div>
-                                                    <form id="medrecTemplateForm" role="form" onkeypress="return event.keyCode !== 13;">
+                                                    <div id="MedrecTempContextDiv" >
                                                         <div class="text-right" style="margin-top: 8px">
                                                             <button type="button" class="btn btn-outline-success btn-sm">引用</button>
                                                         </div>
                                                         <!--模板内容-->
                                                         <div class="card">
-                                                            <div class="card-header"><strong>模板内容：</strong>快速诊断</div>
+                                                            <div class="card-header"><strong>模板内容：</strong><span></span></div>
                                                             <div class="card-body">
                                                                 <div class="form-group ">
                                                                     <label class="font-weight-bold" for="chiefComplaintTemplate">主诉：</label>
-                                                                    <input type="text" class="form-control " id="chiefComplaintTemplate" readonly="readonly" value="as">
+                                                                    <input type="text" class="form-control " id="chiefComplaintTemplate" readonly="readonly">
                                                                 </div>
                                                                 <div class="form-group ">
                                                                     <label class="font-weight-bold" for="currentMedicalHistoryTemplate">现病史：</label>
                                                                     <textarea class="form-control " rows="2" id="currentMedicalHistoryTemplate" readonly="readonly"></textarea>
                                                                 </div>
-                                                                <div class="form-group ">
+                                                                <div class="form-group">
                                                                     <label class="font-weight-bold" for="physicalExaminationTemplate">体格检查：</label>
                                                                     <textarea class="form-control " rows="2" id="physicalExaminationTemplate" readonly="readonly"></textarea>
                                                                 </div>
+                                                                <!--模板诊断*2-->
+                                                                <div class="form-group">
+                                                                    <label class="font-weight-bold">西医诊断</label>
+                                                                    <table class="table table-condensed table-striped table-hover table-sm table-bordered" >
+                                                                        <thead>
+                                                                        <tr>
+                                                                            <th>ID</th>
+                                                                            <th>ICD编码</th>
+                                                                            <th>名称</th>
+                                                                        </tr>
+                                                                        </thead>
+                                                                        <tbody></tbody>
+                                                                    </table>
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <label class="font-weight-bold">中医诊断</label>
+                                                                    <table class="table table-condensed table-striped table-hover table-sm table-bordered" >
+                                                                        <thead>
+                                                                        <tr>
+                                                                            <th>ID</th>
+                                                                            <th>ICD编码</th>
+                                                                            <th>名称</th>
+                                                                        </tr>
+                                                                        </thead>
+                                                                        <tbody></tbody>
+                                                                    </table>
+                                                                </div>
                                                             </div>
                                                         </div>
-                                                    </form>
+                                                    </div>
                                                 </div>
                                                 <!--常用诊断部分-->
                                                 <div id="home1_2" class="container tab-pane fade">

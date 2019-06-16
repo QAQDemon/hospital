@@ -1,6 +1,9 @@
 var patientList;//保存病人信息列表
 var notSeenListNum;//待诊人数，用来取病历信息
 
+//隐藏病历模板的内容
+// $("#MedrecTempContextDiv").hide();
+
 var alertFlag=0;
 //弹出信息提示框,返回值可以用来删除
 function showAlertDiv(color,caption,text) {
@@ -135,7 +138,7 @@ function setDiagnosisList(diagnosisList,diseaseList,listName,num){
         var diseaseId=diseaseList[i].id;
         str+='<tr>\n' +
             '<td>'+(diseaseId)+'</td>\n' +
-            '<td>'+diseaseList[i].diseaseicd+'<input type="hidden" name="'+listName+'['+(i+1)+'].diseaseId" value="'+diseaseId+'">'+'+</td>\n' +
+            '<td>'+diseaseList[i].diseaseicd+'<input type="hidden" name="'+listName+'['+(i+1)+'].diseaseId" value="'+diseaseId+'"></td>\n' +
             '<td title="'+diseaseList[i].diseasename+'" style="max-width:120px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">'+diseaseList[i].diseasename+'</td>\n' +
             '<td>\n' +
             '<div class="custom-control custom-radio">\n' +
@@ -390,6 +393,16 @@ $("#diagnosisCheckedTbody").on("click","tr",function () {
     }
 });
 
+//获得诊断最后一位序号
+function getDiagnosisLast(tbody){
+    var hiddenName=tbody.find("[type='hidden']:last").attr("name");
+    var lastNum;
+    if (hiddenName === undefined)
+        lastNum=1;
+    else
+        lastNum=getInnerNum(hiddenName)+1;
+    return lastNum;
+}
 //导入诊断结果
 $("#DiagnosisModal .modal-footer :button").click(function () {
     var resultNode;
@@ -413,15 +426,10 @@ $("#DiagnosisModal .modal-footer :button").click(function () {
         });
         if(flag===1)
             return true;//continue
-        var hiddenName=resultNode.find("[type='hidden']:last").attr("name");
-        var lastNum;
-        if (hiddenName === undefined)
-            lastNum=1;
-        else
-            lastNum=getInnerNum(hiddenName)+1;
+        var lastNum = getDiagnosisLast(resultNode);
         resultNode.append('<tr>\n' +
             '<td>'+(diseaseId)+'</td>\n' +
-            '<td>'+$(this).children().eq(2).html()+'<input type="hidden" name="'+listName+'['+lastNum+'].diseaseId" value="'+diseaseId+'">'+'</td>\n' +
+            '<td>'+$(this).children().eq(2).html()+'<input type="hidden" name="'+listName+'['+lastNum+'].diseaseId" value="'+diseaseId+'"></td>\n' +
             '<td title="'+$(this).children().eq(3).html()+'" style="max-width:120px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">'+$(this).children().eq(3).html()+'</td>\n' +
             '<td>\n' +
             '<div class="custom-control custom-radio">\n' +
@@ -485,16 +493,120 @@ $("#medicalInfoBtnGroup").find(".btn-outline-secondary,.btn-outline-success").cl
     });
 });
 
-//模板类型选择
+//放入病历模板的名字到标签
+function addmedrecTempContext(map){
+    var str="";
+    for(var key in map){
+        str+=' <a href="#" class="list-group-item list-group-item-action">'+map[key]+'</a><input type="hidden" value="'+key+'">';
+    }
+    $("#MedrecTempListDiv").html(str);
+}
+//病历模板类型选择
 $("#medrecTempChooseDiv :radio").click(function () {
-    alert($(this).parent().index()+1);
     $.ajax({
         type: "POST",//方法类型
         dataType: "json",//预期服务器返回的数据类型
-        url: "getMedrecTemplate/"+($(this).parent().index()+1),
+        url: "medicalRecordHome/getMedrecTemplate/"+($(this).parent().index()+1),
         data: {},
         success: function (result) {
-            alert(result);
+            addmedrecTempContext(result);
         }
     });
-})
+});
+//清空模板内容
+function clearMedrecTemplateContent(){
+    $("#chiefComplaintTemplate").val("");
+    $("#MedrecTempContextDiv").find("textarea,tbody,span").html("");
+}
+//放入模板疾病 0,1
+function setDiseaseTempleteList(diseaseList,num){
+    var str="";
+    for (var i=0;i<diseaseList.length;i++) {
+        var diseaseId=diseaseList[i].id;
+        str+='<tr>\n' +
+            '<td>'+(diseaseId)+'</td>\n' +
+            '<td title="'+diseaseList[i].diseaseicd+'" style="max-width:60px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">'+diseaseList[i].diseaseicd+'</td>\n' +
+            '<td title="'+diseaseList[i].diseasename+'" style="max-width:80px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">'+diseaseList[i].diseasename+'</td>\n' +
+            '</tr>';
+    }
+    $("#MedrecTempContextDiv tbody:eq("+num+")").html(str);
+}
+//点击标签获得模板内容
+$("#MedrecTempListDiv").on("click","a",function () {
+    //变色
+    $("#MedrecTempListDiv a").removeClass("active");
+    $(this).addClass("active");
+    $.ajax({
+        type: "POST",//方法类型
+        dataType: "json",//预期服务器返回的数据类型
+        url: "medicalRecordHome/getMedrecTemplateContent/"+$(this).next().val(),
+        data: {},
+        success: function (result) {
+            clearMedrecTemplateContent();
+            var medrecTemplate=result.medrecTemplate;
+            $("#MedrecTempContextDiv span").html(medrecTemplate.templateName);
+            $("#chiefComplaintTemplate").val(medrecTemplate.chiefComplaint);
+            $("#currentMedicalHistoryTemplate").html(medrecTemplate.currentMedicalHistory);
+            $("#physicalExaminationTemplate").html(medrecTemplate.physicalExamination);
+            setDiseaseTempleteList(result.xDiagnosisDiseaseList,0);
+            setDiseaseTempleteList(result.zDiagnosisDiseaseList,1);
+            $("#MedrecTempContextDiv").show();
+        }
+    });
+    return false;
+});
+//模板诊断插入评估 0x 1z
+function setDiagnosisTemplete(listName,num){
+    var resultNode=$("#diagnosisContentCard tbody:eq("+num+")");
+    $("#MedrecTempContextDiv tbody:eq("+num+") tr").each(function () {
+        var flag=0;
+        var diseaseId=$(this).children().eq(0).html();
+        resultNode.children().each(function () {
+            if($(this).children().eq(0).html()===diseaseId){
+                flag=1;
+                return false;//break
+            }
+        });
+        if(flag===1)
+            return true;//continue
+        var lastNum = getDiagnosisLast(resultNode);
+        resultNode.append('<tr>\n' +
+            '<td>'+(diseaseId)+'</td>\n' +
+            '<td>'+$(this).children().eq(1).html()+'<input type="hidden" name="'+listName+'['+lastNum+'].diseaseId" value="'+diseaseId+'"></td>\n' +
+            '<td title="'+$(this).children().eq(2).html()+'" style="max-width:120px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">'+$(this).children().eq(2).html()+'</td>\n' +
+            '<td>\n' +
+            '<div class="custom-control custom-radio">\n' +
+            '<input type="radio" class="custom-control-input" id="'+listName+diseaseId+'Radio" name="isNewMajorDiagnosisCheckded" value="'+diseaseId+'">\n' +
+            '<label class="custom-control-label" for="'+listName+diseaseId+'Radio"></label>\n' +
+            '</div>\n' +
+            '</td>\n' +
+            '<td>\n' +
+            '<div class="custom-control custom-checkbox ">\n' +
+            '<input type="checkbox" class="custom-control-input" id="'+listName+diseaseId+'Check" name="isNewSuspectChecked" value="'+diseaseId+'">\n' +
+            '<label class="custom-control-label" for="'+listName+diseaseId+'Check"></label>\n' +
+            '</div>\n' +
+            '</td>\n' +
+            '<td style="padding: 0">\n' +
+            '<input type="datetime-local"  class="form-control" />\n' +
+            '<input type="hidden" name="'+listName+'['+lastNum+'].dateOfOnset"/>\n'+
+            '</td>\n' +
+            '<td style="padding: 0"><a href="#"><img src="images/save_icon.jpg" style="height:40px;width:40px" alt="保存"></a></td>\n' +
+            '<td class="text-center" style="padding: 0"><button type="button" class="btn btn-danger" style="width: 100%;height: 100%">-\n' +
+            '</button></td>\n' +
+            '</tr>');
+    });
+}
+//引用模板
+$("#MedrecTempContextDiv button").click(function () {
+    var chiefComplaintText=$("#chiefComplaintTemplate").val();
+    var  currentMedicalHistoryText=$("#currentMedicalHistoryTemplate").html();
+    var physicalExaminationTemplateText=$("#physicalExaminationTemplate").html();
+    if(chiefComplaintText!=="")
+        $("#chiefComplaint").val(chiefComplaintText);
+    if(currentMedicalHistoryText!=="")
+        $("#currentMedicalHistory").html(currentMedicalHistoryText);
+    if(physicalExaminationTemplateText!=="")
+        $("#physicalExamination").html(physicalExaminationTemplateText);
+    setDiagnosisTemplete("xDiagnosisList",0);
+    setDiagnosisTemplete("zDiagnosisList",1);
+});

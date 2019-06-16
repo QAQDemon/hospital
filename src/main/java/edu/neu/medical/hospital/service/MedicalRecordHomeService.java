@@ -21,4 +21,5 @@ public interface MedicalRecordHomeService {
     Boolean cancelMedrecTemplate(MedrecTemplate medrecTemplate);
     List<MedrecTemplate> searchMedrecTemplateList(char category,int belongId,String key);
     Map<String,MedicalRecordInfo> getHistoryMedicalRecordInfo(int medicalRecordNo);
+    MedrecTemplate getMedrecTemplateById(int medrecTemplateId);
 }

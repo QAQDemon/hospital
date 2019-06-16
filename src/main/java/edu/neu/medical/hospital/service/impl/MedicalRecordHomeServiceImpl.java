@@ -253,6 +253,15 @@ public class MedicalRecordHomeServiceImpl implements MedicalRecordHomeService {
     }
 
     /*
+     * @Description 通过id获得病历模板
+     * @Param [medrecTemplateId]
+     * @return edu.neu.medical.hospital.bean.MedrecTemplate
+     **/
+    public MedrecTemplate getMedrecTemplateById(int medrecTemplateId){
+        return medrecTemplateMapper.selectByPrimaryKey(medrecTemplateId);
+    }
+    
+    /*
      * @Description 根据病历号获得历史病历，所有诊毕status3的
      * @Param [medicalRecordNo]
      * @return java.util.Map<java.lang.String,edu.neu.medical.hospital.bean.MedicalRecordInfo>：String是json格式的（time:诊毕时间，name:科室名）
