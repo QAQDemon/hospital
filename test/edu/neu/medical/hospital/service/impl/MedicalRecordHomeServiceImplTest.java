@@ -100,4 +100,10 @@ public class MedicalRecordHomeServiceImplTest {
         PageInfo<Disease> pageInfo3=medicalRecordHomeService.searchDiseaseListByCode('1',"",1);
         return;
     }
+
+    @Test
+    public void addCommonDiagnosis() {
+        medicalRecordHomeService.addCommonDiagnosis(4, '1', 10);
+//        medicalRecordHomeService.addCommonDiagnosis(4, '1', 10);
+    }
 }

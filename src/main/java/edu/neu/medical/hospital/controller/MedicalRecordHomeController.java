@@ -163,7 +163,7 @@ public class MedicalRecordHomeController {
      * @return java.lang.Boolean
      **/
     @RequestMapping("addCommonDiagnosis/{type}/{diseaseId}")
-    public Boolean addCommonDiagnosis(@PathVariable("type")char type,@PathVariable("diseaseId")int diseaseId){
+    public int addCommonDiagnosis(@PathVariable("type")char type,@PathVariable("diseaseId")int diseaseId){
         int doctorId=1;//todo
 
         return medicalRecordHomeService.addCommonDiagnosis(doctorId, type, diseaseId);

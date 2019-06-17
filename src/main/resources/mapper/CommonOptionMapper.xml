@@ -91,7 +91,7 @@
     </if>
   </delete>
   <insert id="insertSelective" parameterType="edu.neu.medical.hospital.bean.CommonOption" >
-    <selectKey resultType="java.lang.Integer" keyProperty="id" order="BEFORE" >
+    <selectKey resultType="java.lang.Integer" keyProperty="id" order="AFTER" >
       SELECT LAST_INSERT_ID()
     </selectKey>
     insert into common_option

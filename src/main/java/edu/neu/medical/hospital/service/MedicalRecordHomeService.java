@@ -15,7 +15,7 @@ public interface MedicalRecordHomeService {
     int deleteCommonDiagnosis(int doctorId,char type,int diseaseId);
     List<Disease> getDiagnosisDiseaseList(List<Diagnosis> diagnosisList);
     Boolean judgeControlMedrecTemplate(int doctorId,MedrecTemplate medrecTemplate);
-    Boolean addCommonDiagnosis(int doctorId,char type,int diseaseId);
+    int addCommonDiagnosis(int doctorId,char type,int diseaseId);
     Boolean addMedrecTemplate(MedrecTemplate medrecTemplate,List<Diagnosis> diagnosisList);
     Boolean updateMedrecTemplate(MedrecTemplate medrecTemplate, List<Diagnosis> diagnosisList);
     Boolean cancelMedrecTemplate(MedrecTemplate medrecTemplate);

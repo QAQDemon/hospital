@@ -648,15 +648,18 @@ $("#home1_2").on("dblclick","a",function () {
         duplicatDiagnosis(diseaseId,listName,lastNum));
 })//删除常用诊断
 .on("click",".badge-danger",function () {
-    $.ajax({
-        type: "POST",//方法类型
-        dataType: "text",//预期服务器返回的数据类型
-        url: "medicalRecordHome/deleteCommonDiagnosis/"+$(this).closest(".card").index()+"/"+$(this).parent().next().val(),
-        data: {},
-        success: function (result) {
-            $("#homeRightNav a:eq(1)").click();
-        }
-    });
+    var res = confirm('确认要删除吗？');
+    if(res === true) {
+        $.ajax({
+            type: "POST",//方法类型
+            dataType: "text",//预期服务器返回的数据类型
+            url: "medicalRecordHome/deleteCommonDiagnosis/" + $(this).closest(".card").index() + "/" + $(this).parent().next().val(),
+            data: {},
+            success: function (result) {
+                $("#homeRightNav a:eq(1)").click();
+            }
+        });
+    }
 })//取消跳转
 .on("click","a",function () {
     return false;
@@ -670,6 +673,9 @@ $("#diagnosisContentCard").on("click","a",function () {
         url: "medicalRecordHome/addCommonDiagnosis/"+($(this).closest(".form-group").index()+1)+"/"+$(this).closest("tr").children().first().html(),
         data: {},
         success: function (result) {
+            if(result==="1")
+                showAlertDiv("alert-success","成功!","增加常用诊断成功。");
+            else showAlertDiv("alert-danger","失败!","增加常用诊断失败。");
             $("#homeRightNav a:eq(1)").click();
         }
     });

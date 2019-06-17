@@ -6,19 +6,19 @@
     </artifacts-to-build>
   </component>
   <component name="BookmarkManager">
-    <bookmark url="file://$PROJECT_DIR$/src/main/webapp/static/js/myJquery/outpatientDoctorJs.js" line="675" mnemonic="1" />
+    <bookmark url="file://$PROJECT_DIR$/src/main/webapp/static/js/myJquery/outpatientDoctorJs.js" line="681" mnemonic="1" />
     <bookmark url="file://$PROJECT_DIR$/src/main/webapp/static/js/myJquery/outpatientDoctorJs.js" line="8" mnemonic="2" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="dbf00169-a8e7-473c-9987-97a8297bcd84" name="Default Changelist" comment="templet 6-16-4">
+    <list default="true" id="dbf00169-a8e7-473c-9987-97a8297bcd84" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/edu/neu/medical/hospital/controller/MedicalRecordHomeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/neu/medical/hospital/controller/MedicalRecordHomeController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/edu/neu/medical/hospital/controller/OutpatientDoctorWorkstationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/neu/medical/hospital/controller/OutpatientDoctorWorkstationController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/edu/neu/medical/hospital/service/MedicalRecordHomeService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/neu/medical/hospital/service/MedicalRecordHomeService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/edu/neu/medical/hospital/service/impl/MedicalRecordHomeServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/neu/medical/hospital/service/impl/MedicalRecordHomeServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/outpatientDoctorWorkstation.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/outpatientDoctorWorkstation.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/html/tst.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/static/html/tst.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/mapper/CommonOptionMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mapper/CommonOptionMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/mapper/MedicalRecordInfoMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mapper/MedicalRecordInfoMapper.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/static/js/myJquery/outpatientDoctorJs.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/static/js/myJquery/outpatientDoctorJs.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/edu/neu/medical/hospital/service/impl/MedicalRecordHomeServiceImplTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/edu/neu/medical/hospital/service/impl/MedicalRecordHomeServiceImplTest.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -73,8 +73,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/outpatientDoctorWorkstation.jsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="288">
-              <caret line="284" column="70" selection-start-line="284" selection-start-column="60" selection-end-line="284" selection-end-column="70" />
+            <state relative-caret-position="438">
+              <caret line="293" column="71" lean-forward="true" selection-start-line="293" selection-start-column="71" selection-end-line="293" selection-end-column="71" />
             </state>
           </provider>
         </entry>
@@ -82,8 +82,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/webapp/static/js/myJquery/outpatientDoctorJs.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="155">
-              <caret line="671" column="36" lean-forward="true" selection-start-line="671" selection-start-column="36" selection-end-line="671" selection-end-column="36" />
+            <state relative-caret-position="4869">
+              <caret line="675" selection-start-line="675" selection-end-line="675" />
               <folding>
                 <element signature="n#style#0;n#td#2;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#td#3;n#!!top" expanded="true" />
@@ -112,8 +112,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/edu/neu/medical/hospital/controller/MedicalRecordHomeController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="479">
-              <caret line="164" column="39" selection-start-line="164" selection-start-column="21" selection-end-line="164" selection-end-column="39" />
+            <state relative-caret-position="325">
+              <caret line="165" column="14" selection-start-line="165" selection-start-column="14" selection-end-line="165" selection-end-column="14" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -124,8 +124,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/edu/neu/medical/hospital/service/impl/MedicalRecordHomeServiceImpl.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="313">
-              <caret line="179" selection-start-line="179" selection-end-line="179" />
+            <state relative-caret-position="557">
+              <caret line="163" column="40" selection-start-line="163" selection-start-column="40" selection-end-line="163" selection-end-column="40" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -136,8 +136,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/webapp/static/html/tst.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="75">
-              <caret line="379" column="72" lean-forward="true" selection-start-line="379" selection-start-column="72" selection-end-line="379" selection-end-column="72" />
+            <state relative-caret-position="9450">
+              <caret line="379" column="72" selection-start-line="379" selection-start-column="72" selection-end-line="379" selection-end-column="72" />
               <folding>
                 <element signature="n#style#0;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#div#0;n#div#3;n#div#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#1;n#div#1;n#div#1;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -163,12 +163,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>diagnosisCheckedTbody</find>
-      <find>暂存</find>
-      <find>clear</find>
-      <find>medicalInfoCard1</find>
-      <find>clearMedicalInfoContext</find>
-      <find>form</find>
       <find>medicalRecordInfoForm</find>
       <find>ajax</find>
       <find>verter</find>
@@ -193,6 +187,12 @@
       <find>Common</find>
       <find>listName</find>
       <find>病史内容</find>
+      <find>gene</find>
+      <find>identity</find>
+      <find>BEFORE</find>
+      <find>inse</find>
+      <find>alert-success</find>
+      <find>confi</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -205,7 +205,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/resources/mapper/MedrecTemplateMapper.xml" />
         <option value="$PROJECT_DIR$/src/main/java/edu/neu/medical/hospital/dao/MedrecTemplateMapper.java" />
         <option value="$PROJECT_DIR$/src/main/java/edu/neu/medical/hospital/dao/SetMapper.java" />
         <option value="$PROJECT_DIR$/src/main/java/edu/neu/medical/hospital/dao/SetSubMapper.java" />
@@ -238,7 +237,6 @@
         <option value="$PROJECT_DIR$/src/main/resources/mapper/PatientMapper.xml" />
         <option value="$PROJECT_DIR$/src/main/java/edu/neu/medical/hospital/bean/Patient.java" />
         <option value="$PROJECT_DIR$/src/main/java/edu/neu/medical/hospital/service/impl/OutpatientDoctorWorkstationServiceImpl.java" />
-        <option value="$PROJECT_DIR$/test/edu/neu/medical/hospital/service/impl/MedicalRecordHomeServiceImplTest.java" />
         <option value="$PROJECT_DIR$/src/main/webapp/static/css/pagination.css" />
         <option value="$PROJECT_DIR$/src/main/webapp/static/js/jquery.pagination.js" />
         <option value="$PROJECT_DIR$/src/main/java/edu/neu/medical/hospital/bean/MedicalRecordInfoDTO.java" />
@@ -247,12 +245,14 @@
         <option value="$PROJECT_DIR$/src/main/resources/applicationContext.xml" />
         <option value="$PROJECT_DIR$/src/main/java/edu/neu/medical/hospital/converter/DateConverter.java" />
         <option value="$PROJECT_DIR$/src/main/java/edu/neu/medical/hospital/bean/DiagnosisFormDTO.java" />
-        <option value="$PROJECT_DIR$/src/main/resources/mapper/MedicalRecordInfoMapper.xml" />
         <option value="$PROJECT_DIR$/src/main/java/edu/neu/medical/hospital/dao/MedicalRecordInfoMapper.java" />
         <option value="$PROJECT_DIR$/src/main/java/edu/neu/medical/hospital/controller/OutpatientDoctorWorkstationController.java" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/outpatientDoctorWorkstation.jsp" />
         <option value="$PROJECT_DIR$/src/main/webapp/static/html/tst.html" />
+        <option value="$PROJECT_DIR$/test/edu/neu/medical/hospital/service/impl/MedicalRecordHomeServiceImplTest.java" />
         <option value="$PROJECT_DIR$/src/main/java/edu/neu/medical/hospital/service/MedicalRecordHomeService.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/mapper/CommonOptionMapper.xml" />
+        <option value="$PROJECT_DIR$/src/main/resources/mapper/MedicalRecordInfoMapper.xml" />
         <option value="$PROJECT_DIR$/src/main/java/edu/neu/medical/hospital/controller/MedicalRecordHomeController.java" />
         <option value="$PROJECT_DIR$/src/main/webapp/static/js/myJquery/outpatientDoctorJs.js" />
         <option value="$PROJECT_DIR$/src/main/java/edu/neu/medical/hospital/service/impl/MedicalRecordHomeServiceImpl.java" />
@@ -313,16 +313,17 @@
     </treeState>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="520" />
-    <option name="y" value="45" />
+    <option name="x" value="542" />
+    <option name="y" value="16" />
     <option name="width" value="1374" />
-    <option name="height" value="913" />
+    <option name="height" value="996" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -414,6 +415,14 @@
               <item name="hospital" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="mapper" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="hospital" type="b2602c69:ProjectViewProjectNode" />
+              <item name="hospital" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="webapp" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -455,7 +464,6 @@
         </subPane>
       </pane>
       <pane id="Scope" />
-      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -482,19 +490,19 @@
       <recent name="edu.neu.medical.hospital.service.impl" />
       <recent name="edu.neu.medical.hospital.controller" />
     </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\demon\Desktop\test\hospital\src\main\webapp\static\css" />
+      <recent name="C:\Users\demon\Desktop\test\hospital\src\main\webapp\static\images" />
+    </key>
+    <key name="CreateTestDialog.Recents.Supers">
+      <recent name="" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\demon\Desktop\test\hospital\src\main\webapp\static\js" />
       <recent name="C:\Users\demon\Desktop\test\hospital\src\main\resources\mapper" />
       <recent name="C:\Users\demon\Desktop\test\hospital\src\main\webapp\static\images" />
       <recent name="C:\Users\demon\Desktop\test\hospital\src\main\webapp\WEB-INF\jsp" />
       <recent name="C:\Users\demon\Desktop\test\hospital\src\main\webapp" />
-    </key>
-    <key name="CreateTestDialog.Recents.Supers">
-      <recent name="" />
-    </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\demon\Desktop\test\hospital\src\main\webapp\static\css" />
-      <recent name="C:\Users\demon\Desktop\test\hospital\src\main\webapp\static\images" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -542,6 +550,22 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="MedicalRecordHomeServiceImplTest.addCommonDiagnosis" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="hospital" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="edu.neu.medical.hospital.service.impl.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="edu.neu.medical.hospital.service.impl" />
+      <option name="MAIN_CLASS_NAME" value="edu.neu.medical.hospital.service.impl.MedicalRecordHomeServiceImplTest" />
+      <option name="METHOD_NAME" value="addCommonDiagnosis" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="MedicalRecordHomeServiceImplTest.searchDiseaseListByCode" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="hospital" />
       <extension name="coverage">
@@ -569,22 +593,6 @@
       <option name="PACKAGE_NAME" value="edu.neu.medical.hospital.service.impl" />
       <option name="MAIN_CLASS_NAME" value="edu.neu.medical.hospital.service.impl.OutpatientDoctorWorkstationServiceImplTest" />
       <option name="METHOD_NAME" value="setCompleteVisit" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="SetManageServiceImplTest.getSubInfoList" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="hospital" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="edu.neu.medical.hospital.service.impl.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="edu.neu.medical.hospital.service.impl" />
-      <option name="MAIN_CLASS_NAME" value="edu.neu.medical.hospital.service.impl.SetManageServiceImplTest" />
-      <option name="METHOD_NAME" value="getSubInfoList" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -753,21 +761,21 @@
       </method>
     </configuration>
     <list>
-      <item itemvalue="JUnit.SetManageServiceImplTest.getSubInfoList" />
       <item itemvalue="JUnit.EasyTest.test" />
       <item itemvalue="JUnit.OutpatientDoctorWorkstationServiceImplTest.setCompleteVisit" />
       <item itemvalue="JUnit.ApplyForPrescriptionServiceImplTest.deleteCommonDrugs" />
       <item itemvalue="JUnit.MedicalRecordHomeServiceImplTest.searchDiseaseListByCode" />
       <item itemvalue="Maven.hospital-generator" />
       <item itemvalue="Tomcat Server.Tomcat 9.0.10" />
+      <item itemvalue="JUnit.MedicalRecordHomeServiceImplTest.addCommonDiagnosis" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.MedicalRecordHomeServiceImplTest.addCommonDiagnosis" />
         <item itemvalue="JUnit.MedicalRecordHomeServiceImplTest.searchDiseaseListByCode" />
         <item itemvalue="JUnit.ApplyForPrescriptionServiceImplTest.deleteCommonDrugs" />
         <item itemvalue="JUnit.OutpatientDoctorWorkstationServiceImplTest.setCompleteVisit" />
         <item itemvalue="JUnit.EasyTest.test" />
-        <item itemvalue="JUnit.SetManageServiceImplTest.getSubInfoList" />
       </list>
     </recent_temporary>
   </component>
@@ -815,7 +823,8 @@
       <workItem from="1560576754677" duration="31703000" />
       <workItem from="1560648684320" duration="24597000" />
       <workItem from="1560680377885" duration="18091000" />
-      <workItem from="1560734193842" duration="10100000" />
+      <workItem from="1560734193842" duration="10159000" />
+      <workItem from="1560747622284" duration="3612000" />
     </task>
     <task id="LOCAL-00001" summary="html 5-31">
       <created>1559234916084</created>
@@ -1048,22 +1057,17 @@
       <option name="project" value="LOCAL" />
       <updated>1560699108950</updated>
     </task>
-    <option name="localTasksCounter" value="34" />
+    <task id="LOCAL-00034" summary="commondisease 6-17">
+      <created>1560744477806</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1560744477806</updated>
+    </task>
+    <option name="localTasksCounter" value="35" />
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="SetManageServiceImplTest_searchSetGroupList - 2019.06.09 at 12h 53m 13s.xml">
-      <configuration name="SetManageServiceImplTest.searchSetGroupList" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="SetManageServiceImplTest_getSubInfoList - 2019.06.09 at 13h 24m 48s.xml">
-      <configuration name="SetManageServiceImplTest.getSubInfoList" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="SetManageServiceImplTest_getSubInfoList - 2019.06.09 at 13h 27m 01s.xml">
-      <configuration name="SetManageServiceImplTest.getSubInfoList" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="EasyTest_test - 2019.06.09 at 21h 44m 27s.xml">
-      <configuration name="EasyTest.test" configurationId="JUnit" />
-    </history-entry>
     <history-entry file="EasyTest_test - 2019.06.09 at 21h 45m 41s.xml">
       <configuration name="EasyTest.test" configurationId="JUnit" />
     </history-entry>
@@ -1082,9 +1086,21 @@
     <history-entry file="MedicalRecordHomeServiceImplTest_searchDiseaseListByCode - 2019.06.13 at 17h 43m 18s.xml">
       <configuration name="MedicalRecordHomeServiceImplTest.searchDiseaseListByCode" configurationId="JUnit" />
     </history-entry>
+    <history-entry file="MedicalRecordHomeServiceImplTest_addCommonDiagnosis - 2019.06.17 at 13h 05m 44s.xml">
+      <configuration name="MedicalRecordHomeServiceImplTest.addCommonDiagnosis" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="MedicalRecordHomeServiceImplTest_addCommonDiagnosis - 2019.06.17 at 13h 08m 36s.xml">
+      <configuration name="MedicalRecordHomeServiceImplTest.addCommonDiagnosis" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="MedicalRecordHomeServiceImplTest_addCommonDiagnosis - 2019.06.17 at 13h 08m 54s.xml">
+      <configuration name="MedicalRecordHomeServiceImplTest.addCommonDiagnosis" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="MedicalRecordHomeServiceImplTest_addCommonDiagnosis - 2019.06.17 at 13h 10m 08s.xml">
+      <configuration name="MedicalRecordHomeServiceImplTest.addCommonDiagnosis" configurationId="JUnit" />
+    </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="503190000" />
+    <option name="totallyTimeSpent" value="506861000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1096,9 +1112,10 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="520" y="45" width="1374" height="913" extended-state="0" />
+    <frame x="542" y="16" width="1374" height="996" extended-state="0" />
+    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49522674" weight="0.2678843" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49522674" weight="0.23135464" />
       <window_info id="Structure" order="1" sideWeight="0.50477326" side_tool="true" weight="0.18148375" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -1108,8 +1125,8 @@
       <window_info id="Web" order="7" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.62906724" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49946696" weight="0.267009" />
-      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.49896622" weight="0.31964058" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49946696" weight="0.37703016" />
+      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.49896622" weight="0.6302953" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.30074257" />
@@ -1193,7 +1210,6 @@
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_NEW_TODO" value="false" />
-    <MESSAGE value="painful 6-4-1" />
     <MESSAGE value="firstpage 6-5" />
     <MESSAGE value="applyfor 6-6" />
     <MESSAGE value="template 6-7" />
@@ -1218,7 +1234,8 @@
     <MESSAGE value="formsubmit 6-16-2" />
     <MESSAGE value="formsubmit 6-16-3" />
     <MESSAGE value="templet 6-16-4" />
-    <option name="LAST_COMMIT_MESSAGE" value="templet 6-16-4" />
+    <MESSAGE value="commondisease 6-17" />
+    <option name="LAST_COMMIT_MESSAGE" value="commondisease 6-17" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1317,24 +1334,10 @@
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/edu/neu/medical/hospital/bean/Prescription.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-8">
-          <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/edu/neu/medical/hospital/bean/PrescriptionExample.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="25">
           <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/generatorConfig.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="86">
-          <caret line="63" column="45" selection-start-line="63" selection-start-column="45" selection-end-line="63" selection-end-column="45" />
         </state>
       </provider>
     </entry>
@@ -1486,13 +1489,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/test/edu/neu/medical/hospital/service/impl/MedicalRecordHomeServiceImplTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="588">
-          <caret line="100" selection-start-line="100" selection-end-line="100" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/static/js/jquery.pagination.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="375">
@@ -1623,13 +1619,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/mapper/MedicalRecordInfoMapper.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="525">
-          <caret line="21" column="85" selection-start-line="21" selection-start-column="70" selection-end-line="21" selection-end-column="85" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/edu/neu/medical/hospital/dao/MedicalRecordInfoMapper.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="350">
@@ -1666,8 +1655,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/static/html/tst.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="379" column="72" lean-forward="true" selection-start-line="379" selection-start-column="72" selection-end-line="379" selection-end-column="72" />
+        <state relative-caret-position="9450">
+          <caret line="379" column="72" selection-start-line="379" selection-start-column="72" selection-end-line="379" selection-end-column="72" />
           <folding>
             <element signature="n#style#0;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#0;n#div#3;n#div#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#1;n#div#1;n#div#1;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -1678,21 +1667,52 @@
     <entry file="file://$PROJECT_DIR$/src/main/java/edu/neu/medical/hospital/service/MedicalRecordHomeService.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="325">
-          <caret line="17" column="67" selection-start-line="17" selection-start-column="67" selection-end-line="17" selection-end-column="67" />
+          <caret line="17" column="8" selection-start-line="17" selection-start-column="8" selection-end-line="17" selection-end-column="8" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/outpatientDoctorWorkstation.jsp">
+    <entry file="file://$PROJECT_DIR$/src/main/resources/generatorConfig.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="288">
-          <caret line="284" column="70" selection-start-line="284" selection-start-column="60" selection-end-line="284" selection-end-column="70" />
+        <state relative-caret-position="238">
+          <caret line="77" column="37" lean-forward="true" selection-start-line="77" selection-start-column="37" selection-end-line="77" selection-end-column="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/mapper/CommonOptionMapper.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="243">
+          <caret line="92" column="91" selection-start-line="92" selection-start-column="91" selection-end-line="92" selection-end-column="91" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/mapper/MedicalRecordInfoMapper.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="261">
+          <caret line="130" column="78" lean-forward="true" selection-start-line="130" selection-start-column="78" selection-end-line="130" selection-end-column="78" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/edu/neu/medical/hospital/service/impl/MedicalRecordHomeServiceImplTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="399">
+          <caret line="105" column="62" selection-start-line="105" selection-start-column="62" selection-end-line="105" selection-end-column="62" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/edu/neu/medical/hospital/controller/MedicalRecordHomeController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="325">
+          <caret line="165" column="14" selection-start-line="165" selection-start-column="14" selection-end-line="165" selection-end-column="14" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/static/js/myJquery/outpatientDoctorJs.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="155">
-          <caret line="671" column="36" lean-forward="true" selection-start-line="671" selection-start-column="36" selection-end-line="671" selection-end-column="36" />
+        <state relative-caret-position="4869">
+          <caret line="675" selection-start-line="675" selection-end-line="675" />
           <folding>
             <element signature="n#style#0;n#td#2;n#!!top" expanded="true" />
             <element signature="n#style#0;n#td#3;n#!!top" expanded="true" />
@@ -1717,20 +1737,17 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/edu/neu/medical/hospital/controller/MedicalRecordHomeController.java">
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/outpatientDoctorWorkstation.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="479">
-          <caret line="164" column="39" selection-start-line="164" selection-start-column="21" selection-end-line="164" selection-end-column="39" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state relative-caret-position="438">
+          <caret line="293" column="71" lean-forward="true" selection-start-line="293" selection-start-column="71" selection-end-line="293" selection-end-column="71" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/edu/neu/medical/hospital/service/impl/MedicalRecordHomeServiceImpl.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="313">
-          <caret line="179" selection-start-line="179" selection-end-line="179" />
+        <state relative-caret-position="557">
+          <caret line="163" column="40" selection-start-line="163" selection-start-column="40" selection-end-line="163" selection-end-column="40" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

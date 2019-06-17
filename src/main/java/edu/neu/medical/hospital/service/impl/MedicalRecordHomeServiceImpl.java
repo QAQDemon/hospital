@@ -161,9 +161,9 @@ public class MedicalRecordHomeServiceImpl implements MedicalRecordHomeService {
     /*
      * @Description 增加常用诊断，在常用选项表上
      * @Param [doctorId, diagnosis]
-     * @return java.lang.Boolean
+     * @return java.lang.Boolean 0失败 1成功
      **/
-    public Boolean addCommonDiagnosis(int doctorId,char type,int diseaseId){
+    public int addCommonDiagnosis(int doctorId,char type,int diseaseId){
         //判断是否存在
         CommonOptionExample commonOptionExample=new CommonOptionExample();
         CommonOptionExample.Criteria criteria=commonOptionExample.createCriteria();
@@ -176,10 +176,9 @@ public class MedicalRecordHomeServiceImpl implements MedicalRecordHomeService {
             commonOption.setDoctorId(doctorId);
             commonOption.setBelongId(diseaseId);
             commonOption.setType(type+"");
-            commonOptionMapper.insertSelective(commonOption);
-            return true;
+            return commonOptionMapper.insertSelective(commonOption);
         }else{
-            return false;
+            return 0;
         }
     }
 
