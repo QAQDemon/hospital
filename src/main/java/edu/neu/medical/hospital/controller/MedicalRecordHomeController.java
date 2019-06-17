@@ -26,7 +26,7 @@ public class MedicalRecordHomeController {
      **/
     @RequestMapping("getMedicalRecordInfo/{isSeen}/{medicalRecordNo}")
     public Map<String,Object> getMedicalRecordInfo(@PathVariable("isSeen")char isSeen, @PathVariable("medicalRecordNo")int medicalRecordNo){
-        Map map = new HashMap<>();
+        Map<String,Object> map = new HashMap<>();
         MedicalRecordInfo medicalRecordInfo=medicalRecordHomeService.getMedicalRecordInfoById(isSeen,medicalRecordNo);
         if(medicalRecordInfo==null){
             map.put("mes","2");//返回不存在信息
@@ -57,7 +57,7 @@ public class MedicalRecordHomeController {
         return searchDiagnosisMethod(type,pageNum,key);
     }
     private Map<String,Object> searchDiagnosisMethod(char type,int pageNum,String key){
-        Map map = new HashMap();
+        Map<String,Object> map = new HashMap<>();
         PageInfo pageInfo=medicalRecordHomeService.searchDiseaseListByCode(type,key,pageNum);
         map.put("pages",pageInfo.getPages());
         map.put("diseaseList",pageInfo.getList());
@@ -123,7 +123,7 @@ public class MedicalRecordHomeController {
      **/
     @RequestMapping("getMedrecTemplateContent/{medrecTemplateId}")
     public Map<String,Object> getMedrecTemplateContent(@PathVariable("medrecTemplateId")int medrecTemplateId){
-        Map map = new HashMap<>();
+        Map<String,Object> map = new HashMap<>();
         map.put("medrecTemplate", medicalRecordHomeService.getMedrecTemplateById(medrecTemplateId));
         map.put("xDiagnosisDiseaseList",medicalRecordHomeService.getDiagnosisDiseaseList(medicalRecordHomeService.getNewDiagnosisListById('2','1',medrecTemplateId)));
         map.put("zDiagnosisDiseaseList",medicalRecordHomeService.getDiagnosisDiseaseList(medicalRecordHomeService.getNewDiagnosisListById('2','2',medrecTemplateId)));
@@ -139,7 +139,7 @@ public class MedicalRecordHomeController {
     public Map<String,List<Disease>> getCommonOption(){
         int doctorId=1;//todo
 
-        Map map = new HashMap<>();
+        Map<String,List<Disease>> map = new HashMap<>();
         map.put("xDiseaseCommonOptionList",medicalRecordHomeService.getCommonDiagnosisList(outpatientDoctorWorkstationService.getCommonOptionById('1', doctorId)));
         map.put("zDiseaseCommonOptionList",medicalRecordHomeService.getCommonDiagnosisList(outpatientDoctorWorkstationService.getCommonOptionById('2', doctorId)));
         return map;
@@ -158,8 +158,8 @@ public class MedicalRecordHomeController {
     }
 
     /*
-     * @Description 增加常用诊断//TODO
-     * @Param [type 1西, diseaseId]
+     * @Description 增加常用诊断
+     * @Param [type 1西 2中, diseaseId]
      * @return java.lang.Boolean
      **/
     @RequestMapping("addCommonDiagnosis/{type}/{diseaseId}")
@@ -167,5 +167,28 @@ public class MedicalRecordHomeController {
         int doctorId=1;//todo
 
         return medicalRecordHomeService.addCommonDiagnosis(doctorId, type, diseaseId);
+    }
+
+    /*
+     * @Description 获得历史病历的标签和infoId
+     * @Param [medicalRecordNo]
+     * @return java.util.Map<java.lang.String,edu.neu.medical.hospital.bean.MedicalRecordInfo>
+     **/
+    @RequestMapping("getHistoryMedicalRecordInfo/{medicalRecordNo}")
+    public Map<Integer,String> getHistoryMedicalRecordInfo(@PathVariable("medicalRecordNo")int medicalRecordNo){
+        return medicalRecordHomeService.getHistoryMedicalRecordInfo(medicalRecordNo);
+    }
+
+    /*
+     * @Description 根据历史病单号获得详细信息，包括终诊//TODO
+     * @Param [medicalRecordInfoId]
+     * @return java.util.Map<java.lang.String,java.lang.Object>
+     **/
+    @RequestMapping("getHistoryMedicalRecordContext/{medicalRecordInfoId}")
+    public Map<String,Object> getHistoryMedicalRecordContext(@PathVariable("medicalRecordInfoId")int medicalRecordInfoId){
+        Map<String, Object> map = new HashMap<>();
+        map.put("historyMedicalRecordInfo", medicalRecordHomeService.getHistoryMedicalInfoRecordContext(medicalRecordInfoId));
+        map.put("finalDiagnosis", medicalRecordHomeService.getHistoryMedicalInfoRecordFinalDiagnosis(medicalRecordInfoId));
+        return map;
     }
 }

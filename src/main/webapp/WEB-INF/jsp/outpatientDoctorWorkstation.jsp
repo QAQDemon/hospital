@@ -440,22 +440,19 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                                     <!--历史病历信息部分-->
                                                     <div class="card">
                                                         <div class="card-header"><strong>历史病历信息</strong></div>
-                                                        <div class="list-group">
-                                                            <a href="#" class="list-group-item list-group-item-action">2018-02-12 12:10:20 外科</a>
-                                                            <a href="#" class="list-group-item list-group-item-action">2018-02-12 12:10:20 心理科</a>
-                                                            <a href="#" class="list-group-item list-group-item-action">2018-02-12 12:10:20 内科</a>
-                                                        </div>
+                                                        <div id="historyMedicalInfoLabelDiv" class="list-group"></div>
                                                     </div>
                                                     <!--模板内容-->
                                                     <div class="card" style="margin-top: 8px">
                                                         <div class="card-header"><strong>历史病历明细</strong></div>
-                                                        <div class="card-body">
-                                                            <p><strong>主诉：</strong>amplet</p>
-                                                            <p><strong>现病史：</strong>ampletaaaaaaaaaaaaaaaaaa</p>
-                                                            <p><strong>现病治疗情况：</strong>ampletaaaaaaaaaaaaaaaaaaaaaaa</p>
-                                                            <p><strong>既往史：</strong>ampletaaaaaaaaaaaaaaaaaaaaaaaaa</p>
-                                                            <p><strong>过敏史：</strong>ampletaaaaaaaaaaaaaaaaaaaaaaaaaaa</p>
-                                                            <p><strong>体格检查：</strong>ampletssssssssssssssssssssssss</p>
+                                                        <div id="historyContextDiv" class="card-body">
+                                                            <p><strong>主诉：</strong><span></span></p>
+                                                            <p><strong>现病史：</strong><span></span></p>
+                                                            <p><strong>现病治疗情况：</strong><span></span></p>
+                                                            <p><strong>既往史：</strong><span></span></p>
+                                                            <p><strong>过敏史：</strong><span></span></p>
+                                                            <p><strong>体格检查：</strong><span></span></p>
+                                                            <p><strong>终诊：</strong><span></span></p>
                                                         </div>
                                                     </div>
                                                 </div>

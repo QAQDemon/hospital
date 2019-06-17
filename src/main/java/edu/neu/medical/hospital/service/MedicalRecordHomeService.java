@@ -20,6 +20,8 @@ public interface MedicalRecordHomeService {
     Boolean updateMedrecTemplate(MedrecTemplate medrecTemplate, List<Diagnosis> diagnosisList);
     Boolean cancelMedrecTemplate(MedrecTemplate medrecTemplate);
     List<MedrecTemplate> searchMedrecTemplateList(char category,int belongId,String key);
-    Map<String,MedicalRecordInfo> getHistoryMedicalRecordInfo(int medicalRecordNo);
+    Map<Integer,String> getHistoryMedicalRecordInfo(int medicalRecordNo);
     MedrecTemplate getMedrecTemplateById(int medrecTemplateId);
+    MedicalRecordInfo getHistoryMedicalInfoRecordContext(int medicalRecordInfoId);
+    String getHistoryMedicalInfoRecordFinalDiagnosis(int medicalRecordInfoId);
 }

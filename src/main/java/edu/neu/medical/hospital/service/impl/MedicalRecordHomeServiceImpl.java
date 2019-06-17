@@ -2,6 +2,7 @@ package edu.neu.medical.hospital.service.impl;
 
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
+import com.sun.jndi.toolkit.dir.DirSearch;
 import edu.neu.medical.hospital.bean.*;
 import edu.neu.medical.hospital.dao.*;
 import edu.neu.medical.hospital.service.MedicalRecordHomeService;
@@ -261,17 +262,17 @@ public class MedicalRecordHomeServiceImpl implements MedicalRecordHomeService {
     }
     
     /*
-     * @Description 根据病历号获得历史病历，所有诊毕status3的
+     * @Description 根据病历号获得历史病历的标签和infoId，所有诊毕status3的
      * @Param [medicalRecordNo]
      * @return java.util.Map<java.lang.String,edu.neu.medical.hospital.bean.MedicalRecordInfo>：String是json格式的（time:诊毕时间，name:科室名）
      **/
-    public Map<String,MedicalRecordInfo> getHistoryMedicalRecordInfo(int medicalRecordNo){
+    public Map<Integer,String> getHistoryMedicalRecordInfo(int medicalRecordNo){
         MedicalRecordInfoExample medicalRecordInfoExample=new MedicalRecordInfoExample();
         MedicalRecordInfoExample.Criteria criteria=medicalRecordInfoExample.createCriteria();
         criteria.andMedicalRecordNoEqualTo(medicalRecordNo);
         criteria.andStatusEqualTo("3");
         List<MedicalRecordInfo> list=medicalRecordInfoMapper.selectByExample(medicalRecordInfoExample);
-        Map<String,MedicalRecordInfo> map= new HashMap<>();
+        Map<Integer,String> map= new HashMap<>();
         for(MedicalRecordInfo medicalRecordInfo:list){
             //日期转换
             SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
@@ -281,8 +282,39 @@ public class MedicalRecordHomeServiceImpl implements MedicalRecordHomeService {
             DepartExample.Criteria criteria1=departExample.createCriteria();
             criteria1.andIdEqualTo(medicalRecordInfo.getDepartId().shortValue());
             label=label+departMapper.selectByExample(departExample).get(0).getDeptname()+"\"}";
-            map.put(label,medicalRecordInfo);
+            map.put(medicalRecordInfo.getId(),label);
         }
         return map;
+    }
+
+    /*
+     * @Description 获得历史病历内容
+     * @Param [medicalRecordInfoId]
+     * @return edu.neu.medical.hospital.bean.MedicalRecordInfo
+     **/
+    public MedicalRecordInfo getHistoryMedicalInfoRecordContext(int medicalRecordInfoId){
+        return medicalRecordInfoMapper.selectByPrimaryKey(medicalRecordInfoId);
+    }
+
+    /*
+     * @Description 返回终诊结果的字符串，以，分割，不分中西
+     * @Param [medicalRecordInfoId]
+     * @return java.lang.String
+     **/
+    public String getHistoryMedicalInfoRecordFinalDiagnosis(int medicalRecordInfoId){
+        DiagnosisExample diagnosisExample=new DiagnosisExample();
+        DiagnosisExample.Criteria criteria=diagnosisExample.createCriteria();
+        criteria.andCategoryEqualTo("1");
+        criteria.andIsFinalDiagnosisEqualTo("2");
+        criteria.andMedicalRecordInfoIdEqualTo(medicalRecordInfoId);
+        List<Diagnosis> diagnosisList = diagnosisMapper.selectByExample(diagnosisExample);
+        List<Disease> diseaseList=getDiagnosisDiseaseList(diagnosisList);
+        StringBuilder str = new StringBuilder();
+        for (Disease disease : diseaseList) {
+            str.append(" ").append(disease.getDiseasename()).append(",");
+        }
+        if(!str.toString().equals(""))
+            str.deleteCharAt(str.length()-1);
+        return str.toString();
     }
 }

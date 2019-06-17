@@ -1,9 +1,6 @@
 var patientList;//保存病人信息列表
 var notSeenListNum;//待诊人数，用来取病历信息
 
-//隐藏病历模板的内容
-$("#MedrecTempContextDiv").hide();
-
 //评估诊断重复部分
 function duplicatDiagnosis(diseaseId,listName,lastNum) {
     return  '<td>\n' +
@@ -191,8 +188,15 @@ function setDiagnosisList(diagnosisList,diseaseList,listName,num){
 function disableMedicalInfoBtn(bool){
     $("#medicalInfoBtnGroup").find(".btn-outline-secondary,.btn-outline-success").attr("disabled",bool);
 }
+//切换患者将右侧功能重置//todo
+function resetHomeRight(){
+    $("#homeRightNav a:eq(0)").click();
+    $("#medrecTempChooseDiv [type='radio']:eq(0)").click();
+    clearMedrecTemplateContent();
+}
 //点击表格设置患者信息
 $("#searchPatientTbody1,#searchPatientTbody2").on("click","tr",function () {
+    resetHomeRight();
     var radio=$(this).find("input[type='radio']");
     radio.prop('checked','true');
     var no=parseInt(radio.val());
@@ -559,7 +563,6 @@ $("#MedrecTempListDiv").on("click","a",function () {
             $("#physicalExaminationTemplate").html(medrecTemplate.physicalExamination);
             setDiseaseTempleteList(result.xDiagnosisDiseaseList,0);
             setDiseaseTempleteList(result.zDiagnosisDiseaseList,1);
-            $("#MedrecTempContextDiv").show();
         }
     });
     return false;
@@ -638,14 +641,17 @@ $("#home1_2").on("dblclick","a",function () {
             return false;//break
         }
     });
-    if(flag===1)
+    if(flag===1){
+        showAlertDiv("alert-warning","警告!","该诊断已存在。");
         return;//重复跳出
+    }
     var lastNum = getDiagnosisLast(resultNode);
     resultNode.append('<tr>\n' +
         '<td>'+(diseaseId)+'</td>\n' +
         '<td>'+$(this).next().next().val()+'<input type="hidden" name="'+listName+'['+lastNum+'].diseaseId" value="'+diseaseId+'"></td>\n' +
         '<td title="'+$(this).children().first().html()+'" style="max-width:120px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">'+$(this).children().first().html()+'</td>\n' +
         duplicatDiagnosis(diseaseId,listName,lastNum));
+    showAlertDiv("alert-success","成功!","诊断插入成功。");
 })//删除常用诊断
 .on("click",".badge-danger",function () {
     var res = confirm('确认要删除吗？');
@@ -677,6 +683,60 @@ $("#diagnosisContentCard").on("click","a",function () {
                 showAlertDiv("alert-success","成功!","增加常用诊断成功。");
             else showAlertDiv("alert-danger","失败!","增加常用诊断失败。");
             $("#homeRightNav a:eq(1)").click();
+        }
+    });
+    return false;
+});
+
+//放入历史病历标签
+function addHistoryMedicalLabel(map){
+    var str="";
+    for(var key in map){
+        var jsonstr=JSON.parse(map[key]);
+        str+=' <a href="#" class="list-group-item list-group-item-action">'+jsonstr.time+' '+jsonstr.name+'</a><input type="hidden" value="'+key+'">';
+    }
+    $("#historyMedicalInfoLabelDiv").html(str);
+}
+//历史病历查看
+$("#homeRightNav a:eq(2)").click(function () {
+    $.ajax({
+        type: "POST",//方法类型
+        dataType: "json",//预期服务器返回的数据类型
+        url: "medicalRecordHome/getHistoryMedicalRecordInfo/"+$("#patientListForm :checked").val(),
+        data: {},
+        success: function (result) {
+            addHistoryMedicalLabel(result);
+        }
+    });
+});
+//清空历史病历
+function clearHistoryContext(){
+    $("#historyContextDiv span").html("");
+}
+//获得历史病历的内容
+$("#historyMedicalInfoLabelDiv").on("click","a",function () {
+    //变色
+    $("#historyMedicalInfoLabelDiv a").removeClass("active");
+    $(this).addClass("active");
+    $.ajax({
+        type: "POST",//方法类型
+        dataType: "json",//预期服务器返回的数据类型
+        url: "medicalRecordHome/getHistoryMedicalRecordContext/"+$(this).next().val(),
+        data: {},
+        success: function (result) {
+            clearHistoryContext();
+            var historyMedicalRecordInfo=result.historyMedicalRecordInfo;
+            var finalDiagnosis=result.finalDiagnosis;
+            if(historyMedicalRecordInfo===null){
+                showAlertDiv("alert-warning","警告!","历史病单不存在。");
+                return;
+            }
+            var context=[historyMedicalRecordInfo.chiefComplaint,historyMedicalRecordInfo.currentMedicalHistory,
+                historyMedicalRecordInfo.currentTreatmentSituation,historyMedicalRecordInfo.pastHistory,historyMedicalRecordInfo.allergiesHistory,
+                historyMedicalRecordInfo.physicalExamination,finalDiagnosis];
+            $("#historyContextDiv span").each(function (index) {
+                $(this).html(context[index]);
+            });
         }
     });
     return false;
