@@ -15,12 +15,56 @@
     <link rel="stylesheet" type="text/css" href="../css/pagination.css">
 </head>
 <body>
+<button id="tba" class="">a</button>
+<button id="tba1">a1</button>
 
 
+<!-- 模板管理弹窗 -->
+<div class="modal fade" id="MedrecTemplateManageModal">
+    <div class="modal-dialog">
+        <div class="modal-content" style="width: 1000px;margin-left: -50%;margin-top: 20%">
+            <!-- 模态框头部 -->
+            <div class="modal-header">
+                <h4 class="modal-title">模板管理</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <!-- 模态框主体 -->
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-4">
+                        <!--弹窗:病历模板分类选择-->
+                        <div id="medrecTempChooseModalDiv" class="bg-light" style="border: 1px solid rgba(0, 0, 0, 0.125); border-radius: 0.25rem;padding: 0.75rem 0rem;">
+                            &nbsp;&nbsp;
+                            <div class="custom-control custom-radio custom-control-inline">
+                                <input type="radio" class="custom-control-input active" id="wholeRadioModa" name="medrecTemplateRadioGroup">
+                                <label class="custom-control-label" for="wholeRadioModa">全院</label>
+                            </div>
+                            <div class="custom-control custom-radio custom-control-inline">
+                                <input type="radio" class="custom-control-input" id="departRadioModa" name="medrecTemplateRadioGroup">
+                                <label class="custom-control-label" for="departRadioModa">科室</label>
+                            </div>
+                            <div class="custom-control custom-radio custom-control-inline">
+                                <input type="radio" class="custom-control-input" id="personRadioModa" name="medrecTemplateRadioGroup">
+                                <label class="custom-control-label" for="personRadioModa">个人</label>
+                            </div>
+                        </div>
+                        <div class="row">
 
-<button id="tba">a</button>
-<button id="tba1">a</button>
-<input id="tsaa" type="hidden" >
+                        </div>
+                    </div>
+                    <div class="col-md-8"><div style="margin-top: 7px">
+                        <label class="control-label font-weight-bold">选择结果</label>
+                    </div></div>
+                </div>
+            </div>
+            <!-- 模态框底部 -->
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" >导入结果</button>
+            </div>
+        </div>
+    </div>
+</div>
+
 <!-- 诊断弹窗 -->
 <div class="modal fade" id="DiagnosisModal" style="margin-top: 200px">
     <div class="modal-dialog">
@@ -510,7 +554,7 @@
                                                 <div id="home1_1" class="container tab-pane active">
                                                     <hr>
                                                     <div class="text-right" style="margin-top: 8px">
-                                                        <button type="button" class="btn btn-outline-secondary btn-sm">模板管理</button>
+                                                        <button type="button" class="btn btn-outline-secondary btn-sm" data-toggle="modal" data-target="#MedrecTemplateManageModal">模板管理</button>
                                                     </div>
                                                     <!--病历模板分类选择-->
                                                     <div id="medrecTempChooseDiv" class="bg-light" style="border: 1px solid rgba(0, 0, 0, 0.125); border-radius: 0.25rem;padding: 0.75rem 0rem;">
@@ -543,8 +587,25 @@
                                                         </div>
                                                         <!--模板内容-->
                                                         <div class="card">
-                                                            <div class="card-header"><strong>模板内容：</strong>快速诊断</div>
+                                                            <div class="card-header"><strong>模板内容</strong></div>
                                                             <div class="card-body">
+                                                                <div class="form-group">
+                                                                    <label class="font-weight-bold" for="categoryTemplate">适用范围：</label>
+                                                                    <select id="categoryTemplate" name="category" class="custom-select-sm">
+                                                                        <option selected></option>
+                                                                        <option value="1">全院</option>
+                                                                        <option value="2">科室</option>
+                                                                        <option value="3">个人</option>
+                                                                    </select>
+                                                                </div>
+                                                                <div class="form-group ">
+                                                                    <label class="font-weight-bold" for="templateCodeTemplate">模板编码：</label>
+                                                                    <input type="text" class="form-control " id="templateCodeTemplate" readonly="readonly">
+                                                                </div>
+                                                                <div class="form-group ">
+                                                                    <label class="font-weight-bold" for="templateNameTemplate">模板名称：</label>
+                                                                    <input type="text" class="form-control " id="templateNameTemplate" readonly="readonly">
+                                                                </div>
                                                                 <div class="form-group ">
                                                                     <label class="font-weight-bold" for="chiefComplaintTemplate">主诉：</label>
                                                                     <input type="text" class="form-control " id="chiefComplaintTemplate" readonly="readonly" value="as">
@@ -771,6 +832,11 @@
             return false;
         }
 
+    });
+</script>
+<script type="text/javascript">
+    $("#tba").click(function () {
+        $("#categoryTemplate").val(0);
     });
 </script>
 </body>

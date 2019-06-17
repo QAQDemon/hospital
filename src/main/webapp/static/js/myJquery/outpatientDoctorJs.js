@@ -524,8 +524,10 @@ $("#medrecTempChooseDiv :radio").click(function () {
 });
 //清空模板内容
 function clearMedrecTemplateContent(){
-    $("#chiefComplaintTemplate").val("");
-    $("#MedrecTempContextDiv").find("textarea,tbody,span").html("");
+    $("#createrIdTemplate").val("");
+    $("#categoryTemplate").val(0);
+    $("#MedrecTempContextDiv [type='text']").val("");
+    $("#MedrecTempContextDiv").find("textarea,tbody").html("");
 }
 //放入模板疾病 0,1
 function setDiseaseTempleteList(diseaseList,num){
@@ -557,7 +559,10 @@ $("#MedrecTempListDiv").on("click","a",function () {
                 return;
             }
             var medrecTemplate=result.medrecTemplate;
-            $("#MedrecTempContextDiv span").html(medrecTemplate.templateName);
+            $("#createrIdTemplate").val(medrecTemplate.createrId);
+            $("#categoryTemplate").val(eval(medrecTemplate.category));
+            $("#templateCodeTemplate").val(medrecTemplate.templateCode);
+            $("#templateNameTemplate").val(medrecTemplate.templateName);
             $("#chiefComplaintTemplate").val(medrecTemplate.chiefComplaint);
             $("#currentMedicalHistoryTemplate").html(medrecTemplate.currentMedicalHistory);
             $("#physicalExaminationTemplate").html(medrecTemplate.physicalExamination);
@@ -590,7 +595,7 @@ function setDiagnosisTemplete(listName,num){
     });
 }
 //引用模板
-$("#MedrecTempContextDiv button").click(function () {
+$("#MedrecTempContextDiv button:contains('引用')").click(function () {
     var chiefComplaintText=$("#chiefComplaintTemplate").val();
     var  currentMedicalHistoryText=$("#currentMedicalHistoryTemplate").html();
     var physicalExaminationTemplateText=$("#physicalExaminationTemplate").html();

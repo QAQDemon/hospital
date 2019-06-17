@@ -346,9 +346,17 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                                 <!--病历模板部分-->
                                                 <div id="home1_1" class="container tab-pane active">
                                                     <hr>
-                                                    <div class="text-right" style="margin-top: 8px">
-                                                        <button type="button" class="btn btn-outline-secondary btn-sm">模板管理</button>
-                                                    </div>
+                                                    <!--患者搜索框-->
+                                                    <form id="searchMedrecTempForm" role="form" onkeypress="return event.keyCode !== 13;">
+                                                        <label class="control-label font-weight-bold" for="searchMedrecTempKey"></label>
+                                                        <div class="input-group input-group-sm">
+                                                            <input type="search" class="form-control" id="searchMedrecTempKey" name="searchPatientKey"
+                                                                   placeholder="输入关键词"/>
+                                                            <div class="input-group-append">
+                                                                <button class="btn btn-primary" type="button">搜索</button>
+                                                            </div>
+                                                        </div>
+                                                    </form>
                                                     <!--病历模板分类选择-->
                                                     <div id="medrecTempChooseDiv" class="bg-light" style="border: 1px solid rgba(0, 0, 0, 0.125); border-radius: 0.25rem;padding: 0.75rem 0rem;">
                                                         &nbsp;&nbsp;
@@ -371,51 +379,76 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                                     </div>
                                                     <div id="MedrecTempContextDiv" >
                                                         <div class="text-right" style="margin-top: 8px">
-                                                            <button type="button" class="btn btn-outline-success btn-sm">引用</button>
+                                                            <div class="btn-group btn-group-sm">
+                                                                <button type="button" class="btn btn-outline-primary btn-sm">新增</button>
+                                                                <button type="button" class="btn btn-outline-warning btn-sm">修改</button>
+                                                                <button type="button" class="btn btn-outline-danger btn-sm">删除</button>
+                                                                <button type="button" class="btn btn-outline-success btn-sm">引用</button>
+                                                            </div>
                                                         </div>
                                                         <!--模板内容-->
                                                         <div class="card">
-                                                            <div class="card-header"><strong>模板内容：</strong><span></span></div>
+                                                            <div class="card-header"><strong>模板内容</strong></div>
                                                             <div class="card-body">
-                                                                <div class="form-group ">
-                                                                    <label class="font-weight-bold" for="chiefComplaintTemplate">主诉：</label>
-                                                                    <input type="text" class="form-control " id="chiefComplaintTemplate" readonly="readonly">
-                                                                </div>
-                                                                <div class="form-group ">
-                                                                    <label class="font-weight-bold" for="currentMedicalHistoryTemplate">现病史：</label>
-                                                                    <textarea class="form-control " rows="2" id="currentMedicalHistoryTemplate" readonly="readonly"></textarea>
-                                                                </div>
-                                                                <div class="form-group">
-                                                                    <label class="font-weight-bold" for="physicalExaminationTemplate">体格检查：</label>
-                                                                    <textarea class="form-control " rows="2" id="physicalExaminationTemplate" readonly="readonly"></textarea>
-                                                                </div>
-                                                                <!--模板诊断*2-->
-                                                                <div class="form-group">
-                                                                    <label class="font-weight-bold">西医诊断</label>
-                                                                    <table class="table table-condensed table-striped table-hover table-sm table-bordered" >
-                                                                        <thead>
-                                                                        <tr>
-                                                                            <th>ID</th>
-                                                                            <th>ICD编码</th>
-                                                                            <th>名称</th>
-                                                                        </tr>
-                                                                        </thead>
-                                                                        <tbody></tbody>
-                                                                    </table>
-                                                                </div>
-                                                                <div class="form-group">
-                                                                    <label class="font-weight-bold">中医诊断</label>
-                                                                    <table class="table table-condensed table-striped table-hover table-sm table-bordered" >
-                                                                        <thead>
-                                                                        <tr>
-                                                                            <th>ID</th>
-                                                                            <th>ICD编码</th>
-                                                                            <th>名称</th>
-                                                                        </tr>
-                                                                        </thead>
-                                                                        <tbody></tbody>
-                                                                    </table>
-                                                                </div>
+                                                                <input id="createrIdTemplate" type="hidden">
+                                                                <form id="medrecTempContextForm" role="form" onkeypress="return event.keyCode !== 13;">
+                                                                    <div class="form-group">
+                                                                        <label class="font-weight-bold" for="categoryTemplate">适用范围：</label>
+                                                                        <select id="categoryTemplate" name="category" class="custom-select-sm">
+                                                                            <option value="0" selected></option>
+                                                                            <option value="1">全院</option>
+                                                                            <option value="2">科室</option>
+                                                                            <option value="3">个人</option>
+                                                                        </select>
+                                                                    </div>
+                                                                    <div class="form-group ">
+                                                                        <label class="font-weight-bold" for="templateCodeTemplate">模板编码：</label>
+                                                                        <input type="text" class="form-control " id="templateCodeTemplate" readonly="readonly">
+                                                                    </div>
+                                                                    <div class="form-group ">
+                                                                        <label class="font-weight-bold" for="templateNameTemplate">模板名称：</label>
+                                                                        <input type="text" class="form-control " id="templateNameTemplate" readonly="readonly">
+                                                                    </div>
+                                                                    <div class="form-group ">
+                                                                        <label class="font-weight-bold" for="chiefComplaintTemplate">主诉：</label>
+                                                                        <input type="text" class="form-control " id="chiefComplaintTemplate" readonly="readonly">
+                                                                    </div>
+                                                                    <div class="form-group ">
+                                                                        <label class="font-weight-bold" for="currentMedicalHistoryTemplate">现病史：</label>
+                                                                        <textarea class="form-control " rows="2" id="currentMedicalHistoryTemplate" readonly="readonly"></textarea>
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <label class="font-weight-bold" for="physicalExaminationTemplate">体格检查：</label>
+                                                                        <textarea class="form-control " rows="2" id="physicalExaminationTemplate" readonly="readonly"></textarea>
+                                                                    </div>
+                                                                    <!--模板诊断*2-->
+                                                                    <div class="form-group">
+                                                                        <label class="font-weight-bold">西医诊断</label><button type="button" class="btn btn-outline-warning btn-sm">修改</button>
+                                                                        <table class="table table-condensed table-striped table-hover table-sm table-bordered" >
+                                                                            <thead>
+                                                                            <tr>
+                                                                                <th>ID</th>
+                                                                                <th>ICD编码</th>
+                                                                                <th>名称</th>
+                                                                            </tr>
+                                                                            </thead>
+                                                                            <tbody></tbody>
+                                                                        </table>
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <label class="font-weight-bold">中医诊断</label><button type="button" class="btn btn-outline-warning btn-sm">修改</button>
+                                                                        <table class="table table-condensed table-striped table-hover table-sm table-bordered" >
+                                                                            <thead>
+                                                                            <tr>
+                                                                                <th>ID</th>
+                                                                                <th>ICD编码</th>
+                                                                                <th>名称</th>
+                                                                            </tr>
+                                                                            </thead>
+                                                                            <tbody></tbody>
+                                                                        </table>
+                                                                    </div>
+                                                                </form>
                                                             </div>
                                                         </div>
                                                     </div>
