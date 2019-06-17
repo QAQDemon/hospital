@@ -1,5 +1,6 @@
 package edu.neu.medical.hospital.controller;
 
+import edu.neu.medical.hospital.bean.CommonOption;
 import edu.neu.medical.hospital.bean.Patient;
 import edu.neu.medical.hospital.service.OutpatientDoctorWorkstationService;
 import org.springframework.web.bind.annotation.PathVariable;

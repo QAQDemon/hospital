@@ -330,7 +330,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                     <div class="card">
                                         <div class="card-body">
                                             <!-- Nav pills -->
-                                            <ul class="nav nav-pills " role="tablist" >
+                                            <ul id="homeRightNav" class="nav nav-pills " role="tablist" >
                                                 <li class="nav-item">
                                                     <a class="nav-link active " data-toggle="pill" href="#home1_1"><small>病历模板</small></a>
                                                 </li>
@@ -426,24 +426,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                                     <div class="card">
                                                         <div class="card-header"><strong>西医诊断</strong></div>
                                                         <!--诊断内容-->
-                                                        <div class="list-group">
-                                                            <a href="#" class="list-group-item list-group-item-action">大肠杆菌感染<span class="badge badge-pill badge-danger">X</span></a>
-                                                            <a href="#" class="list-group-item list-group-item-action">高血压<span class="badge badge-pill badge-danger">X</span></a>
-                                                            <a href="#" class="list-group-item list-group-item-action">伤寒<span class="badge badge-pill badge-danger">X</span></a>
-                                                            <a href="#" class="list-group-item list-group-item-action">呼吸道疾病<span class="badge badge-pill badge-danger">X</span></a>
-                                                            <a href="#" class="list-group-item list-group-item-action">糖尿病<span class="badge badge-pill badge-danger">X</span></a>
-                                                        </div>
+                                                        <div class="list-group"></div>
                                                     </div>
                                                     <div class="card" style="margin-top: 8px">
                                                         <div class="card-header"><strong>中医诊断</strong></div>
                                                         <!--诊断内容-->
-                                                        <div class="list-group">
-                                                            <a href="#" class="list-group-item list-group-item-action">大肠杆菌感染<span class="badge badge-pill badge-danger">X</span></a>
-                                                            <a href="#" class="list-group-item list-group-item-action">高血压<span class="badge badge-pill badge-danger">X</span></a>
-                                                            <a href="#" class="list-group-item list-group-item-action">伤寒<span class="badge badge-pill badge-danger">X</span></a>
-                                                            <a href="#" class="list-group-item list-group-item-action">呼吸道疾病<span class="badge badge-pill badge-danger">X</span></a>
-                                                            <a href="#" class="list-group-item list-group-item-action">糖尿病<span class="badge badge-pill badge-danger">X</span></a>
-                                                        </div>
+                                                        <div class="list-group"></div>
                                                     </div>
                                                 </div>
                                                 <!--历史病历部分-->

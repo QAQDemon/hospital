@@ -3,6 +3,7 @@ package edu.neu.medical.hospital.controller;
 import com.github.pagehelper.PageInfo;
 import edu.neu.medical.hospital.bean.*;
 import edu.neu.medical.hospital.service.MedicalRecordHomeService;
+import edu.neu.medical.hospital.service.OutpatientDoctorWorkstationService;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
@@ -15,6 +16,8 @@ import java.util.Map;
 public class MedicalRecordHomeController {
     @Resource
     MedicalRecordHomeService medicalRecordHomeService;
+    @Resource
+    OutpatientDoctorWorkstationService outpatientDoctorWorkstationService;
 
     /*
      * @Description 返回病历单信息，初诊信息
@@ -114,7 +117,7 @@ public class MedicalRecordHomeController {
     }
 
     /*
-     * @Description 根据id获得病历模板内容//TODO
+     * @Description 根据id获得病历模板内容
      * @Param [medrecTemplateId]
      * @return java.util.Map<java.lang.String,java.lang.Object>
      **/
@@ -125,5 +128,44 @@ public class MedicalRecordHomeController {
         map.put("xDiagnosisDiseaseList",medicalRecordHomeService.getDiagnosisDiseaseList(medicalRecordHomeService.getNewDiagnosisListById('2','1',medrecTemplateId)));
         map.put("zDiagnosisDiseaseList",medicalRecordHomeService.getDiagnosisDiseaseList(medicalRecordHomeService.getNewDiagnosisListById('2','2',medrecTemplateId)));
         return map;
+    }
+
+    /*
+     * @Description  获得诊断常用选项，1西医诊断 2中医诊断
+     * @Param []
+     * @return void
+     **/
+    @RequestMapping("getCommonOption")
+    public Map<String,List<Disease>> getCommonOption(){
+        int doctorId=1;//todo
+
+        Map map = new HashMap<>();
+        map.put("xDiseaseCommonOptionList",medicalRecordHomeService.getCommonDiagnosisList(outpatientDoctorWorkstationService.getCommonOptionById('1', doctorId)));
+        map.put("zDiseaseCommonOptionList",medicalRecordHomeService.getCommonDiagnosisList(outpatientDoctorWorkstationService.getCommonOptionById('2', doctorId)));
+        return map;
+    }
+
+    /*
+     * @Description 删除常用诊断
+     * @Param [type 1西医诊断 2中医诊断, diseaseId]
+     * @return void
+     **/
+    @RequestMapping("deleteCommonDiagnosis/{type}/{diseaseId}")
+    public int deleteCommonDiagnosis(@PathVariable("type")char type,@PathVariable("diseaseId")int diseaseId){
+        int doctorId=1;//todo
+
+        return medicalRecordHomeService.deleteCommonDiagnosis(doctorId, type, diseaseId);
+    }
+
+    /*
+     * @Description 增加常用诊断//TODO
+     * @Param [type 1西, diseaseId]
+     * @return java.lang.Boolean
+     **/
+    @RequestMapping("addCommonDiagnosis/{type}/{diseaseId}")
+    public Boolean addCommonDiagnosis(@PathVariable("type")char type,@PathVariable("diseaseId")int diseaseId){
+        int doctorId=1;//todo
+
+        return medicalRecordHomeService.addCommonDiagnosis(doctorId, type, diseaseId);
     }
 }

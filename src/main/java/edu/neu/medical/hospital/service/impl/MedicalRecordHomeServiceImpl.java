@@ -163,19 +163,19 @@ public class MedicalRecordHomeServiceImpl implements MedicalRecordHomeService {
      * @Param [doctorId, diagnosis]
      * @return java.lang.Boolean
      **/
-    public Boolean addCommonDiagnosis(int doctorId,Diagnosis diagnosis){
+    public Boolean addCommonDiagnosis(int doctorId,char type,int diseaseId){
         //判断是否存在
         CommonOptionExample commonOptionExample=new CommonOptionExample();
         CommonOptionExample.Criteria criteria=commonOptionExample.createCriteria();
-        criteria.andTypeEqualTo(diagnosis.getType());
-        criteria.andBelongIdEqualTo(diagnosis.getDiseaseId());
+        criteria.andTypeEqualTo(type+"");
+        criteria.andBelongIdEqualTo(diseaseId);
         criteria.andDoctorIdEqualTo(doctorId);
         int count=commonOptionMapper.countByExample(commonOptionExample);
         if(count==0){
             CommonOption commonOption=new CommonOption();
             commonOption.setDoctorId(doctorId);
-            commonOption.setBelongId(diagnosis.getDiseaseId());
-            commonOption.setType(diagnosis.getType());
+            commonOption.setBelongId(diseaseId);
+            commonOption.setType(type+"");
             commonOptionMapper.insertSelective(commonOption);
             return true;
         }else{

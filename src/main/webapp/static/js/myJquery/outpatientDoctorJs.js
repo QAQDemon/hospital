@@ -2,7 +2,31 @@ var patientList;//保存病人信息列表
 var notSeenListNum;//待诊人数，用来取病历信息
 
 //隐藏病历模板的内容
-// $("#MedrecTempContextDiv").hide();
+$("#MedrecTempContextDiv").hide();
+
+//评估诊断重复部分
+function duplicatDiagnosis(diseaseId,listName,lastNum) {
+    return  '<td>\n' +
+        '<div class="custom-control custom-radio">\n' +
+        '<input type="radio" class="custom-control-input" id="'+listName+diseaseId+'Radio" name="isNewMajorDiagnosisCheckded" value="'+diseaseId+'">\n' +
+        '<label class="custom-control-label" for="'+listName+diseaseId+'Radio"></label>\n' +
+        '</div>\n' +
+        '</td>\n' +
+        '<td>\n' +
+        '<div class="custom-control custom-checkbox ">\n' +
+        '<input type="checkbox" class="custom-control-input" id="'+listName+diseaseId+'Check" name="isNewSuspectChecked" value="'+diseaseId+'">\n' +
+        '<label class="custom-control-label" for="'+listName+diseaseId+'Check"></label>\n' +
+        '</div>\n' +
+        '</td>\n' +
+        '<td style="padding: 0">\n' +
+        '<input type="datetime-local"  class="form-control" />\n' +
+        '<input type="hidden" name="'+listName+'['+lastNum+'].dateOfOnset"/>\n'+
+        '</td>\n' +
+        '<td style="padding: 0"><a href="#"><img src="images/save_icon.jpg" style="height:40px;width:40px" alt="保存"></a></td>\n' +
+        '<td class="text-center" style="padding: 0"><button type="button" class="btn btn-danger" style="width: 100%;height: 100%">-\n' +
+        '</button></td>\n' +
+        '</tr>';
+}
 
 var alertFlag=0;
 //弹出信息提示框,返回值可以用来删除
@@ -431,26 +455,7 @@ $("#DiagnosisModal .modal-footer :button").click(function () {
             '<td>'+(diseaseId)+'</td>\n' +
             '<td>'+$(this).children().eq(2).html()+'<input type="hidden" name="'+listName+'['+lastNum+'].diseaseId" value="'+diseaseId+'"></td>\n' +
             '<td title="'+$(this).children().eq(3).html()+'" style="max-width:120px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">'+$(this).children().eq(3).html()+'</td>\n' +
-            '<td>\n' +
-            '<div class="custom-control custom-radio">\n' +
-            '<input type="radio" class="custom-control-input" id="'+listName+diseaseId+'Radio" name="isNewMajorDiagnosisCheckded" value="'+diseaseId+'">\n' +
-            '<label class="custom-control-label" for="'+listName+diseaseId+'Radio"></label>\n' +
-            '</div>\n' +
-            '</td>\n' +
-            '<td>\n' +
-            '<div class="custom-control custom-checkbox ">\n' +
-            '<input type="checkbox" class="custom-control-input" id="'+listName+diseaseId+'Check" name="isNewSuspectChecked" value="'+diseaseId+'">\n' +
-            '<label class="custom-control-label" for="'+listName+diseaseId+'Check"></label>\n' +
-            '</div>\n' +
-            '</td>\n' +
-            '<td style="padding: 0">\n' +
-            '<input type="datetime-local"  class="form-control" />\n' +
-            '<input type="hidden" name="'+listName+'['+lastNum+'].dateOfOnset"/>\n'+
-            '</td>\n' +
-            '<td style="padding: 0"><a href="#"><img src="images/save_icon.jpg" style="height:40px;width:40px" alt="保存"></a></td>\n' +
-            '<td class="text-center" style="padding: 0"><button type="button" class="btn btn-danger" style="width: 100%;height: 100%">-\n' +
-            '</button></td>\n' +
-            '</tr>');
+            duplicatDiagnosis(diseaseId,listName,lastNum));
     });
     $("#DiagnosisModal button[data-dismiss='modal']").click();
 });
@@ -543,6 +548,10 @@ $("#MedrecTempListDiv").on("click","a",function () {
         data: {},
         success: function (result) {
             clearMedrecTemplateContent();
+            if(result.medrecTemplate===null){
+                showAlertDiv("alert-warning","警告!","模板不存在。");
+                return;
+            }
             var medrecTemplate=result.medrecTemplate;
             $("#MedrecTempContextDiv span").html(medrecTemplate.templateName);
             $("#chiefComplaintTemplate").val(medrecTemplate.chiefComplaint);
@@ -574,26 +583,7 @@ function setDiagnosisTemplete(listName,num){
             '<td>'+(diseaseId)+'</td>\n' +
             '<td>'+$(this).children().eq(1).html()+'<input type="hidden" name="'+listName+'['+lastNum+'].diseaseId" value="'+diseaseId+'"></td>\n' +
             '<td title="'+$(this).children().eq(2).html()+'" style="max-width:120px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">'+$(this).children().eq(2).html()+'</td>\n' +
-            '<td>\n' +
-            '<div class="custom-control custom-radio">\n' +
-            '<input type="radio" class="custom-control-input" id="'+listName+diseaseId+'Radio" name="isNewMajorDiagnosisCheckded" value="'+diseaseId+'">\n' +
-            '<label class="custom-control-label" for="'+listName+diseaseId+'Radio"></label>\n' +
-            '</div>\n' +
-            '</td>\n' +
-            '<td>\n' +
-            '<div class="custom-control custom-checkbox ">\n' +
-            '<input type="checkbox" class="custom-control-input" id="'+listName+diseaseId+'Check" name="isNewSuspectChecked" value="'+diseaseId+'">\n' +
-            '<label class="custom-control-label" for="'+listName+diseaseId+'Check"></label>\n' +
-            '</div>\n' +
-            '</td>\n' +
-            '<td style="padding: 0">\n' +
-            '<input type="datetime-local"  class="form-control" />\n' +
-            '<input type="hidden" name="'+listName+'['+lastNum+'].dateOfOnset"/>\n'+
-            '</td>\n' +
-            '<td style="padding: 0"><a href="#"><img src="images/save_icon.jpg" style="height:40px;width:40px" alt="保存"></a></td>\n' +
-            '<td class="text-center" style="padding: 0"><button type="button" class="btn btn-danger" style="width: 100%;height: 100%">-\n' +
-            '</button></td>\n' +
-            '</tr>');
+            duplicatDiagnosis(diseaseId,listName,lastNum));
     });
 }
 //引用模板
@@ -609,4 +599,79 @@ $("#MedrecTempContextDiv button").click(function () {
         $("#physicalExamination").html(physicalExaminationTemplateText);
     setDiagnosisTemplete("xDiagnosisList",0);
     setDiagnosisTemplete("zDiagnosisList",1);
+});
+
+//放入常用诊断
+function insertCommonDisease(list,num){
+    var str="";
+    for (var i = 0; i < list.length; i++) {
+        str+='<a href="#" class="list-group-item list-group-item-action"><span>'+list[i].diseasename+'</span><span class="badge badge-pill badge-danger">X</span></a>\n' +
+            '<input type="hidden" value="'+list[i].id+'">'+
+            '<input type="hidden" value="'+list[i].diseaseicd+'">';
+    }
+    $("#home1_2 .list-group:eq("+num+")").html(str);
+}
+//常用诊断生成
+$("#homeRightNav a:eq(1)").click(function () {
+    $.ajax({
+        type: "POST",//方法类型
+        dataType: "json",//预期服务器返回的数据类型
+        url: "medicalRecordHome/getCommonOption",
+        data: {},
+        success: function (result) {
+            insertCommonDisease(result.xDiseaseCommonOptionList,0);
+            insertCommonDisease(result.zDiseaseCommonOptionList,1);
+        }
+    });
+});
+
+//双击将常用诊断加到评估下
+$("#home1_2").on("dblclick","a",function () {
+    var num=$(this).closest(".card").index()-1;//0x 1z
+    var listName = (num === 0) ? "xDiagnosisList" : "zDiagnosisList";
+    var resultNode=$("#diagnosisContentCard tbody:eq("+num+")");
+    var flag=0;
+    var diseaseId=$(this).next().val();
+    resultNode.children().each(function () {
+        if($(this).children().eq(0).html()===diseaseId){
+            flag=1;
+            return false;//break
+        }
+    });
+    if(flag===1)
+        return;//重复跳出
+    var lastNum = getDiagnosisLast(resultNode);
+    resultNode.append('<tr>\n' +
+        '<td>'+(diseaseId)+'</td>\n' +
+        '<td>'+$(this).next().next().val()+'<input type="hidden" name="'+listName+'['+lastNum+'].diseaseId" value="'+diseaseId+'"></td>\n' +
+        '<td title="'+$(this).children().first().html()+'" style="max-width:120px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">'+$(this).children().first().html()+'</td>\n' +
+        duplicatDiagnosis(diseaseId,listName,lastNum));
+})//删除常用诊断
+.on("click",".badge-danger",function () {
+    $.ajax({
+        type: "POST",//方法类型
+        dataType: "text",//预期服务器返回的数据类型
+        url: "medicalRecordHome/deleteCommonDiagnosis/"+$(this).closest(".card").index()+"/"+$(this).parent().next().val(),
+        data: {},
+        success: function (result) {
+            $("#homeRightNav a:eq(1)").click();
+        }
+    });
+})//取消跳转
+.on("click","a",function () {
+    return false;
+});
+
+//增加常用诊断
+$("#diagnosisContentCard").on("click","a",function () {
+    $.ajax({
+        type: "POST",//方法类型
+        dataType: "text",//预期服务器返回的数据类型
+        url: "medicalRecordHome/addCommonDiagnosis/"+($(this).closest(".form-group").index()+1)+"/"+$(this).closest("tr").children().first().html(),
+        data: {},
+        success: function (result) {
+            $("#homeRightNav a:eq(1)").click();
+        }
+    });
+    return false;
 });
