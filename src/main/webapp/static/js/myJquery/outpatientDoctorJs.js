@@ -1,6 +1,10 @@
 var patientList;//保存病人信息列表
 var notSeenListNum;//待诊人数，用来取病历信息
 
+disableMedrTempBtn(true);//锁定模板按钮
+$("#medrecTempCategoryDiv").hide();
+disableMedreTempContext(true);
+
 //评估诊断重复部分
 function duplicatDiagnosis(diseaseId,listName,lastNum) {
     return  '<td>\n' +
@@ -186,7 +190,10 @@ function setDiagnosisList(diagnosisList,diseaseList,listName,num){
 }
 //禁用和解开病历信息按钮组的暂存和提交true 不可用
 function disableMedicalInfoBtn(bool){
-    $("#medicalInfoBtnGroup").find(".btn-outline-secondary,.btn-outline-success").attr("disabled",bool);
+    var btns= $("#medicalInfoBtnGroup").find(".btn-outline-secondary,.btn-outline-success");
+    if(bool===true)
+        btns.hide();
+    else  btns.show();
 }
 //切换患者将右侧功能重置//todo
 function resetHomeRight(){
@@ -512,19 +519,46 @@ function addmedrecTempContext(map){
 }
 //病历模板类型选择
 $("#medrecTempChooseDiv :radio").click(function () {
+    var key=$("#searchMedrecTempKey").val();
     $.ajax({
         type: "POST",//方法类型
         dataType: "json",//预期服务器返回的数据类型
-        url: "medicalRecordHome/getMedrecTemplate/"+($(this).parent().index()+1),
+        url: "medicalRecordHome/getMedrecTemplate/"+($(this).parent().index()+1)+((key==="")?"":("/"+key)),
         data: {},
         success: function (result) {
             addmedrecTempContext(result);
         }
     });
 });
+function searchMedrecTemp(){
+    var category=$("#medrecTempChooseDiv :checked").val();
+    if(category===undefined){//未选的情况
+        category=1;
+        $("#medrecTempChooseDiv [type='radio']:eq(0)").attr("checked",true);
+    }
+    var key=$("#searchMedrecTempKey").val();
+    $.ajax({
+        type: "POST",//方法类型
+        dataType: "json",//预期服务器返回的数据类型
+        url: "medicalRecordHome/getMedrecTemplate/"+category+((key==="")?"":("/"+key)),
+        data: {},
+        success: function (result) {
+            addmedrecTempContext(result);
+        }
+    });
+}
+//病历模板搜索
+$("#searchMedrecTempForm").on("click","button",function () {
+    searchMedrecTemp();
+}).on("keyup","input",function (e) {
+    if(e.keyCode===13){
+        searchMedrecTemp();
+    }
+});
 //清空模板内容
 function clearMedrecTemplateContent(){
-    $("#createrIdTemplate").val("");
+    $("#MedrecTempListDiv a").removeClass("active");
+    $("#idTemplate").val("");
     $("#categoryTemplate").val(0);
     $("#MedrecTempContextDiv [type='text']").val("");
     $("#MedrecTempContextDiv").find("textarea,tbody").html("");
@@ -538,9 +572,17 @@ function setDiseaseTempleteList(diseaseList,num){
             '<td>'+(diseaseId)+'</td>\n' +
             '<td title="'+diseaseList[i].diseaseicd+'" style="max-width:60px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">'+diseaseList[i].diseaseicd+'</td>\n' +
             '<td title="'+diseaseList[i].diseasename+'" style="max-width:80px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">'+diseaseList[i].diseasename+'</td>\n' +
+            '<input type="hidden" name="diseaseId'+num+'" value="'+diseaseId+'">\n'+
             '</tr>';
     }
     $("#MedrecTempContextDiv tbody:eq("+num+")").html(str);
+}
+//解锁或锁定模板按钮 true锁定
+function disableMedrTempBtn(bool){
+    var btns=$("#medreTempBtnGroup").find(".btn-outline-warning,.btn-outline-danger");
+    if(bool===true)
+        btns.hide();
+    else  btns.show();
 }
 //点击标签获得模板内容
 $("#MedrecTempListDiv").on("click","a",function () {
@@ -553,13 +595,18 @@ $("#MedrecTempListDiv").on("click","a",function () {
         url: "medicalRecordHome/getMedrecTemplateContent/"+$(this).next().val(),
         data: {},
         success: function (result) {
-            clearMedrecTemplateContent();
+            $("#templateCodeTemplate").attr("readonly",true);
+            $("#medrecTempCategoryDiv").hide();
+            disableMedreTempContext(true);
             if(result.medrecTemplate===null){
                 showAlertDiv("alert-warning","警告!","模板不存在。");
                 return;
             }
             var medrecTemplate=result.medrecTemplate;
-            $("#createrIdTemplate").val(medrecTemplate.createrId);
+            if(eval($("#doctorId").val())===medrecTemplate.createrId)//判断是否能修改删除
+                disableMedrTempBtn(false);
+            else disableMedrTempBtn(true);
+            $("#idTemplate").val(medrecTemplate.id);
             $("#categoryTemplate").val(eval(medrecTemplate.category));
             $("#templateCodeTemplate").val(medrecTemplate.templateCode);
             $("#templateNameTemplate").val(medrecTemplate.templateName);
@@ -607,6 +654,63 @@ $("#MedrecTempContextDiv button:contains('引用')").click(function () {
         $("#physicalExamination").html(physicalExaminationTemplateText);
     setDiagnosisTemplete("xDiagnosisList",0);
     setDiagnosisTemplete("zDiagnosisList",1);
+});
+//删除病历模板
+$("#medreTempBtnGroup button:eq(2)").click(function () {
+    var res = confirm('确认要删除吗？');
+    if(res === true){
+        disableMedrTempBtn(true);
+        clearMedrecTemplateContent();
+        $.ajax({
+            type: "POST",//方法类型
+            dataType: "text",//预期服务器返回的数据类型
+            url: "medicalRecordHome/cancelMedrecTemplate/"+$("#idTemplate").val(),
+            data: {},
+            success: function (result) {
+                if(result==="0")//好像无效
+                    showAlertDiv("alert-danger","错误!","删除病历模板失败。");
+            }
+        });
+    }
+});
+//锁定病历模板内容或解开 bool true锁
+function disableMedreTempContext(bool){
+    $("#chiefComplaintTemplate,#templateNameTemplate,#currentMedicalHistoryTemplate,#physicalExaminationTemplate").attr("readonly",bool);
+    var btns=$("#medrecTempContextForm button");
+    if(bool)
+        btns.hide();
+    else btns.show();
+}
+// 修改增加病历模板后提交 //todo
+$("#medrecTempContextForm button:contains('提交')").click(function () {
+    $("#medrecTempCategoryDiv").hide();
+    $.ajax({
+        type: "POST",//方法类型
+        dataType: "text",//预期服务器返回的数据类型
+        url: "medicalRecordHome/saveMedrecTemplate/"+(($("#templateCodeTemplate").attr("readonly")==="readonly")?"2":"1"),
+        data: $("#medrecTempContextForm").serializeArray(),
+        success: function (result) {
+            alert(result);
+            // closeAlertDiv(alertNum);
+            // if(result==="1"){
+            //     showAlertDiv("alert-success","成功!","病历信息保存成功。");
+            //     //提交成功则暂存提交不可用
+            //     $("#patientListForm :checked").click();
+            // }
+            // else showAlertDiv("alert-warning","警告!","病历信息保存失败。");
+        }
+    });
+});
+//修改病历模板
+$("#medreTempBtnGroup").on("click","button:eq(1)",function () {
+    $("#templateCodeTemplate").attr("readonly",true);
+    disableMedreTempContext(false);
+}).on("click","button:eq(0)",function () {//增加病历模板
+    $("#medrecTempCategoryDiv").show();
+    $("#templateCodeTemplate").attr("readonly",false);
+    disableMedreTempContext(false);
+    clearMedrecTemplateContent();
+    disableMedrTempBtn(true);
 });
 
 //放入常用诊断
@@ -746,3 +850,4 @@ $("#historyMedicalInfoLabelDiv").on("click","a",function () {
     });
     return false;
 });
+

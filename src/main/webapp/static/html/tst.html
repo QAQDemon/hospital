@@ -15,9 +15,11 @@
     <link rel="stylesheet" type="text/css" href="../css/pagination.css">
 </head>
 <body>
+
 <button id="tba" class="">a</button>
 <button id="tba1">a1</button>
-
+<p>a</p>
+<p>b</p>
 
 <!-- 模板管理弹窗 -->
 <div class="modal fade" id="MedrecTemplateManageModal">
@@ -421,7 +423,7 @@
                                                         <tr>
                                                             <td><input type="text" name="xDiagnosisList[0].diseaseId" value="1"></td>
                                                             <td>00001</td>
-                                                            <td>哒哒哒</td>medrecTempChooseDiv
+                                                            <td>哒哒哒</td>
                                                             <td>
                                                                 <div class="custom-control custom-radio">
                                                                     <input type="radio" class="custom-control-input" id="customRadio220" name="isNewMajorDiagnosisCheckded" value="1" checked>
@@ -560,15 +562,15 @@
                                                     <div id="medrecTempChooseDiv" class="bg-light" style="border: 1px solid rgba(0, 0, 0, 0.125); border-radius: 0.25rem;padding: 0.75rem 0rem;">
                                                         &nbsp;&nbsp;
                                                         <div class="custom-control custom-radio custom-control-inline">
-                                                            <input type="radio" class="custom-control-input active" id="wholeRadio" name="medrecTemplateRadioGroup">
+                                                            <input type="radio" class="custom-control-input active" id="wholeRadio" name="medrecTemplateRadioGroup" value="1">
                                                             <label class="custom-control-label" for="wholeRadio">全院</label>
                                                         </div>
                                                         <div class="custom-control custom-radio custom-control-inline">
-                                                            <input type="radio" class="custom-control-input" id="departRadio" name="medrecTemplateRadioGroup">
+                                                            <input type="radio" class="custom-control-input" id="departRadio" name="medrecTemplateRadioGroup" value="2">
                                                             <label class="custom-control-label" for="departRadio">科室</label>
                                                         </div>
                                                         <div class="custom-control custom-radio custom-control-inline">
-                                                            <input type="radio" class="custom-control-input" id="personRadio" name="medrecTemplateRadioGroup">
+                                                            <input type="radio" class="custom-control-input" id="personRadio" name="medrecTemplateRadioGroup" value="3">
                                                             <label class="custom-control-label" for="personRadio">个人</label>
                                                         </div>
                                                     </div>
@@ -835,8 +837,9 @@
     });
 </script>
 <script type="text/javascript">
+    $("p:eq(0)").hide();
     $("#tba").click(function () {
-        $("#categoryTemplate").val(0);
+        alert($("p:eq(0)").html());
     });
 </script>
 </body>

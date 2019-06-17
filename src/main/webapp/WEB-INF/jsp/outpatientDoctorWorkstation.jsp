@@ -105,6 +105,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         <div class="col-md-3 text-right" >
             <span ><strong>门诊医生：</strong></span>
             <span>哈哈哈</span>&nbsp;
+            <input type="hidden" id="doctorId" value="1"><!--doctorId-->
             <button type="button" class="btn btn-secondary">退出</button>
         </div>
     </nav>
@@ -234,8 +235,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                             <div class="col-md-5 text-right">
                                                 <div id="medicalInfoBtnGroup" class="btn-group">
                                                     <button type="button" class="btn btn-outline-danger btn-sm">清屏</button>
-                                                    <button type="button" class="btn btn-outline-secondary btn-sm" disabled>暂存</button>
-                                                    <button type="button" class="btn btn-outline-success btn-sm" disabled>提交</button>
+                                                    <button type="button" class="btn btn-outline-secondary btn-sm">暂存</button>
+                                                    <button type="button" class="btn btn-outline-success btn-sm">提交</button>
                                                     <button type="button" class="btn btn-outline-info btn-sm">存为模板</button>
                                                 </div>
                                             </div>
@@ -361,15 +362,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                                     <div id="medrecTempChooseDiv" class="bg-light" style="border: 1px solid rgba(0, 0, 0, 0.125); border-radius: 0.25rem;padding: 0.75rem 0rem;">
                                                         &nbsp;&nbsp;
                                                         <div class="custom-control custom-radio custom-control-inline">
-                                                            <input type="radio" class="custom-control-input active" id="wholeRadio" name="medrecTemplateRadioGroup">
+                                                            <input type="radio" class="custom-control-input active" id="wholeRadio" name="medrecTemplateRadioGroup" value="1">
                                                             <label class="custom-control-label" for="wholeRadio">全院</label>
                                                         </div>
                                                         <div class="custom-control custom-radio custom-control-inline">
-                                                            <input type="radio" class="custom-control-input" id="departRadio" name="medrecTemplateRadioGroup">
+                                                            <input type="radio" class="custom-control-input" id="departRadio" name="medrecTemplateRadioGroup" value="2">
                                                             <label class="custom-control-label" for="departRadio">科室</label>
                                                         </div>
                                                         <div class="custom-control custom-radio custom-control-inline">
-                                                            <input type="radio" class="custom-control-input" id="personRadio" name="medrecTemplateRadioGroup">
+                                                            <input type="radio" class="custom-control-input" id="personRadio" name="medrecTemplateRadioGroup" value="3">
                                                             <label class="custom-control-label" for="personRadio">个人</label>
                                                         </div>
                                                     </div>
@@ -379,7 +380,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                                     </div>
                                                     <div id="MedrecTempContextDiv" >
                                                         <div class="text-right" style="margin-top: 8px">
-                                                            <div class="btn-group btn-group-sm">
+                                                            <div id="medreTempBtnGroup" class="btn-group btn-group-sm">
                                                                 <button type="button" class="btn btn-outline-primary btn-sm">新增</button>
                                                                 <button type="button" class="btn btn-outline-warning btn-sm">修改</button>
                                                                 <button type="button" class="btn btn-outline-danger btn-sm">删除</button>
@@ -390,9 +391,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                                         <div class="card">
                                                             <div class="card-header"><strong>模板内容</strong></div>
                                                             <div class="card-body">
-                                                                <input id="createrIdTemplate" type="hidden">
                                                                 <form id="medrecTempContextForm" role="form" onkeypress="return event.keyCode !== 13;">
-                                                                    <div class="form-group">
+                                                                    <input id="idTemplate" type="hidden" name="id">
+                                                                    <div id="medrecTempCategoryDiv" class="form-group">
                                                                         <label class="font-weight-bold" for="categoryTemplate">适用范围：</label>
                                                                         <select id="categoryTemplate" name="category" class="custom-select-sm">
                                                                             <option value="0" selected></option>
@@ -403,27 +404,27 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                                                     </div>
                                                                     <div class="form-group ">
                                                                         <label class="font-weight-bold" for="templateCodeTemplate">模板编码：</label>
-                                                                        <input type="text" class="form-control " id="templateCodeTemplate" readonly="readonly">
+                                                                        <input type="text" class="form-control " id="templateCodeTemplate" name="templateCode" readonly="readonly">
                                                                     </div>
                                                                     <div class="form-group ">
                                                                         <label class="font-weight-bold" for="templateNameTemplate">模板名称：</label>
-                                                                        <input type="text" class="form-control " id="templateNameTemplate" readonly="readonly">
+                                                                        <input type="text" class="form-control " id="templateNameTemplate" name="templateName" readonly="readonly">
                                                                     </div>
                                                                     <div class="form-group ">
                                                                         <label class="font-weight-bold" for="chiefComplaintTemplate">主诉：</label>
-                                                                        <input type="text" class="form-control " id="chiefComplaintTemplate" readonly="readonly">
+                                                                        <input type="text" class="form-control " id="chiefComplaintTemplate" name="chiefComplaint" readonly="readonly">
                                                                     </div>
                                                                     <div class="form-group ">
                                                                         <label class="font-weight-bold" for="currentMedicalHistoryTemplate">现病史：</label>
-                                                                        <textarea class="form-control " rows="2" id="currentMedicalHistoryTemplate" readonly="readonly"></textarea>
+                                                                        <textarea class="form-control " rows="2" id="currentMedicalHistoryTemplate" name="currentMedicalHistory" readonly="readonly"></textarea>
                                                                     </div>
                                                                     <div class="form-group">
                                                                         <label class="font-weight-bold" for="physicalExaminationTemplate">体格检查：</label>
-                                                                        <textarea class="form-control " rows="2" id="physicalExaminationTemplate" readonly="readonly"></textarea>
+                                                                        <textarea class="form-control " rows="2" id="physicalExaminationTemplate" name="physicalExamination" readonly="readonly"></textarea>
                                                                     </div>
                                                                     <!--模板诊断*2-->
                                                                     <div class="form-group">
-                                                                        <label class="font-weight-bold">西医诊断</label><button type="button" class="btn btn-outline-warning btn-sm">修改</button>
+                                                                        <label class="font-weight-bold">西医诊断</label>&nbsp;<button type="button" class="btn btn-outline-warning btn-sm">修改</button>
                                                                         <table class="table table-condensed table-striped table-hover table-sm table-bordered" >
                                                                             <thead>
                                                                             <tr>
@@ -436,7 +437,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                                                         </table>
                                                                     </div>
                                                                     <div class="form-group">
-                                                                        <label class="font-weight-bold">中医诊断</label><button type="button" class="btn btn-outline-warning btn-sm">修改</button>
+                                                                        <label class="font-weight-bold">中医诊断</label>&nbsp;<button type="button" class="btn btn-outline-warning btn-sm">修改</button>
                                                                         <table class="table table-condensed table-striped table-hover table-sm table-bordered" >
                                                                             <thead>
                                                                             <tr>
@@ -447,6 +448,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                                                             </thead>
                                                                             <tbody></tbody>
                                                                         </table>
+                                                                    </div>
+                                                                    <div class="text-right" style="margin-top: 8px">
+                                                                        <button type="button" class="btn btn-outline-success btn-sm">提交</button>
                                                                     </div>
                                                                 </form>
                                                             </div>

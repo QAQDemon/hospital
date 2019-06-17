@@ -184,6 +184,34 @@ public class MedicalRecordHomeServiceImpl implements MedicalRecordHomeService {
     }
 
     /*
+     * @Description 根据疾病id获得诊断列表
+     * @Param [xDiseases, zDiseases]
+     * @return java.util.List<edu.neu.medical.hospital.bean.Diagnosis>
+     **/
+    public List<Diagnosis> getMedrecTempDiagnosisList(int[] xDiseases,int[] zDiseases){
+        List<Diagnosis> list = new ArrayList<>();
+        for (int i : xDiseases) {
+            list.add(initeTempDiagnosis(i,"1"));
+        }
+        for (int i : zDiseases) {
+            list.add(initeTempDiagnosis(i,"2"));
+        }
+        return list;
+    }
+    /*
+     * @Description 初始化模板诊断
+     * @Param [diseaseId, type 1西 2中]
+     * @return edu.neu.medical.hospital.bean.Diagnosis
+     **/
+    private Diagnosis initeTempDiagnosis(int diseaseId,String type){
+        Diagnosis diagnosis = new Diagnosis();
+        diagnosis.setDiseaseId(diseaseId);
+        diagnosis.setType(type);
+        diagnosis.setCategory("2");
+        return diagnosis;
+    }
+
+    /*
      * @Description 增加病历模板和诊断列表,判断存在
      * @Param [medrecTemplate 类别为全院时，belongid要为0,diagnosisList]
      * @return java.lang.Boolean ：false已存在，失败；true成功
@@ -235,12 +263,13 @@ public class MedicalRecordHomeServiceImpl implements MedicalRecordHomeService {
     /*
      * @Description （删除）将病历模板设为无效状态
      * @Param [medrecTemplate]
-     * @return int
+     * @return int 1成功 2失败
      **/
-    public Boolean cancelMedrecTemplate(MedrecTemplate medrecTemplate){
+    public int cancelMedrecTemplate(int medrecTemplateId){
+        MedrecTemplate medrecTemplate=new MedrecTemplate();
+        medrecTemplate.setId(medrecTemplateId);
         medrecTemplate.setStatus("2");
-        medrecTemplateMapper.updateByPrimaryKeySelective(medrecTemplate);
-        return true;
+        return medrecTemplateMapper.updateByPrimaryKeySelective(medrecTemplate);
     }
 
     /*

@@ -100,6 +100,13 @@ public class MedicalRecordHomeController {
      **/
     @RequestMapping("getMedrecTemplate/{category}")
     public Map<Integer ,String> getMedrecTemplate(@PathVariable("category")char category){
+        return getMedrecTemplate1Method(category, "");
+    }
+    @RequestMapping("getMedrecTemplate/{category}/{key}")
+    public Map<Integer ,String> getMedrecTemplate1(@PathVariable("category")char category,@PathVariable("key")String key){
+        return getMedrecTemplate1Method(category, key);
+    }
+    private Map<Integer ,String> getMedrecTemplate1Method(char category,String key){
         int doctorId=1;//todo
         int departID=2;//
 
@@ -109,7 +116,7 @@ public class MedicalRecordHomeController {
         else if(category=='3')
             belongId = doctorId;
         Map<Integer ,String> map=new HashMap<>();
-        List<MedrecTemplate> list=medicalRecordHomeService.searchMedrecTemplateList(category, belongId, "");
+        List<MedrecTemplate> list=medicalRecordHomeService.searchMedrecTemplateList(category, belongId, key);
         for (MedrecTemplate medrecTemplate : list) {
             map.put(medrecTemplate.getId(),medrecTemplate.getTemplateName());
         }
@@ -180,7 +187,7 @@ public class MedicalRecordHomeController {
     }
 
     /*
-     * @Description 根据历史病单号获得详细信息，包括终诊//TODO
+     * @Description 根据历史病单号获得详细信息，包括终诊
      * @Param [medicalRecordInfoId]
      * @return java.util.Map<java.lang.String,java.lang.Object>
      **/
@@ -190,5 +197,27 @@ public class MedicalRecordHomeController {
         map.put("historyMedicalRecordInfo", medicalRecordHomeService.getHistoryMedicalInfoRecordContext(medicalRecordInfoId));
         map.put("finalDiagnosis", medicalRecordHomeService.getHistoryMedicalInfoRecordFinalDiagnosis(medicalRecordInfoId));
         return map;
+    }
+
+    /*
+     * @Description 删除病历模板
+     * @Param [medrecTemplateId]
+     * @return int
+     **/
+    @RequestMapping("cancelMedrecTemplate/{medrecTemplateId}")
+    public int cancelMedrecTemplate(@PathVariable("medrecTemplateId")int medrecTemplateId){
+        return medicalRecordHomeService.cancelMedrecTemplate(medrecTemplateId);
+    }
+
+    /*
+     * @Description 新增或修改病历模板,新增的id为null//TODO
+     * @Param [type 1新增 2修改,diseaseId 0西 1中]
+     * @return int
+     **/
+    @RequestMapping("saveMedrecTemplate/{type}")
+    public int saveMedrecTemplate(@PathVariable("type")char type,MedrecTemplate medrecTemplate,int[] diseaseId0,int[] diseaseId1){
+        // 新增 id为null
+        List<Diagnosis> diagnosisList=medicalRecordHomeService.getMedrecTempDiagnosisList(diseaseId0,diseaseId1);
+        return 0;
     }
 }

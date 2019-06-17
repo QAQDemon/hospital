@@ -18,10 +18,11 @@ public interface MedicalRecordHomeService {
     int addCommonDiagnosis(int doctorId,char type,int diseaseId);
     Boolean addMedrecTemplate(MedrecTemplate medrecTemplate,List<Diagnosis> diagnosisList);
     Boolean updateMedrecTemplate(MedrecTemplate medrecTemplate, List<Diagnosis> diagnosisList);
-    Boolean cancelMedrecTemplate(MedrecTemplate medrecTemplate);
+    int cancelMedrecTemplate(int medrecTemplateId);
     List<MedrecTemplate> searchMedrecTemplateList(char category,int belongId,String key);
     Map<Integer,String> getHistoryMedicalRecordInfo(int medicalRecordNo);
     MedrecTemplate getMedrecTemplateById(int medrecTemplateId);
     MedicalRecordInfo getHistoryMedicalInfoRecordContext(int medicalRecordInfoId);
     String getHistoryMedicalInfoRecordFinalDiagnosis(int medicalRecordInfoId);
+    List<Diagnosis> getMedrecTempDiagnosisList(int[] xDiseases,int[] zDiseases);
 }
