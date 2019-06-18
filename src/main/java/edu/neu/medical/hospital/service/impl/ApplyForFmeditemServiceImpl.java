@@ -45,7 +45,7 @@ public class ApplyForFmeditemServiceImpl implements ApplyForFmeditemService {
     }
 
     /*
-     * @Description 根据项目列表获得申请人名字//TODO
+     * @Description 根据项目列表获得申请人名字
      * @Param [visitItems]
      * @return java.lang.String[]
      **/

@@ -15,4 +15,5 @@ public interface ApplyForFmeditemService {
     int deleteCommonFmeditem(int doctorId,int fmeditemId);
     Boolean addCommonFmeditem(int doctorId,VisitItemDetail visitItemDetail);
     VisitItemResult getVisitItemResult(VisitItemDetail visitItemDetail);
+    String[] getApplyForPeopleName(List<VisitItem> visitItems);
 }

@@ -15,6 +15,20 @@ $.outpatientMethod={
     }
 };
 
+//没有选择病单和提交病历不能跳转到其他界面
+$("#allNavTab a[data-toggle='tab']:gt(0)").click(function () {
+    var medicalRecordInfoId=$("#patientInfoDiv span:eq(1)").html();
+    if (medicalRecordInfoId === "") {
+        $.outpatientMethod.showAlertDiv(alertFlag,"alert-danger","错误!","未选择病单。");
+        return false;
+    }
+    var status=$("#patientInfoDiv span:eq(0)").html();
+    if(status==="待诊"){
+        $.outpatientMethod.showAlertDiv(alertFlag,"alert-danger","错误!","请先提交病历信息。");
+       return false;
+    }
+});
+
 var patientList;//保存病人信息列表
 var notSeenListNum;//待诊人数，用来取病历信息
 
@@ -518,7 +532,7 @@ $("#DiagnosisModal .modal-footer :button:contains('保存')").click(function () 
         var diseaseId=$(this).children().eq(1).html();
         resultNode.append('<tr>\n' +
             '<td>'+(diseaseId)+'</td>\n' +
-            '<td title="'+$(this).children().eq(2).html()+'" style="max-width:60px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">'+$(this).children().eq(2).html()+'</td>\n' +
+            '<td>'+$(this).children().eq(2).html()+'</td>\n' +
             '<td title="'+$(this).children().eq(3).html()+'" style="max-width:80px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">'+$(this).children().eq(3).html()+'</td>\n' +
             '<input type="hidden" name="diseaseId'+num+'" value="'+diseaseId+'">\n'+
             '</tr>');
@@ -562,6 +576,27 @@ $("#medicalInfoBtnGroup").find(".btn-outline-secondary,.btn-outline-success").cl
             else $.outpatientMethod.showAlertDiv(alertFlag,"alert-warning","警告!","病历信息保存失败。");
         }
     });
+});
+//存为模板
+$("#medicalInfoBtnGroup :eq(3)").click(function () {
+    $("#medreTempBtnGroup :eq(0)").click();
+    $("#chiefComplaintTemplate").val($("#chiefComplaint").val());
+    $("#currentMedicalHistoryTemplate").html($("#currentMedicalHistory").html());
+    $("#physicalExaminationTemplate").html($("#physicalExamination").html());
+    var xList=[];
+    $("#diagnosisContextTbody1 tr").each(function (index) {
+        var str=$(this).find("td:eq(1)").html();
+        str = str.split("<")[0];
+       xList.push({id:$(this).find("td:eq(0)").html(),diseaseicd:str, diseasename: $(this).find("td:eq(2)").html()});
+    });
+    var zList=[];
+    $("#diagnosisContextTbody2 tr").each(function (index) {
+        var str=$(this).find("td:eq(1)").html();
+        str = str.split("<")[0];
+        zList.push({id:$(this).find("td:eq(0)").html(),diseaseicd:str, diseasename: $(this).find("td:eq(2)").html()});
+    });
+    setDiseaseTempleteList(xList,0);
+    setDiseaseTempleteList(zList,1);
 });
 
 //放入病历模板的名字到标签
@@ -625,7 +660,7 @@ function setDiseaseTempleteList(diseaseList,num){
         var diseaseId=diseaseList[i].id;
         str+='<tr>\n' +
             '<td>'+(diseaseId)+'</td>\n' +
-            '<td title="'+diseaseList[i].diseaseicd+'" style="max-width:60px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">'+diseaseList[i].diseaseicd+'</td>\n' +
+            '<td>'+diseaseList[i].diseaseicd+'</td>\n' +
             '<td title="'+diseaseList[i].diseasename+'" style="max-width:80px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">'+diseaseList[i].diseasename+'</td>\n' +
             '<input type="hidden" name="diseaseId'+num+'" value="'+diseaseId+'">\n'+
             '</tr>';

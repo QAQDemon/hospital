@@ -188,7 +188,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             <div class="card">
                 <!--功能导航栏-->
                 <div class="card-header">
-                    <ul class="nav nav-tabs  card-header-tabs" role="tablist">
+                    <ul id="allNavTab" class="nav nav-tabs  card-header-tabs" role="tablist">
                         <li class="nav-item">
                             <a class="nav-link font-weight-bold active" data-toggle="tab" href="#home1" style="font-size: 28px;">病历首页</a>
                         </li>
