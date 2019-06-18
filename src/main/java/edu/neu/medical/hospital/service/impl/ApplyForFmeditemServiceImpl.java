@@ -21,6 +21,8 @@ public class ApplyForFmeditemServiceImpl implements ApplyForFmeditemService {
     CommonOptionMapper commonOptionMapper;
     @Resource
     VisitItemResultMapper visitItemResultMapper;
+    @Resource
+    UserMapper userMapper;
 
     //1检查 2检验 3处置
     private char type;
@@ -40,6 +42,19 @@ public class ApplyForFmeditemServiceImpl implements ApplyForFmeditemService {
         criteria.andTypeEqualTo(type+"");
         criteria.andMedicalRecordInfoIdEqualTo(medicalRecordInfoId);
         return visitItemMapper.selectByExample(visitItemExample);
+    }
+
+    /*
+     * @Description 根据项目列表获得申请人名字//TODO
+     * @Param [visitItems]
+     * @return java.lang.String[]
+     **/
+    public String[] getApplyForPeopleName(List<VisitItem> visitItems) {
+        String[] strings = new String[visitItems.size()];
+        for (int i=0;i<visitItems.size();i++) {
+            strings[i]=userMapper.selectByPrimaryKey(visitItems.get(i).getApplicationDoctorId()).getTrustName();
+        }
+        return strings;
     }
 
     /*

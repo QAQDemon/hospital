@@ -196,22 +196,22 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                             <a class="nav-link font-weight-bold dropdown-toggle" data-toggle="dropdown" href="#" style="font-size: 28px;">申请</a>
                             <div class="dropdown-menu">
                                 <a class="dropdown-item" data-toggle="tab" href="#menu1" style="font-size: 20px;">检查</a>
-                                <a class="dropdown-item" data-toggle="tab" href="#menu2" style="font-size: 20px;">检验</a>
-                                <a class="dropdown-item" data-toggle="tab" href="#menu3" style="font-size: 20px;">处置</a>
+                                <a class="dropdown-item" data-toggle="tab" href="#menu1" style="font-size: 20px;">检验</a>
+                                <a class="dropdown-item" data-toggle="tab" href="#menu1" style="font-size: 20px;">处置</a>
                             </div>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link font-weight-bold" data-toggle="tab" href="#menu4" style="font-size: 28px;">门诊确诊</a>
+                            <a class="nav-link font-weight-bold" data-toggle="tab" href="#menu2" style="font-size: 28px;">门诊确诊</a>
                         </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link font-weight-bold dropdown-toggle" data-toggle="dropdown" href="#" style="font-size: 28px;">处方</a>
                             <div class="dropdown-menu">
-                                <a class="dropdown-item" data-toggle="tab" href="#menu5" style="font-size: 20px;">成药</a>
-                                <a class="dropdown-item" data-toggle="tab" href="#menu6" style="font-size: 20px;">草药</a>
+                                <a class="dropdown-item" data-toggle="tab" href="#menu3" style="font-size: 20px;">成药</a>
+                                <a class="dropdown-item" data-toggle="tab" href="#menu3" style="font-size: 20px;">草药</a>
                             </div>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link font-weight-bold" data-toggle="tab" href="#menu7" style="font-size: 28px;">患者账单</a>
+                            <a class="nav-link font-weight-bold" data-toggle="tab" href="#menu4" style="font-size: 28px;">患者账单</a>
                         </li>
                     </ul>
                 </div>
@@ -348,7 +348,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                                 <!--病历模板部分-->
                                                 <div id="home1_1" class="container tab-pane active">
                                                     <hr>
-                                                    <!--患者搜索框-->
+                                                    <!--模板搜索框-->
                                                     <form id="searchMedrecTempForm" role="form" onkeypress="return event.keyCode !== 13;">
                                                         <label class="control-label font-weight-bold" for="searchMedrecTempKey"></label>
                                                         <div class="input-group input-group-sm">
@@ -500,9 +500,222 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                 </div>
                             </div>
                         </div>
-                        <div id="menu1" class="container tab-pane fade"><br>
-                            <h2>Menu 1</h2>
-                            <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                        <!--2.申请界面-->
+                        <div id="menu1" class="container tab-pane fade">
+                            <input type="hidden" id="applyForType">
+                            <div class="row">
+                                <div class="col-md-8">
+                                    <!--项目信息表格-->
+                                    <form id="visitItemForm" role="form" onkeypress="return event.keyCode !== 13;">
+                                        <!--空白内容防止出错-->
+                                        <!--<input type="hidden" name="xDiagnosisList[0].diseaseId" value="-1">-->
+                                        <!--<input type="hidden" name="zDiagnosisList[0].diseaseId" value="-1">-->
+                                        <!--<input type="hidden" name="isNewMajorDiagnosisCheckded" value="-1">-->
+                                        <!--<input type="hidden" name="isNewSuspectChecked" value="-1">-->
+                                        <div class="row ">
+                                            <div class="col-md-4">
+                                                <h4 class="font-weight-bold">**申请</h4>
+                                            </div>
+                                            <div class="col-md-8 text-right">
+                                                <div id="applyForBtnGroup" class="btn-group">
+                                                    <button type="button" class="btn btn-outline-primary btn-sm">新增</button>
+                                                    <button type="button" class="btn btn-outline-dark btn-sm">暂存</button>
+                                                    <button type="button" class="btn btn-outline-success btn-sm">开立</button>
+                                                    <button type="button" class="btn btn-outline-danger btn-sm">删除</button>
+                                                    <button type="button" class="btn btn-outline-secondary btn-sm">作废</button>
+                                                    <button type="button" class="btn btn-outline-info btn-sm">存为组套</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!--申请单列表部分-->
+                                        <div id="applyForCard" class="card">
+                                            <div class="card-header font-weight-bold">**申请单列表</div>
+                                            <table class="table table-condensed table-striped table-hover table-sm table-bordered" >
+                                                <thead>
+                                                <tr>
+                                                    <th>&nbsp;</th>
+                                                    <th>No</th>
+                                                    <th>申请时间</th>
+                                                    <th>状态</th>
+                                                    <th>申请人</th>
+                                                    <th>目的和要求</th>
+                                                    <th>收费</th>
+                                                    <th>执行</th>
+                                                    <th>金额</th>
+                                                </tr>
+                                                </thead>
+                                                <tbody>
+                                                <tr>
+                                                    <td>
+                                                        <div class="custom-control custom-radio">
+                                                            <input type="radio" class="custom-control-input" id="'+listName+diseaseId+'Radio" name="isNewMajorDiagnosisCheckded" value="'+diseaseId+'">
+                                                            <label class="custom-control-label" for="'+listName+diseaseId+'Radio"></label>
+                                                        </div>
+                                                    </td>
+                                                    <td>2</td>
+                                                    <td>18-01-02 20:20</td>
+                                                    <td>开立</td>
+                                                    <td>专业医生</td>
+                                                    <td  style="padding: 0">
+                                                        <input type="text" class="form-control">
+                                                    </td>
+                                                    <td class="text-center">√</td>
+                                                    <td class="text-center">√</td>
+                                                    <td>200.00</td>
+                                                </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                        <br>
+                                        <!--项目列表部分-->
+                                        <div id="visitItemCard" class="card">
+                                            <div class="card-header font-weight-bold">
+                                                <span>项目列表</span>&nbsp;<button type="button" class="btn btn-outline-warning btn-sm">修改</button>
+                                            </div>
+                                            <table class="table table-condensed table-striped table-hover table-sm table-bordered" >
+                                                <thead>
+                                                <tr>
+                                                    <th>ID</th>
+                                                    <th>项目名称</th>
+                                                    <th>医生嘱托</th>
+                                                    <th>执行</th>
+                                                    <th>&nbsp;</th>
+                                                </tr>
+                                                </thead>
+                                                <tbody>
+                                                <tr>
+                                                    <td>200</td>
+                                                    <td>胃镜烦烦烦烦烦烦</td>
+                                                    <td  style="padding: 0">
+                                                        <input type="text" class="form-control">
+                                                    </td>
+                                                    <td class="text-center">O</td>
+                                                    <td class="text-center" style="padding-left: 0;padding-right: 0"><button type="button" class="btn btn-primary btn-sm" style="width: 100%;height: 100%">查看结果</button></td>
+                                                </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </form>
+                                </div>
+                                <!--1.右侧功能-->
+                                <div class="col-md-4">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <!-- Nav pills -->
+                                            <ul id="menu1RightNav" class="nav nav-pills " role="tablist" >
+                                                <li class="nav-item">
+                                                    <a class="nav-link active " data-toggle="pill" href="#home2_1"><small>常用项目</small></a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a class="nav-link" data-toggle="pill" href="#home2_2"><small>**组套</small></a>
+                                                </li>
+                                            </ul>
+                                            <!-- Tab panes -->
+                                            <div class="tab-content">
+                                                <!--常用项目部分-->
+                                                <div id="home2_1" class="container tab-pane active">
+                                                    <hr>
+                                                    <div class="card">
+                                                        <div class="card-header"><strong>**项目</strong></div>
+                                                        <!--项目内容-->
+                                                        <div class="list-group"></div>
+                                                    </div>
+                                                </div>
+                                                <!--申请组套部分-->
+                                                <div id="home2_2" class="container tab-pane fade">
+                                                    <hr>
+                                                    <!--申请组套搜索框-->
+                                                    <form id="searchItemSetForm" role="form" onkeypress="return event.keyCode !== 13;">
+                                                        <label class="control-label font-weight-bold" for="searchItemSetKey"></label>
+                                                        <div class="input-group input-group-sm">
+                                                            <input type="search" class="form-control" id="searchItemSetKey" placeholder="输入关键词"/>
+                                                            <div class="input-group-append">
+                                                                <button class="btn btn-primary" type="button">搜索</button>
+                                                            </div>
+                                                        </div>
+                                                    </form>
+                                                    <!--申请组套分类选择-->
+                                                    <div id="itemSetChooseDiv" class="bg-light" style="border: 1px solid rgba(0, 0, 0, 0.125); border-radius: 0.25rem;padding: 0.75rem 0rem;">
+                                                        &nbsp;&nbsp;
+                                                        <div class="custom-control custom-radio custom-control-inline">
+                                                            <input type="radio" class="custom-control-input active" id="itemWholeRadio" value="1">
+                                                            <label class="custom-control-label" for="itemWholeRadio">全院</label>
+                                                        </div>
+                                                        <div class="custom-control custom-radio custom-control-inline">
+                                                            <input type="radio" class="custom-control-input" id="itemDepartRadio" value="2">
+                                                            <label class="custom-control-label" for="itemDepartRadio">科室</label>
+                                                        </div>
+                                                        <div class="custom-control custom-radio custom-control-inline">
+                                                            <input type="radio" class="custom-control-input" id="itemPersonRadio" value="3">
+                                                            <label class="custom-control-label" for="itemPersonRadio">个人</label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="card">
+                                                        <!--申请组套列表-->
+                                                        <div id="itemSetListDiv" class="list-group list-group"></div>
+                                                    </div>
+                                                    <div id="itemSetContextDiv" >
+                                                        <div class="text-right" style="margin-top: 8px">
+                                                            <div id="itemSetBtnGroup" class="btn-group btn-group-sm">
+                                                                <button type="button" class="btn btn-outline-primary btn-sm">新增</button>
+                                                                <button type="button" class="btn btn-outline-warning btn-sm">修改</button>
+                                                                <button type="button" class="btn btn-outline-danger btn-sm">删除</button>
+                                                                <button type="button" class="btn btn-outline-success btn-sm">引用</button>
+                                                            </div>
+                                                        </div>
+                                                        <!--组套内容-->
+                                                        <div class="card">
+                                                            <div class="card-header"><strong>组套内容</strong></div>
+                                                            <div class="card-body">
+                                                                <form id="itemSetContextForm" role="form" onkeypress="return event.keyCode !== 13;">
+                                                                    <input id="idSet" type="hidden" name="id">
+                                                                    <div id="itemSetCategoryDiv" class="form-group">
+                                                                        <label class="font-weight-bold" for="categorySet">适用范围：</label>
+                                                                        <select id="categorySet" name="category" class="custom-select-sm">
+                                                                            <option value="0" selected></option>
+                                                                            <option value="1">全院</option>
+                                                                            <option value="2">科室</option>
+                                                                            <option value="3">个人</option>
+                                                                        </select>
+                                                                    </div>
+                                                                    <div class="form-group ">
+                                                                        <label class="font-weight-bold" for="setCodeTemplate">组套编码：</label>
+                                                                        <input type="text" class="form-control " id="setCodeTemplate" name="setCode" readonly="readonly">
+                                                                    </div>
+                                                                    <div class="form-group ">
+                                                                        <label class="font-weight-bold" for="setNameTemplate">组套名称：</label>
+                                                                        <input type="text" class="form-control " id="setNameTemplate" name="setName" readonly="readonly">
+                                                                    </div>
+                                                                    <div class="form-group ">
+                                                                        <label class="font-weight-bold">创建时间：</label ><span id="setCreatTime">2018-01-01 02:02</span>
+                                                                    </div>
+                                                                    <!--模板诊断-->
+                                                                    <div class="form-group">
+<%--                                                                        <input type="hidden" name="diseaseId0" value="-1"><input type="hidden" name="diseaseId1" value="-1">--%>
+                                                                        <label class="font-weight-bold">组套项目</label>&nbsp;<button type="button" class="btn btn-outline-warning btn-sm"  data-toggle="modal" data-target="#DiagnosisModal">修改</button>
+                                                                        <table class="table table-condensed table-striped table-hover table-sm table-bordered" >
+                                                                            <thead>
+                                                                            <tr>
+                                                                                <th>ID</th>
+                                                                                <th>名称</th>
+                                                                            </tr>
+                                                                            </thead>
+                                                                            <tbody></tbody>
+                                                                        </table>
+                                                                    </div>
+                                                                    <div class="text-right" style="margin-top: 8px">
+                                                                        <button type="button" class="btn btn-outline-success btn-sm">提交</button>
+                                                                    </div>
+                                                                </form>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                         <div id="menu2" class="container tab-pane fade"><br>
                             <h3>Menu 2</h3>
@@ -513,18 +726,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                             <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam.</p>
                         </div>
                         <div id="menu4" class="container tab-pane fade"><br>
-                            <h3>Menu 2</h3>
-                            <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam.</p>
-                        </div>
-                        <div id="menu5" class="container tab-pane fade"><br>
-                            <h3>Menu 2</h3>
-                            <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam.</p>
-                        </div>
-                        <div id="menu6" class="container tab-pane fade"><br>
-                            <h3>Menu 2</h3>
-                            <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam.</p>
-                        </div>
-                        <div id="menu7" class="container tab-pane fade"><br>
                             <h3>Menu 2</h3>
                             <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam.</p>
                         </div>
@@ -539,7 +740,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <script type="text/javascript" src="js/jquery.min.js"></script>
 <script type="text/javascript" src="js/popper.min.js"></script>
 <script type="text/javascript" src="js/bootstrap.js"></script>
-<script type="text/javascript" src="js/myJquery/outpatientDoctorJs.js"></script>
 <script type="text/javascript" src="js/jquery.pagination.js"></script>
+<script type="text/javascript" src="js/myJquery/outpatientDoctorJs.js"></script>
+<script type="text/javascript" src="js/myJquery/applyForJs.js"></script>
 </body>
 </html>
