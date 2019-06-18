@@ -210,7 +210,7 @@ public class MedicalRecordHomeController {
     }
 
     /*
-     * @Description 新增或修改病历模板,新增的id为null//TODO
+     * @Description 新增或修改病历模板,新增的id为null
      * @Param [type 1新增 2修改,diseaseId 0西 1中]
      * @return int 1成功 0更新失败（已删除） 2新增失败（code已存在）
      **/
@@ -219,7 +219,6 @@ public class MedicalRecordHomeController {
         int doctorId=1;//todo
         int departID=2;
 
-        // 新增 id为null
         if(medrecTemplate.getCategory().equals("1"))
             medrecTemplate.setBelongId(0);
         if(medrecTemplate.getCategory().equals("2"))

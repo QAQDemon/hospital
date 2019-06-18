@@ -2,7 +2,6 @@ package edu.neu.medical.hospital.service.impl;
 
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
-import com.sun.jndi.toolkit.dir.DirSearch;
 import edu.neu.medical.hospital.bean.*;
 import edu.neu.medical.hospital.dao.*;
 import edu.neu.medical.hospital.service.MedicalRecordHomeService;
@@ -21,8 +20,6 @@ public class MedicalRecordHomeServiceImpl implements MedicalRecordHomeService {
     private MedicalRecordInfoMapper medicalRecordInfoMapper;
     @Resource
     private DiagnosisMapper diagnosisMapper;
-    @Resource
-    private PatientMapper patientMapper;
     @Resource
     private DiseaseMapper diseaseMapper;
     @Resource
