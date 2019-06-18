@@ -89,6 +89,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             <!-- 模态框底部 -->
             <div class="modal-footer">
                 <button type="button" class="btn btn-primary" >导入结果</button>
+                <button type="button" class="btn btn-primary" >保存</button>
             </div>
         </div>
     </div>
@@ -423,8 +424,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                                                         <textarea class="form-control " rows="2" id="physicalExaminationTemplate" name="physicalExamination" readonly="readonly"></textarea>
                                                                     </div>
                                                                     <!--模板诊断*2-->
-                                                                    <div class="form-group">
-                                                                        <label class="font-weight-bold">西医诊断</label>&nbsp;<button type="button" class="btn btn-outline-warning btn-sm">修改</button>
+                                                                    <div class="form-group"><input type="hidden" name="diseaseId0" value="-1"><input type="hidden" name="diseaseId1" value="-1">
+                                                                        <label class="font-weight-bold">西医诊断</label>&nbsp;<button type="button" class="btn btn-outline-warning btn-sm"  data-toggle="modal" data-target="#DiagnosisModal">修改</button>
                                                                         <table class="table table-condensed table-striped table-hover table-sm table-bordered" >
                                                                             <thead>
                                                                             <tr>
@@ -437,7 +438,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                                                         </table>
                                                                     </div>
                                                                     <div class="form-group">
-                                                                        <label class="font-weight-bold">中医诊断</label>&nbsp;<button type="button" class="btn btn-outline-warning btn-sm">修改</button>
+                                                                        <label class="font-weight-bold">中医诊断</label>&nbsp;<button type="button" class="btn btn-outline-warning btn-sm"  data-toggle="modal" data-target="#DiagnosisModal">修改</button>
                                                                         <table class="table table-condensed table-striped table-hover table-sm table-bordered" >
                                                                             <thead>
                                                                             <tr>

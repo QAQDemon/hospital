@@ -346,7 +346,7 @@ function searchDiagnosisAjax(pageNum){
         }
     });
 }
-$("button[data-target='#DiagnosisModal']").click(function () {
+$("button[data-target='#DiagnosisModal']:contains('+')").click(function () {
     var node=$("#DiagnosisModal");
     if($(this).closest("table").prev().html()==="西医诊断")
         node.find("h4").html("西医诊断");
@@ -357,6 +357,37 @@ $("button[data-target='#DiagnosisModal']").click(function () {
     $("#diagnosisPagination").html("");
     $("#diseasePageJump").hide();
     $("#searchDiagnosisPage").val("");
+    $("#DiagnosisModal button:contains('导入结果')").show();
+    $("#DiagnosisModal button:contains('保存')").hide();
+});
+$("button[data-target='#DiagnosisModal']:contains('修改')").click(function () {
+    var node=$("#DiagnosisModal");
+    if($(this).prev().html()==="西医诊断")
+        node.find("h4").html("西医诊断");
+    else
+        node.find("h4").html("中医诊断");
+    node.find("tbody").html("");//清空表格
+    node.find("#diagnosisKey").val("");
+    $("#diagnosisPagination").html("");
+    $("#diseasePageJump").hide();
+    $("#searchDiagnosisPage").val("");
+    $("#DiagnosisModal button:contains('导入结果')").hide();
+    $("#DiagnosisModal button:contains('保存')").show();
+    //放入要修改的内容
+    var resultNode=$("#diagnosisCheckedTbody");
+    $(this).next().find('tbody').children().each(function (index) {
+        resultNode.append('<tr>\n' +
+            '<td>\n' +
+            '<div class="custom-control custom-checkbox" >\n' +
+            '<input type="checkbox" class="custom-control-input" id="diagnosisNotCheck'+index+'" name="diagnosisNotCheckGroup" checked>\n' +
+            '<label class="custom-control-label" for="diagnosisNotCheck'+index+'"></label>\n' +
+            '</div>\n' +
+            '</td>\n' +
+            '<td>'+$(this).find("td:eq('0')").html()+'</td>\n' +
+            '<td>'+$(this).find("td:eq('1')").html()+'</td>\n' +
+            '<td title="'+$(this).find("td:eq('2')").html()+'" style="max-width:260px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">'+$(this).find("td:eq('2')").html()+'</td>\n' +
+            '</tr>');
+    });
 });
 function searchDiagMethod(){
     diseaseFlag=1;
@@ -439,7 +470,7 @@ function getDiagnosisLast(tbody){
     return lastNum;
 }
 //导入诊断结果
-$("#DiagnosisModal .modal-footer :button").click(function () {
+$("#DiagnosisModal .modal-footer :button:contains('导入结果')").click(function () {
     var resultNode;
     var listName;
     if($("#DiagnosisModal h4").html()==="西医诊断"){
@@ -467,6 +498,29 @@ $("#DiagnosisModal .modal-footer :button").click(function () {
             '<td>'+$(this).children().eq(2).html()+'<input type="hidden" name="'+listName+'['+lastNum+'].diseaseId" value="'+diseaseId+'"></td>\n' +
             '<td title="'+$(this).children().eq(3).html()+'" style="max-width:120px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">'+$(this).children().eq(3).html()+'</td>\n' +
             duplicatDiagnosis(diseaseId,listName,lastNum));
+    });
+    $("#DiagnosisModal button[data-dismiss='modal']").click();
+});
+//保存到模板
+$("#DiagnosisModal .modal-footer :button:contains('保存')").click(function () {
+    var resultNode;
+    var num;
+    if($("#DiagnosisModal h4").html()==="西医诊断"){
+        num='0';
+        resultNode=$("#medrecTempContextForm tbody:eq(0)");
+    } else{
+        resultNode=$("#medrecTempContextForm tbody:eq(1)");
+        num='1';
+    }
+    resultNode.html("");
+    $("#diagnosisCheckedTbody tr").each(function () {
+        var diseaseId=$(this).children().eq(1).html();
+        resultNode.append('<tr>\n' +
+            '<td>'+(diseaseId)+'</td>\n' +
+            '<td title="'+$(this).children().eq(2).html()+'" style="max-width:60px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">'+$(this).children().eq(2).html()+'</td>\n' +
+            '<td title="'+$(this).children().eq(3).html()+'" style="max-width:80px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">'+$(this).children().eq(3).html()+'</td>\n' +
+            '<input type="hidden" name="diseaseId'+num+'" value="'+diseaseId+'">\n'+
+            '</tr>');
     });
     $("#DiagnosisModal button[data-dismiss='modal']").click();
 });
@@ -661,6 +715,10 @@ $("#medreTempBtnGroup button:eq(2)").click(function () {
     if(res === true){
         disableMedrTempBtn(true);
         clearMedrecTemplateContent();
+        if($("#idTemplate").val()===""){
+            showAlertDiv("alert-danger","错误!","删除失败,请重新选择。");
+            return;
+        }
         $.ajax({
             type: "POST",//方法类型
             dataType: "text",//预期服务器返回的数据类型
@@ -681,23 +739,35 @@ function disableMedreTempContext(bool){
         btns.hide();
     else btns.show();
 }
-// 修改增加病历模板后提交 //todo
+// 修改增加病历模板后提交
 $("#medrecTempContextForm button:contains('提交')").click(function () {
-    $("#medrecTempCategoryDiv").hide();
+    if($("#templateCodeTemplate").val()===""||$("#categoryTemplate").val()==="0"){
+       showAlertDiv("alert-warning", "警告!", "模板编码和适用范围不能为空。");
+        $("#templateCodeTemplate").focus();
+       return;
+    }
+    var alertNum=showAlertDiv("alert-secondary","","病历模板保存中...");
     $.ajax({
         type: "POST",//方法类型
         dataType: "text",//预期服务器返回的数据类型
         url: "medicalRecordHome/saveMedrecTemplate/"+(($("#templateCodeTemplate").attr("readonly")==="readonly")?"2":"1"),
         data: $("#medrecTempContextForm").serializeArray(),
-        success: function (result) {
-            alert(result);
-            // closeAlertDiv(alertNum);
-            // if(result==="1"){
-            //     showAlertDiv("alert-success","成功!","病历信息保存成功。");
-            //     //提交成功则暂存提交不可用
-            //     $("#patientListForm :checked").click();
-            // }
-            // else showAlertDiv("alert-warning","警告!","病历信息保存失败。");
+        success: function (result) {//1成功 0更新失败（已删除） 2新增失败（code已存在）
+            closeAlertDiv(alertNum);
+            if(result==="1"){
+                showAlertDiv("alert-success","成功!","病历模板提交成功。");
+                $("#medrecTempCategoryDiv").hide();
+                $("#templateCodeTemplate").attr("readonly",true);
+                disableMedrTempBtn(false);
+                disableMedreTempContext(true);
+            }
+            else if(result==="2") {
+                showAlertDiv("alert-warning", "警告!", "当前分类下病历模板编码已存在。");
+                $("#templateCodeTemplate").focus();
+            }
+            else {
+                showAlertDiv("alert-warning", "警告!", "当前分类下病历模板不存在。");
+            }
         }
     });
 });

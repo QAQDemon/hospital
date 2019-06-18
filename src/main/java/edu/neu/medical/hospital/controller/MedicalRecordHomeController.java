@@ -212,12 +212,26 @@ public class MedicalRecordHomeController {
     /*
      * @Description 新增或修改病历模板,新增的id为null//TODO
      * @Param [type 1新增 2修改,diseaseId 0西 1中]
-     * @return int
+     * @return int 1成功 0更新失败（已删除） 2新增失败（code已存在）
      **/
     @RequestMapping("saveMedrecTemplate/{type}")
     public int saveMedrecTemplate(@PathVariable("type")char type,MedrecTemplate medrecTemplate,int[] diseaseId0,int[] diseaseId1){
+        int doctorId=1;//todo
+        int departID=2;
+
         // 新增 id为null
+        if(medrecTemplate.getCategory().equals("1"))
+            medrecTemplate.setBelongId(0);
+        if(medrecTemplate.getCategory().equals("2"))
+            medrecTemplate.setBelongId(departID);
+        if(medrecTemplate.getCategory().equals("3"))
+            medrecTemplate.setBelongId(doctorId);
+        medrecTemplate.setStatus("1");
+        medrecTemplate.setCreaterId(doctorId);
         List<Diagnosis> diagnosisList=medicalRecordHomeService.getMedrecTempDiagnosisList(diseaseId0,diseaseId1);
-        return 0;
+        if(type=='2')
+            return medicalRecordHomeService.updateMedrecTemplate(medrecTemplate, diagnosisList);
+        else
+            return medicalRecordHomeService.addMedrecTemplate(medrecTemplate, diagnosisList);
     }
 }

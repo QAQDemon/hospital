@@ -16,8 +16,8 @@ public interface MedicalRecordHomeService {
     List<Disease> getDiagnosisDiseaseList(List<Diagnosis> diagnosisList);
     Boolean judgeControlMedrecTemplate(int doctorId,MedrecTemplate medrecTemplate);
     int addCommonDiagnosis(int doctorId,char type,int diseaseId);
-    Boolean addMedrecTemplate(MedrecTemplate medrecTemplate,List<Diagnosis> diagnosisList);
-    Boolean updateMedrecTemplate(MedrecTemplate medrecTemplate, List<Diagnosis> diagnosisList);
+    int addMedrecTemplate(MedrecTemplate medrecTemplate,List<Diagnosis> diagnosisList);
+    int updateMedrecTemplate(MedrecTemplate medrecTemplate, List<Diagnosis> diagnosisList);
     int cancelMedrecTemplate(int medrecTemplateId);
     List<MedrecTemplate> searchMedrecTemplateList(char category,int belongId,String key);
     Map<Integer,String> getHistoryMedicalRecordInfo(int medicalRecordNo);

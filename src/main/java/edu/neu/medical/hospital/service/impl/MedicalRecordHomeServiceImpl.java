@@ -190,11 +190,11 @@ public class MedicalRecordHomeServiceImpl implements MedicalRecordHomeService {
      **/
     public List<Diagnosis> getMedrecTempDiagnosisList(int[] xDiseases,int[] zDiseases){
         List<Diagnosis> list = new ArrayList<>();
-        for (int i : xDiseases) {
-            list.add(initeTempDiagnosis(i,"1"));
+        for (int i=1;i<xDiseases.length;i++) {
+            list.add(initeTempDiagnosis(xDiseases[i],"1"));
         }
-        for (int i : zDiseases) {
-            list.add(initeTempDiagnosis(i,"2"));
+        for (int i=1;i<zDiseases.length;i++) {
+            list.add(initeTempDiagnosis(zDiseases[i],"2"));
         }
         return list;
     }
@@ -214,25 +214,27 @@ public class MedicalRecordHomeServiceImpl implements MedicalRecordHomeService {
     /*
      * @Description 增加病历模板和诊断列表,判断存在
      * @Param [medrecTemplate 类别为全院时，belongid要为0,diagnosisList]
-     * @return java.lang.Boolean ：false已存在，失败；true成功
+     * @return java.lang.Boolean ：2已存在，失败；1成功
      **/
-    public Boolean addMedrecTemplate(MedrecTemplate medrecTemplate,List<Diagnosis> diagnosisList){
+    public int addMedrecTemplate(MedrecTemplate medrecTemplate,List<Diagnosis> diagnosisList){
         MedrecTemplateExample medrecTemplateExample=new MedrecTemplateExample();
         MedrecTemplateExample.Criteria criteria=medrecTemplateExample.createCriteria();
         criteria.andTemplateCodeEqualTo(medrecTemplate.getTemplateCode());
         criteria.andCategoryEqualTo(medrecTemplate.getCategory()+"");
         criteria.andBelongIdEqualTo(medrecTemplate.getBelongId());
         if(medrecTemplateMapper.countByExample(medrecTemplateExample)>0){//存在或异常
-            return false;
+            return 2;
         }
         medrecTemplateMapper.insertSelective(medrecTemplate);
+        if(diagnosisList.size()==0)
+            return 1;
         //获得插入id
         int lastId=medrecTemplateMapper.selectByExample(medrecTemplateExample).get(0).getId();
         for(Diagnosis diagnosis:diagnosisList){
             diagnosis.setMedicalRecordInfoId(lastId);//设置模板id
         }
         diagnosisMapper.insertForeach(diagnosisList);
-        return true;
+        return 1;
     }
 
     /*
@@ -247,17 +249,24 @@ public class MedicalRecordHomeServiceImpl implements MedicalRecordHomeService {
     /*
      * @Description 更新病历模板,删除并重输入模板诊断
      * @Param [medrecTemplate,diagnosisList]
-     * @return Boolean
+     * @return Boolean 0失败 1成功
      **/
-    public Boolean updateMedrecTemplate(MedrecTemplate medrecTemplate, List<Diagnosis> diagnosisList){
-        medrecTemplateMapper.updateByPrimaryKeySelective(medrecTemplate);
+    public int updateMedrecTemplate(MedrecTemplate medrecTemplate, List<Diagnosis> diagnosisList){
+        int num=medrecTemplateMapper.updateByPrimaryKeySelective(medrecTemplate);
+        if(num==0)
+            return num;
         DiagnosisExample diagnosisExample=new DiagnosisExample();
         DiagnosisExample.Criteria criteria=diagnosisExample.createCriteria();
         criteria.andCategoryEqualTo("2");
         criteria.andMedicalRecordInfoIdEqualTo(medrecTemplate.getId());
         diagnosisMapper.deleteByExample(diagnosisExample);
+        if(diagnosisList.size()==0)
+            return num;
+        for (Diagnosis diagnosis : diagnosisList) {
+            diagnosis.setMedicalRecordInfoId(medrecTemplate.getId());
+        }
         diagnosisMapper.insertForeach(diagnosisList);
-        return true;
+        return num;
     }
 
     /*
