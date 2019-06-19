@@ -32,7 +32,7 @@ public class ApplyForFmeditemServiceImpl implements ApplyForFmeditemService {
     }
 
     /*
-     * @Description 获得项目列表
+     * @Description 获得项目列表,不显示删除
      * @Param [medicalRecordInfoId]
      * @return java.util.List<edu.neu.medical.hospital.bean.VisitItem>
      **/
@@ -41,6 +41,7 @@ public class ApplyForFmeditemServiceImpl implements ApplyForFmeditemService {
         VisitItemExample.Criteria criteria = visitItemExample.createCriteria();
         criteria.andTypeEqualTo(type+"");
         criteria.andMedicalRecordInfoIdEqualTo(medicalRecordInfoId);
+        criteria.andStatusNotEqualTo("3");
         return visitItemMapper.selectByExample(visitItemExample);
     }
 
@@ -83,13 +84,33 @@ public class ApplyForFmeditemServiceImpl implements ApplyForFmeditemService {
     }
 
     /*
-     * @Description 设置看诊项目和明细，暂存开立删除作废
-     * @Param [visitItem id为-1则需要创建, visitItemDetailList 前者为-1需要获取对应id]
+     * @Description 初始化项目明细列表
+     * @Param [fmeditemIds, doctorEntrustments]
+     * @return java.util.List<edu.neu.medical.hospital.bean.VisitItemDetail>
+     **/
+    public List<VisitItemDetail> initeVisitItemDetailList(int[] fmeditemIds,String[] doctorEntrustments){
+        List<VisitItemDetail> visitItemDetailList = new ArrayList<>();
+        for (int i = 0; i < fmeditemIds.length; i++) {
+            VisitItemDetail visitItemDetail = new VisitItemDetail();
+            visitItemDetail.setFmeditemId(fmeditemIds[i]);
+            visitItemDetail.setDoctorEntrustment(doctorEntrustments[i]);
+            visitItemDetail.setExecutionStatus("0");
+            visitItemDetailList.add(visitItemDetail);
+        }
+        return visitItemDetailList;
+    }
+
+    /*
+     * @Description 设置看诊项目和明细，暂存开立
+     * @Param [visitItem id为null则需要创建, visitItemDetailList 前者为null需要获取对应id]
      * @return java.lang.Boolean
      **/
-    public Boolean setVisitItemAndDetailList(VisitItem visitItem,List<VisitItemDetail> visitItemDetailList){
-        if(visitItem.getId()==-1){//不存在,插入
-            visitItemMapper.insertSelective(visitItem);
+    public int setVisitItemAndDetailList(VisitItem visitItem,List<VisitItemDetail> visitItemDetailList){
+        int result=0;
+        if(visitItem.getId()==null){//不存在,插入
+            result=visitItemMapper.insertSelective(visitItem);
+            if(result==0)
+                return result;
             //获得申请单号
             int lastId=visitItemMapper.getLastId(visitItem.getMedicalRecordInfoId());
             for (VisitItemDetail visitItemDetail:visitItemDetailList){
@@ -97,7 +118,9 @@ public class ApplyForFmeditemServiceImpl implements ApplyForFmeditemService {
             }
             visitItemDetailMapper.insertForeach(visitItemDetailList);
         }else {
-            visitItemMapper.updateByPrimaryKeySelective(visitItem);
+            result=visitItemMapper.updateByPrimaryKeySelective(visitItem);
+            if(result==0)
+                return result;
             int visitItemId=visitItem.getId();
             for (VisitItemDetail visitItemDetail:visitItemDetailList){
                 visitItemDetail.setVisitItemId(visitItemId);
@@ -109,7 +132,7 @@ public class ApplyForFmeditemServiceImpl implements ApplyForFmeditemService {
             visitItemDetailMapper.deleteByExample(visitItemDetailExample);
             visitItemDetailMapper.insertForeach(visitItemDetailList);
         }
-        return true;
+        return result;
     }
 
     /*

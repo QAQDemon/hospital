@@ -20,13 +20,15 @@ $("#allNavTab a[data-toggle='tab']:gt(0)").click(function () {
     var medicalRecordInfoId=$("#patientInfoDiv span:eq(1)").html();
     if (medicalRecordInfoId === "") {
         $.outpatientMethod.showAlertDiv(alertFlag,"alert-danger","错误!","未选择病单。");
-        return false;
+        $("#applyForBtnGroup").hide();
+        return;
     }
     var status=$("#patientInfoDiv span:eq(0)").html();
     if(status==="待诊"){
         $.outpatientMethod.showAlertDiv(alertFlag,"alert-danger","错误!","请先提交病历信息。");
-       return false;
+        $("#applyForBtnGroup").hide();
     }
+    $("#applyForBtnGroup").show();
 });
 
 var patientList;//保存病人信息列表

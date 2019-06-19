@@ -111,7 +111,7 @@
     </if>
   </delete>
   <insert id="insertSelective" parameterType="edu.neu.medical.hospital.bean.VisitItem" >
-    <selectKey resultType="java.lang.Integer" keyProperty="id" order="BEFORE" >
+    <selectKey resultType="java.lang.Integer" keyProperty="id" order="AFTER" >
       SELECT LAST_INSERT_ID()
     </selectKey>
     insert into visit_item

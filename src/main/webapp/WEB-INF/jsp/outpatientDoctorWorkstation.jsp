@@ -507,11 +507,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                 <div class="col-md-8">
                                     <!--项目信息表格-->
                                     <form id="visitItemForm" role="form" onkeypress="return event.keyCode !== 13;">
-                                        <!--空白内容防止出错-->
-                                        <!--<input type="hidden" name="xDiagnosisList[0].diseaseId" value="-1">-->
-                                        <!--<input type="hidden" name="zDiagnosisList[0].diseaseId" value="-1">-->
-                                        <!--<input type="hidden" name="isNewMajorDiagnosisCheckded" value="-1">-->
-                                        <!--<input type="hidden" name="isNewSuspectChecked" value="-1">-->
                                         <div class="row ">
                                             <div class="col-md-4">
                                                 <h4 class="font-weight-bold">**申请</h4>
@@ -577,6 +572,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                                 <tr>
                                                     <th>ID</th>
                                                     <th>项目名称</th>
+                                                    <th>价格</th>
                                                     <th>医生嘱托</th>
                                                     <th>执行</th>
                                                     <th>&nbsp;</th>
@@ -586,6 +582,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                                 <tr>
                                                     <td>200</td>
                                                     <td>胃镜烦烦烦烦烦烦</td>
+                                                    <td>200.00</td>
                                                     <td  style="padding: 0">
                                                         <input type="text" class="form-control">
                                                     </td>

@@ -10,10 +10,11 @@ public interface ApplyForFmeditemService {
     List<VisitItem> getVisitItemListById(int medicalRecordInfoId);
     List<VisitItemDetail> getVisitItemDetailListById(int visitUtemId);
     List<Fmeditem> getFmeditemListByList(List<VisitItemDetail> visitItemDetailList);
-    Boolean setVisitItemAndDetailList(VisitItem visitItem, List<VisitItemDetail> visitItemDetailList);
+    int setVisitItemAndDetailList(VisitItem visitItem, List<VisitItemDetail> visitItemDetailList);
     List<Fmeditem> getCommonFmeditemList(List<CommonOption> commonOptionList);
     int deleteCommonFmeditem(int doctorId,int fmeditemId);
     Boolean addCommonFmeditem(int doctorId,VisitItemDetail visitItemDetail);
     VisitItemResult getVisitItemResult(VisitItemDetail visitItemDetail);
     String[] getApplyForPeopleName(List<VisitItem> visitItems);
+    List<VisitItemDetail> initeVisitItemDetailList(int[] fmeditemIds,String[] doctorEntrustments);
 }
