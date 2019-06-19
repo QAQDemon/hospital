@@ -136,6 +136,22 @@ public class ApplyForFmeditemServiceImpl implements ApplyForFmeditemService {
     }
 
     /*
+     * @Description 删除或作废项目申请，作废需要判断是否收费//TODO
+     * @Param [method, visitItemId]
+     * @return int 1成功 0更新失败 2已登记
+     **/
+    public int cancleVisitItem(char method,int visitItemId){
+        if(method=='4'){//作废，获得付费状态
+            if(visitItemMapper.selectByPrimaryKey(visitItemId).getFeeStatus().equals("2"))
+                return 2;
+        }
+        VisitItem visitItem = new VisitItem();
+        visitItem.setId(visitItemId);
+        visitItem.setStatus(method+"");
+        return visitItemMapper.updateByPrimaryKeySelective(visitItem);
+    }
+
+    /*
      * @Description 根据常用选项存储的id在非药品表获得常用项目列表(常用选项列表在门诊医生工作站服务类)
      * @Param [commonOptionList]
      * @return java.util.List<edu.neu.medical.hospital.bean.Fmeditem>

@@ -17,4 +17,5 @@ public interface ApplyForFmeditemService {
     VisitItemResult getVisitItemResult(VisitItemDetail visitItemDetail);
     String[] getApplyForPeopleName(List<VisitItem> visitItems);
     List<VisitItemDetail> initeVisitItemDetailList(int[] fmeditemIds,String[] doctorEntrustments);
+    int cancleVisitItem(char method,int visitItemId);
 }

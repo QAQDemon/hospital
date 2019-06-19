@@ -1,7 +1,5 @@
-var alertFlag=0;
 $.outpatientMethod={
     showAlertDiv:function (alertFlag,color,caption,text) {//弹出信息提示框,返回值可以用来删除
-        alertFlag++;
         var num=alertFlag+1100;//z-index
         $("body").prepend(
             '<div id="alertDiv'+num+'" class="alert alert-dismissible fade show '+color+'" style="position:fixed;z-index: '+num+';width: 100%;">\n' +
@@ -15,17 +13,22 @@ $.outpatientMethod={
     }
 };
 
+var alertFlag=0;
+function showAlertDiv1(color,caption,text){
+    alertFlag++;
+    return $.outpatientMethod.showAlertDiv(alertFlag,color,caption,text);
+}
 //没有选择病单和提交病历不能跳转到其他界面
 $("#allNavTab a[data-toggle='tab']:gt(0)").click(function () {
     var medicalRecordInfoId=$("#patientInfoDiv span:eq(1)").html();
     if (medicalRecordInfoId === "") {
-        $.outpatientMethod.showAlertDiv(alertFlag,"alert-danger","错误!","未选择病单。");
+        showAlertDiv1("alert-danger","错误!","未选择病单。");
         $("#applyForBtnGroup").hide();
         return;
     }
     var status=$("#patientInfoDiv span:eq(0)").html();
     if(status==="待诊"){
-        $.outpatientMethod.showAlertDiv(alertFlag,"alert-danger","错误!","请先提交病历信息。");
+        showAlertDiv1("alert-danger","错误!","请先提交病历信息。");
         $("#applyForBtnGroup").hide();
     }
     $("#applyForBtnGroup").show();
@@ -423,7 +426,7 @@ $("#diagnosisSearchInput").on("click","button",function () {
 function diseasePageJumpMethod(){
     var num=$("#searchDiagnosisPage").val();
     if(num==null||num<=0||num>diseasePages||(num%1 !== 0)){
-        $.outpatientMethod.showAlertDiv(alertFlag,"alert-danger","错误!","异常页码。");
+        showAlertDiv1("alert-danger","错误!","异常页码。");
         return;
     }
     var current=$("#diagnosisPagination .current").html();
@@ -458,7 +461,7 @@ $("#diagnosisNotCheckedTbody").on("click","tr",function () {
     var node=$("#diagnosisCheckedTbody");
     node.children().each(function () {
         if($(this).children().eq(1).html()===id){
-            $.outpatientMethod.showAlertDiv(alertFlag,"alert-warning","警告!","已选择。");
+            showAlertDiv1("alert-warning","警告!","已选择。");
             oneflag=1;
             return false;
         }
@@ -503,7 +506,7 @@ $("#DiagnosisModal .modal-footer :button:contains('导入结果')").click(functi
         resultNode.children().each(function () {
             if($(this).children().eq(0).html()===diseaseId){
                 flag=1;
-                $.outpatientMethod.showAlertDiv(alertFlag,"alert-warning","警告!",$(this).children().eq(2).html()+"重复");
+                showAlertDiv1("alert-warning","警告!",$(this).children().eq(2).html()+"重复");
                 return false;//break
             }
         });
@@ -552,7 +555,7 @@ $("#medicalInfoBtnGroup").find(".btn-outline-secondary,.btn-outline-success").cl
     //判断表单完整性
     var formFlag=0;
     if(($("#medicalRecordInfoForm [type='text']").val()==="")||($("#medicalRecordInfoForm textarea").html()==="")||(($("#diagnosisContextTbody1").html()==="")&&($("#diagnosisContextTbody2").html()===""))){
-        $.outpatientMethod.showAlertDiv(alertFlag,"alert-warning","警告!","表单不完整");
+        showAlertDiv1("alert-warning","警告!","表单不完整");
         return;
     }
     //转换hidden时间
@@ -562,7 +565,7 @@ $("#medicalInfoBtnGroup").find(".btn-outline-secondary,.btn-outline-success").cl
             $(this).next().val(dateStr.replace("T"," "));
     });
     var infoId=$("#patientInfoDiv span:eq(1)").html();
-    var alertNum=$.outpatientMethod.showAlertDiv(alertFlag,"alert-secondary","","病历信息保存中...");
+    var alertNum=showAlertDiv1("alert-secondary","","病历信息保存中...");
     $.ajax({
         type: "POST",//方法类型
         dataType: "text",//预期服务器返回的数据类型
@@ -571,11 +574,11 @@ $("#medicalInfoBtnGroup").find(".btn-outline-secondary,.btn-outline-success").cl
         success: function (result) {
             $.outpatientMethod.closeAlertDiv(alertNum);
             if(result==="1"){
-                $.outpatientMethod.showAlertDiv(alertFlag,"alert-success","成功!","病历信息保存成功。");
+                showAlertDiv1("alert-success","成功!","病历信息保存成功。");
                 //提交成功则暂存提交不可用
                 $("#patientListForm :checked").click();
             }
-            else $.outpatientMethod.showAlertDiv(alertFlag,"alert-warning","警告!","病历信息保存失败。");
+            else showAlertDiv1("alert-warning","警告!","病历信息保存失败。");
         }
     });
 });
@@ -691,7 +694,7 @@ $("#MedrecTempListDiv").on("click","a",function () {
             $("#medrecTempCategoryDiv").hide();
             disableMedreTempContext(true);
             if(result.medrecTemplate===null){
-                $.outpatientMethod.showAlertDiv(alertFlag,"alert-warning","警告!","模板不存在。");
+                showAlertDiv1("alert-warning","警告!","模板不存在。");
                 return;
             }
             var medrecTemplate=result.medrecTemplate;
@@ -754,7 +757,7 @@ $("#medreTempBtnGroup button:eq(2)").click(function () {
         disableMedrTempBtn(true);
         clearMedrecTemplateContent();
         if($("#idTemplate").val()===""){
-            $.outpatientMethod.showAlertDiv(alertFlag,"alert-danger","错误!","删除失败,请重新选择。");
+            showAlertDiv1("alert-danger","错误!","删除失败,请重新选择。");
             return;
         }
         $.ajax({
@@ -764,7 +767,7 @@ $("#medreTempBtnGroup button:eq(2)").click(function () {
             data: {},
             success: function (result) {
                 if(result==="0")//好像无效
-                    $.outpatientMethod.showAlertDiv(alertFlag,"alert-danger","错误!","删除病历模板失败。");
+                    showAlertDiv1("alert-danger","错误!","删除病历模板失败。");
             }
         });
     }
@@ -780,11 +783,11 @@ function disableMedreTempContext(bool){
 // 修改增加病历模板后提交
 $("#medrecTempContextForm button:contains('提交')").click(function () {
     if($("#templateCodeTemplate").val()===""||$("#categoryTemplate").val()==="0"){
-        $.outpatientMethod.showAlertDiv(alertFlag,"alert-warning", "警告!", "模板编码和适用范围不能为空。");
+        showAlertDiv1("alert-warning", "警告!", "模板编码和适用范围不能为空。");
         $("#templateCodeTemplate").focus();
        return;
     }
-    var alertNum=$.outpatientMethod.showAlertDiv(alertFlag,"alert-secondary","","病历模板保存中...");
+    var alertNum=showAlertDiv1("alert-secondary","","病历模板保存中...");
     $.ajax({
         type: "POST",//方法类型
         dataType: "text",//预期服务器返回的数据类型
@@ -793,18 +796,18 @@ $("#medrecTempContextForm button:contains('提交')").click(function () {
         success: function (result) {//1成功 0更新失败（已删除） 2新增失败（code已存在）
             $.outpatientMethod.closeAlertDiv(alertNum);
             if(result==="1"){
-                $.outpatientMethod.showAlertDiv(alertFlag,"alert-success","成功!","病历模板提交成功。");
+                showAlertDiv1("alert-success","成功!","病历模板提交成功。");
                 $("#medrecTempCategoryDiv").hide();
                 $("#templateCodeTemplate").attr("readonly",true);
                 disableMedrTempBtn(false);
                 disableMedreTempContext(true);
             }
             else if(result==="2") {
-                $.outpatientMethod.showAlertDiv(alertFlag,"alert-warning", "警告!", "当前分类下病历模板编码已存在。");
+                showAlertDiv1("alert-warning", "警告!", "当前分类下病历模板编码已存在。");
                 $("#templateCodeTemplate").focus();
             }
             else {
-                $.outpatientMethod.showAlertDiv(alertFlag,"alert-warning", "警告!", "当前分类下病历模板不存在。");
+                showAlertDiv1("alert-warning", "警告!", "当前分类下病历模板不存在。");
             }
         }
     });
@@ -859,7 +862,7 @@ $("#home1_2").on("dblclick","a",function () {
         }
     });
     if(flag===1){
-        $.outpatientMethod.showAlertDiv(alertFlag,"alert-warning","警告!","该诊断已存在。");
+        showAlertDiv1("alert-warning","警告!","该诊断已存在。");
         return;//重复跳出
     }
     var lastNum = getDiagnosisLast(resultNode);
@@ -868,7 +871,7 @@ $("#home1_2").on("dblclick","a",function () {
         '<td>'+$(this).next().next().val()+'<input type="hidden" name="'+listName+'['+lastNum+'].diseaseId" value="'+diseaseId+'"></td>\n' +
         '<td title="'+$(this).children().first().html()+'" style="max-width:120px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">'+$(this).children().first().html()+'</td>\n' +
         duplicatDiagnosis(diseaseId,listName,lastNum));
-    $.outpatientMethod.showAlertDiv(alertFlag,"alert-success","成功!","诊断插入成功。");
+    showAlertDiv1("alert-success","成功!","诊断插入成功。");
 })//删除常用诊断
 .on("click",".badge-danger",function () {
     var res = confirm('确认要删除吗？');
@@ -897,8 +900,8 @@ $("#diagnosisContentCard").on("click","a",function () {
         data: {},
         success: function (result) {
             if(result==="1")
-                $.outpatientMethod.showAlertDiv(alertFlag,"alert-success","成功!","增加常用诊断成功。");
-            else $.outpatientMethod.showAlertDiv(alertFlag,"alert-danger","失败!","增加常用诊断失败。");
+                showAlertDiv1("alert-success","成功!","增加常用诊断成功。");
+            else showAlertDiv1("alert-danger","失败!","增加常用诊断失败。");
             $("#homeRightNav a:eq(1)").click();
         }
     });
@@ -945,7 +948,7 @@ $("#historyMedicalInfoLabelDiv").on("click","a",function () {
             var historyMedicalRecordInfo=result.historyMedicalRecordInfo;
             var finalDiagnosis=result.finalDiagnosis;
             if(historyMedicalRecordInfo===null){
-                $.outpatientMethod.showAlertDiv(alertFlag,"alert-warning","警告!","历史病单不存在。");
+                showAlertDiv1("alert-warning","警告!","历史病单不存在。");
                 return;
             }
             var context=[historyMedicalRecordInfo.chiefComplaint,historyMedicalRecordInfo.currentMedicalHistory,

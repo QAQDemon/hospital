@@ -42,9 +42,8 @@ public class ApplyForFmeditemController {
      * @Param [type, visitItemId]
      * @return java.util.Map<java.lang.String,java.lang.Object>
      **/
-    @RequestMapping("getVisitItemDetail/{type}/{visitItemId}")
-    public Map<String,Object> getVisitItemDetail(@PathVariable("type")char type, @PathVariable("visitItemId")int visitItemId){
-        applyForFmeditemService.setType(type);
+    @RequestMapping("getVisitItemDetail/{visitItemId}")
+    public Map<String,Object> getVisitItemDetail(@PathVariable("visitItemId")int visitItemId){
         Map <String, Object> map = new HashMap<>();
         List<VisitItemDetail> visitItemDetailList = applyForFmeditemService.getVisitItemDetailListById(visitItemId);
         map.put("visitItemDetailList",visitItemDetailList);
@@ -53,7 +52,7 @@ public class ApplyForFmeditemController {
     }
 
     /*
-     * @Description 暂存或开立项目 visitItemId-1则不放入//TODO
+     * @Description 暂存或开立项目 visitItemId-1则不放入
      * @Param [type,method 1暂存 2开立, visitItemId, purposeRequirement, fee, fmeditemId, doctorEntrustment]
      * @return void 1成功 0失败
      **/
@@ -78,5 +77,15 @@ public class ApplyForFmeditemController {
         visitItem.setExecutionStatus("1");
         visitItem.setFee(BigDecimal.valueOf(fee));
         return applyForFmeditemService.setVisitItemAndDetailList(visitItem, applyForFmeditemService.initeVisitItemDetailList(fmeditemId, doctorEntrustment));
+    }
+
+    /*
+     * @Description 删除或作废项目//TODO
+     * @Param [method, visitItemId]
+     * @return int 1成功 0更新失败 2已登记
+     **/
+    @RequestMapping("cancleVisitItem/{method}/{visitItemId}")
+    public int cancleVisitItem(@PathVariable("method")char method,@PathVariable("visitItemId")int visitItemId){
+        return applyForFmeditemService.cancleVisitItem(method, visitItemId);
     }
 }

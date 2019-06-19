@@ -15,6 +15,85 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <link rel="stylesheet" type="text/css" href="css/pagination.css">
 </head>
 <body>
+<!-- 项目弹窗 -->
+<div class="modal fade" id="ItemModal">
+    <div class="modal-dialog">
+        <div class="modal-content" style="width: 1000px;margin-left: -50%;margin-top: 20%">
+            <!-- 模态框头部 -->
+            <div class="modal-header">
+                <h4 class="modal-title">项目</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <!-- 模态框主体 -->
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-6">
+                        <form class="form-inline" onkeypress="return event.keyCode !== 13;">
+                            <label class="control-label font-weight-bold" for="itemKey">项目查询：</label>
+                            <div  id="itemSearchInput" class="input-group">
+                                <input type="search" class="form-control" id="itemKey" name="searchItemKey" placeholder="输入拼音首字母"/>
+                                <div class="input-group-append">
+                                    <button class="btn btn-primary" type="button">搜索</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="col-md-6"><div style="margin-top: 7px">
+                        <label class="control-label font-weight-bold">选择结果</label>
+                    </div></div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <table class="table table-striped table-hover table-sm table-bordered" >
+                            <thead>
+                            <tr>
+                                <th>&nbsp;</th>
+                                <th>ID</th>
+                                <th>名称</th>
+                                <th>价格</th>
+                            </tr>
+                            </thead>
+                            <tbody id="itemNotCheckedTbody"></tbody>
+                        </table>
+                        <!--分页-->
+                        <div class="row">
+                            <div class="col-md-9 text-center">
+                                <div id="itemPagination" class="myPagination"></div>
+                            </div>
+                            <div id="itemPageJump" class="col-md-3">
+                                <div class="input-group input-group-sm">
+                                    <label for="searchItemPage"></label>
+                                    <input type="number" class="form-control" id="searchItemPage" placeholder="页码" style="width: 40px"/>
+                                    <div class="input-group-append">
+                                        <button class="btn btn-primary" type="button">Go</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <table class="table table-striped table-hover table-sm table-bordered">
+                            <thead>
+                            <tr>
+                                <th>&nbsp;</th>
+                                <th>ID</th>
+                                <th>名称</th>
+                                <th>价格</th>
+                            </tr>
+                            </thead>
+                            <tbody id="itemCheckedTbody"></tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <!-- 模态框底部 -->
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" >导入结果</button>
+                <button type="button" class="btn btn-primary" >保存</button>
+            </div>
+        </div>
+    </div>
+</div>
 <!-- 诊断弹窗 -->
 <div class="modal fade" id="DiagnosisModal">
     <div class="modal-dialog">

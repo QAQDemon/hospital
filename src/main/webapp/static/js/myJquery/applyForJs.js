@@ -1,4 +1,8 @@
 var alertFlag=100;
+function showAlertDiv2(color,caption,text){
+    alertFlag++;
+    return $.outpatientMethod.showAlertDiv(alertFlag,color,caption,text);
+}
 
 //修改时间格式
 function getTime1(t){
@@ -57,7 +61,7 @@ function setApplyForList(list,applyForPeople) {
     }
 }
 function clearApplyForContext() {
-     //$("#visitItemForm tbody").html("");//todo
+     $("#visitItemForm tbody").html("");//todo
 }
 function applyForItemAjax(){
     $.ajax({
@@ -113,7 +117,7 @@ $("#applyForCard").on("click","tr",function () {
     if($(this).find(":radio").val()==="-1")
         return;
     else if($("#applyForCard :checked").val()==="-1"){
-        $.outpatientMethod.showAlertDiv("alert-danger", "危险!", "存在未保存的信息，先删除或暂存。");
+        showAlertDiv2("alert-danger", "危险!", "存在未保存的信息，先删除或暂存。");
         return;
     }
     $("#applyForCard :radio").prop("checked", false);
@@ -129,7 +133,7 @@ $("#applyForCard").on("click","tr",function () {
     $.ajax({
         type: "POST",//方法类型
         dataType: "json",//预期服务器返回的数据类型
-        url: "applyForFmeditem/getVisitItemDetail/"+$("#applyForType").val()+"/"+$(this).find(":radio").val(),
+        url: "applyForFmeditem/getVisitItemDetail/"+$(this).find(":radio").val(),
         data: {},
         success: function (result) {
             $("#visitItemForm tbody:eq(1)").html("");
@@ -143,7 +147,7 @@ $("#applyForCard").on("click","tr",function () {
 //新增，加一行
 $("#applyForBtnGroup button:eq(0)").click(function () {
     if($("#applyForCard :checked").val()==="-1"){
-        $.outpatientMethod.showAlertDiv("alert-danger", "危险!", "存在未保存的信息，先删除或暂存。");
+        showAlertDiv2("alert-danger", "危险!", "存在未保存的信息，先删除或暂存。");
         return;
     }
     //清除checked
@@ -166,13 +170,13 @@ $("#applyForBtnGroup button:gt(0):lt(2)").click(function () {
     var node=$("#applyForCard :checked");
     //判断提交内容是否完整
     if(node.closest("tr").find(":text").val()===""||$("#visitItemCard tbody").html()===""){
-        $.outpatientMethod.showAlertDiv("alert-warning","警告!","请输入目的和要求且选择至少一个项目。");
+        showAlertDiv2("alert-warning","警告!","请输入目的和要求且选择至少一个项目。");
         return;
     }
     var flag=0;
     $("#visitItemCard :text").each(function () {
         if($(this).val()===""){
-            $.outpatientMethod.showAlertDiv("alert-warning","警告!","请输入医生嘱托。");
+            showAlertDiv2("alert-warning","警告!","请输入医生嘱托。");
             flag=1;
             return false;
         }
@@ -180,7 +184,7 @@ $("#applyForBtnGroup button:gt(0):lt(2)").click(function () {
     if(flag===1)
         return;
     var trNode=node.closest("tr");
-    var alertNum=$.outpatientMethod.showAlertDiv(alertFlag,"alert-secondary","","项目信息保存中...");
+    var alertNum=showAlertDiv2("alert-secondary","","项目信息保存中...");
     $.ajax({
         type: "POST",//方法类型
         dataType: "text",//预期服务器返回的数据类型
@@ -189,10 +193,10 @@ $("#applyForBtnGroup button:gt(0):lt(2)").click(function () {
         success: function (result) {
             $.outpatientMethod.closeAlertDiv(alertNum);
             if(result==="1"){
-                $.outpatientMethod.showAlertDiv(alertFlag,"alert-success","成功!","项目信息保存成功。");
+                showAlertDiv2("alert-success","成功!","项目信息保存成功。");
                 flushApplyForPage();
             }
-            else $.outpatientMethod.showAlertDiv(alertFlag,"alert-warning","警告!","项目信息保存失败。");
+            else showAlertDiv2("alert-warning","警告!","项目信息保存失败。");
         }
     });
 });
@@ -200,3 +204,38 @@ $("#applyForBtnGroup button:gt(0):lt(2)").click(function () {
 function flushApplyForPage() {
     $("#allNavTab [href='#menu1']:contains("+$("#visitItemForm h4:first").html().substring(0,2)+")").click();
 }
+
+//删除或作废 3删除 4作废
+function deleteApplyForAjax(num){
+    $.ajax({
+        type: "POST",//方法类型
+        dataType: "text",//预期服务器返回的数据类型
+        url: "applyForFmeditem/cancleVisitItem/"+num+"/"+$("#applyForCard :checked").val(),
+        data: $("#visitItemForm").serializeArray(),
+        success: function (result) {
+            if(result==="1")
+                showAlertDiv2("alert-success","成功!","删除或作废成功。");
+            else if(result==="0")
+                showAlertDiv2("alert-warning","警告!","删除或作废失败。");
+            else if(result==="2")
+                showAlertDiv2("alert-danger","错误!","该项目已登记，无法作废。");
+            flushApplyForPage();
+        }
+    });
+}
+//删除
+$("#applyForBtnGroup button:eq(3)").click(function () {
+    var res = confirm('确认要删除吗？');
+    if(res === true){
+        if($("#applyForCard :checked").val()==="-1")
+            flushApplyForPage();
+        else deleteApplyForAjax('3');
+    }
+});
+//作废
+$("#applyForBtnGroup button:eq(4)").click(function () {
+    var res = confirm('确认要作废吗？');
+    if(res === true){
+        deleteApplyForAjax('4');
+    }
+});
