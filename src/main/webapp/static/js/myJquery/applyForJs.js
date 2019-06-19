@@ -245,21 +245,8 @@ var itemList;//疾病信息列
 var itemFlag;//flag 1创建 2不创建页码并跳过
 var itemPages;//总页数
 function addSearchItem() {
-    var str="";
-    for(var i=0;i<itemList.length;i++){
-        str+='<tr>\n' +
-            '<td>\n' +
-            '<div class="custom-control custom-checkbox" >\n' +
-            '<input type="checkbox" class="custom-control-input" id="itemNotCheck'+i+'" name="itemNotCheckGroup">\n' +
-            '<label class="custom-control-label" for="itemNotCheck'+i+'"></label>\n' +
-            '</div>\n' +
-            '</td>\n' +
-            '<td>'+itemList[i].id+'</td>\n' +
-            '<td title="'+itemList[i].itemname+'" style="max-width:260px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">'+itemList[i].itemname+'</td>\n' +
-            '<td>'+itemList[i].price+'</td>\n' +
-            '</tr>';
-    }
-    $("#itemNotCheckedTbody").html(str);
+    $("#itemNotCheckedTbody").html("");
+    apendCheckedItem(itemList, true);
 }
 function itemPageselectCallback(page_index,jq){
     if(!(itemFlag===1&&page_index===0)){
@@ -304,25 +291,32 @@ function initeItemModel(){
     $("#itemPagination").html("");
     $("#itemPageJump").hide();
     $("#searchItemPage").val("");
-    $("#DiagnosisModal button:contains('导入结果')").show();
-    $("#DiagnosisModal button:contains('保存')").hide();
+    $("#ItemModal button:contains('导入结果')").show();
+    $("#ItemModal button:contains('保存')").hide();
 }
 //项目列表修改 弹窗
 $("#visitItemCard button:eq(0)").click(function () {
     initeItemModel();
     var list=[];
-    list.push({id:,itemname:,price:});
-
+    $("#visitItemCard tbody tr").each(function () {
+        list.push({id:$(this).find("td:eq(0)").html(),itemname:$(this).find("td:eq(1)").html(),price:$(this).find("td:eq(2)").html()});
+    });
+    apendCheckedItem(list,false);
 });
 
-//将内容导入项目弹窗的右侧
-function apendCheckedItem(list) {
+//将内容导入项目弹窗的左右侧 bool true左 false右
+function apendCheckedItem(list,bool) {
+    var node;
+    if (bool)
+        node=$("#itemNotCheckedTbody");
+    else
+        node=$("#itemCheckedTbody");
     for(var i=0;i<list.length;i++){
-        $("#itemCheckedTbody").append('<tr>\n' +
+        node.append('<tr>\n' +
             '<td>\n' +
             '<div class="custom-control custom-checkbox" >\n' +
-            '<input type="checkbox" class="custom-control-input" id="itemCheck'+i+'" name="itemCheckGroup" checked>\n' +
-            '<label class="custom-control-label" for="itemCheck'+i+'"></label>\n' +
+            '<input type="checkbox" class="custom-control-input" id="itemCheck'+((bool)?'0':'1')+i+'" name="itemCheckGroup'+((bool)?'0"':'1" checked')+'/>\n' +
+            '<label class="custom-control-label" for="itemCheck'+((bool)?'0':'1')+i+'"></label>\n' +
             '</div>\n' +
             '</td>\n' +
             '<td>'+list[i].id+'</td>\n' +
@@ -331,3 +325,75 @@ function apendCheckedItem(list) {
             '</tr>');
     }
 }
+$("#ItemModal").on("click",":checkbox",function () {
+    return false;//防止二次点击
+});
+function searchItemMethod(){
+    itemFlag=1;
+    searchItemAjax(1);
+    $("#itemPageJump").show();
+}
+$("#itemSearchInput").on("click","button",function () {
+    searchItemMethod();
+}).on("keyup","input",function (e) {
+    if(e.keyCode===13){
+        searchItemMethod();
+    }
+});
+
+//跳转
+function itemPageJumpMethod(){
+    var num=$("#searchItemPage").val();
+    if(num==null||num<=0||num>itemPages||(num%1 !== 0)){
+        showAlertDiv2("alert-danger","错误!","异常页码。");
+        return;
+    }
+    var current=$("#itemPagination .current").html();
+    if(current===num)//可排除第一次跳第一页
+        return;
+    itemFlag=2;
+    searchItemAjax(num);
+    $("#itemPagination").html("");
+    var initPagination = function() {
+        // 更改分页
+        $("#itemPagination").pagination(itemPages, {
+            num_edge_entries: 1, //边缘页数
+            num_display_entries: 4, //主体页数
+            callback: itemPageselectCallback,
+            current_page:num-1
+        });
+    }();
+    addSearchItem();
+}
+$("#itemPageJump").on("click","button",function () {
+    itemPageJumpMethod();
+}).on("keyup","input",function (e) {
+    if(e.keyCode===13){
+        itemPageJumpMethod();
+    }
+});
+
+//诊断 搜索增加
+$("#itemNotCheckedTbody").on("click","tr",function () {
+    var id=$(this).children().eq(1).html();
+    var oneflag=0;
+    var node=$("#itemCheckedTbody");
+    node.children().each(function () {
+        if($(this).children().eq(1).html()===id){
+            showAlertDiv2("alert-warning","警告!","已选择。");
+            oneflag=1;
+            return false;
+        }
+    });
+    if(oneflag===1)
+        return;
+    node.append("<tr>"+$(this).html()+"</tr>")
+        .find("input").last().attr("checked",'true');
+});
+//诊断 搜索删除
+$("#itemCheckedTbody").on("click","tr",function () {
+    var res = confirm('确认要删除吗？');
+    if(res === true){
+        $(this).remove();
+    }
+});

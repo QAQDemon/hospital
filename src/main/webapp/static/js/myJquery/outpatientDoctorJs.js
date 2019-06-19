@@ -409,6 +409,9 @@ $("button[data-target='#DiagnosisModal']:contains('修改')").click(function () 
             '</tr>');
     });
 });
+$("#DiagnosisModal").on("click",":checkbox",function () {
+    return false;//防止二次点击
+});
 function searchDiagMethod(){
     diseaseFlag=1;
     searchDiagnosisAjax(1);

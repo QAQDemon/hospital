@@ -39,7 +39,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                         </form>
                     </div>
                     <div class="col-md-6"><div style="margin-top: 7px">
-                        <label class="control-label font-weight-bold">选择结果</label>
+                        <div class="row">
+                            <div class="col-md-3"><label class="control-label font-weight-bold">选择结果</label></div>
+                            <div class="col-md-9 text-right">
+                                <label class="control-label font-weight-bold">总金额：</label>
+                                <span id="itemModalAmount"></span>
+                            </div>
+                        </div>
                     </div></div>
                 </div>
                 <div class="row">

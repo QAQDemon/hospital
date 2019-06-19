@@ -78,7 +78,7 @@ public class OutpatientDoctorWorkstationServiceImpl implements OutpatientDoctorW
         PageHelper.startPage(pageNum,pageShow);
         FmeditemExample fmeditemExample=new FmeditemExample();
         FmeditemExample.Criteria criteria=fmeditemExample.createCriteria();
-        criteria.andRecordtypeEqualTo((short)type);
+        criteria.andRecordtypeEqualTo((short)(type-48));
         criteria.andMnemoniccodeLike("%"+key.toUpperCase()+"%");
         return new PageInfo<>(fmeditemMapper.selectByExample(fmeditemExample));
     }
