@@ -644,7 +644,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                         <!--项目列表部分-->
                                         <div id="visitItemCard" class="card">
                                             <div class="card-header font-weight-bold">
-                                                <span>项目列表</span>&nbsp;<button type="button" class="btn btn-outline-warning btn-sm">修改</button>
+                                                <span>项目列表</span>&nbsp;<button type="button" class="btn btn-outline-warning btn-sm"  data-toggle="modal" data-target="#ItemModal">修改</button>
                                             </div>
                                             <table class="table table-condensed table-striped table-hover table-sm table-bordered" >
                                                 <thead>

@@ -1,5 +1,7 @@
 package edu.neu.medical.hospital.service.impl;
 
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import edu.neu.medical.hospital.bean.*;
 import edu.neu.medical.hospital.dao.*;
 import edu.neu.medical.hospital.service.OutpatientDoctorWorkstationService;
@@ -29,6 +31,8 @@ public class OutpatientDoctorWorkstationServiceImpl implements OutpatientDoctorW
     private MedicalRecordInfoMapper medicalRecordInfoMapper;
     @Resource
     private RegistrationInfoMapper registrationInfoMapper;
+
+    private final int pageShow=10;//一页显示的数量
 
     /*
      * @Description 将已诊或待诊病人列表传回，已诊中会去掉待诊
@@ -70,12 +74,13 @@ public class OutpatientDoctorWorkstationServiceImpl implements OutpatientDoctorW
      * @Param [type 1检查 2检验 3处置,key 拼音首字母转换成大写]
      * @return java.util.List<edu.neu.medical.hospital.bean.Fmeditem>
      **/
-    public List<Fmeditem> searchFmeditemList(char type,String key){
+    public PageInfo<Fmeditem> searchFmeditemList(char type, String key,int pageNum){
+        PageHelper.startPage(pageNum,pageShow);
         FmeditemExample fmeditemExample=new FmeditemExample();
         FmeditemExample.Criteria criteria=fmeditemExample.createCriteria();
         criteria.andRecordtypeEqualTo((short)type);
         criteria.andMnemoniccodeLike("%"+key.toUpperCase()+"%");
-        return fmeditemMapper.selectByExample(fmeditemExample);
+        return new PageInfo<>(fmeditemMapper.selectByExample(fmeditemExample));
     }
 
     /*
@@ -83,7 +88,8 @@ public class OutpatientDoctorWorkstationServiceImpl implements OutpatientDoctorW
      * @Param [type 1西药（101） 2中药（102、103）,key 拼音首字母转换成大写]
      * @return java.util.List<edu.neu.medical.hospital.bean.Drugs>
      **/
-    public List<Drugs> searchDrugsList(char type,String key){
+    public PageInfo<Drugs> searchDrugsList(char type,String key,int pageNum){
+        PageHelper.startPage(pageNum,pageShow);
         DrugsExample drugsExample = new DrugsExample();
         DrugsExample.Criteria criteria = drugsExample.createCriteria();
         if(type=='1')
@@ -91,7 +97,7 @@ public class OutpatientDoctorWorkstationServiceImpl implements OutpatientDoctorW
         else
             criteria.andDrugstypeidNotEqualTo((short) 101);
         criteria.andMnemoniccodeEqualTo("%"+key.toUpperCase() + "%");
-        return drugsMapper.selectByExample(drugsExample);
+        return new PageInfo<>(drugsMapper.selectByExample(drugsExample));
     }
 
     /*

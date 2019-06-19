@@ -136,7 +136,7 @@ public class ApplyForFmeditemServiceImpl implements ApplyForFmeditemService {
     }
 
     /*
-     * @Description 删除或作废项目申请，作废需要判断是否收费//TODO
+     * @Description 删除或作废项目申请，作废需要判断是否收费
      * @Param [method, visitItemId]
      * @return int 1成功 0更新失败 2已登记
      **/

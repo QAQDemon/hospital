@@ -1,9 +1,10 @@
 package edu.neu.medical.hospital.controller;
 
-import edu.neu.medical.hospital.bean.Fmeditem;
+import com.github.pagehelper.PageInfo;
 import edu.neu.medical.hospital.bean.VisitItem;
 import edu.neu.medical.hospital.bean.VisitItemDetail;
 import edu.neu.medical.hospital.service.ApplyForFmeditemService;
+import edu.neu.medical.hospital.service.OutpatientDoctorWorkstationService;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -20,6 +21,8 @@ import java.util.Map;
 public class ApplyForFmeditemController {
     @Resource
     ApplyForFmeditemService applyForFmeditemService;
+    @Resource
+    OutpatientDoctorWorkstationService outpatientDoctorWorkstationService;
 
     /*
      * @Description 获得项目内容和申请人名字
@@ -80,12 +83,33 @@ public class ApplyForFmeditemController {
     }
 
     /*
-     * @Description 删除或作废项目//TODO
+     * @Description 删除或作废项目
      * @Param [method, visitItemId]
      * @return int 1成功 0更新失败 2已登记
      **/
     @RequestMapping("cancleVisitItem/{method}/{visitItemId}")
     public int cancleVisitItem(@PathVariable("method")char method,@PathVariable("visitItemId")int visitItemId){
         return applyForFmeditemService.cancleVisitItem(method, visitItemId);
+    }
+
+    /*
+     * @Description 搜索项目，分页//TODO
+     * @Param [type, pageNum]
+     * @return java.util.Map<java.lang.String,java.lang.Object>
+     **/
+    @RequestMapping("searchItem/{type}/{pageNum}")
+    public Map<String,Object> searchItem(@PathVariable("type")char type,@PathVariable("pageNum")int pageNum){
+        return searchItemMethod(type,pageNum,"");
+    }
+    @RequestMapping("searchItem/{type}/{pageNum}/{key}")
+    public Map<String,Object> searchItem1(@PathVariable("type")char type,@PathVariable("pageNum")int pageNum,@PathVariable("key")String key){
+        return searchItemMethod(type,pageNum,key);
+    }
+    private Map<String,Object> searchItemMethod(char type,int pageNum,String key){
+        Map<String,Object> map = new HashMap<>();
+        PageInfo pageInfo=outpatientDoctorWorkstationService.searchFmeditemList(type,key,pageNum);
+        map.put("pages",pageInfo.getPages());
+        map.put("itemList",pageInfo.getList());
+        return map;
     }
 }

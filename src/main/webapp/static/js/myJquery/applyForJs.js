@@ -239,3 +239,95 @@ $("#applyForBtnGroup button:eq(4)").click(function () {
         deleteApplyForAjax('4');
     }
 });
+
+//项目 搜索
+var itemList;//疾病信息列
+var itemFlag;//flag 1创建 2不创建页码并跳过
+var itemPages;//总页数
+function addSearchItem() {
+    var str="";
+    for(var i=0;i<itemList.length;i++){
+        str+='<tr>\n' +
+            '<td>\n' +
+            '<div class="custom-control custom-checkbox" >\n' +
+            '<input type="checkbox" class="custom-control-input" id="itemNotCheck'+i+'" name="itemNotCheckGroup">\n' +
+            '<label class="custom-control-label" for="itemNotCheck'+i+'"></label>\n' +
+            '</div>\n' +
+            '</td>\n' +
+            '<td>'+itemList[i].id+'</td>\n' +
+            '<td title="'+itemList[i].itemname+'" style="max-width:260px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">'+itemList[i].itemname+'</td>\n' +
+            '<td>'+itemList[i].price+'</td>\n' +
+            '</tr>';
+    }
+    $("#itemNotCheckedTbody").html(str);
+}
+function itemPageselectCallback(page_index,jq){
+    if(!(itemFlag===1&&page_index===0)){
+        itemFlag=2;
+        searchItemAjax(page_index+1);
+    }
+    addSearchItem();
+    return false;
+}
+function searchItemAjax(pageNum){
+    var urlS="applyForFmeditem/searchItem/"+$("#applyForType").val()+"/"+pageNum;
+    var inputKey=$("#itemKey").val();
+    if(inputKey!=="")
+        urlS += ("/" + inputKey);
+    $.ajax({
+        type: "POST",//方法类型
+        async:false,//防止分页错误
+        dataType: "json",//预期服务器返回的数据类型
+        url: urlS,
+        data: {},
+        success: function (result) {
+            itemList=result.itemList;
+            itemPages=result.pages;
+            if(itemFlag===1){
+                var initPagination = function() {
+                    // 创建分页
+                    $("#itemPagination").pagination(itemPages, {
+                        num_edge_entries: 1, //边缘页数
+                        num_display_entries: 4, //主体页数
+                        callback: itemPageselectCallback
+                    });
+                }();
+            }
+        }
+    });
+}
+
+function initeItemModel(){
+    var node=$("#ItemModal");
+    node.find("tbody").html("");//清空表格
+    node.find("#itemKey").val("");
+    $("#itemPagination").html("");
+    $("#itemPageJump").hide();
+    $("#searchItemPage").val("");
+    $("#DiagnosisModal button:contains('导入结果')").show();
+    $("#DiagnosisModal button:contains('保存')").hide();
+}
+//项目列表修改 弹窗
+$("#visitItemCard button:eq(0)").click(function () {
+    initeItemModel();
+    var list=[];
+    list.push({id:,itemname:,price:});
+
+});
+
+//将内容导入项目弹窗的右侧
+function apendCheckedItem(list) {
+    for(var i=0;i<list.length;i++){
+        $("#itemCheckedTbody").append('<tr>\n' +
+            '<td>\n' +
+            '<div class="custom-control custom-checkbox" >\n' +
+            '<input type="checkbox" class="custom-control-input" id="itemCheck'+i+'" name="itemCheckGroup" checked>\n' +
+            '<label class="custom-control-label" for="itemCheck'+i+'"></label>\n' +
+            '</div>\n' +
+            '</td>\n' +
+            '<td>'+list[i].id+'</td>\n' +
+            '<td title="'+list[i].itemname+'" style="max-width:260px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">'+list[i].itemname+'</td>\n' +
+            '<td>'+list[i].price+'</td>\n' +
+            '</tr>');
+    }
+}
