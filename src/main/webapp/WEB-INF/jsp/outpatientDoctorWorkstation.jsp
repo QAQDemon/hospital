@@ -628,7 +628,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                                 <tr>
                                                     <td>
                                                         <div class="custom-control custom-radio">
-                                                            <input type="radio" class="custom-control-input" id="'+listName+diseaseId+'Radio" name="isNewMajorDiagnosisCheckded" value="'+diseaseId+'">
+                                                            <input type="radio" class="custom-control-input" id="'+listName+diseaseId+'Radio" name="isNewMajorDiagnosisCheckded" value="-1">
                                                             <label class="custom-control-label" for="'+listName+diseaseId+'Radio"></label>
                                                         </div>
                                                     </td>

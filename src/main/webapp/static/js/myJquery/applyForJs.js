@@ -64,10 +64,13 @@ function clearApplyForContext() {
      $("#visitItemForm tbody").html("");//todo
 }
 function applyForItemAjax(){
+    var medicalInfoId=$("#patientInfoDiv span:eq(1)").html();
+    if(medicalInfoId==="")
+        return;
     $.ajax({
         type: "POST",//方法类型
         dataType: "json",//预期服务器返回的数据类型
-        url: "applyForFmeditem/getVisitItemList/"+$("#applyForType").val()+"/"+$("#patientInfoDiv span:eq(1)").html(),
+        url: "applyForFmeditem/getVisitItemList/"+$("#applyForType").val()+"/"+medicalInfoId,
         data: {},
         success: function (result) {
             setApplyForList(result.visitItemList,result.applyForPeople);
@@ -103,7 +106,7 @@ function setVisitItemList(visitDetailList,fmeditemList) {
             '<td>'+fmeditemList[i].itemname+'</td>\n' +
             '<td>'+fmeditemList[i].price+'</td>\n' +
             '<td  style="padding: 0">\n' +
-            '<input type="text" class="form-control" name="doctorEntrustment" value="'+visitDetailList[i].doctorEntrustment+' " '+readonlyFlag+'>\n' +
+            '<input type="text" class="form-control" name="doctorEntrustment" value="'+visitDetailList[i].doctorEntrustment+'" '+readonlyFlag+'>\n' +
             '</td>\n' +
             '<td class="text-center">'+((visitDetailList[i].executionStatus==="0")?'X':'√')+'</td>\n' +
             '<td class="text-center" style="padding-left: 0;padding-right: 0"><button type="button" class="btn btn-primary btn-sm" style="width: 100%;height: 100%">查看结果</button></td>\n' +
@@ -114,7 +117,7 @@ function setVisitItemList(visitDetailList,fmeditemList) {
 }
 //选择查看申请明细
 $("#applyForCard").on("click","tr",function () {
-    if($(this).find(":radio").val()==="-1")
+    if($(this).find(":radio").val()==="-1"||$(this).find(":radio").val()===undefined)
         return;
     else if($("#applyForCard :checked").val()==="-1"){
         showAlertDiv2("alert-danger", "危险!", "存在未保存的信息，先删除或暂存。");
@@ -293,8 +296,12 @@ function initeItemModel(){
     $("#searchItemPage").val("");
     $("#ItemModal button:contains('导入结果')").show();
     $("#ItemModal button:contains('保存')").hide();
+    var amount=$("#applyForCard :checked").closest("tr").children().last().html();
+    if(amount!==undefined)
+        $("#itemModalAmount").html(amount);
+    else $("#itemModalAmount").html("0");
 }
-//项目列表修改 弹窗
+//项目列表修改按钮 弹窗
 $("#visitItemCard button:eq(0)").click(function () {
     initeItemModel();
     var list=[];
@@ -373,7 +380,7 @@ $("#itemPageJump").on("click","button",function () {
     }
 });
 
-//诊断 搜索增加
+//项目 搜索增加
 $("#itemNotCheckedTbody").on("click","tr",function () {
     var id=$(this).children().eq(1).html();
     var oneflag=0;
@@ -389,11 +396,59 @@ $("#itemNotCheckedTbody").on("click","tr",function () {
         return;
     node.append("<tr>"+$(this).html()+"</tr>")
         .find("input").last().attr("checked",'true');
+    //增加总额
+    var amountNode=$("#itemModalAmount");
+    var amount=amountNode.html();
+    amountNode.html(eval(amount)+eval($(this).find("td:eq(3)").html()));
 });
-//诊断 搜索删除
+//项目 搜索删除
 $("#itemCheckedTbody").on("click","tr",function () {
     var res = confirm('确认要删除吗？');
     if(res === true){
+        //减少总额
+        var amountNode=$("#itemModalAmount");
+        var amount=amountNode.html();
+        amountNode.html(eval(amount)-eval($(this).find("td:eq(3)").html()));
         $(this).remove();
     }
+});
+
+//导入项目结果，求同存异
+$("#ItemModal .modal-footer :button:contains('导入结果')").click(function () {
+    //将选择项目放入列表
+    var fmeditemList=[];
+    $("#itemCheckedTbody tr").each(function (index) {
+        fmeditemList.push({id:$(this).find("td:eq(1)").html(),itemname:$(this).find("td:eq(2)").html(),price:$(this).find("td:eq(3)").html()});
+    });
+    //原有项目倒序循环，找到则删除list，找不到则删除原有
+    for(var i=$("#visitItemCard tbody tr").length-1;i>=0;i--){
+        var anId=$("#visitItemCard tbody tr:eq("+i+")").find("td:eq(0)").html();
+        var flag=0;
+        for (var j = 0; j < fmeditemList.length; j++) {
+            if (fmeditemList[j].id === anId) {
+                fmeditemList.splice(j, 1);
+                flag = 1;
+                break;
+            }
+        }
+        if(flag===0){
+            $("#visitItemCard tbody").find("tr:eq("+i+")").remove();
+        }
+    }
+    //生成空列
+    var visitDetailList=[];
+    for (var k = 0; k < fmeditemList.length; k++) {
+        visitDetailList.push({doctorEntrustment:"", executionStatus: "0"});
+    }
+    setVisitItemList(visitDetailList,fmeditemList);
+    //计算amount
+    var amountNode=$("#applyForCard :checked").closest("tr").children().last();
+    if(amountNode.html()!==undefined){
+        var amount=0;
+        $("#visitItemCard tbody tr").each(function () {
+            amount+=eval($(this).find("td:eq(2)").html());
+        });
+        amountNode.html(amount);
+    }
+    $("#ItemModal button[data-dismiss='modal']").click();
 });
