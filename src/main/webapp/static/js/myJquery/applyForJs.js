@@ -452,3 +452,27 @@ $("#ItemModal .modal-footer :button:contains('导入结果')").click(function ()
     }
     $("#ItemModal button[data-dismiss='modal']").click();
 });
+
+//放入常用项目
+function insertCommonDisease(list,num){
+    var str="";
+    for (var i = 0; i < list.length; i++) {
+        str+='<a href="#" class="list-group-item list-group-item-action"><span>'+list[i].diseasename+'</span><span class="badge badge-pill badge-danger">X</span></a>\n' +
+            '<input type="hidden" value="'+list[i].id+'">'+
+            '<input type="hidden" value="'+list[i].diseaseicd+'">';
+    }
+    $("#home1_2 .list-group:eq("+num+")").html(str);
+}
+//常用诊断生成
+$("#menu1RightNav a:eq(0)").click(function () {
+    $.ajax({
+        type: "POST",//方法类型
+        dataType: "json",//预期服务器返回的数据类型
+        url: "medicalRecordHome/getCommonOption",
+        data: {},
+        success: function (result) {
+            insertCommonDisease(result.xDiseaseCommonOptionList,0);
+            insertCommonDisease(result.zDiseaseCommonOptionList,1);
+        }
+    });
+});

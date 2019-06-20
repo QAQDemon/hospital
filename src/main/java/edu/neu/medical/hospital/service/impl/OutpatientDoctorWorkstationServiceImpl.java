@@ -70,6 +70,30 @@ public class OutpatientDoctorWorkstationServiceImpl implements OutpatientDoctorW
     }
 
     /*
+     * @Description 增加常用选项
+     * @Param [doctorId, visitItemDetail] 诊断type+"" ，项目 String.valueOf(type-46) ，处方 String.valueOf(type-43)
+     * @return java.lang.Boolean String.valueOf(type-46)
+     **/
+    public int addCommonOption(int doctorId,String type,int optionId){
+        //判断是否存在
+        CommonOptionExample commonOptionExample=new CommonOptionExample();
+        CommonOptionExample.Criteria criteria=commonOptionExample.createCriteria();
+        criteria.andTypeEqualTo(String.valueOf(type-46));
+        criteria.andBelongIdEqualTo(optionId);
+        criteria.andDoctorIdEqualTo(doctorId);
+        int count=commonOptionMapper.countByExample(commonOptionExample);
+        if(count==0){
+            CommonOption commonOption=new CommonOption();
+            commonOption.setDoctorId(doctorId);
+            commonOption.setBelongId(optionId);
+            commonOption.setType(String.valueOf(type-46));
+            return commonOptionMapper.insertSelective(commonOption);
+        }else{
+            return 0;
+        }
+    }
+
+    /*
      * @Description 根据type搜索非药品项目，key为空获得全部(可用在组套和申请)
      * @Param [type 1检查 2检验 3处置,key 拼音首字母转换成大写]
      * @return java.util.List<edu.neu.medical.hospital.bean.Fmeditem>

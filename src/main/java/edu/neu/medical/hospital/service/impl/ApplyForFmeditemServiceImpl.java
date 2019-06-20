@@ -180,26 +180,25 @@ public class ApplyForFmeditemServiceImpl implements ApplyForFmeditemService {
 
     /*
      * @Description 增加常用项目，在常用选项表上
-     * @Param [doctorId, visitItemDetail]
-     * @return java.lang.Boolean
+     * @Param [doctorId, visitItemDetail]--46
+     * @return java.lang.Boolean String.valueOf(type-46)
      **/
-    public Boolean addCommonFmeditem(int doctorId,VisitItemDetail visitItemDetail){
+    public int addCommonFmeditem(int doctorId,int fmeditemId){
         //判断是否存在
         CommonOptionExample commonOptionExample=new CommonOptionExample();
         CommonOptionExample.Criteria criteria=commonOptionExample.createCriteria();
         criteria.andTypeEqualTo(String.valueOf(type-46));
-        criteria.andBelongIdEqualTo(visitItemDetail.getFmeditemId());
+        criteria.andBelongIdEqualTo(fmeditemId);
         criteria.andDoctorIdEqualTo(doctorId);
         int count=commonOptionMapper.countByExample(commonOptionExample);
         if(count==0){
             CommonOption commonOption=new CommonOption();
             commonOption.setDoctorId(doctorId);
-            commonOption.setBelongId(visitItemDetail.getFmeditemId());
+            commonOption.setBelongId(fmeditemId);
             commonOption.setType(String.valueOf(type-46));
-            commonOptionMapper.insertSelective(commonOption);
-            return true;
+            return commonOptionMapper.insertSelective(commonOption);
         }else{
-            return false;
+            return 0;
         }
     }
 

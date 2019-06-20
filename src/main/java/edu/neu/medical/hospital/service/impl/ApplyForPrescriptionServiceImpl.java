@@ -127,7 +127,7 @@ public class ApplyForPrescriptionServiceImpl implements ApplyForPrescriptionServ
 
     /*
      * @Description 增加常用项目，在常用选项表上
-     * @Param [doctorId, prescriptionDetail]
+     * @Param [doctorId, prescriptionDetail]-43
      * @return java.lang.Boolean
      **/
     public Boolean addCommonDrugs(int doctorId,PrescriptionDetail prescriptionDetail){

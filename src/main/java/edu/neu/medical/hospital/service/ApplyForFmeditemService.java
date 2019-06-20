@@ -13,7 +13,7 @@ public interface ApplyForFmeditemService {
     int setVisitItemAndDetailList(VisitItem visitItem, List<VisitItemDetail> visitItemDetailList);
     List<Fmeditem> getCommonFmeditemList(List<CommonOption> commonOptionList);
     int deleteCommonFmeditem(int doctorId,int fmeditemId);
-    Boolean addCommonFmeditem(int doctorId,VisitItemDetail visitItemDetail);
+    int addCommonFmeditem(int doctorId,int fmeditemId);
     VisitItemResult getVisitItemResult(VisitItemDetail visitItemDetail);
     String[] getApplyForPeopleName(List<VisitItem> visitItems);
     List<VisitItemDetail> initeVisitItemDetailList(int[] fmeditemIds,String[] doctorEntrustments);

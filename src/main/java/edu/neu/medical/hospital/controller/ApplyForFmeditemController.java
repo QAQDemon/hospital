@@ -1,6 +1,7 @@
 package edu.neu.medical.hospital.controller;
 
 import com.github.pagehelper.PageInfo;
+import edu.neu.medical.hospital.bean.Fmeditem;
 import edu.neu.medical.hospital.bean.VisitItem;
 import edu.neu.medical.hospital.bean.VisitItemDetail;
 import edu.neu.medical.hospital.service.ApplyForFmeditemService;
@@ -111,5 +112,43 @@ public class ApplyForFmeditemController {
         map.put("pages",pageInfo.getPages());
         map.put("itemList",pageInfo.getList());
         return map;
+    }
+
+    /*
+     * @Description  获得项目常用选项，1检查 2检验 3处置
+     * @Param []
+     * @return void
+     **/
+    @RequestMapping("getCommonOption/{type}")
+    public List<Fmeditem> getCommonOption(@PathVariable("type")char type){
+        int doctorId=1;//todo
+
+        return applyForFmeditemService.getCommonFmeditemList(outpatientDoctorWorkstationService.getCommonOptionById((char)(type-46), doctorId));//3,4,5
+    }
+
+    /*
+     * @Description 删除常用项目
+     * @Param [type 1检查 2检验 3处置, fmeditemId]
+     * @return void
+     **/
+    @RequestMapping("deleteCommonItem/{type}/{fmeditemId}")
+    public int deleteCommonDItem(@PathVariable("type")char type,@PathVariable("fmeditemId")int fmeditemId){
+        int doctorId=1;//todo
+
+        applyForFmeditemService.setType(type);
+        return applyForFmeditemService.deleteCommonFmeditem(doctorId,fmeditemId);
+    }
+
+    /*
+     * @Description 增加常用项目
+     * @Param [type 1检查 2检验 3处置, diseaseId]
+     * @return java.lang.Boolean
+     **/
+    @RequestMapping("addCommonFmeditem/{type}/{fmeditemId}")
+    public int addCommonFmeditem(@PathVariable("type")char type,@PathVariable("fmeditemId")int fmeditemId){
+        int doctorId=1;//todo
+
+        applyForFmeditemService.setType(type);
+        return applyForFmeditemService.addCommonFmeditem(doctorId,  fmeditemId);
     }
 }
