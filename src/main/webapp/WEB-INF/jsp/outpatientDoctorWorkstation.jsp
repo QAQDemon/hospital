@@ -15,6 +15,26 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <link rel="stylesheet" type="text/css" href="css/pagination.css">
 </head>
 <body>
+<!-- 检查结果弹窗 -->
+<div class="modal fade" id="ResultModal">
+    <div class="modal-dialog">
+        <div class="modal-content" style="width: 1000px;margin-left: -50%;margin-top: 20%">
+            <!-- 模态框头部 -->
+            <div class="modal-header">
+                <h4 class="modal-title">检查结果</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <!-- 模态框主体 -->
+            <div class="modal-body">
+
+            </div>
+            <!-- 模态框底部 -->
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" >导入结果</button>
+            </div>
+        </div>
+    </div>
+</div>
 <!-- 项目弹窗 -->
 <div class="modal fade" id="ItemModal">
     <div class="modal-dialog">
@@ -41,7 +61,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                     <div class="col-md-6"><div style="margin-top: 7px">
                         <div class="row">
                             <div class="col-md-3"><label class="control-label font-weight-bold">选择结果</label></div>
-                            <div class="col-md-9 text-right">
+                            <div id="itemAllAmountDiv" class="col-md-9 text-right">
                                 <label class="control-label font-weight-bold">总金额：</label>
                                 <span id="itemModalAmount"></span>
                             </div>
@@ -650,7 +670,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                         <!--项目列表部分-->
                                         <div id="visitItemCard" class="card">
                                             <div class="card-header font-weight-bold">
-                                                <span>项目列表</span>&nbsp;<button type="button" class="btn btn-outline-warning btn-sm"  data-toggle="modal" data-target="#ItemModal">修改</button>
+                                                <span>项目列表</span>&nbsp;<button type="button" class="btn btn-outline-warning btn-sm" data-toggle="modal" data-target="#ItemModal">修改</button>
                                             </div>
                                             <table class="table table-condensed table-striped table-hover table-sm table-bordered" >
                                                 <thead>
@@ -776,7 +796,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                                                     <!--组套子项-->
                                                                     <div class="form-group">
                                                                         <input type="hidden" name="fmeitemId" value="-1"><input type="hidden" name="setSubEntrust" value=" ">
-                                                                        <label class="font-weight-bold">组套项目</label>&nbsp;<button type="button" class="btn btn-outline-warning btn-sm"  data-toggle="modal" data-target="#DiagnosisModal">修改</button>
+                                                                        <label class="font-weight-bold">组套项目</label>&nbsp;<button type="button" class="btn btn-outline-warning btn-sm"  data-toggle="modal" data-target="#ItemModal">修改</button>
                                                                         <table class="table table-condensed table-striped table-hover table-sm table-bordered" >
                                                                             <thead>
                                                                             <tr>

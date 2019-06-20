@@ -380,7 +380,7 @@ $("button[data-target='#DiagnosisModal']:contains('+')").click(function () {
     $("#DiagnosisModal button:contains('导入结果')").show();
     $("#DiagnosisModal button:contains('保存')").hide();
 });
-$("button[data-target='#DiagnosisModal']:contains('修改')").click(function () {//todo
+$("button[data-target='#DiagnosisModal']:contains('修改')").click(function () {
     var node=$("#DiagnosisModal");
     if($(this).prev().html()==="西医诊断")
         node.find("h4").html("西医诊断");

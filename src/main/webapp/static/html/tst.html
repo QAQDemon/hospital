@@ -16,10 +16,30 @@
 </head>
 <body>
 
-<button id="tba" class="">a</button>
+<button id="tba" class="" data-toggle="modal" data-target="#ResultModal">a</button>
 <button id="tba1">a1</button>
 <p>a</p>
 <p>b</p>
+<!-- 检查结果弹窗 -->
+<div class="modal fade" id="ResultModal">
+    <div class="modal-dialog">
+        <div class="modal-content" style="width: 1000px;margin-left: -50%;margin-top: 20%">
+            <!-- 模态框头部 -->
+            <div class="modal-header">
+                <h4 class="modal-title">检查结果</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <!-- 模态框主体 -->
+            <div class="modal-body">
+
+            </div>
+            <!-- 模态框底部 -->
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">关闭</button>
+            </div>
+        </div>
+    </div>
+</div>
 <!-- 项目弹窗 -->
 <div class="modal fade" id="ItemModal">
     <div class="modal-dialog">

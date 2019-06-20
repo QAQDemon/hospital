@@ -111,7 +111,7 @@ function setVisitItemList(visitDetailList,fmeditemList) {
             '</td>\n' +
             '<td class="text-center">'+((visitDetailList[i].executionStatus==="0")?'X':'√')+'</td>\n' +
             '<td style="padding: 0"><a href="#"><img src="images/save_icon.jpg" style="height:40px;width:40px" alt="保存"></a></td>\n' +
-            '<td class="text-center" style="padding-left: 0;padding-right: 0"><button type="button" class="btn btn-primary btn-sm" style="width: 100%;height: 100%">查看结果</button></td>\n' +
+            '<td class="text-center" style="padding-left: 0;padding-right: 0"><button type="button" class="btn btn-primary btn-sm" style="width: 100%;height: 100%" data-toggle="modal" data-target="#ResultModal">查看结果</button></td>\n' +
             '<input type="hidden" name="fmeditemId" value="'+fmeditemList[i].id+'">'+
             '</tr>');
     }
@@ -305,6 +305,7 @@ function initeItemModel(){
     var node=$("#ItemModal");
     node.find("tbody").html("");//清空表格
     node.find("#itemKey").val("");
+    $("#itemAllAmountDiv").show();
     $("#itemPagination").html("");
     $("#itemPageJump").hide();
     $("#searchItemPage").val("");
@@ -329,7 +330,14 @@ $("#visitItemCard button:eq(0)").click(function () {
     var list=getVisitItemFmeitemData();
     apendCheckedItem(list,false);
 });
-
+//组套子项的修改
+$("#itemSetContextForm button[data-target='#ItemModal']:contains('修改')").click(function () {
+    initeItemModel();
+    $("#ItemModal button:contains('导入结果')").hide();
+    $("#ItemModal button:contains('保存')").show();
+    $("#itemAllAmountDiv").hide();
+    apendCheckedItem(getSetSubFmitemData(),false);
+});
 //将内容导入项目弹窗的左右侧 bool true左 false右
 function apendCheckedItem(list,bool) {
     var node;
@@ -432,13 +440,17 @@ $("#itemCheckedTbody").on("click","tr",function () {
     }
 });
 
-//导入项目结果，求同存异
-$("#ItemModal .modal-footer :button:contains('导入结果')").click(function () {
-    //将选择项目放入列表
+//获得项目弹窗右侧的选择数据结果
+function getItemCheckedFmeditemData(){
     var fmeditemList=[];
     $("#itemCheckedTbody tr").each(function () {
         fmeditemList.push({id:$(this).find("td:eq(1)").html(),itemname:$(this).find("td:eq(2)").html(),price:$(this).find("td:eq(3)").html()});
     });
+    return fmeditemList;
+}
+//导入项目结果，求同存异
+$("#ItemModal .modal-footer :button:contains('导入结果')").click(function () {
+    var fmeditemList=getItemCheckedFmeditemData();
     //原有项目倒序循环，找到则删除list，找不到则删除原有
     for(var i=$("#visitItemCard tbody tr").length-1;i>=0;i--){
         var anId=$("#visitItemCard tbody tr:eq("+i+")").find("td:eq(0)").html();
@@ -475,6 +487,34 @@ function calcuteAmount() {
         amountNode.html(amount);
     }
 }
+//保存到组套子项 求同存异
+$("#ItemModal .modal-footer :button:contains('保存')").click(function () {
+    var fmeditemList=getItemCheckedFmeditemData();
+    //倒序循环，找到则删除list，找不到则删除原有
+    for(var i=$("#itemSetContextForm tbody tr").length-1;i>=0;i--){
+        var anId=$("#itemSetContextForm tbody tr:eq("+i+")").find("[name='fmeitemId']").val();
+        var flag=0;
+        for (var j = 0; j < fmeditemList.length; j++) {
+            if (fmeditemList[j].id === anId) {
+                fmeditemList.splice(j, 1);
+                flag = 1;
+                break;
+            }
+        }
+        if(flag===0){
+            $("#itemSetContextForm tbody").find("tr:eq("+i+")").remove();
+        }
+    }
+    //生成空列
+    var setSubList=[];
+    for (var k = 0; k < fmeditemList.length; k++) {
+        setSubList.push({entrust:""});
+    }
+    setSetSub(fmeditemList,setSubList);
+    disableSetSub(false);
+    $("#ItemModal button[data-dismiss='modal']").click();
+});
+
 //放入常用项目
 function insertCommonItem(list){
     var str="";
@@ -606,18 +646,16 @@ function clearSetContent(){
 }
 //放入组套子项
 function setSetSub(fmeitemList,setSubList){
-    var str="";
     for (var i=0;i<fmeitemList.length;i++) {
-        str+='<tr>\n' +
+        $("#itemSetContextForm tbody").append('<tr>\n' +
             '<td title="'+fmeitemList[i].itemname+'" style="max-width:80px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">'+fmeitemList[i].itemname+'</td>\n' +
             '<td style="padding: 0">\n' +
             '<input type="text" class="form-control" name="setSubEntrust" value="'+setSubList[i].entrust+'" readonly="readonly">\n' +
             '<input type="hidden" name="fmeitemId" value="'+fmeitemList[i].id+'">\n' +
             '<input type="hidden" value="'+fmeitemList[i].price+'">\n' +
             '</td>\n' +
-            '</tr>';
+            '</tr>');
     }
-    $("#itemSetContextForm tbody").html(str);
 }
 //解锁或锁定组套按钮 true锁定
 function disableSetBtn(bool){
@@ -653,23 +691,31 @@ $("#itemSetListDiv").on("click","a",function () {
             $("#setCodeTemplate").val(setGroup.setCode);
             $("#setNameTemplate").val(setGroup.setName);
             $("#setCreatTime").html(getTime1(setGroup.buildDate));
+            $("#itemSetContextForm tbody").html("");
             setSetSub(result.objectList,result.setSubList);
         }
     });
     return false;
 });
-//组套子项插入主体
-function addSetSub(){
+//获得组套子项的非药品信息
+function getSetSubFmitemData() {
     var fmeditemList=[];
-    var setSubList=[];
     $("#itemSetContextForm tbody tr").each(function () {
         fmeditemList.push({id:$(this).find("[name='fmeitemId']").val(),itemname:$(this).find("td:eq(0)").html(),price:$(this).find("[type='hidden']:eq(1)").val()});
+    });
+    return fmeditemList;
+}
+//组套子项插入主体
+function addSetSub(){
+    var fmeditemList=getSetSubFmitemData();
+    var setSubList=[];
+    $("#itemSetContextForm tbody tr").each(function () {
         setSubList.push({doctorEntrustment:$(this).find("[name='setSubEntrust']").val(), executionStatus: "0"});
     });
     //删除已存在
     $("#visitItemCard tbody tr").each(function () {
         var anId=$(this).find("td:first").html();
-        for (var i = fmeditemList.length-1; i >=0; i++) {
+        for (var i = fmeditemList.length-1; i >=0; i--) {
             if (fmeditemList[i].id === anId) {
                 fmeditemList.splice(i, 1);
                 setSubList.splice(i, 1);
@@ -757,7 +803,7 @@ $("#itemSetBtnGroup").on("click","button:eq(1)",function () {
     $("#setCodeTemplate").attr("readonly",true);
     disableSetSub(false);
     disableSetContext(false);
-}).on("click","button:eq(0)",function () {//增加病历组套
+}).on("click","button:eq(0)",function () {//新增组套
     $("#itemSetCategoryDiv").show();
     $("#setCodeTemplate").attr("readonly",false);
     disableSetContext(false);
