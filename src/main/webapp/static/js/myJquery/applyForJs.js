@@ -246,6 +246,7 @@ $("#applyForBtnGroup button:eq(4)").click(function () {
 });
 //存为组套
 $("#applyForBtnGroup button:eq(5)").click(function () {
+    $("#menu1RightNav a:last").click();
     $("#itemSetBtnGroup :eq(0)").click();
     var fmeitemList=getVisitItemFmeitemData();
     var setSubList=[];
@@ -253,7 +254,7 @@ $("#applyForBtnGroup button:eq(5)").click(function () {
         setSubList.push({entrust:$(this).find(":text").val()});
     });
     setSetSub(fmeitemList,setSubList);
-    //todo 取消只读
+    disableSetSub(false);
 });
 
 //项目 搜索
@@ -513,7 +514,8 @@ $("#menu1_1").on("dblclick","a",function () {
     var fmeditemList=[{id:itemId,itemname:$(this).find("span:eq(0)").html(),price:$(this).next().next().val()}];
     var visitDetailList=[{doctorEntrustment:"",executionStatus:"0"}];
     setVisitItemList(visitDetailList,fmeditemList);
-    showAlertDiv2("alert-success","成功!","诊断插入成功。");
+    calcuteAmount();
+    showAlertDiv2("alert-success","成功!","项目插入成功。");
 })//删除常用项目
     .on("click",".badge-danger",function () {
         var res = confirm('确认要删除吗？');
@@ -661,7 +663,7 @@ function addSetSub(){
     var fmeditemList=[];
     var setSubList=[];
     $("#itemSetContextForm tbody tr").each(function () {
-        fmeditemList.push({id:$(this).find("[name='setSubId']").val(),itemname:$(this).find("td:eq(0)").html(),price:$(this).find("[type='hidden']:eq(1)").val()});
+        fmeditemList.push({id:$(this).find("[name='fmeitemId']").val(),itemname:$(this).find("td:eq(0)").html(),price:$(this).find("[type='hidden']:eq(1)").val()});
         setSubList.push({doctorEntrustment:$(this).find("[name='setSubEntrust']").val(), executionStatus: "0"});
     });
     //删除已存在
@@ -698,7 +700,7 @@ $("#itemSetBtnGroup button:eq(2)").click(function () {
                     $("#itemSetChooseDiv :checked").click();
                 }
             });
-        }
+        }else showAlertDiv2("alert-danger","错误!","删除组套失败，请重新选择。");
         disableSetBtn(true);
         clearSetContent();
         disableSetContext(true);
@@ -720,7 +722,7 @@ function disableSetSub(bool){
 $("#itemSetContextForm button:contains('提交')").click(function () {
     var codeNode=$("#setCodeTemplate");
     if(codeNode.val()===""||$("#categorySet").val()==="0"){
-        showAlertDiv2("alert-warning", "警告!", "模板编码和适用范围不能为空。");
+        showAlertDiv2("alert-warning", "警告!", "组套编码和适用范围不能为空。");
         codeNode.focus();
         return;
     }
@@ -737,8 +739,8 @@ $("#itemSetContextForm button:contains('提交')").click(function () {
                 $("#itemSetCategoryDiv").hide();
                 codeNode.attr("readonly",true);
                 disableSetSub(true);
-                disableSetBtn(false);
                 disableSetContext(true);
+                $("#itemSetListDiv .active").click();
             }
             else if(result==="2") {
                 showAlertDiv2("alert-warning", "警告!", "当前分类下组套编码已存在。");
@@ -755,10 +757,13 @@ $("#itemSetBtnGroup").on("click","button:eq(1)",function () {
     $("#setCodeTemplate").attr("readonly",true);
     disableSetSub(false);
     disableSetContext(false);
-}).on("click","button:eq(0)",function () {//增加病历模板
+}).on("click","button:eq(0)",function () {//增加病历组套
     $("#itemSetCategoryDiv").show();
     $("#setCodeTemplate").attr("readonly",false);
     disableSetContext(false);
     clearSetContent();
     disableSetBtn(true);
 });
+
+
+//todo 查看结果

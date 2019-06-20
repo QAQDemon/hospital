@@ -587,6 +587,7 @@ $("#medicalInfoBtnGroup").find(".btn-outline-secondary,.btn-outline-success").cl
 });
 //存为模板
 $("#medicalInfoBtnGroup :eq(3)").click(function () {
+    $("#homeRightNav a:first").click();
     $("#medreTempBtnGroup :eq(0)").click();
     $("#chiefComplaintTemplate").val($("#chiefComplaint").val());
     $("#currentMedicalHistoryTemplate").html($("#currentMedicalHistory").html());
@@ -769,7 +770,7 @@ $("#medreTempBtnGroup button:eq(2)").click(function () {
                     $("#searchMedrecTempForm button").click();
                 }
             });
-        }
+        }else showAlertDiv1("alert-danger","错误!","删除病历模板失败，请重新选择。");
         clearMedrecTemplateContent();
         disableMedrTempBtn(true);
         disableMedreTempContext(true);
