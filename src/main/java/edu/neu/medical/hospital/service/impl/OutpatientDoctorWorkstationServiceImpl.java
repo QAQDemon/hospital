@@ -78,7 +78,7 @@ public class OutpatientDoctorWorkstationServiceImpl implements OutpatientDoctorW
         //判断是否存在
         CommonOptionExample commonOptionExample=new CommonOptionExample();
         CommonOptionExample.Criteria criteria=commonOptionExample.createCriteria();
-        criteria.andTypeEqualTo(String.valueOf(type-46));
+        criteria.andTypeEqualTo(type);
         criteria.andBelongIdEqualTo(optionId);
         criteria.andDoctorIdEqualTo(doctorId);
         int count=commonOptionMapper.countByExample(commonOptionExample);
@@ -86,11 +86,25 @@ public class OutpatientDoctorWorkstationServiceImpl implements OutpatientDoctorW
             CommonOption commonOption=new CommonOption();
             commonOption.setDoctorId(doctorId);
             commonOption.setBelongId(optionId);
-            commonOption.setType(String.valueOf(type-46));
+            commonOption.setType(type);
             return commonOptionMapper.insertSelective(commonOption);
         }else{
             return 0;
         }
+    }
+
+    /*
+     * @Description 删除常用选项,真删
+     * @Param [doctorId, type, diseaseId]诊断type+"" ，项目 String.valueOf(type-46) ，处方 String.valueOf(type-43)
+     * @return int
+     **/
+    public int deleteCommonOption(int doctorId,String type,int optionId){
+        CommonOptionExample commonOptionExample=new CommonOptionExample();
+        CommonOptionExample.Criteria criteria=commonOptionExample.createCriteria();
+        criteria.andDoctorIdEqualTo(doctorId);
+        criteria.andBelongIdEqualTo(optionId);
+        criteria.andTypeEqualTo(type);
+        return commonOptionMapper.deleteByExample(commonOptionExample);
     }
 
     /*

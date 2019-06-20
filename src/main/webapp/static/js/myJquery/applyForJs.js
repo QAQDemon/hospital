@@ -83,13 +83,14 @@ $("[href='#menu1']").click(function () {
     $("#visitItemForm h4").html(name+"申请");
     $("#applyForCard .card-header").html(name+"申请单列表");
     $("#menu1RightNav a:eq(1) small").html(name+"组套");
-    $("#home2_1 .card-header").html(name+"项目");
+    $("#menu1_1 .card-header").html(name+"项目");
     var node=$("#applyForType");
     if(name==="检查")
         node.val("1");
     else if (name === "检验")
         node.val("2");
     else node.val("3");
+    $("#menu1RightNav a:eq(0)").click();
     clearApplyForContext();
     changeApplyForBtns(1);
     applyForItemAjax();
@@ -109,6 +110,7 @@ function setVisitItemList(visitDetailList,fmeditemList) {
             '<input type="text" class="form-control" name="doctorEntrustment" value="'+visitDetailList[i].doctorEntrustment+'" '+readonlyFlag+'>\n' +
             '</td>\n' +
             '<td class="text-center">'+((visitDetailList[i].executionStatus==="0")?'X':'√')+'</td>\n' +
+            '<td style="padding: 0"><a href="#"><img src="images/save_icon.jpg" style="height:40px;width:40px" alt="保存"></a></td>\n' +
             '<td class="text-center" style="padding-left: 0;padding-right: 0"><button type="button" class="btn btn-primary btn-sm" style="width: 100%;height: 100%">查看结果</button></td>\n' +
             '<input type="hidden" name="fmeditemId" value="'+fmeditemList[i].id+'">'+
             '</tr>');
@@ -454,25 +456,124 @@ $("#ItemModal .modal-footer :button:contains('导入结果')").click(function ()
 });
 
 //放入常用项目
-function insertCommonDisease(list,num){
+function insertCommonItem(list){
     var str="";
     for (var i = 0; i < list.length; i++) {
-        str+='<a href="#" class="list-group-item list-group-item-action"><span>'+list[i].diseasename+'</span><span class="badge badge-pill badge-danger">X</span></a>\n' +
+        str+='<a href="#" class="list-group-item list-group-item-action"><span>'+list[i].itemname+'</span><span class="badge badge-pill badge-danger">X</span></a>\n' +
             '<input type="hidden" value="'+list[i].id+'">'+
-            '<input type="hidden" value="'+list[i].diseaseicd+'">';
+            '<input type="hidden" value="'+list[i].price+'">';
     }
-    $("#home1_2 .list-group:eq("+num+")").html(str);
+    $("#menu1_1 .list-group").html(str);
 }
-//常用诊断生成
+//常用项目生成
 $("#menu1RightNav a:eq(0)").click(function () {
     $.ajax({
         type: "POST",//方法类型
         dataType: "json",//预期服务器返回的数据类型
-        url: "medicalRecordHome/getCommonOption",
+        url: "applyForFmeditem/getCommonOption/"+$("#applyForType").val(),
         data: {},
         success: function (result) {
-            insertCommonDisease(result.xDiseaseCommonOptionList,0);
-            insertCommonDisease(result.zDiseaseCommonOptionList,1);
+            insertCommonItem(result);
         }
     });
 });
+//双击将常用项目加到评估下
+$("#menu1_1").on("dblclick","a",function () {
+    var flag=0;
+    var itemId=$(this).next().val();
+    $("#visitItemCard tbody").children().each(function () {
+        if($(this).children().eq(0).html()===itemId){
+            flag=1;
+            return false;//break
+        }
+    });
+    if(flag===1){
+        showAlertDiv2("alert-warning","警告!","该项目已存在。");
+        return;//重复跳出
+    }
+    var fmeditemList=[{id:itemId,itemname:$(this).find("span:eq(0)").html(),price:$(this).next().next().val()}];
+    var visitDetailList=[{doctorEntrustment:"",executionStatus:"0"}];
+    setVisitItemList(visitDetailList,fmeditemList);
+    showAlertDiv2("alert-success","成功!","诊断插入成功。");
+})//删除常用项目
+    .on("click",".badge-danger",function () {
+        var res = confirm('确认要删除吗？');
+        if(res === true) {
+            $.ajax({
+                type: "POST",//方法类型
+                dataType: "text",//预期服务器返回的数据类型
+                url: "applyForFmeditem/deleteCommonItem/" + $("#applyForType").val() + "/" + $(this).parent().next().val(),
+                data: {},
+                success: function (result) {
+                    $("#menu1RightNav a:eq(0)").click();
+                }
+            });
+        }
+    })//取消跳转
+    .on("click","a",function () {
+        return false;
+    });
+
+//增加常用诊断
+$("#visitItemCard").on("click","a",function () {
+    $.ajax({
+        type: "POST",//方法类型
+        dataType: "text",//预期服务器返回的数据类型
+        url: "applyForFmeditem/addCommonFmeditem/"+$("#applyForType").val()+"/"+$(this).closest("tr").children().first().html(),
+        data: {},
+        success: function (result) {
+            if(result==="1")
+                showAlertDiv2("alert-success","成功!","增加常用项目成功。");
+            else showAlertDiv2("alert-danger","失败!","增加常用项目失败。");
+            $("#menu1RightNav a:eq(0)").click();
+        }
+    });
+    return false;
+});
+
+//放入组套的名字到标签
+function addSetContext(map){
+    var str="";
+    for(var key in map){
+        str+=' <a href="#" class="list-group-item list-group-item-action">'+map[key]+'</a><input type="hidden" value="'+key+'">';
+    }
+    $("#itemSetListDiv").html(str);
+}
+//组套类型选择
+$("#itemSetChooseDiv :radio").click(function () {
+    searchSetGroup();
+});
+function searchSetGroup(){
+    var category=$("#itemSetChooseDiv :checked").val();
+    if(category===undefined){//未选的情况
+        category=1;
+        $("#itemSetChooseDiv [type='radio']:eq(0)").attr("checked",true);
+    }
+    var key=$("#searchItemSetKey").val();
+    $.ajax({
+        type: "POST",//方法类型
+        dataType: "json",//预期服务器返回的数据类型
+        url: "applyForFmeditem/getSetGroup/"+category+"/"+$("#applyForType").val()+((key==="")?"":("/"+key)),
+        data: {},
+        success: function (result) {
+            addSetContext(result);
+        }
+    });
+}
+//组套搜索
+$("#searchItemSetForm").on("click","button",function () {
+    searchSetGroup();
+}).on("keyup","input",function (e) {
+    if(e.keyCode===13){
+        searchSetGroup();
+    }
+});
+
+//清空组套内容
+function clearSetContent(){//todo
+    $("#MedrecTempListDiv a").removeClass("active");
+    $("#idTemplate").val("");
+    $("#categoryTemplate").val(0);
+    $("#MedrecTempContextDiv [type='text']").val("");
+    $("#MedrecTempContextDiv").find("textarea,tbody").html("");
+}

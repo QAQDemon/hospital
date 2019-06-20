@@ -12,4 +12,6 @@ public interface OutpatientDoctorWorkstationService {
     PageInfo<Drugs> searchDrugsList(char type,String key,int pageNum);
     Boolean setFinalDiagnosisList(List<Diagnosis> diagnosisList);
     Boolean setCompleteVisit(int medicalRecordInfoId);
+    int deleteCommonOption(int doctorId,String type,int optionId);
+    int addCommonOption(int doctorId,String type,int optionId);
 }

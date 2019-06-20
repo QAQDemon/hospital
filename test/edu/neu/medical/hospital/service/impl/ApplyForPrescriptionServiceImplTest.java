@@ -26,6 +26,6 @@ public class ApplyForPrescriptionServiceImplTest {
 
     @Test
     public void deleteCommonDrugs() {
-        applyForPrescriptionService.deleteCommonDrugs(1,1);
+//        applyForPrescriptionService.deleteCommonDrugs(1,1);
     }
 }

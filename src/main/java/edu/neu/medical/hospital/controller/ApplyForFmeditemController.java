@@ -2,10 +2,12 @@ package edu.neu.medical.hospital.controller;
 
 import com.github.pagehelper.PageInfo;
 import edu.neu.medical.hospital.bean.Fmeditem;
+import edu.neu.medical.hospital.bean.SetGroup;
 import edu.neu.medical.hospital.bean.VisitItem;
 import edu.neu.medical.hospital.bean.VisitItemDetail;
 import edu.neu.medical.hospital.service.ApplyForFmeditemService;
 import edu.neu.medical.hospital.service.OutpatientDoctorWorkstationService;
+import edu.neu.medical.hospital.service.SetManageService;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -24,6 +26,8 @@ public class ApplyForFmeditemController {
     ApplyForFmeditemService applyForFmeditemService;
     @Resource
     OutpatientDoctorWorkstationService outpatientDoctorWorkstationService;
+    @Resource
+    SetManageService setManageService;
 
     /*
      * @Description 获得项目内容和申请人名字
@@ -94,7 +98,7 @@ public class ApplyForFmeditemController {
     }
 
     /*
-     * @Description 搜索项目，分页//TODO
+     * @Description 搜索项目，分页
      * @Param [type, pageNum]
      * @return java.util.Map<java.lang.String,java.lang.Object>
      **/
@@ -123,7 +127,7 @@ public class ApplyForFmeditemController {
     public List<Fmeditem> getCommonOption(@PathVariable("type")char type){
         int doctorId=1;//todo
 
-        return applyForFmeditemService.getCommonFmeditemList(outpatientDoctorWorkstationService.getCommonOptionById((char)(type-46), doctorId));//3,4,5
+        return applyForFmeditemService.getCommonFmeditemList(outpatientDoctorWorkstationService.getCommonOptionById((char)(type+2), doctorId));//3,4,5
     }
 
     /*
@@ -135,20 +139,51 @@ public class ApplyForFmeditemController {
     public int deleteCommonDItem(@PathVariable("type")char type,@PathVariable("fmeditemId")int fmeditemId){
         int doctorId=1;//todo
 
-        applyForFmeditemService.setType(type);
-        return applyForFmeditemService.deleteCommonFmeditem(doctorId,fmeditemId);
+        return outpatientDoctorWorkstationService.deleteCommonOption(doctorId,String.valueOf(type-46),fmeditemId);
     }
 
     /*
      * @Description 增加常用项目
-     * @Param [type 1检查 2检验 3处置, diseaseId]
+     * @Param [type 1检查 2检验 3处置, fmeditemId]
      * @return java.lang.Boolean
      **/
     @RequestMapping("addCommonFmeditem/{type}/{fmeditemId}")
     public int addCommonFmeditem(@PathVariable("type")char type,@PathVariable("fmeditemId")int fmeditemId){
         int doctorId=1;//todo
 
-        applyForFmeditemService.setType(type);
-        return applyForFmeditemService.addCommonFmeditem(doctorId,  fmeditemId);
+        return outpatientDoctorWorkstationService.addCommonOption(doctorId, String.valueOf(type-46), fmeditemId);
+    }
+
+    /*
+     * @Description 获得对应类别的组套的名字
+     * @Param [category 1全院 2科室 3个人,type 1检查 2检验3 处方
+     * @return void
+     **/
+    @RequestMapping("getSetGroup/{category}/{type}")
+    public Map<Integer ,String> getSetGroup(@PathVariable("category")char category,@PathVariable("type")char type){
+        return getSetGroupMethod(category,type, "");
+    }
+    @RequestMapping("getSetGroup/{category}/{type}/{key}")
+    public Map<Integer ,String> getMedrecTemplate1(@PathVariable("category")char category,@PathVariable("type")char type,@PathVariable("key")String key){
+        return getSetGroupMethod(category,type, key);
+    }
+    private Map<Integer ,String> getSetGroupMethod(char category,char type,String key){
+        int doctorId=1;//todo
+        int departID=2;//
+
+        int belongId=0;//1：0；2：科室id；3：医生id
+        if(category=='2')
+            belongId=departID;
+        else if(category=='3')
+            belongId = doctorId;
+        Map<Integer ,String> map=new HashMap<>();
+        setManageService.setType(type);
+        setManageService.setCategory(category);
+        setManageService.setBelongId(belongId);
+        List<SetGroup> list=setManageService.searchSetGroupList(key);
+        for (SetGroup setGroup : list) {
+            map.put(setGroup.getId(),setGroup.getSetName());
+        }
+        return map;
     }
 }

@@ -143,44 +143,6 @@ public class MedicalRecordHomeServiceImpl implements MedicalRecordHomeService {
     }
 
     /*
-     * @Description 删除常用诊断,真删
-     * @Param [doctorId, type, diseaseId]
-     * @return int
-     **/
-    public int deleteCommonDiagnosis(int doctorId,char type,int diseaseId){
-        CommonOptionExample commonOptionExample=new CommonOptionExample();
-        CommonOptionExample.Criteria criteria=commonOptionExample.createCriteria();
-        criteria.andDoctorIdEqualTo(doctorId);
-        criteria.andBelongIdEqualTo(diseaseId);
-        criteria.andTypeEqualTo(type+"");
-        return commonOptionMapper.deleteByExample(commonOptionExample);
-    }
-
-    /*
-     * @Description 增加常用诊断，在常用选项表上
-     * @Param [doctorId, diagnosis]
-     * @return java.lang.Boolean 0失败 1成功
-     **/
-    public int addCommonDiagnosis(int doctorId,char type,int diseaseId){
-        //判断是否存在
-        CommonOptionExample commonOptionExample=new CommonOptionExample();
-        CommonOptionExample.Criteria criteria=commonOptionExample.createCriteria();
-        criteria.andTypeEqualTo(type+"");
-        criteria.andBelongIdEqualTo(diseaseId);
-        criteria.andDoctorIdEqualTo(doctorId);
-        int count=commonOptionMapper.countByExample(commonOptionExample);
-        if(count==0){
-            CommonOption commonOption=new CommonOption();
-            commonOption.setDoctorId(doctorId);
-            commonOption.setBelongId(diseaseId);
-            commonOption.setType(type+"");
-            return commonOptionMapper.insertSelective(commonOption);
-        }else{
-            return 0;
-        }
-    }
-
-    /*
      * @Description 根据疾病id获得诊断列表
      * @Param [xDiseases, zDiseases]
      * @return java.util.List<edu.neu.medical.hospital.bean.Diagnosis>

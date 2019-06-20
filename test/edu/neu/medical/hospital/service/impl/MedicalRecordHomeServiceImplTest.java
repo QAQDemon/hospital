@@ -103,7 +103,7 @@ public class MedicalRecordHomeServiceImplTest {
 
     @Test
     public void addCommonDiagnosis() {
-        medicalRecordHomeService.addCommonDiagnosis(4, '1', 10);
+//        medicalRecordHomeService.addCommonDiagnosis(4, '1', 10);
 //        medicalRecordHomeService.addCommonDiagnosis(4, '1', 10);
     }
 }

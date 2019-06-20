@@ -12,10 +12,8 @@ public interface MedicalRecordHomeService {
     Boolean setMedicalRecordInfoAndDiagnosisList(MedicalRecordInfo medicalRecordInfo, List<Diagnosis> diagnosisList) ;
     PageInfo<Disease> searchDiseaseListByCode(char type, String diseaseCode, int pageNum);
     List<Disease> getCommonDiagnosisList(List<CommonOption> commonOptionList);
-    int deleteCommonDiagnosis(int doctorId,char type,int diseaseId);
     List<Disease> getDiagnosisDiseaseList(List<Diagnosis> diagnosisList);
     Boolean judgeControlMedrecTemplate(int doctorId,MedrecTemplate medrecTemplate);
-    int addCommonDiagnosis(int doctorId,char type,int diseaseId);
     int addMedrecTemplate(MedrecTemplate medrecTemplate,List<Diagnosis> diagnosisList);
     int updateMedrecTemplate(MedrecTemplate medrecTemplate, List<Diagnosis> diagnosisList);
     int cancelMedrecTemplate(int medrecTemplateId);

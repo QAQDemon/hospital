@@ -165,44 +165,6 @@ public class ApplyForFmeditemServiceImpl implements ApplyForFmeditemService {
     }
 
     /*
-     * @Description 删除常用项目,真删
-     * @Param [doctorId,fmeditemId]
-     * @return int
-     **/
-    public int deleteCommonFmeditem(int doctorId,int fmeditemId){
-        CommonOptionExample commonOptionExample=new CommonOptionExample();
-        CommonOptionExample.Criteria criteria=commonOptionExample.createCriteria();
-        criteria.andDoctorIdEqualTo(doctorId);
-        criteria.andBelongIdEqualTo(fmeditemId);
-        criteria.andTypeEqualTo(String.valueOf(type-46));
-        return commonOptionMapper.deleteByExample(commonOptionExample);
-    }
-
-    /*
-     * @Description 增加常用项目，在常用选项表上
-     * @Param [doctorId, visitItemDetail]--46
-     * @return java.lang.Boolean String.valueOf(type-46)
-     **/
-    public int addCommonFmeditem(int doctorId,int fmeditemId){
-        //判断是否存在
-        CommonOptionExample commonOptionExample=new CommonOptionExample();
-        CommonOptionExample.Criteria criteria=commonOptionExample.createCriteria();
-        criteria.andTypeEqualTo(String.valueOf(type-46));
-        criteria.andBelongIdEqualTo(fmeditemId);
-        criteria.andDoctorIdEqualTo(doctorId);
-        int count=commonOptionMapper.countByExample(commonOptionExample);
-        if(count==0){
-            CommonOption commonOption=new CommonOption();
-            commonOption.setDoctorId(doctorId);
-            commonOption.setBelongId(fmeditemId);
-            commonOption.setType(String.valueOf(type-46));
-            return commonOptionMapper.insertSelective(commonOption);
-        }else{
-            return 0;
-        }
-    }
-
-    /*
      * @Description 根据明细id获得结果
      * @Param [visitItemDetail]
      * @return edu.neu.medical.hospital.bean.VisitItemResult

@@ -161,7 +161,7 @@ public class MedicalRecordHomeController {
     public int deleteCommonDiagnosis(@PathVariable("type")char type,@PathVariable("diseaseId")int diseaseId){
         int doctorId=1;//todo
 
-        return medicalRecordHomeService.deleteCommonDiagnosis(doctorId, type, diseaseId);
+        return outpatientDoctorWorkstationService.deleteCommonOption(doctorId, type+"", diseaseId);
     }
 
     /*
@@ -173,7 +173,7 @@ public class MedicalRecordHomeController {
     public int addCommonDiagnosis(@PathVariable("type")char type,@PathVariable("diseaseId")int diseaseId){
         int doctorId=1;//todo
 
-        return medicalRecordHomeService.addCommonDiagnosis(doctorId, type, diseaseId);
+        return outpatientDoctorWorkstationService.addCommonOption(doctorId, type+"", diseaseId);
     }
 
     /*

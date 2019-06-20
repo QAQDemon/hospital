@@ -15,6 +15,4 @@ public interface ApplyForPrescriptionService {
     List<PrescriptionDetail> getPrescriptionDetailListById(int prescriptionId);
     Boolean setPrescriptionAndDetailList(Prescription prescription,List<PrescriptionDetail> prescriptionDetailList);
     List<Drugs> getCommonDrugsList(List<CommonOption> commonOptionList);
-    int deleteCommonDrugs(int doctorId,int drugsId);
-    Boolean addCommonDrugs(int doctorId,PrescriptionDetail prescriptionDetail);
 }

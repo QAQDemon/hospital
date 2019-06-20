@@ -89,14 +89,14 @@ public class ApplyForFmeditemServiceImplTest {
 
     @Test
     public void deleteCommonFmeditem() {
-        applyForFmeditemService.deleteCommonFmeditem(1, 2);
+//        applyForFmeditemService.deleteCommonFmeditem(1, 2);
     }
 
     @Test
     public void addCommonFmeditem() {
         VisitItemDetail visitItemDetail = new VisitItemDetail();
         visitItemDetail.setFmeditemId(8);
-        applyForFmeditemService.addCommonFmeditem(1,visitItemDetail);
+//        applyForFmeditemService.addCommonFmeditem(1,visitItemDetail);
     }
 
     @Test

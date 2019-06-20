@@ -661,6 +661,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                                     <th>医生嘱托</th>
                                                     <th>执行</th>
                                                     <th>&nbsp;</th>
+                                                    <th>&nbsp;</th>
                                                 </tr>
                                                 </thead>
                                                 <tbody>
@@ -672,6 +673,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                                         <input type="text" class="form-control">
                                                     </td>
                                                     <td class="text-center">O</td>
+                                                    <td></td>
                                                     <td class="text-center" style="padding-left: 0;padding-right: 0"><button type="button" class="btn btn-primary btn-sm" style="width: 100%;height: 100%">查看结果</button></td>
                                                 </tr>
                                                 </tbody>
@@ -686,16 +688,16 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                             <!-- Nav pills -->
                                             <ul id="menu1RightNav" class="nav nav-pills " role="tablist" >
                                                 <li class="nav-item">
-                                                    <a class="nav-link active " data-toggle="pill" href="#home2_1"><small>常用项目</small></a>
+                                                    <a class="nav-link active " data-toggle="pill" href="#menu1_1"><small>常用项目</small></a>
                                                 </li>
                                                 <li class="nav-item">
-                                                    <a class="nav-link" data-toggle="pill" href="#home2_2"><small>**组套</small></a>
+                                                    <a class="nav-link" data-toggle="pill" href="#menu1_2"><small>**组套</small></a>
                                                 </li>
                                             </ul>
                                             <!-- Tab panes -->
                                             <div class="tab-content">
                                                 <!--常用项目部分-->
-                                                <div id="home2_1" class="container tab-pane active">
+                                                <div id="menu1_1" class="container tab-pane active">
                                                     <hr>
                                                     <div class="card">
                                                         <div class="card-header"><strong>**项目</strong></div>
@@ -704,7 +706,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                                     </div>
                                                 </div>
                                                 <!--申请组套部分-->
-                                                <div id="home2_2" class="container tab-pane fade">
+                                                <div id="menu1_2" class="container tab-pane fade">
                                                     <hr>
                                                     <!--申请组套搜索框-->
                                                     <form id="searchItemSetForm" role="form" onkeypress="return event.keyCode !== 13;">
@@ -720,15 +722,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                                     <div id="itemSetChooseDiv" class="bg-light" style="border: 1px solid rgba(0, 0, 0, 0.125); border-radius: 0.25rem;padding: 0.75rem 0rem;">
                                                         &nbsp;&nbsp;
                                                         <div class="custom-control custom-radio custom-control-inline">
-                                                            <input type="radio" class="custom-control-input active" id="itemWholeRadio" value="1">
+                                                            <input type="radio" class="custom-control-input active" id="itemWholeRadio" name="itemRadio" value="1">
                                                             <label class="custom-control-label" for="itemWholeRadio">全院</label>
                                                         </div>
                                                         <div class="custom-control custom-radio custom-control-inline">
-                                                            <input type="radio" class="custom-control-input" id="itemDepartRadio" value="2">
+                                                            <input type="radio" class="custom-control-input" id="itemDepartRadio" name="itemRadio" value="2">
                                                             <label class="custom-control-label" for="itemDepartRadio">科室</label>
                                                         </div>
                                                         <div class="custom-control custom-radio custom-control-inline">
-                                                            <input type="radio" class="custom-control-input" id="itemPersonRadio" value="3">
+                                                            <input type="radio" class="custom-control-input" id="itemPersonRadio" name="itemRadio" value="3">
                                                             <label class="custom-control-label" for="itemPersonRadio">个人</label>
                                                         </div>
                                                     </div>

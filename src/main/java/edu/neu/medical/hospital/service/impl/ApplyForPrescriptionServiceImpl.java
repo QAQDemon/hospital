@@ -111,43 +111,4 @@ public class ApplyForPrescriptionServiceImpl implements ApplyForPrescriptionServ
         return list;
     }
 
-    /*
-     * @Description 删除常用项目,真删
-     * @Param [doctorId,drugsId]
-     * @return int
-     **/
-    public int deleteCommonDrugs(int doctorId,int drugsId){
-        CommonOptionExample commonOptionExample=new CommonOptionExample();
-        CommonOptionExample.Criteria criteria=commonOptionExample.createCriteria();
-        criteria.andDoctorIdEqualTo(doctorId);
-        criteria.andBelongIdEqualTo(drugsId);
-        criteria.andTypeEqualTo(String.valueOf(type-43));
-        return commonOptionMapper.deleteByExample(commonOptionExample);
-    }
-
-    /*
-     * @Description 增加常用项目，在常用选项表上
-     * @Param [doctorId, prescriptionDetail]-43
-     * @return java.lang.Boolean
-     **/
-    public Boolean addCommonDrugs(int doctorId,PrescriptionDetail prescriptionDetail){
-        //判断是否存在
-        CommonOptionExample commonOptionExample=new CommonOptionExample();
-        CommonOptionExample.Criteria criteria=commonOptionExample.createCriteria();
-        criteria.andTypeEqualTo(String.valueOf(type-43));
-        criteria.andBelongIdEqualTo(prescriptionDetail.getDrugId());
-        criteria.andDoctorIdEqualTo(doctorId);
-        int count=commonOptionMapper.countByExample(commonOptionExample);
-        if(count==0){
-            CommonOption commonOption=new CommonOption();
-            commonOption.setDoctorId(doctorId);
-            commonOption.setBelongId(prescriptionDetail.getDrugId());
-            commonOption.setType(String.valueOf(type-43));
-            commonOptionMapper.insertSelective(commonOption);
-            return true;
-        }else{
-            return false;
-        }
-    }
-
 }
