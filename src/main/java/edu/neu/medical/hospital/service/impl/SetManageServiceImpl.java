@@ -52,12 +52,29 @@ public class SetManageServiceImpl implements SetManageService {
         this.belongId=belongId;
     }
 
+
+    /*
+     * @Description 初始化组套子项
+     * @Param [fmeitemId, setSubEntrust]
+     * @return java.util.List<edu.neu.medical.hospital.bean.SetSub>
+     **/
+    public List<SetSub> initeSetSubList(int[] fmeitemId,String[] setSubEntrust){
+        List<SetSub> setSubList = new ArrayList<>();
+        for (int i = 1; i < fmeitemId.length; i++) {
+            SetSub setSub = new SetSub();
+            setSub.setResponseId(fmeitemId[i]);
+            setSub.setEntrust(setSubEntrust[i]);
+            setSubList.add(setSub);
+        }
+        return setSubList;
+    }
+
     /*
      * @Description 增加组套和项目列表,判断存在
      * @Param [set,setSubList]
-     * @return java.lang.Boolean ：false已存在，失败；true成功
+     * @return java.lang.Boolean ：2已存在，失败；1成功
      **/
-    public Boolean addSetAndSub(SetGroup setGroup, List<SetSub> setSubList) {
+    public int addSetAndSub(SetGroup setGroup, List<SetSub> setSubList) {
         SetGroupExample setGroupExample=new SetGroupExample();
         SetGroupExample.Criteria criteria=setGroupExample.createCriteria();
         criteria.andBelongIdEqualTo(belongId);
@@ -65,16 +82,18 @@ public class SetManageServiceImpl implements SetManageService {
         criteria.andUseScopeEqualTo(category + "");
         criteria.andSetCodeEqualTo(setGroup.getSetCode());
         if (setGroupMapper.countByExample(setGroupExample)>0) {//存在或异常
-            return false;
+            return 2;
         }
         setGroupMapper.insertSelective(setGroup);
+        if(setSubList.size()==0)
+            return 1;
         //获得插入id
         int lastId=setGroupMapper.selectByExample(setGroupExample).get(0).getId();
         for (SetSub setSub : setSubList) {
             setSub.setSetId(lastId);//设置组套id
         }
         setSubMapper.insertForeach(setSubList);
-        return true;
+        return 1;
     }
 
     /*
@@ -89,16 +108,23 @@ public class SetManageServiceImpl implements SetManageService {
     /*
      * @Description 更新组套,删除并重输入组套子项
      * @Param [setGroup,setSubList]
-     * @return Boolean
+     * @return Boolean 0失败 1成功
      **/
-    public Boolean updateSetGroup(SetGroup setGroup, List<SetSub> setSubList){
-        setGroupMapper.updateByPrimaryKeySelective(setGroup);
+    public int updateSetGroup(SetGroup setGroup, List<SetSub> setSubList){
+        int num=setGroupMapper.updateByPrimaryKeySelective(setGroup);
+        if(num==0)
+            return num;
         SetSubExample setSubExample = new SetSubExample();
         SetSubExample.Criteria criteria = setSubExample.createCriteria();
         criteria.andSetIdEqualTo(setGroup.getId());
         setSubMapper.deleteByExample(setSubExample);
+        if(setSubList.size()==0)
+            return num;
+        for (SetSub setSub : setSubList) {
+            setSub.setSetId(setGroup.getId());
+        }
         setSubMapper.insertForeach(setSubList);
-        return true;
+        return num;
     }
 
     /*
@@ -106,19 +132,29 @@ public class SetManageServiceImpl implements SetManageService {
      * @Param [setGroup]
      * @return Boolean
      **/
-    public Boolean cancelSetGroup(SetGroup setGroup){
+    public int cancelSetGroup(int setId){
+        SetGroup setGroup = new SetGroup();
+        setGroup.setId(setId);
         setGroup.setStatus("2");
-        setGroupMapper.updateByPrimaryKeySelective(setGroup);
-        return true;
+        return setGroupMapper.updateByPrimaryKeySelective(setGroup);
     }
 
     /*
-     * @Description 搜索指定组套列，状态为有效(诊断获取方法在上面)
+     * @Description 搜索指定组套列，状态为有效
      * @Param [key为空获得全部,搜索名称，编码，创建人]
      * @return java.util.List<edu.neu.medical.hospital.bean.MedrecTemplate>
      **/
     public List<SetGroup> searchSetGroupList(String key){
         return setGroupMapper.searchSetGroup(type,category, belongId, '1', key);
+    }
+
+    /*
+     * @Description 根据组套id获得组套
+     * @Param [setId]
+     * @return edu.neu.medical.hospital.bean.SetGroup
+     **/
+    public SetGroup getSetGroupById(int setId) {
+        return setGroupMapper.selectByPrimaryKey(setId);
     }
 
     /*

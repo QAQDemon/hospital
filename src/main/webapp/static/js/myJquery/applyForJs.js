@@ -98,7 +98,7 @@ $("[href='#menu1']").click(function () {
 //添加项目明细表
 function setVisitItemList(visitDetailList,fmeditemList) {
     var readonlyFlag=$("#applyForCard :checked").closest("tr").find("td:eq(3)").html();
-    if (readonlyFlag === "暂存"||readonlyFlag === "")
+    if (readonlyFlag === "暂存"||readonlyFlag === ""||readonlyFlag===undefined)
         readonlyFlag=" ";
     else readonlyFlag=' readonly="readonly" ';
     for (var i = 0; i < visitDetailList.length; i++) {
@@ -244,6 +244,17 @@ $("#applyForBtnGroup button:eq(4)").click(function () {
         deleteApplyForAjax('4');
     }
 });
+//存为组套
+$("#applyForBtnGroup button:eq(5)").click(function () {
+    $("#itemSetBtnGroup :eq(0)").click();
+    var fmeitemList=getVisitItemFmeitemData();
+    var setSubList=[];
+    $("#visitItemCard tbody tr").each(function () {
+        setSubList.push({entrust:$(this).find(":text").val()});
+    });
+    setSetSub(fmeitemList,setSubList);
+    //todo 取消只读
+});
 
 //项目 搜索
 var itemList;//疾病信息列
@@ -303,13 +314,18 @@ function initeItemModel(){
         $("#itemModalAmount").html(amount);
     else $("#itemModalAmount").html("0");
 }
-//项目列表修改按钮 弹窗
-$("#visitItemCard button:eq(0)").click(function () {
-    initeItemModel();
+//获取项目列表非药品信息的list
+function getVisitItemFmeitemData(){
     var list=[];
     $("#visitItemCard tbody tr").each(function () {
         list.push({id:$(this).find("td:eq(0)").html(),itemname:$(this).find("td:eq(1)").html(),price:$(this).find("td:eq(2)").html()});
     });
+    return list;
+}
+//项目列表修改按钮 弹窗
+$("#visitItemCard button:eq(0)").click(function () {
+    initeItemModel();
+    var list=getVisitItemFmeitemData();
     apendCheckedItem(list,false);
 });
 
@@ -419,7 +435,7 @@ $("#itemCheckedTbody").on("click","tr",function () {
 $("#ItemModal .modal-footer :button:contains('导入结果')").click(function () {
     //将选择项目放入列表
     var fmeditemList=[];
-    $("#itemCheckedTbody tr").each(function (index) {
+    $("#itemCheckedTbody tr").each(function () {
         fmeditemList.push({id:$(this).find("td:eq(1)").html(),itemname:$(this).find("td:eq(2)").html(),price:$(this).find("td:eq(3)").html()});
     });
     //原有项目倒序循环，找到则删除list，找不到则删除原有
@@ -444,6 +460,11 @@ $("#ItemModal .modal-footer :button:contains('导入结果')").click(function ()
     }
     setVisitItemList(visitDetailList,fmeditemList);
     //计算amount
+    calcuteAmount();
+    $("#ItemModal button[data-dismiss='modal']").click();
+});
+//计算项目列表所有金额写到选定行
+function calcuteAmount() {
     var amountNode=$("#applyForCard :checked").closest("tr").children().last();
     if(amountNode.html()!==undefined){
         var amount=0;
@@ -452,9 +473,7 @@ $("#ItemModal .modal-footer :button:contains('导入结果')").click(function ()
         });
         amountNode.html(amount);
     }
-    $("#ItemModal button[data-dismiss='modal']").click();
-});
-
+}
 //放入常用项目
 function insertCommonItem(list){
     var str="";
@@ -514,7 +533,7 @@ $("#menu1_1").on("dblclick","a",function () {
         return false;
     });
 
-//增加常用诊断
+//增加常用项目
 $("#visitItemCard").on("click","a",function () {
     $.ajax({
         type: "POST",//方法类型
@@ -531,6 +550,12 @@ $("#visitItemCard").on("click","a",function () {
     return false;
 });
 
+//点击导航直接搜索组套
+$("#menu1RightNav a:last").click(function () {
+    $("#searchItemSetForm button").click();
+    disableSetBtn(true);
+    disableSetContext(true);
+});
 //放入组套的名字到标签
 function addSetContext(map){
     var str="";
@@ -553,7 +578,7 @@ function searchSetGroup(){
     $.ajax({
         type: "POST",//方法类型
         dataType: "json",//预期服务器返回的数据类型
-        url: "applyForFmeditem/getSetGroup/"+category+"/"+$("#applyForType").val()+((key==="")?"":("/"+key)),
+        url: "setManage/getSetGroup/"+category+"/"+$("#applyForType").val()+((key==="")?"":("/"+key)),
         data: {},
         success: function (result) {
             addSetContext(result);
@@ -570,10 +595,164 @@ $("#searchItemSetForm").on("click","button",function () {
 });
 
 //清空组套内容
-function clearSetContent(){//todo
-    $("#MedrecTempListDiv a").removeClass("active");
-    $("#idTemplate").val("");
-    $("#categoryTemplate").val(0);
-    $("#MedrecTempContextDiv [type='text']").val("");
-    $("#MedrecTempContextDiv").find("textarea,tbody").html("");
+function clearSetContent(){
+    $("#itemSetListDiv a").removeClass("active");
+    $("#idSet").val("");
+    $("#categorySet").val(0);
+    $("#itemSetContextForm [type='text']").val("");
+    $("#itemSetContextForm").find("span,tbody").html("");
 }
+//放入组套子项
+function setSetSub(fmeitemList,setSubList){
+    var str="";
+    for (var i=0;i<fmeitemList.length;i++) {
+        str+='<tr>\n' +
+            '<td title="'+fmeitemList[i].itemname+'" style="max-width:80px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">'+fmeitemList[i].itemname+'</td>\n' +
+            '<td style="padding: 0">\n' +
+            '<input type="text" class="form-control" name="setSubEntrust" value="'+setSubList[i].entrust+'" readonly="readonly">\n' +
+            '<input type="hidden" name="fmeitemId" value="'+fmeitemList[i].id+'">\n' +
+            '<input type="hidden" value="'+fmeitemList[i].price+'">\n' +
+            '</td>\n' +
+            '</tr>';
+    }
+    $("#itemSetContextForm tbody").html(str);
+}
+//解锁或锁定组套按钮 true锁定
+function disableSetBtn(bool){
+    var btns=$("#itemSetBtnGroup").find(".btn-outline-warning,.btn-outline-danger");
+    if(bool===true)
+        btns.hide();
+    else  btns.show();
+}
+//点击标签获得组套内容
+$("#itemSetListDiv").on("click","a",function () {
+    //变色
+    $("#itemSetListDiv a").removeClass("active");
+    $(this).addClass("active");
+    $.ajax({
+        type: "POST",//方法类型
+        dataType: "json",//预期服务器返回的数据类型
+        url: "setManage/getSetContent/"+$("#applyForType").val()+"/"+$(this).next().val(),
+        data: {},
+        success: function (result) {
+            $("#setCodeTemplate").attr("readonly",true);
+            $("#itemSetCategoryDiv").hide();
+            disableSetContext(true);
+            if(result.setGroup===null){
+                showAlertDiv2("alert-warning","警告!","组套不存在。");
+                return;
+            }
+            var setGroup=result.setGroup;
+            if(eval($("#doctorId").val())===setGroup.createrId)//判断是否能修改删除
+                disableSetBtn(false);
+            else disableSetBtn(true);
+            $("#idSet").val(setGroup.id);
+            $("#categorySet").val(eval(setGroup.useScope));
+            $("#setCodeTemplate").val(setGroup.setCode);
+            $("#setNameTemplate").val(setGroup.setName);
+            $("#setCreatTime").html(getTime1(setGroup.buildDate));
+            setSetSub(result.objectList,result.setSubList);
+        }
+    });
+    return false;
+});
+//组套子项插入主体
+function addSetSub(){
+    var fmeditemList=[];
+    var setSubList=[];
+    $("#itemSetContextForm tbody tr").each(function () {
+        fmeditemList.push({id:$(this).find("[name='setSubId']").val(),itemname:$(this).find("td:eq(0)").html(),price:$(this).find("[type='hidden']:eq(1)").val()});
+        setSubList.push({doctorEntrustment:$(this).find("[name='setSubEntrust']").val(), executionStatus: "0"});
+    });
+    //删除已存在
+    $("#visitItemCard tbody tr").each(function () {
+        var anId=$(this).find("td:first").html();
+        for (var i = fmeditemList.length-1; i >=0; i++) {
+            if (fmeditemList[i].id === anId) {
+                fmeditemList.splice(i, 1);
+                setSubList.splice(i, 1);
+                break;
+            }
+        }
+    });
+    setVisitItemList(setSubList,fmeditemList);
+    calcuteAmount();
+}
+//引用组套
+$("#itemSetBtnGroup button:contains('引用')").click(function () {
+    addSetSub();
+});
+//删除组套
+$("#itemSetBtnGroup button:eq(2)").click(function () {
+    var res = confirm('确认要删除吗？');
+    if(res === true){
+        disableSetBtn(true);
+        clearSetContent();
+        if($("#idSet").val()===""){
+            showAlertDiv2("alert-danger","错误!","删除失败,请重新选择。");
+            return;
+        }
+        $.ajax({
+            type: "POST",//方法类型
+            dataType: "text",//预期服务器返回的数据类型
+            url: "setManage/cancelSetGroup/"+$("#idSet").val(),
+            data: {},
+            success: function (result) {
+                if(result==="0")//好像无效
+                    showAlertDiv2("alert-danger","错误!","删除组套失败。");
+            }
+        });
+    }
+});
+//锁定组套内容或解开 bool true锁
+function disableSetContext(bool){
+    $("#setNameTemplate").attr("readonly",bool);
+    var btns=$("#itemSetContextForm button");
+    if(bool)
+        btns.hide();
+    else btns.show();
+}
+// 修改增加组套后提交
+$("#itemSetContextForm button:contains('提交')").click(function () {
+    var codeNode=$("#setCodeTemplate");
+    if(codeNode.val()===""||$("#categorySet").val()==="0"){
+        showAlertDiv2("alert-warning", "警告!", "模板编码和适用范围不能为空。");
+        codeNode.focus();
+        return;
+    }
+    var alertNum=showAlertDiv2("alert-secondary","","组套保存中...");
+    $.ajax({
+        type: "POST",//方法类型
+        dataType: "text",//预期服务器返回的数据类型
+        url: "setManage/saveSetGroup/"+((codeNode.attr("readonly")==="readonly")?"2":"1")+"/"+$("#applyForType").val(),
+        data: $("#itemSetContextForm").serializeArray(),
+        success: function (result) {//1成功 0更新失败（已删除） 2新增失败（code已存在）
+            $.outpatientMethod.closeAlertDiv(alertNum);
+            if(result==="1"){
+                showAlertDiv2("alert-success","成功!","组套提交成功。");
+                $("#itemSetCategoryDiv").hide();
+                codeNode.attr("readonly",true);
+                disableSetBtn(false);
+                disableSetContext(true);
+            }
+            else if(result==="2") {
+                showAlertDiv2("alert-warning", "警告!", "当前分类下组套编码已存在。");
+                codeNode.focus();
+            }
+            else {
+                showAlertDiv2("alert-warning", "警告!", "当前分类下组套不存在。");
+            }
+        }
+    });
+});
+//修改组套
+$("#itemSetBtnGroup").on("click","button:eq(1)",function () {
+    $("#setCodeTemplate").attr("readonly",true);
+    disableSetContext(false);
+}).on("click","button:eq(0)",function () {//增加病历模板
+    $("#itemSetCategoryDiv").show();
+    $("#setCodeTemplate").attr("readonly",false);
+    disableSetContext(false);
+    clearSetContent();
+    disableSetBtn(true);
+});

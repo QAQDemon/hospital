@@ -154,36 +154,4 @@ public class ApplyForFmeditemController {
         return outpatientDoctorWorkstationService.addCommonOption(doctorId, String.valueOf(type-46), fmeditemId);
     }
 
-    /*
-     * @Description 获得对应类别的组套的名字
-     * @Param [category 1全院 2科室 3个人,type 1检查 2检验3 处方
-     * @return void
-     **/
-    @RequestMapping("getSetGroup/{category}/{type}")
-    public Map<Integer ,String> getSetGroup(@PathVariable("category")char category,@PathVariable("type")char type){
-        return getSetGroupMethod(category,type, "");
-    }
-    @RequestMapping("getSetGroup/{category}/{type}/{key}")
-    public Map<Integer ,String> getMedrecTemplate1(@PathVariable("category")char category,@PathVariable("type")char type,@PathVariable("key")String key){
-        return getSetGroupMethod(category,type, key);
-    }
-    private Map<Integer ,String> getSetGroupMethod(char category,char type,String key){
-        int doctorId=1;//todo
-        int departID=2;//
-
-        int belongId=0;//1：0；2：科室id；3：医生id
-        if(category=='2')
-            belongId=departID;
-        else if(category=='3')
-            belongId = doctorId;
-        Map<Integer ,String> map=new HashMap<>();
-        setManageService.setType(type);
-        setManageService.setCategory(category);
-        setManageService.setBelongId(belongId);
-        List<SetGroup> list=setManageService.searchSetGroupList(key);
-        for (SetGroup setGroup : list) {
-            map.put(setGroup.getId(),setGroup.getSetName());
-        }
-        return map;
-    }
 }

@@ -755,7 +755,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                                                     <input id="idSet" type="hidden" name="id">
                                                                     <div id="itemSetCategoryDiv" class="form-group">
                                                                         <label class="font-weight-bold" for="categorySet">适用范围：</label>
-                                                                        <select id="categorySet" name="category" class="custom-select-sm">
+                                                                        <select id="categorySet" name="useScope" class="custom-select-sm">
                                                                             <option value="0" selected></option>
                                                                             <option value="1">全院</option>
                                                                             <option value="2">科室</option>
@@ -773,15 +773,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                                                     <div class="form-group ">
                                                                         <label class="font-weight-bold">创建时间：</label ><span id="setCreatTime">2018-01-01 02:02</span>
                                                                     </div>
-                                                                    <!--模板诊断-->
+                                                                    <!--组套子项-->
                                                                     <div class="form-group">
-<%--                                                                        <input type="hidden" name="diseaseId0" value="-1"><input type="hidden" name="diseaseId1" value="-1">--%>
+                                                                        <input type="hidden" name="fmeitemId" value="-1"><input type="hidden" name="setSubEntrust" value=" ">
                                                                         <label class="font-weight-bold">组套项目</label>&nbsp;<button type="button" class="btn btn-outline-warning btn-sm"  data-toggle="modal" data-target="#DiagnosisModal">修改</button>
                                                                         <table class="table table-condensed table-striped table-hover table-sm table-bordered" >
                                                                             <thead>
                                                                             <tr>
-                                                                                <th>ID</th>
                                                                                 <th>名称</th>
+                                                                                <th>医生嘱托</th>
                                                                             </tr>
                                                                             </thead>
                                                                             <tbody></tbody>

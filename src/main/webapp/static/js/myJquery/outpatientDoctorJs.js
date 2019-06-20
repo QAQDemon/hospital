@@ -214,7 +214,7 @@ function disableMedicalInfoBtn(bool){
         btns.hide();
     else  btns.show();
 }
-//切换患者将右侧功能重置//todo
+//切换患者将右侧功能重置
 function resetHomeRight(){
     $("#homeRightNav a:eq(0)").click();
     $("#medrecTempChooseDiv [type='radio']:eq(0)").click();
@@ -380,7 +380,7 @@ $("button[data-target='#DiagnosisModal']:contains('+')").click(function () {
     $("#DiagnosisModal button:contains('导入结果')").show();
     $("#DiagnosisModal button:contains('保存')").hide();
 });
-$("button[data-target='#DiagnosisModal']:contains('修改')").click(function () {
+$("button[data-target='#DiagnosisModal']:contains('修改')").click(function () {//todo
     var node=$("#DiagnosisModal");
     if($(this).prev().html()==="西医诊断")
         node.find("h4").html("西医诊断");
@@ -525,7 +525,7 @@ $("#DiagnosisModal .modal-footer :button:contains('导入结果')").click(functi
     $("#DiagnosisModal button[data-dismiss='modal']").click();
 });
 //保存到模板
-$("#DiagnosisModal .modal-footer :button:contains('保存')").click(function () {
+$("#DiagnosisModal .modal-footer :button:contains('保存')").click(function () {//todo
     var resultNode;
     var num;
     if($("#DiagnosisModal h4").html()==="西医诊断"){
