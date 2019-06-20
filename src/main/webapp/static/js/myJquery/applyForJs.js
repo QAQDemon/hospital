@@ -61,7 +61,7 @@ function setApplyForList(list,applyForPeople) {
     }
 }
 function clearApplyForContext() {
-     $("#visitItemForm tbody").html("");//todo
+     $("#visitItemForm tbody").html("");
 }
 function applyForItemAjax(){
     var medicalInfoId=$("#patientInfoDiv span:eq(1)").html();
@@ -686,22 +686,22 @@ $("#itemSetBtnGroup button:contains('引用')").click(function () {
 $("#itemSetBtnGroup button:eq(2)").click(function () {
     var res = confirm('确认要删除吗？');
     if(res === true){
+        if($("#idSet").val()!==""){
+            $.ajax({
+                type: "POST",//方法类型
+                dataType: "text",//预期服务器返回的数据类型
+                url: "setManage/cancelSetGroup/"+$("#idSet").val(),
+                data: {},
+                success: function (result) {
+                    if(result==="0")//好像无效
+                        showAlertDiv2("alert-danger","错误!","删除组套失败。");
+                    $("#itemSetChooseDiv :checked").click();
+                }
+            });
+        }
         disableSetBtn(true);
         clearSetContent();
-        if($("#idSet").val()===""){
-            showAlertDiv2("alert-danger","错误!","删除失败,请重新选择。");
-            return;
-        }
-        $.ajax({
-            type: "POST",//方法类型
-            dataType: "text",//预期服务器返回的数据类型
-            url: "setManage/cancelSetGroup/"+$("#idSet").val(),
-            data: {},
-            success: function (result) {
-                if(result==="0")//好像无效
-                    showAlertDiv2("alert-danger","错误!","删除组套失败。");
-            }
-        });
+        disableSetContext(true);
     }
 });
 //锁定组套内容或解开 bool true锁
@@ -711,6 +711,10 @@ function disableSetContext(bool){
     if(bool)
         btns.hide();
     else btns.show();
+}
+//锁定组套子项的输入框 bool true锁定
+function disableSetSub(bool){
+    $("#itemSetContextForm tbody :text").attr("readonly",bool);
 }
 // 修改增加组套后提交
 $("#itemSetContextForm button:contains('提交')").click(function () {
@@ -732,6 +736,7 @@ $("#itemSetContextForm button:contains('提交')").click(function () {
                 showAlertDiv2("alert-success","成功!","组套提交成功。");
                 $("#itemSetCategoryDiv").hide();
                 codeNode.attr("readonly",true);
+                disableSetSub(true);
                 disableSetBtn(false);
                 disableSetContext(true);
             }
@@ -748,6 +753,7 @@ $("#itemSetContextForm button:contains('提交')").click(function () {
 //修改组套
 $("#itemSetBtnGroup").on("click","button:eq(1)",function () {
     $("#setCodeTemplate").attr("readonly",true);
+    disableSetSub(false);
     disableSetContext(false);
 }).on("click","button:eq(0)",function () {//增加病历模板
     $("#itemSetCategoryDiv").show();

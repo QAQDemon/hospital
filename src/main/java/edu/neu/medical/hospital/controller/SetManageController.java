@@ -102,7 +102,7 @@ public class SetManageController {
         setManageService.setType(type);
         setManageService.setCategory(setGroup.getUseScope().charAt(0));
         List<SetSub> setSubList=setManageService.initeSetSubList(fmeitemId,setSubEntrust);
-        if(type=='2')
+        if(method=='2')
             return setManageService.updateSetGroup(setGroup, setSubList);
         else
             return setManageService.addSetAndSub(setGroup, setSubList);

@@ -23,15 +23,15 @@ $("#allNavTab a[data-toggle='tab']:gt(0)").click(function () {
     var medicalRecordInfoId=$("#patientInfoDiv span:eq(1)").html();
     if (medicalRecordInfoId === "") {
         showAlertDiv1("alert-danger","错误!","未选择病单。");
-        $("#applyForBtnGroup").hide();
+        $("#applyForBtnGroup button:lt(4)").hide();
         return;
     }
     var status=$("#patientInfoDiv span:eq(0)").html();
     if(status==="待诊"){
         showAlertDiv1("alert-danger","错误!","请先提交病历信息。");
-        $("#applyForBtnGroup").hide();
+        $("#applyForBtnGroup button:lt(4)").hide();
     }
-    $("#applyForBtnGroup").show();
+    $("#applyForBtnGroup button:lt(4)").show();
 });
 
 var patientList;//保存病人信息列表
@@ -757,22 +757,22 @@ $("#MedrecTempContextDiv button:contains('引用')").click(function () {
 $("#medreTempBtnGroup button:eq(2)").click(function () {
     var res = confirm('确认要删除吗？');
     if(res === true){
-        disableMedrTempBtn(true);
-        clearMedrecTemplateContent();
-        if($("#idTemplate").val()===""){
-            showAlertDiv1("alert-danger","错误!","删除失败,请重新选择。");
-            return;
+        if($("#idTemplate").val()!==""){
+            $.ajax({
+                type: "POST",//方法类型
+                dataType: "text",//预期服务器返回的数据类型
+                url: "medicalRecordHome/cancelMedrecTemplate/"+$("#idTemplate").val(),
+                data: {},
+                success: function (result) {
+                    if(result==="0")//好像无效
+                        showAlertDiv1("alert-danger","错误!","删除病历模板失败。");
+                    $("#searchMedrecTempForm button").click();
+                }
+            });
         }
-        $.ajax({
-            type: "POST",//方法类型
-            dataType: "text",//预期服务器返回的数据类型
-            url: "medicalRecordHome/cancelMedrecTemplate/"+$("#idTemplate").val(),
-            data: {},
-            success: function (result) {
-                if(result==="0")//好像无效
-                    showAlertDiv1("alert-danger","错误!","删除病历模板失败。");
-            }
-        });
+        clearMedrecTemplateContent();
+        disableMedrTempBtn(true);
+        disableMedreTempContext(true);
     }
 });
 //锁定病历模板内容或解开 bool true锁
