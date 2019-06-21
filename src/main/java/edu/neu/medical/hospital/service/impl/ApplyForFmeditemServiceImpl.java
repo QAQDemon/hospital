@@ -165,15 +165,28 @@ public class ApplyForFmeditemServiceImpl implements ApplyForFmeditemService {
     }
 
     /*
-     * @Description 根据明细id获得结果
+     * @Description 根据明细id获得结果,目前只返回一个，为null可能没找到
      * @Param [visitItemDetail]
      * @return edu.neu.medical.hospital.bean.VisitItemResult
      **/
-    public VisitItemResult getVisitItemResult(VisitItemDetail visitItemDetail){
+    public VisitItemResult getVisitItemResult(int visitItemId,int fmeitemId){
+        VisitItemDetailExample visitItemDetailExample=new VisitItemDetailExample();
+        VisitItemDetailExample.Criteria criteria = visitItemDetailExample.createCriteria();
+        criteria.andVisitItemIdEqualTo(visitItemId);
+        criteria.andFmeditemIdEqualTo(fmeitemId);
+        List<VisitItemDetail> vList=visitItemDetailMapper.selectByExample(visitItemDetailExample);
+        if (vList.size() != 1 ) {
+            return new VisitItemResult();
+        }
+        int visitItemDetailId = vList.get(0).getId();
         VisitItemResultExample visitItemResultExample = new VisitItemResultExample();
-        VisitItemResultExample.Criteria criteria = visitItemResultExample.createCriteria();
-        criteria.andVisitRecordDetailIdEqualTo(visitItemDetail.getId());
-        return visitItemResultMapper.selectByExample(visitItemResultExample).get(0);
+        VisitItemResultExample.Criteria criteria1 = visitItemResultExample.createCriteria();
+        criteria1.andVisitRecordDetailIdEqualTo(visitItemDetailId);
+        List<VisitItemResult> rList=visitItemResultMapper.selectByExample(visitItemResultExample);
+        if (rList.size() != 1 ) {
+            return new VisitItemResult();
+        }
+        return rList.get(0);
     }
 
 }

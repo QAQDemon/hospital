@@ -1,10 +1,7 @@
 package edu.neu.medical.hospital.controller;
 
 import com.github.pagehelper.PageInfo;
-import edu.neu.medical.hospital.bean.Fmeditem;
-import edu.neu.medical.hospital.bean.SetGroup;
-import edu.neu.medical.hospital.bean.VisitItem;
-import edu.neu.medical.hospital.bean.VisitItemDetail;
+import edu.neu.medical.hospital.bean.*;
 import edu.neu.medical.hospital.service.ApplyForFmeditemService;
 import edu.neu.medical.hospital.service.OutpatientDoctorWorkstationService;
 import edu.neu.medical.hospital.service.SetManageService;
@@ -154,4 +151,14 @@ public class ApplyForFmeditemController {
         return outpatientDoctorWorkstationService.addCommonOption(doctorId, String.valueOf(type-46), fmeditemId);
     }
 
+
+    /*
+     * @Description 获得检查检验处置的结果 一句话和一个图片url,可能返回一个空结果//TODO
+     * @Param [visitItemId, fmeitemId]
+     * @return java.util.Map<java.lang.String,java.lang.String>
+     **/
+    @RequestMapping("getItemResult/{visitItemId}/{fmeitemId}")
+    public VisitItemResult getItemResult(@PathVariable("visitItemId")int visitItemId, @PathVariable("fmeitemId")int fmeitemId){
+        return applyForFmeditemService.getVisitItemResult(visitItemId, fmeitemId);
+    }
 }

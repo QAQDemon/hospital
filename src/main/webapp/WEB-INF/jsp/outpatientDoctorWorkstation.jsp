@@ -19,18 +19,19 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <div class="modal fade" id="ResultModal">
     <div class="modal-dialog">
         <div class="modal-content" style="width: 1000px;margin-left: -50%;margin-top: 20%">
-            <!-- 模态框头部 -->
             <div class="modal-header">
                 <h4 class="modal-title">检查结果</h4>
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
             </div>
-            <!-- 模态框主体 -->
             <div class="modal-body">
-
+                <label  class="control-label font-weight-bold">项目名称：</label><span></span>
+                <br>
+                <label  class="control-label font-weight-bold">结果描述：</label><span ></span>
+                <br>
+                <img class="card-img-bottom" src="" alt="无结果图" style="width:50%;margin-left: 25%">
             </div>
-            <!-- 模态框底部 -->
             <div class="modal-footer">
-                <button type="button" class="btn btn-primary" >导入结果</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">关闭</button>
             </div>
         </div>
     </div>
@@ -39,12 +40,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <div class="modal fade" id="ItemModal">
     <div class="modal-dialog">
         <div class="modal-content" style="width: 1000px;margin-left: -50%;margin-top: 20%">
-            <!-- 模态框头部 -->
             <div class="modal-header">
                 <h4 class="modal-title">项目</h4>
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
             </div>
-            <!-- 模态框主体 -->
             <div class="modal-body">
                 <div class="row">
                     <div class="col-md-6">
@@ -112,7 +111,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                     </div>
                 </div>
             </div>
-            <!-- 模态框底部 -->
             <div class="modal-footer">
                 <button type="button" class="btn btn-primary" >导入结果</button>
                 <button type="button" class="btn btn-primary" >保存</button>
@@ -124,12 +122,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <div class="modal fade" id="DiagnosisModal">
     <div class="modal-dialog">
         <div class="modal-content" style="width: 1000px;margin-left: -50%;margin-top: 20%">
-            <!-- 模态框头部 -->
             <div class="modal-header">
                 <h4 class="modal-title">诊断</h4>
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
             </div>
-            <!-- 模态框主体 -->
             <div class="modal-body">
                 <div class="row">
                     <div class="col-md-6">
@@ -191,7 +187,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                     </div>
                 </div>
             </div>
-            <!-- 模态框底部 -->
             <div class="modal-footer">
                 <button type="button" class="btn btn-primary" >导入结果</button>
                 <button type="button" class="btn btn-primary" >保存</button>

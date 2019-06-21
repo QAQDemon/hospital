@@ -103,7 +103,7 @@ public class ApplyForFmeditemServiceImplTest {
     public void getVisitItemResult() {
         VisitItemDetail visitItemDetail = new VisitItemDetail();
         visitItemDetail.setId(3);
-        VisitItemResult visitItemResult=applyForFmeditemService.getVisitItemResult(visitItemDetail);
+//        VisitItemResult visitItemResult=applyForFmeditemService.getVisitItemResult(visitItemDetail);
         return;
     }
 }

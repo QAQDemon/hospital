@@ -61,7 +61,7 @@ function setApplyForList(list,applyForPeople) {
     }
 }
 function clearApplyForContext() {
-     $("#visitItemForm tbody").html("");
+    $("#visitItemForm tbody").html("");
 }
 function applyForItemAjax(){
     var medicalInfoId=$("#patientInfoDiv span:eq(1)").html();
@@ -812,4 +812,29 @@ $("#itemSetBtnGroup").on("click","button:eq(1)",function () {
 });
 
 
-//todo 查看结果
+//查看项目结果
+$("#visitItemCard tbody").on("click","button",function () {
+    var node=$("#applyForCard :checked");
+    var status=node.closest("tr").find("td:eq(3)").html();
+    var visitItemNo=node.val();
+    $("#ResultModal span").html("");
+    $("#ResultModal img").attr("src", "");
+    $("#ResultModal span:first").html($(this).closest("tr").find("td:eq(1)").html());
+    if (visitItemNo === undefined||status===""||status==="暂存")
+        showAlertDiv2("alert-warning","警告!","未选择申请单或未开立过。");
+    else
+        $.ajax({
+            type: "POST",//方法类型
+            dataType: "json",//预期服务器返回的数据类型
+            url: "applyForFmeditem/getItemResult/"+visitItemNo+"/"+$(this).closest("tr").find("td:first").html(),
+            data: {},
+            success: function (result) {
+                if (result.describetion === null) {
+                    showAlertDiv2("alert-warning","警告!","未找到项目结果。");
+                    return;
+                }
+                $("#ResultModal span:last").html(result.describetion);
+                $("#ResultModal img").attr("src", result.picture);
+            }
+        });
+});
