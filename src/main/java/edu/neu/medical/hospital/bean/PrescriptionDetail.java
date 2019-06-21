@@ -9,7 +9,7 @@ public class PrescriptionDetail {
 
     private Integer drugId;
 
-    private String usage;
+    private String usageMethod;
 
     private BigDecimal consumption;
 
@@ -23,11 +23,11 @@ public class PrescriptionDetail {
 
     private String isReturnMedicine;
 
-    public PrescriptionDetail(Integer id, Integer prescriptionId, Integer drugId, String usage, BigDecimal consumption, String frequent, Integer days, Integer amount, String entrustment, String isReturnMedicine) {
+    public PrescriptionDetail(Integer id, Integer prescriptionId, Integer drugId, String usageMethod, BigDecimal consumption, String frequent, Integer days, Integer amount, String entrustment, String isReturnMedicine) {
         this.id = id;
         this.prescriptionId = prescriptionId;
         this.drugId = drugId;
-        this.usage = usage;
+        this.usageMethod = usageMethod;
         this.consumption = consumption;
         this.frequent = frequent;
         this.days = days;
@@ -64,12 +64,12 @@ public class PrescriptionDetail {
         this.drugId = drugId;
     }
 
-    public String getUsage() {
-        return usage;
+    public String getUsageMethod() {
+        return usageMethod;
     }
 
-    public void setUsage(String usage) {
-        this.usage = usage == null ? null : usage.trim();
+    public void setUsageMethod(String usageMethod) {
+        this.usageMethod = usageMethod == null ? null : usageMethod.trim();
     }
 
     public BigDecimal getConsumption() {

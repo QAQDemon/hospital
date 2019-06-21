@@ -285,73 +285,73 @@ public class PrescriptionDetailExample {
             return (Criteria) this;
         }
 
-        public Criteria andUsageIsNull() {
-            addCriterion("usage is null");
+        public Criteria andUsageMethodIsNull() {
+            addCriterion("usage_method is null");
             return (Criteria) this;
         }
 
-        public Criteria andUsageIsNotNull() {
-            addCriterion("usage is not null");
+        public Criteria andUsageMethodIsNotNull() {
+            addCriterion("usage_method is not null");
             return (Criteria) this;
         }
 
-        public Criteria andUsageEqualTo(String value) {
-            addCriterion("usage =", value, "usage");
+        public Criteria andUsageMethodEqualTo(String value) {
+            addCriterion("usage_method =", value, "usageMethod");
             return (Criteria) this;
         }
 
-        public Criteria andUsageNotEqualTo(String value) {
-            addCriterion("usage <>", value, "usage");
+        public Criteria andUsageMethodNotEqualTo(String value) {
+            addCriterion("usage_method <>", value, "usageMethod");
             return (Criteria) this;
         }
 
-        public Criteria andUsageGreaterThan(String value) {
-            addCriterion("usage >", value, "usage");
+        public Criteria andUsageMethodGreaterThan(String value) {
+            addCriterion("usage_method >", value, "usageMethod");
             return (Criteria) this;
         }
 
-        public Criteria andUsageGreaterThanOrEqualTo(String value) {
-            addCriterion("usage >=", value, "usage");
+        public Criteria andUsageMethodGreaterThanOrEqualTo(String value) {
+            addCriterion("usage_method >=", value, "usageMethod");
             return (Criteria) this;
         }
 
-        public Criteria andUsageLessThan(String value) {
-            addCriterion("usage <", value, "usage");
+        public Criteria andUsageMethodLessThan(String value) {
+            addCriterion("usage_method <", value, "usageMethod");
             return (Criteria) this;
         }
 
-        public Criteria andUsageLessThanOrEqualTo(String value) {
-            addCriterion("usage <=", value, "usage");
+        public Criteria andUsageMethodLessThanOrEqualTo(String value) {
+            addCriterion("usage_method <=", value, "usageMethod");
             return (Criteria) this;
         }
 
-        public Criteria andUsageLike(String value) {
-            addCriterion("usage like", value, "usage");
+        public Criteria andUsageMethodLike(String value) {
+            addCriterion("usage_method like", value, "usageMethod");
             return (Criteria) this;
         }
 
-        public Criteria andUsageNotLike(String value) {
-            addCriterion("usage not like", value, "usage");
+        public Criteria andUsageMethodNotLike(String value) {
+            addCriterion("usage_method not like", value, "usageMethod");
             return (Criteria) this;
         }
 
-        public Criteria andUsageIn(List<String> values) {
-            addCriterion("usage in", values, "usage");
+        public Criteria andUsageMethodIn(List<String> values) {
+            addCriterion("usage_method in", values, "usageMethod");
             return (Criteria) this;
         }
 
-        public Criteria andUsageNotIn(List<String> values) {
-            addCriterion("usage not in", values, "usage");
+        public Criteria andUsageMethodNotIn(List<String> values) {
+            addCriterion("usage_method not in", values, "usageMethod");
             return (Criteria) this;
         }
 
-        public Criteria andUsageBetween(String value1, String value2) {
-            addCriterion("usage between", value1, value2, "usage");
+        public Criteria andUsageMethodBetween(String value1, String value2) {
+            addCriterion("usage_method between", value1, value2, "usageMethod");
             return (Criteria) this;
         }
 
-        public Criteria andUsageNotBetween(String value1, String value2) {
-            addCriterion("usage not between", value1, value2, "usage");
+        public Criteria andUsageMethodNotBetween(String value1, String value2) {
+            addCriterion("usage_method not between", value1, value2, "usageMethod");
             return (Criteria) this;
         }
 

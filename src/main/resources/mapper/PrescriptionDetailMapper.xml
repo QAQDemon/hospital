@@ -4,12 +4,13 @@
 
   <insert id="insertForeach" parameterType="java.util.List" keyProperty="id" useGeneratedKeys="true">
     insert into prescription_detail
-    (id,prescription_id,drug_id,usage,consumption,frequent,days,amount,entrustment,is_return_medicine)
+    (id,prescription_id,drug_id,usage_method,consumption,frequent,days,amount,entrustment,is_return_medicine)
     values
     <foreach collection="list" item="item" index="index" separator=",">
-      (#{item.id},#{item.prescriptionId},#{item.drugId},#{item.usage},#{item.consumption},#{item.frequent},#{item.days},#{item.amount},#{item.entrustment},#{item.isReturnMedicine})
+      (#{item.id},#{item.prescriptionId},#{item.drugId},#{item.usageMethod},#{item.consumption},#{item.frequent},#{item.days},#{item.amount},#{item.entrustment},#{item.isReturnMedicine})
     </foreach>
   </insert>
+
 
 
 
@@ -29,7 +30,7 @@
       <idArg column="id" jdbcType="INTEGER" javaType="java.lang.Integer" />
       <arg column="prescription_id" jdbcType="INTEGER" javaType="java.lang.Integer" />
       <arg column="drug_id" jdbcType="INTEGER" javaType="java.lang.Integer" />
-      <arg column="usage" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="usage_method" jdbcType="VARCHAR" javaType="java.lang.String" />
       <arg column="consumption" jdbcType="DECIMAL" javaType="java.math.BigDecimal" />
       <arg column="frequent" jdbcType="CHAR" javaType="java.lang.String" />
       <arg column="days" jdbcType="INTEGER" javaType="java.lang.Integer" />
@@ -97,8 +98,8 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    id, prescription_id, drug_id, usage, consumption, frequent, days, amount, entrustment, 
-    is_return_medicine
+    id, prescription_id, drug_id, usage_method, consumption, frequent, days, amount, 
+    entrustment, is_return_medicine
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="edu.neu.medical.hospital.bean.PrescriptionDetailExample" >
     select
@@ -121,7 +122,7 @@
     </if>
   </delete>
   <insert id="insertSelective" parameterType="edu.neu.medical.hospital.bean.PrescriptionDetail" >
-    <selectKey resultType="java.lang.Integer" keyProperty="id" order="BEFORE" >
+    <selectKey resultType="java.lang.Integer" keyProperty="id" order="AFTER" >
       SELECT LAST_INSERT_ID()
     </selectKey>
     insert into prescription_detail
@@ -133,8 +134,8 @@
       <if test="drugId != null" >
         drug_id,
       </if>
-      <if test="usage != null" >
-        usage,
+      <if test="usageMethod != null" >
+        usage_method,
       </if>
       <if test="consumption != null" >
         consumption,
@@ -163,8 +164,8 @@
       <if test="drugId != null" >
         #{drugId,jdbcType=INTEGER},
       </if>
-      <if test="usage != null" >
-        #{usage,jdbcType=VARCHAR},
+      <if test="usageMethod != null" >
+        #{usageMethod,jdbcType=VARCHAR},
       </if>
       <if test="consumption != null" >
         #{consumption,jdbcType=DECIMAL},
@@ -204,8 +205,8 @@
       <if test="record.drugId != null" >
         drug_id = #{record.drugId,jdbcType=INTEGER},
       </if>
-      <if test="record.usage != null" >
-        usage = #{record.usage,jdbcType=VARCHAR},
+      <if test="record.usageMethod != null" >
+        usage_method = #{record.usageMethod,jdbcType=VARCHAR},
       </if>
       <if test="record.consumption != null" >
         consumption = #{record.consumption,jdbcType=DECIMAL},
@@ -235,7 +236,7 @@
     set id = #{record.id,jdbcType=INTEGER},
       prescription_id = #{record.prescriptionId,jdbcType=INTEGER},
       drug_id = #{record.drugId,jdbcType=INTEGER},
-      usage = #{record.usage,jdbcType=VARCHAR},
+      usage_method = #{record.usageMethod,jdbcType=VARCHAR},
       consumption = #{record.consumption,jdbcType=DECIMAL},
       frequent = #{record.frequent,jdbcType=CHAR},
       days = #{record.days,jdbcType=INTEGER},
@@ -255,8 +256,8 @@
       <if test="drugId != null" >
         drug_id = #{drugId,jdbcType=INTEGER},
       </if>
-      <if test="usage != null" >
-        usage = #{usage,jdbcType=VARCHAR},
+      <if test="usageMethod != null" >
+        usage_method = #{usageMethod,jdbcType=VARCHAR},
       </if>
       <if test="consumption != null" >
         consumption = #{consumption,jdbcType=DECIMAL},

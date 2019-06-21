@@ -100,13 +100,14 @@ $("[href='#menu3']").click(function () {
 });
 //添加药品列表
 function setPrescriptionDetail(prescriptionDetailList,drugsList) {
-    var readonlyFlag=$("#prescriptionCard :checked").closest("tr").find("td:eq(5)").html();
+    debugger;
+    var readonlyFlag=$("#prescriptionCard :radio:checked").closest("tr").find("td:eq(5)").html();
     if (readonlyFlag === "暂存"||readonlyFlag === ""||readonlyFlag===undefined)
         readonlyFlag=" ";
     else readonlyFlag=' readonly="readonly" ';
     for (var i = 0; i < prescriptionDetailList.length; i++) {
         var selectUsage = ["", "", "", "","","","","","",""];
-        selectUsage[eval(prescriptionDetailList[i].usage)]=" selected";
+        selectUsage[eval(prescriptionDetailList[i].usageMethod)]=" selected";
         var selectFrequent = ["", "", "", "",""];
         selectFrequent[eval(prescriptionDetailList[i].frequent)]=" selected";
         $("#drugsCard tbody").append('<tr>\n' +
@@ -115,7 +116,7 @@ function setPrescriptionDetail(prescriptionDetailList,drugsList) {
             '<td rowspan="2">'+drugsList[i].drugsformat+'</td>\n' +
             '<td rowspan="2">'+drugsList[i].drugsprice+'</td>\n' +
             '<td><!--用法 1口服 2静脉注射 3肌肉注射 4皮试 5皮下注射 6静脉滴注 7外用 8喷雾吸入 9其他-->\n' +
-            '<select name="usage" class="custom-select-sm">\n' +
+            '<select name="usageMethod" class="custom-select-sm">\n' +
             '<option value="0" '+selectUsage[0]+'></option><option value="1" '+selectUsage[1]+'>口服</option>\n' +
             '<option value="2" '+selectUsage[2]+'>静脉注射</option><option value="3" '+selectUsage[3]+'>肌肉注射</option>\n' +
             '<option value="4" '+selectUsage[4]+'>皮试</option><option value="5" '+selectUsage[5]+'>皮下注射</option>\n' +
@@ -143,7 +144,7 @@ function setPrescriptionDetail(prescriptionDetailList,drugsList) {
             '<input type="text" class="form-control" name="entrustment" value="'+prescriptionDetailList[i].entrustment+'" '+readonlyFlag+'>\n' +
             '</div>\n' +
             '</td>\n' +
-            '<td style="padding: 0"><a href="#"><img src="images/save_icon.jpg" style="height:40px;width:40px" alt="保存"></a></td>\n' +
+            '<td style="padding: 0" align="center"><a href="#"><img src="images/save_icon.jpg" style="height:40px;width:40px" alt="保存"></a></td>\n' +
             '</tr>');
     }
 }
@@ -177,4 +178,40 @@ $("#prescriptionCard").on("click","tr",function () {
     });
 }).on("click",":radio",function () {
     return false;//防止二次点击
+});
+
+//新增，加一行
+$("#prescriptionBtnGroup button:eq(0)").click(function () {
+    if($("#prescriptionCard :radio:checked").val()==="-1"){
+        showAlertDiv3("alert-danger", "危险!", "存在未保存的信息，先删除或暂存。");
+        return;
+    }
+    //清除checked
+    $("#prescriptionCard :radio").prop("checked", false);
+    $("#prescriptionForm tbody:eq(1)").html("");
+    $("#prescriptionForm tbody:eq(0)").append('<tr>\n' +
+        '<td>\n' +
+        '<div class="custom-control custom-radio">\n' +
+        '<input type="radio" class="custom-control-input" id="prescriptionRadionew" value="-1" checked>\n' +
+        '<label class="custom-control-label" for="prescriptionRadionew"></label>\n' +
+        '</div>\n' +
+        '</td>\n' +
+        '<td></td>\n' +
+        '<td style="padding: 0">\n' +
+        '<input type="text" class="form-control" placeholder="请输入名称" >\n' +
+        '</td>\n' +
+        '<td>\n' +
+        '<select class="custom-select-sm">\n' +
+        '<option value="0" selected></option>\n' +
+        '<option value="1" >普诊</option>\n' +
+        '<option value="2" >急诊</option>\n' +
+        '<option value="3" >专诊</option>\n' +
+        '</select>\n' +
+        '</td>\n' +
+        '<td></td>\n' +
+        '<td></td>\n' +
+        '<td></td>\n' +
+        '</tr>');
+    $("#prescriptionCard :text:last").focus();
+    changePrescriptionBtns(2);
 });
