@@ -8,6 +8,7 @@ import edu.neu.medical.hospital.service.ApplyForPrescriptionService;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -67,21 +68,48 @@ public class ApplyForPrescriptionServiceImpl implements ApplyForPrescriptionServ
     }
 
     /*
-     * @Description 设置看诊项目和明细，暂存开立删除作废
-     * @Param [prescription id为-1则需要创建, prescriptionDetailList 前者为-1需要获取对应id]
+     * @Description 初始化处方明细列表
+     * @Param [fmeditemIds, doctorEntrustments]
+     * @return java.util.List<edu.neu.medical.hospital.bean.VisitItemDetail>
+     **/
+    public List<PrescriptionDetail> initePrescriptionDetailList(int[] drugsId,String[] usageMethod,Double[] consumption,char[] frequent,int[] days,int[] amount,String[] entrustment){
+        List<PrescriptionDetail> prescriptionDetailList = new ArrayList<>();
+        for (int i = 0; i < drugsId.length; i++) {
+            PrescriptionDetail prescriptionDetail = new PrescriptionDetail();
+            prescriptionDetail.setDrugId(drugsId[i]);
+            prescriptionDetail.setUsageMethod(usageMethod[i]);
+            prescriptionDetail.setConsumption(BigDecimal.valueOf(consumption[i]));
+            prescriptionDetail.setFrequent(frequent[i]+"");
+            prescriptionDetail.setDays(days[i]);
+            prescriptionDetail.setAmount(amount[i]);
+            prescriptionDetail.setEntrustment(entrustment[i]);
+            prescriptionDetail.setIsReturnMedicine("1");
+            prescriptionDetailList.add(prescriptionDetail);
+        }
+        return prescriptionDetailList;
+    }
+
+    /*
+     * @Description 设置处方项目和明细，暂存开立
+     * @Param [prescription id为null则需要创建, prescriptionDetailList 前者为null需要获取对应id]
      * @return java.lang.Boolean
      **/
-    public Boolean setPrescriptionAndDetailList(Prescription prescription,List<PrescriptionDetail> prescriptionDetailList){
-        if(prescription.getId()==-1){//不存在,插入
-            prescriptionMapper.insertSelective(prescription);
-            //获得申请单号
+    public int setPrescriptionAndDetailList(Prescription prescription,List<PrescriptionDetail> prescriptionDetailList){
+        int result=0;
+        if(prescription.getId()==null){//不存在,插入
+            result=prescriptionMapper.insertSelective(prescription);
+            if(result==0)
+                return result;
+            //获得处方号
             int lastId=prescriptionMapper.getLastId(prescription.getMedicalRecordInfoId());
             for (PrescriptionDetail prescriptionDetail:prescriptionDetailList){
                 prescriptionDetail.setPrescriptionId(lastId);
             }
             prescriptionDetailMapper.insertForeach(prescriptionDetailList);
         }else {
-            prescriptionMapper.updateByPrimaryKeySelective(prescription);
+            result=prescriptionMapper.updateByPrimaryKeySelective(prescription);
+            if(result==0)
+                return result;
             int prescriptionId=prescription.getId();
             for (PrescriptionDetail prescriptionDetail:prescriptionDetailList){
                 prescriptionDetail.setPrescriptionId(prescriptionId);
@@ -93,7 +121,7 @@ public class ApplyForPrescriptionServiceImpl implements ApplyForPrescriptionServ
             prescriptionDetailMapper.deleteByExample(prescriptionDetailExample);
             prescriptionDetailMapper.insertForeach(prescriptionDetailList);
         }
-        return true;
+        return result;
     }
 
     /*

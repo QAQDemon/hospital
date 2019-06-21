@@ -94,7 +94,7 @@ $("[href='#menu3']").click(function () {
         node.val("1");
     else node.val("2");
     $("#menu3RightNav a:eq(0)").click();
-    $("#prescriptionForm tbody").html("");
+    $("#prescriptionForm tbody").html("");//todo
     changePrescriptionBtns(1);
     prescriptionAjax();
 });
@@ -145,6 +145,7 @@ function setPrescriptionDetail(prescriptionDetailList,drugsList) {
             '</div>\n' +
             '</td>\n' +
             '<td style="padding: 0" align="center"><a href="#"><img src="images/save_icon.jpg" style="height:40px;width:40px" alt="保存"></a></td>\n' +
+            '<input type="hidden" name="drugsId" value="'+drugsList[i].id+'">'+
             '</tr>');
     }
 }
@@ -152,7 +153,7 @@ function setPrescriptionDetail(prescriptionDetailList,drugsList) {
 $("#prescriptionCard").on("click","tr",function () {
     if($(this).find(":radio").val()==="-1"||$(this).find(":radio").val()===undefined)
         return;
-    else if($("#prescriptionCard :checked").val()==="-1"){
+    else if($("#prescriptionCard :radio:checked").val()==="-1"){
         showAlertDiv3("alert-danger", "危险!", "存在未保存的信息，先删除或暂存。");
         return;
     }
@@ -161,11 +162,11 @@ $("#prescriptionCard").on("click","tr",function () {
     var status=$(this).find("td:eq(5)").html();
     //1初始(修) 2暂存(暂、发、删、修) 3发送(作) 4作废(无)
     if(status===""||status==="暂存")
-        changeApplyForBtns(2);
+        changePrescriptionBtns(2);
     else if(status==="发送")
-        changeApplyForBtns(3);
+        changePrescriptionBtns(3);
     else if(status==="作废")
-        changeApplyForBtns(4);
+        changePrescriptionBtns(4);
     $.ajax({
         type: "POST",//方法类型
         dataType: "json",//预期服务器返回的数据类型
@@ -215,3 +216,67 @@ $("#prescriptionBtnGroup button:eq(0)").click(function () {
     $("#prescriptionCard :text:last").focus();
     changePrescriptionBtns(2);
 });
+//暂存开立
+$("#prescriptionBtnGroup button:gt(0):lt(2)").click(function () {
+    debugger;
+    var node=$("#prescriptionCard :radio:checked");
+    var trNode=node.closest("tr");
+    //判断提交内容是否完整
+    if(trNode.find(":text").val()===""||trNode.find(":selected").val()==="0"||$("#drugsCard tbody").html()===""){
+        showAlertDiv3("alert-warning","警告!","请输入名称，选择类型和至少一个药品。");
+        return;
+    }
+    var flag=0;
+    $("#drugsCard [name='entrustment']").each(function () {
+        if($(this).val()===""){
+            showAlertDiv3("alert-warning","警告!","请输入用药嘱托。");
+            flag=1;
+            return false;
+        }
+    });
+    $("#drugsCard :selected").each(function () {
+        if($(this).val()==="0"){
+            showAlertDiv3("alert-warning","警告!","请完成选择。");
+            flag=1;
+            return false;
+        }
+    });
+    $("#drugsCard [type='number']").each(function () {
+        var num=$(this).val();
+        if(num===""||num<=0||(num%1 !== 0)){
+            showAlertDiv3("alert-warning","警告!","天数和数量必须是大于0的整数。");
+            flag=1;
+            return false;
+        }
+    });
+    $("#drugsCard [name='consumption']").each(function () {
+        var num=$(this).val();
+        var reg=/^\d+(\.\d+)?$/;
+        if(!reg.test(num)||num==="0"){
+            showAlertDiv3("alert-warning","警告!","用量是必须大于0的数字。");
+            flag=1;
+            return false;
+        }
+    });
+    if(flag===1)
+        return;
+    var alertNum=showAlertDiv3("alert-secondary","","处方信息保存中...");
+    $.ajax({
+        type: "POST",//方法类型
+        dataType: "text",//预期服务器返回的数据类型
+        url: "applyForPrescription/setPrescriptionAndDetail/"+$("#prescriptionType").val()+"/"+$(this).index()+"/"+$("#patientInfoDiv span:eq(1)").html()+"/"+node.val()+"/"+trNode.find(":text").val()+"/"+trNode.find(":selected").val()+"/"+trNode.find("td:last").html(),
+        data: $("#prescriptionForm").serializeArray(),
+        success: function (result) {
+            $.outpatientMethod.closeAlertDiv(alertNum);
+            if(result==="1"){
+                showAlertDiv3("alert-success","成功!","处方信息保存成功。");
+                flushPrescriptionPage();
+            }
+            else showAlertDiv3("alert-warning","警告!","处方信息保存失败。");
+        }
+    });
+});
+//刷新处方界面，药品列表会被清空
+function flushPrescriptionPage() {
+    $("#allNavTab [href='#menu3']:contains("+$("#prescriptionForm h4:first").html().substring(0,2)+")").click();
+}

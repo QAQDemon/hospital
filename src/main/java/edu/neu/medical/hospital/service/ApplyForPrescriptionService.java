@@ -13,6 +13,7 @@ public interface ApplyForPrescriptionService {
     List<Prescription> getPrescriptionListById(int medicalRecordInfoId);
     List<Drugs> getDrugsListByList(List<PrescriptionDetail> prescriptionDetailList);
     List<PrescriptionDetail> getPrescriptionDetailListById(int prescriptionId);
-    Boolean setPrescriptionAndDetailList(Prescription prescription,List<PrescriptionDetail> prescriptionDetailList);
+    int setPrescriptionAndDetailList(Prescription prescription,List<PrescriptionDetail> prescriptionDetailList);
     List<Drugs> getCommonDrugsList(List<CommonOption> commonOptionList);
+    List<PrescriptionDetail> initePrescriptionDetailList(int[] drugsId,String[] usageMethod,Double[] consumption,char[] frequent,int[] days,int[] amount,String[] entrustment);
 }
