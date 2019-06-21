@@ -25,9 +25,6 @@ public interface PrescriptionMapper {
 
 
 
-
-
-
     int countByExample(PrescriptionExample example);
 
     int deleteByExample(PrescriptionExample example);
@@ -43,14 +40,12 @@ public interface PrescriptionMapper {
         "type, prescription_type, ",
         "prescription_name, build_time, ",
         "prescription_in_amount, prescription_out_amount, ",
-        "status, fee_status, execution_status, ",
-        "out_num, back_number)",
+        "status, fee_status, execution_status)",
         "values (#{id,jdbcType=INTEGER}, #{medicalRecordInfoId,jdbcType=INTEGER}, ",
         "#{type,jdbcType=CHAR}, #{prescriptionType,jdbcType=CHAR}, ",
         "#{prescriptionName,jdbcType=VARCHAR}, #{buildTime,jdbcType=TIMESTAMP}, ",
         "#{prescriptionInAmount,jdbcType=DECIMAL}, #{prescriptionOutAmount,jdbcType=DECIMAL}, ",
-        "#{status,jdbcType=CHAR}, #{feeStatus,jdbcType=CHAR}, #{executionStatus,jdbcType=CHAR}, ",
-        "#{outNum,jdbcType=INTEGER}, #{backNumber,jdbcType=INTEGER})"
+        "#{status,jdbcType=CHAR}, #{feeStatus,jdbcType=CHAR}, #{executionStatus,jdbcType=CHAR})"
     })
     @SelectKey(statement="SELECT LAST_INSERT_ID()", keyProperty="id", before=true, resultType=Integer.class)
     int insert(Prescription record);
@@ -62,8 +57,7 @@ public interface PrescriptionMapper {
     @Select({
         "select",
         "id, medical_record_info_id, type, prescription_type, prescription_name, build_time, ",
-        "prescription_in_amount, prescription_out_amount, status, fee_status, execution_status, ",
-        "out_num, back_number",
+        "prescription_in_amount, prescription_out_amount, status, fee_status, execution_status",
         "from prescription",
         "where id = #{id,jdbcType=INTEGER}"
     })
@@ -87,9 +81,7 @@ public interface PrescriptionMapper {
           "prescription_out_amount = #{prescriptionOutAmount,jdbcType=DECIMAL},",
           "status = #{status,jdbcType=CHAR},",
           "fee_status = #{feeStatus,jdbcType=CHAR},",
-          "execution_status = #{executionStatus,jdbcType=CHAR},",
-          "out_num = #{outNum,jdbcType=INTEGER},",
-          "back_number = #{backNumber,jdbcType=INTEGER}",
+          "execution_status = #{executionStatus,jdbcType=CHAR}",
         "where id = #{id,jdbcType=INTEGER}"
     })
     int updateByPrimaryKey(Prescription record);

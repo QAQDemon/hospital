@@ -38,6 +38,8 @@ function changeApplyForBtns(status){
 function setApplyForList(list,applyForPeople) {
     for (var i = 0; i < list.length; i++) {
         var status=list[i].status;//1暂存 2开立 3未开立删除 4开立后作废 5完成
+        var allColor=["text-info","text-primary","text-warning","text-danger","text-success"];
+        allColor=allColor[eval(status) - 1];
         var allStatus=["暂存","开立","删除","作废","完成"];
         status = allStatus[eval(status) - 1];
         $("#visitItemForm tbody:eq(0)").append('<tr>\n' +
@@ -49,7 +51,7 @@ function setApplyForList(list,applyForPeople) {
             '</td>\n' +
             '<td>'+list[i].id+'</td>\n' +
             '<td>'+getTime1(list[i].applicationTime)+'</td>\n' +
-            '<td>'+status+'</td>\n' +
+            '<td class="'+allColor+'">'+status+'</td>\n' +
             '<td>'+applyForPeople[i]+'</td>\n' +
             '<td  style="padding: 0">\n' +
             '<input type="text" class="form-control" value="'+list[i].purposeRequirement+'" '+((status==="暂存")?"":'readonly="readonly"')+'>\n' +
@@ -59,9 +61,6 @@ function setApplyForList(list,applyForPeople) {
             '<td>'+list[i].fee+'</td>\n' +
             '</tr>');
     }
-}
-function clearApplyForContext() {
-    $("#visitItemForm tbody").html("");
 }
 function applyForItemAjax(){
     var medicalInfoId=$("#patientInfoDiv span:eq(1)").html();
@@ -91,7 +90,7 @@ $("[href='#menu1']").click(function () {
         node.val("2");
     else node.val("3");
     $("#menu1RightNav a:eq(0)").click();
-    clearApplyForContext();
+    $("#visitItemForm tbody").html("");
     changeApplyForBtns(1);
     applyForItemAjax();
 });
@@ -115,7 +114,6 @@ function setVisitItemList(visitDetailList,fmeditemList) {
             '<input type="hidden" name="fmeditemId" value="'+fmeditemList[i].id+'">'+
             '</tr>');
     }
-
 }
 //选择查看申请明细
 $("#applyForCard").on("click","tr",function () {

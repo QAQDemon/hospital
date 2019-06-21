@@ -26,11 +26,7 @@ public class Prescription {
 
     private String executionStatus;
 
-    private Integer outNum;
-
-    private Integer backNumber;
-
-    public Prescription(Integer id, Integer medicalRecordInfoId, String type, String prescriptionType, String prescriptionName, Date buildTime, BigDecimal prescriptionInAmount, BigDecimal prescriptionOutAmount, String status, String feeStatus, String executionStatus, Integer outNum, Integer backNumber) {
+    public Prescription(Integer id, Integer medicalRecordInfoId, String type, String prescriptionType, String prescriptionName, Date buildTime, BigDecimal prescriptionInAmount, BigDecimal prescriptionOutAmount, String status, String feeStatus, String executionStatus) {
         this.id = id;
         this.medicalRecordInfoId = medicalRecordInfoId;
         this.type = type;
@@ -42,8 +38,6 @@ public class Prescription {
         this.status = status;
         this.feeStatus = feeStatus;
         this.executionStatus = executionStatus;
-        this.outNum = outNum;
-        this.backNumber = backNumber;
     }
 
     public Prescription() {
@@ -136,21 +130,5 @@ public class Prescription {
 
     public void setExecutionStatus(String executionStatus) {
         this.executionStatus = executionStatus == null ? null : executionStatus.trim();
-    }
-
-    public Integer getOutNum() {
-        return outNum;
-    }
-
-    public void setOutNum(Integer outNum) {
-        this.outNum = outNum;
-    }
-
-    public Integer getBackNumber() {
-        return backNumber;
-    }
-
-    public void setBackNumber(Integer backNumber) {
-        this.backNumber = backNumber;
     }
 }

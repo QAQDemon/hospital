@@ -24,14 +24,17 @@ $("#allNavTab a[data-toggle='tab']:gt(0)").click(function () {
     if (medicalRecordInfoId === "") {
         showAlertDiv1("alert-danger","错误!","未选择病单。");
         $("#applyForBtnGroup button:lt(4)").hide();
+        $("#prescriptionBtnGroup button:lt(4)").hide();
         return;
     }
     var status=$("#patientInfoDiv span:eq(0)").html();
     if(status==="待诊"){
         showAlertDiv1("alert-danger","错误!","请先提交病历信息。");
         $("#applyForBtnGroup button:lt(4)").hide();
+        $("#prescriptionBtnGroup button:lt(4)").hide();
     }
     $("#applyForBtnGroup button:lt(4)").show();
+    $("#prescriptionBtnGroup button:lt(4)").show();
 });
 
 var patientList;//保存病人信息列表

@@ -1,7 +1,6 @@
 package edu.neu.medical.hospital.service.impl;
 
 import edu.neu.medical.hospital.bean.*;
-import edu.neu.medical.hospital.dao.CommonOptionMapper;
 import edu.neu.medical.hospital.dao.DrugsMapper;
 import edu.neu.medical.hospital.dao.PrescriptionDetailMapper;
 import edu.neu.medical.hospital.dao.PrescriptionMapper;
@@ -20,8 +19,6 @@ public class ApplyForPrescriptionServiceImpl implements ApplyForPrescriptionServ
     private PrescriptionDetailMapper prescriptionDetailMapper;
     @Resource
     private DrugsMapper drugsMapper;
-    @Resource
-    private CommonOptionMapper commonOptionMapper;
 
     //1成药 2草药
     private char type;
@@ -40,6 +37,7 @@ public class ApplyForPrescriptionServiceImpl implements ApplyForPrescriptionServ
         PrescriptionExample.Criteria criteria = prescriptionExample.createCriteria();
         criteria.andTypeEqualTo(type + "");
         criteria.andMedicalRecordInfoIdEqualTo(medicalRecordInfoId);
+        criteria.andStatusNotEqualTo("3");
         return prescriptionMapper.selectByExample(prescriptionExample);
     }
 

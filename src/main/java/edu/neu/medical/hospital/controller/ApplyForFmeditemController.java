@@ -4,11 +4,9 @@ import com.github.pagehelper.PageInfo;
 import edu.neu.medical.hospital.bean.*;
 import edu.neu.medical.hospital.service.ApplyForFmeditemService;
 import edu.neu.medical.hospital.service.OutpatientDoctorWorkstationService;
-import edu.neu.medical.hospital.service.SetManageService;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
 import javax.annotation.Resource;
 import java.math.BigDecimal;
 import java.util.Date;
@@ -23,8 +21,6 @@ public class ApplyForFmeditemController {
     ApplyForFmeditemService applyForFmeditemService;
     @Resource
     OutpatientDoctorWorkstationService outpatientDoctorWorkstationService;
-    @Resource
-    SetManageService setManageService;
 
     /*
      * @Description 获得项目内容和申请人名字
