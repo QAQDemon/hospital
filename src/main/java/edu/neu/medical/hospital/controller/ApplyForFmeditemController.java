@@ -147,7 +147,6 @@ public class ApplyForFmeditemController {
         return outpatientDoctorWorkstationService.addCommonOption(doctorId, String.valueOf(type-46), fmeditemId);
     }
 
-
     /*
      * @Description 获得检查检验处置的结果 一句话和一个图片url,可能返回一个空结果//TODO
      * @Param [visitItemId, fmeitemId]

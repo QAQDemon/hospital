@@ -1,8 +1,11 @@
 package edu.neu.medical.hospital.controller;
 
+import com.github.pagehelper.PageInfo;
+import edu.neu.medical.hospital.bean.Drugs;
 import edu.neu.medical.hospital.bean.Prescription;
 import edu.neu.medical.hospital.bean.PrescriptionDetail;
 import edu.neu.medical.hospital.service.ApplyForPrescriptionService;
+import edu.neu.medical.hospital.service.OutpatientDoctorWorkstationService;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -19,6 +22,8 @@ import java.util.Map;
 public class ApplyForPrescriptionController {
     @Resource
     ApplyForPrescriptionService applyForPrescriptionService;
+    @Resource
+    OutpatientDoctorWorkstationService outpatientDoctorWorkstationService;
 
     /*
      * @Description 获得处方内容
@@ -70,5 +75,72 @@ public class ApplyForPrescriptionController {
         prescription.setFeeStatus("1");
         prescription.setExecutionStatus("1");
         return applyForPrescriptionService.setPrescriptionAndDetailList(prescription, applyForPrescriptionService.initePrescriptionDetailList(drugsId, usageMethod,consumption,frequent,days,amount,entrustment));
+    }
+
+    /*
+     * @Description 删除或作废处方
+     * @Param [method 3删除 4作废, visitItemId]
+     * @return int 1成功 0更新失败 2已付费
+     **/
+    @RequestMapping("canclePrescription/{method}/{prescriptionId}")
+    public int canclePrescription(@PathVariable("method")char method,@PathVariable("prescriptionId")int prescriptionId){
+        return applyForPrescriptionService.canclePrescription(method, prescriptionId);
+    }
+
+    /*
+     * @Description 搜索药品，分页
+     * @Param [type 1西药 2中药, pageNum]
+     * @return java.util.Map<java.lang.String,java.lang.Object>
+     **/
+    @RequestMapping("searchDrugs/{type}/{pageNum}")
+    public Map<String,Object> searchDrugs(@PathVariable("type")char type,@PathVariable("pageNum")int pageNum){
+        return searchDrugsMethod(type,pageNum,"");
+    }
+    @RequestMapping("searchDrugs/{type}/{pageNum}/{key}")
+    public Map<String,Object> searchDrugs1(@PathVariable("type")char type,@PathVariable("pageNum")int pageNum,@PathVariable("key")String key){
+        return searchDrugsMethod(type,pageNum,key);
+    }
+    private Map<String,Object> searchDrugsMethod(char type,int pageNum,String key){
+        Map<String,Object> map = new HashMap<>();
+        PageInfo pageInfo=outpatientDoctorWorkstationService.searchDrugsList(type,key,pageNum);
+        map.put("pages",pageInfo.getPages());
+        map.put("drugsList",pageInfo.getList());
+        return map;
+    }
+
+    /*
+     * @Description  获得药品常用选项，1成药 2草药
+     * @Param []
+     * @return void
+     **/
+    @RequestMapping("getCommonOption/{type}")
+    public List<Drugs> getCommonOption(@PathVariable("type")char type){
+        int doctorId=1;//todo
+
+        return applyForPrescriptionService.getCommonDrugsList(outpatientDoctorWorkstationService.getCommonOptionById((char)(type+5), doctorId));//6,7
+    }
+
+    /*
+     * @Description 删除常用药品
+     * @Param [type 1成药 2草药, drugsId]
+     * @return void
+     **/
+    @RequestMapping("deleteCommonDrugs/{type}/{drugsId}")
+    public int deleteCommonDrugs(@PathVariable("type")char type,@PathVariable("drugsId")int drugsId){
+        int doctorId=1;//todo
+
+        return outpatientDoctorWorkstationService.deleteCommonOption(doctorId,String.valueOf(type-43),drugsId);
+    }
+
+    /*
+     * @Description 增加常用药品
+     * @Param [type 1成药 2草药, drugsId]
+     * @return java.lang.Boolean
+     **/
+    @RequestMapping("addCommonDrugs/{type}/{drugsId}")
+    public int addCommonDrugs(@PathVariable("type")char type,@PathVariable("drugsId")int drugsId){
+        int doctorId=1;//todo
+
+        return outpatientDoctorWorkstationService.addCommonOption(doctorId, String.valueOf(type-43), drugsId);
     }
 }

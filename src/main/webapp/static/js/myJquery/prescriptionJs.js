@@ -280,3 +280,220 @@ $("#prescriptionBtnGroup button:gt(0):lt(2)").click(function () {
 function flushPrescriptionPage() {
     $("#allNavTab [href='#menu3']:contains("+$("#prescriptionForm h4:first").html().substring(0,2)+")").click();
 }
+
+//删除或作废 3删除 4作废
+function deletePrescriptionAjax(num){
+    $.ajax({
+        type: "POST",//方法类型
+        dataType: "text",//预期服务器返回的数据类型
+        url: "applyForPrescription/canclePrescription/"+num+"/"+$("#prescriptionCard :radio:checked").val(),
+        data: {},
+        success: function (result) {
+            if(result==="1")
+                showAlertDiv3("alert-success","成功!","删除或作废成功。");
+            else if(result==="0")
+                showAlertDiv3("alert-warning","警告!","删除或作废失败。");
+            else if(result==="2")
+                showAlertDiv3("alert-danger","错误!","该处方已付费或退费，无法作废。");
+            flushPrescriptionPage();
+        }
+    });
+}
+//删除
+$("#prescriptionBtnGroup button:eq(3)").click(function () {
+    var res = confirm('确认要删除吗？');
+    if(res === true){
+        if($("#prescriptionCard :radio:checked").val()==="-1")
+            flushPrescriptionPage();
+        else deletePrescriptionAjax('3');
+    }
+});
+//作废
+$("#prescriptionBtnGroup button:eq(4)").click(function () {
+    var res = confirm('确认要作废吗？');
+    if(res === true){
+        deletePrescriptionAjax('4');
+    }
+});
+//存为组套
+$("#prescriptionBtnGroup button:eq(5)").click(function () {
+    $("#menu3RightNav a:last").click();
+    $("#prescriptionSetBtnGroup :eq(0)").click();
+    //todo
+    var fmeitemList=getVisitItemFmeitemData();
+    var setSubList=[];
+    $("#visitItemCard tbody tr").each(function () {
+        setSubList.push({entrust:$(this).find(":text").val()});
+    });
+    setSetSub(fmeitemList,setSubList);
+    disableSetSub(false);
+});
+
+//药品 搜索
+var drugsList;//药品信息列
+var drugsFlag;//flag 1创建 2不创建页码并跳过
+var drugsPages;//总页数
+function addSearchDrugs() {
+    $("#drugsNotCheckedTbody").html("");
+    apendCheckedDrugs(drugsList, true);
+}
+function drugsPageselectCallback(page_index,jq){
+    if(!(drugsFlag===1&&page_index===0)){
+        drugsFlag=2;
+        searchDrugsAjax(page_index+1);
+    }
+    addSearchDrugs();
+    return false;
+}
+function searchDrugsAjax(pageNum){
+    var urlS="applyForPrescription/searchDrugs/"+$("#prescriptionType").val()+"/"+pageNum;
+    var drugsKey=$("#drugsKey").val();
+    if(drugsKey!=="")
+        urlS += ("/" + drugsKey);
+    $.ajax({
+        type: "POST",//方法类型
+        async:false,//防止分页错误
+        dataType: "json",//预期服务器返回的数据类型
+        url: urlS,
+        data: {},
+        success: function (result) {
+            drugsList=result.drugsList;
+            drugsPages=result.pages;
+            if(drugsFlag===1){
+                var initPagination = function() {
+                    // 创建分页
+                    $("#drugsPagination").pagination(drugsPages, {
+                        num_edge_entries: 1, //边缘页数
+                        num_display_entries: 4, //主体页数
+                        callback: drugsPageselectCallback
+                    });
+                }();
+            }
+        }
+    });
+}
+
+function initeDrugsModal(){
+    var node=$("#DrugsModal");
+    node.find("tbody").html("");//清空表格
+    node.find("#drugsKey").val("");
+    $("#drugsPagination").html("");
+    $("#drugsPageJump").hide();
+    $("#searchDrugsPage").val("");
+    $("#DrugsModal button:contains('导入结果')").show();
+    $("#DrugsModal button:contains('保存')").hide();
+}
+//获取药品列表的药品信息的list
+function getDrugsCardData(){
+    var list=[];
+    $("#drugsCard tbody tr:even").each(function () {
+        list.push({id:$(this).find("td:eq(0)").html(),drugsname:$(this).find("td:eq(1)").html(),drugsformat:$(this).find("td:eq(2)").html()});
+    });
+    return list;
+}
+//药品列表修改按钮 弹窗
+$("#drugsCard button:eq(0)").click(function () {
+    initeDrugsModal();
+    var list=getDrugsCardData();
+    apendCheckedDrugs(list,false);
+});
+//组套子项的修改
+$("#prescriptionContextForm button[data-target='#DrugsModal']:contains('修改')").click(function () {
+    initeDrugsModal();
+    $("#DrugsModal button:contains('导入结果')").hide();
+    $("#DrugsModal button:contains('保存')").show();
+    apendCheckedDrugs(getSetSubFmitemData(),false);//todo
+});
+//将内容导入药品弹窗的左右侧 bool true左 false右
+function apendCheckedDrugs(list,bool) {
+    var node;
+    if (bool)
+        node=$("#drugsNotCheckedTbody");
+    else
+        node=$("#drugsCheckedTbody");
+    for(var i=0;i<list.length;i++){
+        node.append('<tr>\n' +
+            '<td>\n' +
+            '<div class="custom-control custom-checkbox" >\n' +
+            '<input type="checkbox" class="custom-control-input" id="drugsCheck'+((bool)?'0':'1')+i+'" name="drugsCheckGroup'+((bool)?'0"':'1" checked')+'/>\n' +
+            '<label class="custom-control-label" for="drugsCheck'+((bool)?'0':'1')+i+'"></label>\n' +
+            '</div>\n' +
+            '</td>\n' +
+            '<td>'+list[i].id+'</td>\n' +
+            '<td title="'+list[i].drugsname+'" style="max-width:260px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">'+list[i].drugsname+'</td>\n' +
+            '<td>'+list[i].drugsformat+'</td>\n' +
+            '</tr>');
+    }
+}
+$("#DrugsModal").on("click",":checkbox",function () {
+    return false;//防止二次点击
+});
+function searchDrugsMethod(){
+    drugsFlag=1;
+    searchDrugsAjax(1);
+    $("#drugsPageJump").show();
+}
+$("#drugsSearchInput").on("click","button",function () {
+    searchDrugsMethod();
+}).on("keyup","input",function (e) {
+    if(e.keyCode===13){
+        searchDrugsMethod();
+    }
+});
+
+//跳转
+function drugsPageJumpMethod(){
+    var num=$("#searchDrugsPage").val();
+    if(num==null||num<=0||num>drugsPages||(num%1 !== 0)){
+        showAlertDiv3("alert-danger","错误!","异常页码。");
+        return;
+    }
+    var current=$("#drugsPagination .current").html();
+    if(current===num)//可排除第一次跳第一页
+        return;
+    drugsFlag=2;
+    searchDrugsAjax(num);
+    $("#drugsPagination").html("");
+    var initPagination = function() {
+        // 更改分页
+        $("#drugsPagination").pagination(drugsPages, {
+            num_edge_entries: 1, //边缘页数
+            num_display_entries: 4, //主体页数
+            callback: drugsPageselectCallback,
+            current_page:num-1
+        });
+    }();
+    addSearchDrugs();
+}
+$("#drugsPageJump").on("click","button",function () {
+    drugsPageJumpMethod();
+}).on("keyup","input",function (e) {
+    if(e.keyCode===13){
+        drugsPageJumpMethod();
+    }
+});
+
+//项目 搜索增加
+$("#drugsNotCheckedTbody").on("click","tr",function () {
+    var id=$(this).children().eq(1).html();
+    var oneflag=0;
+    var node=$("#drugsCheckedTbody");
+    node.children().each(function () {
+        if($(this).children().eq(1).html()===id){
+            showAlertDiv3("alert-warning","警告!","已选择。");
+            oneflag=1;
+            return false;
+        }
+    });
+    if(oneflag===1)
+        return;
+    node.append("<tr>"+$(this).html()+"</tr>")
+        .find("input").last().attr("checked",'true');
+});
+//项目 搜索删除
+$("#drugsCheckedTbody").on("click","tr",function () {
+    var res = confirm('确认要删除吗？');
+    if(res === true){
+        $(this).remove();
+    }
+});

@@ -48,7 +48,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                 <th>&nbsp;</th>
                                 <th>ID</th>
                                 <th>名称</th>
-                                <th>价格</th>
+                                <th>规格</th>
                             </tr>
                             </thead>
                             <tbody id="drugsNotCheckedTbody"></tbody>
@@ -76,7 +76,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                 <th>&nbsp;</th>
                                 <th>ID</th>
                                 <th>名称</th>
-                                <th>价格</th>
+                                <th>规格</th>
                             </tr>
                             </thead>
                             <tbody id="drugsCheckedTbody"></tbody>

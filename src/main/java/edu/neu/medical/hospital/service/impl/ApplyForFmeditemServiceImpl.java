@@ -137,7 +137,7 @@ public class ApplyForFmeditemServiceImpl implements ApplyForFmeditemService {
 
     /*
      * @Description 删除或作废项目申请，作废需要判断是否收费
-     * @Param [method, visitItemId]
+     * @Param [method 3删除 4作废, visitItemId]
      * @return int 1成功 0更新失败 2已登记
      **/
     public int cancleVisitItem(char method,int visitItemId){

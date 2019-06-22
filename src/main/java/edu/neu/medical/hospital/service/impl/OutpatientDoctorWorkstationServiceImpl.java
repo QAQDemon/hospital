@@ -134,7 +134,7 @@ public class OutpatientDoctorWorkstationServiceImpl implements OutpatientDoctorW
             criteria.andDrugstypeidEqualTo((short) 101);
         else
             criteria.andDrugstypeidNotEqualTo((short) 101);
-        criteria.andMnemoniccodeEqualTo("%"+key.toUpperCase() + "%");
+        criteria.andMnemoniccodeLike("%"+key.toUpperCase() + "%");
         return new PageInfo<>(drugsMapper.selectByExample(drugsExample));
     }
 

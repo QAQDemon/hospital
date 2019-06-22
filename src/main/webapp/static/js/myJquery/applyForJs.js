@@ -214,7 +214,7 @@ function deleteApplyForAjax(num){
         type: "POST",//方法类型
         dataType: "text",//预期服务器返回的数据类型
         url: "applyForFmeditem/cancleVisitItem/"+num+"/"+$("#applyForCard :checked").val(),
-        data: $("#visitItemForm").serializeArray(),
+        data: {},
         success: function (result) {
             if(result==="1")
                 showAlertDiv2("alert-success","成功!","删除或作废成功。");
@@ -299,7 +299,7 @@ function searchItemAjax(pageNum){
     });
 }
 
-function initeItemModel(){
+function initeItemModal(){
     var node=$("#ItemModal");
     node.find("tbody").html("");//清空表格
     node.find("#itemKey").val("");
@@ -324,13 +324,13 @@ function getVisitItemFmeitemData(){
 }
 //项目列表修改按钮 弹窗
 $("#visitItemCard button:eq(0)").click(function () {
-    initeItemModel();
+    initeItemModal();
     var list=getVisitItemFmeitemData();
     apendCheckedItem(list,false);
 });
 //组套子项的修改
 $("#itemSetContextForm button[data-target='#ItemModal']:contains('修改')").click(function () {
-    initeItemModel();
+    initeItemModal();
     $("#ItemModal button:contains('导入结果')").hide();
     $("#ItemModal button:contains('保存')").show();
     $("#itemAllAmountDiv").hide();

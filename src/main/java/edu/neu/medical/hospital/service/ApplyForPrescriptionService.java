@@ -16,4 +16,5 @@ public interface ApplyForPrescriptionService {
     int setPrescriptionAndDetailList(Prescription prescription,List<PrescriptionDetail> prescriptionDetailList);
     List<Drugs> getCommonDrugsList(List<CommonOption> commonOptionList);
     List<PrescriptionDetail> initePrescriptionDetailList(int[] drugsId,String[] usageMethod,Double[] consumption,char[] frequent,int[] days,int[] amount,String[] entrustment);
+    int canclePrescription(char method,int prescriptionId);
 }

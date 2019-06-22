@@ -125,6 +125,22 @@ public class ApplyForPrescriptionServiceImpl implements ApplyForPrescriptionServ
     }
 
     /*
+     * @Description 删除或作废处方，作废需要判断是否收费
+     * @Param [method, prescriptionId]
+     * @return int 1成功 0更新失败 2已付费或退费
+     **/
+    public int canclePrescription(char method,int prescriptionId){
+        if(method=='4'){//作废，获得付费状态
+            if(!prescriptionMapper.selectByPrimaryKey(prescriptionId).getFeeStatus().equals("1"))
+                return 2;
+        }
+        Prescription prescription = new Prescription();
+        prescription.setId(prescriptionId);
+        prescription.setStatus(method+"");
+        return prescriptionMapper.updateByPrimaryKeySelective(prescription);
+    }
+
+    /*
      * @Description 根据常用选项存储的id在药品表获得常用药品列表(常用选项列表在门诊医生工作站服务类)
      * @Param [commonOptionList]
      * @return java.util.List<edu.neu.medical.hospital.bean.Drugs>
