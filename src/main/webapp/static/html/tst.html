@@ -15,7 +15,7 @@
     <link rel="stylesheet" type="text/css" href="../css/pagination.css">
 </head>
 <body>
-
+<input type="number" id="ainput">
 <button id="tba" class="" data-toggle="modal" data-target="#ResultModal">a</button>
 <button id="tba1">a1</button>
 <p>a</p>
@@ -23,7 +23,7 @@
 <!-- 药品弹窗 -->
 <div class="modal fade" id="DrugsModal">
     <div class="modal-dialog">
-        <div class="modal-content" style="width: 1000px;margin-left: -50%;margin-top: 20%">
+        <div class="modal-content" style="width: 1200px;margin-left: -70%;margin-top: 20%">
             <div class="modal-header">
                 <h4 class="modal-title">药品</h4>
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
@@ -363,7 +363,7 @@
 </div>
 
 
-<div class="container">
+<div class="container-fluid">
     <nav class="navbar navbar-expand-md ">
             <div class="col-md-9">
                 <!-- Brand/logo -->
@@ -377,7 +377,7 @@
                 <button type="button" class="btn btn-secondary">退出</button>
             </div>
     </nav>
-    <div class="row">
+    <div class="">
         <!--左侧患者搜索卡片-->
         <div id="searchCard" class="collapse" style="position:absolute ;z-index: 100 ;margin-top: 65px ;margin-left: 15px">
             <div id="patientSCard" class="card">
@@ -470,7 +470,7 @@
             </div>
         </div>
         <!--主体-->
-        <div class="container">
+        <div class="">
             <!--患者信息-->
             <div class="card"><div class="card-body">
                 <div class="row" >
@@ -527,7 +527,7 @@
                 <div class="card-body">
                     <div class="tab-content">
                         <!--1.病历首页-->
-                        <div id="home1" class="container tab-pane active">
+                        <div id="home1" class="container-fluid tab-pane active">
                             <div class="row">
                                 <div class="col-md-8">
                                     <!--病历信息表格-->
@@ -1416,6 +1416,9 @@
 
 <script type="text/javascript">
     $("p:eq(0)").hide();
+    $("#ainput").change(function(){
+        alert();
+    });
 </script>
 </body>
 </html>

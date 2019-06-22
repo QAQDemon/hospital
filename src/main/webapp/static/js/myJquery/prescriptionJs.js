@@ -532,7 +532,11 @@ $("#DrugsModal .modal-footer :button:contains('导入结果')").click(function (
     setPrescriptionDetail(prescriptionDetailList,drugsList);
     $("#DrugsModal button[data-dismiss='modal']").click();
 });
+
 //todo 计算金额
+$("#drugsCard tbody tr:even input:last").change(function () {
+
+});
 
 //保存到组套子项 求同存异
 $("#DrugsModal .modal-footer :button:contains('保存')").click(function () {
@@ -695,7 +699,7 @@ function clearSetContent1(){
 function setSetSub1(drugsList,setSubList){
     for (var i=0;i<drugsList.length;i++) {
         $("#prescriptionContextForm tbody").append('<tr>\n' +
-            '<td title="'+drugsList[i].drugsname+'" style="max-width:80px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">'+drugsList[i].drugsname+'</td>\n' +
+            '<td title="'+drugsList[i].drugsname+'" style="max-width:160px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">'+drugsList[i].drugsname+'</td>\n' +
             '<td style="padding: 0">\n' +
             '<input type="text" class="form-control" name="setSubEntrust" value="'+setSubList[i].entrust+'" readonly="readonly">\n' +
             '<input type="hidden" name="objectId" value="'+drugsList[i].id+'">\n' +

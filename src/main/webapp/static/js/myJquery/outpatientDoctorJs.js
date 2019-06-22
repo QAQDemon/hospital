@@ -62,7 +62,7 @@ function duplicatDiagnosis(diseaseId,listName,lastNum) {
         '<input type="datetime-local"  class="form-control" />\n' +
         '<input type="hidden" name="'+listName+'['+lastNum+'].dateOfOnset"/>\n'+
         '</td>\n' +
-        '<td style="padding: 0"><a href="#"><img src="images/save_icon.jpg" style="height:40px;width:40px" alt="保存"></a></td>\n' +
+        '<td style="padding: 0" align="center"><a href="#"><img src="images/save_icon.jpg" style="height:40px;width:40px" alt="保存"></a></td>\n' +
         '<td class="text-center" style="padding: 0"><button type="button" class="btn btn-danger" style="width: 100%;height: 100%">-\n' +
         '</button></td>\n' +
         '</tr>';
@@ -203,7 +203,7 @@ function setDiagnosisList(diagnosisList,diseaseList,listName,num){
             '<input type="datetime-local"  class="form-control" value="'+getTime(diagnosisList[i].dateOfOnset)+'"/>\n' +
             '<input type="hidden" name="'+listName+'['+(i+1)+'].dateOfOnset"/>\n'+
             '</td>\n' +
-            '<td style="padding: 0"><a href="#"><img src="images/save_icon.jpg" style="height:40px;width:40px" alt="保存"></a></td>\n' +
+            '<td style="padding: 0" align="center"><a href="#"><img src="images/save_icon.jpg" style="height:40px;width:40px" alt="保存"></a></td>\n' +
             '<td class="text-center" style="padding: 0"><button type="button" class="btn btn-danger" style="width: 100%;height: 100%">-\n' +
             '</button></td>\n' +
             '</tr>';

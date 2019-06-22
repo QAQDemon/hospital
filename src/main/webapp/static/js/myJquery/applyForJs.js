@@ -109,7 +109,7 @@ function setVisitItemList(visitDetailList,fmeditemList) {
             '<input type="text" class="form-control" name="doctorEntrustment" value="'+visitDetailList[i].doctorEntrustment+'" '+readonlyFlag+'>\n' +
             '</td>\n' +
             '<td class="text-center">'+((visitDetailList[i].executionStatus==="0")?'X':'√')+'</td>\n' +
-            '<td style="padding: 0"><a href="#"><img src="images/save_icon.jpg" style="height:40px;width:40px" alt="保存"></a></td>\n' +
+            '<td style="padding: 0" align="center"><a href="#"><img src="images/save_icon.jpg" style="height:40px;width:40px" alt="保存"></a></td>\n' +
             '<td class="text-center" style="padding-left: 0;padding-right: 0"><button type="button" class="btn btn-primary btn-sm" style="width: 100%;height: 100%" data-toggle="modal" data-target="#ResultModal">查看结果</button></td>\n' +
             '<input type="hidden" name="fmeditemId" value="'+fmeditemList[i].id+'">'+
             '</tr>');
@@ -648,7 +648,7 @@ function setSetSub(fmeitemList,setSubList){
     debugger;
     for (var i=0;i<fmeitemList.length;i++) {
         $("#itemSetContextForm tbody").append('<tr>\n' +
-            '<td title="'+fmeitemList[i].itemname+'" style="max-width:80px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">'+fmeitemList[i].itemname+'</td>\n' +
+            '<td title="'+fmeitemList[i].itemname+'" style="max-width:160px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">'+fmeitemList[i].itemname+'</td>\n' +
             '<td style="padding: 0">\n' +
             '<input type="text" class="form-control" name="setSubEntrust" value="'+setSubList[i].entrust+'" readonly="readonly">\n' +
             '<input type="hidden" name="objectId" value="'+fmeitemList[i].id+'">\n' +
