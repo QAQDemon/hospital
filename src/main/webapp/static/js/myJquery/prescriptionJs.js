@@ -94,7 +94,7 @@ $("[href='#menu3']").click(function () {
         node.val("1");
     else node.val("2");
     $("#menu3RightNav a:eq(0)").click();
-    $("#prescriptionForm tbody").html("");//todo
+    $("#prescriptionForm tbody").html("");
     changePrescriptionBtns(1);
     prescriptionAjax();
 });
@@ -319,14 +319,13 @@ $("#prescriptionBtnGroup button:eq(4)").click(function () {
 $("#prescriptionBtnGroup button:eq(5)").click(function () {
     $("#menu3RightNav a:last").click();
     $("#prescriptionSetBtnGroup :eq(0)").click();
-    //todo
-    var fmeitemList=getVisitItemFmeitemData();
+    var drugsList=getDrugsCardData();
     var setSubList=[];
-    $("#visitItemCard tbody tr").each(function () {
+    $("#drugsCard tbody tr:odd").each(function () {
         setSubList.push({entrust:$(this).find(":text").val()});
     });
-    setSetSub(fmeitemList,setSubList);
-    disableSetSub(false);
+    setSetSub1(drugsList,setSubList);
+    disableSetSub1(false);
 });
 
 //药品 搜索
@@ -387,7 +386,7 @@ function initeDrugsModal(){
 function getDrugsCardData(){
     var list=[];
     $("#drugsCard tbody tr:even").each(function () {
-        list.push({id:$(this).find("td:eq(0)").html(),drugsname:$(this).find("td:eq(1)").html(),drugsformat:$(this).find("td:eq(2)").html()});
+        list.push({id:$(this).find("td:eq(0)").html(),drugsname:$(this).find("td:eq(1)").html(),drugsformat:$(this).find("td:eq(2)").html(),drugsprice:$(this).find("td:eq(3)").html()});
     });
     return list;
 }
@@ -402,7 +401,7 @@ $("#prescriptionContextForm button[data-target='#DrugsModal']:contains('修改')
     initeDrugsModal();
     $("#DrugsModal button:contains('导入结果')").hide();
     $("#DrugsModal button:contains('保存')").show();
-    apendCheckedDrugs(getSetSubFmitemData(),false);//todo
+    apendCheckedDrugs(getSetSubDrugsData(),false);
 });
 //将内容导入药品弹窗的左右侧 bool true左 false右
 function apendCheckedDrugs(list,bool) {
@@ -420,8 +419,9 @@ function apendCheckedDrugs(list,bool) {
             '</div>\n' +
             '</td>\n' +
             '<td>'+list[i].id+'</td>\n' +
-            '<td title="'+list[i].drugsname+'" style="max-width:260px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">'+list[i].drugsname+'</td>\n' +
+            '<td title="'+list[i].drugsname+'" style="max-width:200px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">'+list[i].drugsname+'</td>\n' +
             '<td>'+list[i].drugsformat+'</td>\n' +
+            '<td>'+list[i].drugsprice+'</td>\n' +
             '</tr>');
     }
 }
@@ -496,4 +496,364 @@ $("#drugsCheckedTbody").on("click","tr",function () {
     if(res === true){
         $(this).remove();
     }
+});
+
+//获得药品弹窗右侧的选择数据结果
+function getCheckedDrugsData(){
+    var drugsList=[];
+    $("#drugsCheckedTbody tr").each(function () {
+        drugsList.push({id:$(this).find("td:eq(1)").html(),drugsname:$(this).find("td:eq(2)").html(),drugsformat:$(this).find("td:eq(3)").html(),drugsprice:$(this).find("td:eq(4)").html()});
+    });
+    return drugsList;
+}
+//导入药品结果，求同存异
+$("#DrugsModal .modal-footer :button:contains('导入结果')").click(function () {
+    var drugsList=getCheckedDrugsData();
+    //原有的倒序循环，找到则删除list，找不到则删除原有
+    for(var i=($("#drugsCard tbody tr").length/2)-1;i>=0;i--){
+        var anId=$("#drugsCard tbody tr:eq("+(i*2)+")").find("td:eq(0)").html();
+        var flag=0;
+        for (var j = 0; j < drugsList.length; j++) {
+            if (drugsList[j].id === anId) {
+                drugsList.splice(j, 1);
+                flag = 1;
+                break;
+            }
+        }
+        if(flag===0){
+            $("#drugsCard tbody").find("tr:eq("+(i*2)+"),tr:eq("+(i*2+1)+")").remove();
+        }
+    }
+    //生成空列
+    var prescriptionDetailList=[];
+    for (var k = 0; k < drugsList.length; k++) {
+        prescriptionDetailList.push({usageMethod:"0", frequent: "0",consumption:"",days:"",amount:"",entrustment:""});
+    }
+    setPrescriptionDetail(prescriptionDetailList,drugsList);
+    $("#DrugsModal button[data-dismiss='modal']").click();
+});
+//todo 计算金额
+
+//保存到组套子项 求同存异
+$("#DrugsModal .modal-footer :button:contains('保存')").click(function () {
+    var drugsList=getCheckedDrugsData();
+    //倒序循环，找到则删除list，找不到则删除原有
+    for(var i=$("#prescriptionContextForm tbody tr").length-1;i>=0;i--){
+        var anId=$("#prescriptionContextForm tbody tr:eq("+i+")").find("[name='objectId']").val();
+        var flag=0;
+        for (var j = 0; j < drugsList.length; j++) {
+            if (drugsList[j].id === anId) {
+                drugsList.splice(j, 1);
+                flag = 1;
+                break;
+            }
+        }
+        if(flag===0){
+            $("#prescriptionContextForm tbody").find("tr:eq("+i+")").remove();
+        }
+    }
+    //生成空列
+    var setSubList=[];
+    for (var k = 0; k < drugsList.length; k++) {
+        setSubList.push({entrust:""});
+    }
+    setSetSub1(drugsList,setSubList);
+    disableSetSub1(false);
+    $("#DrugsModal button[data-dismiss='modal']").click();
+});
+
+//放入常用药品
+function insertCommonDrugs(list){
+    var str="";
+    for (var i = 0; i < list.length; i++) {
+        str+='<a href="#" class="list-group-item list-group-item-action"><span>'+list[i].drugsname+'</span><span class="badge badge-pill badge-danger">X</span></a>\n' +
+            '<input type="hidden" value="'+list[i].id+'">'+
+            '<input type="hidden" value="'+list[i].drugsformat+'">'+
+            '<input type="hidden" value="'+list[i].drugsprice+'">';
+    }
+    $("#menu3_1 .list-group").html(str);
+}
+//常用药品生成
+$("#menu3RightNav a:eq(0)").click(function () {
+    $.ajax({
+        type: "POST",//方法类型
+        dataType: "json",//预期服务器返回的数据类型
+        url: "applyForPrescription/getCommonOption/"+$("#prescriptionType").val(),
+        data: {},
+        success: function (result) {
+            insertCommonDrugs(result);
+        }
+    });
+});
+//双击将常用药品加到药品列表下
+$("#menu3_1").on("dblclick","a",function () {
+    var flag=0;
+    var drugsId=$(this).next().val();
+    $("#drugsCard tbody tr:even").each(function () {
+        if($(this).children().eq(0).html()===drugsId){
+            flag=1;
+            return false;//break
+        }
+    });
+    if(flag===1){
+        showAlertDiv3("alert-warning","警告!","该药品已存在。");
+        return;//重复跳出
+    }
+    var drugsList=[{id:drugsId,drugsname:$(this).find("span:eq(0)").html(),drugsformat:$(this).next().next().val(),drugsprice:$(this).next().next().next().val()}];
+    var prescriptionDetailList=[{usageMethod:"0", frequent: "0",consumption:"",days:"",amount:"",entrustment:""}];
+    setPrescriptionDetail(prescriptionDetailList,drugsList);
+    showAlertDiv3("alert-success","成功!","药品插入成功。");
+})//删除常用项目
+    .on("click",".badge-danger",function () {
+        var res = confirm('确认要删除吗？');
+        if(res === true) {
+            $.ajax({
+                type: "POST",//方法类型
+                dataType: "text",//预期服务器返回的数据类型
+                url: "applyForPrescription/deleteCommonDrugs/" + $("#prescriptionType").val() + "/" + $(this).parent().next().val(),
+                data: {},
+                success: function (result) {
+                    $("#menu3RightNav a:eq(0)").click();
+                }
+            });
+        }
+    })//取消跳转
+    .on("click","a",function () {
+        return false;
+});
+
+//增加常用药品
+$("#drugsCard").on("click","a",function () {
+    $.ajax({
+        type: "POST",//方法类型
+        dataType: "text",//预期服务器返回的数据类型
+        url: "applyForPrescription/addCommonDrugs/"+$("#prescriptionType").val()+"/"+$(this).closest("tr").prev().children().first().html(),
+        data: {},
+        success: function (result) {
+            if(result==="1")
+                showAlertDiv3("alert-success","成功!","增加常用药品成功。");
+            else showAlertDiv3("alert-danger","失败!","增加常用药品失败。");
+            $("#menu3RightNav a:eq(0)").click();
+        }
+    });
+    return false;
+});
+
+//点击导航直接搜索组套
+$("#menu3RightNav a:last").click(function () {
+    $("#searchPrescriptionForm button").click();
+    disableSetBtn1(true);
+    disableSetContext1(true);
+});
+//放入组套的名字到标签
+function addSetContext1(map){
+    var str="";
+    for(var key in map){
+        str+=' <a href="#" class="list-group-item list-group-item-action">'+map[key]+'</a><input type="hidden" value="'+key+'">';
+    }
+    $("#prescriptionListDiv").html(str);
+}
+//组套类型选择
+$("#prescriptionChooseDiv :radio").click(function () {
+    searchSetGroup1();
+});
+function searchSetGroup1(){
+    var category=$("#prescriptionChooseDiv :checked").val();
+    if(category===undefined){//未选的情况
+        category=1;
+        $("#prescriptionChooseDiv [type='radio']:eq(0)").attr("checked",true);
+    }
+    var key=$("#searchPrescriptionKey").val();
+    $.ajax({
+        type: "POST",//方法类型
+        dataType: "json",//预期服务器返回的数据类型
+        url: "setManage/getSetGroup/"+category+"/"+(eval($("#prescriptionType").val())+3)+((key==="")?"":("/"+key)),
+        data: {},
+        success: function (result) {
+            addSetContext1(result);
+        }
+    });
+}
+//组套搜索
+$("#searchPrescriptionForm").on("click","button",function () {
+    searchSetGroup1();
+}).on("keyup","input",function (e) {
+    if(e.keyCode===13){
+        searchSetGroup1();
+    }
+});
+
+//清空组套内容
+function clearSetContent1(){
+    $("#prescriptionListDiv a").removeClass("active");
+    $("#prescriptionIdSet").val("");
+    $("#categoryPrescription").val(0);
+    $("#prescriptionContextForm [type='text']").val("");
+    $("#prescriptionContextForm").find("span,tbody").html("");
+}
+//放入组套子项
+function setSetSub1(drugsList,setSubList){
+    for (var i=0;i<drugsList.length;i++) {
+        $("#prescriptionContextForm tbody").append('<tr>\n' +
+            '<td title="'+drugsList[i].drugsname+'" style="max-width:80px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">'+drugsList[i].drugsname+'</td>\n' +
+            '<td style="padding: 0">\n' +
+            '<input type="text" class="form-control" name="setSubEntrust" value="'+setSubList[i].entrust+'" readonly="readonly">\n' +
+            '<input type="hidden" name="objectId" value="'+drugsList[i].id+'">\n' +
+            '<input type="hidden" value="'+drugsList[i].drugsformat+'">\n' +
+            '<input type="hidden" value="'+drugsList[i].drugsprice+'">\n' +
+            '</td>\n' +
+            '</tr>');
+    }
+}
+//解锁或锁定组套按钮 true锁定
+function disableSetBtn1(bool){
+    var btns=$("#prescriptionSetBtnGroup").find(".btn-outline-warning,.btn-outline-danger");
+    if(bool===true)
+        btns.hide();
+    else  btns.show();
+}
+//点击标签获得组套内容
+$("#prescriptionListDiv").on("click","a",function () {
+    //变色
+    $("#prescriptionListDiv a").removeClass("active");
+    $(this).addClass("active");
+    $.ajax({
+        type: "POST",//方法类型
+        dataType: "json",//预期服务器返回的数据类型
+        url: "setManage/getSetContent/"+(eval($("#prescriptionType").val())+3)+"/"+$(this).next().val(),
+        data: {},
+        success: function (result) {
+            $("#prescriptionCodeTemplate").attr("readonly",true);
+            $("#prescriptionCategoryDiv").hide();
+            disableSetContext1(true);
+            if(result.setGroup===null){
+                showAlertDiv3("alert-warning","警告!","组套不存在。");
+                return;
+            }
+            var setGroup=result.setGroup;
+            if(eval($("#doctorId").val())===setGroup.createrId)//判断是否能修改删除
+                disableSetBtn1(false);
+            else disableSetBtn1(true);
+            $("#prescriptionIdSet").val(setGroup.id);
+            $("#categoryPrescription").val(eval(setGroup.useScope));
+            $("#prescriptionCodeTemplate").val(setGroup.setCode);
+            $("#prescriptionNameTemplate").val(setGroup.setName);
+            $("#prescriptionCreatTime").html(getTime2(setGroup.buildDate));
+            $("#prescriptionContextForm tbody").html("");
+            setSetSub1(result.objectList,result.setSubList);
+        }
+    });
+    return false;
+});
+//获得组套子项的药品信息
+function getSetSubDrugsData() {
+    var drugsList=[];
+    $("#prescriptionContextForm tbody tr").each(function () {
+        drugsList.push({id:$(this).find("[name='objectId']").val(),drugsname:$(this).find("td:eq(0)").html(),drugsformat:$(this).find("[type='hidden']:eq(1)").val(),drugsprice:$(this).find("[type='hidden']:eq(2)").val()});
+    });
+    return drugsList;
+}
+//组套子项插入主体
+function addSetSub1(){
+    var drugsList=getSetSubDrugsData();
+    var setSubList=[];
+    $("#prescriptionContextForm tbody tr").each(function () {
+        setSubList.push({usageMethod:"0", frequent: "0",consumption:"",days:"",amount:"",entrustment:$(this).find("[name='setSubEntrust']").val()});
+    });
+    //删除已存在
+    $("#drugsCard tbody tr:even").each(function () {
+        var anId=$(this).find("td:first").html();
+        for (var i = drugsList.length-1; i >=0; i--) {
+            if (drugsList[i].id === anId) {
+                drugsList.splice(i, 1);
+                setSubList.splice(i, 1);
+                break;
+            }
+        }
+    });
+    setPrescriptionDetail(setSubList,drugsList);
+}
+//引用组套
+$("#prescriptionSetBtnGroup button:contains('引用')").click(function () {
+    addSetSub1();
+});
+//删除组套
+$("#prescriptionSetBtnGroup button:eq(2)").click(function () {
+    var res = confirm('确认要删除吗？');
+    if(res === true){
+        if($("#prescriptionIdSet").val()!==""){
+            $.ajax({
+                type: "POST",//方法类型
+                dataType: "text",//预期服务器返回的数据类型
+                url: "setManage/cancelSetGroup/"+$("#prescriptionIdSet").val(),
+                data: {},
+                success: function (result) {
+                    if(result==="0")//好像无效
+                        showAlertDiv3("alert-danger","错误!","删除组套失败。");
+                    $("#prescriptionChooseDiv :checked").click();
+                }
+            });
+        }else showAlertDiv3("alert-danger","错误!","删除组套失败，请重新选择。");
+        disableSetBtn1(true);
+        clearSetContent1();
+        disableSetContext1(true);
+    }
+});
+//锁定组套内容或解开 bool true锁
+function disableSetContext1(bool){
+    $("#prescriptionNameTemplate").attr("readonly",bool);
+    var btns=$("#prescriptionContextForm button");
+    if(bool)
+        btns.hide();
+    else btns.show();
+}
+//锁定组套子项的输入框 bool true锁定
+function disableSetSub1(bool){
+    $("#prescriptionContextForm tbody :text").attr("readonly",bool);
+}
+// 修改增加组套后提交
+$("#prescriptionContextForm button:contains('提交')").click(function () {
+    var codeNode=$("#prescriptionCodeTemplate");
+    if(codeNode.val()===""||$("#categoryPrescription").val()==="0"){
+        showAlertDiv3("alert-warning", "警告!", "组套编码和适用范围不能为空。");
+        codeNode.focus();
+        return;
+    }
+    var alertNum=showAlertDiv3("alert-secondary","","组套保存中...");
+    $.ajax({
+        type: "POST",//方法类型
+        dataType: "text",//预期服务器返回的数据类型
+        url: "setManage/saveSetGroup/"+((codeNode.attr("readonly")==="readonly")?"2":"1")+"/"+(eval($("#prescriptionType").val())+3),
+        data: $("#prescriptionContextForm").serializeArray(),
+        success: function (result) {//1成功 0更新失败（已删除） 2新增失败（code已存在）
+            $.outpatientMethod.closeAlertDiv(alertNum);
+            if(result==="1"){
+                showAlertDiv3("alert-success","成功!","组套提交成功。");
+                $("#prescriptionCategoryDiv").hide();
+                codeNode.attr("readonly",true);
+                disableSetSub1(true);
+                disableSetContext1(true);
+                $("#prescriptionListDiv .active").click();
+            }
+            else if(result==="2") {
+                showAlertDiv3("alert-warning", "警告!", "当前分类下组套编码已存在。");
+                codeNode.focus();
+            }
+            else {
+                showAlertDiv3("alert-warning", "警告!", "当前分类下组套不存在。");
+            }
+        }
+    });
+});
+//修改组套
+$("#prescriptionSetBtnGroup").on("click","button:eq(1)",function () {
+    $("#prescriptionCodeTemplate").attr("readonly",true);
+    disableSetSub1(false);
+    disableSetContext1(false);
+}).on("click","button:eq(0)",function () {//新增组套
+    $("#prescriptionCategoryDiv").show();
+    $("#prescriptionCodeTemplate").attr("readonly",false);
+    disableSetContext1(false);
+    clearSetContent1();
+    disableSetBtn1(true);
 });

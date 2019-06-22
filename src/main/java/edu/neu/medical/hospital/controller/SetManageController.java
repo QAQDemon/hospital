@@ -80,11 +80,11 @@ public class SetManageController {
 
     /*
      * @Description 新增或修改组套,新增的id为null
-     * @Param [method 1新增 2修改,type 1检查2检验3处置]
+     * @Param [method 1新增 2修改,type 1检查2检验3处置,4成药 5草药]
      * @return int 1成功 0更新失败（已删除） 2新增失败（code已存在）
      **/
     @RequestMapping("saveSetGroup/{method}/{type}")
-    public int saveSetGroup(@PathVariable("method")char method,@PathVariable("type")char type,SetGroup setGroup,int[] fmeitemId,String[] setSubEntrust){
+    public int saveSetGroup(@PathVariable("method")char method,@PathVariable("type")char type,SetGroup setGroup,int[] objectId,String[] setSubEntrust){
         int doctorId=1;//todo
         int departID=2;
 
@@ -101,7 +101,7 @@ public class SetManageController {
         setManageService.setBelongId(setGroup.getBelongId());
         setManageService.setType(type);
         setManageService.setCategory(setGroup.getUseScope().charAt(0));
-        List<SetSub> setSubList=setManageService.initeSetSubList(fmeitemId,setSubEntrust);
+        List<SetSub> setSubList=setManageService.initeSetSubList(objectId,setSubEntrust);
         if(method=='2')
             return setManageService.updateSetGroup(setGroup, setSubList);
         else

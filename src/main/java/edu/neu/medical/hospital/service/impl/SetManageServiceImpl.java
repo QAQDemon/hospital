@@ -58,11 +58,11 @@ public class SetManageServiceImpl implements SetManageService {
      * @Param [fmeitemId, setSubEntrust]
      * @return java.util.List<edu.neu.medical.hospital.bean.SetSub>
      **/
-    public List<SetSub> initeSetSubList(int[] fmeitemId,String[] setSubEntrust){
+    public List<SetSub> initeSetSubList(int[] objectId,String[] setSubEntrust){
         List<SetSub> setSubList = new ArrayList<>();
-        for (int i = 1; i < fmeitemId.length; i++) {
+        for (int i = 1; i < objectId.length; i++) {
             SetSub setSub = new SetSub();
-            setSub.setResponseId(fmeitemId[i]);
+            setSub.setResponseId(objectId[i]);
             setSub.setEntrust(setSubEntrust[i]);
             setSubList.add(setSub);
         }

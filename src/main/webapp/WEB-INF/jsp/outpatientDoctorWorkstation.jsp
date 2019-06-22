@@ -49,6 +49,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                 <th>ID</th>
                                 <th>名称</th>
                                 <th>规格</th>
+                                <th>单价</th>
                             </tr>
                             </thead>
                             <tbody id="drugsNotCheckedTbody"></tbody>
@@ -77,6 +78,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                 <th>ID</th>
                                 <th>名称</th>
                                 <th>规格</th>
+                                <th>单价</th>
                             </tr>
                             </thead>
                             <tbody id="drugsCheckedTbody"></tbody>
@@ -866,7 +868,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                                                     </div>
                                                                     <!--组套子项-->
                                                                     <div class="form-group">
-                                                                        <input type="hidden" name="fmeitemId" value="-1"><input type="hidden" name="setSubEntrust" value=" ">
+                                                                        <input type="hidden" name="objectId" value="-1"><input type="hidden" name="setSubEntrust" value=" ">
                                                                         <label class="font-weight-bold">组套项目</label>&nbsp;<button type="button" class="btn btn-outline-warning btn-sm"  data-toggle="modal" data-target="#ItemModal">修改</button>
                                                                         <table class="table table-condensed table-striped table-hover table-sm table-bordered" >
                                                                             <thead>
@@ -1121,7 +1123,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                                                     </div>
                                                                     <!--组套子项-->
                                                                     <div class="form-group">
-                                                                        <input type="hidden" name="fmeitemId" value="-1"><input type="hidden" name="setSubEntrust" value=" ">
+                                                                        <input type="hidden" name="objectId" value="-1"><input type="hidden" name="setSubEntrust" value=" ">
                                                                         <label class="font-weight-bold">组套项目</label>&nbsp;<button type="button" class="btn btn-outline-warning btn-sm"  data-toggle="modal" data-target="#DrugsModal">修改</button>
                                                                         <table class="table table-condensed table-striped table-hover table-sm table-bordered" >
                                                                             <thead>

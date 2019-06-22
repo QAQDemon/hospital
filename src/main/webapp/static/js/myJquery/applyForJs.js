@@ -490,7 +490,7 @@ $("#ItemModal .modal-footer :button:contains('保存')").click(function () {
     var fmeditemList=getItemCheckedFmeditemData();
     //倒序循环，找到则删除list，找不到则删除原有
     for(var i=$("#itemSetContextForm tbody tr").length-1;i>=0;i--){
-        var anId=$("#itemSetContextForm tbody tr:eq("+i+")").find("[name='fmeitemId']").val();
+        var anId=$("#itemSetContextForm tbody tr:eq("+i+")").find("[name='objectId']").val();
         var flag=0;
         for (var j = 0; j < fmeditemList.length; j++) {
             if (fmeditemList[j].id === anId) {
@@ -535,7 +535,7 @@ $("#menu1RightNav a:eq(0)").click(function () {
         }
     });
 });
-//双击将常用项目加到评估下
+//双击将常用项目加到项目列表下
 $("#menu1_1").on("dblclick","a",function () {
     var flag=0;
     var itemId=$(this).next().val();
@@ -571,7 +571,7 @@ $("#menu1_1").on("dblclick","a",function () {
     })//取消跳转
     .on("click","a",function () {
         return false;
-    });
+});
 
 //增加常用项目
 $("#visitItemCard").on("click","a",function () {
@@ -609,6 +609,7 @@ $("#itemSetChooseDiv :radio").click(function () {
     searchSetGroup();
 });
 function searchSetGroup(){
+    debugger;
     var category=$("#itemSetChooseDiv :checked").val();
     if(category===undefined){//未选的情况
         category=1;
@@ -644,12 +645,13 @@ function clearSetContent(){
 }
 //放入组套子项
 function setSetSub(fmeitemList,setSubList){
+    debugger;
     for (var i=0;i<fmeitemList.length;i++) {
         $("#itemSetContextForm tbody").append('<tr>\n' +
             '<td title="'+fmeitemList[i].itemname+'" style="max-width:80px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">'+fmeitemList[i].itemname+'</td>\n' +
             '<td style="padding: 0">\n' +
             '<input type="text" class="form-control" name="setSubEntrust" value="'+setSubList[i].entrust+'" readonly="readonly">\n' +
-            '<input type="hidden" name="fmeitemId" value="'+fmeitemList[i].id+'">\n' +
+            '<input type="hidden" name="objectId" value="'+fmeitemList[i].id+'">\n' +
             '<input type="hidden" value="'+fmeitemList[i].price+'">\n' +
             '</td>\n' +
             '</tr>');
@@ -699,7 +701,7 @@ $("#itemSetListDiv").on("click","a",function () {
 function getSetSubFmitemData() {
     var fmeditemList=[];
     $("#itemSetContextForm tbody tr").each(function () {
-        fmeditemList.push({id:$(this).find("[name='fmeitemId']").val(),itemname:$(this).find("td:eq(0)").html(),price:$(this).find("[type='hidden']:eq(1)").val()});
+        fmeditemList.push({id:$(this).find("[name='objectId']").val(),itemname:$(this).find("td:eq(0)").html(),price:$(this).find("[type='hidden']:eq(1)").val()});
     });
     return fmeditemList;
 }
