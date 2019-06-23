@@ -1,4 +1,3 @@
-var alertFlag=100;
 function showAlertDiv2(color,caption,text){
     alertFlag++;
     return $.outpatientMethod.showAlertDiv(alertFlag,color,caption,text);
@@ -117,7 +116,7 @@ function setVisitItemList(visitDetailList,fmeditemList) {
 }
 //选择查看申请明细
 $("#applyForCard").on("click","tr",function () {
-    if($(this).find(":radio").val()==="-1"||$(this).find(":radio").val()===undefined)
+    if($(this).find(":radio").val()===$("#applyForCard :checked").val()||$(this).find(":radio").val()===undefined)
         return;
     else if($("#applyForCard :checked").val()==="-1"){
         showAlertDiv2("alert-danger", "危险!", "存在未保存的信息，先删除或暂存。");

@@ -4,7 +4,7 @@ $.outpatientMethod={
         $("body").prepend(
             '<div id="alertDiv'+num+'" class="alert alert-dismissible fade show '+color+'" style="position:fixed;z-index: '+num+';width: 100%;">\n' +
             '    <button type="button" class="close" data-dismiss="alert">&times;</button>\n' +
-            '    <strong>'+caption+'</strong><span>'+text+'</span>\n' +
+            '    <strong>'+alertFlag+'.'+caption+'</strong><span>'+text+'</span>\n' +
             '</div>');
         return num;
     },

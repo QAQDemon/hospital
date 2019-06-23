@@ -1,20 +1,8 @@
-var alertFlag=200;
 function showAlertDiv3(color,caption,text){
     alertFlag++;
     return $.outpatientMethod.showAlertDiv(alertFlag,color,caption,text);
 }
-//修改时间格式
-function getTime2(t){
-    if(t===null)
-        return "";
-    var _time=new Date(t);
-    var   year=_time.getFullYear();//2017
-    var   month=(Array(2).join("0") + (_time.getMonth()+1)).slice(-2);
-    var   date=(Array(2).join("0") + (_time.getDate())).slice(-2);
-    var   hour=(Array(2).join("0") + (_time.getHours())).slice(-2);
-    var   minute=(Array(2).join("0") + (_time.getMinutes())).slice(-2);
-    return   (year+"-"+month+"-"+date+" "+hour+":"+minute);//2014-01-02 11:42
-}
+
 //处方主体按钮显示的切换(新增和组套一直在) 1初始(修) 2暂存(暂、发、删、修) 3发送(作) 4作废(无)
 function changePrescriptionBtns(status){
     if(status===1){
@@ -62,7 +50,7 @@ function setPrescriptionList(list) {
             '<option value="3" '+selectItem[3]+'>专诊</option>\n' +
             '</select>\n' +
             '</td>\n' +
-            '<td>'+getTime2(list[i].buildTime)+'</td>\n' +
+            '<td>'+getTime1(list[i].buildTime)+'</td>\n' +
             '<td class="'+allColor+'">'+status+'</td>\n' +
             '<td>'+list[i].prescriptionInAmount+'</td>\n' +
             '</tr>');
@@ -150,7 +138,7 @@ function setPrescriptionDetail(prescriptionDetailList,drugsList) {
 }
 //选择查看处方明细
 $("#prescriptionCard").on("click","tr",function () {
-    if($(this).find(":radio").val()==="-1"||$(this).find(":radio").val()===undefined)
+    if($(this).find(":radio").val()===$("#prescriptionCard :radio:checked").val()||$(this).find(":radio").val()===undefined)
         return;
     else if($("#prescriptionCard :radio:checked").val()==="-1"){
         showAlertDiv3("alert-danger", "危险!", "存在未保存的信息，先删除或暂存。");
@@ -753,7 +741,7 @@ $("#prescriptionListDiv").on("click","a",function () {
             $("#categoryPrescription").val(eval(setGroup.useScope));
             $("#prescriptionCodeTemplate").val(setGroup.setCode);
             $("#prescriptionNameTemplate").val(setGroup.setName);
-            $("#prescriptionCreatTime").html(getTime2(setGroup.buildDate));
+            $("#prescriptionCreatTime").html(getTime1(setGroup.buildDate));
             $("#prescriptionContextForm tbody").html("");
             setSetSub1(result.objectList,result.setSubList);
         }
