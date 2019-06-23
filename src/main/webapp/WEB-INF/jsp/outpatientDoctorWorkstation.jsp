@@ -863,9 +863,128 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                             </div>
                         </div>
                     </div>
+                    <!--3.门诊确诊-->
                     <div id="menu2" class="container-fluid tab-pane fade"><br>
-
+                        <div class="row">
+                            <div class="col-md-8">
+                                <div class="row ">
+                                    <div class="col-md-7">
+                                        <h4 class="font-weight-bold">门诊确诊</h4>
+                                    </div>
+                                </div>
+                                <!--初诊部分-->
+                                <div class="card">
+                                    <div class="card-header font-weight-bold">初诊</div>
+                                    <div id="newDiagnosisContentCard" class="card-body">
+                                        <label class="font-weight-bold">西医诊断</label>
+                                        <table class="table table-condensed table-striped table-hover table-sm table-bordered" >
+                                            <thead>
+                                            <tr>
+                                                <th>ID</th>
+                                                <th>ICD编码</th>
+                                                <th>名称</th>
+                                                <th>主诊</th>
+                                                <th>疑似</th>
+                                                <th>发病日期</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody></tbody>
+                                        </table>
+                                        <!--中医诊断输入-->
+                                        <label class="font-weight-bold">中医诊断</label>
+                                        <table class="table table-condensed table-striped table-hover table-sm table-bordered" >
+                                            <thead>
+                                            <tr>
+                                                <th>ID</th>
+                                                <th>ICD编码</th>
+                                                <th>名称</th>
+                                                <th>主诊</th>
+                                                <th>疑似</th>
+                                                <th>发病日期</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody></tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                                <br>
+                                <form id="finalDiagnosisForm" role="form" onkeypress="return event.keyCode !== 13;">
+                                    <!--空白内容防止出错-->
+                                    <input type="hidden" name="xDiagnosisList[0].diseaseId" value="-1">
+                                    <input type="hidden" name="zDiagnosisList[0].diseaseId" value="-1">
+                                    <!--终诊输入部分-->
+                                    <div class="card">
+                                        <div class="card-header font-weight-bold">
+                                            <div class="row">
+                                                <div class="col-md-3"><span>终诊</span></div>
+                                                <div class="col-md-9">
+                                                    <div class="text-right"><button id="identifyButton" type="button" class="btn btn-danger btn-sm">确诊</button></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="card-body">
+                                            <label class="font-weight-bold">西医诊断</label>
+                                            <table class="table table-condensed table-striped table-hover table-sm table-bordered" >
+                                                <thead>
+                                                <tr>
+                                                    <th>ID</th>
+                                                    <th>ICD编码</th>
+                                                    <th>名称</th>
+                                                    <th>&nbsp;</th>
+                                                    <th class="text-center" style="padding: 0"><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#DiagnosisModal" style="width: 100%;height: 100%">+
+                                                    </button></th>
+                                                </tr>
+                                                </thead>
+                                                <tbody></tbody>
+                                            </table>
+                                            <!--中医诊断输入-->
+                                            <label class="font-weight-bold">中医诊断</label>
+                                            <table class="table table-condensed table-striped table-hover table-sm table-bordered" >
+                                                <thead>
+                                                <tr>
+                                                    <th>ID</th>
+                                                    <th>ICD编码</th>
+                                                    <th>名称</th>
+                                                    <th>&nbsp;</th>
+                                                    <th class="text-center" style="padding: 0"><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#DiagnosisModal" style="width: 100%;height: 100%">+
+                                                    </button></th>
+                                                </tr>
+                                                </thead>
+                                                <tbody></tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                            <!--右侧功能-->
+                            <div class="col-md-4">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <ul class="nav nav-pills " >
+                                            <li class="nav-item">
+                                                <a id="commonDiagnosisLink" class="nav-link active " href="#"><small>常用诊断</small></a>
+                                            </li>
+                                        </ul>
+                                        <!--常用诊断部分-->
+                                        <div id="comonDiagnosis" class="container">
+                                            <hr>
+                                            <div class="card">
+                                                <div class="card-header"><strong>西医诊断</strong></div>
+                                                <!--诊断内容-->
+                                                <div class="list-group"></div>
+                                            </div>
+                                            <div class="card" style="margin-top: 8px">
+                                                <div class="card-header"><strong>中医诊断</strong></div>
+                                                <!--诊断内容-->
+                                                <div class="list-group"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
+                    <!--4.处方申请部分-->
                     <div id="menu3" class="container-fluid tab-pane fade"><br>
                         <input type="hidden" id="prescriptionType">
                         <div class="row">
@@ -1067,5 +1186,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <script type="text/javascript" src="js/myJquery/outpatientDoctorJs.js"></script>
 <script type="text/javascript" src="js/myJquery/applyForJs.js"></script>
 <script type="text/javascript" src="js/myJquery/prescriptionJs.js"></script>
+<script type="text/javascript" src="js/myJquery/finalDiagnosisJs.js"></script>
 </body>
 </html>

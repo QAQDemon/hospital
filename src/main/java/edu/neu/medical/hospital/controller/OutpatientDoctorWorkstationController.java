@@ -1,7 +1,9 @@
 package edu.neu.medical.hospital.controller;
 
 import edu.neu.medical.hospital.bean.CommonOption;
+import edu.neu.medical.hospital.bean.Diagnosis;
 import edu.neu.medical.hospital.bean.Patient;
+import edu.neu.medical.hospital.service.MedicalRecordHomeService;
 import edu.neu.medical.hospital.service.OutpatientDoctorWorkstationService;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -17,6 +19,8 @@ import java.util.Map;
 public class OutpatientDoctorWorkstationController {
     @Resource
     OutpatientDoctorWorkstationService outpatientDoctorWorkstationService;
+    @Resource
+    MedicalRecordHomeService medicalRecordHomeService;
 
     /*
      * @Description 第一次跳转到主界面
@@ -55,6 +59,25 @@ public class OutpatientDoctorWorkstationController {
         Map<String,List<Patient>> map=new HashMap<>();
         map.put("isSeenList", outpatientDoctorWorkstationService.searchPatientList(doctorId, departID, '2', key));
         map.put("notSeenList", outpatientDoctorWorkstationService.searchPatientList(doctorId, departID, '1', key));
+        return map;
+    }
+
+    /*
+     * @Description 获得初诊疾病及信息，和终诊的疾病//TODO
+     * @Param [medicalInfoId]
+     * @return java.util.Map<java.lang.String,java.lang.Object>
+     **/
+    @RequestMapping("getNewFinalDiagnosis/{medicalInfoId}")
+    public Map<String,Object> getNewFinalDiagnosis(@PathVariable("medicalInfoId")int medicalInfoId){
+        Map<String,Object> map = new HashMap<>();
+        List<Diagnosis> zNewDiagnosisList=medicalRecordHomeService.getNewDiagnosisListById('1','2',medicalInfoId);
+        List<Diagnosis> xNewDiagnosisList=medicalRecordHomeService.getNewDiagnosisListById('1','1',medicalInfoId);
+        map.put("zNewDiagnosisList",zNewDiagnosisList);
+        map.put("xNewDiagnosisList",xNewDiagnosisList);
+        map.put("zDiagnosisDiseaseList",medicalRecordHomeService.getDiagnosisDiseaseList(zNewDiagnosisList));
+        map.put("xDiagnosisDiseaseList",medicalRecordHomeService.getDiagnosisDiseaseList(xNewDiagnosisList));
+        map.put("zFinalDiagnosisDiseaseList",medicalRecordHomeService.getDiagnosisDiseaseList(outpatientDoctorWorkstationService.getFinalDiagnosisList('2',medicalInfoId)));
+        map.put("xFinalDiagnosisDiseaseList",medicalRecordHomeService.getDiagnosisDiseaseList(outpatientDoctorWorkstationService.getFinalDiagnosisList('1',medicalInfoId)));
         return map;
     }
 

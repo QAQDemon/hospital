@@ -14,4 +14,5 @@ public interface OutpatientDoctorWorkstationService {
     Boolean setCompleteVisit(int medicalRecordInfoId);
     int deleteCommonOption(int doctorId,String type,int optionId);
     int addCommonOption(int doctorId,String type,int optionId);
+    List<Diagnosis> getFinalDiagnosisList(char type,int medicalInfoId);
 }

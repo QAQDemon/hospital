@@ -139,6 +139,21 @@ public class OutpatientDoctorWorkstationServiceImpl implements OutpatientDoctorW
     }
 
     /*
+     * @Description 获得终诊结果
+     * @Param [type 1x 2z, medicalInfoId]
+     * @return java.util.List<edu.neu.medical.hospital.bean.Diagnosis>
+     **/
+    public List<Diagnosis> getFinalDiagnosisList(char type,int medicalInfoId){
+        DiagnosisExample diagnosisExample=new DiagnosisExample();
+        DiagnosisExample.Criteria criteria=diagnosisExample.createCriteria();
+        criteria.andIsFinalDiagnosisEqualTo("2");
+        criteria.andMedicalRecordInfoIdEqualTo(medicalInfoId);
+        criteria.andTypeEqualTo(type+"");//确定中西
+        criteria.andCategoryEqualTo("1");
+        return diagnosisMapper.selectByExample(diagnosisExample);
+    }
+
+    /*
      * @Description 门诊确诊，事先设置final和category
      * @Param [diagnosisList]
      * @return java.lang.Boolean
