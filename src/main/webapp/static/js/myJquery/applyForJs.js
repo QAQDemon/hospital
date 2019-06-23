@@ -14,7 +14,7 @@ function getTime1(t){
     var   date=(Array(2).join("0") + (_time.getDate())).slice(-2);
     var   hour=(Array(2).join("0") + (_time.getHours())).slice(-2);
     var   minute=(Array(2).join("0") + (_time.getMinutes())).slice(-2);
-    return   (year+"-"+month+"-"+date+" "+hour+":"+minute).substring(2,16);//14-01-02 11:42
+    return   (year+"-"+month+"-"+date+" "+hour+":"+minute);//2014-01-02 11:42
 }
 //申请主体按钮显示的切换(新增和组套一直在) 1初始(修) 2暂存(暂、开、删、修) 3开立(作) 4作废、完成(无)
 function changeApplyForBtns(status){

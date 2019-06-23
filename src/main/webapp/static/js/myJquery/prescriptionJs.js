@@ -100,7 +100,6 @@ $("[href='#menu3']").click(function () {
 });
 //添加药品列表
 function setPrescriptionDetail(prescriptionDetailList,drugsList) {
-    debugger;
     var readonlyFlag=$("#prescriptionCard :radio:checked").closest("tr").find("td:eq(5)").html();
     if (readonlyFlag === "暂存"||readonlyFlag === ""||readonlyFlag===undefined)
         readonlyFlag=" ";
@@ -218,7 +217,6 @@ $("#prescriptionBtnGroup button:eq(0)").click(function () {
 });
 //暂存开立
 $("#prescriptionBtnGroup button:gt(0):lt(2)").click(function () {
-    debugger;
     var node=$("#prescriptionCard :radio:checked");
     var trNode=node.closest("tr");
     //判断提交内容是否完整
@@ -533,9 +531,22 @@ $("#DrugsModal .modal-footer :button:contains('导入结果')").click(function (
     $("#DrugsModal button[data-dismiss='modal']").click();
 });
 
-//todo 计算金额
-$("#drugsCard tbody tr:even input:last").change(function () {
-
+//计算处方金额，单价*数量，排除非正整数
+function caculatePrescriptionAmount(){
+    var amount=0;
+    $("#drugsCard tbody tr:even").each(function () {
+        var num=$(this).find("[type='number']:last").val();
+        if(num===""||num<=0||(num%1 !== 0))
+            return true;
+        amount+=eval(num)*eval($(this).find("td:eq(3)").html());
+    });
+    return Number(amount).toFixed(2);
+}
+//改变数量就计算金额
+$("#drugsCard tbody").on("change","[type='number']:odd",function () {
+    var amountNode=$("#prescriptionCard :radio:checked").closest("tr").children().last();
+    if(amountNode.html()!==undefined)
+        amountNode.html(caculatePrescriptionAmount());
 });
 
 //保存到组套子项 求同存异
