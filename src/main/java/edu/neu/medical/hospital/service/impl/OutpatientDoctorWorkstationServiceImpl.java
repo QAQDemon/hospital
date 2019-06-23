@@ -10,6 +10,7 @@ import edu.neu.medical.hospital.bean.RegistrationInfoExample;
 import edu.neu.medical.hospital.dao.RegistrationInfoMapper;
 import org.springframework.stereotype.Service;
 import javax.annotation.Resource;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -154,13 +155,43 @@ public class OutpatientDoctorWorkstationServiceImpl implements OutpatientDoctorW
     }
 
     /*
+     * @Description 设置终诊list
+     * @Param [medicalInfoId, diagnosisArray, type]
+     * @return java.util.List<edu.neu.medical.hospital.bean.Diagnosis>
+     **/
+    private List<Diagnosis> setFinalDiagnosis(int medicalInfoId,int[] diagnosisArray,char type){
+        List<Diagnosis> diagnosisList = new ArrayList<>();
+        for (int i = 1; i < diagnosisArray.length; i++) {
+            Diagnosis diagnosis = new Diagnosis();
+            diagnosis.setMedicalRecordInfoId(medicalInfoId);
+            diagnosis.setDiseaseId(diagnosisArray[i]);
+            diagnosis.setType(type+"");
+            diagnosis.setIsFinalDiagnosis("2");
+            diagnosis.setCategory("1");
+            diagnosisList.add(diagnosis);
+        }
+        return diagnosisList;
+    }
+    /*
+     * @Description 初始化终诊list
+     * @Param [medicalInfoId, diagnosis0, diagnosis1]
+     * @return java.util.List<edu.neu.medical.hospital.bean.Diagnosis>
+     **/
+    public List<Diagnosis> initeFinalDiagnosis(int medicalInfoId,int[] diagnosis0,int[] diagnosis1){
+        List<Diagnosis> diagnosisList = new ArrayList<>();
+        diagnosisList.addAll(setFinalDiagnosis(medicalInfoId, diagnosis0, '1'));
+        diagnosisList.addAll(setFinalDiagnosis(medicalInfoId, diagnosis1, '2'));
+        return diagnosisList;
+    }
+
+    /*
      * @Description 门诊确诊，事先设置final和category
      * @Param [diagnosisList]
      * @return java.lang.Boolean
      **/
-    public Boolean setFinalDiagnosisList(List<Diagnosis> diagnosisList) {
+    public int setFinalDiagnosisList(List<Diagnosis> diagnosisList) {
         diagnosisMapper.insertForeach(diagnosisList);
-        return true;
+        return 1;
     }
 
     /*

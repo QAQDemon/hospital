@@ -267,6 +267,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 </div>
             </div>
             <div class="modal-footer">
+                <button type="button" class="btn btn-primary" >导入确诊</button>
                 <button type="button" class="btn btn-primary" >导入结果</button>
                 <button type="button" class="btn btn-primary" >保存</button>
             </div>

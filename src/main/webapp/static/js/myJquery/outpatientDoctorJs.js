@@ -387,8 +387,14 @@ $("button[data-target='#DiagnosisModal']:contains('+')").click(function () {
     $("#diagnosisPagination").html("");
     $("#diseasePageJump").hide();
     $("#searchDiagnosisPage").val("");
-    $("#DiagnosisModal button:contains('导入结果')").show();
     $("#DiagnosisModal button:contains('保存')").hide();
+    if($("#home1").hasClass("active")){
+        $("#DiagnosisModal button:contains('导入结果')").show();
+        $("#DiagnosisModal button:contains('导入确诊')").hide();
+    } else{
+        $("#DiagnosisModal button:contains('导入确诊')").show();
+        $("#DiagnosisModal button:contains('导入结果')").hide();
+    }
 });
 $("button[data-target='#DiagnosisModal']:contains('修改')").click(function () {
     var node=$("#DiagnosisModal");
@@ -402,6 +408,7 @@ $("button[data-target='#DiagnosisModal']:contains('修改')").click(function () 
     $("#diseasePageJump").hide();
     $("#searchDiagnosisPage").val("");
     $("#DiagnosisModal button:contains('导入结果')").hide();
+    $("#DiagnosisModal button:contains('导入确诊')").hide();
     $("#DiagnosisModal button:contains('保存')").show();
     //放入要修改的内容
     var resultNode=$("#diagnosisCheckedTbody");

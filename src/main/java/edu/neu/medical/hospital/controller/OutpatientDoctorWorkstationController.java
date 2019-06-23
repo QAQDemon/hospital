@@ -63,7 +63,7 @@ public class OutpatientDoctorWorkstationController {
     }
 
     /*
-     * @Description 获得初诊疾病及信息，和终诊的疾病//TODO
+     * @Description 获得初诊疾病及信息，和终诊的疾病
      * @Param [medicalInfoId]
      * @return java.util.Map<java.lang.String,java.lang.Object>
      **/
@@ -79,6 +79,16 @@ public class OutpatientDoctorWorkstationController {
         map.put("zFinalDiagnosisDiseaseList",medicalRecordHomeService.getDiagnosisDiseaseList(outpatientDoctorWorkstationService.getFinalDiagnosisList('2',medicalInfoId)));
         map.put("xFinalDiagnosisDiseaseList",medicalRecordHomeService.getDiagnosisDiseaseList(outpatientDoctorWorkstationService.getFinalDiagnosisList('1',medicalInfoId)));
         return map;
+    }
+
+    /*
+     * @Description 确定终诊//TODO
+     * @Param [medicalInfoId, diagnosis0, diagnosis1]
+     * @return int
+     **/
+    @RequestMapping("setFinalDiagnosis/{medicalInfoId}")
+    public int setFinalDiagnosis(@PathVariable("medicalInfoId")int medicalInfoId,int[] diagnosis0,int[] diagnosis1){
+        return outpatientDoctorWorkstationService.setFinalDiagnosisList(outpatientDoctorWorkstationService.initeFinalDiagnosis(medicalInfoId, diagnosis0, diagnosis1));
     }
 
 }
