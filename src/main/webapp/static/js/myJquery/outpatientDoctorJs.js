@@ -224,6 +224,12 @@ function resetHomeRight(){
     $("#medrecTempChooseDiv [type='radio']:eq(0)").click();
     clearMedrecTemplateContent();
 }
+//初始化功能板
+$("[href='#home1']").click(function () {
+    var  node=$("#homeRightNav a:first");
+    if(!node.hasClass("active"))
+        node.click();
+});
 //点击表格设置患者信息
 $("#searchPatientTbody1,#searchPatientTbody2").on("click","tr",function () {
     $("[href='#home1']").click();
@@ -302,7 +308,7 @@ $("#searchPatientTbody1,#searchPatientTbody2").on("click","tr",function () {
     });
 });
 //诊断 删
-$("#diagnosisContextTbody1,#diagnosisContextTbody2").on("click","button:contains('-')",function () {
+$("#diagnosisContextTbody1,#diagnosisContextTbody2,#finalDiagnosisForm").on("click","button:contains('-')",function () {
     var res = confirm('确认要删除吗？');
     if(res === true){
         // var tbodyNode=$(this).closest("tbody");
@@ -832,7 +838,7 @@ $("#medreTempBtnGroup").on("click","button:eq(1)",function () {
     disableMedrTempBtn(true);
 });
 
-//放入常用诊断
+//放入常用诊断(返回给终诊页面)
 function insertCommonDisease(list,num){
     var str="";
     for (var i = 0; i < list.length; i++) {
@@ -841,6 +847,7 @@ function insertCommonDisease(list,num){
             '<input type="hidden" value="'+list[i].diseaseicd+'">';
     }
     $("#home1_2 .list-group:eq("+num+")").html(str);
+    return str;
 }
 //常用诊断生成
 $("#homeRightNav a:eq(1)").click(function () {
@@ -880,8 +887,9 @@ $("#home1_2").on("dblclick","a",function () {
         '<td title="'+$(this).children().first().html()+'" style="max-width:120px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">'+$(this).children().first().html()+'</td>\n' +
         duplicatDiagnosis(diseaseId,listName,lastNum));
     showAlertDiv("alert-success","成功!","诊断插入成功。");
-})//删除常用诊断
-.on("click",".badge-danger",function () {
+});
+//删除常用诊断
+$("#home1_2,#comonDiagnosis").on("click",".badge-danger",function () {
     var res = confirm('确认要删除吗？');
     if(res === true) {
         $.ajax({
@@ -891,16 +899,17 @@ $("#home1_2").on("dblclick","a",function () {
             data: {},
             success: function (result) {
                 $("#homeRightNav a:eq(1)").click();
+                $("#commonDiagnosisLink").click();
             }
         });
     }
-})//取消跳转
-.on("click","a",function () {
+}).on("click","a",function () {
     return false;
 });
 
+
 //增加常用诊断
-$("#diagnosisContentCard").on("click","a",function () {
+$("#diagnosisContentCard,#finalDiagnosisForm").on("click","a",function () {
     $.ajax({
         type: "POST",//方法类型
         dataType: "text",//预期服务器返回的数据类型
@@ -911,6 +920,7 @@ $("#diagnosisContentCard").on("click","a",function () {
                 showAlertDiv("alert-success","成功!","增加常用诊断成功。");
             else showAlertDiv("alert-danger","失败!","增加常用诊断失败。");
             $("#homeRightNav a:eq(1)").click();
+            $("#commonDiagnosisLink").click();
         }
     });
     return false;
@@ -927,6 +937,8 @@ function addHistoryMedicalLabel(map){
 }
 //历史病历查看
 $("#homeRightNav a:eq(2)").click(function () {
+    if($("#patientListForm :checked").val()===undefined)
+        return;
     $.ajax({
         type: "POST",//方法类型
         dataType: "json",//预期服务器返回的数据类型

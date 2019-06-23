@@ -910,8 +910,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                 <br>
                                 <form id="finalDiagnosisForm" role="form" onkeypress="return event.keyCode !== 13;">
                                     <!--空白内容防止出错-->
-                                    <input type="hidden" name="xDiagnosisList[0].diseaseId" value="-1">
-                                    <input type="hidden" name="zDiagnosisList[0].diseaseId" value="-1">
+                                    <input type="hidden" name="diagnosis0" value="-1">
+                                    <input type="hidden" name="diagnosis1" value="-1">
                                     <!--终诊输入部分-->
                                     <div class="card">
                                         <div class="card-header font-weight-bold">
@@ -923,35 +923,39 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                             </div>
                                         </div>
                                         <div class="card-body">
-                                            <label class="font-weight-bold">西医诊断</label>
-                                            <table class="table table-condensed table-striped table-hover table-sm table-bordered" >
-                                                <thead>
-                                                <tr>
-                                                    <th>ID</th>
-                                                    <th>ICD编码</th>
-                                                    <th>名称</th>
-                                                    <th>&nbsp;</th>
-                                                    <th class="text-center" style="padding: 0"><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#DiagnosisModal" style="width: 100%;height: 100%">+
-                                                    </button></th>
-                                                </tr>
-                                                </thead>
-                                                <tbody></tbody>
-                                            </table>
-                                            <!--中医诊断输入-->
-                                            <label class="font-weight-bold">中医诊断</label>
-                                            <table class="table table-condensed table-striped table-hover table-sm table-bordered" >
-                                                <thead>
-                                                <tr>
-                                                    <th>ID</th>
-                                                    <th>ICD编码</th>
-                                                    <th>名称</th>
-                                                    <th>&nbsp;</th>
-                                                    <th class="text-center" style="padding: 0"><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#DiagnosisModal" style="width: 100%;height: 100%">+
-                                                    </button></th>
-                                                </tr>
-                                                </thead>
-                                                <tbody></tbody>
-                                            </table>
+                                            <div class="form-group">
+                                                <label class="font-weight-bold">西医诊断</label>
+                                                <table class="table table-condensed table-striped table-hover table-sm table-bordered" >
+                                                    <thead>
+                                                    <tr>
+                                                        <th>ID</th>
+                                                        <th>ICD编码</th>
+                                                        <th>名称</th>
+                                                        <th>&nbsp;</th>
+                                                        <th class="text-center" style="padding: 0"><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#DiagnosisModal" style="width: 100%;height: 100%">+
+                                                        </button></th>
+                                                    </tr>
+                                                    </thead>
+                                                    <tbody></tbody>
+                                                </table>
+                                            </div>
+                                            <div class="form-group">
+                                                <!--中医诊断输入-->
+                                                <label class="font-weight-bold">中医诊断</label>
+                                                <table class="table table-condensed table-striped table-hover table-sm table-bordered" >
+                                                    <thead>
+                                                    <tr>
+                                                        <th>ID</th>
+                                                        <th>ICD编码</th>
+                                                        <th>名称</th>
+                                                        <th>&nbsp;</th>
+                                                        <th class="text-center" style="padding: 0"><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#DiagnosisModal" style="width: 100%;height: 100%">+
+                                                        </button></th>
+                                                    </tr>
+                                                    </thead>
+                                                    <tbody></tbody>
+                                                </table>
+                                            </div>
                                         </div>
                                     </div>
                                 </form>
