@@ -43,7 +43,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 </div>
                 <div class="row">
                     <div class="col-md-6">
-                        <table class="table table-striped table-hover table-sm table-bordered" >
+                        <table class="table table-striped table-hover table-bordered" >
                             <thead>
                             <tr>
                                 <th>&nbsp;</th>
@@ -61,7 +61,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                 <div id="drugsPagination" class="myPagination"></div>
                             </div>
                             <div id="drugsPageJump" class="col-md-3">
-                                <div class="input-group input-group-sm">
+                                <div class="input-group">
                                     <label for="searchDrugsPage"></label>
                                     <input type="number" class="form-control" id="searchDrugsPage" placeholder="页码" style="width: 40px"/>
                                     <div class="input-group-append">
@@ -72,7 +72,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                         </div>
                     </div>
                     <div class="col-md-6">
-                        <table class="table table-striped table-hover table-sm table-bordered">
+                        <table class="table table-striped table-hover table-bordered">
                             <thead>
                             <tr>
                                 <th>&nbsp;</th>
@@ -148,7 +148,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 </div>
                 <div class="row">
                     <div class="col-md-6">
-                        <table class="table table-striped table-hover table-sm table-bordered" >
+                        <table class="table table-striped table-hover table-bordered" >
                             <thead>
                             <tr>
                                 <th>&nbsp;</th>
@@ -165,7 +165,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                 <div id="itemPagination" class="myPagination"></div>
                             </div>
                             <div id="itemPageJump" class="col-md-3">
-                                <div class="input-group input-group-sm">
+                                <div class="input-group">
                                     <label for="searchItemPage"></label>
                                     <input type="number" class="form-control" id="searchItemPage" placeholder="页码" style="width: 40px"/>
                                     <div class="input-group-append">
@@ -176,7 +176,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                         </div>
                     </div>
                     <div class="col-md-6">
-                        <table class="table table-striped table-hover table-sm table-bordered">
+                        <table class="table table-striped table-hover table-bordered">
                             <thead>
                             <tr>
                                 <th>&nbsp;</th>
@@ -224,7 +224,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 </div>
                 <div class="row">
                     <div class="col-md-6">
-                        <table class="table table-striped table-hover table-sm table-bordered" >
+                        <table class="table table-striped table-hover table-bordered" >
                             <thead>
                             <tr>
                                 <th>&nbsp;</th>
@@ -241,7 +241,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                 <div id="diagnosisPagination" class="myPagination"></div>
                             </div>
                             <div id="diseasePageJump" class="col-md-3">
-                                <div class="input-group input-group-sm">
+                                <div class="input-group">
                                     <label for="searchDiagnosisPage"></label>
                                     <input type="number" class="form-control" id="searchDiagnosisPage" placeholder="页码" style="width: 40px"/>
                                     <div class="input-group-append">
@@ -252,7 +252,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                         </div>
                     </div>
                     <div class="col-md-6">
-                        <table class="table table-striped table-hover table-sm table-bordered">
+                        <table class="table table-striped table-hover table-bordered">
                             <thead>
                             <tr>
                                 <th>&nbsp;</th>
@@ -297,7 +297,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 <!--患者搜索框-->
                 <form id="searchPatientForm" role="form" onkeypress="return event.keyCode !== 13;">
                     <label class="control-label font-weight-bold" for="searchPatientKey">患者查询：</label>
-                    <div class="input-group input-group-sm">
+                    <div class="input-group">
                         <input type="search" class="form-control" id="searchPatientKey" name="searchPatientKey" style="width: 175px"
                             placeholder="输入姓名或病历号"/>
                         <div class="input-group-append">
@@ -315,7 +315,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                     </li>
                 </ul>
                 <form id="patientListForm" role="form" onkeypress="return event.keyCode !== 13;">
-                    <table class="table table-condensed table-striped table-hover table-sm">
+                    <table class="table table-condensed table-striped table-hover">
                         <thead>
                         <tr>
                             <th colspan="3">待诊患者<span id="notSeenNumSpan" class="badge badge-pill badge-danger">0</span></th>
@@ -326,7 +326,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                         </thead>
                         <tbody id="searchPatientTbody1"></tbody>
                     </table>
-                    <table class="table table-condensed table-striped table-hover table-sm">
+                    <table class="table table-condensed table-striped table-hover">
                         <thead>
                         <tr>
                             <th colspan="3">已诊患者<span id="isSeenNumSpan" class="badge badge-pill badge-success">0</span></th>
@@ -414,10 +414,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                         </div>
                                         <div class="col-md-5 text-right">
                                             <div id="medicalInfoBtnGroup" class="btn-group">
-                                                <button type="button" class="btn btn-outline-danger btn-sm">清屏</button>
-                                                <button type="button" class="btn btn-outline-secondary btn-sm">暂存</button>
-                                                <button type="button" class="btn btn-outline-success btn-sm">提交</button>
-                                                <button type="button" class="btn btn-outline-info btn-sm">存为模板</button>
+                                                <button type="button" class="btn btn-outline-danger">清屏</button>
+                                                <button type="button" class="btn btn-outline-secondary">暂存</button>
+                                                <button type="button" class="btn btn-outline-success">提交</button>
+                                                <button type="button" class="btn btn-outline-info">存为模板</button>
                                             </div>
                                         </div>
                                     </div>
@@ -465,7 +465,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                         <div id="diagnosisContentCard" class="card-body">
                                             <div class="form-group">
                                                 <label class="font-weight-bold">西医诊断</label>
-                                                <table class="table table-condensed table-striped table-hover table-sm table-bordered" >
+                                                <table class="table table-condensed table-striped table-hover table-bordered" >
                                                     <thead>
                                                     <tr>
                                                         <th>ID</th>
@@ -475,7 +475,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                                         <th>疑似</th>
                                                         <th>发病日期<small>(不完整会丢失)</small></th>
                                                         <th>&nbsp;</th>
-                                                        <th class="text-center" style="padding: 0"><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#DiagnosisModal" style="width: 100%;height: 100%">+
+                                                        <th class="text-center" style="padding-left: 0;padding-right: 0"><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#DiagnosisModal" style="width: 100%;height: 100%">+
                                                         </button></th>
                                                     </tr>
                                                     </thead>
@@ -485,7 +485,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                             <!--中医诊断输入-->
                                             <div class="form-group ">
                                                 <label class="font-weight-bold">中医诊断</label>
-                                                <table class="table table-condensed table-striped table-hover table-sm table-bordered" >
+                                                <table class="table table-condensed table-striped table-hover table-bordered" >
                                                     <thead>
                                                     <tr>
                                                         <th>ID</th>
@@ -495,7 +495,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                                         <th>疑似</th>
                                                         <th>发病日期<small>(不完整会丢失)</small></th>
                                                         <th>&nbsp;</th>
-                                                        <th class="text-center" style="padding: 0"><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#DiagnosisModal" style="width: 100%;height: 100%">+
+                                                        <th class="text-center" style="padding-left: 0;padding-right: 0"><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#DiagnosisModal" style="width: 100%;height: 100%">+
                                                         </button></th>
                                                     </tr>
                                                     </thead>
@@ -513,13 +513,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                         <!-- Nav pills -->
                                         <ul id="homeRightNav" class="nav nav-pills " role="tablist" >
                                             <li class="nav-item">
-                                                <a class="nav-link active " data-toggle="pill" href="#home1_1"><small>病历模板</small></a>
+                                                <a class="nav-link active " data-toggle="pill" href="#home1_1">病历模板</a>
                                             </li>
                                             <li class="nav-item">
-                                                <a class="nav-link" data-toggle="pill" href="#home1_2"><small>常用诊断</small></a>
+                                                <a class="nav-link" data-toggle="pill" href="#home1_2">常用诊断</a>
                                             </li>
                                             <li class="nav-item">
-                                                <a class="nav-link" data-toggle="pill" href="#home1_3"><small>历史病历</small></a>
+                                                <a class="nav-link" data-toggle="pill" href="#home1_3">历史病历</a>
                                             </li>
                                         </ul>
                                         <!-- Tab panes -->
@@ -530,7 +530,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                                 <!--模板搜索框-->
                                                 <form id="searchMedrecTempForm" role="form" onkeypress="return event.keyCode !== 13;">
                                                     <label class="control-label font-weight-bold" for="searchMedrecTempKey"></label>
-                                                    <div class="input-group input-group-sm">
+                                                    <div class="input-group">
                                                         <input type="search" class="form-control" id="searchMedrecTempKey" name="searchPatientKey"
                                                                placeholder="输入关键词"/>
                                                         <div class="input-group-append">
@@ -560,11 +560,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                                 </div>
                                                 <div id="MedrecTempContextDiv" >
                                                     <div class="text-right" style="margin-top: 8px">
-                                                        <div id="medreTempBtnGroup" class="btn-group btn-group-sm">
-                                                            <button type="button" class="btn btn-outline-primary btn-sm">新增</button>
-                                                            <button type="button" class="btn btn-outline-warning btn-sm">修改</button>
-                                                            <button type="button" class="btn btn-outline-danger btn-sm">删除</button>
-                                                            <button type="button" class="btn btn-outline-success btn-sm">引用</button>
+                                                        <div id="medreTempBtnGroup" class="btn-group">
+                                                            <button type="button" class="btn btn-outline-primary">新增</button>
+                                                            <button type="button" class="btn btn-outline-warning">修改</button>
+                                                            <button type="button" class="btn btn-outline-danger ">删除</button>
+                                                            <button type="button" class="btn btn-outline-success">引用</button>
                                                         </div>
                                                     </div>
                                                     <!--模板内容-->
@@ -575,7 +575,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                                                 <input id="idTemplate" type="hidden" name="id">
                                                                 <div id="medrecTempCategoryDiv" class="form-group">
                                                                     <label class="font-weight-bold" for="categoryTemplate">适用范围：</label>
-                                                                    <select id="categoryTemplate" name="category" class="custom-select-sm">
+                                                                    <select id="categoryTemplate" name="category" class="custom-select">
                                                                         <option value="0" selected></option>
                                                                         <option value="1">全院</option>
                                                                         <option value="2">科室</option>
@@ -604,8 +604,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                                                 </div>
                                                                 <!--模板诊断*2-->
                                                                 <div class="form-group"><input type="hidden" name="diseaseId0" value="-1"><input type="hidden" name="diseaseId1" value="-1">
-                                                                    <label class="font-weight-bold">西医诊断</label>&nbsp;<button type="button" class="btn btn-outline-warning btn-sm"  data-toggle="modal" data-target="#DiagnosisModal">修改</button>
-                                                                    <table class="table table-condensed table-striped table-hover table-sm table-bordered" >
+                                                                    <label class="font-weight-bold">西医诊断</label>&nbsp;<button type="button" class="btn btn-outline-warning"  data-toggle="modal" data-target="#DiagnosisModal">修改</button>
+                                                                    <table class="table table-condensed table-striped table-hover table-bordered" >
                                                                         <thead>
                                                                         <tr>
                                                                             <th>ID</th>
@@ -617,8 +617,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                                                     </table>
                                                                 </div>
                                                                 <div class="form-group">
-                                                                    <label class="font-weight-bold">中医诊断</label>&nbsp;<button type="button" class="btn btn-outline-warning btn-sm"  data-toggle="modal" data-target="#DiagnosisModal">修改</button>
-                                                                    <table class="table table-condensed table-striped table-hover table-sm table-bordered" >
+                                                                    <label class="font-weight-bold">中医诊断</label>&nbsp;<button type="button" class="btn btn-outline-warning "  data-toggle="modal" data-target="#DiagnosisModal">修改</button>
+                                                                    <table class="table table-condensed table-striped table-hover  table-bordered" >
                                                                         <thead>
                                                                         <tr>
                                                                             <th>ID</th>
@@ -630,7 +630,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                                                     </table>
                                                                 </div>
                                                                 <div class="text-right" style="margin-top: 8px">
-                                                                    <button type="button" class="btn btn-outline-success btn-sm">提交</button>
+                                                                    <button type="button" class="btn btn-outline-success ">提交</button>
                                                                 </div>
                                                             </form>
                                                         </div>
@@ -692,19 +692,19 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                         </div>
                                         <div class="col-md-8 text-right">
                                             <div id="applyForBtnGroup" class="btn-group">
-                                                <button type="button" class="btn btn-outline-primary btn-sm">新增</button>
-                                                <button type="button" class="btn btn-outline-dark btn-sm">暂存</button>
-                                                <button type="button" class="btn btn-outline-success btn-sm">开立</button>
-                                                <button type="button" class="btn btn-outline-danger btn-sm">删除</button>
-                                                <button type="button" class="btn btn-outline-secondary btn-sm">作废</button>
-                                                <button type="button" class="btn btn-outline-info btn-sm">存为组套</button>
+                                                <button type="button" class="btn btn-outline-primary ">新增</button>
+                                                <button type="button" class="btn btn-outline-dark ">暂存</button>
+                                                <button type="button" class="btn btn-outline-success ">开立</button>
+                                                <button type="button" class="btn btn-outline-danger ">删除</button>
+                                                <button type="button" class="btn btn-outline-secondary ">作废</button>
+                                                <button type="button" class="btn btn-outline-info ">存为组套</button>
                                             </div>
                                         </div>
                                     </div>
                                     <!--申请单列表部分-->
                                     <div id="applyForCard" class="card">
                                         <div class="card-header font-weight-bold">**申请单列表</div>
-                                        <table class="table table-condensed table-striped table-hover table-sm table-bordered" >
+                                        <table class="table table-condensed table-striped table-hover table-bordered" >
                                             <thead>
                                             <tr>
                                                 <th>&nbsp;</th>
@@ -725,9 +725,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                     <!--项目列表部分-->
                                     <div id="visitItemCard" class="card">
                                         <div class="card-header font-weight-bold">
-                                            <span>项目列表</span>&nbsp;<button type="button" class="btn btn-outline-warning btn-sm" data-toggle="modal" data-target="#ItemModal">修改</button>
+                                            <span>项目列表</span>&nbsp;<button type="button" class="btn btn-outline-warning " data-toggle="modal" data-target="#ItemModal">修改</button>
                                         </div>
-                                        <table class="table table-condensed table-striped table-hover table-sm table-bordered" >
+                                        <table class="table table-condensed table-striped table-hover  table-bordered" >
                                             <thead>
                                             <tr>
                                                 <th>ID</th>
@@ -751,10 +751,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                         <!-- Nav pills -->
                                         <ul id="menu1RightNav" class="nav nav-pills " role="tablist" >
                                             <li class="nav-item">
-                                                <a class="nav-link active " data-toggle="pill" href="#menu1_1"><small>常用项目</small></a>
+                                                <a class="nav-link active " data-toggle="pill" href="#menu1_1">常用项目</a>
                                             </li>
                                             <li class="nav-item">
-                                                <a class="nav-link" data-toggle="pill" href="#menu1_2"><small>**组套</small></a>
+                                                <a class="nav-link" data-toggle="pill" href="#menu1_2">**组套</a>
                                             </li>
                                         </ul>
                                         <!-- Tab panes -->
@@ -774,7 +774,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                                 <!--申请组套搜索框-->
                                                 <form id="searchItemSetForm" role="form" onkeypress="return event.keyCode !== 13;">
                                                     <label class="control-label font-weight-bold" for="searchItemSetKey"></label>
-                                                    <div class="input-group input-group-sm">
+                                                    <div class="input-group ">
                                                         <input type="search" class="form-control" id="searchItemSetKey" placeholder="输入关键词"/>
                                                         <div class="input-group-append">
                                                             <button class="btn btn-primary" type="button">搜索</button>
@@ -803,11 +803,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                                 </div>
                                                 <div id="itemSetContextDiv" >
                                                     <div class="text-right" style="margin-top: 8px">
-                                                        <div id="itemSetBtnGroup" class="btn-group btn-group-sm">
-                                                            <button type="button" class="btn btn-outline-primary btn-sm">新增</button>
-                                                            <button type="button" class="btn btn-outline-warning btn-sm">修改</button>
-                                                            <button type="button" class="btn btn-outline-danger btn-sm">删除</button>
-                                                            <button type="button" class="btn btn-outline-success btn-sm">引用</button>
+                                                        <div id="itemSetBtnGroup" class="btn-group ">
+                                                            <button type="button" class="btn btn-outline-primary ">新增</button>
+                                                            <button type="button" class="btn btn-outline-warning ">修改</button>
+                                                            <button type="button" class="btn btn-outline-danger ">删除</button>
+                                                            <button type="button" class="btn btn-outline-success ">引用</button>
                                                         </div>
                                                     </div>
                                                     <!--组套内容-->
@@ -818,7 +818,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                                                 <input id="idSet" type="hidden" name="id">
                                                                 <div id="itemSetCategoryDiv" class="form-group">
                                                                     <label class="font-weight-bold" for="categorySet">适用范围：</label>
-                                                                    <select id="categorySet" name="useScope" class="custom-select-sm">
+                                                                    <select id="categorySet" name="useScope" class="custom-select">
                                                                         <option value="0" selected></option>
                                                                         <option value="1">全院</option>
                                                                         <option value="2">科室</option>
@@ -839,8 +839,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                                                 <!--组套子项-->
                                                                 <div class="form-group">
                                                                     <input type="hidden" name="objectId" value="-1"><input type="hidden" name="setSubEntrust" value=" ">
-                                                                    <label class="font-weight-bold">组套项目</label>&nbsp;<button type="button" class="btn btn-outline-warning btn-sm"  data-toggle="modal" data-target="#ItemModal">修改</button>
-                                                                    <table class="table table-condensed table-striped table-hover table-sm table-bordered" >
+                                                                    <label class="font-weight-bold">组套项目</label>&nbsp;<button type="button" class="btn btn-outline-warning "  data-toggle="modal" data-target="#ItemModal">修改</button>
+                                                                    <table class="table table-condensed table-striped table-hover table-bordered" >
                                                                         <thead>
                                                                         <tr>
                                                                             <th>项目名称</th>
@@ -851,7 +851,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                                                     </table>
                                                                 </div>
                                                                 <div class="text-right" style="margin-top: 8px">
-                                                                    <button type="button" class="btn btn-outline-success btn-sm">提交</button>
+                                                                    <button type="button" class="btn btn-outline-success ">提交</button>
                                                                 </div>
                                                             </form>
                                                         </div>
@@ -878,7 +878,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                     <div class="card-header font-weight-bold">初诊</div>
                                     <div id="newDiagnosisContentCard" class="card-body">
                                         <label class="font-weight-bold">西医诊断</label>
-                                        <table class="table table-condensed table-striped table-hover table-sm table-bordered" >
+                                        <table class="table table-condensed table-striped table-hover  table-bordered" >
                                             <thead>
                                             <tr>
                                                 <th>ID</th>
@@ -893,7 +893,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                         </table>
                                         <!--中医诊断输入-->
                                         <label class="font-weight-bold">中医诊断</label>
-                                        <table class="table table-condensed table-striped table-hover table-sm table-bordered" >
+                                        <table class="table table-condensed table-striped table-hover  table-bordered" >
                                             <thead>
                                             <tr>
                                                 <th>ID</th>
@@ -919,21 +919,21 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                             <div class="row">
                                                 <div class="col-md-3"><span>终诊</span></div>
                                                 <div class="col-md-9">
-                                                    <div class="text-right"><button id="identifyButton" type="button" class="btn btn-danger btn-sm">确诊</button></div>
+                                                    <div class="text-right"><button id="identifyButton" type="button" class="btn btn-danger ">确诊</button></div>
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="card-body">
                                             <div class="form-group">
                                                 <label class="font-weight-bold">西医诊断</label>
-                                                <table class="table table-condensed table-striped table-hover table-sm table-bordered" >
+                                                <table class="table table-condensed table-striped table-hover  table-bordered" >
                                                     <thead>
                                                     <tr>
                                                         <th>ID</th>
                                                         <th>ICD编码</th>
                                                         <th>名称</th>
                                                         <th>&nbsp;</th>
-                                                        <th class="text-center" style="padding: 0"><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#DiagnosisModal" style="width: 100%;height: 100%">+
+                                                        <th class="text-center" style="padding-left: 0;padding-right: 0"><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#DiagnosisModal" style="width: 100%;height: 100%">+
                                                         </button></th>
                                                     </tr>
                                                     </thead>
@@ -943,14 +943,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                             <div class="form-group">
                                                 <!--中医诊断输入-->
                                                 <label class="font-weight-bold">中医诊断</label>
-                                                <table class="table table-condensed table-striped table-hover table-sm table-bordered" >
+                                                <table class="table table-condensed table-striped table-hover table-bordered" >
                                                     <thead>
                                                     <tr>
                                                         <th>ID</th>
                                                         <th>ICD编码</th>
                                                         <th>名称</th>
                                                         <th>&nbsp;</th>
-                                                        <th class="text-center" style="padding: 0"><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#DiagnosisModal" style="width: 100%;height: 100%">+
+                                                        <th class="text-center" style="padding-left: 0;padding-right: 0"><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#DiagnosisModal" style="width: 100%;height: 100%">+
                                                         </button></th>
                                                     </tr>
                                                     </thead>
@@ -967,7 +967,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                     <div class="card-body">
                                         <ul class="nav nav-pills " >
                                             <li class="nav-item">
-                                                <a id="commonDiagnosisLink" class="nav-link active " href="#"><small>常用诊断</small></a>
+                                                <a id="commonDiagnosisLink" class="nav-link active " href="#">常用诊断</a>
                                             </li>
                                         </ul>
                                         <!--常用诊断部分-->
@@ -1002,19 +1002,19 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                         </div>
                                         <div class="col-md-8 text-right">
                                             <div id="prescriptionBtnGroup" class="btn-group">
-                                                <button type="button" class="btn btn-outline-primary btn-sm">新增</button>
-                                                <button type="button" class="btn btn-outline-dark btn-sm">暂存</button>
-                                                <button type="button" class="btn btn-outline-success btn-sm">发送</button>
-                                                <button type="button" class="btn btn-outline-danger btn-sm">删除</button>
-                                                <button type="button" class="btn btn-outline-secondary btn-sm">作废</button>
-                                                <button type="button" class="btn btn-outline-info btn-sm">存为组套</button>
+                                                <button type="button" class="btn btn-outline-primary ">新增</button>
+                                                <button type="button" class="btn btn-outline-dark ">暂存</button>
+                                                <button type="button" class="btn btn-outline-success">发送</button>
+                                                <button type="button" class="btn btn-outline-danger ">删除</button>
+                                                <button type="button" class="btn btn-outline-secondary">作废</button>
+                                                <button type="button" class="btn btn-outline-info ">存为组套</button>
                                             </div>
                                         </div>
                                     </div>
                                     <!--处方列表部分-->
                                     <div id="prescriptionCard" class="card">
                                         <div class="card-header font-weight-bold">**处方列表</div>
-                                        <table class="table table-condensed table-striped table-hover table-sm table-bordered" >
+                                        <table class="table table-condensed table-striped table-hover  table-bordered" >
                                             <thead>
                                             <tr>
                                                 <th>&nbsp;</th>
@@ -1033,9 +1033,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                     <!--药品列表部分-->
                                     <div id="drugsCard" class="card">
                                         <div class="card-header font-weight-bold">
-                                            <span>药品列表</span>&nbsp;<button type="button" class="btn btn-outline-warning btn-sm" data-toggle="modal" data-target="#DrugsModal">修改</button>
+                                            <span>药品列表</span>&nbsp;<button type="button" class="btn btn-outline-warning " data-toggle="modal" data-target="#DrugsModal">修改</button>
                                         </div>
-                                        <table class="table table-condensed table-striped table-hover table-sm table-bordered" >
+                                        <table class="table table-condensed table-striped table-hover  table-bordered" >
                                             <thead>
                                             <tr>
                                                 <th>ID</th>
@@ -1060,10 +1060,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                     <div class="card-body">
                                         <ul id="menu3RightNav" class="nav nav-pills " role="tablist" >
                                             <li class="nav-item">
-                                                <a class="nav-link active " data-toggle="pill" href="#menu3_1"><small>常用药品</small></a>
+                                                <a class="nav-link active " data-toggle="pill" href="#menu3_1">常用药品</a>
                                             </li>
                                             <li class="nav-item">
-                                                <a class="nav-link" data-toggle="pill" href="#menu3_2"><small>**组套</small></a>
+                                                <a class="nav-link" data-toggle="pill" href="#menu3_2">**组套</a>
                                             </li>
                                         </ul>
                                         <div class="tab-content">
@@ -1082,7 +1082,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                                 <!--处方组套搜索框-->
                                                 <form id="searchPrescriptionForm" role="form" onkeypress="return event.keyCode !== 13;">
                                                     <label class="control-label font-weight-bold" for="searchPrescriptionKey"></label>
-                                                    <div class="input-group input-group-sm">
+                                                    <div class="input-group">
                                                         <input type="search" class="form-control" id="searchPrescriptionKey" placeholder="输入关键词"/>
                                                         <div class="input-group-append">
                                                             <button class="btn btn-primary" type="button">搜索</button>
@@ -1111,11 +1111,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                                 </div>
                                                 <div id="prescriptionContextDiv" >
                                                     <div class="text-right" style="margin-top: 8px">
-                                                        <div id="prescriptionSetBtnGroup" class="btn-group btn-group-sm">
-                                                            <button type="button" class="btn btn-outline-primary btn-sm">新增</button>
-                                                            <button type="button" class="btn btn-outline-warning btn-sm">修改</button>
-                                                            <button type="button" class="btn btn-outline-danger btn-sm">删除</button>
-                                                            <button type="button" class="btn btn-outline-success btn-sm">引用</button>
+                                                        <div id="prescriptionSetBtnGroup" class="btn-group ">
+                                                            <button type="button" class="btn btn-outline-primary ">新增</button>
+                                                            <button type="button" class="btn btn-outline-warning ">修改</button>
+                                                            <button type="button" class="btn btn-outline-danger">删除</button>
+                                                            <button type="button" class="btn btn-outline-success ">引用</button>
                                                         </div>
                                                     </div>
                                                     <!--组套内容-->
@@ -1126,7 +1126,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                                                 <input id="prescriptionIdSet" type="hidden" name="id">
                                                                 <div id="prescriptionCategoryDiv" class="form-group">
                                                                     <label class="font-weight-bold" for="categoryPrescription">适用范围：</label>
-                                                                    <select id="categoryPrescription" name="useScope" class="custom-select-sm">
+                                                                    <select id="categoryPrescription" name="useScope" class="custom-select">
                                                                         <option value="0" selected></option>
                                                                         <option value="1">全院</option>
                                                                         <option value="2">科室</option>
@@ -1147,8 +1147,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                                                 <!--组套子项-->
                                                                 <div class="form-group">
                                                                     <input type="hidden" name="objectId" value="-1"><input type="hidden" name="setSubEntrust" value=" ">
-                                                                    <label class="font-weight-bold">组套项目</label>&nbsp;<button type="button" class="btn btn-outline-warning btn-sm"  data-toggle="modal" data-target="#DrugsModal">修改</button>
-                                                                    <table class="table table-condensed table-striped table-hover table-sm table-bordered" >
+                                                                    <label class="font-weight-bold">组套项目</label>&nbsp;<button type="button" class="btn btn-outline-warning "  data-toggle="modal" data-target="#DrugsModal">修改</button>
+                                                                    <table class="table table-condensed table-striped table-hover  table-bordered" >
                                                                         <thead>
                                                                         <tr>
                                                                             <th>药品名称</th>
@@ -1159,7 +1159,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                                                     </table>
                                                                 </div>
                                                                 <div class="text-right" style="margin-top: 8px">
-                                                                    <button type="button" class="btn btn-outline-success btn-sm">提交</button>
+                                                                    <button type="button" class="btn btn-outline-success">提交</button>
                                                                 </div>
                                                             </form>
                                                         </div>

@@ -34,11 +34,11 @@ function setPrescriptionList(list) {
             '</div>\n' +
             '</td>\n' +
             '<td>'+list[i].id+'</td>\n' +
-            '<td style="padding: 0">\n' +
+            '<td style="padding-left: 0;padding-right: 0">\n' +
             '<input type="text" class="form-control" value="'+list[i].prescriptionName+'" '+((status==="暂存")?"":'readonly="readonly"')+'>\n' +
             '</td>\n' +
             '<td>\n' +
-            '<select class="custom-select-sm">\n' +
+            '<select class="custom-select">\n' +
             '<option value="0" '+selectItem[0]+'></option>\n' +
             '<option value="1" '+selectItem[1]+'>普诊</option>\n' +
             '<option value="2" '+selectItem[2]+'>急诊</option>\n' +
@@ -70,7 +70,7 @@ $("[href='#menu3']").click(function () {
     var name=$(this).html();
     $("#prescriptionForm h4").html(name+"处方");
     $("#prescriptionCard .card-header").html(name+"处方列表");
-    $("#menu3RightNav a:eq(1) small").html(name+"组套");
+    $("#menu3RightNav a:eq(1)").html(name+"组套");
     $("#menu3_1 .card-header").html(name+"药品");
     var node=$("#prescriptionType");
     if(name==="成药")
@@ -106,7 +106,7 @@ function setPrescriptionDetail(prescriptionDetailList,drugsList) {
             '<option value="8" '+selectUsage[8]+'>喷雾吸入</option><option value="9" '+selectUsage[9]+'>其他</option>\n' +
             '</select>\n' +
             '</td>\n' +
-            '<td style="padding: 0;width: 60px"><input class="form-control " name="consumption" type="text" value="'+prescriptionDetailList[i].consumption+'" '+readonlyFlag+'></td>\n' +
+            '<td style="padding-left: 0;padding-right: 0"><input class="form-control " name="consumption" type="text" value="'+prescriptionDetailList[i].consumption+'" '+readonlyFlag+'></td>\n' +
             '<td>\n' +
             '<select name="frequent" class="custom-select-sm"><!--频次,1一天一次 ，2一天两次 3一天三次 4其他-->\n' +
             '<option value="0" '+selectFrequent[0]+'></option><option value="1" '+selectFrequent[1]+'>一天一次</option>\n' +
@@ -114,11 +114,11 @@ function setPrescriptionDetail(prescriptionDetailList,drugsList) {
             '<option value="4" '+selectFrequent[4]+'>其他</option>\n' +
             '</select>\n' +
             '</td>\n' +
-            '<td style="padding: 0"><input class="form-control " name="days" type="number" value="'+prescriptionDetailList[i].days+'" '+readonlyFlag+'> </td>\n' +
-            '<td style="padding: 0"><input class="form-control " name="amount" type="number" value="'+prescriptionDetailList[i].amount+'" '+readonlyFlag+'> </td>\n' +
+            '<td style="padding-left: 0;padding-right: 0"><input class="form-control " name="days" type="number" value="'+prescriptionDetailList[i].days+'" '+readonlyFlag+'> </td>\n' +
+            '<td style="padding-left: 0;padding-right: 0"><input class="form-control " name="amount" type="number" value="'+prescriptionDetailList[i].amount+'" '+readonlyFlag+'> </td>\n' +
             '</tr>\n' +
             '<tr>\n' +
-            '<td colspan="4" style="padding: 0">\n' +
+            '<td colspan="4" style="padding-left: 0;padding-right: 0">\n' +
             '<div class="input-group">\n' +
             '<div class="input-group-prepend">\n' +
             '<span class="input-group-text font-weight-bold">用药嘱托:</span>\n' +
@@ -126,7 +126,7 @@ function setPrescriptionDetail(prescriptionDetailList,drugsList) {
             '<input type="text" class="form-control" name="entrustment" value="'+prescriptionDetailList[i].entrustment+'" '+readonlyFlag+'>\n' +
             '</div>\n' +
             '</td>\n' +
-            '<td style="padding: 0" align="center"><a href="#"><img src="images/save_icon.jpg" style="height:40px;width:40px" alt="保存"></a></td>\n' +
+            '<td style="padding-left: 0;padding-right: 0" align="center"><a href="#"><img src="images/save_icon.jpg" style="height:40px;width:40px" alt="保存"></a></td>\n' +
             '<input type="hidden" name="drugsId" value="'+drugsList[i].id+'">'+
             '</tr>');
     }
@@ -180,11 +180,11 @@ $("#prescriptionBtnGroup button:eq(0)").click(function () {
         '</div>\n' +
         '</td>\n' +
         '<td></td>\n' +
-        '<td style="padding: 0">\n' +
+        '<td style="padding-left: 0;padding-right: 0">\n' +
         '<input type="text" class="form-control" placeholder="请输入名称" >\n' +
         '</td>\n' +
         '<td>\n' +
-        '<select class="custom-select-sm">\n' +
+        '<select class="custom-select">\n' +
         '<option value="0" selected></option>\n' +
         '<option value="1" >普诊</option>\n' +
         '<option value="2" >急诊</option>\n' +
@@ -694,7 +694,7 @@ function setSetSub1(drugsList,setSubList){
     for (var i=0;i<drugsList.length;i++) {
         $("#prescriptionContextForm tbody").append('<tr>\n' +
             '<td title="'+drugsList[i].drugsname+'" style="max-width:160px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">'+drugsList[i].drugsname+'</td>\n' +
-            '<td style="padding: 0">\n' +
+            '<td style="padding-left: 0;padding-right: 0">\n' +
             '<input type="text" class="form-control" name="setSubEntrust" value="'+setSubList[i].entrust+'" readonly="readonly">\n' +
             '<input type="hidden" name="objectId" value="'+drugsList[i].id+'">\n' +
             '<input type="hidden" value="'+drugsList[i].drugsformat+'">\n' +

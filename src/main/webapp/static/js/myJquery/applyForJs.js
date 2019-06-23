@@ -47,7 +47,7 @@ function setApplyForList(list,applyForPeople) {
             '<td>'+getTime1(list[i].applicationTime)+'</td>\n' +
             '<td class="'+allColor+'">'+status+'</td>\n' +
             '<td>'+applyForPeople[i]+'</td>\n' +
-            '<td  style="padding: 0">\n' +
+            '<td style="padding-left: 0;padding-right: 0">\n' +
             '<input type="text" class="form-control" value="'+list[i].purposeRequirement+'" '+((status==="暂存")?"":'readonly="readonly"')+'>\n' +
             '</td>\n' +
             '<td class="text-center">'+((list[i].feeStatus==="1")?'X':'√')+'</td>\n' +
@@ -75,7 +75,7 @@ $("[href='#menu1']").click(function () {
     var name=$(this).html();
     $("#visitItemForm h4").html(name+"申请");
     $("#applyForCard .card-header").html(name+"申请单列表");
-    $("#menu1RightNav a:eq(1) small").html(name+"组套");
+    $("#menu1RightNav a:eq(1)").html(name+"组套");
     $("#menu1_1 .card-header").html(name+"项目");
     var node=$("#applyForType");
     if(name==="检查")
@@ -99,11 +99,11 @@ function setVisitItemList(visitDetailList,fmeditemList) {
             '<td>'+fmeditemList[i].id+'</td>\n' +
             '<td>'+fmeditemList[i].itemname+'</td>\n' +
             '<td>'+fmeditemList[i].price+'</td>\n' +
-            '<td  style="padding: 0">\n' +
+            '<td  style="padding-left: 0;padding-right: 0">\n' +
             '<input type="text" class="form-control" name="doctorEntrustment" value="'+visitDetailList[i].doctorEntrustment+'" '+readonlyFlag+'>\n' +
             '</td>\n' +
             '<td class="text-center">'+((visitDetailList[i].executionStatus==="0")?'X':'√')+'</td>\n' +
-            '<td style="padding: 0" align="center"><a href="#"><img src="images/save_icon.jpg" style="height:40px;width:40px" alt="保存"></a></td>\n' +
+            '<td style="padding-left: 0;padding-right: 0" align="center"><a href="#"><img src="images/save_icon.jpg" style="height:40px;width:40px" alt="保存"></a></td>\n' +
             '<td class="text-center" style="padding-left: 0;padding-right: 0"><button type="button" class="btn btn-primary btn-sm" style="width: 100%;height: 100%" data-toggle="modal" data-target="#ResultModal">查看结果</button></td>\n' +
             '<input type="hidden" name="fmeditemId" value="'+fmeditemList[i].id+'">'+
             '</tr>');
@@ -155,7 +155,7 @@ $("#applyForBtnGroup button:eq(0)").click(function () {
         '<input type="radio" class="custom-control-input" id="applyForRadionew" value="-1"  checked>\n' +
         '<label class="custom-control-label" for="applyForRadionew"></label></div>\n' +
         '</td><td></td><td></td><td></td><td></td>\n' +
-        '<td  style="padding: 0"><input type="text" class="form-control" placeholder="请输入目的和要求">\n' +
+        '<td  style="padding-left: 0;padding-right: 0"><input type="text" class="form-control" placeholder="请输入目的和要求">\n' +
         '</td><td class="text-center"></td><td class="text-center"></td>\n' +
         '<td></td></tr>');
     $("#applyForCard :text:last").focus();
@@ -643,7 +643,7 @@ function setSetSub(fmeitemList,setSubList){
     for (var i=0;i<fmeitemList.length;i++) {
         $("#itemSetContextForm tbody").append('<tr>\n' +
             '<td title="'+fmeitemList[i].itemname+'" style="max-width:160px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">'+fmeitemList[i].itemname+'</td>\n' +
-            '<td style="padding: 0">\n' +
+            '<td style="padding-left: 0;padding-right: 0">\n' +
             '<input type="text" class="form-control" name="setSubEntrust" value="'+setSubList[i].entrust+'" readonly="readonly">\n' +
             '<input type="hidden" name="objectId" value="'+fmeitemList[i].id+'">\n' +
             '<input type="hidden" value="'+fmeitemList[i].price+'">\n' +

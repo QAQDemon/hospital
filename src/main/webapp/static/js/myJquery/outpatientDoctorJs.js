@@ -59,12 +59,12 @@ function duplicatDiagnosis(diseaseId,listName,lastNum) {
         '<label class="custom-control-label" for="'+listName+diseaseId+'Check"></label>\n' +
         '</div>\n' +
         '</td>\n' +
-        '<td style="padding: 0">\n' +
+        '<td  style="padding-left: 0;padding-right: 0" >\n' +
         '<input type="datetime-local"  class="form-control" />\n' +
         '<input type="hidden" name="'+listName+'['+lastNum+'].dateOfOnset"/>\n'+
         '</td>\n' +
-        '<td style="padding: 0" align="center"><a href="#"><img src="images/save_icon.jpg" style="height:40px;width:40px" alt="保存"></a></td>\n' +
-        '<td class="text-center" style="padding: 0"><button type="button" class="btn btn-danger" style="width: 100%;height: 100%">-\n' +
+        '<td  style="padding-left: 0;padding-right: 0"  align="center"><a href="#"><img src="images/save_icon.jpg" style="height:40px;width:40px" alt="保存"></a></td>\n' +
+        '<td class="text-center"  style="padding-left: 0;padding-right: 0" ><button type="button" class="btn btn-danger" style="width: 100%;height: 100%">-\n' +
         '</button></td>\n' +
         '</tr>';
 }
@@ -200,12 +200,12 @@ function setDiagnosisList(diagnosisList,diseaseList,listName,num){
             '<label class="custom-control-label" for="'+listName+diseaseId+'Check"></label>\n' +
             '</div>\n' +
             '</td>\n' +
-            '<td style="padding: 0">\n' +
+            '<td  style="padding-left: 0;padding-right: 0" >\n' +
             '<input type="datetime-local"  class="form-control" value="'+getTime(diagnosisList[i].dateOfOnset)+'"/>\n' +
             '<input type="hidden" name="'+listName+'['+(i+1)+'].dateOfOnset"/>\n'+
             '</td>\n' +
-            '<td style="padding: 0" align="center"><a href="#"><img src="images/save_icon.jpg" style="height:40px;width:40px" alt="保存"></a></td>\n' +
-            '<td class="text-center" style="padding: 0"><button type="button" class="btn btn-danger" style="width: 100%;height: 100%">-\n' +
+            '<td  style="padding-left: 0;padding-right: 0"  align="center"><a href="#"><img src="images/save_icon.jpg" style="height:40px;width:40px" alt="保存"></a></td>\n' +
+            '<td class="text-center"  style="padding-left: 0;padding-right: 0" ><button type="button" class="btn btn-danger" style="width: 100%;height: 100%">-\n' +
             '</button></td>\n' +
             '</tr>';
     }

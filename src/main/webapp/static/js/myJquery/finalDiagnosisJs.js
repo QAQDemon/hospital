@@ -34,8 +34,8 @@ function setFinalDiagnosis(diseaseList,num) {
             '<td>'+diseaseList[i].id+'</td>\n' +
             '<td>'+diseaseList[i].diseaseicd+'</td>\n' +
             '<td title="'+diseaseList[i].diseasename+'" style="max-width:200px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">'+diseaseList[i].diseasename+'</td>\n' +
-            '<td style="padding: 0" align="center"><a href="#"><img src="images/save_icon.jpg" style="height:40px;width:40px" alt="保存"></a></td>\n' +
-            '<td class="text-center" style="padding: 0"><button type="button" class="btn btn-danger" style="width: 100%;height: 100%">-\n' +
+            '<td  style="padding-left: 0;padding-right: 0"  align="center"><a href="#"><img src="images/save_icon.jpg" style="height:40px;width:40px" alt="保存"></a></td>\n' +
+            '<td class="text-center"  style="padding-left: 0;padding-right: 0" ><button type="button" class="btn btn-danger" style="width: 100%;height: 100%">-\n' +
             '</button></td>\n' +
             '<input type="hidden" name="diagnosis'+num+'" value="'+diseaseList[i].id+'">'+
             '</tr>'
