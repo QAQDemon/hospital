@@ -1,8 +1,3 @@
-function showAlertDiv3(color,caption,text){
-    alertFlag++;
-    return $.outpatientMethod.showAlertDiv(alertFlag,color,caption,text);
-}
-
 //处方主体按钮显示的切换(新增和组套一直在) 1初始(修) 2暂存(暂、发、删、修) 3发送(作) 4作废(无)
 function changePrescriptionBtns(status){
     if(status===1){
@@ -141,7 +136,7 @@ $("#prescriptionCard").on("click","tr",function () {
     if($(this).find(":radio").val()===$("#prescriptionCard :radio:checked").val()||$(this).find(":radio").val()===undefined)
         return;
     else if($("#prescriptionCard :radio:checked").val()==="-1"){
-        showAlertDiv3("alert-danger", "危险!", "存在未保存的信息，先删除或暂存。");
+        showAlertDiv("alert-danger", "危险!", "存在未保存的信息，先删除或暂存。");
         return;
     }
     $("#prescriptionCard :radio").prop("checked", false);
@@ -171,7 +166,7 @@ $("#prescriptionCard").on("click","tr",function () {
 //新增，加一行
 $("#prescriptionBtnGroup button:eq(0)").click(function () {
     if($("#prescriptionCard :radio:checked").val()==="-1"){
-        showAlertDiv3("alert-danger", "危险!", "存在未保存的信息，先删除或暂存。");
+        showAlertDiv("alert-danger", "危险!", "存在未保存的信息，先删除或暂存。");
         return;
     }
     //清除checked
@@ -209,20 +204,20 @@ $("#prescriptionBtnGroup button:gt(0):lt(2)").click(function () {
     var trNode=node.closest("tr");
     //判断提交内容是否完整
     if(trNode.find(":text").val()===""||trNode.find(":selected").val()==="0"||$("#drugsCard tbody").html()===""){
-        showAlertDiv3("alert-warning","警告!","请输入名称，选择类型和至少一个药品。");
+        showAlertDiv("alert-warning","警告!","请输入名称，选择类型和至少一个药品。");
         return;
     }
     var flag=0;
     $("#drugsCard [name='entrustment']").each(function () {
         if($(this).val()===""){
-            showAlertDiv3("alert-warning","警告!","请输入用药嘱托。");
+            showAlertDiv("alert-warning","警告!","请输入用药嘱托。");
             flag=1;
             return false;
         }
     });
     $("#drugsCard :selected").each(function () {
         if($(this).val()==="0"){
-            showAlertDiv3("alert-warning","警告!","请完成选择。");
+            showAlertDiv("alert-warning","警告!","请完成选择。");
             flag=1;
             return false;
         }
@@ -230,7 +225,7 @@ $("#prescriptionBtnGroup button:gt(0):lt(2)").click(function () {
     $("#drugsCard [type='number']").each(function () {
         var num=$(this).val();
         if(num===""||num<=0||(num%1 !== 0)){
-            showAlertDiv3("alert-warning","警告!","天数和数量必须是大于0的整数。");
+            showAlertDiv("alert-warning","警告!","天数和数量必须是大于0的整数。");
             flag=1;
             return false;
         }
@@ -239,26 +234,26 @@ $("#prescriptionBtnGroup button:gt(0):lt(2)").click(function () {
         var num=$(this).val();
         var reg=/^\d+(\.\d+)?$/;
         if(!reg.test(num)||num==="0"){
-            showAlertDiv3("alert-warning","警告!","用量是必须大于0的数字。");
+            showAlertDiv("alert-warning","警告!","用量是必须大于0的数字。");
             flag=1;
             return false;
         }
     });
     if(flag===1)
         return;
-    var alertNum=showAlertDiv3("alert-secondary","","处方信息保存中...");
+    var alertNum=showAlertDiv("alert-secondary","","处方信息保存中...");
     $.ajax({
         type: "POST",//方法类型
         dataType: "text",//预期服务器返回的数据类型
         url: "applyForPrescription/setPrescriptionAndDetail/"+$("#prescriptionType").val()+"/"+$(this).index()+"/"+$("#patientInfoDiv span:eq(1)").html()+"/"+node.val()+"/"+trNode.find(":text").val()+"/"+trNode.find(":selected").val()+"/"+trNode.find("td:last").html(),
         data: $("#prescriptionForm").serializeArray(),
         success: function (result) {
-            $.outpatientMethod.closeAlertDiv(alertNum);
+            closeAlertDiv(alertNum);
             if(result==="1"){
-                showAlertDiv3("alert-success","成功!","处方信息保存成功。");
+                showAlertDiv("alert-success","成功!","处方信息保存成功。");
                 flushPrescriptionPage();
             }
-            else showAlertDiv3("alert-warning","警告!","处方信息保存失败。");
+            else showAlertDiv("alert-warning","警告!","处方信息保存失败。");
         }
     });
 });
@@ -276,11 +271,11 @@ function deletePrescriptionAjax(num){
         data: {},
         success: function (result) {
             if(result==="1")
-                showAlertDiv3("alert-success","成功!","删除或作废成功。");
+                showAlertDiv("alert-success","成功!","删除或作废成功。");
             else if(result==="0")
-                showAlertDiv3("alert-warning","警告!","删除或作废失败。");
+                showAlertDiv("alert-warning","警告!","删除或作废失败。");
             else if(result==="2")
-                showAlertDiv3("alert-danger","错误!","该处方已付费或退费，无法作废。");
+                showAlertDiv("alert-danger","错误!","该处方已付费或退费，无法作废。");
             flushPrescriptionPage();
         }
     });
@@ -431,7 +426,7 @@ $("#drugsSearchInput").on("click","button",function () {
 function drugsPageJumpMethod(){
     var num=$("#searchDrugsPage").val();
     if(num==null||num<=0||num>drugsPages||(num%1 !== 0)){
-        showAlertDiv3("alert-danger","错误!","异常页码。");
+        showAlertDiv("alert-danger","错误!","异常页码。");
         return;
     }
     var current=$("#drugsPagination .current").html();
@@ -466,7 +461,7 @@ $("#drugsNotCheckedTbody").on("click","tr",function () {
     var node=$("#drugsCheckedTbody");
     node.children().each(function () {
         if($(this).children().eq(1).html()===id){
-            showAlertDiv3("alert-warning","警告!","已选择。");
+            showAlertDiv("alert-warning","警告!","已选择。");
             oneflag=1;
             return false;
         }
@@ -599,13 +594,13 @@ $("#menu3_1").on("dblclick","a",function () {
         }
     });
     if(flag===1){
-        showAlertDiv3("alert-warning","警告!","该药品已存在。");
+        showAlertDiv("alert-warning","警告!","该药品已存在。");
         return;//重复跳出
     }
     var drugsList=[{id:drugsId,drugsname:$(this).find("span:eq(0)").html(),drugsformat:$(this).next().next().val(),drugsprice:$(this).next().next().next().val()}];
     var prescriptionDetailList=[{usageMethod:"0", frequent: "0",consumption:"",days:"",amount:"",entrustment:""}];
     setPrescriptionDetail(prescriptionDetailList,drugsList);
-    showAlertDiv3("alert-success","成功!","药品插入成功。");
+    showAlertDiv("alert-success","成功!","药品插入成功。");
 })//删除常用项目
     .on("click",".badge-danger",function () {
         var res = confirm('确认要删除吗？');
@@ -634,8 +629,8 @@ $("#drugsCard").on("click","a",function () {
         data: {},
         success: function (result) {
             if(result==="1")
-                showAlertDiv3("alert-success","成功!","增加常用药品成功。");
-            else showAlertDiv3("alert-danger","失败!","增加常用药品失败。");
+                showAlertDiv("alert-success","成功!","增加常用药品成功。");
+            else showAlertDiv("alert-danger","失败!","增加常用药品失败。");
             $("#menu3RightNav a:eq(0)").click();
         }
     });
@@ -730,7 +725,7 @@ $("#prescriptionListDiv").on("click","a",function () {
             $("#prescriptionCategoryDiv").hide();
             disableSetContext1(true);
             if(result.setGroup===null){
-                showAlertDiv3("alert-warning","警告!","组套不存在。");
+                showAlertDiv("alert-warning","警告!","组套不存在。");
                 return;
             }
             var setGroup=result.setGroup;
@@ -792,11 +787,11 @@ $("#prescriptionSetBtnGroup button:eq(2)").click(function () {
                 data: {},
                 success: function (result) {
                     if(result==="0")//好像无效
-                        showAlertDiv3("alert-danger","错误!","删除组套失败。");
+                        showAlertDiv("alert-danger","错误!","删除组套失败。");
                     $("#prescriptionChooseDiv :checked").click();
                 }
             });
-        }else showAlertDiv3("alert-danger","错误!","删除组套失败，请重新选择。");
+        }else showAlertDiv("alert-danger","错误!","删除组套失败，请重新选择。");
         disableSetBtn1(true);
         clearSetContent1();
         disableSetContext1(true);
@@ -818,20 +813,20 @@ function disableSetSub1(bool){
 $("#prescriptionContextForm button:contains('提交')").click(function () {
     var codeNode=$("#prescriptionCodeTemplate");
     if(codeNode.val()===""||$("#categoryPrescription").val()==="0"){
-        showAlertDiv3("alert-warning", "警告!", "组套编码和适用范围不能为空。");
+        showAlertDiv("alert-warning", "警告!", "组套编码和适用范围不能为空。");
         codeNode.focus();
         return;
     }
-    var alertNum=showAlertDiv3("alert-secondary","","组套保存中...");
+    var alertNum=showAlertDiv("alert-secondary","","组套保存中...");
     $.ajax({
         type: "POST",//方法类型
         dataType: "text",//预期服务器返回的数据类型
         url: "setManage/saveSetGroup/"+((codeNode.attr("readonly")==="readonly")?"2":"1")+"/"+(eval($("#prescriptionType").val())+3),
         data: $("#prescriptionContextForm").serializeArray(),
         success: function (result) {//1成功 0更新失败（已删除） 2新增失败（code已存在）
-            $.outpatientMethod.closeAlertDiv(alertNum);
+            closeAlertDiv(alertNum);
             if(result==="1"){
-                showAlertDiv3("alert-success","成功!","组套提交成功。");
+                showAlertDiv("alert-success","成功!","组套提交成功。");
                 $("#prescriptionCategoryDiv").hide();
                 codeNode.attr("readonly",true);
                 disableSetSub1(true);
@@ -839,11 +834,11 @@ $("#prescriptionContextForm button:contains('提交')").click(function () {
                 $("#prescriptionListDiv .active").click();
             }
             else if(result==="2") {
-                showAlertDiv3("alert-warning", "警告!", "当前分类下组套编码已存在。");
+                showAlertDiv("alert-warning", "警告!", "当前分类下组套编码已存在。");
                 codeNode.focus();
             }
             else {
-                showAlertDiv3("alert-warning", "警告!", "当前分类下组套不存在。");
+                showAlertDiv("alert-warning", "警告!", "当前分类下组套不存在。");
             }
         }
     });

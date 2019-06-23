@@ -1,8 +1,3 @@
-function showAlertDiv2(color,caption,text){
-    alertFlag++;
-    return $.outpatientMethod.showAlertDiv(alertFlag,color,caption,text);
-}
-
 //修改时间格式
 function getTime1(t){
     if(t===null)
@@ -119,7 +114,7 @@ $("#applyForCard").on("click","tr",function () {
     if($(this).find(":radio").val()===$("#applyForCard :checked").val()||$(this).find(":radio").val()===undefined)
         return;
     else if($("#applyForCard :checked").val()==="-1"){
-        showAlertDiv2("alert-danger", "危险!", "存在未保存的信息，先删除或暂存。");
+        showAlertDiv("alert-danger", "危险!", "存在未保存的信息，先删除或暂存。");
         return;
     }
     $("#applyForCard :radio").prop("checked", false);
@@ -149,7 +144,7 @@ $("#applyForCard").on("click","tr",function () {
 //新增，加一行
 $("#applyForBtnGroup button:eq(0)").click(function () {
     if($("#applyForCard :checked").val()==="-1"){
-        showAlertDiv2("alert-danger", "危险!", "存在未保存的信息，先删除或暂存。");
+        showAlertDiv("alert-danger", "危险!", "存在未保存的信息，先删除或暂存。");
         return;
     }
     //清除checked
@@ -172,13 +167,13 @@ $("#applyForBtnGroup button:gt(0):lt(2)").click(function () {
     var node=$("#applyForCard :checked");
     //判断提交内容是否完整
     if(node.closest("tr").find(":text").val()===""||$("#visitItemCard tbody").html()===""){
-        showAlertDiv2("alert-warning","警告!","请输入目的和要求且选择至少一个项目。");
+        showAlertDiv("alert-warning","警告!","请输入目的和要求且选择至少一个项目。");
         return;
     }
     var flag=0;
     $("#visitItemCard :text").each(function () {
         if($(this).val()===""){
-            showAlertDiv2("alert-warning","警告!","请输入医生嘱托。");
+            showAlertDiv("alert-warning","警告!","请输入医生嘱托。");
             flag=1;
             return false;
         }
@@ -186,19 +181,19 @@ $("#applyForBtnGroup button:gt(0):lt(2)").click(function () {
     if(flag===1)
         return;
     var trNode=node.closest("tr");
-    var alertNum=showAlertDiv2("alert-secondary","","项目信息保存中...");
+    var alertNum=showAlertDiv("alert-secondary","","项目信息保存中...");
     $.ajax({
         type: "POST",//方法类型
         dataType: "text",//预期服务器返回的数据类型
         url: "applyForFmeditem/setVisitItemAndDetail/"+$("#applyForType").val()+"/"+$(this).index()+"/"+$("#patientInfoDiv span:eq(1)").html()+"/"+node.val()+"/"+trNode.find(":text").val()+"/"+trNode.find("td:last").html(),
         data: $("#visitItemForm").serializeArray(),
         success: function (result) {
-            $.outpatientMethod.closeAlertDiv(alertNum);
+            closeAlertDiv(alertNum);
             if(result==="1"){
-                showAlertDiv2("alert-success","成功!","项目信息保存成功。");
+                showAlertDiv("alert-success","成功!","项目信息保存成功。");
                 flushApplyForPage();
             }
-            else showAlertDiv2("alert-warning","警告!","项目信息保存失败。");
+            else showAlertDiv("alert-warning","警告!","项目信息保存失败。");
         }
     });
 });
@@ -216,11 +211,11 @@ function deleteApplyForAjax(num){
         data: {},
         success: function (result) {
             if(result==="1")
-                showAlertDiv2("alert-success","成功!","删除或作废成功。");
+                showAlertDiv("alert-success","成功!","删除或作废成功。");
             else if(result==="0")
-                showAlertDiv2("alert-warning","警告!","删除或作废失败。");
+                showAlertDiv("alert-warning","警告!","删除或作废失败。");
             else if(result==="2")
-                showAlertDiv2("alert-danger","错误!","该项目已登记，无法作废。");
+                showAlertDiv("alert-danger","错误!","该项目已登记，无法作废。");
             flushApplyForPage();
         }
     });
@@ -376,7 +371,7 @@ $("#itemSearchInput").on("click","button",function () {
 function itemPageJumpMethod(){
     var num=$("#searchItemPage").val();
     if(num==null||num<=0||num>itemPages||(num%1 !== 0)){
-        showAlertDiv2("alert-danger","错误!","异常页码。");
+        showAlertDiv("alert-danger","错误!","异常页码。");
         return;
     }
     var current=$("#itemPagination .current").html();
@@ -411,7 +406,7 @@ $("#itemNotCheckedTbody").on("click","tr",function () {
     var node=$("#itemCheckedTbody");
     node.children().each(function () {
         if($(this).children().eq(1).html()===id){
-            showAlertDiv2("alert-warning","警告!","已选择。");
+            showAlertDiv("alert-warning","警告!","已选择。");
             oneflag=1;
             return false;
         }
@@ -545,14 +540,14 @@ $("#menu1_1").on("dblclick","a",function () {
         }
     });
     if(flag===1){
-        showAlertDiv2("alert-warning","警告!","该项目已存在。");
+        showAlertDiv("alert-warning","警告!","该项目已存在。");
         return;//重复跳出
     }
     var fmeditemList=[{id:itemId,itemname:$(this).find("span:eq(0)").html(),price:$(this).next().next().val()}];
     var visitDetailList=[{doctorEntrustment:"",executionStatus:"0"}];
     setVisitItemList(visitDetailList,fmeditemList);
     calcuteAmount();
-    showAlertDiv2("alert-success","成功!","项目插入成功。");
+    showAlertDiv("alert-success","成功!","项目插入成功。");
 })//删除常用项目
     .on("click",".badge-danger",function () {
         var res = confirm('确认要删除吗？');
@@ -581,8 +576,8 @@ $("#visitItemCard").on("click","a",function () {
         data: {},
         success: function (result) {
             if(result==="1")
-                showAlertDiv2("alert-success","成功!","增加常用项目成功。");
-            else showAlertDiv2("alert-danger","失败!","增加常用项目失败。");
+                showAlertDiv("alert-success","成功!","增加常用项目成功。");
+            else showAlertDiv("alert-danger","失败!","增加常用项目失败。");
             $("#menu1RightNav a:eq(0)").click();
         }
     });
@@ -678,7 +673,7 @@ $("#itemSetListDiv").on("click","a",function () {
             $("#itemSetCategoryDiv").hide();
             disableSetContext(true);
             if(result.setGroup===null){
-                showAlertDiv2("alert-warning","警告!","组套不存在。");
+                showAlertDiv("alert-warning","警告!","组套不存在。");
                 return;
             }
             var setGroup=result.setGroup;
@@ -741,11 +736,11 @@ $("#itemSetBtnGroup button:eq(2)").click(function () {
                 data: {},
                 success: function (result) {
                     if(result==="0")//好像无效
-                        showAlertDiv2("alert-danger","错误!","删除组套失败。");
+                        showAlertDiv("alert-danger","错误!","删除组套失败。");
                     $("#itemSetChooseDiv :checked").click();
                 }
             });
-        }else showAlertDiv2("alert-danger","错误!","删除组套失败，请重新选择。");
+        }else showAlertDiv("alert-danger","错误!","删除组套失败，请重新选择。");
         disableSetBtn(true);
         clearSetContent();
         disableSetContext(true);
@@ -767,20 +762,20 @@ function disableSetSub(bool){
 $("#itemSetContextForm button:contains('提交')").click(function () {
     var codeNode=$("#setCodeTemplate");
     if(codeNode.val()===""||$("#categorySet").val()==="0"){
-        showAlertDiv2("alert-warning", "警告!", "组套编码和适用范围不能为空。");
+        showAlertDiv("alert-warning", "警告!", "组套编码和适用范围不能为空。");
         codeNode.focus();
         return;
     }
-    var alertNum=showAlertDiv2("alert-secondary","","组套保存中...");
+    var alertNum=showAlertDiv("alert-secondary","","组套保存中...");
     $.ajax({
         type: "POST",//方法类型
         dataType: "text",//预期服务器返回的数据类型
         url: "setManage/saveSetGroup/"+((codeNode.attr("readonly")==="readonly")?"2":"1")+"/"+$("#applyForType").val(),
         data: $("#itemSetContextForm").serializeArray(),
         success: function (result) {//1成功 0更新失败（已删除） 2新增失败（code已存在）
-            $.outpatientMethod.closeAlertDiv(alertNum);
+            closeAlertDiv(alertNum);
             if(result==="1"){
-                showAlertDiv2("alert-success","成功!","组套提交成功。");
+                showAlertDiv("alert-success","成功!","组套提交成功。");
                 $("#itemSetCategoryDiv").hide();
                 codeNode.attr("readonly",true);
                 disableSetSub(true);
@@ -788,11 +783,11 @@ $("#itemSetContextForm button:contains('提交')").click(function () {
                 $("#itemSetListDiv .active").click();
             }
             else if(result==="2") {
-                showAlertDiv2("alert-warning", "警告!", "当前分类下组套编码已存在。");
+                showAlertDiv("alert-warning", "警告!", "当前分类下组套编码已存在。");
                 codeNode.focus();
             }
             else {
-                showAlertDiv2("alert-warning", "警告!", "当前分类下组套不存在。");
+                showAlertDiv("alert-warning", "警告!", "当前分类下组套不存在。");
             }
         }
     });
@@ -820,7 +815,7 @@ $("#visitItemCard tbody").on("click","button",function () {
     $("#ResultModal img").attr("src", "");
     $("#ResultModal span:first").html($(this).closest("tr").find("td:eq(1)").html());
     if (visitItemNo === undefined||status===""||status==="暂存")
-        showAlertDiv2("alert-warning","警告!","未选择申请单或未开立过。");
+        showAlertDiv("alert-warning","警告!","未选择申请单或未开立过。");
     else
         $.ajax({
             type: "POST",//方法类型
@@ -829,7 +824,7 @@ $("#visitItemCard tbody").on("click","button",function () {
             data: {},
             success: function (result) {
                 if (result.describetion === null) {
-                    showAlertDiv2("alert-warning","警告!","未找到项目结果。");
+                    showAlertDiv("alert-warning","警告!","未找到项目结果。");
                     return;
                 }
                 $("#ResultModal span:last").html(result.describetion);

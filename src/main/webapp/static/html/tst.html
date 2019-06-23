@@ -15,6 +15,15 @@
     <link rel="stylesheet" type="text/css" href="../css/pagination.css">
 </head>
 <body>
+<div id="alertAllDiv">
+    <div id="alertDiv'+num+'" class="alert alert-dismissible fade show alert-danger" style="position:fixed;z-index:1100;width: 100%;">
+        <button type="button" class="close" style="margin-right: 40px ;margin-top:3px;font-size: 20px">Clear</button>
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+        <strong>'+alertFlag+'.'+caption+'</strong><span>'+text+'</span>
+    </div>
+</div>
+
+
 <input type="number" id="ainput">
 <button id="tba" class="" data-toggle="modal" data-target="#ResultModal">a</button>
 <button id="tba1">a1</button>

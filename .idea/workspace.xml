@@ -6,12 +6,14 @@
     </artifacts-to-build>
   </component>
   <component name="BookmarkManager">
-    <bookmark url="file://$PROJECT_DIR$/src/main/webapp/static/js/myJquery/outpatientDoctorJs.js" line="681" mnemonic="2" />
-    <bookmark url="file://$PROJECT_DIR$/src/main/webapp/static/js/myJquery/prescriptionJs.js" line="312" mnemonic="1" />
+    <bookmark url="file://$PROJECT_DIR$/src/main/webapp/static/js/myJquery/outpatientDoctorJs.js" line="671" mnemonic="2" />
+    <bookmark url="file://$PROJECT_DIR$/src/main/webapp/static/js/myJquery/prescriptionJs.js" line="323" mnemonic="1" />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="dbf00169-a8e7-473c-9987-97a8297bcd84" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/outpatientDoctorWorkstation.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/outpatientDoctorWorkstation.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/html/tst.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/static/html/tst.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/static/js/myJquery/applyForJs.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/static/js/myJquery/applyForJs.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/static/js/myJquery/outpatientDoctorJs.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/static/js/myJquery/outpatientDoctorJs.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/static/js/myJquery/prescriptionJs.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/static/js/myJquery/prescriptionJs.js" afterDir="false" />
@@ -69,9 +71,12 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/webapp/static/html/tst.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="34">
-              <caret line="1409" column="66" lean-forward="true" selection-start-line="1409" selection-start-column="66" selection-end-line="1409" selection-end-column="66" />
+            <state relative-caret-position="475">
+              <caret line="19" column="108" selection-start-line="19" selection-start-column="103" selection-end-line="19" selection-end-column="108" />
               <folding>
+                <element signature="n#style#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#button#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="e#1061#1068#1" expanded="true" />
                 <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#div#0;n#div#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#div#0;n#div#0;n#div#5;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -83,40 +88,20 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/outpatientDoctorWorkstation.jsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="22">
-              <caret line="889" column="61" selection-start-line="889" selection-start-column="45" selection-end-line="889" selection-end-column="61" />
+            <state relative-caret-position="425">
+              <caret line="17" column="20" selection-start-line="17" selection-start-column="9" selection-end-line="17" selection-end-column="20" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/webapp/static/js/myJquery/applyForJs.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="200">
-              <caret line="8" column="18" lean-forward="true" selection-start-line="8" selection-start-column="18" selection-end-line="8" selection-end-column="18" />
-              <folding>
-                <element signature="n#style#0;n#td#5;n#tr#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#td#3;n#tr#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#td#5;n#tr#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#img#0;n#a#0;n#td#5;n#tr#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#td#6;n#tr#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#button#0;n#td#6;n#tr#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#td#5;n#tr#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#td#2;n#tr#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#td#0;n#tr#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#td#1;n#tr#0;n#!!top" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/webapp/static/js/myJquery/outpatientDoctorJs.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="150">
-              <caret line="6" column="39" selection-start-line="6" selection-start-column="39" selection-end-line="6" selection-end-column="39" />
+            <state relative-caret-position="450">
+              <caret line="18" column="35" selection-start-line="18" selection-start-column="35" selection-end-line="18" selection-end-column="35" />
               <folding>
                 <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#button#0;n#div#0;n#!!top" expanded="true" />
                 <element signature="e#171#178#1" expanded="true" />
                 <element signature="n#style#0;n#td#2;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#td#3;n#!!top" expanded="true" />
@@ -141,11 +126,44 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/webapp/static/js/myJquery/applyForJs.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state>
+              <folding>
+                <element signature="n#style#0;n#td#5;n#tr#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#td#3;n#tr#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#td#5;n#tr#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#img#0;n#a#0;n#td#5;n#tr#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#td#6;n#tr#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#button#0;n#td#6;n#tr#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#td#5;n#tr#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#td#2;n#tr#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#td#0;n#tr#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#td#1;n#tr#0;n#!!top" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/webapp/static/js/myJquery/prescriptionJs.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="100">
-              <caret line="4" selection-start-line="4" selection-end-line="4" />
+            <state relative-caret-position="306">
+              <caret line="818" column="5" lean-forward="true" selection-start-line="818" selection-start-column="5" selection-end-line="818" selection-end-column="5" />
+              <folding>
+                <element signature="n#style#0;n#td#2;n#tr#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#td#5;n#tr#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#td#7;n#tr#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#td#8;n#tr#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#td#0;n#tr#1;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#td#1;n#tr#1;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#img#0;n#a#0;n#td#1;n#tr#1;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#td#2;n#tr#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#td#2;n#tr#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#td#0;n#tr#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#td#1;n#tr#0;n#!!top" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -167,12 +185,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>setSubList.pus</find>
-      <find>drugs</find>
-      <find>getItemCheckedFmeditemData</find>
-      <find>fmeditemId</find>
-      <find>drugsId</find>
-      <find>fmeitemId</find>
       <find>存为</find>
       <find>getVisitItemFmeitemData</find>
       <find>setSubEntrust</find>
@@ -194,9 +206,15 @@
       <find>暂存</find>
       <find>debugg</find>
       <find>todo</find>
-      <find>prescriptionCard</find>
       <find>calcu</find>
       <find>getTime2</find>
+      <find>getTime1</find>
+      <find>$.outpatientMethod</find>
+      <find>$.ou</find>
+      <find>showAlertDiv3</find>
+      <find>showAlertDiv1</find>
+      <find>showAlertDiv2</find>
+      <find>prescriptionCard</find>
     </findStrings>
     <replaceStrings>
       <replace>showAlertDiv1(</replace>
@@ -216,6 +234,8 @@
       <replace>objectId</replace>
       <replace>prescriptionChooseDiv</replace>
       <replace>disableSetSub1</replace>
+      <replace>getTime1</replace>
+      <replace>showAlertDiv</replace>
     </replaceStrings>
   </component>
   <component name="Git.Settings">
@@ -274,11 +294,11 @@
         <option value="$PROJECT_DIR$/src/main/java/edu/neu/medical/hospital/controller/ApplyForPrescriptionController.java" />
         <option value="$PROJECT_DIR$/src/main/java/edu/neu/medical/hospital/controller/SetManageController.java" />
         <option value="$PROJECT_DIR$/src/main/java/edu/neu/medical/hospital/service/impl/SetManageServiceImpl.java" />
+        <option value="$PROJECT_DIR$/src/main/webapp/static/js/myJquery/applyForJs.js" />
+        <option value="$PROJECT_DIR$/src/main/webapp/static/js/myJquery/prescriptionJs.js" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/outpatientDoctorWorkstation.jsp" />
         <option value="$PROJECT_DIR$/src/main/webapp/static/html/tst.html" />
         <option value="$PROJECT_DIR$/src/main/webapp/static/js/myJquery/outpatientDoctorJs.js" />
-        <option value="$PROJECT_DIR$/src/main/webapp/static/js/myJquery/applyForJs.js" />
-        <option value="$PROJECT_DIR$/src/main/webapp/static/js/myJquery/prescriptionJs.js" />
       </list>
     </option>
   </component>
@@ -862,14 +882,7 @@
       <workItem from="1561079853659" duration="29149000" />
       <workItem from="1561127888452" duration="9088000" />
       <workItem from="1561183827439" duration="30206000" />
-      <workItem from="1561263711321" duration="5871000" />
-    </task>
-    <task id="LOCAL-00014" summary="set 6-9">
-      <created>1560062663227</created>
-      <option name="number" value="00014" />
-      <option name="presentableId" value="LOCAL-00014" />
-      <option name="project" value="LOCAL" />
-      <updated>1560062663227</updated>
+      <workItem from="1561263711321" duration="7031000" />
     </task>
     <task id="LOCAL-00015" summary="set 6-9-1">
       <created>1560065021892</created>
@@ -1207,7 +1220,14 @@
       <option name="project" value="LOCAL" />
       <updated>1561270237922</updated>
     </task>
-    <option name="localTasksCounter" value="63" />
+    <task id="LOCAL-00063" summary="prescription over 6-23-3">
+      <created>1561271358754</created>
+      <option name="number" value="00063" />
+      <option name="presentableId" value="LOCAL-00063" />
+      <option name="project" value="LOCAL" />
+      <updated>1561271358754</updated>
+    </task>
+    <option name="localTasksCounter" value="64" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -1243,7 +1263,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="719296000" />
+    <option name="totallyTimeSpent" value="720456000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1255,7 +1275,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="446" y="177" width="1295" height="732" extended-state="0" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" sideWeight="0.490625" weight="0.36275303" />
@@ -1269,7 +1289,7 @@
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.62906724" />
       <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49946696" weight="0.3394794" />
-      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.49840087" weight="0.30267558" />
+      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.49840087" weight="0.30260304" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.30043384" />
@@ -1353,7 +1373,6 @@
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_NEW_TODO" value="false" />
-    <MESSAGE value="medrectemp 6-17-4" />
     <MESSAGE value="firstpageover 6-18" />
     <MESSAGE value="firstpageover 6-18-1" />
     <MESSAGE value="applyfor 6-18-2" />
@@ -1378,7 +1397,8 @@
     <MESSAGE value="prescription over 6-23" />
     <MESSAGE value="prescription over 6-23-1" />
     <MESSAGE value="prescription over 6-23-2" />
-    <option name="LAST_COMMIT_MESSAGE" value="prescription over 6-23-2" />
+    <MESSAGE value="prescription over 6-23-3" />
+    <option name="LAST_COMMIT_MESSAGE" value="prescription over 6-23-3" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1831,11 +1851,59 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/static/js/myJquery/prescriptionJs.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="818" column="5" lean-forward="true" selection-start-line="818" selection-start-column="5" selection-end-line="818" selection-end-column="5" />
+          <folding>
+            <element signature="n#style#0;n#td#2;n#tr#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#td#5;n#tr#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#td#7;n#tr#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#td#8;n#tr#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#td#0;n#tr#1;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#td#1;n#tr#1;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#img#0;n#a#0;n#td#1;n#tr#1;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#td#2;n#tr#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#td#2;n#tr#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#td#0;n#tr#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#td#1;n#tr#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/static/js/myJquery/applyForJs.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <folding>
+            <element signature="n#style#0;n#td#5;n#tr#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#td#3;n#tr#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#td#5;n#tr#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#img#0;n#a#0;n#td#5;n#tr#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#td#6;n#tr#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#button#0;n#td#6;n#tr#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#td#5;n#tr#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#td#2;n#tr#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#td#0;n#tr#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#td#1;n#tr#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/outpatientDoctorWorkstation.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="425">
+          <caret line="17" column="20" selection-start-line="17" selection-start-column="9" selection-end-line="17" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/static/html/tst.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="1409" column="66" lean-forward="true" selection-start-line="1409" selection-start-column="66" selection-end-line="1409" selection-end-column="66" />
+        <state relative-caret-position="475">
+          <caret line="19" column="108" selection-start-line="19" selection-start-column="103" selection-end-line="19" selection-end-column="108" />
           <folding>
+            <element signature="n#style#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#button#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="e#1061#1068#1" expanded="true" />
             <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#0;n#div#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#0;n#div#0;n#div#5;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -1843,19 +1911,13 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/outpatientDoctorWorkstation.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="22">
-          <caret line="889" column="61" selection-start-line="889" selection-start-column="45" selection-end-line="889" selection-end-column="61" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/static/js/myJquery/outpatientDoctorJs.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="6" column="39" selection-start-line="6" selection-start-column="39" selection-end-line="6" selection-end-column="39" />
+        <state relative-caret-position="450">
+          <caret line="18" column="35" selection-start-line="18" selection-start-column="35" selection-end-line="18" selection-end-column="35" />
           <folding>
             <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#button#0;n#div#0;n#!!top" expanded="true" />
             <element signature="e#171#178#1" expanded="true" />
             <element signature="n#style#0;n#td#2;n#!!top" expanded="true" />
             <element signature="n#style#0;n#td#3;n#!!top" expanded="true" />
@@ -1876,32 +1938,6 @@
             <element signature="n#style#0;n#td#2;n#tr#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#td#2;n#tr#0;n#!!top" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/static/js/myJquery/applyForJs.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="200">
-          <caret line="8" column="18" lean-forward="true" selection-start-line="8" selection-start-column="18" selection-end-line="8" selection-end-column="18" />
-          <folding>
-            <element signature="n#style#0;n#td#5;n#tr#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#td#3;n#tr#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#td#5;n#tr#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#img#0;n#a#0;n#td#5;n#tr#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#td#6;n#tr#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#button#0;n#td#6;n#tr#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#td#5;n#tr#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#td#2;n#tr#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#td#0;n#tr#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#td#1;n#tr#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/static/js/myJquery/prescriptionJs.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="100">
-          <caret line="4" selection-start-line="4" selection-end-line="4" />
         </state>
       </provider>
     </entry>
