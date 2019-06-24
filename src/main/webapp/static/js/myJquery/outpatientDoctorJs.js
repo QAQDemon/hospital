@@ -1049,39 +1049,37 @@ $("#statisticsButton").click(function () {
     var nowDate=getNowTime();
     $("#statisticsCard input:last").val(nowDate);
     $("#statisticsCard input:first").val(nowDate.substring(0,11)+"00:00");
-    $("#statisticsCard tbody:eq(0)").html("");
-    $("#statisticsCard tbody:eq(1) th:gt(0)").html("");
     $("#statisticsCard button").click();
 });
-
+function clearStatisticsContext() {
+    $("#statisticsCard tbody:eq(0)").html("");
+    $("#statisticsCard tbody:eq(1) th:gt(0)").html("");
+    $("#statisticsCard span:last").html("");
+}
 function setStatisticsList(map){
+    debugger;
+    var amount=[0,0,0,0,0,0];
+    var sum=0;
     for(var key in map){
-        var jsonstr=JSON.parse(map[key]);
-        str+=' <a href="#" class="list-group-item list-group-item-action">'+jsonstr.time+' '+jsonstr.name+'</a><input type="hidden" value="'+key+'">';
-    }
-
-
-
-    var amount=[0,0,0,0,0];
-    for(var key in map){
-        amount[0]+=list[i][1];
-        amount[1]+=list[i][2];
-        amount[2]+=list[i][3];
-        amount[3]+=list[i][4];
-        amount[4]+=list[i][5];
+        sum++;
+        amount[0]+=map[key][0];
+        amount[1]+=map[key][1];
+        amount[2]+=map[key][2];
+        amount[3]+=map[key][3];
+        amount[4]+=map[key][4];
         $("#statisticsCard tbody:eq(0)").append('<tr>' +
-            '<td>'+list[i][0]+'</td>'+
-            '<td>'+list[i][1]+'</td>'+
-            '<td>'+list[i][2]+'</td>'+
-            '<td>'+list[i][3]+'</td>'+
-            '<td>'+list[i][4]+'</td>'+
-            '<td>'+list[i][5]+'</td>'+
+            '<td>'+key+'</td>'+
+            '<td>'+Number(map[key][0]).toFixed(2)+'</td>'+
+            '<td>'+Number(map[key][1]).toFixed(2)+'</td>'+
+            '<td>'+Number(map[key][2]).toFixed(2)+'</td>'+
+            '<td>'+Number(map[key][3]).toFixed(2)+'</td>'+
+            '<td>'+Number(map[key][4]).toFixed(2)+'</td>'+
             '</tr>');
     }
     for (var j = 1; j < 6; j++) {
         $("#statisticsCard tbody:eq(1) th:eq("+j+")").html(Number(amount[j]).toFixed(2));
     }
-
+    $("#statisticsCard span:last").html(sum);
 }
 $("#statisticsCard button").click(function () {
     var firstTime=$("#statisticsCard input:first").val();
@@ -1097,6 +1095,7 @@ $("#statisticsCard button").click(function () {
         showAlertDiv("alert-warning","警告!","起始时间不能大于截止时间。");
         return;
     }
+    clearStatisticsContext();
     $.ajax({
         type: "POST",//方法类型
         dataType: "json",//预期服务器返回的数据类型

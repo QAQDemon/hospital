@@ -117,7 +117,7 @@ public class OutpatientDoctorWorkstationController {
     }
 
     /*
-     * @Description 统计一段时间的看诊人数和各自费用 检查 检验 处置 成药 草药//TODO
+     * @Description 统计一段时间的看诊人数和各自费用 检查 检验 处置 成药 草药
      * @Param []
      * @return java.util.List<int[]>
      **/

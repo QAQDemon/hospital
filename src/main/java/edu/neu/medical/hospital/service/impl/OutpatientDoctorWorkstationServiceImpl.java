@@ -283,6 +283,7 @@ public class OutpatientDoctorWorkstationServiceImpl implements OutpatientDoctorW
         List<MedicalRecordInfo> medicalRecordInfoList = medicalRecordInfoMapper.selectByExample(medicalRecordInfoExample);
         Map<Integer, Double[]> map = new HashMap<>();
         for (MedicalRecordInfo medicalRecordInfo : medicalRecordInfoList) {
+            Integer medicalRecordNo = medicalRecordInfo.getMedicalRecordNo();
             Integer infoId=medicalRecordInfo.getId();
             Double[] amount=new Double[5];
             amount[0]=0.0;
@@ -316,13 +317,13 @@ public class OutpatientDoctorWorkstationServiceImpl implements OutpatientDoctorW
                 else  amount[4]+=prescription.getPrescriptionInAmount().doubleValue();
             }
             //判断key是否存在
-            if (!map.containsKey(infoId)){//取出来相加
-                Double[] oldAmount = map.remove(infoId);
+            if (map.containsKey(medicalRecordNo)){//取出来相加
+                Double[] oldAmount = map.remove(medicalRecordNo);
                 for (int k = 0; k < 5; k++) {
                     amount[k]+=oldAmount[k];
                 }
             }
-            map.put(infoId,amount);
+            map.put(medicalRecordNo,amount);
         }
         return map;
     }
