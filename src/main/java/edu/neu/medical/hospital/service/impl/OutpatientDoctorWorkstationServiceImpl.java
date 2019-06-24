@@ -196,27 +196,33 @@ public class OutpatientDoctorWorkstationServiceImpl implements OutpatientDoctorW
 
     /*
      * @Description 诊毕，设置状态、就诊时间
-     * @Param [medicalRecordInfoNo]
-     * @return java.lang.Boolean
+     * @Param [medicalRecordNo ,medicalRecordInfoId]
+     * @return java.lang.int 0出错 1成功
      **/
-    public Boolean setCompleteVisit(int medicalRecordInfoId){
+    public int setCompleteVisit(int medicalRecordNo,int medicalRecordInfoId){
+        int num;
+        Date visitTime=new Date(System.currentTimeMillis());
         //更新病历信息表
         MedicalRecordInfo medicalRecordInfo = new MedicalRecordInfo();
-        medicalRecordInfo.setId(medicalRecordInfoId);
         medicalRecordInfo.setStatus("3");
-        Date visitTime=new Date(System.currentTimeMillis());
         medicalRecordInfo.setVisitTime(visitTime);
-        medicalRecordInfoMapper.updateByPrimaryKeySelective(medicalRecordInfo);
+        medicalRecordInfo.setId(medicalRecordInfoId);
+        num=medicalRecordInfoMapper.updateByPrimaryKeySelective(medicalRecordInfo);
+        if(num!=1)
+            return 0;
         //更新挂号表
-        int medicalRecordNo = medicalRecordInfoMapper.selectByPrimaryKey(medicalRecordInfoId).getMedicalRecordNo();
         RegistrationInfoExample registrationInfoExample = new RegistrationInfoExample();
         RegistrationInfoExample.Criteria criteria = registrationInfoExample.createCriteria();
         criteria.andMedicalRecordNoEqualTo(medicalRecordNo);
         criteria.andIsSeenDocatorEqualTo("1");
+        criteria.andStatusEqualTo("1");
         RegistrationInfo registrationInfo = new RegistrationInfo();
+        registrationInfo.setMedicalRecordNo(medicalRecordNo);
         registrationInfo.setIsSeenDocator("2");
         registrationInfo.setSeeDoctorDate(visitTime);
-        registrationInfoMapper.updateByExampleSelective(registrationInfo,registrationInfoExample);
-        return true;
+        num=registrationInfoMapper.updateByExampleSelective(registrationInfo,registrationInfoExample);
+        if(num!=1)
+            return 0;
+        return num;
     }
 }

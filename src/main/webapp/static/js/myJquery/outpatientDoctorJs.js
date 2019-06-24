@@ -219,7 +219,10 @@ function disableMedicalInfoBtn(bool){
     else  btns.show();
 }
 
+// 隐藏按钮
 disableMedicalInfoBtn(true);
+var overVisitBtn=$("#overVisitBtn");
+overVisitBtn.hide();
 
 //切换患者将右侧功能重置
 function resetHomeRight(){
@@ -233,26 +236,11 @@ $("[href='#home1']").click(function () {
     if(!node.hasClass("active"))
         node.click();
 });
-//点击表格设置患者信息
-$("#searchPatientTbody1,#searchPatientTbody2").on("click","tr",function () {
-    $("[href='#home1']").click();
-    resetHomeRight();
-    var radio=$(this).find("input[type='radio']");
-    radio.prop('checked','true');
-    var no=parseInt(radio.val());
-    var patient;
-    var patientListNum;
-    for (var i=0; i < patientList.length; i++) {
-        if(patientList[i].medicalRecordNo===no){
-            patient=patientList[i];//保存到病人信息
-            patientListNum=i;
-            break;
-        }
-    }
+function getMedicalRecordInfoAjax(isSeen,no,patient){
     $.ajax({
         type: "POST",//方法类型
         dataType: "json",//预期服务器返回的数据类型
-        url: "medicalRecordHome/getMedicalRecordInfo/"+((patientListNum<notSeenListNum)?"1":"2")+"/"+no,
+        url: "medicalRecordHome/getMedicalRecordInfo/"+isSeen+"/"+no,
         data: {},
         success: function (result) {
             var visitStatus;//就诊状态
@@ -269,17 +257,24 @@ $("#searchPatientTbody1,#searchPatientTbody2").on("click","tr",function () {
                 zDiagnosisDiseaseList=result.zDiagnosisDiseaseList;
                 xDiagnosisDiseaseList=result.xDiagnosisDiseaseList;
                 medicalInfoNo=medicalRecordInfo.id;
-                if(medicalRecordInfo.status==='3')
+                if(medicalRecordInfo.status==='3'){
                     visitStatus="诊毕";
-                else if(medicalRecordInfo.status==='2')
+                    overVisitBtn.hide();
+                }
+                else if(medicalRecordInfo.status==='2'){
                     visitStatus="初诊完成";
-                else visitStatus="待诊";
+                    overVisitBtn.show();
+                } else {
+                    visitStatus="待诊";
+                    overVisitBtn.show();
+                }
                 if(visitStatus==='待诊')
                     disableMedicalInfoBtn(false);
                 else disableMedicalInfoBtn(true);
             }else {
                 visitStatus="待诊";
                 medicalInfoNo="待创建";
+                overVisitBtn.show();
                 disableMedicalInfoBtn(false);
             }
             //变色
@@ -309,6 +304,24 @@ $("#searchPatientTbody1,#searchPatientTbody2").on("click","tr",function () {
             setDiagnosisList(zDiagnosisList,zDiagnosisDiseaseList,"zDiagnosisList",2);
         }
     });
+}
+//点击表格设置患者信息
+$("#searchPatientTbody1,#searchPatientTbody2").on("click","tr",function () {
+    $("[href='#home1']").click();
+    resetHomeRight();
+    var radio=$(this).find("input[type='radio']");
+    radio.prop('checked','true');
+    var no=parseInt(radio.val());
+    var patient;
+    var patientListNum;
+    for (var i=0; i < patientList.length; i++) {
+        if(patientList[i].medicalRecordNo===no){
+            patient=patientList[i];//保存到病人信息
+            patientListNum=i;
+            break;
+        }
+    }
+    getMedicalRecordInfoAjax(((patientListNum<notSeenListNum)?"1":"2"),no,patient);
 });
 //诊断 删
 $("#diagnosisContextTbody1,#diagnosisContextTbody2,#finalDiagnosisForm").on("click","button:contains('-')",function () {
@@ -992,4 +1005,32 @@ $("#historyMedicalInfoLabelDiv").on("click","a",function () {
     return false;
 });
 
-//todo zhenbi
+//诊毕
+overVisitBtn.click(function () {
+    var res = confirm('确认要诊毕吗？');
+    if(res === true){
+        var infoId=$("#patientInfoDiv span:eq(1)").html();
+        if(infoId==="待创建"){
+            showAlertDiv("alert-warning","警告!","请至少提交一次病历。");
+            return;
+        }
+        overVisitBtn.hide();
+        $.ajax({
+            type: "POST",//方法类型
+            dataType: "json",//预期服务器返回的数据类型
+            url: "outpatientDoctorWorkstation/setCompleteVisit/"+$("#patientListForm :checked").val()+"/"+infoId,
+            data: {},
+            success: function (result) {
+                debugger;
+                if(result.msg===1)
+                    showAlertDiv("alert-success","成功!","提交诊毕成功。");
+                else
+                    showAlertDiv("alert-warning","警告!","提交诊毕失败。");
+                var age=$("#patientInfoDiv span:eq(4)").html();
+                var patient={name:$("#patientInfoDiv span:eq(2)").html(),gender:($("#patientInfoDiv span:eq(3)").html()==="男"?"1":"2"),age:age.substring(0,age.length-1)};
+                getMedicalRecordInfoAjax("2",result.medicalRecordNo,patient);
+                $("#searchPatientForm button").click();
+            }
+        });
+    }
+});

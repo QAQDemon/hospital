@@ -359,7 +359,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                     <label class="control-label font-weight-bold">年龄：</label><span></span>&nbsp;&nbsp;
                 </div>
                 <div class="col-md-1 text-right">
-                    <button type="button" class="btn btn-danger">诊毕</button>
+                    <button id="overVisitBtn" type="button" class="btn btn-danger">诊毕</button>
                 </div>
             </div>
         </div></div>

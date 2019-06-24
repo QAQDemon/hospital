@@ -82,13 +82,26 @@ public class OutpatientDoctorWorkstationController {
     }
 
     /*
-     * @Description 确定终诊//TODO
+     * @Description 确定终诊
      * @Param [medicalInfoId, diagnosis0, diagnosis1]
      * @return int
      **/
     @RequestMapping("setFinalDiagnosis/{medicalInfoId}")
     public int setFinalDiagnosis(@PathVariable("medicalInfoId")int medicalInfoId,int[] diagnosis0,int[] diagnosis1){
         return outpatientDoctorWorkstationService.setFinalDiagnosisList(outpatientDoctorWorkstationService.initeFinalDiagnosis(medicalInfoId, diagnosis0, diagnosis1));
+    }
+
+    /*
+     * @Description 诊毕
+     * @Param []
+     * @return int
+     **/
+    @RequestMapping("setCompleteVisit/{medicalRecordNo}/{medicalInfoId}")
+    public Map<String,Integer> setCompleteVisit(@PathVariable("medicalRecordNo")int medicalRecordNo,@PathVariable("medicalInfoId")int medicalInfoId){
+        Map<String, Integer> map = new HashMap<>();
+        map.put("msg",outpatientDoctorWorkstationService.setCompleteVisit(medicalRecordNo,medicalInfoId));
+        map.put("medicalRecordNo",medicalRecordNo);
+        return map;
     }
 
 }

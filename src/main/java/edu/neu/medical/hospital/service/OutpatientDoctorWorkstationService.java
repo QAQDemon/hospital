@@ -11,7 +11,7 @@ public interface OutpatientDoctorWorkstationService {
     PageInfo<Fmeditem> searchFmeditemList(char type, String key, int pageNum);
     PageInfo<Drugs> searchDrugsList(char type,String key,int pageNum);
     int setFinalDiagnosisList(List<Diagnosis> diagnosisList);
-    Boolean setCompleteVisit(int medicalRecordInfoId);
+    int setCompleteVisit(int medicalRecordNo,int medicalRecordInfoId);
     int deleteCommonOption(int doctorId,String type,int optionId);
     int addCommonOption(int doctorId,String type,int optionId);
     List<Diagnosis> getFinalDiagnosisList(char type,int medicalInfoId);
