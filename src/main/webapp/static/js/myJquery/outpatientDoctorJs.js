@@ -1077,7 +1077,7 @@ function setStatisticsList(map){
             '</tr>');
     }
     for (var j = 1; j < 6; j++) {
-        $("#statisticsCard tbody:eq(1) th:eq("+j+")").html(Number(amount[j]).toFixed(2));
+        $("#statisticsCard tbody:eq(1) th:eq("+j+")").html(Number(amount[j-1]).toFixed(2));
     }
     $("#statisticsCard span:last").html(sum);
 }
