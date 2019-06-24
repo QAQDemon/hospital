@@ -170,12 +170,16 @@ $("*").click(function (event) {
     var e = event || window.event; //浏览器兼容性
     var elem = e.target || e.srcElement;
     while (elem) { //循环判断至跟节点，防止点击的是div子元素
-        if (elem.id && elem.id==='searchCard') {
+        if (elem.id && (elem.id==='searchCard'||elem.id==='statisticsCard')) {
             return;
         }
         elem = elem.parentNode;
     }
     var div=$("#searchCard");
+    if(div.hasClass("show")){
+        div.removeClass("show");
+    }
+    div=$("#statisticsCard");
     if(div.hasClass("show")){
         div.removeClass("show");
     }
@@ -1055,6 +1059,7 @@ function clearStatisticsContext() {
     $("#statisticsCard tbody:eq(0)").html("");
     $("#statisticsCard tbody:eq(1) th:gt(0)").html("");
     $("#statisticsCard span:last").html("");
+    $("#statisticsCard span:eq(2)").html("");
 }
 function setStatisticsList(map){
     debugger;
@@ -1079,7 +1084,8 @@ function setStatisticsList(map){
     for (var j = 1; j < 6; j++) {
         $("#statisticsCard tbody:eq(1) th:eq("+j+")").html(Number(amount[j-1]).toFixed(2));
     }
-    $("#statisticsCard span:last").html(sum);
+    $("#statisticsCard span:eq(2)").html(sum);
+    $("#statisticsCard span:last").html(Number(amount[0]+amount[1]+amount[2]+amount[3]+amount[4]).toFixed(2));
 }
 $("#statisticsCard button").click(function () {
     var firstTime=$("#statisticsCard input:first").val();
@@ -1102,7 +1108,6 @@ $("#statisticsCard button").click(function () {
         url: "outpatientDoctorWorkstation/statistics/"+firstTime+"/"+lastTime,
         data: {},
         success: function (result) {
-            console.log(result);
             setStatisticsList(result);
         }
     });

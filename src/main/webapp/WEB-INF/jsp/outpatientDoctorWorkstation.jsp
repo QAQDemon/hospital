@@ -365,7 +365,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                     </div>
                 </div>
                 <div class="card-text mt-2">
-                    <strong>看诊人数：</strong><span>3</span>
+                    <strong>看诊人数：</strong><span></span>&nbsp;&nbsp;<strong>总费用：</strong><span></span>
                 </div>
                 <table class="table table-condensed table-striped table-hover table-bordered mt-2">
                     <thead>
@@ -381,12 +381,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                     <tbody></tbody>
                     <tbody>
                     <tr>
-                        <th>总费用</th>
-                        <th>200</th>
-                        <th>100</th>
-                        <th>10</th>
-                        <th>20</th>
-                        <th>2</th>
+                        <th>费用和</th><th></th><th></th><th></th><th></th><th></th>
                     </tr>
                     </tbody>
                 </table>
