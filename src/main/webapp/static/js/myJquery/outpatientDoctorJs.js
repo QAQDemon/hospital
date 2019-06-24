@@ -218,6 +218,9 @@ function disableMedicalInfoBtn(bool){
         btns.hide();
     else  btns.show();
 }
+
+disableMedicalInfoBtn(true);
+
 //切换患者将右侧功能重置
 function resetHomeRight(){
     $("#homeRightNav a:eq(0)").click();
@@ -989,3 +992,4 @@ $("#historyMedicalInfoLabelDiv").on("click","a",function () {
     return false;
 });
 
+//todo zhenbi

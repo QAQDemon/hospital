@@ -53,7 +53,7 @@ function setPrescriptionList(list) {
 }
 function prescriptionAjax(){
     var medicalInfoId=$("#patientInfoDiv span:eq(1)").html();
-    if(medicalInfoId==="")
+    if(medicalInfoId===""||medicalInfoId==="待创建")
         return;
     $.ajax({
         type: "POST",//方法类型
@@ -79,6 +79,11 @@ $("[href='#menu3']").click(function () {
     $("#menu3RightNav a:eq(0)").click();
     $("#prescriptionForm tbody").html("");
     changePrescriptionBtns(1);
+    var visitStatus=$("#patientInfoDiv span:eq(0)").html();
+    var button=$("#prescriptionForm button:eq(0)");
+    if(visitStatus==="待诊"||visitStatus==="诊毕"||visitStatus==="")
+        button.hide();
+    else button.show();
     prescriptionAjax();
 });
 //添加药品列表

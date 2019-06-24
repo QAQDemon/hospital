@@ -44,7 +44,7 @@ function setFinalDiagnosis(diseaseList,num) {
 }
 function newFinalDiagnosisAjax(){
     var medicalInfoId=$("#patientInfoDiv span:eq(1)").html();
-    if(medicalInfoId==="")
+    if(medicalInfoId===""||medicalInfoId==="待创建")
         return;
     $.ajax({
         type: "POST",//方法类型
@@ -60,7 +60,7 @@ function newFinalDiagnosisAjax(){
             var zFinalDiagnosisDiseaseList=result.zFinalDiagnosisDiseaseList;
             setNewDiagnosis(xNewDiagnosisList,xDiagnosisDiseaseList,0);
             setNewDiagnosis(zNewDiagnosisList,zDiagnosisDiseaseList,1);
-            if(xFinalDiagnosisDiseaseList.length===0&&zFinalDiagnosisDiseaseList.length===0)
+            if(xFinalDiagnosisDiseaseList.length===0&&zFinalDiagnosisDiseaseList.length===0&&$("#patientInfoDiv span:eq(0)").html()==="初诊完成")
                 $("#identifyButton").show();
             else {
                 setFinalDiagnosis(xFinalDiagnosisDiseaseList, 0);
