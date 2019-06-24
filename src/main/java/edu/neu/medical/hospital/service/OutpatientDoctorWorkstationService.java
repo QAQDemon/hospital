@@ -16,4 +16,6 @@ public interface OutpatientDoctorWorkstationService {
     int addCommonOption(int doctorId,String type,int optionId);
     List<Diagnosis> getFinalDiagnosisList(char type,int medicalInfoId);
     List<Diagnosis> initeFinalDiagnosis(int medicalInfoId,int[] diagnosis0,int[] diagnosis1);
+    List<Prescription> getActivePrescription(char type,int medicalRecordInfoId);
+    List<VisitItem> getActiveVisitItem(char type,int medicalRecordInfoId);
 }

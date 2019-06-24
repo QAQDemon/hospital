@@ -1,8 +1,6 @@
 package edu.neu.medical.hospital.controller;
 
-import edu.neu.medical.hospital.bean.CommonOption;
-import edu.neu.medical.hospital.bean.Diagnosis;
-import edu.neu.medical.hospital.bean.Patient;
+import edu.neu.medical.hospital.bean.*;
 import edu.neu.medical.hospital.service.MedicalRecordHomeService;
 import edu.neu.medical.hospital.service.OutpatientDoctorWorkstationService;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -102,6 +100,20 @@ public class OutpatientDoctorWorkstationController {
         map.put("msg",outpatientDoctorWorkstationService.setCompleteVisit(medicalRecordNo,medicalInfoId));
         map.put("medicalRecordNo",medicalRecordNo);
         return map;
+    }
+
+    /*
+     * @Description 获得费用明细 //TODO
+     * @Param [type 0全部 1 2 或1 2 3]
+     * @return java.util.Map<java.lang.String,java.lang.Object>
+     **/
+    @RequestMapping("getActiveVisitItem/{type}/{medicalRecordInfoId}")
+    public List<VisitItem> getActiveVisitItem(@PathVariable("type")char type, @PathVariable("medicalRecordInfoId")int medicalRecordInfoId){
+        return outpatientDoctorWorkstationService.getActiveVisitItem(type,medicalRecordInfoId);
+    }
+    @RequestMapping("getActivePrescription/{type}/{medicalRecordInfoId}")
+    public List<Prescription> getActivePrescription(@PathVariable("type")char type, @PathVariable("medicalRecordInfoId")int medicalRecordInfoId){
+        return outpatientDoctorWorkstationService.getActivePrescription(type,medicalRecordInfoId);
     }
 
 }

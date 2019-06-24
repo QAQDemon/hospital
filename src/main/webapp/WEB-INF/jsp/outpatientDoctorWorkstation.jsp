@@ -1172,9 +1172,61 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                             </div>
                         </div>
                     </div>
+                    <!--费用查看-->
                     <div id="menu4" class="container-fluid tab-pane fade"><br>
-                        <h3>Menu 2</h3>
-                        <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam.</p>
+                        <!--申请费用-->
+                        <div  class="card">
+                            <div class="card-header font-weight-bold">
+                                <span>申请费用</span>&nbsp;
+                                <select class="custom-select-sm">
+                                    <option value="0">全部</option>
+                                    <option value="1">检查</option>
+                                    <option value="2">检验</option>
+                                    <option value="2">处置</option>
+                                </select>&nbsp;&nbsp;
+                                <strong>总金额：</strong><span></span>
+                            </div>
+                            <table class="table table-condensed table-striped table-hover  table-bordered" >
+                                <thead>
+                                <tr>
+                                    <th>No</th>
+                                    <th>分类</th>
+                                    <th>目的和要求</th>
+                                    <th>申请时间</th>
+                                    <th>金额</th>
+                                    <th>收费状态</th>
+                                </tr>
+                                </thead>
+                                <tbody></tbody>
+                            </table>
+                        </div>
+                        <br>
+                        <!--处方费用-->
+                        <div class="card">
+                            <div class="card-header font-weight-bold">
+                                <span>处方费用</span>&nbsp;
+                                <select class="custom-select-sm">
+                                    <option value="0">全部</option>
+                                    <option value="1">成药</option>
+                                    <option value="2">草药</option>
+                                </select>&nbsp;&nbsp;
+                                <strong>总金额：</strong><span></span>
+                            </div>
+                            <table class="table table-condensed table-striped table-hover  table-bordered" >
+                                <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>分类</th>
+                                    <th>处方名称</th>
+                                    <th>处方类型</th>
+                                    <th>开具时间</th>
+                                    <th>金额</th>
+                                    <th>收费状态</th>
+                                </tr>
+                                </thead>
+                                <tbody></tbody>
+                            </table>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -1192,5 +1244,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <script type="text/javascript" src="js/myJquery/applyForJs.js"></script>
 <script type="text/javascript" src="js/myJquery/prescriptionJs.js"></script>
 <script type="text/javascript" src="js/myJquery/finalDiagnosisJs.js"></script>
+<script type="text/javascript" src="js/myJquery/patientFeeJs.js"></script>
 </body>
 </html>

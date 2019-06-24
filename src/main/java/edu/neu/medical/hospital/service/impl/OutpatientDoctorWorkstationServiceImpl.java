@@ -32,6 +32,10 @@ public class OutpatientDoctorWorkstationServiceImpl implements OutpatientDoctorW
     private MedicalRecordInfoMapper medicalRecordInfoMapper;
     @Resource
     private RegistrationInfoMapper registrationInfoMapper;
+    @Resource
+    private PrescriptionMapper prescriptionMapper;
+    @Resource
+    private VisitItemMapper visitItemMapper;
 
     private final int pageShow=10;//一页显示的数量
 
@@ -224,5 +228,39 @@ public class OutpatientDoctorWorkstationServiceImpl implements OutpatientDoctorW
         if(num!=1)
             return 0;
         return num;
+    }
+
+
+    /*
+     * @Description 获得生效的处方，只找发送的且不是退费//TODO
+     * @Param [type 0全部 1成 2草, medicalRecordInfoId]
+     * @return java.util.List<edu.neu.medical.hospital.bean.Prescription>
+     **/
+    public List<Prescription> getActivePrescription(char type,int medicalRecordInfoId){
+        PrescriptionExample prescriptionExample = new PrescriptionExample();
+        PrescriptionExample.Criteria criteria = prescriptionExample.createCriteria();
+        criteria.andMedicalRecordInfoIdEqualTo(medicalRecordInfoId);
+        criteria.andStatusEqualTo("2");
+        criteria.andFeeStatusNotEqualTo("3");
+        if (type != '0') {
+            criteria.andTypeEqualTo(type+"");
+        }
+        return new ArrayList<>(prescriptionMapper.selectByExample(prescriptionExample));
+    }
+
+    /*
+     * @Description 获得生效的申请，只找开立//TODO
+     * @Param [type 0全部 1查 2验 3处, medicalRecordInfoId]
+     * @return java.util.List<edu.neu.medical.hospital.bean.Prescription>
+     **/
+    public List<VisitItem> getActiveVisitItem(char type,int medicalRecordInfoId){
+        VisitItemExample visitItemExample = new VisitItemExample();
+        VisitItemExample.Criteria criteria = visitItemExample.createCriteria();
+        criteria.andMedicalRecordInfoIdEqualTo(medicalRecordInfoId);
+        criteria.andStatusEqualTo("2");
+        if (type != '0') {
+            criteria.andTypeEqualTo(type+"");
+        }
+        return new ArrayList<>(visitItemMapper.selectByExample(visitItemExample));
     }
 }
