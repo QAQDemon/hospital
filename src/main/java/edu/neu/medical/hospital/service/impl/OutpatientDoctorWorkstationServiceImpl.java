@@ -10,9 +10,9 @@ import edu.neu.medical.hospital.bean.RegistrationInfoExample;
 import edu.neu.medical.hospital.dao.RegistrationInfoMapper;
 import org.springframework.stereotype.Service;
 import javax.annotation.Resource;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.*;
 
 
 @Service
@@ -249,7 +249,7 @@ public class OutpatientDoctorWorkstationServiceImpl implements OutpatientDoctorW
     }
 
     /*
-     * @Description 获得生效的申请，只找开立//TODO
+     * @Description 获得生效的申请，只找开立
      * @Param [type 0全部 1查 2验 3处, medicalRecordInfoId]
      * @return java.util.List<edu.neu.medical.hospital.bean.Prescription>
      **/
@@ -262,5 +262,68 @@ public class OutpatientDoctorWorkstationServiceImpl implements OutpatientDoctorW
             criteria.andTypeEqualTo(type+"");
         }
         return new ArrayList<>(visitItemMapper.selectByExample(visitItemExample));
+    }
+
+    /*
+     * @Description 获得医生一段时间内的看诊人数和费用,找诊毕的病单号//TODO
+     * @Param [doctorId, firstTime, lastTime]
+     * @return java.util.List<int[]>
+     **/
+    public Map<Integer, Double[]> statisticsList(int doctorId,String firstTime,String lastTime){
+        MedicalRecordInfoExample medicalRecordInfoExample = new MedicalRecordInfoExample();
+        MedicalRecordInfoExample.Criteria criteria = medicalRecordInfoExample.createCriteria();
+        criteria.andDoctorIdEqualTo(doctorId);
+        criteria.andStatusEqualTo("3");
+        SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd'T'HH:mm");
+        try {
+            criteria.andVisitTimeBetween(sdf.parse(firstTime), sdf.parse(lastTime));
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        List<MedicalRecordInfo> medicalRecordInfoList = medicalRecordInfoMapper.selectByExample(medicalRecordInfoExample);
+        Map<Integer, Double[]> map = new HashMap<>();
+        for (MedicalRecordInfo medicalRecordInfo : medicalRecordInfoList) {
+            Integer infoId=medicalRecordInfo.getId();
+            Double[] amount=new Double[5];
+            amount[0]=0.0;
+            amount[1]=0.0;
+            amount[2]=0.0;
+            amount[3]=0.0;
+            amount[4]=0.0;
+            VisitItemExample visitItemExample = new VisitItemExample();
+            VisitItemExample.Criteria criteria1 = visitItemExample.createCriteria();
+            criteria1.andMedicalRecordInfoIdEqualTo(infoId);
+            criteria1.andFeeStatusEqualTo("2");
+            criteria1.andApplicationDoctorIdEqualTo(doctorId);
+            List<VisitItem> visitItemList = visitItemMapper.selectByExample(visitItemExample);
+            //根据type得到和
+            for (VisitItem visitItem : visitItemList) {
+                if(visitItem.getType().equals("1"))
+                    amount[0]+=visitItem.getFee().doubleValue();
+                else if(visitItem.getType().equals("2"))
+                    amount[1]+=visitItem.getFee().doubleValue();
+                else amount[2]+=visitItem.getFee().doubleValue();
+            }
+            PrescriptionExample prescriptionExample = new PrescriptionExample();
+            PrescriptionExample.Criteria criteria2 = prescriptionExample.createCriteria();
+            criteria2.andMedicalRecordInfoIdEqualTo(infoId);
+            criteria2.andFeeStatusEqualTo("2");
+            List<Prescription> prescriptionList = prescriptionMapper.selectByExample(prescriptionExample);
+            //求和
+            for (Prescription prescription : prescriptionList) {
+                if (prescription.getType().equals("1"))
+                    amount[3]+=prescription.getPrescriptionInAmount().doubleValue();
+                else  amount[4]+=prescription.getPrescriptionInAmount().doubleValue();
+            }
+            //判断key是否存在
+            if (!map.containsKey(infoId)){//取出来相加
+                Double[] oldAmount = map.remove(infoId);
+                for (int k = 0; k < 5; k++) {
+                    amount[k]+=oldAmount[k];
+                }
+            }
+            map.put(infoId,amount);
+        }
+        return map;
     }
 }

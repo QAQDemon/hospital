@@ -81,6 +81,16 @@ function getTime(t){
     var   minute=(Array(2).join("0") + (_time.getMinutes())).slice(-2);
     return   year+"-"+month+"-"+date+"T"+hour+":"+minute;//2014-01-02T11:42
 }
+//获得当前时间
+function getNowTime(){
+    var _time=new Date();
+    var   year=_time.getFullYear();//2017
+    var   month=(Array(2).join("0") + (_time.getMonth()+1)).slice(-2);
+    var   date=(Array(2).join("0") + (_time.getDate())).slice(-2);
+    var   hour=(Array(2).join("0") + (_time.getHours())).slice(-2);
+    var   minute=(Array(2).join("0") + (_time.getMinutes())).slice(-2);
+    return   year+"-"+month+"-"+date+"T"+hour+":"+minute;//2014-01-02T11:42
+}
 
 //获取[]中的值
 function getInnerNum(str) {
@@ -1021,7 +1031,6 @@ overVisitBtn.click(function () {
             url: "outpatientDoctorWorkstation/setCompleteVisit/"+$("#patientListForm :checked").val()+"/"+infoId,
             data: {},
             success: function (result) {
-                debugger;
                 if(result.msg===1)
                     showAlertDiv("alert-success","成功!","提交诊毕成功。");
                 else
@@ -1033,4 +1042,69 @@ overVisitBtn.click(function () {
             }
         });
     }
+});
+
+//点击统计
+$("#statisticsButton").click(function () {
+    var nowDate=getNowTime();
+    $("#statisticsCard input:last").val(nowDate);
+    $("#statisticsCard input:first").val(nowDate.substring(0,11)+"00:00");
+    $("#statisticsCard tbody:eq(0)").html("");
+    $("#statisticsCard tbody:eq(1) th:gt(0)").html("");
+    $("#statisticsCard button").click();
+});
+
+function setStatisticsList(map){
+    for(var key in map){
+        var jsonstr=JSON.parse(map[key]);
+        str+=' <a href="#" class="list-group-item list-group-item-action">'+jsonstr.time+' '+jsonstr.name+'</a><input type="hidden" value="'+key+'">';
+    }
+
+
+
+    var amount=[0,0,0,0,0];
+    for(var key in map){
+        amount[0]+=list[i][1];
+        amount[1]+=list[i][2];
+        amount[2]+=list[i][3];
+        amount[3]+=list[i][4];
+        amount[4]+=list[i][5];
+        $("#statisticsCard tbody:eq(0)").append('<tr>' +
+            '<td>'+list[i][0]+'</td>'+
+            '<td>'+list[i][1]+'</td>'+
+            '<td>'+list[i][2]+'</td>'+
+            '<td>'+list[i][3]+'</td>'+
+            '<td>'+list[i][4]+'</td>'+
+            '<td>'+list[i][5]+'</td>'+
+            '</tr>');
+    }
+    for (var j = 1; j < 6; j++) {
+        $("#statisticsCard tbody:eq(1) th:eq("+j+")").html(Number(amount[j]).toFixed(2));
+    }
+
+}
+$("#statisticsCard button").click(function () {
+    var firstTime=$("#statisticsCard input:first").val();
+    var lastTime=$("#statisticsCard input:last").val();
+    if(lastTime===""||firstTime===""){
+        showAlertDiv("alert-warning","警告!","请输入完整时间。");
+        return;
+    }
+    //判断时间是否合格
+    var firstDate=new Date(firstTime);
+    var lastDate=new Date(lastTime);
+    if(firstDate>lastDate){
+        showAlertDiv("alert-warning","警告!","起始时间不能大于截止时间。");
+        return;
+    }
+    $.ajax({
+        type: "POST",//方法类型
+        dataType: "json",//预期服务器返回的数据类型
+        url: "outpatientDoctorWorkstation/statistics/"+firstTime+"/"+lastTime,
+        data: {},
+        success: function (result) {
+            console.log(result);
+            setStatisticsList(result);
+        }
+    });
 });

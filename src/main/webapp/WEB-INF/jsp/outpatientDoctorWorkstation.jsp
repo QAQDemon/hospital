@@ -326,7 +326,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                         </thead>
                         <tbody id="searchPatientTbody1"></tbody>
                     </table>
-                    <table class="table table-condensed table-striped table-hover">
+                    <table class="table table-condensed table-striped table-hover table-bordered">
                         <thead>
                         <tr>
                             <th colspan="3">已诊患者<span id="isSeenNumSpan" class="badge badge-pill badge-success">0</span></th>
@@ -345,12 +345,51 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <div id="statisticsCard" class="collapse" style="position:absolute ;z-index: 100 ;margin-top: 65px ;margin-left: 15px">
         <div class="card">
             <div class="card-body">
-                <div class="form-group form-inline">
-                    <label class="form-control" >起始时间</label><input type="datetime-local">
+                <div class="row">
+                    <div class="col-md-10">
+                        <div class="input-group mb-2 ">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">起始时间</span>
+                            </div>
+                            <input type="datetime-local" class="form-control">
+                        </div>
+                        <div class="input-group ">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">截止时间</span>
+                            </div>
+                            <input type="datetime-local" class="form-control">
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+                        <button type="button" class="btn btn-info btn-sm mt-4">查询</button>
+                    </div>
                 </div>
-                <div class="form-group form-inline">
-                    <label class="form-control" >起始时间</label><input type="datetime-local">
+                <div class="card-text mt-2">
+                    <strong>看诊人数：</strong><span>3</span>
                 </div>
+                <table class="table table-condensed table-striped table-hover table-bordered mt-2">
+                    <thead>
+                    <tr>
+                        <th>病历号</th>
+                        <th>检查费</th>
+                        <th>检验费</th>
+                        <th>处置费</th>
+                        <th>成药费</th>
+                        <th>草药费</th>
+                    </tr>
+                    </thead>
+                    <tbody></tbody>
+                    <tbody>
+                    <tr>
+                        <th>总费用</th>
+                        <th>200</th>
+                        <th>100</th>
+                        <th>10</th>
+                        <th>20</th>
+                        <th>2</th>
+                    </tr>
+                    </tbody>
+                </table>
             </div>
         </div>
     </div>

@@ -103,7 +103,7 @@ public class OutpatientDoctorWorkstationController {
     }
 
     /*
-     * @Description 获得费用明细 //TODO
+     * @Description 获得费用明细
      * @Param [type 0全部 1 2 或1 2 3]
      * @return java.util.Map<java.lang.String,java.lang.Object>
      **/
@@ -116,4 +116,15 @@ public class OutpatientDoctorWorkstationController {
         return outpatientDoctorWorkstationService.getActivePrescription(type,medicalRecordInfoId);
     }
 
+    /*
+     * @Description 统计一段时间的看诊人数和各自费用 检查 检验 处置 成药 草药//TODO
+     * @Param []
+     * @return java.util.List<int[]>
+     **/
+    @RequestMapping("statistics/{firstTime}/{lastTime}")
+    public Map<Integer, Double[]> statistics(@PathVariable("firstTime")String firstTime,@PathVariable("lastTime")String lastTime){
+        int doctorId=1; //todo
+
+        return outpatientDoctorWorkstationService.statisticsList(doctorId,firstTime,lastTime);
+    }
 }
