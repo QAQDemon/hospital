@@ -478,6 +478,25 @@
                 </div>
             </div>
         </div>
+        <!--左侧统计卡片-->
+        <div id="statisticsCard" class="collapse" style="position:absolute ;z-index: 100 ;margin-top: 65px ;margin-left: 15px">
+            <div class="card">
+                <div class="card-body">
+                    <div class="input-group mb-2 input-group-sm">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">起始时间</span>
+                        </div>
+                        <input type="datetime-local">
+                    </div>
+                    <div class="input-group input-group-sm">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">截止时间</span>
+                        </div>
+                        <input type="datetime-local">
+                    </div>
+                </div>
+            </div>
+        </div>
         <!--主体-->
         <div class="">
             <!--患者信息-->
@@ -486,7 +505,7 @@
                     <div id="patientInfoDiv" class="col-md-11 form-inline" >
                         <div class="btn-group">
                             <button type="button" class="btn btn-primary" data-toggle="collapse" data-target="#searchCard" id="searchPatientButton">搜索</button>
-                            <button type="button" class="btn btn-info">统计</button>
+                            <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#statisticsCard" id="statisticsButton">统计</button>
                         </div>
 
                         &nbsp;&nbsp;

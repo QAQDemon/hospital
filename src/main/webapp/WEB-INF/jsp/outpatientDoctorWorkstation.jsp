@@ -341,6 +341,19 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             </div>
         </div>
     </div>
+    <!--左侧统计卡片-->
+    <div id="statisticsCard" class="collapse" style="position:absolute ;z-index: 100 ;margin-top: 65px ;margin-left: 15px">
+        <div class="card">
+            <div class="card-body">
+                <div class="form-group form-inline">
+                    <label class="form-control" >起始时间</label><input type="datetime-local">
+                </div>
+                <div class="form-group form-inline">
+                    <label class="form-control" >起始时间</label><input type="datetime-local">
+                </div>
+            </div>
+        </div>
+    </div>
     <!--主体-->
     <div class="container-fluid">
         <!--患者信息-->
@@ -349,7 +362,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 <div id="patientInfoDiv" class="col-md-11 form-inline" >
                     <div class="btn-group">
                         <button type="button" class="btn btn-primary" data-toggle="collapse" data-target="#searchCard" id="searchPatientButton">搜索</button>
-                        <button type="button" class="btn btn-info">统计</button>
+                        <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#statisticsCard" id="statisticsButton">统计</button>
                     </div>
                     &nbsp;&nbsp;
                     <label class="control-label font-weight-bold">就诊状态：</label><span id="visitStatusSpan" class="text-success font-weight-bold"></span>&nbsp;&nbsp;
@@ -1182,7 +1195,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                     <option value="0">全部</option>
                                     <option value="1">检查</option>
                                     <option value="2">检验</option>
-                                    <option value="2">处置</option>
+                                    <option value="3">处置</option>
                                 </select>&nbsp;&nbsp;
                                 <strong>总金额：</strong><span></span>
                             </div>
