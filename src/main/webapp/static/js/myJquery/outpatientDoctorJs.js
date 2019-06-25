@@ -1062,7 +1062,6 @@ function clearStatisticsContext() {
     $("#statisticsCard span:eq(2)").html("");
 }
 function setStatisticsList(map){
-    debugger;
     var amount=[0,0,0,0,0,0];
     var sum=0;
     for(var key in map){

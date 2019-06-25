@@ -63,7 +63,7 @@ $("[href='#menu4']").click(function () {
 
 //切换费用类别
 $("#menu4 select").change(function () {
-    if($(this).closest(".card").index()===1)
+    if($(this).prev().html()==="申请费用")
         patientFeeAjax(0);
     else  patientFeeAjax(1);
 });

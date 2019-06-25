@@ -5,7 +5,8 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1, user-scalable=no">
     <title>门诊医生工作站</title>
-    <link rel="shortcut icon" type="image/x-icon" href="../images/icon.png" />
+    <link rel="icon" href="HISicon.ico" mce_href="HISicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="HISicon.ico" mce_href="HISicon.ico" type="image/x-icon">
     <link rel="stylesheet" type="text/css" href="../css/bootstrap.css">
     <link rel="stylesheet" type="text/css" href="../css/pagination.css">
 </head>
@@ -301,7 +302,7 @@
                     </div>
                 </form>
                 <!--患者搜索结果-->
-                <ul class="nav nav-pills">
+                <ul class="nav nav-pills mt-2">
                     <li class="nav-item">
                         <a id="patientSearchCategory1" class="nav-link active font-weight-bold" href="#">本人</a>
                     </li>
@@ -310,12 +311,12 @@
                     </li>
                 </ul>
                 <form id="patientListForm" role="form" onkeypress="return event.keyCode !== 13;">
-                    <table class="table table-condensed table-striped table-hover table-bordered">
+                    <table class="table table-condensed table-striped table-hover table-bordered mt-2">
                         <thead>
                         <tr>
                             <th colspan="3">待诊患者<span id="notSeenNumSpan" class="badge badge-pill badge-danger">0</span></th>
-                            <th style="text-align:right;">
-                                <a href="#"><img src="../images/reflush_img.jpg" alt="刷新" style="height: 15px;width: 15px"></a>
+                            <th style="text-align:center">
+                                <a href="#"><img src="../images/reflush_img.jpg" alt="刷新" style="height: 20px;width: 20px"></a>
                             </th>
                         </tr>
                         </thead>
@@ -325,8 +326,8 @@
                         <thead>
                         <tr>
                             <th colspan="3">已诊患者<span id="isSeenNumSpan" class="badge badge-pill badge-success">0</span></th>
-                            <th style="text-align:right;">
-                                <a href="#"><img src="../images/reflush_img.jpg" alt="刷新" style="height: 15px;width: 15px"></a>
+                            <th style="text-align:center">
+                                <a href="#"><img src="../images/reflush_img.jpg" alt="刷新" style="height: 20px;width: 20px"></a>
                             </th>
                         </tr>
                         </thead>
@@ -440,7 +441,7 @@
             <div class="card-body">
                 <div class="tab-content">
                     <!--1.病历首页-->
-                    <div id="home1" class="container-fluid tab-pane active">
+                    <div id="home1" class="container-fluid tab-pane active"><br>
                         <div class="row">
                             <div class="col-md-8">
                                 <!--病历信息表格-->
@@ -722,7 +723,7 @@
                         </div>
                     </div>
                     <!--2.申请界面-->
-                    <div id="menu1" class="container-fluid tab-pane fade">
+                    <div id="menu1" class="container-fluid tab-pane fade"><br>
                         <input type="hidden" id="applyForType">
                         <div class="row">
                             <div class="col-md-8">
@@ -767,7 +768,14 @@
                                     <!--项目列表部分-->
                                     <div id="visitItemCard" class="card">
                                         <div class="card-header font-weight-bold">
-                                            <span>项目列表</span>&nbsp;<button type="button" class="btn btn-outline-warning " data-toggle="modal" data-target="#ItemModal">修改</button>
+                                            <div class="row">
+                                                <div class="col-md-10">
+                                                    <span>项目列表</span>
+                                                </div>
+                                                <div class="col-md-2 text-right">
+                                                    <button type="button" class="btn btn-outline-warning " data-toggle="modal" data-target="#ItemModal">修改</button>
+                                                </div>
+                                            </div>
                                         </div>
                                         <table class="table table-condensed table-striped table-hover  table-bordered" >
                                             <thead>
@@ -1075,7 +1083,14 @@
                                     <!--药品列表部分-->
                                     <div id="drugsCard" class="card">
                                         <div class="card-header font-weight-bold">
-                                            <span>药品列表</span>&nbsp;<button type="button" class="btn btn-outline-warning " data-toggle="modal" data-target="#DrugsModal">修改</button>
+                                            <div class="row">
+                                                <div class="col-md-10">
+                                                    <span>药品列表</span>
+                                                </div>
+                                                <div class="col-md-2 text-right">
+                                                    <button type="button" class="btn btn-outline-warning " data-toggle="modal" data-target="#DrugsModal">修改</button>
+                                                </div>
+                                            </div>
                                         </div>
                                         <table class="table table-condensed table-striped table-hover  table-bordered" >
                                             <thead>
@@ -1216,6 +1231,11 @@
                     </div>
                     <!--费用查看-->
                     <div id="menu4" class="container-fluid tab-pane fade"><br>
+                        <div class="row ">
+                            <div class="col-md-7">
+                                <h4 class="font-weight-bold">费用明细</h4>
+                            </div>
+                        </div>
                         <!--申请费用-->
                         <div  class="card">
                             <div class="card-header font-weight-bold">
@@ -1257,7 +1277,7 @@
                             <table class="table table-condensed table-striped table-hover  table-bordered" >
                                 <thead>
                                 <tr>
-                                    <th>ID</th>
+                                    <th>No</th>
                                     <th>分类</th>
                                     <th>处方名称</th>
                                     <th>处方类型</th>
