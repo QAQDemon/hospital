@@ -647,6 +647,7 @@ $("#menu3RightNav a:last").click(function () {
     $("#searchPrescriptionForm button").click();
     disableSetBtn1(true);
     disableSetContext1(true);
+    clearSetContent1();
 });
 //放入组套的名字到标签
 function addSetContext1(map){

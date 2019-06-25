@@ -118,6 +118,8 @@ function setPatientList(seenList,listName,num){
     }
     $("#searchPatientTbody"+num).html(str);
 }
+
+var recordMedRecdNo="";//记录选中的患者病历号,在诊毕后赋值，病人搜索的ajax返回后会使用，使用后设为""
 //根据类别和关键词修改url
 function searchPatientAjax(){
     var urlS="outpatientDoctorWorkstation/searchPatient/";
@@ -138,6 +140,15 @@ function searchPatientAjax(){
             setPatientList(notSeenList, "notSeenList", 1);
             $("#notSeenNumSpan").html(notSeenList.length);
             $("#isSeenNumSpan").html(isSeenList.length);
+            if(recordMedRecdNo!==""){
+                $("#patientListForm :radio").each(function () {
+                    if($(this).val()===recordMedRecdNo){
+                        $(this).closest("tr").click();
+                        recordMedRecdNo="";
+                        return false;
+                    }
+                });
+            }
         }
     });
 }
@@ -238,18 +249,6 @@ disableMedicalInfoBtn(true);
 var overVisitBtn=$("#overVisitBtn");
 overVisitBtn.hide();
 
-//切换患者将右侧功能重置
-function resetHomeRight(){
-    $("#homeRightNav a:eq(0)").click();
-    $("#medrecTempChooseDiv [type='radio']:eq(0)").click();
-    clearMedrecTemplateContent();
-}
-//初始化功能板
-$("[href='#home1']").click(function () {
-    var  node=$("#homeRightNav a:first");
-    if(!node.hasClass("active"))
-        node.click();
-});
 function getMedicalRecordInfoAjax(isSeen,no,patient){
     $.ajax({
         type: "POST",//方法类型
@@ -319,13 +318,15 @@ function getMedicalRecordInfoAjax(isSeen,no,patient){
         }
     });
 }
-//点击表格设置患者信息
-$("#searchPatientTbody1,#searchPatientTbody2").on("click","tr",function () {
-    $("[href='#home1']").click();
-    resetHomeRight();
-    var radio=$(this).find("input[type='radio']");
-    radio.prop('checked','true');
-    var no=parseInt(radio.val());
+
+//初始化功能板
+$("[href='#home1']").click(function () {
+    var nodeValue=$("#patientListForm :radio:checked").val();
+    if (nodeValue === undefined) {
+        showAlertDiv("alert-warning", "警告!", "未选择患者。");
+        return;
+    }
+    var no=parseInt(nodeValue);
     var patient;
     var patientListNum;
     for (var i=0; i < patientList.length; i++) {
@@ -336,6 +337,13 @@ $("#searchPatientTbody1,#searchPatientTbody2").on("click","tr",function () {
         }
     }
     getMedicalRecordInfoAjax(((patientListNum<notSeenListNum)?"1":"2"),no,patient);
+});
+//点击表格设置患者信息
+$("#searchPatientTbody1,#searchPatientTbody2").on("click","tr",function () {
+    $(this).find("input[type='radio']").prop('checked','true');
+    $("[href='#home1']").click();
+}).on("click",":radio",function () {
+    return false;
 });
 //诊断 删
 $("#diagnosisContextTbody1,#diagnosisContextTbody2,#finalDiagnosisForm").on("click","button:contains('-')",function () {
@@ -976,6 +984,7 @@ function addHistoryMedicalLabel(map){
 $("#homeRightNav a:eq(2)").click(function () {
     if($("#patientListForm :checked").val()===undefined)
         return;
+    clearHistoryContext();
     $.ajax({
         type: "POST",//方法类型
         dataType: "json",//预期服务器返回的数据类型
@@ -1029,6 +1038,7 @@ overVisitBtn.click(function () {
             return;
         }
         overVisitBtn.hide();
+        recordMedRecdNo=$("#patientListForm :radio:checked").val();
         $.ajax({
             type: "POST",//方法类型
             dataType: "json",//预期服务器返回的数据类型
@@ -1039,9 +1049,6 @@ overVisitBtn.click(function () {
                     showAlertDiv("alert-success","成功!","提交诊毕成功。");
                 else
                     showAlertDiv("alert-warning","警告!","提交诊毕失败。");
-                var age=$("#patientInfoDiv span:eq(4)").html();
-                var patient={name:$("#patientInfoDiv span:eq(2)").html(),gender:($("#patientInfoDiv span:eq(3)").html()==="男"?"1":"2"),age:age.substring(0,age.length-1)};
-                getMedicalRecordInfoAjax("2",result.medicalRecordNo,patient);
                 $("#searchPatientForm button").click();
             }
         });

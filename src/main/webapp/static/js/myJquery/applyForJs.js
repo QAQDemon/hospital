@@ -594,6 +594,7 @@ $("#menu1RightNav a:last").click(function () {
     $("#searchItemSetForm button").click();
     disableSetBtn(true);
     disableSetContext(true);
+    clearSetContent();
 });
 //放入组套的名字到标签
 function addSetContext(map){
@@ -608,7 +609,6 @@ $("#itemSetChooseDiv :radio").click(function () {
     searchSetGroup();
 });
 function searchSetGroup(){
-    debugger;
     var category=$("#itemSetChooseDiv :checked").val();
     if(category===undefined){//未选的情况
         category=1;
@@ -644,7 +644,6 @@ function clearSetContent(){
 }
 //放入组套子项
 function setSetSub(fmeitemList,setSubList){
-    debugger;
     for (var i=0;i<fmeitemList.length;i++) {
         $("#itemSetContextForm tbody").append('<tr>\n' +
             '<td title="'+fmeitemList[i].itemname+'" style="max-width:160px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">'+fmeitemList[i].itemname+'</td>\n' +
