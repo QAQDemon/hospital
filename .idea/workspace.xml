@@ -7,17 +7,13 @@
   </component>
   <component name="BookmarkManager">
     <bookmark url="file://$PROJECT_DIR$/src/main/webapp/static/js/myJquery/outpatientDoctorJs.js" line="707" mnemonic="2" />
-    <bookmark url="file://$PROJECT_DIR$/src/main/webapp/static/html/outpatientDoctorWorkstation.html" line="740" mnemonic="1" />
+    <bookmark url="file://$PROJECT_DIR$/src/main/webapp/static/html/outpatientDoctorWorkstation.html" line="8" mnemonic="1" />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="dbf00169-a8e7-473c-9987-97a8297bcd84" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/html/HISicon.ico" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/images/HISicon.ico" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/index.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/index.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/html/HISicon.ico" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/static/html/outpatientDoctorWorkstation.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/static/html/outpatientDoctorWorkstation.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/js/myJquery/outpatientDoctorJs.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/static/js/myJquery/outpatientDoctorJs.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/js/myJquery/patientFeeJs.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/static/js/myJquery/patientFeeJs.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -72,8 +68,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/webapp/static/html/outpatientDoctorWorkstation.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="150">
-              <caret line="6" column="26" lean-forward="true" selection-start-line="6" selection-start-column="26" selection-end-line="6" selection-end-column="26" />
+            <state relative-caret-position="330">
+              <caret line="327" column="109" selection-start-line="327" selection-start-column="109" selection-end-line="327" selection-end-column="109" />
               <folding>
                 <element signature="n#style#0;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#th#1;n#tr#0;n#thead#0;n#table#0;n#form#1;n#div#0;n#div#0;n#div#0;n#div#5;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -307,7 +303,7 @@
       <select />
     </treeState>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds" extendedState="7">
     <option name="x" value="196" />
     <option name="y" value="159" />
     <option name="width" value="1545" />
@@ -434,32 +430,6 @@
               <item name="webapp" type="462c0819:PsiDirectoryNode" />
               <item name="WEB-INF" type="462c0819:PsiDirectoryNode" />
               <item name="jsp" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="hospital" type="b2602c69:ProjectViewProjectNode" />
-              <item name="hospital" type="462c0819:PsiDirectoryNode" />
-              <item name="target" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="hospital" type="b2602c69:ProjectViewProjectNode" />
-              <item name="hospital" type="462c0819:PsiDirectoryNode" />
-              <item name="target" type="462c0819:PsiDirectoryNode" />
-              <item name="ssm" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="hospital" type="b2602c69:ProjectViewProjectNode" />
-              <item name="hospital" type="462c0819:PsiDirectoryNode" />
-              <item name="target" type="462c0819:PsiDirectoryNode" />
-              <item name="ssm" type="462c0819:PsiDirectoryNode" />
-              <item name="static" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="hospital" type="b2602c69:ProjectViewProjectNode" />
-              <item name="hospital" type="462c0819:PsiDirectoryNode" />
-              <item name="target" type="462c0819:PsiDirectoryNode" />
-              <item name="ssm" type="462c0819:PsiDirectoryNode" />
-              <item name="static" type="462c0819:PsiDirectoryNode" />
-              <item name="images" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -846,14 +816,7 @@
       <workItem from="1561296119543" duration="9226000" />
       <workItem from="1561339087845" duration="27144000" />
       <workItem from="1561382735323" duration="15730000" />
-      <workItem from="1561426554586" duration="11661000" />
-    </task>
-    <task id="LOCAL-00029" summary="formover 6-16">
-      <created>1560616359121</created>
-      <option name="number" value="00029" />
-      <option name="presentableId" value="LOCAL-00029" />
-      <option name="project" value="LOCAL" />
-      <updated>1560616359121</updated>
+      <workItem from="1561426554586" duration="13527000" />
     </task>
     <task id="LOCAL-00030" summary="formover 6-16-1">
       <created>1560663197062</created>
@@ -1191,7 +1154,14 @@
       <option name="project" value="LOCAL" />
       <updated>1561433100381</updated>
     </task>
-    <option name="localTasksCounter" value="78" />
+    <task id="LOCAL-00078" summary="all over 6-25-5">
+      <created>1561443287356</created>
+      <option name="number" value="00078" />
+      <option name="presentableId" value="LOCAL-00078" />
+      <option name="project" value="LOCAL" />
+      <updated>1561443287371</updated>
+    </task>
+    <option name="localTasksCounter" value="79" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -1227,7 +1197,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="802175000" />
+    <option name="totallyTimeSpent" value="804041000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1239,9 +1209,9 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="383" y="146" width="1545" height="896" extended-state="0" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.490625" visible="true" weight="0.2996633" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.490625" visible="true" weight="0.20149253" />
       <window_info id="Structure" order="1" sideWeight="0.509375" side_tool="true" weight="0.22014925" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -1252,7 +1222,7 @@
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.62906724" />
       <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49946696" weight="0.3394794" />
-      <window_info active="true" anchor="bottom" id="Debug" order="3" sideWeight="0.49840087" visible="true" weight="0.43569553" />
+      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.4978678" weight="0.36008677" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.30043384" />
@@ -1260,7 +1230,7 @@
       <window_info anchor="bottom" id="Spring" order="8" weight="0.329718" />
       <window_info anchor="bottom" id="Terminal" order="9" weight="0.329718" />
       <window_info anchor="bottom" id="Docker" order="10" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Event Log" order="11" sideWeight="0.50159913" side_tool="true" weight="0.47722343" />
+      <window_info anchor="bottom" id="Event Log" order="11" sideWeight="0.5021322" side_tool="true" weight="0.36008677" />
       <window_info anchor="bottom" id="Database Changes" order="12" show_stripe_button="false" />
       <window_info anchor="bottom" id="Java Enterprise" order="13" weight="0.32868758" />
       <window_info anchor="bottom" id="Version Control" order="14" weight="0.7798165" />
@@ -1336,7 +1306,6 @@
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_NEW_TODO" value="false" />
-    <MESSAGE value="applyfor result start 6-21" />
     <MESSAGE value="applyfor result over 6-21-1" />
     <MESSAGE value="prescription start 6-21-2" />
     <MESSAGE value="prescription start 6-21-3" />
@@ -1361,7 +1330,8 @@
     <MESSAGE value="satis 6-25-2" />
     <MESSAGE value="all over 6-25-3" />
     <MESSAGE value="all over 6-25-4" />
-    <option name="LAST_COMMIT_MESSAGE" value="all over 6-25-4" />
+    <MESSAGE value="all over 6-25-5" />
+    <option name="LAST_COMMIT_MESSAGE" value="all over 6-25-5" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1881,8 +1851,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/static/html/outpatientDoctorWorkstation.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="6" column="26" lean-forward="true" selection-start-line="6" selection-start-column="26" selection-end-line="6" selection-end-column="26" />
+        <state relative-caret-position="330">
+          <caret line="327" column="109" selection-start-line="327" selection-start-column="109" selection-end-line="327" selection-end-column="109" />
           <folding>
             <element signature="n#style#0;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#th#1;n#tr#0;n#thead#0;n#table#0;n#form#1;n#div#0;n#div#0;n#div#0;n#div#5;n#body#0;n#html#0;n#!!top" expanded="true" />
