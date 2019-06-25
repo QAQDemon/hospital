@@ -189,7 +189,7 @@ $("*").click(function (event) {
 function clearMedicalInfoContext(){
     $("#chiefComplaint").val("");
     $("#medicalInfoCard1,#medicalInfoCard2").find("textarea").each(function (index) {
-        $(this).html("");
+        $(this).val("");
     });
     $("#diagnosisContextTbody1,#diagnosisContextTbody2").html("");
 }
@@ -312,7 +312,7 @@ function getMedicalRecordInfoAjax(isSeen,no,patient){
             content=[medicalRecordInfo.currentMedicalHistory,medicalRecordInfo.currentTreatmentSituation,
                 medicalRecordInfo.pastHistory,medicalRecordInfo.allergiesHistory,medicalRecordInfo.physicalExamination];
             $("#medicalInfoCard1,#medicalInfoCard2").find("textarea").each(function (index) {
-                $(this).html(content[index]);
+                $(this).val(content[index]);
             });
             setDiagnosisList(xDiagnosisList,xDiagnosisDiseaseList,"xDiagnosisList",1);
             setDiagnosisList(zDiagnosisList,zDiagnosisDiseaseList,"zDiagnosisList",2);
@@ -603,8 +603,7 @@ $("#medicalInfoBtnGroup :first").click(function () {
 //暂存或提交
 $("#medicalInfoBtnGroup").find(".btn-outline-secondary,.btn-outline-success").click(function () {
     //判断表单完整性
-    var formFlag=0;
-    if(($("#medicalRecordInfoForm [type='text']").val()==="")||($("#medicalRecordInfoForm textarea").html()==="")||(($("#diagnosisContextTbody1").html()==="")&&($("#diagnosisContextTbody2").html()===""))){
+    if(($("#medicalRecordInfoForm [type='text']").val()==="")||($("#medicalRecordInfoForm textarea").val()==="")||(($("#diagnosisContextTbody1").html()==="")&&($("#diagnosisContextTbody2").html()===""))){
         showAlertDiv("alert-warning","警告!","表单不完整");
         return;
     }
@@ -637,13 +636,13 @@ $("#medicalInfoBtnGroup :eq(3)").click(function () {
     $("#homeRightNav a:first").click();
     $("#medreTempBtnGroup :eq(0)").click();
     $("#chiefComplaintTemplate").val($("#chiefComplaint").val());
-    $("#currentMedicalHistoryTemplate").html($("#currentMedicalHistory").html());
-    $("#physicalExaminationTemplate").html($("#physicalExamination").html());
+    $("#currentMedicalHistoryTemplate").val($("#currentMedicalHistory").val());
+    $("#physicalExaminationTemplate").val($("#physicalExamination").val());
     var xList=[];
     $("#diagnosisContextTbody1 tr").each(function (index) {
         var str=$(this).find("td:eq(1)").html();
         str = str.split("<")[0];
-       xList.push({id:$(this).find("td:eq(0)").html(),diseaseicd:str, diseasename: $(this).find("td:eq(2)").html()});
+        xList.push({id:$(this).find("td:eq(0)").html(),diseaseicd:str, diseasename: $(this).find("td:eq(2)").html()});
     });
     var zList=[];
     $("#diagnosisContextTbody2 tr").each(function (index) {
@@ -707,7 +706,8 @@ function clearMedrecTemplateContent(){
     $("#idTemplate").val("");
     $("#categoryTemplate").val(0);
     $("#MedrecTempContextDiv [type='text']").val("");
-    $("#MedrecTempContextDiv").find("textarea,tbody").html("");
+    $("#MedrecTempContextDiv tbody").html("");
+    $("#MedrecTempContextDiv textarea").val();
 }
 //放入模板疾病 0,1
 function setDiseaseTempleteList(diseaseList,num){
@@ -757,8 +757,8 @@ $("#MedrecTempListDiv").on("click","a",function () {
             $("#templateCodeTemplate").val(medrecTemplate.templateCode);
             $("#templateNameTemplate").val(medrecTemplate.templateName);
             $("#chiefComplaintTemplate").val(medrecTemplate.chiefComplaint);
-            $("#currentMedicalHistoryTemplate").html(medrecTemplate.currentMedicalHistory);
-            $("#physicalExaminationTemplate").html(medrecTemplate.physicalExamination);
+            $("#currentMedicalHistoryTemplate").val(medrecTemplate.currentMedicalHistory);
+            $("#physicalExaminationTemplate").val(medrecTemplate.physicalExamination);
             setDiseaseTempleteList(result.xDiagnosisDiseaseList,0);
             setDiseaseTempleteList(result.zDiagnosisDiseaseList,1);
         }
@@ -790,14 +790,14 @@ function setDiagnosisTemplete(listName,num){
 //引用模板
 $("#MedrecTempContextDiv button:contains('引用')").click(function () {
     var chiefComplaintText=$("#chiefComplaintTemplate").val();
-    var  currentMedicalHistoryText=$("#currentMedicalHistoryTemplate").html();
-    var physicalExaminationTemplateText=$("#physicalExaminationTemplate").html();
+    var  currentMedicalHistoryText=$("#currentMedicalHistoryTemplate").val();
+    var physicalExaminationTemplateText=$("#physicalExaminationTemplate").val();
     if(chiefComplaintText!=="")
         $("#chiefComplaint").val(chiefComplaintText);
     if(currentMedicalHistoryText!=="")
-        $("#currentMedicalHistory").html(currentMedicalHistoryText);
+        $("#currentMedicalHistory").val(currentMedicalHistoryText);
     if(physicalExaminationTemplateText!=="")
-        $("#physicalExamination").html(physicalExaminationTemplateText);
+        $("#physicalExamination").val(physicalExaminationTemplateText);
     setDiagnosisTemplete("xDiagnosisList",0);
     setDiagnosisTemplete("zDiagnosisList",1);
 });
