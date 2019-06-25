@@ -11,9 +11,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="dbf00169-a8e7-473c-9987-97a8297bcd84" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/html/outpatientDoctorWorkstation.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/index.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/index.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/outpatientDoctorWorkstation.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/outpatientDoctorWorkstation.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/js/myJquery/outpatientDoctorJs.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/static/js/myJquery/outpatientDoctorJs.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/html/tst.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/static/html/tst.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/html/tt2.html" beforeDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -66,23 +69,10 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/outpatientDoctorWorkstation.jsp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="561">
-              <caret line="367" column="46" selection-start-line="367" selection-start-column="46" selection-end-line="367" selection-end-column="46" />
-              <folding>
-                <element signature="e#18335#18341#1#HTML" expanded="true" />
-                <element signature="e#18341#18347#0#HTML" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/webapp/static/js/myJquery/outpatientDoctorJs.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="740">
-              <caret line="1087" column="95" selection-start-line="1087" selection-start-column="95" selection-end-line="1087" selection-end-column="95" />
+            <state relative-caret-position="75">
+              <caret line="3" selection-start-line="3" selection-end-line="3" />
               <folding>
                 <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#button#0;n#div#0;n#!!top" expanded="true" />
@@ -111,12 +101,12 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/edu/neu/medical/hospital/service/impl/OutpatientDoctorWorkstationServiceImpl.java">
+        <entry file="file://$PROJECT_DIR$/src/main/webapp/static/html/outpatientDoctorWorkstation.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="230">
-              <caret line="283" selection-start-line="283" selection-end-line="283" />
+            <state relative-caret-position="133">
+              <caret line="1276" column="6" selection-start-line="1276" selection-start-column="6" selection-end-line="1276" selection-end-column="6" />
               <folding>
-                <element signature="imports" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -139,14 +129,11 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>&quot;alert-danger&quot;</find>
-      <find>&quot;错误!&quot;,&quot;删除病历模板失败。&quot;);</find>
       <find>style=&quot;padding: 0&quot;</find>
       <find>padding</find>
       <find>**</find>
       <find>padd</find>
       <find>custom-select</find>
-      <find>ajax</find>
       <find>||visitStatus===&quot;&quot;</find>
       <find>初诊</find>
       <find>medicalInfoId===&quot;&quot;</find>
@@ -169,6 +156,9 @@
       <find>label</find>
       <find>map</find>
       <find>list[i]</find>
+      <find>href</find>
+      <find>images</find>
+      <find>ajax</find>
     </findStrings>
     <replaceStrings>
       <replace>showAlertDiv1(</replace>
@@ -193,6 +183,7 @@
       <replace>style=&quot;padding: 0&quot;</replace>
       <replace>style=&quot;padding-left: 0;padding-right: 0&quot;</replace>
       <replace>map[key]</replace>
+      <replace>../images</replace>
     </replaceStrings>
   </component>
   <component name="Git.Settings">
@@ -205,9 +196,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/index.jsp" />
-        <option value="$PROJECT_DIR$/src/main/java/edu/neu/medical/hospital/dao/PatientMapper.java" />
-        <option value="$PROJECT_DIR$/src/main/resources/mapper/PatientMapper.xml" />
         <option value="$PROJECT_DIR$/src/main/java/edu/neu/medical/hospital/bean/Patient.java" />
         <option value="$PROJECT_DIR$/src/main/webapp/static/css/pagination.css" />
         <option value="$PROJECT_DIR$/src/main/webapp/static/js/jquery.pagination.js" />
@@ -249,13 +237,16 @@
         <option value="$PROJECT_DIR$/src/main/webapp/static/js/myJquery/prescriptionJs.js" />
         <option value="$PROJECT_DIR$/src/main/webapp/static/js/myJquery/finalDiagnosisJs.js" />
         <option value="$PROJECT_DIR$/src/main/webapp/static/js/myJquery/patientFeeJs.js" />
-        <option value="$PROJECT_DIR$/src/main/webapp/static/html/tst.html" />
         <option value="$PROJECT_DIR$/test/edu/neu/medical/hospital/service/impl/OutpatientDoctorWorkstationServiceImplTest.java" />
         <option value="$PROJECT_DIR$/src/main/java/edu/neu/medical/hospital/service/OutpatientDoctorWorkstationService.java" />
         <option value="$PROJECT_DIR$/src/main/java/edu/neu/medical/hospital/service/impl/OutpatientDoctorWorkstationServiceImpl.java" />
         <option value="$PROJECT_DIR$/src/main/java/edu/neu/medical/hospital/controller/OutpatientDoctorWorkstationController.java" />
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/outpatientDoctorWorkstation.jsp" />
+        <option value="$PROJECT_DIR$/src/main/webapp/static/html/tst.html" />
         <option value="$PROJECT_DIR$/src/main/webapp/static/js/myJquery/outpatientDoctorJs.js" />
+        <option value="$PROJECT_DIR$/src/main/webapp/static/html/tt2.html" />
+        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/outpatientDoctorWorkstation.jsp" />
+        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/index.jsp" />
+        <option value="$PROJECT_DIR$/src/main/webapp/static/html/outpatientDoctorWorkstation.html" />
       </list>
     </option>
   </component>
@@ -312,10 +303,10 @@
       <select />
     </treeState>
   </component>
-  <component name="ProjectFrameBounds">
-    <option name="x" value="392" />
-    <option name="y" value="39" />
-    <option name="width" value="1515" />
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="293" />
+    <option name="y" value="27" />
+    <option name="width" value="1545" />
     <option name="height" value="896" />
   </component>
   <component name="ProjectView">
@@ -323,7 +314,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -465,6 +455,7 @@
         </subPane>
       </pane>
       <pane id="PackagesPane" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -766,9 +757,9 @@
       <item itemvalue="JUnit.ApplyForPrescriptionServiceImplTest.deleteCommonDrugs" />
       <item itemvalue="JUnit.MedicalRecordHomeServiceImplTest.searchDiseaseListByCode" />
       <item itemvalue="JUnit.MedicalRecordHomeServiceImplTest.addCommonDiagnosis" />
+      <item itemvalue="JUnit.OutpatientDoctorWorkstationServiceImplTest.statisticsList" />
       <item itemvalue="Maven.hospital-generator" />
       <item itemvalue="Tomcat Server.Tomcat 9.0.10" />
-      <item itemvalue="JUnit.OutpatientDoctorWorkstationServiceImplTest.statisticsList" />
     </list>
     <recent_temporary>
       <list>
@@ -842,14 +833,8 @@
       <workItem from="1561263711321" duration="24989000" />
       <workItem from="1561296119543" duration="9226000" />
       <workItem from="1561339087845" duration="27144000" />
-      <workItem from="1561382735323" duration="15640000" />
-    </task>
-    <task id="LOCAL-00027" summary="submit 6-15-1">
-      <created>1560534091322</created>
-      <option name="number" value="00027" />
-      <option name="presentableId" value="LOCAL-00027" />
-      <option name="project" value="LOCAL" />
-      <updated>1560534091322</updated>
+      <workItem from="1561382735323" duration="15730000" />
+      <workItem from="1561426554586" duration="5644000" />
     </task>
     <task id="LOCAL-00028" summary="test 6-15-2">
       <created>1560588361412</created>
@@ -1187,7 +1172,14 @@
       <option name="project" value="LOCAL" />
       <updated>1561397600260</updated>
     </task>
-    <option name="localTasksCounter" value="76" />
+    <task id="LOCAL-00076" summary="all over 6-25-3">
+      <created>1561398815278</created>
+      <option name="number" value="00076" />
+      <option name="presentableId" value="LOCAL-00076" />
+      <option name="project" value="LOCAL" />
+      <updated>1561398815278</updated>
+    </task>
+    <option name="localTasksCounter" value="77" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -1223,7 +1215,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="790424000" />
+    <option name="totallyTimeSpent" value="796158000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1235,9 +1227,10 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="392" y="39" width="1515" height="896" extended-state="0" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.490625" weight="0.42611682" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.490625" visible="true" weight="0.23720682" />
       <window_info id="Structure" order="1" sideWeight="0.509375" side_tool="true" weight="0.22014925" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -1248,11 +1241,11 @@
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.62906724" />
       <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49946696" weight="0.3394794" />
-      <window_info active="true" anchor="bottom" id="Debug" order="3" sideWeight="0.49840087" visible="true" weight="0.17322835" />
+      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.49840087" weight="0.27559054" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.30043384" />
-      <window_info anchor="bottom" id="Application Servers" order="7" sideWeight="0.49946696" weight="0.14533623" />
+      <window_info anchor="bottom" id="Application Servers" order="7" sideWeight="0.49946696" weight="0.14435695" />
       <window_info anchor="bottom" id="Spring" order="8" weight="0.329718" />
       <window_info anchor="bottom" id="Terminal" order="9" weight="0.329718" />
       <window_info anchor="bottom" id="Docker" order="10" show_stripe_button="false" />
@@ -1271,8 +1264,8 @@
       <window_info anchor="right" id="Database" order="5" weight="0.3022388" />
       <window_info anchor="right" id="Palette&#9;" order="6" />
       <window_info anchor="right" id="Theme Preview" order="7" />
-      <window_info anchor="right" id="Maven" order="8" weight="0.1433902" />
-      <window_info anchor="right" id="Coverage" order="9" side_tool="true" weight="0.32995737" />
+      <window_info anchor="right" id="Coverage" order="8" side_tool="true" weight="0.32995737" />
+      <window_info anchor="right" id="Maven" order="9" weight="0.1433902" />
       <window_info anchor="right" id="Bean Validation" order="10" weight="0.32876712" />
     </layout>
   </component>
@@ -1332,7 +1325,6 @@
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_NEW_TODO" value="false" />
-    <MESSAGE value="applyfor final 6-20-4" />
     <MESSAGE value="applyfor final 6-20-5" />
     <MESSAGE value="applyfor result start 6-21" />
     <MESSAGE value="applyfor result over 6-21-1" />
@@ -1357,7 +1349,8 @@
     <MESSAGE value="satis 6-25" />
     <MESSAGE value="satis 6-25-1" />
     <MESSAGE value="satis 6-25-2" />
-    <option name="LAST_COMMIT_MESSAGE" value="satis 6-25-2" />
+    <MESSAGE value="all over 6-25-3" />
+    <option name="LAST_COMMIT_MESSAGE" value="all over 6-25-3" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1428,12 +1421,6 @@
           <properties />
           <option name="timeStamp" value="27" />
         </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/edu/neu/medical/hospital/service/impl/OutpatientDoctorWorkstationServiceImpl.java</url>
-          <line>283</line>
-          <properties />
-          <option name="timeStamp" value="37" />
-        </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
     <watches-manager>
@@ -1469,27 +1456,6 @@
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/resources/mapper/VisitItemMapper.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="227">
-          <caret line="113" column="75" selection-start-line="113" selection-start-column="75" selection-end-line="113" selection-end-column="75" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test/edu/neu/medical/hospital/service/impl/ApplyForPrescriptionServiceImplTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="425">
-          <caret line="29" column="5" lean-forward="true" selection-start-line="29" selection-start-column="5" selection-end-line="29" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test/edu/neu/medical/hospital/service/impl/MedicalRecordHomeServiceImplTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="603">
-          <caret line="106" column="66" lean-forward="true" selection-start-line="106" selection-start-column="66" selection-end-line="106" selection-end-column="66" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://D:/JAVA/jdk1.8.0_181/jre/lib/rt.jar!/sun/reflect/NativeMethodAccessorImpl.class">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="272">
@@ -1720,21 +1686,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/static/js/myJquery/finalDiagnosisJs.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="242">
-          <caret line="46" column="44" selection-start-line="46" selection-start-column="27" selection-end-line="46" selection-end-column="44" />
-          <folding>
-            <element signature="n#style#0;n#td#2;n#tr#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#td#2;n#tr#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#td#3;n#tr#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#img#0;n#a#0;n#td#3;n#tr#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#td#4;n#tr#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#button#0;n#td#4;n#tr#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/edu/neu/medical/hospital/service/MedicalRecordHomeService.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="125">
@@ -1773,21 +1724,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="467">
           <caret line="530" column="37" lean-forward="true" selection-start-line="530" selection-start-column="11" selection-end-line="530" selection-end-column="37" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/static/html/tst.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="505">
-          <caret line="500" column="81" selection-start-line="500" selection-start-column="81" selection-end-line="500" selection-end-column="81" />
-          <folding>
-            <element signature="n#style#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#button#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#div#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#4;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#div#0;n#div#5;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#1;n#div#0;n#div#6;n#body#0;n#html#0;n#!!top" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1833,31 +1769,71 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/ttt.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="533">
+          <caret line="352" selection-start-line="352" selection-end-line="352" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/edu/neu/medical/hospital/controller/OutpatientDoctorWorkstationController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="450">
-          <caret line="119" column="51" selection-start-line="119" selection-start-column="51" selection-end-line="119" selection-end-column="51" />
+        <state relative-caret-position="375">
+          <caret line="15" column="17" selection-start-line="15" selection-start-column="17" selection-end-line="15" selection-end-column="17" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/edu/neu/medical/hospital/service/impl/OutpatientDoctorWorkstationServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="748">
+          <caret line="45" selection-start-line="45" selection-end-line="45" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/static/js/myJquery/finalDiagnosisJs.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-2241" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/static/html/tst.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="175">
+          <caret line="7" column="19" lean-forward="true" selection-start-line="7" selection-start-column="19" selection-end-line="7" selection-end-column="19" />
+          <folding>
+            <element signature="n#style#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#button#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#4;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#0;n#div#5;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#1;n#div#0;n#div#6;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/index.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="125">
+          <caret line="5" column="41" selection-start-line="5" selection-start-column="41" selection-end-line="5" selection-end-column="41" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/outpatientDoctorWorkstation.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="561">
-          <caret line="367" column="46" selection-start-line="367" selection-start-column="46" selection-end-line="367" selection-end-column="46" />
-          <folding>
-            <element signature="e#18335#18341#1#HTML" expanded="true" />
-            <element signature="e#18341#18347#0#HTML" expanded="true" />
-          </folding>
+        <state relative-caret-position="-13">
+          <caret line="308" column="42" lean-forward="true" selection-start-line="308" selection-start-column="42" selection-end-line="308" selection-end-column="42" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/static/js/myJquery/outpatientDoctorJs.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="740">
-          <caret line="1087" column="95" selection-start-line="1087" selection-start-column="95" selection-end-line="1087" selection-end-column="95" />
+        <state relative-caret-position="75">
+          <caret line="3" selection-start-line="3" selection-end-line="3" />
           <folding>
             <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#button#0;n#div#0;n#!!top" expanded="true" />
@@ -1884,12 +1860,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/edu/neu/medical/hospital/service/impl/OutpatientDoctorWorkstationServiceImpl.java">
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/static/html/outpatientDoctorWorkstation.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="230">
-          <caret line="283" selection-start-line="283" selection-end-line="283" />
+        <state relative-caret-position="133">
+          <caret line="1276" column="6" selection-start-line="1276" selection-start-column="6" selection-end-line="1276" selection-end-column="6" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
           </folding>
         </state>
       </provider>
