@@ -2,7 +2,6 @@ package com.neusoft.ssm.service;
 
 import com.github.pagehelper.PageInfo;
 import com.neusoft.ssm.bean.*;
-import com.neusoft.ssm.bean.*;
 
 import java.util.List;
 import java.util.Map;

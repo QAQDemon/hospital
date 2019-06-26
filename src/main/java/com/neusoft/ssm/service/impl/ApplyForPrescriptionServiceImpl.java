@@ -2,7 +2,6 @@ package com.neusoft.ssm.service.impl;
 
 import com.neusoft.ssm.bean.*;
 import com.neusoft.ssm.service.ApplyForPrescriptionService;
-import com.neusoft.ssm.bean.*;
 import com.neusoft.ssm.dao.DrugsMapper;
 import com.neusoft.ssm.dao.PrescriptionDetailMapper;
 import com.neusoft.ssm.dao.PrescriptionMapper;

@@ -5,8 +5,6 @@ import com.github.pagehelper.PageInfo;
 import com.neusoft.ssm.bean.*;
 import com.neusoft.ssm.dao.*;
 import com.neusoft.ssm.service.MedicalRecordHomeService;
-import com.neusoft.ssm.bean.*;
-import com.neusoft.ssm.dao.*;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;

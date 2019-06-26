@@ -6,7 +6,6 @@ import com.neusoft.ssm.bean.VisitItem;
 import com.neusoft.ssm.bean.VisitItemDetail;
 import com.neusoft.ssm.bean.VisitItemResult;
 import com.neusoft.ssm.service.OutpatientDoctorWorkstationService;
-import com.neusoft.ssm.bean.*;
 import com.neusoft.ssm.service.ApplyForFmeditemService;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;

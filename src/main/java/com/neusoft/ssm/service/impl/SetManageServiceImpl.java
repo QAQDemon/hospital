@@ -8,10 +8,8 @@ import com.neusoft.ssm.bean.SetGroupExample;
 import com.neusoft.ssm.bean.SetSub;
 import com.neusoft.ssm.bean.SetSubExample;
 import com.neusoft.ssm.dao.SetSubMapper;
-import com.neusoft.ssm.dao.*;
 import com.neusoft.ssm.service.SetManageService;
 import org.springframework.stereotype.Service;
-
 import javax.annotation.Resource;
 import java.util.ArrayList;
 import java.util.List;

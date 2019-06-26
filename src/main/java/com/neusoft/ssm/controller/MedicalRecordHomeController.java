@@ -2,7 +2,6 @@ package com.neusoft.ssm.controller;
 
 import com.github.pagehelper.PageInfo;
 import com.neusoft.ssm.bean.*;
-import com.neusoft.ssm.bean.*;
 import com.neusoft.ssm.service.MedicalRecordHomeService;
 import com.neusoft.ssm.service.OutpatientDoctorWorkstationService;
 import org.springframework.web.bind.annotation.*;

@@ -4,8 +4,6 @@ import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.neusoft.ssm.bean.*;
 import com.neusoft.ssm.dao.*;
-import com.neusoft.ssm.bean.*;
-import com.neusoft.ssm.dao.*;
 import com.neusoft.ssm.service.OutpatientDoctorWorkstationService;
 import org.springframework.stereotype.Service;
 import javax.annotation.Resource;

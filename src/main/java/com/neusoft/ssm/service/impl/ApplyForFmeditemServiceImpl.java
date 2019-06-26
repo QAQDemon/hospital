@@ -2,8 +2,6 @@ package com.neusoft.ssm.service.impl;
 
 import com.neusoft.ssm.bean.*;
 import com.neusoft.ssm.dao.*;
-import com.neusoft.ssm.bean.*;
-import com.neusoft.ssm.dao.*;
 import com.neusoft.ssm.service.ApplyForFmeditemService;
 import org.springframework.stereotype.Service;
 
