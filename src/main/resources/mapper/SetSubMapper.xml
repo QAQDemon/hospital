@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="edu.neu.medical.hospital.dao.SetSubMapper" >
+<mapper namespace="com.neusoft.ssm.dao.SetSubMapper" >
 
   <insert id="insertForeach" parameterType="java.util.List" keyProperty="id" useGeneratedKeys="true">
     insert into set_sub
@@ -26,7 +26,7 @@
 
 
 
-  <resultMap id="BaseResultMap" type="edu.neu.medical.hospital.bean.SetSub" >
+  <resultMap id="BaseResultMap" type="com.neusoft.ssm.bean.SetSub" >
     <constructor >
       <idArg column="id" jdbcType="INTEGER" javaType="java.lang.Integer" />
       <arg column="set_id" jdbcType="INTEGER" javaType="java.lang.Integer" />
@@ -95,7 +95,7 @@
   <sql id="Base_Column_List" >
     id, set_id, response_id, entrust
   </sql>
-  <select id="selectByExample" resultMap="BaseResultMap" parameterType="edu.neu.medical.hospital.bean.SetSubExample" >
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.neusoft.ssm.bean.SetSubExample" >
     select
     <if test="distinct" >
       distinct
@@ -109,13 +109,13 @@
       order by ${orderByClause}
     </if>
   </select>
-  <delete id="deleteByExample" parameterType="edu.neu.medical.hospital.bean.SetSubExample" >
+  <delete id="deleteByExample" parameterType="com.neusoft.ssm.bean.SetSubExample" >
     delete from set_sub
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insertSelective" parameterType="edu.neu.medical.hospital.bean.SetSub" >
+  <insert id="insertSelective" parameterType="com.neusoft.ssm.bean.SetSub" >
     <selectKey resultType="java.lang.Integer" keyProperty="id" order="BEFORE" >
       SELECT LAST_INSERT_ID()
     </selectKey>
@@ -145,7 +145,7 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="edu.neu.medical.hospital.bean.SetSubExample" resultType="java.lang.Integer" >
+  <select id="countByExample" parameterType="com.neusoft.ssm.bean.SetSubExample" resultType="java.lang.Integer" >
     select count(*) from set_sub
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
@@ -181,7 +181,7 @@
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="edu.neu.medical.hospital.bean.SetSub" >
+  <update id="updateByPrimaryKeySelective" parameterType="com.neusoft.ssm.bean.SetSub" >
     update set_sub
     <set >
       <if test="setId != null" >

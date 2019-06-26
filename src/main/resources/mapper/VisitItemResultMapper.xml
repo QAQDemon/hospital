@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="edu.neu.medical.hospital.dao.VisitItemResultMapper" >
-  <resultMap id="BaseResultMap" type="edu.neu.medical.hospital.bean.VisitItemResult" >
+<mapper namespace="com.neusoft.ssm.dao.VisitItemResultMapper" >
+  <resultMap id="BaseResultMap" type="com.neusoft.ssm.bean.VisitItemResult" >
     <constructor >
       <idArg column="id" jdbcType="INTEGER" javaType="java.lang.Integer" />
       <arg column="visit_record_detail_id" jdbcType="INTEGER" javaType="java.lang.Integer" />
@@ -70,7 +70,7 @@
   <sql id="Base_Column_List" >
     id, visit_record_detail_id, describetion, picture
   </sql>
-  <select id="selectByExample" resultMap="BaseResultMap" parameterType="edu.neu.medical.hospital.bean.VisitItemResultExample" >
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.neusoft.ssm.bean.VisitItemResultExample" >
     select
     <if test="distinct" >
       distinct
@@ -84,13 +84,13 @@
       order by ${orderByClause}
     </if>
   </select>
-  <delete id="deleteByExample" parameterType="edu.neu.medical.hospital.bean.VisitItemResultExample" >
+  <delete id="deleteByExample" parameterType="com.neusoft.ssm.bean.VisitItemResultExample" >
     delete from visit_item_result
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insertSelective" parameterType="edu.neu.medical.hospital.bean.VisitItemResult" >
+  <insert id="insertSelective" parameterType="com.neusoft.ssm.bean.VisitItemResult" >
     <selectKey resultType="java.lang.Integer" keyProperty="id" order="BEFORE" >
       SELECT LAST_INSERT_ID()
     </selectKey>
@@ -120,7 +120,7 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="edu.neu.medical.hospital.bean.VisitItemResultExample" resultType="java.lang.Integer" >
+  <select id="countByExample" parameterType="com.neusoft.ssm.bean.VisitItemResultExample" resultType="java.lang.Integer" >
     select count(*) from visit_item_result
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
@@ -156,7 +156,7 @@
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="edu.neu.medical.hospital.bean.VisitItemResult" >
+  <update id="updateByPrimaryKeySelective" parameterType="com.neusoft.ssm.bean.VisitItemResult" >
     update visit_item_result
     <set >
       <if test="visitRecordDetailId != null" >

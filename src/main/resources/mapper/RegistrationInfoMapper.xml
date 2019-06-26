@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="edu.neu.medical.hospital.dao.RegistrationInfoMapper" >
-  <resultMap id="BaseResultMap" type="edu.neu.medical.hospital.bean.RegistrationInfo" >
+<mapper namespace="com.neusoft.ssm.dao.RegistrationInfoMapper" >
+  <resultMap id="BaseResultMap" type="com.neusoft.ssm.bean.RegistrationInfo" >
     <constructor >
       <idArg column="id" jdbcType="INTEGER" javaType="java.lang.Integer" />
       <arg column="medical_record_no" jdbcType="INTEGER" javaType="java.lang.Integer" />
@@ -89,7 +89,7 @@
     status, registration_source, expense, refund_amount, see_doctor_date, is_seen_docator, 
     if_book
   </sql>
-  <select id="selectByExample" resultMap="BaseResultMap" parameterType="edu.neu.medical.hospital.bean.RegistrationInfoExample" >
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.neusoft.ssm.bean.RegistrationInfoExample" >
     select
     <if test="distinct" >
       distinct
@@ -103,13 +103,13 @@
       order by ${orderByClause}
     </if>
   </select>
-  <delete id="deleteByExample" parameterType="edu.neu.medical.hospital.bean.RegistrationInfoExample" >
+  <delete id="deleteByExample" parameterType="com.neusoft.ssm.bean.RegistrationInfoExample" >
     delete from registration_info
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insertSelective" parameterType="edu.neu.medical.hospital.bean.RegistrationInfo" >
+  <insert id="insertSelective" parameterType="com.neusoft.ssm.bean.RegistrationInfo" >
     <selectKey resultType="java.lang.Integer" keyProperty="id" order="BEFORE" >
       SELECT LAST_INSERT_ID()
     </selectKey>
@@ -235,7 +235,7 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="edu.neu.medical.hospital.bean.RegistrationInfoExample" resultType="java.lang.Integer" >
+  <select id="countByExample" parameterType="com.neusoft.ssm.bean.RegistrationInfoExample" resultType="java.lang.Integer" >
     select count(*) from registration_info
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
@@ -335,7 +335,7 @@
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="edu.neu.medical.hospital.bean.RegistrationInfo" >
+  <update id="updateByPrimaryKeySelective" parameterType="com.neusoft.ssm.bean.RegistrationInfo" >
     update registration_info
     <set >
       <if test="medicalRecordNo != null" >

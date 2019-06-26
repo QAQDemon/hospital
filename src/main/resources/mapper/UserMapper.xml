@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="edu.neu.medical.hospital.dao.UserMapper" >
-  <resultMap id="BaseResultMap" type="edu.neu.medical.hospital.bean.User" >
+<mapper namespace="com.neusoft.ssm.dao.UserMapper" >
+  <resultMap id="BaseResultMap" type="com.neusoft.ssm.bean.User" >
     <constructor >
       <idArg column="id" jdbcType="INTEGER" javaType="java.lang.Integer" />
       <arg column="login_name" jdbcType="VARCHAR" javaType="java.lang.String" />
@@ -75,7 +75,7 @@
     id, login_name, password, trust_name, department_id, user_category, professional_title, 
     info
   </sql>
-  <select id="selectByExample" resultMap="BaseResultMap" parameterType="edu.neu.medical.hospital.bean.UserExample" >
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.neusoft.ssm.bean.UserExample" >
     select
     <if test="distinct" >
       distinct
@@ -89,13 +89,13 @@
       order by ${orderByClause}
     </if>
   </select>
-  <delete id="deleteByExample" parameterType="edu.neu.medical.hospital.bean.UserExample" >
+  <delete id="deleteByExample" parameterType="com.neusoft.ssm.bean.UserExample" >
     delete from user
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insertSelective" parameterType="edu.neu.medical.hospital.bean.User" >
+  <insert id="insertSelective" parameterType="com.neusoft.ssm.bean.User" >
     <selectKey resultType="java.lang.Integer" keyProperty="id" order="BEFORE" >
       SELECT LAST_INSERT_ID()
     </selectKey>
@@ -149,7 +149,7 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="edu.neu.medical.hospital.bean.UserExample" resultType="java.lang.Integer" >
+  <select id="countByExample" parameterType="com.neusoft.ssm.bean.UserExample" resultType="java.lang.Integer" >
     select count(*) from user
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
@@ -201,7 +201,7 @@
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="edu.neu.medical.hospital.bean.User" >
+  <update id="updateByPrimaryKeySelective" parameterType="com.neusoft.ssm.bean.User" >
     update user
     <set >
       <if test="loginName != null" >

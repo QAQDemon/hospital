@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="edu.neu.medical.hospital.dao.PrescriptionDetailMapper" >
+<mapper namespace="com.neusoft.ssm.dao.PrescriptionDetailMapper" >
 
   <insert id="insertForeach" parameterType="java.util.List" keyProperty="id" useGeneratedKeys="true">
     insert into prescription_detail
@@ -25,7 +25,7 @@
 
 
 
-  <resultMap id="BaseResultMap" type="edu.neu.medical.hospital.bean.PrescriptionDetail" >
+  <resultMap id="BaseResultMap" type="com.neusoft.ssm.bean.PrescriptionDetail" >
     <constructor >
       <idArg column="id" jdbcType="INTEGER" javaType="java.lang.Integer" />
       <arg column="prescription_id" jdbcType="INTEGER" javaType="java.lang.Integer" />
@@ -101,7 +101,7 @@
     id, prescription_id, drug_id, usage_method, consumption, frequent, days, amount, 
     entrustment, is_return_medicine
   </sql>
-  <select id="selectByExample" resultMap="BaseResultMap" parameterType="edu.neu.medical.hospital.bean.PrescriptionDetailExample" >
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.neusoft.ssm.bean.PrescriptionDetailExample" >
     select
     <if test="distinct" >
       distinct
@@ -115,13 +115,13 @@
       order by ${orderByClause}
     </if>
   </select>
-  <delete id="deleteByExample" parameterType="edu.neu.medical.hospital.bean.PrescriptionDetailExample" >
+  <delete id="deleteByExample" parameterType="com.neusoft.ssm.bean.PrescriptionDetailExample" >
     delete from prescription_detail
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insertSelective" parameterType="edu.neu.medical.hospital.bean.PrescriptionDetail" >
+  <insert id="insertSelective" parameterType="com.neusoft.ssm.bean.PrescriptionDetail" >
     <selectKey resultType="java.lang.Integer" keyProperty="id" order="AFTER" >
       SELECT LAST_INSERT_ID()
     </selectKey>
@@ -187,7 +187,7 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="edu.neu.medical.hospital.bean.PrescriptionDetailExample" resultType="java.lang.Integer" >
+  <select id="countByExample" parameterType="com.neusoft.ssm.bean.PrescriptionDetailExample" resultType="java.lang.Integer" >
     select count(*) from prescription_detail
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
@@ -247,7 +247,7 @@
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="edu.neu.medical.hospital.bean.PrescriptionDetail" >
+  <update id="updateByPrimaryKeySelective" parameterType="com.neusoft.ssm.bean.PrescriptionDetail" >
     update prescription_detail
     <set >
       <if test="prescriptionId != null" >
