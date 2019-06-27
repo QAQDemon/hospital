@@ -321,6 +321,8 @@ function getMedicalRecordInfoAjax(isSeen,no,patient){
 
 //初始化功能板
 $("[href='#home1']").click(function () {
+    $("#homeRightNav a:eq(0)").click();
+    $("#searchMedrecTempForm button").click();
     var nodeValue=$("#patientListForm :radio:checked").val();
     if (nodeValue === undefined) {
         showAlertDiv("alert-warning", "警告!", "未选择患者。");
@@ -349,12 +351,7 @@ $("#searchPatientTbody1,#searchPatientTbody2").on("click","tr",function () {
 $("#diagnosisContextTbody1,#diagnosisContextTbody2,#finalDiagnosisForm").on("click","button:contains('-')",function () {
     var res = confirm('确认要删除吗？');
     if(res === true){
-        // var tbodyNode=$(this).closest("tbody");
         $(this).closest("tr").replaceWith("");
-        //更新序号
-        // tbodyNode.find("tr").each(function (index) {
-        //     $(this).find("td").first().html(index+1);
-        // });
     }
     return false;
 });

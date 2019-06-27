@@ -4,7 +4,6 @@ import com.neusoft.ssm.bean.*;
 import com.neusoft.ssm.dao.*;
 import com.neusoft.ssm.service.ApplyForFmeditemService;
 import org.springframework.stereotype.Service;
-
 import javax.annotation.Resource;
 import java.util.ArrayList;
 import java.util.List;
@@ -17,8 +16,6 @@ public class ApplyForFmeditemServiceImpl implements ApplyForFmeditemService {
     VisitItemMapper visitItemMapper;
     @Resource
     VisitItemDetailMapper visitItemDetailMapper;
-    @Resource
-    CommonOptionMapper commonOptionMapper;
     @Resource
     VisitItemResultMapper visitItemResultMapper;
     @Resource
@@ -103,10 +100,10 @@ public class ApplyForFmeditemServiceImpl implements ApplyForFmeditemService {
     /*
      * @Description 设置看诊项目和明细，暂存开立
      * @Param [visitItem id为null则需要创建, visitItemDetailList 前者为null需要获取对应id]
-     * @return java.lang.Boolean
+     * @return java.lang.Boolean 0失败 1成功
      **/
     public int setVisitItemAndDetailList(VisitItem visitItem,List<VisitItemDetail> visitItemDetailList){
-        int result=0;
+        int result;
         if(visitItem.getId()==null){//不存在,插入
             result=visitItemMapper.insertSelective(visitItem);
             if(result==0)
@@ -118,6 +115,9 @@ public class ApplyForFmeditemServiceImpl implements ApplyForFmeditemService {
             }
             visitItemDetailMapper.insertForeach(visitItemDetailList);
         }else {
+            VisitItem oldVisitItem1 = visitItemMapper.selectByPrimaryKey(visitItem.getId());
+            if(!oldVisitItem1.getStatus().equals("1"))//只有暂存才能继续暂存或开立
+                return 0;
             result=visitItemMapper.updateByPrimaryKeySelective(visitItem);
             if(result==0)
                 return result;
@@ -141,9 +141,15 @@ public class ApplyForFmeditemServiceImpl implements ApplyForFmeditemService {
      * @return int 1成功 0更新失败 2已登记
      **/
     public int cancleVisitItem(char method,int visitItemId){
+        VisitItem oldVisitItem=visitItemMapper.selectByPrimaryKey(visitItemId);
         if(method=='4'){//作废，获得付费状态
-            if(visitItemMapper.selectByPrimaryKey(visitItemId).getFeeStatus().equals("2"))
+            if(!oldVisitItem.getStatus().equals("2"))//开立才能作废
+                return 0;
+            if(oldVisitItem.getFeeStatus().equals("2"))
                 return 2;
+        }else {
+            if(!oldVisitItem.getStatus().equals("1"))//暂存才能删除
+                return 0;
         }
         VisitItem visitItem = new VisitItem();
         visitItem.setId(visitItemId);

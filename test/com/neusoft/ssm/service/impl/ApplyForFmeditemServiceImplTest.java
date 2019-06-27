@@ -108,4 +108,23 @@ public class ApplyForFmeditemServiceImplTest {
 //        VisitItemResult visitItemResult=applyForFmeditemService.getVisitItemResult(visitItemDetail);
         return;
     }
+
+    @Test
+    public void setVisitItemAndDetailList1() {
+        VisitItem visitItem=new VisitItem();
+        visitItem.setId(16);
+        visitItem.setPurposeRequirement("fagg1");
+        List<VisitItemDetail> visitItemDetailList=new ArrayList<>();
+        VisitItemDetail visitItemDetail = new VisitItemDetail();
+        visitItemDetail.setVisitItemId(7);
+        visitItemDetail.setFmeditemId(2);
+        VisitItemDetail visitItemDetail2 = new VisitItemDetail();
+        visitItemDetail2.setVisitItemId(7);
+        visitItemDetail2.setFmeditemId(8);
+        visitItemDetail2.setDoctorEntrustment("bbx");
+        visitItemDetailList.add(visitItemDetail);
+        visitItemDetailList.add(visitItemDetail2);
+        int bol=applyForFmeditemService.setVisitItemAndDetailList(visitItem, visitItemDetailList);
+        return;
+    }
 }

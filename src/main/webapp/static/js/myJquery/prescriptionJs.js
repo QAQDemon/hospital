@@ -459,7 +459,7 @@ $("#drugsPageJump").on("click","button",function () {
     }
 });
 
-//项目 搜索增加
+//处方 搜索增加
 $("#drugsNotCheckedTbody").on("click","tr",function () {
     var id=$(this).children().eq(1).html();
     var oneflag=0;
@@ -476,7 +476,7 @@ $("#drugsNotCheckedTbody").on("click","tr",function () {
     node.append("<tr>"+$(this).html()+"</tr>")
         .find("input").last().attr("checked",'true');
 });
-//项目 搜索删除
+//处方 搜索删除
 $("#drugsCheckedTbody").on("click","tr",function () {
     var res = confirm('确认要删除吗？');
     if(res === true){
@@ -606,7 +606,7 @@ $("#menu3_1").on("dblclick","a",function () {
     var prescriptionDetailList=[{usageMethod:"0", frequent: "0",consumption:"",days:"",amount:"",entrustment:""}];
     setPrescriptionDetail(prescriptionDetailList,drugsList);
     showAlertDiv("alert-success","成功!","药品插入成功。");
-})//删除常用项目
+})//删除常用处方
     .on("click",".badge-danger",function () {
         var res = confirm('确认要删除吗？');
         if(res === true) {

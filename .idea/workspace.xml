@@ -6,113 +6,19 @@
     </artifacts-to-build>
   </component>
   <component name="BookmarkManager">
-    <bookmark url="file://$PROJECT_DIR$/src/main/webapp/static/js/myJquery/outpatientDoctorJs.js" line="707" mnemonic="2" />
+    <bookmark url="file://$PROJECT_DIR$/src/main/webapp/static/js/myJquery/outpatientDoctorJs.js" line="704" mnemonic="2" />
     <bookmark url="file://$PROJECT_DIR$/src/main/webapp/static/html/outpatientDoctorWorkstation.html" line="8" mnemonic="1" />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="dbf00169-a8e7-473c-9987-97a8297bcd84" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/edu/neu/medical/hospital/bean/CommonOption.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/neusoft/ssm/bean/CommonOption.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/edu/neu/medical/hospital/bean/CommonOptionExample.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/neusoft/ssm/bean/CommonOptionExample.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/edu/neu/medical/hospital/bean/Depart.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/neusoft/ssm/bean/Depart.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/edu/neu/medical/hospital/bean/DepartExample.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/neusoft/ssm/bean/DepartExample.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/edu/neu/medical/hospital/bean/Diagnosis.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/neusoft/ssm/bean/Diagnosis.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/edu/neu/medical/hospital/bean/DiagnosisExample.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/neusoft/ssm/bean/DiagnosisExample.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/edu/neu/medical/hospital/bean/DiagnosisFormDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/neusoft/ssm/bean/DiagnosisFormDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/edu/neu/medical/hospital/bean/Disease.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/neusoft/ssm/bean/Disease.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/edu/neu/medical/hospital/bean/DiseaseExample.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/neusoft/ssm/bean/DiseaseExample.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/edu/neu/medical/hospital/bean/Drugs.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/neusoft/ssm/bean/Drugs.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/edu/neu/medical/hospital/bean/DrugsExample.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/neusoft/ssm/bean/DrugsExample.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/edu/neu/medical/hospital/bean/Fmeditem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/neusoft/ssm/bean/Fmeditem.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/edu/neu/medical/hospital/bean/FmeditemExample.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/neusoft/ssm/bean/FmeditemExample.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/edu/neu/medical/hospital/bean/MedicalRecordInfo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/neusoft/ssm/bean/MedicalRecordInfo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/edu/neu/medical/hospital/bean/MedicalRecordInfoExample.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/neusoft/ssm/bean/MedicalRecordInfoExample.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/edu/neu/medical/hospital/bean/MedrecTemplate.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/neusoft/ssm/bean/MedrecTemplate.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/edu/neu/medical/hospital/bean/MedrecTemplateExample.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/neusoft/ssm/bean/MedrecTemplateExample.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/edu/neu/medical/hospital/bean/Patient.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/neusoft/ssm/bean/Patient.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/edu/neu/medical/hospital/bean/PatientExample.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/neusoft/ssm/bean/PatientExample.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/edu/neu/medical/hospital/bean/Prescription.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/neusoft/ssm/bean/Prescription.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/edu/neu/medical/hospital/bean/PrescriptionDetail.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/neusoft/ssm/bean/PrescriptionDetail.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/edu/neu/medical/hospital/bean/PrescriptionDetailExample.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/neusoft/ssm/bean/PrescriptionDetailExample.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/edu/neu/medical/hospital/bean/PrescriptionExample.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/neusoft/ssm/bean/PrescriptionExample.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/edu/neu/medical/hospital/bean/RegistrationInfo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/neusoft/ssm/bean/RegistrationInfo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/edu/neu/medical/hospital/bean/RegistrationInfoExample.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/neusoft/ssm/bean/RegistrationInfoExample.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/edu/neu/medical/hospital/bean/SetGroup.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/neusoft/ssm/bean/SetGroup.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/edu/neu/medical/hospital/bean/SetGroupExample.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/neusoft/ssm/bean/SetGroupExample.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/edu/neu/medical/hospital/bean/SetSub.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/neusoft/ssm/bean/SetSub.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/edu/neu/medical/hospital/bean/SetSubExample.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/neusoft/ssm/bean/SetSubExample.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/edu/neu/medical/hospital/bean/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/neusoft/ssm/bean/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/edu/neu/medical/hospital/bean/UserExample.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/neusoft/ssm/bean/UserExample.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/edu/neu/medical/hospital/bean/VisitItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/neusoft/ssm/bean/VisitItem.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/edu/neu/medical/hospital/bean/VisitItemDetail.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/neusoft/ssm/bean/VisitItemDetail.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/edu/neu/medical/hospital/bean/VisitItemDetailExample.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/neusoft/ssm/bean/VisitItemDetailExample.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/edu/neu/medical/hospital/bean/VisitItemExample.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/neusoft/ssm/bean/VisitItemExample.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/edu/neu/medical/hospital/bean/VisitItemResult.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/neusoft/ssm/bean/VisitItemResult.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/edu/neu/medical/hospital/bean/VisitItemResultExample.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/neusoft/ssm/bean/VisitItemResultExample.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/edu/neu/medical/hospital/controller/ApplyForFmeditemController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/neusoft/ssm/controller/ApplyForFmeditemController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/edu/neu/medical/hospital/controller/ApplyForPrescriptionController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/neusoft/ssm/controller/ApplyForPrescriptionController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/edu/neu/medical/hospital/controller/MedicalRecordHomeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/neusoft/ssm/controller/MedicalRecordHomeController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/edu/neu/medical/hospital/controller/OutpatientDoctorWorkstationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/neusoft/ssm/controller/OutpatientDoctorWorkstationController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/edu/neu/medical/hospital/controller/SetManageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/neusoft/ssm/controller/SetManageController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/edu/neu/medical/hospital/controller/TestController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/edu/neu/medical/hospital/converter/DateConverter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/neusoft/ssm/converter/DateConverter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/edu/neu/medical/hospital/converter/LocalDateTimeConverter.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/edu/neu/medical/hospital/dao/CommonOptionMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/neusoft/ssm/dao/CommonOptionMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/edu/neu/medical/hospital/dao/DepartMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/neusoft/ssm/dao/DepartMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/edu/neu/medical/hospital/dao/DiagnosisMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/neusoft/ssm/dao/DiagnosisMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/edu/neu/medical/hospital/dao/DiseaseMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/neusoft/ssm/dao/DiseaseMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/edu/neu/medical/hospital/dao/DrugsMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/neusoft/ssm/dao/DrugsMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/edu/neu/medical/hospital/dao/FmeditemMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/neusoft/ssm/dao/FmeditemMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/edu/neu/medical/hospital/dao/MedicalRecordInfoMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/neusoft/ssm/dao/MedicalRecordInfoMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/edu/neu/medical/hospital/dao/MedrecTemplateMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/neusoft/ssm/dao/MedrecTemplateMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/edu/neu/medical/hospital/dao/PatientMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/neusoft/ssm/dao/PatientMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/edu/neu/medical/hospital/dao/PrescriptionDetailMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/neusoft/ssm/dao/PrescriptionDetailMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/edu/neu/medical/hospital/dao/PrescriptionMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/neusoft/ssm/dao/PrescriptionMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/edu/neu/medical/hospital/dao/RegistrationInfoMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/neusoft/ssm/dao/RegistrationInfoMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/edu/neu/medical/hospital/dao/SetGroupMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/neusoft/ssm/dao/SetGroupMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/edu/neu/medical/hospital/dao/SetSubMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/neusoft/ssm/dao/SetSubMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/edu/neu/medical/hospital/dao/UserMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/neusoft/ssm/dao/UserMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/edu/neu/medical/hospital/dao/VisitItemDetailMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/neusoft/ssm/dao/VisitItemDetailMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/edu/neu/medical/hospital/dao/VisitItemMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/neusoft/ssm/dao/VisitItemMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/edu/neu/medical/hospital/dao/VisitItemResultMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/neusoft/ssm/dao/VisitItemResultMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/edu/neu/medical/hospital/service/ApplyForFmeditemService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/neusoft/ssm/service/ApplyForFmeditemService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/edu/neu/medical/hospital/service/ApplyForPrescriptionService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/neusoft/ssm/service/ApplyForPrescriptionService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/edu/neu/medical/hospital/service/MedicalRecordHomeService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/neusoft/ssm/service/MedicalRecordHomeService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/edu/neu/medical/hospital/service/OutpatientDoctorWorkstationService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/neusoft/ssm/service/OutpatientDoctorWorkstationService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/edu/neu/medical/hospital/service/SetManageService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/neusoft/ssm/service/SetManageService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/edu/neu/medical/hospital/service/impl/ApplyForFmeditemServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/neusoft/ssm/service/impl/ApplyForFmeditemServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/edu/neu/medical/hospital/service/impl/ApplyForPrescriptionServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/neusoft/ssm/service/impl/ApplyForPrescriptionServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/edu/neu/medical/hospital/service/impl/MedicalRecordHomeServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/neusoft/ssm/service/impl/MedicalRecordHomeServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/edu/neu/medical/hospital/service/impl/OutpatientDoctorWorkstationServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/neusoft/ssm/service/impl/OutpatientDoctorWorkstationServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/edu/neu/medical/hospital/service/impl/SetManageServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/neusoft/ssm/service/impl/SetManageServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/applicationContext.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/applicationContext.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/generatorConfig.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/generatorConfig.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/mapper/CommonOptionMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mapper/CommonOptionMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/mapper/DepartMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mapper/DepartMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/mapper/DiagnosisMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mapper/DiagnosisMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/mapper/DiseaseMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mapper/DiseaseMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/mapper/DrugsMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mapper/DrugsMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/mapper/FmeditemMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mapper/FmeditemMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/mapper/MedicalRecordInfoMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mapper/MedicalRecordInfoMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/mapper/MedrecTemplateMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mapper/MedrecTemplateMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/mapper/PatientMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mapper/PatientMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/mapper/PrescriptionDetailMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mapper/PrescriptionDetailMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/mapper/PrescriptionMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mapper/PrescriptionMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/mapper/RegistrationInfoMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mapper/RegistrationInfoMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/mapper/SetGroupMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mapper/SetGroupMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/mapper/SetSubMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mapper/SetSubMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/mapper/UserMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mapper/UserMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/mapper/VisitItemDetailMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mapper/VisitItemDetailMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/mapper/VisitItemMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mapper/VisitItemMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/mapper/VisitItemResultMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mapper/VisitItemResultMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/applicationContext.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/applicationContext.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/generatorConfig.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/generatorConfig.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/edu/neu/medical/hospital/service/impl/ApplyForFmeditemServiceImplTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/com/neusoft/ssm/service/impl/ApplyForFmeditemServiceImplTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/edu/neu/medical/hospital/service/impl/ApplyForPrescriptionServiceImplTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/com/neusoft/ssm/service/impl/ApplyForPrescriptionServiceImplTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/edu/neu/medical/hospital/service/impl/EasyTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/com/neusoft/ssm/service/impl/EasyTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/edu/neu/medical/hospital/service/impl/MedicalRecordHomeServiceImplTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/com/neusoft/ssm/service/impl/MedicalRecordHomeServiceImplTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/edu/neu/medical/hospital/service/impl/OutpatientDoctorWorkstationServiceImplTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/com/neusoft/ssm/service/impl/OutpatientDoctorWorkstationServiceImplTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/edu/neu/medical/hospital/service/impl/SetManageServiceImplTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/com/neusoft/ssm/service/impl/SetManageServiceImplTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/neusoft/ssm/service/impl/ApplyForFmeditemServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/neusoft/ssm/service/impl/ApplyForFmeditemServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/neusoft/ssm/service/impl/ApplyForPrescriptionServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/neusoft/ssm/service/impl/ApplyForPrescriptionServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/neusoft/ssm/service/impl/MedicalRecordHomeServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/neusoft/ssm/service/impl/MedicalRecordHomeServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/js/myJquery/outpatientDoctorJs.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/static/js/myJquery/outpatientDoctorJs.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/js/myJquery/prescriptionJs.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/static/js/myJquery/prescriptionJs.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/com/neusoft/ssm/service/impl/ApplyForFmeditemServiceImplTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/com/neusoft/ssm/service/impl/ApplyForFmeditemServiceImplTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/com/neusoft/ssm/service/impl/MedicalRecordHomeServiceImplTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/com/neusoft/ssm/service/impl/MedicalRecordHomeServiceImplTest.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -165,28 +71,53 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/neusoft/ssm/service/impl/ApplyForPrescriptionServiceImpl.java">
+        <entry file="file://$PROJECT_DIR$/src/main/webapp/static/html/outpatientDoctorWorkstation.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="100">
-              <caret line="4" column="7" selection-start-line="4" selection-start-column="7" selection-end-line="4" selection-end-column="23" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/neusoft/ssm/service/MedicalRecordHomeService.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="100">
-              <caret line="4" column="22" selection-start-line="4" selection-start-column="22" selection-end-line="4" selection-end-column="22" />
+            <state relative-caret-position="143">
+              <caret line="573" column="78" selection-start-line="573" selection-start-column="58" selection-end-line="573" selection-end-column="78" />
+              <folding>
+                <element signature="n#style#0;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#input#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#1;n#div#1;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#input#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#1;n#div#1;n#div#0;n#div#0;n#div#3;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#input#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#1;n#div#1;n#div#0;n#div#0;n#div#4;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#th#1;n#tr#0;n#thead#0;n#table#0;n#form#1;n#div#0;n#div#0;n#div#0;n#div#5;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#img#0;n#a#0;n#th#1;n#tr#0;n#thead#0;n#table#0;n#form#1;n#div#0;n#div#0;n#div#0;n#div#5;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#th#1;n#tr#0;n#thead#0;n#table#1;n#form#1;n#div#0;n#div#0;n#div#0;n#div#5;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#img#0;n#a#0;n#th#1;n#tr#0;n#thead#0;n#table#1;n#form#1;n#div#0;n#div#0;n#div#0;n#div#5;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#3;n#div#0;n#div#1;n#div#1;n#div#2;n#div#5;n#body#0;n#html#0;n#!!top" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/resources/applicationContext.xml">
+        <entry file="file://$PROJECT_DIR$/src/main/webapp/static/js/myJquery/outpatientDoctorJs.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="108">
-              <caret line="98" column="67" selection-start-line="98" selection-start-column="51" selection-end-line="98" selection-end-column="67" />
+            <state relative-caret-position="43">
+              <caret line="324" column="46" selection-start-line="324" selection-start-column="46" selection-end-line="324" selection-end-column="46" />
+              <folding>
+                <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#button#0;n#div#0;n#!!top" expanded="true" />
+                <element signature="e#284#291#1" expanded="true" />
+                <element signature="n#style#0;n#td#2;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#td#3;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#img#0;n#a#0;n#td#3;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#td#4;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#button#0;n#td#4;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#td#2;n#tr#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#td#5;n#tr#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#td#6;n#tr#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#img#0;n#a#0;n#td#6;n#tr#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#td#7;n#tr#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#button#0;n#td#7;n#tr#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#td#3;n#tr#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#td#3;n#tr#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#td#2;n#tr#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#td#2;n#tr#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#td#2;n#tr#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#td#2;n#tr#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#td#2;n#tr#0;n#!!top" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -208,8 +139,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>病历信息</find>
-      <find>card-header</find>
       <find>修改</find>
       <find>debu</find>
       <find>medicalRecordInfoForm</find>
@@ -238,6 +167,8 @@
       <find>bean</find>
       <find>bean.CommonOption</find>
       <find>neu</find>
+      <find>模板</find>
+      <find>项目</find>
     </findStrings>
     <replaceStrings>
       <replace>showAlertDiv1(</replace>
@@ -277,7 +208,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/resources/mapper/VisitItemMapper.xml" />
         <option value="$PROJECT_DIR$/src/main/java/edu/neu/medical/hospital/service/impl/MedicalRecordHomeServiceImpl.java" />
         <option value="$PROJECT_DIR$/src/main/java/edu/neu/medical/hospital/service/MedicalRecordHomeService.java" />
         <option value="$PROJECT_DIR$/test/edu/neu/medical/hospital/service/impl/MedicalRecordHomeServiceImplTest.java" />
@@ -309,25 +239,26 @@
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/outpatientDoctorWorkstation.jsp" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/index.jsp" />
         <option value="$PROJECT_DIR$/src/main/webapp/static/js/myJquery/patientFeeJs.js" />
-        <option value="$PROJECT_DIR$/src/main/webapp/static/js/myJquery/outpatientDoctorJs.js" />
         <option value="$PROJECT_DIR$/src/main/webapp/static/js/myJquery/applyForJs.js" />
-        <option value="$PROJECT_DIR$/src/main/webapp/static/js/myJquery/prescriptionJs.js" />
         <option value="$PROJECT_DIR$/src/main/webapp/static/html/outpatientDoctorWorkstation.html" />
         <option value="$PROJECT_DIR$/src/main/resources/mapper/CommonOptionMapper.xml" />
         <option value="$PROJECT_DIR$/src/main/resources/generatorConfig.xml" />
-        <option value="$PROJECT_DIR$/src/main/java/com/neusoft/ssm/service/OutpatientDoctorWorkstationService.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/neusoft/ssm/service/impl/ApplyForPrescriptionServiceImpl.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/neusoft/ssm/service/MedicalRecordHomeService.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/neusoft/ssm/controller/OutpatientDoctorWorkstationController.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/neusoft/ssm/service/impl/MedicalRecordHomeServiceImpl.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/neusoft/ssm/controller/ApplyForFmeditemController.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/neusoft/ssm/service/ApplyForFmeditemService.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/neusoft/ssm/controller/MedicalRecordHomeController.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/neusoft/ssm/service/impl/ApplyForFmeditemServiceImpl.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/applicationContext.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/com/neusoft/ssm/service/MedicalRecordHomeService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/neusoft/ssm/service/OutpatientDoctorWorkstationService.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/neusoft/ssm/service/impl/OutpatientDoctorWorkstationServiceImpl.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/neusoft/ssm/service/impl/SetManageServiceImpl.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/neusoft/ssm/controller/MedicalRecordHomeController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/neusoft/ssm/controller/ApplyForFmeditemController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/neusoft/ssm/service/impl/MedicalRecordHomeServiceImpl.java" />
+        <option value="$PROJECT_DIR$/test/com/neusoft/ssm/service/impl/MedicalRecordHomeServiceImplTest.java" />
+        <option value="$PROJECT_DIR$/src/main/webapp/static/js/myJquery/prescriptionJs.js" />
         <option value="$PROJECT_DIR$/test/com/neusoft/ssm/service/impl/ApplyForFmeditemServiceImplTest.java" />
-        <option value="$PROJECT_DIR$/src/main/resources/applicationContext.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/com/neusoft/ssm/service/impl/ApplyForFmeditemServiceImpl.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/neusoft/ssm/service/impl/ApplyForPrescriptionServiceImpl.java" />
+        <option value="$PROJECT_DIR$/src/main/webapp/static/js/myJquery/outpatientDoctorJs.js" />
       </list>
     </option>
   </component>
@@ -385,8 +316,8 @@
     </treeState>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="159" />
-    <option name="y" value="55" />
+    <option name="x" value="59" />
+    <option name="y" value="39" />
     <option name="width" value="1545" />
     <option name="height" value="941" />
   </component>
@@ -437,7 +368,16 @@
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="ssm" type="462c0819:PsiDirectoryNode" />
-              <item name="converter" type="462c0819:PsiDirectoryNode" />
+              <item name="controller" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="hospital" type="b2602c69:ProjectViewProjectNode" />
+              <item name="hospital" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="ssm" type="462c0819:PsiDirectoryNode" />
+              <item name="dao" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="hospital" type="b2602c69:ProjectViewProjectNode" />
@@ -470,14 +410,6 @@
               <item name="hospital" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="mapper" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="hospital" type="b2602c69:ProjectViewProjectNode" />
-              <item name="hospital" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="webapp" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -486,7 +418,35 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="webapp" type="462c0819:PsiDirectoryNode" />
-              <item name="WEB-INF" type="462c0819:PsiDirectoryNode" />
+              <item name="static" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="hospital" type="b2602c69:ProjectViewProjectNode" />
+              <item name="hospital" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="webapp" type="462c0819:PsiDirectoryNode" />
+              <item name="static" type="462c0819:PsiDirectoryNode" />
+              <item name="html" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="hospital" type="b2602c69:ProjectViewProjectNode" />
+              <item name="hospital" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="webapp" type="462c0819:PsiDirectoryNode" />
+              <item name="static" type="462c0819:PsiDirectoryNode" />
+              <item name="js" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="hospital" type="b2602c69:ProjectViewProjectNode" />
+              <item name="hospital" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="webapp" type="462c0819:PsiDirectoryNode" />
+              <item name="static" type="462c0819:PsiDirectoryNode" />
+              <item name="js" type="462c0819:PsiDirectoryNode" />
+              <item name="myJquery" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -515,8 +475,18 @@
   </component>
   <component name="RecentsManager">
     <key name="CreateTestDialog.RecentsKey">
+      <recent name="com.neusoft.ssm.service.impl" />
       <recent name="edu.neu.medical.hospital.service.impl" />
       <recent name="edu.neu.medical.hospital.controller" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\demon\Desktop\test\hospital\src\main\webapp\static\html" />
+      <recent name="C:\Users\demon\Desktop\test\hospital\target\ssm\static\images" />
+      <recent name="C:\Users\demon\Desktop\test\hospital\src\main\webapp\static\images" />
+      <recent name="C:\Users\demon\Desktop\test\hospital\src\main\webapp\static\css" />
+    </key>
+    <key name="CreateTestDialog.Recents.Supers">
+      <recent name="" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\demon\Desktop\test\hospital\src\main\resources\mapper" />
@@ -524,15 +494,6 @@
       <recent name="C:\Users\demon\Desktop\test\hospital\src\main\webapp\static\images" />
       <recent name="C:\Users\demon\Desktop\test\hospital\src\main\webapp\WEB-INF\jsp" />
       <recent name="C:\Users\demon\Desktop\test\hospital\src\main\webapp" />
-    </key>
-    <key name="CreateTestDialog.Recents.Supers">
-      <recent name="" />
-    </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\demon\Desktop\test\hospital\src\main\webapp\static\html" />
-      <recent name="C:\Users\demon\Desktop\test\hospital\target\ssm\static\images" />
-      <recent name="C:\Users\demon\Desktop\test\hospital\src\main\webapp\static\images" />
-      <recent name="C:\Users\demon\Desktop\test\hospital\src\main\webapp\static\css" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -548,17 +509,17 @@
     </option>
   </component>
   <component name="RunManager" selected="Tomcat Server.Tomcat 9.0.10">
-    <configuration name="ApplyForPrescriptionServiceImplTest.deleteCommonDrugs" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="ApplyForFmeditemServiceImplTest.setVisitItemAndDetailList1" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="hospital" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="edu.neu.medical.hospital.service.impl.*" />
+          <option name="PATTERN" value="com.neusoft.ssm.service.impl.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="edu.neu.medical.hospital.service.impl" />
-      <option name="MAIN_CLASS_NAME" value="edu.neu.medical.hospital.service.impl.ApplyForPrescriptionServiceImplTest" />
-      <option name="METHOD_NAME" value="deleteCommonDrugs" />
+      <option name="PACKAGE_NAME" value="com.neusoft.ssm.service.impl" />
+      <option name="MAIN_CLASS_NAME" value="com.neusoft.ssm.service.impl.ApplyForFmeditemServiceImplTest" />
+      <option name="METHOD_NAME" value="setVisitItemAndDetailList1" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -596,17 +557,17 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="OutpatientDoctorWorkstationServiceImplTest.setCompleteVisit" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="MedicalRecordHomeServiceImplTest.setMedicalRecordInfoAndDiagnosisList" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="hospital" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="edu.neu.medical.hospital.service.impl.*" />
+          <option name="PATTERN" value="com.neusoft.ssm.service.impl.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="edu.neu.medical.hospital.service.impl" />
-      <option name="MAIN_CLASS_NAME" value="edu.neu.medical.hospital.service.impl.OutpatientDoctorWorkstationServiceImplTest" />
-      <option name="METHOD_NAME" value="setCompleteVisit" />
+      <option name="PACKAGE_NAME" value="com.neusoft.ssm.service.impl" />
+      <option name="MAIN_CLASS_NAME" value="com.neusoft.ssm.service.impl.MedicalRecordHomeServiceImplTest" />
+      <option name="METHOD_NAME" value="setMedicalRecordInfoAndDiagnosisList" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -790,21 +751,21 @@
       </method>
     </configuration>
     <list>
-      <item itemvalue="JUnit.OutpatientDoctorWorkstationServiceImplTest.setCompleteVisit" />
-      <item itemvalue="JUnit.ApplyForPrescriptionServiceImplTest.deleteCommonDrugs" />
       <item itemvalue="JUnit.MedicalRecordHomeServiceImplTest.searchDiseaseListByCode" />
       <item itemvalue="JUnit.MedicalRecordHomeServiceImplTest.addCommonDiagnosis" />
       <item itemvalue="JUnit.OutpatientDoctorWorkstationServiceImplTest.statisticsList" />
+      <item itemvalue="JUnit.MedicalRecordHomeServiceImplTest.setMedicalRecordInfoAndDiagnosisList" />
+      <item itemvalue="JUnit.ApplyForFmeditemServiceImplTest.setVisitItemAndDetailList1" />
       <item itemvalue="Maven.hospital-generator" />
       <item itemvalue="Tomcat Server.Tomcat 9.0.10" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.ApplyForFmeditemServiceImplTest.setVisitItemAndDetailList1" />
+        <item itemvalue="JUnit.MedicalRecordHomeServiceImplTest.setMedicalRecordInfoAndDiagnosisList" />
         <item itemvalue="JUnit.OutpatientDoctorWorkstationServiceImplTest.statisticsList" />
         <item itemvalue="JUnit.MedicalRecordHomeServiceImplTest.addCommonDiagnosis" />
         <item itemvalue="JUnit.MedicalRecordHomeServiceImplTest.searchDiseaseListByCode" />
-        <item itemvalue="JUnit.ApplyForPrescriptionServiceImplTest.deleteCommonDrugs" />
-        <item itemvalue="JUnit.OutpatientDoctorWorkstationServiceImplTest.setCompleteVisit" />
       </list>
     </recent_temporary>
   </component>
@@ -873,21 +834,7 @@
       <workItem from="1561382735323" duration="15730000" />
       <workItem from="1561426554586" duration="23460000" />
       <workItem from="1561471073492" duration="8461000" />
-      <workItem from="1561512689749" duration="4540000" />
-    </task>
-    <task id="LOCAL-00033" summary="templet 6-16-4">
-      <created>1560699108950</created>
-      <option name="number" value="00033" />
-      <option name="presentableId" value="LOCAL-00033" />
-      <option name="project" value="LOCAL" />
-      <updated>1560699108950</updated>
-    </task>
-    <task id="LOCAL-00034" summary="commondisease 6-17">
-      <created>1560744477806</created>
-      <option name="number" value="00034" />
-      <option name="presentableId" value="LOCAL-00034" />
-      <option name="project" value="LOCAL" />
-      <updated>1560744477806</updated>
+      <workItem from="1561512689749" duration="14003000" />
     </task>
     <task id="LOCAL-00035" summary="commondisease 6-17-1">
       <created>1560751393509</created>
@@ -1218,43 +1165,57 @@
       <option name="project" value="LOCAL" />
       <updated>1561480440144</updated>
     </task>
-    <option name="localTasksCounter" value="82" />
+    <task id="LOCAL-00082" summary="new start 6-26-1">
+      <created>1561517871912</created>
+      <option name="number" value="00082" />
+      <option name="presentableId" value="LOCAL-00082" />
+      <option name="project" value="LOCAL" />
+      <updated>1561517871988</updated>
+    </task>
+    <task id="LOCAL-00083" summary="new start 6-26-2">
+      <created>1561519111657</created>
+      <option name="number" value="00083" />
+      <option name="presentableId" value="LOCAL-00083" />
+      <option name="project" value="LOCAL" />
+      <updated>1561519111657</updated>
+    </task>
+    <option name="localTasksCounter" value="84" />
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="MedicalRecordHomeServiceImplTest_addCommonDiagnosis - 2019.06.17 at 13h 10m 08s.xml">
-      <configuration name="MedicalRecordHomeServiceImplTest.addCommonDiagnosis" configurationId="JUnit" />
+    <history-entry file="MedicalRecordHomeServiceImplTest_setMedicalRecordInfoAndDiagnosisList - 2019.06.26 at 11h 52m 11s.xml">
+      <configuration name="MedicalRecordHomeServiceImplTest.setMedicalRecordInfoAndDiagnosisList" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="OutpatientDoctorWorkstationServiceImplTest_statisticsList - 2019.06.24 at 23h 27m 32s.xml">
-      <configuration name="OutpatientDoctorWorkstationServiceImplTest.statisticsList" configurationId="JUnit" />
+    <history-entry file="MedicalRecordHomeServiceImplTest_setMedicalRecordInfoAndDiagnosisList - 2019.06.26 at 11h 52m 54s.xml">
+      <configuration name="MedicalRecordHomeServiceImplTest.setMedicalRecordInfoAndDiagnosisList" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="OutpatientDoctorWorkstationServiceImplTest_statisticsList - 2019.06.24 at 23h 30m 43s.xml">
-      <configuration name="OutpatientDoctorWorkstationServiceImplTest.statisticsList" configurationId="JUnit" />
+    <history-entry file="MedicalRecordHomeServiceImplTest_setMedicalRecordInfoAndDiagnosisList - 2019.06.26 at 11h 54m 45s.xml">
+      <configuration name="MedicalRecordHomeServiceImplTest.setMedicalRecordInfoAndDiagnosisList" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="OutpatientDoctorWorkstationServiceImplTest_statisticsList - 2019.06.24 at 23h 31m 06s.xml">
-      <configuration name="OutpatientDoctorWorkstationServiceImplTest.statisticsList" configurationId="JUnit" />
+    <history-entry file="MedicalRecordHomeServiceImplTest_setMedicalRecordInfoAndDiagnosisList - 2019.06.26 at 11h 55m 36s.xml">
+      <configuration name="MedicalRecordHomeServiceImplTest.setMedicalRecordInfoAndDiagnosisList" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="OutpatientDoctorWorkstationServiceImplTest_statisticsList - 2019.06.24 at 23h 31m 45s.xml">
-      <configuration name="OutpatientDoctorWorkstationServiceImplTest.statisticsList" configurationId="JUnit" />
+    <history-entry file="MedicalRecordHomeServiceImplTest_setMedicalRecordInfoAndDiagnosisList - 2019.06.26 at 11h 56m 00s.xml">
+      <configuration name="MedicalRecordHomeServiceImplTest.setMedicalRecordInfoAndDiagnosisList" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="OutpatientDoctorWorkstationServiceImplTest_statisticsList - 2019.06.24 at 23h 32m 06s.xml">
-      <configuration name="OutpatientDoctorWorkstationServiceImplTest.statisticsList" configurationId="JUnit" />
+    <history-entry file="MedicalRecordHomeServiceImplTest_setMedicalRecordInfoAndDiagnosisList - 2019.06.26 at 11h 56m 20s.xml">
+      <configuration name="MedicalRecordHomeServiceImplTest.setMedicalRecordInfoAndDiagnosisList" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="OutpatientDoctorWorkstationServiceImplTest_statisticsList - 2019.06.24 at 23h 34m 18s.xml">
-      <configuration name="OutpatientDoctorWorkstationServiceImplTest.statisticsList" configurationId="JUnit" />
+    <history-entry file="ApplyForFmeditemServiceImplTest_setVisitItemAndDetailList1 - 2019.06.26 at 14h 02m 14s.xml">
+      <configuration name="ApplyForFmeditemServiceImplTest.setVisitItemAndDetailList1" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="OutpatientDoctorWorkstationServiceImplTest_statisticsList - 2019.06.24 at 23h 35m 33s.xml">
-      <configuration name="OutpatientDoctorWorkstationServiceImplTest.statisticsList" configurationId="JUnit" />
+    <history-entry file="ApplyForFmeditemServiceImplTest_setVisitItemAndDetailList1 - 2019.06.26 at 14h 02m 51s.xml">
+      <configuration name="ApplyForFmeditemServiceImplTest.setVisitItemAndDetailList1" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="OutpatientDoctorWorkstationServiceImplTest_statisticsList - 2019.06.24 at 23h 42m 58s.xml">
-      <configuration name="OutpatientDoctorWorkstationServiceImplTest.statisticsList" configurationId="JUnit" />
+    <history-entry file="ApplyForFmeditemServiceImplTest_setVisitItemAndDetailList1 - 2019.06.26 at 14h 03m 45s.xml">
+      <configuration name="ApplyForFmeditemServiceImplTest.setVisitItemAndDetailList1" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="OutpatientDoctorWorkstationServiceImplTest_statisticsList - 2019.06.25 at 00h 36m 53s.xml">
-      <configuration name="OutpatientDoctorWorkstationServiceImplTest.statisticsList" configurationId="JUnit" />
+    <history-entry file="ApplyForFmeditemServiceImplTest_setVisitItemAndDetailList1 - 2019.06.26 at 14h 22m 16s.xml">
+      <configuration name="ApplyForFmeditemServiceImplTest.setVisitItemAndDetailList1" configurationId="JUnit" />
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="826975000" />
+    <option name="totallyTimeSpent" value="836438000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1266,10 +1227,10 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="75" y="103" width="1545" height="941" extended-state="0" />
+    <frame x="108" y="48" width="1545" height="941" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.490625" visible="true" weight="0.27946126" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.490625" weight="0.27138048" />
       <window_info id="Structure" order="1" sideWeight="0.509375" side_tool="true" weight="0.22014925" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -1280,7 +1241,7 @@
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.62906724" />
       <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49946696" weight="0.3394794" />
-      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.4978678" weight="0.5340768" />
+      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.4978678" weight="0.54275095" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.30043384" />
@@ -1291,7 +1252,7 @@
       <window_info anchor="bottom" id="Event Log" order="11" sideWeight="0.5021322" side_tool="true" weight="0.36008677" />
       <window_info anchor="bottom" id="Database Changes" order="12" show_stripe_button="false" />
       <window_info anchor="bottom" id="Java Enterprise" order="13" weight="0.32868758" />
-      <window_info anchor="bottom" id="Version Control" order="14" weight="0.77914953" />
+      <window_info anchor="bottom" id="Version Control" order="14" weight="0.77819085" />
       <window_info anchor="bottom" id="Messages" order="15" weight="0.29218107" />
       <window_info anchor="bottom" id="Database Console" order="16" weight="0.3297546" />
       <window_info anchor="bottom" id="Duplicates" order="17" weight="0.329718" />
@@ -1364,8 +1325,6 @@
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_NEW_TODO" value="false" />
-    <MESSAGE value="prescription start 6-21-4" />
-    <MESSAGE value="prescription submit 6-22" />
     <MESSAGE value="prescription drugs 6-22-1" />
     <MESSAGE value="prescription over 6-23" />
     <MESSAGE value="prescription over 6-23-1" />
@@ -1389,7 +1348,9 @@
     <MESSAGE value="all over 6-25-6" />
     <MESSAGE value="all over 6-25-7" />
     <MESSAGE value="new start 6-26" />
-    <option name="LAST_COMMIT_MESSAGE" value="new start 6-26" />
+    <MESSAGE value="new start 6-26-1" />
+    <MESSAGE value="new start 6-26-2" />
+    <option name="LAST_COMMIT_MESSAGE" value="new start 6-26-2" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1454,6 +1415,18 @@
           <properties />
           <option name="timeStamp" value="27" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/test/com/neusoft/ssm/service/impl/MedicalRecordHomeServiceImplTest.java</url>
+          <line>140</line>
+          <properties />
+          <option name="timeStamp" value="28" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/test/com/neusoft/ssm/service/impl/ApplyForFmeditemServiceImplTest.java</url>
+          <line>127</line>
+          <properties />
+          <option name="timeStamp" value="29" />
+        </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
     <watches-manager>
@@ -1489,27 +1462,6 @@
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/neusoft/ssm/bean/Drugs.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="525">
-          <caret line="21" column="28" selection-start-line="21" selection-start-column="18" selection-end-line="21" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/neusoft/ssm/dao/PrescriptionDetailMapper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="125">
-          <caret line="14" lean-forward="true" selection-start-line="14" selection-end-line="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/neusoft/ssm/bean/PrescriptionDetailExample.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="100">
-          <caret line="6" column="13" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/neusoft/ssm/bean/PrescriptionDetail.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="100">
@@ -1538,20 +1490,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="275">
           <caret line="12" column="35" selection-start-line="12" selection-start-column="19" selection-end-line="12" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/neusoft/ssm/service/ApplyForPrescriptionService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="325">
-          <caret line="18" column="59" lean-forward="true" selection-start-line="18" selection-start-column="59" selection-end-line="18" selection-end-column="59" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/neusoft/ssm/service/SetManageService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="475">
-          <caret line="22" column="17" selection-start-line="22" selection-start-column="17" selection-end-line="22" selection-end-column="17" />
         </state>
       </provider>
     </entry>
@@ -1665,30 +1603,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/neusoft/ssm/controller/ApplyForPrescriptionController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="118">
-          <caret line="71" selection-start-line="71" selection-end-line="71" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/static/js/myJquery/prescriptionJs.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="16225">
-          <caret line="649" column="23" selection-start-line="649" selection-start-column="23" selection-end-line="649" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/static/js/myJquery/applyForJs.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="14900">
-          <caret line="596" column="22" selection-start-line="596" selection-start-column="22" selection-end-line="596" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/edu/neu/medical/hospital/controller/TestController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-1171">
@@ -1702,31 +1616,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="100">
           <caret line="6" column="13" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/neusoft/ssm/converter/DateConverter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="10" column="13" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/static/html/outpatientDoctorWorkstation.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="241" column="121" selection-start-line="241" selection-start-column="121" selection-end-line="241" selection-end-column="121" />
-          <folding>
-            <element signature="n#style#0;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#input#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#1;n#div#1;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#input#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#1;n#div#1;n#div#0;n#div#0;n#div#3;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#input#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#1;n#div#1;n#div#0;n#div#0;n#div#4;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#th#1;n#tr#0;n#thead#0;n#table#0;n#form#1;n#div#0;n#div#0;n#div#0;n#div#5;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#img#0;n#a#0;n#th#1;n#tr#0;n#thead#0;n#table#0;n#form#1;n#div#0;n#div#0;n#div#0;n#div#5;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#th#1;n#tr#0;n#thead#0;n#table#1;n#form#1;n#div#0;n#div#0;n#div#0;n#div#5;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#img#0;n#a#0;n#th#1;n#tr#0;n#thead#0;n#table#1;n#form#1;n#div#0;n#div#0;n#div#0;n#div#5;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#3;n#div#0;n#div#1;n#div#1;n#div#2;n#div#5;n#body#0;n#html#0;n#!!top" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1747,6 +1636,84 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/log4j.properties">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/mapper/VisitItemResultMapper.xml">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/neusoft/ssm/service/ApplyForFmeditemService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="3" column="23" selection-start-line="3" selection-start-column="23" selection-end-line="3" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/neusoft/ssm/controller/OutpatientDoctorWorkstationController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="163">
+          <caret line="7" column="23" selection-start-line="7" selection-start-column="23" selection-end-line="7" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1058">
+          <caret line="298" column="30" lean-forward="true" selection-start-line="298" selection-start-column="30" selection-end-line="298" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/neusoft/ssm/converter/DateConverter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="10" column="13" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/neusoft/ssm/service/OutpatientDoctorWorkstationService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="100">
+          <caret line="4" selection-start-line="4" selection-end-line="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/neusoft/ssm/service/SetManageService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="50">
+          <caret line="2" column="7" lean-forward="true" selection-start-line="2" selection-start-column="7" selection-end-line="2" selection-end-column="7" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/neusoft/ssm/service/impl/OutpatientDoctorWorkstationServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="6" selection-start-line="6" selection-end-line="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/neusoft/ssm/service/impl/SetManageServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="12" selection-start-line="12" selection-end-line="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/neusoft/ssm/service/MedicalRecordHomeService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="250">
+          <caret line="10" column="12" selection-start-line="10" selection-start-column="12" selection-end-line="10" selection-end-column="12" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/db.properties">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/generatorConfig.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="216">
@@ -1754,16 +1721,164 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/log4j.properties">
-      <provider selected="true" editor-type-id="text-editor" />
+    <entry file="file://$PROJECT_DIR$/src/main/resources/applicationContext.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="156">
+          <caret line="84" column="48" lean-forward="true" selection-start-line="84" selection-start-column="48" selection-end-line="84" selection-end-column="48" />
+          <folding>
+            <element signature="e#3918#3929#0" expanded="true" />
+            <element signature="e#3967#3975#0" expanded="true" />
+            <element signature="e#4018#4031#0" expanded="true" />
+            <element signature="e#4074#4087#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/mapper/VisitItemResultMapper.xml">
-      <provider selected="true" editor-type-id="text-editor" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/neusoft/ssm/controller/MedicalRecordHomeController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="575">
+          <caret line="89" column="49" selection-start-line="89" selection-start-column="49" selection-end-line="89" selection-end-column="49" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/com/neusoft/ssm/service/impl/MedicalRecordHomeServiceImplTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="932">
+          <caret line="140" selection-start-line="140" selection-end-line="140" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/neusoft/ssm/service/ApplyForPrescriptionService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="450">
+          <caret line="18" column="8" selection-start-line="18" selection-start-column="8" selection-end-line="18" selection-end-column="8" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/static/js/myJquery/applyForJs.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="273">
+          <caret line="188" column="16" selection-start-line="188" selection-start-column="16" selection-end-line="188" selection-end-column="16" />
+          <folding>
+            <element signature="n#style#0;n#td#5;n#tr#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#td#3;n#tr#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#td#5;n#tr#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#img#0;n#a#0;n#td#5;n#tr#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#td#6;n#tr#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#button#0;n#td#6;n#tr#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#td#5;n#tr#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#td#2;n#tr#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#td#0;n#tr#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#td#1;n#tr#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/neusoft/ssm/controller/ApplyForFmeditemController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-865">
+          <caret line="21" column="13" selection-start-line="21" selection-start-column="13" selection-end-line="21" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/com/neusoft/ssm/service/impl/ApplyForFmeditemServiceImplTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="557">
+          <caret line="127" selection-start-line="127" selection-end-line="127" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/neusoft/ssm/service/impl/ApplyForFmeditemServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-650">
+          <caret line="102" column="40" selection-start-line="102" selection-start-column="40" selection-end-line="102" selection-end-column="40" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/neusoft/ssm/service/impl/ApplyForPrescriptionServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="468">
+          <caret line="139" column="31" selection-start-line="139" selection-start-column="31" selection-end-line="139" selection-end-column="31" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/neusoft/ssm/controller/ApplyForPrescriptionController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="293">
+          <caret line="86" column="50" selection-start-line="86" selection-start-column="50" selection-end-line="86" selection-end-column="50" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/static/js/myJquery/prescriptionJs.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-67">
+          <caret line="595" selection-start-line="595" selection-end-line="595" />
+          <folding>
+            <element signature="n#style#0;n#td#2;n#tr#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#td#5;n#tr#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#td#7;n#tr#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#td#8;n#tr#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#td#0;n#tr#1;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#td#1;n#tr#1;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#img#0;n#a#0;n#td#1;n#tr#1;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#td#2;n#tr#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#td#2;n#tr#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#td#0;n#tr#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#td#1;n#tr#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/neusoft/ssm/service/impl/MedicalRecordHomeServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-4090">
+          <caret line="81" column="23" lean-forward="true" selection-start-line="81" selection-start-column="23" selection-end-line="81" selection-end-column="23" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/static/html/outpatientDoctorWorkstation.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="143">
+          <caret line="573" column="78" selection-start-line="573" selection-start-column="58" selection-end-line="573" selection-end-column="78" />
+          <folding>
+            <element signature="n#style#0;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#input#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#1;n#div#1;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#input#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#1;n#div#1;n#div#0;n#div#0;n#div#3;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#input#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#1;n#div#1;n#div#0;n#div#0;n#div#4;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#th#1;n#tr#0;n#thead#0;n#table#0;n#form#1;n#div#0;n#div#0;n#div#0;n#div#5;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#img#0;n#a#0;n#th#1;n#tr#0;n#thead#0;n#table#0;n#form#1;n#div#0;n#div#0;n#div#0;n#div#5;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#th#1;n#tr#0;n#thead#0;n#table#1;n#form#1;n#div#0;n#div#0;n#div#0;n#div#5;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#img#0;n#a#0;n#th#1;n#tr#0;n#thead#0;n#table#1;n#form#1;n#div#0;n#div#0;n#div#0;n#div#5;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#3;n#div#0;n#div#1;n#div#1;n#div#2;n#div#5;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/static/js/myJquery/outpatientDoctorJs.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="409">
-          <caret line="626" column="27" selection-start-line="626" selection-start-column="27" selection-end-line="626" selection-end-column="27" />
+        <state relative-caret-position="43">
+          <caret line="324" column="46" selection-start-line="324" selection-start-column="46" selection-end-line="324" selection-end-column="46" />
           <folding>
             <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#button#0;n#div#0;n#!!top" expanded="true" />
@@ -1787,97 +1902,6 @@
             <element signature="n#style#0;n#td#2;n#tr#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#td#2;n#tr#0;n#!!top" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/neusoft/ssm/service/OutpatientDoctorWorkstationService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="100">
-          <caret line="4" column="23" selection-start-line="4" selection-start-column="23" selection-end-line="4" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/neusoft/ssm/service/impl/ApplyForPrescriptionServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="100">
-          <caret line="4" column="7" selection-start-line="4" selection-start-column="7" selection-end-line="4" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/neusoft/ssm/service/impl/SetManageServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="163">
-          <caret line="10" column="23" selection-start-line="10" selection-start-column="23" selection-end-line="10" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/neusoft/ssm/service/impl/OutpatientDoctorWorkstationServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="175">
-          <caret line="7" column="23" selection-start-line="7" selection-start-column="23" selection-end-line="7" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/neusoft/ssm/service/impl/ApplyForFmeditemServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="125">
-          <caret line="5" column="23" selection-start-line="5" selection-start-column="23" selection-end-line="5" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/neusoft/ssm/controller/MedicalRecordHomeController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="100">
-          <caret line="4" column="23" selection-start-line="4" selection-start-column="23" selection-end-line="4" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/neusoft/ssm/service/ApplyForFmeditemService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="3" column="23" selection-start-line="3" selection-start-column="23" selection-end-line="3" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/neusoft/ssm/controller/ApplyForFmeditemController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="163">
-          <caret line="8" column="23" selection-start-line="8" selection-start-column="23" selection-end-line="8" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/neusoft/ssm/service/impl/MedicalRecordHomeServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="188">
-          <caret line="8" column="23" selection-start-line="8" selection-start-column="23" selection-end-line="8" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/neusoft/ssm/controller/OutpatientDoctorWorkstationController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="163">
-          <caret line="7" column="23" selection-start-line="7" selection-start-column="23" selection-end-line="7" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test/com/neusoft/ssm/service/impl/ApplyForFmeditemServiceImplTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="155">
-          <caret line="7" column="23" selection-start-line="7" selection-start-column="23" selection-end-line="7" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/neusoft/ssm/service/MedicalRecordHomeService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="100">
-          <caret line="4" column="22" selection-start-line="4" selection-start-column="22" selection-end-line="4" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/applicationContext.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="108">
-          <caret line="98" column="67" selection-start-line="98" selection-start-column="51" selection-end-line="98" selection-end-column="67" />
         </state>
       </provider>
     </entry>

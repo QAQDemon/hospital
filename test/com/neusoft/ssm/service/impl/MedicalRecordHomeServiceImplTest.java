@@ -1,6 +1,7 @@
 package com.neusoft.ssm.service.impl;
 
 import com.github.pagehelper.PageInfo;
+import com.neusoft.ssm.bean.MedicalRecordInfo;
 import com.neusoft.ssm.service.MedicalRecordHomeService;
 import com.neusoft.ssm.bean.Diagnosis;
 import com.neusoft.ssm.bean.Disease;
@@ -105,5 +106,38 @@ public class MedicalRecordHomeServiceImplTest {
     public void addCommonDiagnosis() {
 //        medicalRecordHomeService.addCommonDiagnosis(4, '1', 10);
 //        medicalRecordHomeService.addCommonDiagnosis(4, '1', 10);
+    }
+
+    @Test
+    public void setMedicalRecordInfoAndDiagnosisList() {//
+        MedicalRecordInfo medrecTemplate=new MedicalRecordInfo();
+        medrecTemplate.setStatus("1");
+        medrecTemplate.setChiefComplaint("dasd2334");
+        medrecTemplate.setDepartId(1);
+        medrecTemplate.setDoctorId(1);
+        medrecTemplate.setMedicalRecordNo(3);
+        List<Diagnosis> list=new ArrayList<>();
+        Diagnosis diagnosis1=new Diagnosis();
+        diagnosis1.setDiseaseId(1);
+        diagnosis1.setIsNewMajorDiagnosis("1");
+        diagnosis1.setType("1");
+        diagnosis1.setIsNewSuspect("1");
+        diagnosis1.setCategory("2");
+        Diagnosis diagnosis2=new Diagnosis();
+        diagnosis2.setDiseaseId(2);
+        diagnosis2.setIsNewMajorDiagnosis("1");
+        diagnosis2.setType("1");
+        diagnosis2.setIsNewSuspect("1");
+        diagnosis2.setCategory("2");
+        Diagnosis diagnosis3=new Diagnosis();
+        diagnosis3.setDiseaseId(3);
+        diagnosis3.setType("1");
+        diagnosis3.setIsNewSuspect("1");
+        diagnosis3.setCategory("2");
+        list.add(diagnosis1);
+        list.add(diagnosis2);
+        list.add(diagnosis3);
+        Boolean bool=medicalRecordHomeService.setMedicalRecordInfoAndDiagnosisList(medrecTemplate,list);
+        return;
     }
 }

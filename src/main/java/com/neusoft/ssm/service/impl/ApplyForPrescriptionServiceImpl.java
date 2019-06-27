@@ -95,7 +95,7 @@ public class ApplyForPrescriptionServiceImpl implements ApplyForPrescriptionServ
      * @return java.lang.Boolean
      **/
     public int setPrescriptionAndDetailList(Prescription prescription,List<PrescriptionDetail> prescriptionDetailList){
-        int result=0;
+        int result;
         if(prescription.getId()==null){//不存在,插入
             result=prescriptionMapper.insertSelective(prescription);
             if(result==0)
@@ -107,6 +107,9 @@ public class ApplyForPrescriptionServiceImpl implements ApplyForPrescriptionServ
             }
             prescriptionDetailMapper.insertForeach(prescriptionDetailList);
         }else {
+            Prescription oldPrescription = prescriptionMapper.selectByPrimaryKey(prescription.getId());
+            if(!oldPrescription.getStatus().equals("1"))//只有发暂存才能继续暂存或发送
+                return 0;
             result=prescriptionMapper.updateByPrimaryKeySelective(prescription);
             if(result==0)
                 return result;
@@ -130,9 +133,15 @@ public class ApplyForPrescriptionServiceImpl implements ApplyForPrescriptionServ
      * @return int 1成功 0更新失败 2已付费或退费
      **/
     public int canclePrescription(char method,int prescriptionId){
+        Prescription oldPrescription = prescriptionMapper.selectByPrimaryKey(prescriptionId);
         if(method=='4'){//作废，获得付费状态
-            if(!prescriptionMapper.selectByPrimaryKey(prescriptionId).getFeeStatus().equals("1"))
+            if (!oldPrescription.getStatus().equals("2")) //发送才能作废
+                return 0;
+            if(!oldPrescription.getFeeStatus().equals("1"))
                 return 2;
+        }else {
+            if(!oldPrescription.getStatus().equals("1"))//暂存才能删除
+                return 0;
         }
         Prescription prescription = new Prescription();
         prescription.setId(prescriptionId);

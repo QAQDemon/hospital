@@ -69,25 +69,16 @@ public class MedicalRecordHomeServiceImpl implements MedicalRecordHomeService {
     }
 
     /*
-     * @Description 暂存或提交病历信息和诊断，需判断是否已存在信息
+     * @Description 暂存或提交病历信息和诊断，需判断是否已存在信息,同时只能有一个状态为暂存或完成初诊的病单
      * @Param [ medicalRecordInfo 应包含状态（1暂存 2提交），病单号可能null,病历号，患者id，医生id，科室id, diagnosisList 可能病单号null]
      * @return java.lang.Boolean
      **/
     public Boolean setMedicalRecordInfoAndDiagnosisList(MedicalRecordInfo medicalRecordInfo, List<Diagnosis> diagnosisList) {
-//        //是否有暂存
-//        int medicalRecordId=medicalRecordInfo.getMedicalRecordNo();
-//        MedicalRecordInfoExample medicalRecordInfoExample=new MedicalRecordInfoExample();
-//        MedicalRecordInfoExample.Criteria criteria=medicalRecordInfoExample.createCriteria();
-//        criteria.andMedicalRecordNoEqualTo(medicalRecordId);
-//        criteria.andStatusEqualTo('1'+"");
-//        int count=medicalRecordInfoMapper.countByExample(medicalRecordInfoExample);
-        if(medicalRecordInfo.getId()!=null){//有暂存，update
-//            medicalRecordInfoMapper.updateByExampleSelective(medicalRecordInfo,medicalRecordInfoExample);
+        if(medicalRecordInfo.getId()!=null){//update
+            //查看是否已提交
+            if(!medicalRecordInfoMapper.selectByPrimaryKey(medicalRecordInfo.getId()).getStatus().equals("1"))
+                return false;
             medicalRecordInfoMapper.updateByPrimaryKeySelective(medicalRecordInfo);
-//            int medicalRecordInfoId=medicalRecordInfo.getId();
-//            for (Diagnosis d:diagnosisList) {
-//                d.setMedicalRecordInfoId(medicalRecordInfoId);
-//            }
             //更新初诊，先删后加
             DiagnosisExample diagnosisExample=new DiagnosisExample();
             DiagnosisExample.Criteria criteria1=diagnosisExample.createCriteria();
@@ -95,12 +86,19 @@ public class MedicalRecordHomeServiceImpl implements MedicalRecordHomeService {
             criteria1.andCategoryEqualTo("1");
             diagnosisMapper.deleteByExample(diagnosisExample);
             diagnosisMapper.insertForeach(diagnosisList);
-        }else {//无暂存，insert
-//            //搜索患者id
-//            PatientExample patientExample =new PatientExample();
-//            PatientExample.Criteria criteria1=patientExample.createCriteria();
-//            criteria1.andMedicalRecordNoEqualTo(medicalRecordId);
-//            medicalRecordInfo.setPatientId(patientMapper.selectByExample(patientExample).get(0).getId());
+        }else {//insert
+            //查看是否有其他病单待诊
+            MedicalRecordInfoExample medicalRecordInfoExample=new MedicalRecordInfoExample();
+            MedicalRecordInfoExample.Criteria criteria=medicalRecordInfoExample.createCriteria();
+            criteria.andDepartIdEqualTo(medicalRecordInfo.getDepartId());
+            criteria.andDoctorIdEqualTo(medicalRecordInfo.getDoctorId());
+            criteria.andMedicalRecordNoEqualTo(medicalRecordInfo.getMedicalRecordNo());
+            List<String> strings = new ArrayList<>();
+            strings.add("1");
+            strings.add("2");
+            criteria.andStatusIn(strings);
+            if(medicalRecordInfoMapper.selectByExample(medicalRecordInfoExample).size()!=0)
+                return false;
             //增加病历信息和初诊
             medicalRecordInfoMapper.insertSelective(medicalRecordInfo);
             int medicalRecordInfoId=medicalRecordInfoMapper.getLastId(medicalRecordInfo.getMedicalRecordNo());
