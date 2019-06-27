@@ -5,7 +5,6 @@ import com.neusoft.ssm.bean.Patient;
 import com.neusoft.ssm.bean.Prescription;
 import com.neusoft.ssm.bean.VisitItem;
 import com.neusoft.ssm.service.MedicalRecordHomeService;
-import com.neusoft.ssm.bean.*;
 import com.neusoft.ssm.service.OutpatientDoctorWorkstationService;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -30,7 +29,7 @@ public class OutpatientDoctorWorkstationController {
      * @return org.springframework.web.servlet.ModelAndView
      **/
     @RequestMapping("first")
-    public ModelAndView first(){
+    public ModelAndView first() {
         return new ModelAndView("outpatientDoctorWorkstation");
     }
 

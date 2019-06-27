@@ -130,7 +130,9 @@ function searchPatientAjax(){
         type: "POST",//方法类型
         dataType: "json",//预期服务器返回的数据类型
         url: urlS,
-        data: {},
+        headers: {
+            Authorization:"Bearer "+getCookie("token")
+        },
         success: function (result) {
             var isSeenList = result.isSeenList;
             var notSeenList = result.notSeenList;

@@ -1,4 +1,4 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" isELIgnored="false" %>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -10,7 +10,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1, user-scalable=no">
     <title>门诊医生工作站</title>
-    <link rel="shortcut icon" href="images/icon.png" type="image/x-icon"/>
+    <link id="iconLink" rel="icon" href="images/HISicon.ico" type="image/x-icon">
+    <link id="shortIconLink" rel="shortcut icon" href="images/HISicon.ico" type="image/x-icon">
     <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
     <link rel="stylesheet" type="text/css" href="css/pagination.css">
 </head>
@@ -63,7 +64,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                             <div id="drugsPageJump" class="col-md-3">
                                 <div class="input-group">
                                     <label for="searchDrugsPage"></label>
-                                    <input type="number" class="form-control" id="searchDrugsPage" placeholder="页码" style="width: 40px"/>
+                                    <input type="number" class="form-control" id="searchDrugsPage" style="width:40px"/>
                                     <div class="input-group-append">
                                         <button class="btn btn-primary" type="button">Go</button>
                                     </div>
@@ -167,7 +168,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                             <div id="itemPageJump" class="col-md-3">
                                 <div class="input-group">
                                     <label for="searchItemPage"></label>
-                                    <input type="number" class="form-control" id="searchItemPage" placeholder="页码" style="width: 40px"/>
+                                    <input type="number" class="form-control" id="searchItemPage" style="width:40px" />
                                     <div class="input-group-append">
                                         <button class="btn btn-primary" type="button">Go</button>
                                     </div>
@@ -243,7 +244,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                             <div id="diseasePageJump" class="col-md-3">
                                 <div class="input-group">
                                     <label for="searchDiagnosisPage"></label>
-                                    <input type="number" class="form-control" id="searchDiagnosisPage" placeholder="页码" style="width: 40px"/>
+                                    <input type="number" class="form-control" id="searchDiagnosisPage" style="width: 40px"/>
                                     <div class="input-group-append">
                                         <button class="btn btn-primary" type="button">Go</button>
                                     </div>
@@ -285,8 +286,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         </div>
         <div class="col-md-3 text-right" >
             <span ><strong>门诊医生：</strong></span>
-            <span>哈哈哈</span>&nbsp;
-            <input type="hidden" id="doctorId" value="1"><!--doctorId-->
+            <span>${userName}</span>&nbsp;
+            <input type="hidden" id="doctorId" value="${userId}"><!--doctorId-->
             <button type="button" class="btn btn-secondary">退出</button>
         </div>
     </nav>
@@ -299,14 +300,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                     <label class="control-label font-weight-bold" for="searchPatientKey">患者查询：</label>
                     <div class="input-group">
                         <input type="search" class="form-control" id="searchPatientKey" name="searchPatientKey" style="width: 175px"
-                            placeholder="输入姓名或病历号"/>
+                               placeholder="输入姓名或病历号"/>
                         <div class="input-group-append">
                             <button class="btn btn-primary" type="button">搜索</button>
                         </div>
                     </div>
                 </form>
                 <!--患者搜索结果-->
-                <ul class="nav nav-pills">
+                <ul class="nav nav-pills mt-2">
                     <li class="nav-item">
                         <a id="patientSearchCategory1" class="nav-link active font-weight-bold" href="#">本人</a>
                     </li>
@@ -315,12 +316,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                     </li>
                 </ul>
                 <form id="patientListForm" role="form" onkeypress="return event.keyCode !== 13;">
-                    <table class="table table-condensed table-striped table-hover table-bordered">
+                    <table class="table table-condensed table-striped table-hover table-bordered mt-2">
                         <thead>
                         <tr>
-                            <th colspan="3">待诊患者<span id="notSeenNumSpan" class="badge badge-pill badge-danger">0</span></th>
-                            <th style="text-align:right;">
-                                <a href="#"><img src="images/reflush_img.jpg" alt="刷新" style="height: 15px;width: 15px"></a>
+                            <th colspan="3">待诊患者<span id="notSeenNumSpan" class="badge badge-pill badge-success">0</span></th>
+                            <th style="text-align:center">
+                                <a href="#"><img src="images/reflush_img.jpg" alt="刷新" style="height: 20px;width: 20px"></a>
                             </th>
                         </tr>
                         </thead>
@@ -329,9 +330,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                     <table class="table table-condensed table-striped table-hover table-bordered">
                         <thead>
                         <tr>
-                            <th colspan="3">已诊患者<span id="isSeenNumSpan" class="badge badge-pill badge-success">0</span></th>
-                            <th style="text-align:right;">
-                                <a href="#"><img src="images/reflush_img.jpg" alt="刷新" style="height: 15px;width: 15px"></a>
+                            <th colspan="3">已诊患者<span id="isSeenNumSpan" class="badge badge-pill badge-danger">0</span></th>
+                            <th style="text-align:center">
+                                <a href="#"><img src="images/reflush_img.jpg" alt="刷新" style="height: 20px;width: 20px"></a>
                             </th>
                         </tr>
                         </thead>
@@ -445,7 +446,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             <div class="card-body">
                 <div class="tab-content">
                     <!--1.病历首页-->
-                    <div id="home1" class="container-fluid tab-pane active">
+                    <div id="home1" class="container-fluid tab-pane active"><br>
                         <div class="row">
                             <div class="col-md-8">
                                 <!--病历信息表格-->
@@ -727,7 +728,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                         </div>
                     </div>
                     <!--2.申请界面-->
-                    <div id="menu1" class="container-fluid tab-pane fade">
+                    <div id="menu1" class="container-fluid tab-pane fade"><br>
                         <input type="hidden" id="applyForType">
                         <div class="row">
                             <div class="col-md-8">
@@ -760,8 +761,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                                 <th>状态</th>
                                                 <th>申请人</th>
                                                 <th>目的和要求</th>
-                                                <th>收费</th>
-                                                <th>执行</th>
+                                                <th>收费状态</th>
+                                                <th>执行状态</th>
                                                 <th>金额</th>
                                             </tr>
                                             </thead>
@@ -772,7 +773,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                     <!--项目列表部分-->
                                     <div id="visitItemCard" class="card">
                                         <div class="card-header font-weight-bold">
-                                            <span>项目列表</span>&nbsp;<button type="button" class="btn btn-outline-warning " data-toggle="modal" data-target="#ItemModal">修改</button>
+                                            <div class="row">
+                                                <div class="col-md-10">
+                                                    <span>项目列表</span>
+                                                </div>
+                                                <div class="col-md-2 text-right">
+                                                    <button type="button" class="btn btn-outline-warning " data-toggle="modal" data-target="#ItemModal">修改</button>
+                                                </div>
+                                            </div>
                                         </div>
                                         <table class="table table-condensed table-striped table-hover  table-bordered" >
                                             <thead>
@@ -781,7 +789,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                                 <th>项目名称</th>
                                                 <th>价格</th>
                                                 <th>医生嘱托</th>
-                                                <th>执行</th>
+                                                <th>执行状态</th>
                                                 <th>&nbsp;</th>
                                                 <th>&nbsp;</th>
                                             </tr>
@@ -1080,7 +1088,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                     <!--药品列表部分-->
                                     <div id="drugsCard" class="card">
                                         <div class="card-header font-weight-bold">
-                                            <span>药品列表</span>&nbsp;<button type="button" class="btn btn-outline-warning " data-toggle="modal" data-target="#DrugsModal">修改</button>
+                                            <div class="row">
+                                                <div class="col-md-10">
+                                                    <span>药品列表</span>
+                                                </div>
+                                                <div class="col-md-2 text-right">
+                                                    <button type="button" class="btn btn-outline-warning " data-toggle="modal" data-target="#DrugsModal">修改</button>
+                                                </div>
+                                            </div>
                                         </div>
                                         <table class="table table-condensed table-striped table-hover  table-bordered" >
                                             <thead>
@@ -1221,6 +1236,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                     </div>
                     <!--费用查看-->
                     <div id="menu4" class="container-fluid tab-pane fade"><br>
+                        <div class="row ">
+                            <div class="col-md-7">
+                                <h4 class="font-weight-bold">费用明细</h4>
+                            </div>
+                        </div>
                         <!--申请费用-->
                         <div  class="card">
                             <div class="card-header font-weight-bold">
@@ -1262,7 +1282,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                             <table class="table table-condensed table-striped table-hover  table-bordered" >
                                 <thead>
                                 <tr>
-                                    <th>ID</th>
+                                    <th>No</th>
                                     <th>分类</th>
                                     <th>处方名称</th>
                                     <th>处方类型</th>
@@ -1280,13 +1300,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         </div>
     </div>
 </div>
-
-
-
 <script type="text/javascript" src="js/jquery.min.js"></script>
 <script type="text/javascript" src="js/popper.min.js"></script>
 <script type="text/javascript" src="js/bootstrap.js"></script>
 <script type="text/javascript" src="js/jquery.pagination.js"></script>
+<script type="text/javascript" src="js/myJquery/loginJs.js"></script>
 <script type="text/javascript" src="js/myJquery/outpatientDoctorJs.js"></script>
 <script type="text/javascript" src="js/myJquery/applyForJs.js"></script>
 <script type="text/javascript" src="js/myJquery/prescriptionJs.js"></script>

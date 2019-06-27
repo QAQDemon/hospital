@@ -1,0 +1,45 @@
+<base id="baseId" href=""/>
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1, user-scalable=no">
+    <title>门诊医生工作站</title>
+    <link rel="shortcut icon" href="../images/icon.png" type="image/x-icon"/>
+    <link rel="stylesheet" type="text/css" href="../css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="../css/pagination.css">
+</head>
+<body>
+
+<form action="outpatientDoctorWorkstation/login" method="post">
+    <div class="form-group">
+        <label class="custom-control-label" for="loginName">登录名：</label>
+        <input type="text" class="form-control" id="loginName" name="loginName">
+    </div>
+    <div class="form-group">
+        <label class="custom-control-label" for="password">密码：</label>
+        <input type="password" class="form-control" id="password" name="password">
+    </div>
+    <button type="submit">提交</button>
+</form>
+
+
+
+
+<script type="text/javascript" src="../js/jquery.min.js"></script>
+<script type="text/javascript" src="../js/popper.min.js"></script>
+<script type="text/javascript" src="../js/bootstrap.js"></script>
+<script type="text/javascript">
+    //设置基地址
+    function getContextPath(){
+        var curWwwPath = window.document.location.href;
+        var pathName =  window.document.location.pathname;
+        var pos = curWwwPath.indexOf(pathName);
+        var localhostPaht = curWwwPath.substring(0,pos);
+        var projectName = pathName.substring(0,pathName.substr(1).indexOf('/')+1);
+        return (localhostPaht + projectName+"/");
+    }
+    $("#baseId").attr("href",getContextPath());
+</script>
+</body>
+</html>
