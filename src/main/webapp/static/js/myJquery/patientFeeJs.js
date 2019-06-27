@@ -41,7 +41,7 @@ function patientFeeAjax(num){
     $.ajax({
         type: "POST",//方法类型
         dataType: "json",//预期服务器返回的数据类型
-        url: "outpatientDoctorWorkstation/"+url+"/"+$("#menu4 select:eq("+num+")").val()+"/"+medicalInfoId,
+        url: "/outpatientDoctorWorkstation/"+url+"/"+$("#menu4 select:eq("+num+")").val()+"/"+medicalInfoId,
         data: $("#visitItemForm").serializeArray(),
         success: function (result) {
             if(result.length!==0&&result[0].purposeRequirement===undefined)//判断是处方

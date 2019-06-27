@@ -122,7 +122,7 @@ function setPatientList(seenList,listName,num){
 var recordMedRecdNo="";//记录选中的患者病历号,在诊毕后赋值，病人搜索的ajax返回后会使用，使用后设为""
 //根据类别和关键词修改url
 function searchPatientAjax(){
-    var urlS="outpatientDoctorWorkstation/searchPatient/";
+    var urlS="/outpatientDoctorWorkstation/searchPatient/";
     var keyVal=$("#searchPatientKey").val();
     urlS+=($("#patientSearchCategory1").hasClass("active"))?1:2;
     urlS+=(keyVal==="")?"":("/"+keyVal);
@@ -253,7 +253,7 @@ function getMedicalRecordInfoAjax(isSeen,no,patient){
     $.ajax({
         type: "POST",//方法类型
         dataType: "json",//预期服务器返回的数据类型
-        url: "medicalRecordHome/getMedicalRecordInfo/"+isSeen+"/"+no,
+        url: "/medicalRecordHome/getMedicalRecordInfo/"+isSeen+"/"+no,
         data: {},
         success: function (result) {
             var visitStatus;//就诊状态
@@ -385,7 +385,7 @@ function diseasePageselectCallback(page_index,jq){
     return false;
 }
 function searchDiagnosisAjax(pageNum){
-    var urlS="medicalRecordHome/searchDiagnosis/"+(($("#DiagnosisModal").find("h4").html()==="西医诊断")?"1":"2")+"/"+pageNum;
+    var urlS="/medicalRecordHome/searchDiagnosis/"+(($("#DiagnosisModal").find("h4").html()==="西医诊断")?"1":"2")+"/"+pageNum;
     var inputKey=$("#diagnosisKey").val();
     if(inputKey!=="")
         urlS += ("/" + inputKey);
@@ -623,7 +623,7 @@ $("#medicalInfoBtnGroup").find(".btn-outline-secondary,.btn-outline-success").cl
     $.ajax({
         type: "POST",//方法类型
         dataType: "text",//预期服务器返回的数据类型
-        url: "medicalRecordHome/saveMedicalRecordInfo/"+($(this).hasClass("btn-outline-secondary")?"1":"2")+"/"+$("#patientListForm :checked").val()+"/"+((infoId==="待创建")?"-1":(infoId))+"/"+$("#patientListForm [type='hidden']").val(),
+        url: "/medicalRecordHome/saveMedicalRecordInfo/"+($(this).hasClass("btn-outline-secondary")?"1":"2")+"/"+$("#patientListForm :checked").val()+"/"+((infoId==="待创建")?"-1":(infoId))+"/"+$("#patientListForm [type='hidden']").val(),
         data: $("#medicalRecordInfoForm").serializeArray(),
         success: function (result) {
             closeAlertDiv(alertNum);
@@ -673,7 +673,7 @@ $("#medrecTempChooseDiv :radio").click(function () {
     $.ajax({
         type: "POST",//方法类型
         dataType: "json",//预期服务器返回的数据类型
-        url: "medicalRecordHome/getMedrecTemplate/"+($(this).parent().index()+1)+((key==="")?"":("/"+key)),
+        url: "/medicalRecordHome/getMedrecTemplate/"+($(this).parent().index()+1)+((key==="")?"":("/"+key)),
         data: {},
         success: function (result) {
             addmedrecTempContext(result);
@@ -690,7 +690,7 @@ function searchMedrecTemp(){
     $.ajax({
         type: "POST",//方法类型
         dataType: "json",//预期服务器返回的数据类型
-        url: "medicalRecordHome/getMedrecTemplate/"+category+((key==="")?"":("/"+key)),
+        url: "/medicalRecordHome/getMedrecTemplate/"+category+((key==="")?"":("/"+key)),
         data: {},
         success: function (result) {
             addmedrecTempContext(result);
@@ -743,7 +743,7 @@ $("#MedrecTempListDiv").on("click","a",function () {
     $.ajax({
         type: "POST",//方法类型
         dataType: "json",//预期服务器返回的数据类型
-        url: "medicalRecordHome/getMedrecTemplateContent/"+$(this).next().val(),
+        url: "/medicalRecordHome/getMedrecTemplateContent/"+$(this).next().val(),
         data: {},
         success: function (result) {
             $("#templateCodeTemplate").attr("readonly",true);
@@ -814,7 +814,7 @@ $("#medreTempBtnGroup button:eq(2)").click(function () {
             $.ajax({
                 type: "POST",//方法类型
                 dataType: "text",//预期服务器返回的数据类型
-                url: "medicalRecordHome/cancelMedrecTemplate/"+$("#idTemplate").val(),
+                url: "/medicalRecordHome/cancelMedrecTemplate/"+$("#idTemplate").val(),
                 data: {},
                 success: function (result) {
                     if(result==="0")//好像无效
@@ -847,7 +847,7 @@ $("#medrecTempContextForm button:contains('提交')").click(function () {
     $.ajax({
         type: "POST",//方法类型
         dataType: "text",//预期服务器返回的数据类型
-        url: "medicalRecordHome/saveMedrecTemplate/"+(($("#templateCodeTemplate").attr("readonly")==="readonly")?"2":"1"),
+        url: "/medicalRecordHome/saveMedrecTemplate/"+(($("#templateCodeTemplate").attr("readonly")==="readonly")?"2":"1"),
         data: $("#medrecTempContextForm").serializeArray(),
         success: function (result) {//1成功 0更新失败（已删除） 2新增失败（code已存在）
             closeAlertDiv(alertNum);
@@ -896,7 +896,7 @@ $("#homeRightNav a:eq(1)").click(function () {
     $.ajax({
         type: "POST",//方法类型
         dataType: "json",//预期服务器返回的数据类型
-        url: "medicalRecordHome/getCommonOption",
+        url: "/medicalRecordHome/getCommonOption",
         data: {},
         success: function (result) {
             insertCommonDisease(result.xDiseaseCommonOptionList,0);
@@ -937,7 +937,7 @@ $("#home1_2,#comonDiagnosis").on("click",".badge-danger",function () {
         $.ajax({
             type: "POST",//方法类型
             dataType: "text",//预期服务器返回的数据类型
-            url: "medicalRecordHome/deleteCommonDiagnosis/" + $(this).closest(".card").index() + "/" + $(this).parent().next().val(),
+            url: "/medicalRecordHome/deleteCommonDiagnosis/" + $(this).closest(".card").index() + "/" + $(this).parent().next().val(),
             data: {},
             success: function (result) {
                 $("#homeRightNav a:eq(1)").click();
@@ -955,7 +955,7 @@ $("#diagnosisContentCard,#finalDiagnosisForm").on("click","a",function () {
     $.ajax({
         type: "POST",//方法类型
         dataType: "text",//预期服务器返回的数据类型
-        url: "medicalRecordHome/addCommonDiagnosis/"+($(this).closest(".form-group").index()+1)+"/"+$(this).closest("tr").children().first().html(),
+        url: "/medicalRecordHome/addCommonDiagnosis/"+($(this).closest(".form-group").index()+1)+"/"+$(this).closest("tr").children().first().html(),
         data: {},
         success: function (result) {
             if(result==="1")
@@ -985,7 +985,7 @@ $("#homeRightNav a:eq(2)").click(function () {
     $.ajax({
         type: "POST",//方法类型
         dataType: "json",//预期服务器返回的数据类型
-        url: "medicalRecordHome/getHistoryMedicalRecordInfo/"+$("#patientListForm :checked").val(),
+        url: "/medicalRecordHome/getHistoryMedicalRecordInfo/"+$("#patientListForm :checked").val(),
         data: {},
         success: function (result) {
             addHistoryMedicalLabel(result);
@@ -1004,7 +1004,7 @@ $("#historyMedicalInfoLabelDiv").on("click","a",function () {
     $.ajax({
         type: "POST",//方法类型
         dataType: "json",//预期服务器返回的数据类型
-        url: "medicalRecordHome/getHistoryMedicalRecordContext/"+$(this).next().val(),
+        url: "/medicalRecordHome/getHistoryMedicalRecordContext/"+$(this).next().val(),
         data: {},
         success: function (result) {
             clearHistoryContext();
@@ -1039,7 +1039,7 @@ overVisitBtn.click(function () {
         $.ajax({
             type: "POST",//方法类型
             dataType: "json",//预期服务器返回的数据类型
-            url: "outpatientDoctorWorkstation/setCompleteVisit/"+$("#patientListForm :checked").val()+"/"+infoId,
+            url: "/outpatientDoctorWorkstation/setCompleteVisit/"+$("#patientListForm :checked").val()+"/"+infoId,
             data: {},
             success: function (result) {
                 if(result.msg===1)
@@ -1108,7 +1108,7 @@ $("#statisticsCard button").click(function () {
     $.ajax({
         type: "POST",//方法类型
         dataType: "json",//预期服务器返回的数据类型
-        url: "outpatientDoctorWorkstation/statistics/"+firstTime+"/"+lastTime,
+        url: "/outpatientDoctorWorkstation/statistics/"+firstTime+"/"+lastTime,
         data: {},
         success: function (result) {
             setStatisticsList(result);

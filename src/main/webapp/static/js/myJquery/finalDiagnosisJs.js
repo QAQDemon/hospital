@@ -49,7 +49,7 @@ function newFinalDiagnosisAjax(){
     $.ajax({
         type: "POST",//方法类型
         dataType: "json",//预期服务器返回的数据类型
-        url: "outpatientDoctorWorkstation/getNewFinalDiagnosis/"+medicalInfoId,
+        url: "/outpatientDoctorWorkstation/getNewFinalDiagnosis/"+medicalInfoId,
         data: {},
         success: function (result) {
             var xNewDiagnosisList=result.xNewDiagnosisList;
@@ -83,7 +83,7 @@ $("#commonDiagnosisLink").click(function () {
     $.ajax({
         type: "POST",//方法类型
         dataType: "json",//预期服务器返回的数据类型
-        url: "medicalRecordHome/getCommonOption",
+        url: "/medicalRecordHome/getCommonOption",
         data: {},
         success: function (result) {
             $("#comonDiagnosis .list-group:eq(0)").html(insertCommonDisease(result.xDiseaseCommonOptionList,0));
@@ -150,7 +150,7 @@ $("#identifyButton").click(function () {
         $.ajax({
             type: "POST",//方法类型
             dataType: "text",//预期服务器返回的数据类型
-            url: "outpatientDoctorWorkstation/setFinalDiagnosis/"+$("#patientInfoDiv span:eq(1)").html(),
+            url: "/outpatientDoctorWorkstation/setFinalDiagnosis/"+$("#patientInfoDiv span:eq(1)").html(),
             data: $("#finalDiagnosisForm").serializeArray(),
             success: function (result) {
                 if(result==="1"){

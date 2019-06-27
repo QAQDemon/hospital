@@ -63,7 +63,7 @@ function applyForItemAjax(){
     $.ajax({
         type: "POST",//方法类型
         dataType: "json",//预期服务器返回的数据类型
-        url: "applyForFmeditem/getVisitItemList/"+$("#applyForType").val()+"/"+medicalInfoId,
+        url: "/applyForFmeditem/getVisitItemList/"+$("#applyForType").val()+"/"+medicalInfoId,
         data: {},
         success: function (result) {
             setApplyForList(result.visitItemList,result.applyForPeople);
@@ -135,7 +135,7 @@ $("#applyForCard").on("click","tr",function () {
     $.ajax({
         type: "POST",//方法类型
         dataType: "json",//预期服务器返回的数据类型
-        url: "applyForFmeditem/getVisitItemDetail/"+$(this).find(":radio").val(),
+        url: "/applyForFmeditem/getVisitItemDetail/"+$(this).find(":radio").val(),
         data: {},
         success: function (result) {
             $("#visitItemForm tbody:eq(1)").html("");
@@ -190,7 +190,7 @@ $("#applyForBtnGroup button:gt(0):lt(2)").click(function () {
     $.ajax({
         type: "POST",//方法类型
         dataType: "text",//预期服务器返回的数据类型
-        url: "applyForFmeditem/setVisitItemAndDetail/"+$("#applyForType").val()+"/"+$(this).index()+"/"+$("#patientInfoDiv span:eq(1)").html()+"/"+node.val()+"/"+trNode.find(":text").val()+"/"+trNode.find("td:last").html(),
+        url: "/applyForFmeditem/setVisitItemAndDetail/"+$("#applyForType").val()+"/"+$(this).index()+"/"+$("#patientInfoDiv span:eq(1)").html()+"/"+node.val()+"/"+trNode.find(":text").val()+"/"+trNode.find("td:last").html(),
         data: $("#visitItemForm").serializeArray(),
         success: function (result) {
             closeAlertDiv(alertNum);
@@ -212,7 +212,7 @@ function deleteApplyForAjax(num){
     $.ajax({
         type: "POST",//方法类型
         dataType: "text",//预期服务器返回的数据类型
-        url: "applyForFmeditem/cancleVisitItem/"+num+"/"+$("#applyForCard :checked").val(),
+        url: "/applyForFmeditem/cancleVisitItem/"+num+"/"+$("#applyForCard :checked").val(),
         data: {},
         success: function (result) {
             if(result==="1")
@@ -271,7 +271,7 @@ function itemPageselectCallback(page_index,jq){
     return false;
 }
 function searchItemAjax(pageNum){
-    var urlS="applyForFmeditem/searchItem/"+$("#applyForType").val()+"/"+pageNum;
+    var urlS="/applyForFmeditem/searchItem/"+$("#applyForType").val()+"/"+pageNum;
     var inputKey=$("#itemKey").val();
     if(inputKey!=="")
         urlS += ("/" + inputKey);
@@ -527,7 +527,7 @@ $("#menu1RightNav a:eq(0)").click(function () {
     $.ajax({
         type: "POST",//方法类型
         dataType: "json",//预期服务器返回的数据类型
-        url: "applyForFmeditem/getCommonOption/"+$("#applyForType").val(),
+        url: "/applyForFmeditem/getCommonOption/"+$("#applyForType").val(),
         data: {},
         success: function (result) {
             insertCommonItem(result);
@@ -560,7 +560,7 @@ $("#menu1_1").on("dblclick","a",function () {
             $.ajax({
                 type: "POST",//方法类型
                 dataType: "text",//预期服务器返回的数据类型
-                url: "applyForFmeditem/deleteCommonItem/" + $("#applyForType").val() + "/" + $(this).parent().next().val(),
+                url: "/applyForFmeditem/deleteCommonItem/" + $("#applyForType").val() + "/" + $(this).parent().next().val(),
                 data: {},
                 success: function (result) {
                     $("#menu1RightNav a:eq(0)").click();
@@ -577,7 +577,7 @@ $("#visitItemCard").on("click","a",function () {
     $.ajax({
         type: "POST",//方法类型
         dataType: "text",//预期服务器返回的数据类型
-        url: "applyForFmeditem/addCommonFmeditem/"+$("#applyForType").val()+"/"+$(this).closest("tr").children().first().html(),
+        url: "/applyForFmeditem/addCommonFmeditem/"+$("#applyForType").val()+"/"+$(this).closest("tr").children().first().html(),
         data: {},
         success: function (result) {
             if(result==="1")
@@ -618,7 +618,7 @@ function searchSetGroup(){
     $.ajax({
         type: "POST",//方法类型
         dataType: "json",//预期服务器返回的数据类型
-        url: "setManage/getSetGroup/"+category+"/"+$("#applyForType").val()+((key==="")?"":("/"+key)),
+        url: "/setManage/getSetGroup/"+category+"/"+$("#applyForType").val()+((key==="")?"":("/"+key)),
         data: {},
         success: function (result) {
             addSetContext(result);
@@ -670,7 +670,7 @@ $("#itemSetListDiv").on("click","a",function () {
     $.ajax({
         type: "POST",//方法类型
         dataType: "json",//预期服务器返回的数据类型
-        url: "setManage/getSetContent/"+$("#applyForType").val()+"/"+$(this).next().val(),
+        url: "/setManage/getSetContent/"+$("#applyForType").val()+"/"+$(this).next().val(),
         data: {},
         success: function (result) {
             $("#setCodeTemplate").attr("readonly",true);
@@ -736,7 +736,7 @@ $("#itemSetBtnGroup button:eq(2)").click(function () {
             $.ajax({
                 type: "POST",//方法类型
                 dataType: "text",//预期服务器返回的数据类型
-                url: "setManage/cancelSetGroup/"+$("#idSet").val(),
+                url: "/setManage/cancelSetGroup/"+$("#idSet").val(),
                 data: {},
                 success: function (result) {
                     if(result==="0")//好像无效
@@ -774,7 +774,7 @@ $("#itemSetContextForm button:contains('提交')").click(function () {
     $.ajax({
         type: "POST",//方法类型
         dataType: "text",//预期服务器返回的数据类型
-        url: "setManage/saveSetGroup/"+((codeNode.attr("readonly")==="readonly")?"2":"1")+"/"+$("#applyForType").val(),
+        url: "/setManage/saveSetGroup/"+((codeNode.attr("readonly")==="readonly")?"2":"1")+"/"+$("#applyForType").val(),
         data: $("#itemSetContextForm").serializeArray(),
         success: function (result) {//1成功 0更新失败（已删除） 2新增失败（code已存在）
             closeAlertDiv(alertNum);
@@ -824,7 +824,7 @@ $("#visitItemCard tbody").on("click","button",function () {
         $.ajax({
             type: "POST",//方法类型
             dataType: "json",//预期服务器返回的数据类型
-            url: "applyForFmeditem/getItemResult/"+visitItemNo+"/"+$(this).closest("tr").find("td:first").html(),
+            url: "/applyForFmeditem/getItemResult/"+visitItemNo+"/"+$(this).closest("tr").find("td:first").html(),
             data: {},
             success: function (result) {
                 if (result.describetion === null) {
