@@ -30,7 +30,10 @@ function submitUserInfo(userId,userName,userCategory){
     $("body").append($form);
     $form.submit();
 }
-$("#submitButton").click(function () {
+$("#submitButton").click(function (event) {
+    event.preventDefault();
+    $('form').fadeOut(500);
+    $('.wrapper').addClass('form-success');
     $.ajax({
         type: "POST",//方法类型
         dataType: "json",//预期服务器返回的数据类型

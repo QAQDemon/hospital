@@ -23,7 +23,7 @@ public class LoginController {
      * @Param []
      * @return org.springframework.web.servlet.ModelAndView
      **/
-    @RequestMapping("first")
+    @RequestMapping("loginPage")
     public ModelAndView first() {
         return new ModelAndView("login");
     }

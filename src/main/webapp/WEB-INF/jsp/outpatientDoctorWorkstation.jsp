@@ -288,7 +288,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             <span ><strong>门诊医生：</strong></span>
             <span>${userName}</span>&nbsp;
             <input type="hidden" id="doctorId" value="${userId}"><!--doctorId-->
-            <button type="button" class="btn btn-secondary">退出</button>
+            <button type="button" id="outpatientReLoginBtn" class="btn btn-secondary">退出</button>
         </div>
     </nav>
     <!--左侧患者搜索卡片-->

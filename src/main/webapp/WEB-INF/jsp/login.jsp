@@ -8,26 +8,40 @@
 <html lang="zh-cn">
 <head>
     <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1, user-scalable=no">
     <title>登录</title>
     <link id="iconLink" rel="icon" href="images/HISicon.ico" type="image/x-icon">
     <link id="shortIconLink" rel="shortcut icon" href="images/HISicon.ico" type="image/x-icon">
     <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="css/loginStyles.css">
 </head>
 <body>
 <div id="alertAllDiv"></div>
-<form id="loginForm">
-    <div class="form-group">
-        <label class="custom-control-label" for="loginName">登录名：</label>
-        <input type="text" class="form-control" id="loginName" name="loginName">
+<div class="htmleaf-container">
+    <div class="wrapper">
+        <div class="container">
+            <h1>欢迎使用HIS！</h1>
+            <form class="form" id="loginForm" onkeypress="return event.keyCode !== 13;">
+                <input type="text" placeholder="LoginName" id="loginName" name="loginName">
+                <input type="password" placeholder="Password" id="password" name="password">
+                <button type="button" id="submitButton">Login</button>
+            </form>
+        </div>
+        <ul class="bg-bubbles">
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
     </div>
-    <div class="form-group">
-        <label class="custom-control-label" for="password">密码：</label>
-        <input type="password" class="form-control" id="password" name="password">
-    </div>
-    <button type="button" id="submitButton"> 提交</button>
-</form>
-
+</div>
 <script type="text/javascript" src="js/jquery.min.js"></script>
 <script type="text/javascript" src="js/popper.min.js"></script>
 <script type="text/javascript" src="js/bootstrap.js"></script>

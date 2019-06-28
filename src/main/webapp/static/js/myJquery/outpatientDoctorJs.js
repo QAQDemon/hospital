@@ -1242,3 +1242,12 @@ $("#statisticsCard button").click(function () {
         }
     });
 });
+
+//退出登录
+$("#outpatientReLoginBtn").click(function () {
+    var d = new Date();
+    d.setTime(d.getTime() + (-1*24*60*60*1000));
+    var expires = "expires="+d.toUTCString();
+    document.cookie = "token" + "=" + "" + "; " + expires;//清除cookie的token
+    window.location.href='loginController/loginPage';
+});
