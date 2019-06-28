@@ -58,9 +58,17 @@ function prescriptionAjax(){
     $.ajax({
         type: "POST",//方法类型
         dataType: "json",//预期服务器返回的数据类型
-        url: "/applyForPrescription/getPrescription/"+$("#prescriptionType").val()+"/"+medicalInfoId,
+        url: "applyForPrescription/getPrescription/"+$("#prescriptionType").val()+"/"+medicalInfoId,
         data: {},
-        success: function (result) {
+        headers: {
+            Authorization:"Bearer "+getCookie("token")
+        },
+        error:function(result){
+            console.log(result);
+            showAlertDiv("alert-warning","警告!","登录失效，请重新登录。");
+        },
+        success: function (result, textStatus, request) {
+            setTokenToCookie("token",request.getResponseHeader('Authorization'));
             setPrescriptionList(result);
         }
     });
@@ -157,9 +165,17 @@ $("#prescriptionCard").on("click","tr",function () {
     $.ajax({
         type: "POST",//方法类型
         dataType: "json",//预期服务器返回的数据类型
-        url: "/applyForPrescription/getPrescriptionDetail/"+$(this).find(":radio").val(),
+        url: "applyForPrescription/getPrescriptionDetail/"+$(this).find(":radio").val(),
         data: {},
-        success: function (result) {
+        headers: {
+            Authorization:"Bearer "+getCookie("token")
+        },
+        error:function(result){
+            console.log(result);
+            showAlertDiv("alert-warning","警告!","登录失效，请重新登录。");
+        },
+        success: function (result, textStatus, request) {
+            setTokenToCookie("token",request.getResponseHeader('Authorization'));
             $("#prescriptionForm tbody:eq(1)").html("");
             setPrescriptionDetail(result.prescriptionDetailList,result.drugsList);
         }
@@ -250,9 +266,17 @@ $("#prescriptionBtnGroup button:gt(0):lt(2)").click(function () {
     $.ajax({
         type: "POST",//方法类型
         dataType: "text",//预期服务器返回的数据类型
-        url: "/applyForPrescription/setPrescriptionAndDetail/"+$("#prescriptionType").val()+"/"+$(this).index()+"/"+$("#patientInfoDiv span:eq(1)").html()+"/"+node.val()+"/"+trNode.find(":text").val()+"/"+trNode.find(":selected").val()+"/"+trNode.find("td:last").html(),
+        url: "applyForPrescription/setPrescriptionAndDetail/"+$("#prescriptionType").val()+"/"+$(this).index()+"/"+$("#patientInfoDiv span:eq(1)").html()+"/"+node.val()+"/"+trNode.find(":text").val()+"/"+trNode.find(":selected").val()+"/"+trNode.find("td:last").html(),
         data: $("#prescriptionForm").serializeArray(),
-        success: function (result) {
+        headers: {
+            Authorization:"Bearer "+getCookie("token")
+        },
+        error:function(result){
+            console.log(result);
+            showAlertDiv("alert-warning","警告!","登录失效，请重新登录。");
+        },
+        success: function (result, textStatus, request) {
+            setTokenToCookie("token",request.getResponseHeader('Authorization'));
             closeAlertDiv(alertNum);
             if(result==="1"){
                 showAlertDiv("alert-success","成功!","处方信息保存成功。");
@@ -272,9 +296,17 @@ function deletePrescriptionAjax(num){
     $.ajax({
         type: "POST",//方法类型
         dataType: "text",//预期服务器返回的数据类型
-        url: "/applyForPrescription/canclePrescription/"+num+"/"+$("#prescriptionCard :radio:checked").val(),
+        url: "applyForPrescription/canclePrescription/"+num+"/"+$("#prescriptionCard :radio:checked").val(),
         data: {},
-        success: function (result) {
+        headers: {
+            Authorization:"Bearer "+getCookie("token")
+        },
+        error:function(result){
+            console.log(result);
+            showAlertDiv("alert-warning","警告!","登录失效，请重新登录。");
+        },
+        success: function (result, textStatus, request) {
+            setTokenToCookie("token",request.getResponseHeader('Authorization'));
             if(result==="1")
                 showAlertDiv("alert-success","成功!","删除或作废成功。");
             else if(result==="0")
@@ -331,7 +363,7 @@ function drugsPageselectCallback(page_index,jq){
     return false;
 }
 function searchDrugsAjax(pageNum){
-    var urlS="/applyForPrescription/searchDrugs/"+$("#prescriptionType").val()+"/"+pageNum;
+    var urlS="applyForPrescription/searchDrugs/"+$("#prescriptionType").val()+"/"+pageNum;
     var drugsKey=$("#drugsKey").val();
     if(drugsKey!=="")
         urlS += ("/" + drugsKey);
@@ -341,7 +373,15 @@ function searchDrugsAjax(pageNum){
         dataType: "json",//预期服务器返回的数据类型
         url: urlS,
         data: {},
-        success: function (result) {
+        headers: {
+            Authorization:"Bearer "+getCookie("token")
+        },
+        error:function(result){
+            console.log(result);
+            showAlertDiv("alert-warning","警告!","登录失效，请重新登录。");
+        },
+        success: function (result, textStatus, request) {
+            setTokenToCookie("token",request.getResponseHeader('Authorization'));
             drugsList=result.drugsList;
             drugsPages=result.pages;
             if(drugsFlag===1){
@@ -581,9 +621,17 @@ $("#menu3RightNav a:eq(0)").click(function () {
     $.ajax({
         type: "POST",//方法类型
         dataType: "json",//预期服务器返回的数据类型
-        url: "/applyForPrescription/getCommonOption/"+$("#prescriptionType").val(),
+        url: "applyForPrescription/getCommonOption/"+$("#prescriptionType").val(),
         data: {},
-        success: function (result) {
+        headers: {
+            Authorization:"Bearer "+getCookie("token")
+        },
+        error:function(result){
+            console.log(result);
+            showAlertDiv("alert-warning","警告!","登录失效，请重新登录。");
+        },
+        success: function (result, textStatus, request) {
+            setTokenToCookie("token",request.getResponseHeader('Authorization'));
             insertCommonDrugs(result);
         }
     });
@@ -613,9 +661,17 @@ $("#menu3_1").on("dblclick","a",function () {
             $.ajax({
                 type: "POST",//方法类型
                 dataType: "text",//预期服务器返回的数据类型
-                url: "/applyForPrescription/deleteCommonDrugs/" + $("#prescriptionType").val() + "/" + $(this).parent().next().val(),
+                url: "applyForPrescription/deleteCommonDrugs/" + $("#prescriptionType").val() + "/" + $(this).parent().next().val(),
                 data: {},
-                success: function (result) {
+                headers: {
+                    Authorization:"Bearer "+getCookie("token")
+                },
+                error:function(result){
+                    console.log(result);
+                    showAlertDiv("alert-warning","警告!","登录失效，请重新登录。");
+                },
+                success: function (result, textStatus, request) {
+                    setTokenToCookie("token",request.getResponseHeader('Authorization'));
                     $("#menu3RightNav a:eq(0)").click();
                 }
             });
@@ -630,9 +686,17 @@ $("#drugsCard").on("click","a",function () {
     $.ajax({
         type: "POST",//方法类型
         dataType: "text",//预期服务器返回的数据类型
-        url: "/applyForPrescription/addCommonDrugs/"+$("#prescriptionType").val()+"/"+$(this).closest("tr").prev().children().first().html(),
+        url: "applyForPrescription/addCommonDrugs/"+$("#prescriptionType").val()+"/"+$(this).closest("tr").prev().children().first().html(),
         data: {},
-        success: function (result) {
+        headers: {
+            Authorization:"Bearer "+getCookie("token")
+        },
+        error:function(result){
+            console.log(result);
+            showAlertDiv("alert-warning","警告!","登录失效，请重新登录。");
+        },
+        success: function (result, textStatus, request) {
+            setTokenToCookie("token",request.getResponseHeader('Authorization'));
             if(result==="1")
                 showAlertDiv("alert-success","成功!","增加常用药品成功。");
             else showAlertDiv("alert-danger","失败!","增加常用药品失败。");
@@ -671,9 +735,17 @@ function searchSetGroup1(){
     $.ajax({
         type: "POST",//方法类型
         dataType: "json",//预期服务器返回的数据类型
-        url: "/setManage/getSetGroup/"+category+"/"+(eval($("#prescriptionType").val())+3)+((key==="")?"":("/"+key)),
+        url: "setManage/getSetGroup/"+category+"/"+(eval($("#prescriptionType").val())+3)+((key==="")?"":("/"+key)),
         data: {},
-        success: function (result) {
+        headers: {
+            Authorization:"Bearer "+getCookie("token")
+        },
+        error:function(result){
+            console.log(result);
+            showAlertDiv("alert-warning","警告!","登录失效，请重新登录。");
+        },
+        success: function (result, textStatus, request) {
+            setTokenToCookie("token",request.getResponseHeader('Authorization'));
             addSetContext1(result);
         }
     });
@@ -724,9 +796,17 @@ $("#prescriptionListDiv").on("click","a",function () {
     $.ajax({
         type: "POST",//方法类型
         dataType: "json",//预期服务器返回的数据类型
-        url: "/setManage/getSetContent/"+(eval($("#prescriptionType").val())+3)+"/"+$(this).next().val(),
+        url: "setManage/getSetContent/"+(eval($("#prescriptionType").val())+3)+"/"+$(this).next().val(),
         data: {},
-        success: function (result) {
+        headers: {
+            Authorization:"Bearer "+getCookie("token")
+        },
+        error:function(result){
+            console.log(result);
+            showAlertDiv("alert-warning","警告!","登录失效，请重新登录。");
+        },
+        success: function (result, textStatus, request) {
+            setTokenToCookie("token",request.getResponseHeader('Authorization'));
             $("#prescriptionCodeTemplate").attr("readonly",true);
             $("#prescriptionCategoryDiv").hide();
             disableSetContext1(true);
@@ -789,9 +869,17 @@ $("#prescriptionSetBtnGroup button:eq(2)").click(function () {
             $.ajax({
                 type: "POST",//方法类型
                 dataType: "text",//预期服务器返回的数据类型
-                url: "/setManage/cancelSetGroup/"+$("#prescriptionIdSet").val(),
+                url: "setManage/cancelSetGroup/"+$("#prescriptionIdSet").val(),
                 data: {},
-                success: function (result) {
+                headers: {
+                    Authorization:"Bearer "+getCookie("token")
+                },
+                error:function(result){
+                    console.log(result);
+                    showAlertDiv("alert-warning","警告!","登录失效，请重新登录。");
+                },
+                success: function (result, textStatus, request) {
+                    setTokenToCookie("token",request.getResponseHeader('Authorization'));
                     if(result==="0")//好像无效
                         showAlertDiv("alert-danger","错误!","删除组套失败。");
                     $("#prescriptionChooseDiv :checked").click();
@@ -827,9 +915,17 @@ $("#prescriptionContextForm button:contains('提交')").click(function () {
     $.ajax({
         type: "POST",//方法类型
         dataType: "text",//预期服务器返回的数据类型
-        url: "/setManage/saveSetGroup/"+((codeNode.attr("readonly")==="readonly")?"2":"1")+"/"+(eval($("#prescriptionType").val())+3),
+        url: "setManage/saveSetGroup/"+((codeNode.attr("readonly")==="readonly")?"2":"1")+"/"+(eval($("#prescriptionType").val())+3),
         data: $("#prescriptionContextForm").serializeArray(),
-        success: function (result) {//1成功 0更新失败（已删除） 2新增失败（code已存在）
+        headers: {
+            Authorization:"Bearer "+getCookie("token")
+        },
+        error:function(result){
+            console.log(result);
+            showAlertDiv("alert-warning","警告!","登录失效，请重新登录。");
+        },
+        success: function (result, textStatus, request) {//1成功 0更新失败（已删除） 2新增失败（code已存在）
+            setTokenToCookie("token",request.getResponseHeader('Authorization'));
             closeAlertDiv(alertNum);
             if(result==="1"){
                 showAlertDiv("alert-success","成功!","组套提交成功。");

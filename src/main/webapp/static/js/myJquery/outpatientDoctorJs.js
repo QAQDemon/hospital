@@ -260,9 +260,17 @@ function getMedicalRecordInfoAjax(isSeen,no,patient){
     $.ajax({
         type: "POST",//方法类型
         dataType: "json",//预期服务器返回的数据类型
-        url: "/medicalRecordHome/getMedicalRecordInfo/"+isSeen+"/"+no,
+        url: "medicalRecordHome/getMedicalRecordInfo/"+isSeen+"/"+no,
         data: {},
-        success: function (result) {
+        headers: {
+            Authorization:"Bearer "+getCookie("token")
+        },
+        error:function(result){
+            console.log(result);
+            showAlertDiv("alert-warning","警告!","登录失效，请重新登录。");
+        },
+        success: function (result, textStatus, request) {
+            setTokenToCookie("token",request.getResponseHeader('Authorization'));
             var visitStatus;//就诊状态
             var medicalInfoNo;//病单号
             var medicalRecordInfo;
@@ -392,7 +400,7 @@ function diseasePageselectCallback(page_index,jq){
     return false;
 }
 function searchDiagnosisAjax(pageNum){
-    var urlS="/medicalRecordHome/searchDiagnosis/"+(($("#DiagnosisModal").find("h4").html()==="西医诊断")?"1":"2")+"/"+pageNum;
+    var urlS="medicalRecordHome/searchDiagnosis/"+(($("#DiagnosisModal").find("h4").html()==="西医诊断")?"1":"2")+"/"+pageNum;
     var inputKey=$("#diagnosisKey").val();
     if(inputKey!=="")
         urlS += ("/" + inputKey);
@@ -402,7 +410,15 @@ function searchDiagnosisAjax(pageNum){
         dataType: "json",//预期服务器返回的数据类型
         url: urlS,
         data: {},
-        success: function (result) {
+        headers: {
+            Authorization:"Bearer "+getCookie("token")
+        },
+        error:function(result){
+            console.log(result);
+            showAlertDiv("alert-warning","警告!","登录失效，请重新登录。");
+        },
+        success: function (result, textStatus, request) {
+            setTokenToCookie("token",request.getResponseHeader('Authorization'));
             diseaseList=result.diseaseList;
             diseasePages=result.pages;
             if(diseaseFlag===1){
@@ -630,9 +646,17 @@ $("#medicalInfoBtnGroup").find(".btn-outline-secondary,.btn-outline-success").cl
     $.ajax({
         type: "POST",//方法类型
         dataType: "text",//预期服务器返回的数据类型
-        url: "/medicalRecordHome/saveMedicalRecordInfo/"+($(this).hasClass("btn-outline-secondary")?"1":"2")+"/"+$("#patientListForm :checked").val()+"/"+((infoId==="待创建")?"-1":(infoId))+"/"+$("#patientListForm [type='hidden']").val(),
+        url: "medicalRecordHome/saveMedicalRecordInfo/"+($(this).hasClass("btn-outline-secondary")?"1":"2")+"/"+$("#patientListForm :checked").val()+"/"+((infoId==="待创建")?"-1":(infoId))+"/"+$("#patientListForm [type='hidden']").val(),
         data: $("#medicalRecordInfoForm").serializeArray(),
-        success: function (result) {
+        headers: {
+            Authorization:"Bearer "+getCookie("token")
+        },
+        error:function(result){
+            console.log(result);
+            showAlertDiv("alert-warning","警告!","登录失效，请重新登录。");
+        },
+        success: function (result, textStatus, request) {
+            setTokenToCookie("token",request.getResponseHeader('Authorization'));
             closeAlertDiv(alertNum);
             if(result==="1"){
                 showAlertDiv("alert-success","成功!","病历信息保存成功。");
@@ -680,9 +704,17 @@ $("#medrecTempChooseDiv :radio").click(function () {
     $.ajax({
         type: "POST",//方法类型
         dataType: "json",//预期服务器返回的数据类型
-        url: "/medicalRecordHome/getMedrecTemplate/"+($(this).parent().index()+1)+((key==="")?"":("/"+key)),
+        url: "medicalRecordHome/getMedrecTemplate/"+($(this).parent().index()+1)+((key==="")?"":("/"+key)),
         data: {},
-        success: function (result) {
+        headers: {
+            Authorization:"Bearer "+getCookie("token")
+        },
+        error:function(result){
+            console.log(result);
+            showAlertDiv("alert-warning","警告!","登录失效，请重新登录。");
+        },
+        success: function (result, textStatus, request) {
+            setTokenToCookie("token",request.getResponseHeader('Authorization'));
             addmedrecTempContext(result);
         }
     });
@@ -697,9 +729,17 @@ function searchMedrecTemp(){
     $.ajax({
         type: "POST",//方法类型
         dataType: "json",//预期服务器返回的数据类型
-        url: "/medicalRecordHome/getMedrecTemplate/"+category+((key==="")?"":("/"+key)),
+        url: "medicalRecordHome/getMedrecTemplate/"+category+((key==="")?"":("/"+key)),
         data: {},
-        success: function (result) {
+        headers: {
+            Authorization:"Bearer "+getCookie("token")
+        },
+        error:function(result){
+            console.log(result);
+            showAlertDiv("alert-warning","警告!","登录失效，请重新登录。");
+        },
+        success: function (result, textStatus, request) {
+            setTokenToCookie("token",request.getResponseHeader('Authorization'));
             addmedrecTempContext(result);
         }
     });
@@ -750,9 +790,17 @@ $("#MedrecTempListDiv").on("click","a",function () {
     $.ajax({
         type: "POST",//方法类型
         dataType: "json",//预期服务器返回的数据类型
-        url: "/medicalRecordHome/getMedrecTemplateContent/"+$(this).next().val(),
+        url: "medicalRecordHome/getMedrecTemplateContent/"+$(this).next().val(),
         data: {},
-        success: function (result) {
+        headers: {
+            Authorization:"Bearer "+getCookie("token")
+        },
+        error:function(result){
+            console.log(result);
+            showAlertDiv("alert-warning","警告!","登录失效，请重新登录。");
+        },
+        success: function (result, textStatus, request) {
+            setTokenToCookie("token",request.getResponseHeader('Authorization'));
             $("#templateCodeTemplate").attr("readonly",true);
             $("#medrecTempCategoryDiv").hide();
             disableMedreTempContext(true);
@@ -821,9 +869,17 @@ $("#medreTempBtnGroup button:eq(2)").click(function () {
             $.ajax({
                 type: "POST",//方法类型
                 dataType: "text",//预期服务器返回的数据类型
-                url: "/medicalRecordHome/cancelMedrecTemplate/"+$("#idTemplate").val(),
+                url: "medicalRecordHome/cancelMedrecTemplate/"+$("#idTemplate").val(),
                 data: {},
-                success: function (result) {
+                headers: {
+                    Authorization:"Bearer "+getCookie("token")
+                },
+                error:function(result){
+                    console.log(result);
+                    showAlertDiv("alert-warning","警告!","登录失效，请重新登录。");
+                },
+                success: function (result, textStatus, request) {
+                    setTokenToCookie("token",request.getResponseHeader('Authorization'));
                     if(result==="0")//好像无效
                         showAlertDiv("alert-danger","错误!","删除病历模板失败。");
                     $("#searchMedrecTempForm button").click();
@@ -854,9 +910,17 @@ $("#medrecTempContextForm button:contains('提交')").click(function () {
     $.ajax({
         type: "POST",//方法类型
         dataType: "text",//预期服务器返回的数据类型
-        url: "/medicalRecordHome/saveMedrecTemplate/"+(($("#templateCodeTemplate").attr("readonly")==="readonly")?"2":"1"),
+        url: "medicalRecordHome/saveMedrecTemplate/"+(($("#templateCodeTemplate").attr("readonly")==="readonly")?"2":"1"),
         data: $("#medrecTempContextForm").serializeArray(),
-        success: function (result) {//1成功 0更新失败（已删除） 2新增失败（code已存在）
+        headers: {
+            Authorization:"Bearer "+getCookie("token")
+        },
+        error:function(result){
+            console.log(result);
+            showAlertDiv("alert-warning","警告!","登录失效，请重新登录。");
+        },
+        success: function (result, textStatus, request) {//1成功 0更新失败（已删除） 2新增失败（code已存在）
+            setTokenToCookie("token",request.getResponseHeader('Authorization'));
             closeAlertDiv(alertNum);
             if(result==="1"){
                 showAlertDiv("alert-success","成功!","病历模板提交成功。");
@@ -903,9 +967,17 @@ $("#homeRightNav a:eq(1)").click(function () {
     $.ajax({
         type: "POST",//方法类型
         dataType: "json",//预期服务器返回的数据类型
-        url: "/medicalRecordHome/getCommonOption",
+        url: "medicalRecordHome/getCommonOption",
         data: {},
-        success: function (result) {
+        headers: {
+            Authorization:"Bearer "+getCookie("token")
+        },
+        error:function(result){
+            console.log(result);
+            showAlertDiv("alert-warning","警告!","登录失效，请重新登录。");
+        },
+        success: function (result, textStatus, request) {
+            setTokenToCookie("token",request.getResponseHeader('Authorization'));
             insertCommonDisease(result.xDiseaseCommonOptionList,0);
             insertCommonDisease(result.zDiseaseCommonOptionList,1);
         }
@@ -944,9 +1016,17 @@ $("#home1_2,#comonDiagnosis").on("click",".badge-danger",function () {
         $.ajax({
             type: "POST",//方法类型
             dataType: "text",//预期服务器返回的数据类型
-            url: "/medicalRecordHome/deleteCommonDiagnosis/" + $(this).closest(".card").index() + "/" + $(this).parent().next().val(),
+            url: "medicalRecordHome/deleteCommonDiagnosis/" + $(this).closest(".card").index() + "/" + $(this).parent().next().val(),
             data: {},
-            success: function (result) {
+            headers: {
+                Authorization:"Bearer "+getCookie("token")
+            },
+            error:function(result){
+                console.log(result);
+                showAlertDiv("alert-warning","警告!","登录失效，请重新登录。");
+            },
+            success: function (result, textStatus, request) {
+                setTokenToCookie("token",request.getResponseHeader('Authorization'));
                 $("#homeRightNav a:eq(1)").click();
                 $("#commonDiagnosisLink").click();
             }
@@ -962,9 +1042,17 @@ $("#diagnosisContentCard,#finalDiagnosisForm").on("click","a",function () {
     $.ajax({
         type: "POST",//方法类型
         dataType: "text",//预期服务器返回的数据类型
-        url: "/medicalRecordHome/addCommonDiagnosis/"+($(this).closest(".form-group").index()+1)+"/"+$(this).closest("tr").children().first().html(),
+        url: "medicalRecordHome/addCommonDiagnosis/"+($(this).closest(".form-group").index()+1)+"/"+$(this).closest("tr").children().first().html(),
         data: {},
-        success: function (result) {
+        headers: {
+            Authorization:"Bearer "+getCookie("token")
+        },
+        error:function(result){
+            console.log(result);
+            showAlertDiv("alert-warning","警告!","登录失效，请重新登录。");
+        },
+        success: function (result, textStatus, request) {
+            setTokenToCookie("token",request.getResponseHeader('Authorization'));
             if(result==="1")
                 showAlertDiv("alert-success","成功!","增加常用诊断成功。");
             else showAlertDiv("alert-danger","失败!","增加常用诊断失败。");
@@ -992,9 +1080,17 @@ $("#homeRightNav a:eq(2)").click(function () {
     $.ajax({
         type: "POST",//方法类型
         dataType: "json",//预期服务器返回的数据类型
-        url: "/medicalRecordHome/getHistoryMedicalRecordInfo/"+$("#patientListForm :checked").val(),
+        url: "medicalRecordHome/getHistoryMedicalRecordInfo/"+$("#patientListForm :checked").val(),
         data: {},
-        success: function (result) {
+        headers: {
+            Authorization:"Bearer "+getCookie("token")
+        },
+        error:function(result){
+            console.log(result);
+            showAlertDiv("alert-warning","警告!","登录失效，请重新登录。");
+        },
+        success: function (result, textStatus, request) {
+            setTokenToCookie("token",request.getResponseHeader('Authorization'));
             addHistoryMedicalLabel(result);
         }
     });
@@ -1011,9 +1107,17 @@ $("#historyMedicalInfoLabelDiv").on("click","a",function () {
     $.ajax({
         type: "POST",//方法类型
         dataType: "json",//预期服务器返回的数据类型
-        url: "/medicalRecordHome/getHistoryMedicalRecordContext/"+$(this).next().val(),
+        url: "medicalRecordHome/getHistoryMedicalRecordContext/"+$(this).next().val(),
         data: {},
-        success: function (result) {
+        headers: {
+            Authorization:"Bearer "+getCookie("token")
+        },
+        error:function(result){
+            console.log(result);
+            showAlertDiv("alert-warning","警告!","登录失效，请重新登录。");
+        },
+        success: function (result, textStatus, request) {
+            setTokenToCookie("token",request.getResponseHeader('Authorization'));
             clearHistoryContext();
             var historyMedicalRecordInfo=result.historyMedicalRecordInfo;
             var finalDiagnosis=result.finalDiagnosis;
@@ -1046,9 +1150,17 @@ overVisitBtn.click(function () {
         $.ajax({
             type: "POST",//方法类型
             dataType: "json",//预期服务器返回的数据类型
-            url: "/outpatientDoctorWorkstation/setCompleteVisit/"+$("#patientListForm :checked").val()+"/"+infoId,
+            url: "outpatientDoctorWorkstation/setCompleteVisit/"+$("#patientListForm :checked").val()+"/"+infoId,
             data: {},
-            success: function (result) {
+            headers: {
+                Authorization:"Bearer "+getCookie("token")
+            },
+            error:function(result){
+                console.log(result);
+                showAlertDiv("alert-warning","警告!","登录失效，请重新登录。");
+            },
+            success: function (result, textStatus, request) {
+                setTokenToCookie("token",request.getResponseHeader('Authorization'));
                 if(result.msg===1)
                     showAlertDiv("alert-success","成功!","提交诊毕成功。");
                 else
@@ -1115,9 +1227,17 @@ $("#statisticsCard button").click(function () {
     $.ajax({
         type: "POST",//方法类型
         dataType: "json",//预期服务器返回的数据类型
-        url: "/outpatientDoctorWorkstation/statistics/"+firstTime+"/"+lastTime,
+        url: "outpatientDoctorWorkstation/statistics/"+firstTime+"/"+lastTime,
         data: {},
-        success: function (result) {
+        headers: {
+            Authorization:"Bearer "+getCookie("token")
+        },
+        error:function(result){
+            console.log(result);
+            showAlertDiv("alert-warning","警告!","登录失效，请重新登录。");
+        },
+        success: function (result, textStatus, request) {
+            setTokenToCookie("token",request.getResponseHeader('Authorization'));
             setStatisticsList(result);
         }
     });

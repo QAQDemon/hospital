@@ -51,7 +51,15 @@ function newFinalDiagnosisAjax(){
         dataType: "json",//预期服务器返回的数据类型
         url: "outpatientDoctorWorkstation/getNewFinalDiagnosis/"+medicalInfoId,
         data: {},
-        success: function (result) {
+        headers: {
+            Authorization:"Bearer "+getCookie("token")
+        },
+        error:function(result){
+            console.log(result);
+            showAlertDiv("alert-warning","警告!","登录失效，请重新登录。");
+        },
+        success: function (result, textStatus, request) {
+            setTokenToCookie("token",request.getResponseHeader('Authorization'));
             var xNewDiagnosisList=result.xNewDiagnosisList;
             var zNewDiagnosisList=result.zNewDiagnosisList;
             var xDiagnosisDiseaseList=result.xDiagnosisDiseaseList;
@@ -85,7 +93,15 @@ $("#commonDiagnosisLink").click(function () {
         dataType: "json",//预期服务器返回的数据类型
         url: "medicalRecordHome/getCommonOption",
         data: {},
-        success: function (result) {
+        headers: {
+            Authorization:"Bearer "+getCookie("token")
+        },
+        error:function(result){
+            console.log(result);
+            showAlertDiv("alert-warning","警告!","登录失效，请重新登录。");
+        },
+        success: function (result, textStatus, request) {
+            setTokenToCookie("token",request.getResponseHeader('Authorization'));
             $("#comonDiagnosis .list-group:eq(0)").html(insertCommonDisease(result.xDiseaseCommonOptionList,0));
             $("#comonDiagnosis .list-group:eq(1)").html(insertCommonDisease(result.zDiseaseCommonOptionList,1));
         }
@@ -152,7 +168,15 @@ $("#identifyButton").click(function () {
             dataType: "text",//预期服务器返回的数据类型
             url: "outpatientDoctorWorkstation/setFinalDiagnosis/"+$("#patientInfoDiv span:eq(1)").html(),
             data: $("#finalDiagnosisForm").serializeArray(),
-            success: function (result) {
+            headers: {
+                Authorization:"Bearer "+getCookie("token")
+            },
+            error:function(result){
+                console.log(result);
+                showAlertDiv("alert-warning","警告!","登录失效，请重新登录。");
+            },
+            success: function (result, textStatus, request) {
+                setTokenToCookie("token",request.getResponseHeader('Authorization'));
                 if(result==="1"){
                     showAlertDiv("alert-success","成功!","确定终诊成功。");
                     $("[href='#menu2']").click();

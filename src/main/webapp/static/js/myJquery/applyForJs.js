@@ -65,7 +65,15 @@ function applyForItemAjax(){
         dataType: "json",//预期服务器返回的数据类型
         url: "applyForFmeditem/getVisitItemList/"+$("#applyForType").val()+"/"+medicalInfoId,
         data: {},
-        success: function (result) {
+        headers: {
+            Authorization:"Bearer "+getCookie("token")
+        },
+        error:function(result){
+            console.log(result);
+            showAlertDiv("alert-warning","警告!","登录失效，请重新登录。");
+        },
+        success: function (result, textStatus, request) {
+            setTokenToCookie("token",request.getResponseHeader('Authorization'));
             setApplyForList(result.visitItemList,result.applyForPeople);
         }
     });
@@ -137,7 +145,15 @@ $("#applyForCard").on("click","tr",function () {
         dataType: "json",//预期服务器返回的数据类型
         url: "applyForFmeditem/getVisitItemDetail/"+$(this).find(":radio").val(),
         data: {},
-        success: function (result) {
+        headers: {
+            Authorization:"Bearer "+getCookie("token")
+        },
+        error:function(result){
+            console.log(result);
+            showAlertDiv("alert-warning","警告!","登录失效，请重新登录。");
+        },
+        success: function (result, textStatus, request) {
+            setTokenToCookie("token",request.getResponseHeader('Authorization'));
             $("#visitItemForm tbody:eq(1)").html("");
             setVisitItemList(result.visitItemDetailList,result.fmeditemList);
         }
@@ -192,7 +208,15 @@ $("#applyForBtnGroup button:gt(0):lt(2)").click(function () {
         dataType: "text",//预期服务器返回的数据类型
         url: "applyForFmeditem/setVisitItemAndDetail/"+$("#applyForType").val()+"/"+$(this).index()+"/"+$("#patientInfoDiv span:eq(1)").html()+"/"+node.val()+"/"+trNode.find(":text").val()+"/"+trNode.find("td:last").html(),
         data: $("#visitItemForm").serializeArray(),
-        success: function (result) {
+        headers: {
+            Authorization:"Bearer "+getCookie("token")
+        },
+        error:function(result){
+            console.log(result);
+            showAlertDiv("alert-warning","警告!","登录失效，请重新登录。");
+        },
+        success: function (result, textStatus, request) {
+            setTokenToCookie("token",request.getResponseHeader('Authorization'));
             closeAlertDiv(alertNum);
             if(result==="1"){
                 showAlertDiv("alert-success","成功!","项目信息保存成功。");
@@ -214,7 +238,15 @@ function deleteApplyForAjax(num){
         dataType: "text",//预期服务器返回的数据类型
         url: "applyForFmeditem/cancleVisitItem/"+num+"/"+$("#applyForCard :checked").val(),
         data: {},
-        success: function (result) {
+        headers: {
+            Authorization:"Bearer "+getCookie("token")
+        },
+        error:function(result){
+            console.log(result);
+            showAlertDiv("alert-warning","警告!","登录失效，请重新登录。");
+        },
+        success: function (result, textStatus, request) {
+            setTokenToCookie("token",request.getResponseHeader('Authorization'));
             if(result==="1")
                 showAlertDiv("alert-success","成功!","删除或作废成功。");
             else if(result==="0")
@@ -281,7 +313,15 @@ function searchItemAjax(pageNum){
         dataType: "json",//预期服务器返回的数据类型
         url: urlS,
         data: {},
-        success: function (result) {
+        headers: {
+            Authorization:"Bearer "+getCookie("token")
+        },
+        error:function(result){
+            console.log(result);
+            showAlertDiv("alert-warning","警告!","登录失效，请重新登录。");
+        },
+        success: function (result, textStatus, request) {
+            setTokenToCookie("token",request.getResponseHeader('Authorization'));
             itemList=result.itemList;
             itemPages=result.pages;
             if(itemFlag===1){
@@ -529,7 +569,15 @@ $("#menu1RightNav a:eq(0)").click(function () {
         dataType: "json",//预期服务器返回的数据类型
         url: "applyForFmeditem/getCommonOption/"+$("#applyForType").val(),
         data: {},
-        success: function (result) {
+        headers: {
+            Authorization:"Bearer "+getCookie("token")
+        },
+        error:function(result){
+            console.log(result);
+            showAlertDiv("alert-warning","警告!","登录失效，请重新登录。");
+        },
+        success: function (result, textStatus, request) {
+            setTokenToCookie("token",request.getResponseHeader('Authorization'));
             insertCommonItem(result);
         }
     });
@@ -562,7 +610,15 @@ $("#menu1_1").on("dblclick","a",function () {
                 dataType: "text",//预期服务器返回的数据类型
                 url: "applyForFmeditem/deleteCommonItem/" + $("#applyForType").val() + "/" + $(this).parent().next().val(),
                 data: {},
-                success: function (result) {
+                headers: {
+                    Authorization:"Bearer "+getCookie("token")
+                },
+                error:function(result){
+                    console.log(result);
+                    showAlertDiv("alert-warning","警告!","登录失效，请重新登录。");
+                },
+                success: function (result, textStatus, request) {
+                    setTokenToCookie("token",request.getResponseHeader('Authorization'));
                     $("#menu1RightNav a:eq(0)").click();
                 }
             });
@@ -579,7 +635,15 @@ $("#visitItemCard").on("click","a",function () {
         dataType: "text",//预期服务器返回的数据类型
         url: "applyForFmeditem/addCommonFmeditem/"+$("#applyForType").val()+"/"+$(this).closest("tr").children().first().html(),
         data: {},
-        success: function (result) {
+        headers: {
+            Authorization:"Bearer "+getCookie("token")
+        },
+        error:function(result){
+            console.log(result);
+            showAlertDiv("alert-warning","警告!","登录失效，请重新登录。");
+        },
+        success: function (result, textStatus, request) {
+            setTokenToCookie("token",request.getResponseHeader('Authorization'));
             if(result==="1")
                 showAlertDiv("alert-success","成功!","增加常用项目成功。");
             else showAlertDiv("alert-danger","失败!","增加常用项目失败。");
@@ -620,7 +684,15 @@ function searchSetGroup(){
         dataType: "json",//预期服务器返回的数据类型
         url: "setManage/getSetGroup/"+category+"/"+$("#applyForType").val()+((key==="")?"":("/"+key)),
         data: {},
-        success: function (result) {
+        headers: {
+            Authorization:"Bearer "+getCookie("token")
+        },
+        error:function(result){
+            console.log(result);
+            showAlertDiv("alert-warning","警告!","登录失效，请重新登录。");
+        },
+        success: function (result, textStatus, request) {
+            setTokenToCookie("token",request.getResponseHeader('Authorization'));
             addSetContext(result);
         }
     });
@@ -672,7 +744,15 @@ $("#itemSetListDiv").on("click","a",function () {
         dataType: "json",//预期服务器返回的数据类型
         url: "setManage/getSetContent/"+$("#applyForType").val()+"/"+$(this).next().val(),
         data: {},
-        success: function (result) {
+        headers: {
+            Authorization:"Bearer "+getCookie("token")
+        },
+        error:function(result){
+            console.log(result);
+            showAlertDiv("alert-warning","警告!","登录失效，请重新登录。");
+        },
+        success: function (result, textStatus, request) {
+            setTokenToCookie("token",request.getResponseHeader('Authorization'));
             $("#setCodeTemplate").attr("readonly",true);
             $("#itemSetCategoryDiv").hide();
             disableSetContext(true);
@@ -738,7 +818,15 @@ $("#itemSetBtnGroup button:eq(2)").click(function () {
                 dataType: "text",//预期服务器返回的数据类型
                 url: "setManage/cancelSetGroup/"+$("#idSet").val(),
                 data: {},
-                success: function (result) {
+                headers: {
+                    Authorization:"Bearer "+getCookie("token")
+                },
+                error:function(result){
+                    console.log(result);
+                    showAlertDiv("alert-warning","警告!","登录失效，请重新登录。");
+                },
+                success: function (result, textStatus, request) {
+                    setTokenToCookie("token",request.getResponseHeader('Authorization'));
                     if(result==="0")//好像无效
                         showAlertDiv("alert-danger","错误!","删除组套失败。");
                     $("#itemSetChooseDiv :checked").click();
@@ -776,7 +864,15 @@ $("#itemSetContextForm button:contains('提交')").click(function () {
         dataType: "text",//预期服务器返回的数据类型
         url: "setManage/saveSetGroup/"+((codeNode.attr("readonly")==="readonly")?"2":"1")+"/"+$("#applyForType").val(),
         data: $("#itemSetContextForm").serializeArray(),
-        success: function (result) {//1成功 0更新失败（已删除） 2新增失败（code已存在）
+        headers: {
+            Authorization:"Bearer "+getCookie("token")
+        },
+        error:function(result){
+            console.log(result);
+            showAlertDiv("alert-warning","警告!","登录失效，请重新登录。");
+        },
+        success: function (result, textStatus, request) {//1成功 0更新失败（已删除） 2新增失败（code已存在）
+            setTokenToCookie("token",request.getResponseHeader('Authorization'));
             closeAlertDiv(alertNum);
             if(result==="1"){
                 showAlertDiv("alert-success","成功!","组套提交成功。");
@@ -826,7 +922,15 @@ $("#visitItemCard tbody").on("click","button",function () {
             dataType: "json",//预期服务器返回的数据类型
             url: "applyForFmeditem/getItemResult/"+visitItemNo+"/"+$(this).closest("tr").find("td:first").html(),
             data: {},
-            success: function (result) {
+            headers: {
+                Authorization:"Bearer "+getCookie("token")
+            },
+            error:function(result){
+                console.log(result);
+                showAlertDiv("alert-warning","警告!","登录失效，请重新登录。");
+            },
+            success: function (result, textStatus, request) {
+                setTokenToCookie("token",request.getResponseHeader('Authorization'));
                 if (result.describetion === null) {
                     showAlertDiv("alert-warning","警告!","未找到项目结果。");
                     return;

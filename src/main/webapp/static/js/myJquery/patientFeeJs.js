@@ -43,7 +43,15 @@ function patientFeeAjax(num){
         dataType: "json",//预期服务器返回的数据类型
         url: "outpatientDoctorWorkstation/"+url+"/"+$("#menu4 select:eq("+num+")").val()+"/"+medicalInfoId,
         data: $("#visitItemForm").serializeArray(),
-        success: function (result) {
+        headers: {
+            Authorization:"Bearer "+getCookie("token")
+        },
+        error:function(result){
+            console.log(result);
+            showAlertDiv("alert-warning","警告!","登录失效，请重新登录。");
+        },
+        success: function (result, textStatus, request) {
+            setTokenToCookie("token",request.getResponseHeader('Authorization'));
             if(result.length!==0&&result[0].purposeRequirement===undefined)//判断是处方
                 setFeeList(1,result);
             else setFeeList(0,result);

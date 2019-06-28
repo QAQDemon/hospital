@@ -1,6 +1,5 @@
 package com.neusoft.ssm.util;
 
-import junit.framework.Assert;
 import org.junit.Test;
 
 import java.security.NoSuchAlgorithmException;
@@ -33,5 +32,12 @@ public class HashSaltUtilTest {
       //  Assert.assertTrue(HashSaltUtil.validatePassword("123456","1000:7ad391b7dd1f895ca3033dd12890e40d579198c502cfb499:c6d8758bf1393c9260800ca013fe811e3a1ed72db9e4412c"));
         //assertTrue(HashSaltUtil.validatePassword("","1000:c27b90ae8cf4d41e6c37c5bd7e38f329185d72a27c68c79d:e9867b771112277e05635914ee072e5893212a85424e18f9"));
 
+    }
+
+    @Test
+    public  void ttst(){
+        String st="/outpatientDoctorWorkstation/searchPatient/1";
+        String[] ss=st.split("/");
+        System.out.println(ss[0]);
     }
 }
