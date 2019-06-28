@@ -30,24 +30,40 @@ function submitUserInfo(userId,userName,userCategory){
     $("body").append($form);
     $form.submit();
 }
-$("#submitButton").click(function (event) {
-    event.preventDefault();
+$("#submitButton").click(function () {
     $('form').fadeOut(500);
     $('.wrapper').addClass('form-success');
-    $.ajax({
-        type: "POST",//方法类型
-        dataType: "json",//预期服务器返回的数据类型
-        url: "loginController/login",
-        data: $("#loginForm").serializeArray(),
-        async: false,
-        success: function(data, textStatus, request) {
-            var id=data.userId;
-            if(id!=="-1"){
-                setTokenToCookie("token",request.getResponseHeader('Authorization'));
-                setTokenToCookie("userId",id);
-                submitUserInfo(id,data.userName,data.userCategory);
-            }else showAlertDiv("alert-warning","警告!","用户名或密码错误。");
-        }
-    });
+    var name=$("#loginName").val();
+    var password=$("#password").val();
+    if(name===""||password===""){
+        setTimeout(function () {
+            $('form').fadeIn(500);
+            $('.wrapper').removeClass('form-success');
+        },1000);
+        showAlertDiv("alert-warning","警告!","用户名或密码不能为空。");
+    }
+    else{
+        setTimeout(function () {
+            $.ajax({
+                type: "POST",//方法类型
+                dataType: "json",//预期服务器返回的数据类型
+                url: "loginController/login",
+                data: $("#loginForm").serializeArray(),
+                async: false,
+                success: function(data, textStatus, request) {
+                    var id=data.userId;
+                    if(id!=="-1"){
+                        setTokenToCookie("token",request.getResponseHeader('Authorization'));
+                        setTokenToCookie("userId",id);
+                        submitUserInfo(id,data.userName,data.userCategory);
+                    }else {
+                        showAlertDiv("alert-warning","警告!","用户名或密码错误。");
+                        $('form').fadeIn(500);
+                        $('.wrapper').removeClass('form-success');
+                    }
+                }
+            });
+        },1000);
+    }
 });
 
