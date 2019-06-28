@@ -6,11 +6,12 @@ import com.neusoft.ssm.bean.Prescription;
 import com.neusoft.ssm.bean.PrescriptionDetail;
 import com.neusoft.ssm.service.ApplyForPrescriptionService;
 import com.neusoft.ssm.service.OutpatientDoctorWorkstationService;
+import com.neusoft.ssm.util.JwtUtil;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 import java.math.BigDecimal;
 import java.util.Date;
 import java.util.HashMap;
@@ -114,9 +115,8 @@ public class ApplyForPrescriptionController {
      * @return void
      **/
     @RequestMapping("getCommonOption/{type}")
-    public List<Drugs> getCommonOption(@PathVariable("type")char type){
-        int doctorId=1;//todo
-
+    public List<Drugs> getCommonOption(HttpServletRequest request, @PathVariable("type")char type){
+        int doctorId= JwtUtil.getHeaderDoctorId(request);
         return applyForPrescriptionService.getCommonDrugsList(outpatientDoctorWorkstationService.getCommonOptionById((char)(type+5), doctorId));//6,7
     }
 
@@ -126,9 +126,8 @@ public class ApplyForPrescriptionController {
      * @return void
      **/
     @RequestMapping("deleteCommonDrugs/{type}/{drugsId}")
-    public int deleteCommonDrugs(@PathVariable("type")char type,@PathVariable("drugsId")int drugsId){
-        int doctorId=1;//todo
-
+    public int deleteCommonDrugs(HttpServletRequest request,@PathVariable("type")char type,@PathVariable("drugsId")int drugsId){
+        int doctorId=JwtUtil.getHeaderDoctorId(request);
         return outpatientDoctorWorkstationService.deleteCommonOption(doctorId,String.valueOf(type-43),drugsId);
     }
 
@@ -138,9 +137,8 @@ public class ApplyForPrescriptionController {
      * @return java.lang.Boolean
      **/
     @RequestMapping("addCommonDrugs/{type}/{drugsId}")
-    public int addCommonDrugs(@PathVariable("type")char type,@PathVariable("drugsId")int drugsId){
-        int doctorId=1;//todo
-
+    public int addCommonDrugs(HttpServletRequest request,@PathVariable("type")char type,@PathVariable("drugsId")int drugsId){
+        int doctorId=JwtUtil.getHeaderDoctorId(request);
         return outpatientDoctorWorkstationService.addCommonOption(doctorId, String.valueOf(type-43), drugsId);
     }
 }

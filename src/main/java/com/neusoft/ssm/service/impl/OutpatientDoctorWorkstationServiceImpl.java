@@ -14,7 +14,6 @@ import java.util.*;
 
 @Service
 public class OutpatientDoctorWorkstationServiceImpl implements OutpatientDoctorWorkstationService {
-
     @Resource
     private PatientMapper patientMapper;
     @Resource
@@ -229,7 +228,7 @@ public class OutpatientDoctorWorkstationServiceImpl implements OutpatientDoctorW
 
 
     /*
-     * @Description 获得生效的处方，只找发送的且不是退费//TODO
+     * @Description 获得生效的处方，只找发送的且不是退费
      * @Param [type 0全部 1成 2草, medicalRecordInfoId]
      * @return java.util.List<Prescription>
      **/
@@ -262,7 +261,7 @@ public class OutpatientDoctorWorkstationServiceImpl implements OutpatientDoctorW
     }
 
     /*
-     * @Description 获得医生一段时间内的看诊人数和费用,找诊毕的病单号//TODO
+     * @Description 获得医生一段时间内的看诊人数和费用,找诊毕的病单号
      * @Param [doctorId, firstTime, lastTime]
      * @return java.util.List<int[]>
      **/

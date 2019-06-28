@@ -3,11 +3,13 @@ package com.neusoft.ssm.controller;
 import com.neusoft.ssm.bean.SetGroup;
 import com.neusoft.ssm.bean.SetSub;
 import com.neusoft.ssm.service.SetManageService;
+import com.neusoft.ssm.util.JwtUtil;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -25,17 +27,16 @@ public class SetManageController {
      * @return void
      **/
     @RequestMapping("getSetGroup/{category}/{type}")
-    public Map<Integer ,String> getSetGroup(@PathVariable("category")char category, @PathVariable("type")char type){
-        return getSetGroupMethod(category,type, "");
+    public Map<Integer ,String> getSetGroup(HttpServletRequest request, @PathVariable("category")char category, @PathVariable("type")char type){
+        return getSetGroupMethod(request,category,type, "");
     }
     @RequestMapping("getSetGroup/{category}/{type}/{key}")
-    public Map<Integer ,String> getMedrecTemplate1(@PathVariable("category")char category,@PathVariable("type")char type,@PathVariable("key")String key){
-        return getSetGroupMethod(category,type, key);
+    public Map<Integer ,String> getMedrecTemplate1(HttpServletRequest request,@PathVariable("category")char category,@PathVariable("type")char type,@PathVariable("key")String key){
+        return getSetGroupMethod(request,category,type, key);
     }
-    private Map<Integer ,String> getSetGroupMethod(char category,char type,String key){
-        int doctorId=1;//todo
-        int departID=2;//
-
+    private Map<Integer ,String> getSetGroupMethod(HttpServletRequest request,char category,char type,String key){
+        int doctorId = JwtUtil.getHeaderDoctorId(request);
+        int departID = JwtUtil.getHeaderDepartmentId(request);
         int belongId=0;//1：0；2：科室id；3：医生id
         if(category=='2')
             belongId=departID;
@@ -84,10 +85,9 @@ public class SetManageController {
      * @return int 1成功 0更新失败（已删除） 2新增失败（code已存在）
      **/
     @RequestMapping("saveSetGroup/{method}/{type}")
-    public int saveSetGroup(@PathVariable("method")char method,@PathVariable("type")char type,SetGroup setGroup,int[] objectId,String[] setSubEntrust){
-        int doctorId=1;//todo
-        int departID=2;
-
+    public int saveSetGroup(HttpServletRequest request,@PathVariable("method")char method,@PathVariable("type")char type,SetGroup setGroup,int[] objectId,String[] setSubEntrust){
+        int doctorId = JwtUtil.getHeaderDoctorId(request);
+        int departID = JwtUtil.getHeaderDepartmentId(request);
         if(setGroup.getUseScope().equals("1"))
             setGroup.setBelongId(0);
         if(setGroup.getUseScope().equals("2"))

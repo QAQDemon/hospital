@@ -7,10 +7,12 @@ import com.neusoft.ssm.bean.VisitItemDetail;
 import com.neusoft.ssm.bean.VisitItemResult;
 import com.neusoft.ssm.service.OutpatientDoctorWorkstationService;
 import com.neusoft.ssm.service.ApplyForFmeditemService;
+import com.neusoft.ssm.util.JwtUtil;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 import java.math.BigDecimal;
 import java.util.Date;
 import java.util.HashMap;
@@ -38,7 +40,6 @@ public class ApplyForFmeditemController {
         map.put("visitItemList", visitItemList);
         map.put("applyForPeople", applyForFmeditemService.getApplyForPeopleName(visitItemList));
         return map;
-
     }
 
     /*
@@ -63,9 +64,8 @@ public class ApplyForFmeditemController {
     @RequestMapping("setVisitItemAndDetail/{type}/{method}/{medicalRecordInfoId}/{visitItemId}/{purposeRequirement}/{fee:.+}")
     public int setVisitItemAndDetail(@PathVariable("type")char type,@PathVariable("method")char method,@PathVariable("medicalRecordInfoId")int medicalRecordInfoId,
                                       @PathVariable("visitItemId")int visitItemId, @PathVariable("purposeRequirement")String purposeRequirement,
-                                      @PathVariable("fee")Double fee, int[] fmeditemId,String[] doctorEntrustment){
-        int doctorId=1;//TODO
-
+                                      @PathVariable("fee")Double fee, int[] fmeditemId,String[] doctorEntrustment,HttpServletRequest request){
+        int doctorId = JwtUtil.getHeaderDoctorId(request);
         applyForFmeditemService.setType(type);
         VisitItem visitItem = new VisitItem();
         if(visitItemId!=-1)
@@ -120,9 +120,8 @@ public class ApplyForFmeditemController {
      * @return void
      **/
     @RequestMapping("getCommonOption/{type}")
-    public List<Fmeditem> getCommonOption(@PathVariable("type")char type){
-        int doctorId=1;//todo
-
+    public List<Fmeditem> getCommonOption(HttpServletRequest request,@PathVariable("type")char type){
+        int doctorId= JwtUtil.getHeaderDoctorId(request);
         return applyForFmeditemService.getCommonFmeditemList(outpatientDoctorWorkstationService.getCommonOptionById((char)(type+2), doctorId));//3,4,5
     }
 
@@ -132,9 +131,8 @@ public class ApplyForFmeditemController {
      * @return void
      **/
     @RequestMapping("deleteCommonItem/{type}/{fmeditemId}")
-    public int deleteCommonDItem(@PathVariable("type")char type,@PathVariable("fmeditemId")int fmeditemId){
-        int doctorId=1;//todo
-
+    public int deleteCommonDItem(HttpServletRequest request,@PathVariable("type")char type,@PathVariable("fmeditemId")int fmeditemId){
+        int doctorId= JwtUtil.getHeaderDoctorId(request);
         return outpatientDoctorWorkstationService.deleteCommonOption(doctorId,String.valueOf(type-46),fmeditemId);
     }
 
@@ -144,14 +142,13 @@ public class ApplyForFmeditemController {
      * @return java.lang.Boolean
      **/
     @RequestMapping("addCommonFmeditem/{type}/{fmeditemId}")
-    public int addCommonFmeditem(@PathVariable("type")char type,@PathVariable("fmeditemId")int fmeditemId){
-        int doctorId=1;//todo
-
+    public int addCommonFmeditem(HttpServletRequest request, @PathVariable("type")char type, @PathVariable("fmeditemId")int fmeditemId){
+        int doctorId = JwtUtil.getHeaderDoctorId(request);
         return outpatientDoctorWorkstationService.addCommonOption(doctorId, String.valueOf(type-46), fmeditemId);
     }
 
     /*
-     * @Description 获得检查检验处置的结果 一句话和一个图片url,可能返回一个空结果//TODO
+     * @Description 获得检查检验处置的结果 一句话和一个图片url,可能返回一个空结果
      * @Param [visitItemId, fmeitemId]
      * @return java.util.Map<java.lang.String,java.lang.String>
      **/

@@ -9,16 +9,25 @@
     <bookmark url="file://$PROJECT_DIR$/src/main/webapp/static/html/outpatientDoctorWorkstation.html" line="8" mnemonic="1" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="dbf00169-a8e7-473c-9987-97a8297bcd84" name="Default Changelist" comment="jwt fail 6-28-1">
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/loginFailure.jsp" afterDir="false" />
+    <list default="true" id="dbf00169-a8e7-473c-9987-97a8297bcd84" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/neusoft/ssm/util/HashSaltUtil.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test/com/neusoft/ssm/util/HashSaltUtilTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/neusoft/ssm/controller/ApplyForFmeditemController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/neusoft/ssm/controller/ApplyForFmeditemController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/neusoft/ssm/controller/ApplyForPrescriptionController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/neusoft/ssm/controller/ApplyForPrescriptionController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/neusoft/ssm/controller/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/neusoft/ssm/controller/LoginController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/neusoft/ssm/controller/MedicalRecordHomeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/neusoft/ssm/controller/MedicalRecordHomeController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/neusoft/ssm/controller/OutpatientDoctorWorkstationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/neusoft/ssm/controller/OutpatientDoctorWorkstationController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/neusoft/ssm/controller/SetManageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/neusoft/ssm/controller/SetManageController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/neusoft/ssm/interceptor/TokenInterceptor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/neusoft/ssm/interceptor/TokenInterceptor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/applicationContext.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/applicationContext.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/neusoft/ssm/service/impl/LoginServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/neusoft/ssm/service/impl/LoginServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/neusoft/ssm/service/impl/OutpatientDoctorWorkstationServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/neusoft/ssm/service/impl/OutpatientDoctorWorkstationServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/neusoft/ssm/util/JwtUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/neusoft/ssm/util/JwtUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/js/myJquery/applyForJs.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/static/js/myJquery/applyForJs.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/static/js/myJquery/outpatientDoctorJs.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/static/js/myJquery/outpatientDoctorJs.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/applicationContext.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/applicationContext.xml" afterDir="false" />
     </list>
     <list id="0d82a619-f3e3-4cc1-9bb7-107a165e2341" name="Revert: new start 6-27-1" comment="">
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/js/myJquery/applyForJs.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/static/js/myJquery/applyForJs.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/static/js/myJquery/outpatientDoctorJs.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/static/js/myJquery/outpatientDoctorJs.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/static/js/myJquery/prescriptionJs.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/static/js/myJquery/prescriptionJs.js" afterDir="false" />
     </list>
@@ -75,43 +84,23 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/neusoft/ssm/interceptor/TokenInterceptor.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="80">
-              <caret line="21" selection-start-line="21" selection-end-line="21" />
+            <state relative-caret-position="175">
+              <caret line="19" selection-start-line="19" selection-end-line="19" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <marker date="1561694112423" expanded="true" signature="1470:1594" ph="{...}" />
+                <marker date="1561702719617" expanded="true" signature="1464:1588" ph="{...}" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/webapp/static/js/myJquery/outpatientDoctorJs.js">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/neusoft/ssm/util/JwtUtil.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="510">
-              <caret line="140" column="81" selection-start-line="140" selection-start-column="81" selection-end-line="140" selection-end-column="81" />
+            <state relative-caret-position="575">
+              <caret line="58" column="53" lean-forward="true" selection-start-line="58" selection-start-column="53" selection-end-line="58" selection-end-column="53" />
               <folding>
-                <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#button#0;n#div#0;n#!!top" expanded="true" />
-                <element signature="e#284#291#1" expanded="true" />
-                <element signature="n#style#0;n#td#2;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#td#3;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#img#0;n#a#0;n#td#3;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#td#4;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#button#0;n#td#4;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#td#2;n#tr#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#td#5;n#tr#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#td#6;n#tr#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#img#0;n#a#0;n#td#6;n#tr#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#td#7;n#tr#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#button#0;n#td#7;n#tr#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#td#3;n#tr#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#td#3;n#tr#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#td#2;n#tr#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#td#2;n#tr#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#td#2;n#tr#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#td#2;n#tr#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#td#2;n#tr#0;n#!!top" expanded="true" />
+                <element signature="imports" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -120,20 +109,29 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/webapp/static/js/myJquery/loginJs.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="525">
-              <caret line="39" column="49" lean-forward="true" selection-start-line="39" selection-start-column="49" selection-end-line="39" selection-end-column="49" />
+            <state relative-caret-position="572">
+              <caret line="44" column="25" selection-start-line="44" selection-start-column="25" selection-end-line="44" selection-end-column="25" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/neusoft/ssm/controller/LoginController.java">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/neusoft/ssm/controller/MedicalRecordHomeController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="572">
-              <caret line="56" column="19" selection-start-line="56" selection-start-column="19" selection-end-line="56" selection-end-column="19" />
+            <state relative-caret-position="1358">
+              <caret line="215" column="62" selection-start-line="215" selection-start-column="62" selection-end-line="215" selection-end-column="62" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/neusoft/ssm/controller/SetManageController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="183">
+              <caret line="89" column="62" selection-start-line="89" selection-start-column="62" selection-end-line="89" selection-end-column="62" />
             </state>
           </provider>
         </entry>
@@ -144,20 +142,17 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="HTML File" />
-        <option value="JUnit4 Test Class" />
         <option value="jsf" />
         <option value="Interface" />
-        <option value="Class" />
         <option value="JavaScript File" />
         <option value="Jsp File" />
+        <option value="Class" />
+        <option value="JUnit4 Test Class" />
       </list>
     </option>
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>area</find>
-      <find>收费</find>
-      <find>texta</find>
       <find>待</find>
       <find>patientListForm</find>
       <find>attr(&quot;checked</find>
@@ -185,6 +180,9 @@
       <find>doctorId</find>
       <find>searchPatient</find>
       <find>searchPatient/</find>
+      <find>PBKDF2_ITERATIONS</find>
+      <find>pbkdf2</find>
+      <find>todo</find>
     </findStrings>
     <replaceStrings>
       <replace>showAlertDiv1(</replace>
@@ -224,11 +222,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/java/edu/neu/medical/hospital/dao/PrescriptionMapper.java" />
-        <option value="$PROJECT_DIR$/src/main/java/edu/neu/medical/hospital/dao/PrescriptionDetailMapper.java" />
-        <option value="$PROJECT_DIR$/src/main/resources/mapper/PrescriptionMapper.xml" />
-        <option value="$PROJECT_DIR$/src/main/resources/mapper/PrescriptionDetailMapper.xml" />
-        <option value="$PROJECT_DIR$/src/main/java/edu/neu/medical/hospital/service/impl/ApplyForFmeditemServiceImpl.java" />
         <option value="$PROJECT_DIR$/src/main/java/edu/neu/medical/hospital/service/ApplyForPrescriptionService.java" />
         <option value="$PROJECT_DIR$/src/main/java/edu/neu/medical/hospital/controller/ApplyForFmeditemController.java" />
         <option value="$PROJECT_DIR$/src/main/java/edu/neu/medical/hospital/service/impl/ApplyForPrescriptionServiceImpl.java" />
@@ -240,14 +233,11 @@
         <option value="$PROJECT_DIR$/src/main/java/edu/neu/medical/hospital/service/impl/OutpatientDoctorWorkstationServiceImpl.java" />
         <option value="$PROJECT_DIR$/src/main/java/edu/neu/medical/hospital/controller/OutpatientDoctorWorkstationController.java" />
         <option value="$PROJECT_DIR$/src/main/webapp/static/html/tt2.html" />
-        <option value="$PROJECT_DIR$/src/main/webapp/static/js/myJquery/applyForJs.js" />
         <option value="$PROJECT_DIR$/src/main/resources/mapper/CommonOptionMapper.xml" />
         <option value="$PROJECT_DIR$/src/main/resources/generatorConfig.xml" />
         <option value="$PROJECT_DIR$/src/main/java/com/neusoft/ssm/service/ApplyForFmeditemService.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/neusoft/ssm/service/MedicalRecordHomeService.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/neusoft/ssm/service/impl/SetManageServiceImpl.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/neusoft/ssm/controller/MedicalRecordHomeController.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/neusoft/ssm/controller/ApplyForFmeditemController.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/neusoft/ssm/service/impl/MedicalRecordHomeServiceImpl.java" />
         <option value="$PROJECT_DIR$/test/com/neusoft/ssm/service/impl/MedicalRecordHomeServiceImplTest.java" />
         <option value="$PROJECT_DIR$/src/main/webapp/static/js/myJquery/prescriptionJs.js" />
@@ -259,10 +249,7 @@
         <option value="$PROJECT_DIR$/src/main/webapp/static/html/login.html" />
         <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/src/main/java/com/neusoft/ssm/service/OutpatientDoctorWorkstationService.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/neusoft/ssm/service/impl/OutpatientDoctorWorkstationServiceImpl.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/neusoft/ssm/service/LoginService.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/neusoft/ssm/controller/OutpatientDoctorWorkstationController.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/neusoft/ssm/service/impl/LoginServiceImpl.java" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/index.jsp" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/login.jsp" />
         <option value="$PROJECT_DIR$/src/main/webapp/static/html/outpatientDoctorWorkstation.html" />
@@ -270,11 +257,22 @@
         <option value="$PROJECT_DIR$/src/main/webapp/static/js/myJquery/patientFeeJs.js" />
         <option value="$PROJECT_DIR$/src/main/webapp/static/js/myJquery/loginJs.js" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/loginFailure.jsp" />
-        <option value="$PROJECT_DIR$/src/main/java/com/neusoft/ssm/controller/LoginController.java" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/outpatientDoctorWorkstation.jsp" />
         <option value="$PROJECT_DIR$/src/main/resources/applicationContext.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/com/neusoft/ssm/util/HashSaltUtil.java" />
+        <option value="$PROJECT_DIR$/test/com/neusoft/ssm/util/HashSaltUtilTest.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/neusoft/ssm/service/impl/LoginServiceImpl.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/neusoft/ssm/controller/LoginController.java" />
         <option value="$PROJECT_DIR$/src/main/webapp/static/js/myJquery/outpatientDoctorJs.js" />
         <option value="$PROJECT_DIR$/src/main/java/com/neusoft/ssm/interceptor/TokenInterceptor.java" />
+        <option value="$PROJECT_DIR$/src/main/webapp/static/js/myJquery/applyForJs.js" />
+        <option value="$PROJECT_DIR$/src/main/java/com/neusoft/ssm/service/impl/OutpatientDoctorWorkstationServiceImpl.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/neusoft/ssm/util/JwtUtil.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/neusoft/ssm/controller/OutpatientDoctorWorkstationController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/neusoft/ssm/controller/ApplyForFmeditemController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/neusoft/ssm/controller/ApplyForPrescriptionController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/neusoft/ssm/controller/MedicalRecordHomeController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/neusoft/ssm/controller/SetManageController.java" />
       </list>
     </option>
   </component>
@@ -287,23 +285,22 @@
   <component name="LineStatusTrackerManager">
     <file path="$PROJECT_DIR$/src/main/webapp/static/js/myJquery/outpatientDoctorJs.js">
       <ranges>
-        <range start1="124" end1="125" start2="124" end2="125" changelist="dbf00169-a8e7-473c-9987-97a8297bcd84" />
-        <range start1="135" end1="136" start2="135" end2="141" changelist="dbf00169-a8e7-473c-9987-97a8297bcd84" />
-        <range start1="257" end1="258" start2="262" end2="263" changelist="0d82a619-f3e3-4cc1-9bb7-107a165e2341" />
-        <range start1="389" end1="390" start2="394" end2="395" changelist="0d82a619-f3e3-4cc1-9bb7-107a165e2341" />
-        <range start1="627" end1="628" start2="632" end2="633" changelist="0d82a619-f3e3-4cc1-9bb7-107a165e2341" />
-        <range start1="677" end1="678" start2="682" end2="683" changelist="0d82a619-f3e3-4cc1-9bb7-107a165e2341" />
-        <range start1="694" end1="695" start2="699" end2="700" changelist="0d82a619-f3e3-4cc1-9bb7-107a165e2341" />
-        <range start1="747" end1="748" start2="752" end2="753" changelist="0d82a619-f3e3-4cc1-9bb7-107a165e2341" />
-        <range start1="818" end1="819" start2="823" end2="824" changelist="0d82a619-f3e3-4cc1-9bb7-107a165e2341" />
-        <range start1="851" end1="852" start2="856" end2="857" changelist="0d82a619-f3e3-4cc1-9bb7-107a165e2341" />
-        <range start1="900" end1="901" start2="905" end2="906" changelist="0d82a619-f3e3-4cc1-9bb7-107a165e2341" />
-        <range start1="941" end1="942" start2="946" end2="947" changelist="0d82a619-f3e3-4cc1-9bb7-107a165e2341" />
-        <range start1="959" end1="960" start2="964" end2="965" changelist="0d82a619-f3e3-4cc1-9bb7-107a165e2341" />
-        <range start1="989" end1="990" start2="994" end2="995" changelist="0d82a619-f3e3-4cc1-9bb7-107a165e2341" />
-        <range start1="1008" end1="1009" start2="1013" end2="1014" changelist="0d82a619-f3e3-4cc1-9bb7-107a165e2341" />
-        <range start1="1043" end1="1044" start2="1048" end2="1049" changelist="0d82a619-f3e3-4cc1-9bb7-107a165e2341" />
-        <range start1="1112" end1="1113" start2="1117" end2="1118" changelist="0d82a619-f3e3-4cc1-9bb7-107a165e2341" />
+        <range start1="262" end1="263" start2="262" end2="263" changelist="0d82a619-f3e3-4cc1-9bb7-107a165e2341" />
+        <range start1="394" end1="395" start2="394" end2="395" changelist="0d82a619-f3e3-4cc1-9bb7-107a165e2341" />
+        <range start1="586" end1="587" start2="586" end2="587" changelist="dbf00169-a8e7-473c-9987-97a8297bcd84" />
+        <range start1="632" end1="633" start2="632" end2="633" changelist="0d82a619-f3e3-4cc1-9bb7-107a165e2341" />
+        <range start1="682" end1="683" start2="682" end2="683" changelist="0d82a619-f3e3-4cc1-9bb7-107a165e2341" />
+        <range start1="699" end1="700" start2="699" end2="700" changelist="0d82a619-f3e3-4cc1-9bb7-107a165e2341" />
+        <range start1="752" end1="753" start2="752" end2="753" changelist="0d82a619-f3e3-4cc1-9bb7-107a165e2341" />
+        <range start1="823" end1="824" start2="823" end2="824" changelist="0d82a619-f3e3-4cc1-9bb7-107a165e2341" />
+        <range start1="856" end1="857" start2="856" end2="857" changelist="0d82a619-f3e3-4cc1-9bb7-107a165e2341" />
+        <range start1="905" end1="906" start2="905" end2="906" changelist="0d82a619-f3e3-4cc1-9bb7-107a165e2341" />
+        <range start1="946" end1="947" start2="946" end2="947" changelist="0d82a619-f3e3-4cc1-9bb7-107a165e2341" />
+        <range start1="964" end1="965" start2="964" end2="965" changelist="0d82a619-f3e3-4cc1-9bb7-107a165e2341" />
+        <range start1="994" end1="995" start2="994" end2="995" changelist="0d82a619-f3e3-4cc1-9bb7-107a165e2341" />
+        <range start1="1013" end1="1014" start2="1013" end2="1014" changelist="0d82a619-f3e3-4cc1-9bb7-107a165e2341" />
+        <range start1="1048" end1="1049" start2="1048" end2="1049" changelist="0d82a619-f3e3-4cc1-9bb7-107a165e2341" />
+        <range start1="1117" end1="1118" start2="1117" end2="1118" changelist="0d82a619-f3e3-4cc1-9bb7-107a165e2341" />
       </ranges>
     </file>
   </component>
@@ -355,8 +352,8 @@
     </treeState>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-8" />
-    <option name="y" value="-8" />
+    <option name="x" value="462" />
+    <option name="y" value="80" />
     <option name="width" value="1410" />
     <option name="height" value="941" />
   </component>
@@ -522,19 +519,10 @@
   </component>
   <component name="RecentsManager">
     <key name="CreateTestDialog.RecentsKey">
+      <recent name="com.neusoft.ssm.util" />
       <recent name="com.neusoft.ssm.service.impl" />
       <recent name="edu.neu.medical.hospital.service.impl" />
       <recent name="edu.neu.medical.hospital.controller" />
-    </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\demon\Desktop\test\hospital\src\main\webapp\WEB-INF\jsp" />
-      <recent name="C:\Users\demon\Desktop\test\hospital\src\main\webapp\static\js\myJquery" />
-      <recent name="C:\Users\demon\Desktop\test\hospital\src\main\webapp\static\html" />
-      <recent name="C:\Users\demon\Desktop\test\hospital\target\ssm\static\images" />
-      <recent name="C:\Users\demon\Desktop\test\hospital\src\main\webapp\static\images" />
-    </key>
-    <key name="CreateTestDialog.Recents.Supers">
-      <recent name="" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\demon\Desktop\test\hospital\src\main\resources\mapper" />
@@ -542,6 +530,16 @@
       <recent name="C:\Users\demon\Desktop\test\hospital\src\main\webapp\static\images" />
       <recent name="C:\Users\demon\Desktop\test\hospital\src\main\webapp\WEB-INF\jsp" />
       <recent name="C:\Users\demon\Desktop\test\hospital\src\main\webapp" />
+    </key>
+    <key name="CreateTestDialog.Recents.Supers">
+      <recent name="" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\demon\Desktop\test\hospital\src\main\webapp\WEB-INF\jsp" />
+      <recent name="C:\Users\demon\Desktop\test\hospital\src\main\webapp\static\js\myJquery" />
+      <recent name="C:\Users\demon\Desktop\test\hospital\src\main\webapp\static\html" />
+      <recent name="C:\Users\demon\Desktop\test\hospital\target\ssm\static\images" />
+      <recent name="C:\Users\demon\Desktop\test\hospital\src\main\webapp\static\images" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -573,33 +571,33 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="MedicalRecordHomeServiceImplTest.addCommonDiagnosis" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="HashSaltUtilTest.createHash" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="hospital" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="edu.neu.medical.hospital.service.impl.*" />
+          <option name="PATTERN" value="com.neusoft.ssm.util.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="edu.neu.medical.hospital.service.impl" />
-      <option name="MAIN_CLASS_NAME" value="edu.neu.medical.hospital.service.impl.MedicalRecordHomeServiceImplTest" />
-      <option name="METHOD_NAME" value="addCommonDiagnosis" />
+      <option name="PACKAGE_NAME" value="com.neusoft.ssm.util" />
+      <option name="MAIN_CLASS_NAME" value="com.neusoft.ssm.util.HashSaltUtilTest" />
+      <option name="METHOD_NAME" value="createHash" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="MedicalRecordHomeServiceImplTest.searchDiseaseListByCode" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="HashSaltUtilTest.validatePassword" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="hospital" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="edu.neu.medical.hospital.service.impl.*" />
+          <option name="PATTERN" value="com.neusoft.ssm.util.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="edu.neu.medical.hospital.service.impl" />
-      <option name="MAIN_CLASS_NAME" value="edu.neu.medical.hospital.service.impl.MedicalRecordHomeServiceImplTest" />
-      <option name="METHOD_NAME" value="searchDiseaseListByCode" />
+      <option name="PACKAGE_NAME" value="com.neusoft.ssm.util" />
+      <option name="MAIN_CLASS_NAME" value="com.neusoft.ssm.util.HashSaltUtilTest" />
+      <option name="METHOD_NAME" value="validatePassword" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -799,21 +797,21 @@
       </method>
     </configuration>
     <list>
-      <item itemvalue="JUnit.MedicalRecordHomeServiceImplTest.searchDiseaseListByCode" />
-      <item itemvalue="JUnit.MedicalRecordHomeServiceImplTest.addCommonDiagnosis" />
       <item itemvalue="JUnit.OutpatientDoctorWorkstationServiceImplTest.statisticsList" />
       <item itemvalue="JUnit.MedicalRecordHomeServiceImplTest.setMedicalRecordInfoAndDiagnosisList" />
       <item itemvalue="JUnit.ApplyForFmeditemServiceImplTest.setVisitItemAndDetailList1" />
       <item itemvalue="Maven.hospital-generator" />
       <item itemvalue="Tomcat Server.Tomcat 9.0.10" />
+      <item itemvalue="JUnit.HashSaltUtilTest.createHash" />
+      <item itemvalue="JUnit.HashSaltUtilTest.validatePassword" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.HashSaltUtilTest.validatePassword" />
+        <item itemvalue="JUnit.HashSaltUtilTest.createHash" />
         <item itemvalue="JUnit.ApplyForFmeditemServiceImplTest.setVisitItemAndDetailList1" />
         <item itemvalue="JUnit.MedicalRecordHomeServiceImplTest.setMedicalRecordInfoAndDiagnosisList" />
         <item itemvalue="JUnit.OutpatientDoctorWorkstationServiceImplTest.statisticsList" />
-        <item itemvalue="JUnit.MedicalRecordHomeServiceImplTest.addCommonDiagnosis" />
-        <item itemvalue="JUnit.MedicalRecordHomeServiceImplTest.searchDiseaseListByCode" />
       </list>
     </recent_temporary>
   </component>
@@ -886,14 +884,7 @@
       <workItem from="1561512689749" duration="14003000" />
       <workItem from="1561601362443" duration="802000" />
       <workItem from="1561604486304" duration="40460000" />
-      <workItem from="1561685198806" duration="8638000" />
-    </task>
-    <task id="LOCAL-00038" summary="medrectemp 6-17-4">
-      <created>1560787177861</created>
-      <option name="number" value="00038" />
-      <option name="presentableId" value="LOCAL-00038" />
-      <option name="project" value="LOCAL" />
-      <updated>1560787177861</updated>
+      <workItem from="1561685198806" duration="16941000" />
     </task>
     <task id="LOCAL-00039" summary="firstpageover 6-18">
       <created>1560830837738</created>
@@ -1231,43 +1222,50 @@
       <option name="project" value="LOCAL" />
       <updated>1561655631995</updated>
     </task>
-    <option name="localTasksCounter" value="87" />
+    <task id="LOCAL-00087" summary="jwt fail 6-28-2">
+      <created>1561694435656</created>
+      <option name="number" value="00087" />
+      <option name="presentableId" value="LOCAL-00087" />
+      <option name="project" value="LOCAL" />
+      <updated>1561694435656</updated>
+    </task>
+    <option name="localTasksCounter" value="88" />
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="MedicalRecordHomeServiceImplTest_setMedicalRecordInfoAndDiagnosisList - 2019.06.26 at 11h 52m 11s.xml">
-      <configuration name="MedicalRecordHomeServiceImplTest.setMedicalRecordInfoAndDiagnosisList" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="MedicalRecordHomeServiceImplTest_setMedicalRecordInfoAndDiagnosisList - 2019.06.26 at 11h 52m 54s.xml">
-      <configuration name="MedicalRecordHomeServiceImplTest.setMedicalRecordInfoAndDiagnosisList" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="MedicalRecordHomeServiceImplTest_setMedicalRecordInfoAndDiagnosisList - 2019.06.26 at 11h 54m 45s.xml">
-      <configuration name="MedicalRecordHomeServiceImplTest.setMedicalRecordInfoAndDiagnosisList" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="MedicalRecordHomeServiceImplTest_setMedicalRecordInfoAndDiagnosisList - 2019.06.26 at 11h 55m 36s.xml">
-      <configuration name="MedicalRecordHomeServiceImplTest.setMedicalRecordInfoAndDiagnosisList" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="MedicalRecordHomeServiceImplTest_setMedicalRecordInfoAndDiagnosisList - 2019.06.26 at 11h 56m 00s.xml">
-      <configuration name="MedicalRecordHomeServiceImplTest.setMedicalRecordInfoAndDiagnosisList" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="MedicalRecordHomeServiceImplTest_setMedicalRecordInfoAndDiagnosisList - 2019.06.26 at 11h 56m 20s.xml">
-      <configuration name="MedicalRecordHomeServiceImplTest.setMedicalRecordInfoAndDiagnosisList" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="ApplyForFmeditemServiceImplTest_setVisitItemAndDetailList1 - 2019.06.26 at 14h 02m 14s.xml">
-      <configuration name="ApplyForFmeditemServiceImplTest.setVisitItemAndDetailList1" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="ApplyForFmeditemServiceImplTest_setVisitItemAndDetailList1 - 2019.06.26 at 14h 02m 51s.xml">
-      <configuration name="ApplyForFmeditemServiceImplTest.setVisitItemAndDetailList1" configurationId="JUnit" />
-    </history-entry>
     <history-entry file="ApplyForFmeditemServiceImplTest_setVisitItemAndDetailList1 - 2019.06.26 at 14h 03m 45s.xml">
       <configuration name="ApplyForFmeditemServiceImplTest.setVisitItemAndDetailList1" configurationId="JUnit" />
     </history-entry>
     <history-entry file="ApplyForFmeditemServiceImplTest_setVisitItemAndDetailList1 - 2019.06.26 at 14h 22m 16s.xml">
       <configuration name="ApplyForFmeditemServiceImplTest.setVisitItemAndDetailList1" configurationId="JUnit" />
     </history-entry>
+    <history-entry file="HashSaltUtilTest_createHash - 2019.06.28 at 13h 38m 29s.xml">
+      <configuration name="HashSaltUtilTest.createHash" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="HashSaltUtilTest_createHash - 2019.06.28 at 13h 38m 56s.xml">
+      <configuration name="HashSaltUtilTest.createHash" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="HashSaltUtilTest_validatePassword - 2019.06.28 at 13h 46m 15s.xml">
+      <configuration name="HashSaltUtilTest.validatePassword" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="HashSaltUtilTest_validatePassword - 2019.06.28 at 13h 47m 17s.xml">
+      <configuration name="HashSaltUtilTest.validatePassword" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="HashSaltUtilTest_validatePassword - 2019.06.28 at 13h 47m 50s.xml">
+      <configuration name="HashSaltUtilTest.validatePassword" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="HashSaltUtilTest_validatePassword - 2019.06.28 at 13h 48m 12s.xml">
+      <configuration name="HashSaltUtilTest.validatePassword" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="HashSaltUtilTest_validatePassword - 2019.06.28 at 14h 00m 16s.xml">
+      <configuration name="HashSaltUtilTest.validatePassword" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="HashSaltUtilTest_validatePassword - 2019.06.28 at 14h 00m 47s.xml">
+      <configuration name="HashSaltUtilTest.validatePassword" configurationId="JUnit" />
+    </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="886338000" />
+    <option name="totallyTimeSpent" value="894641000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1279,10 +1277,10 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="7" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.490625" visible="true" weight="0.23827292" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.490625" visible="true" weight="0.2510661" />
       <window_info id="Structure" order="1" sideWeight="0.509375" side_tool="true" weight="0.22014925" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -1292,22 +1290,22 @@
       <window_info id="Web" order="7" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.6282528" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49946696" weight="0.3394794" />
-      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.4978678" weight="0.38394794" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.4977778" weight="0.34200743" />
+      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.4978678" weight="0.2527115" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="6" weight="0.2998761" />
+      <window_info anchor="bottom" id="TODO" order="6" weight="0.55748373" />
       <window_info anchor="bottom" id="Application Servers" order="7" sideWeight="0.49946696" weight="0.14435695" />
       <window_info anchor="bottom" id="Spring" order="8" weight="0.329718" />
       <window_info anchor="bottom" id="Terminal" order="9" weight="0.329718" />
       <window_info anchor="bottom" id="Docker" order="10" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Event Log" order="11" sideWeight="0.5021322" side_tool="true" weight="0.36008677" />
+      <window_info anchor="bottom" id="Event Log" order="11" sideWeight="0.50222224" side_tool="true" weight="0.34200743" />
       <window_info anchor="bottom" id="Database Changes" order="12" show_stripe_button="false" />
       <window_info anchor="bottom" id="Java Enterprise" order="13" weight="0.32868758" />
       <window_info anchor="bottom" id="Version Control" order="14" weight="0.61496747" />
       <window_info anchor="bottom" id="Database Console" order="15" weight="0.3297546" />
       <window_info anchor="bottom" id="Duplicates" order="16" weight="0.329718" />
-      <window_info anchor="bottom" id="REST Client" order="17" weight="0.38785625" />
+      <window_info anchor="bottom" id="REST Client" order="17" weight="0.38720173" />
       <window_info anchor="bottom" id="Messages" order="18" weight="0.29120198" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="1" weight="0.25" />
@@ -1378,7 +1376,6 @@
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_NEW_TODO" value="false" />
-    <MESSAGE value="prescription over 6-23-2" />
     <MESSAGE value="prescription over 6-23-3" />
     <MESSAGE value="prescription over 6-23-4" />
     <MESSAGE value="finaldiagnosis 6-23-5" />
@@ -1403,7 +1400,8 @@
     <MESSAGE value="new start 6-27" />
     <MESSAGE value="new start 6-27-1" />
     <MESSAGE value="jwt 6-28" />
-    <option name="LAST_COMMIT_MESSAGE" value="jwt 6-28" />
+    <MESSAGE value="jwt fail 6-28-2" />
+    <option name="LAST_COMMIT_MESSAGE" value="jwt fail 6-28-2" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1521,12 +1519,6 @@
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/resources/log4j.properties">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/mapper/VisitItemResultMapper.xml">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/neusoft/ssm/service/ApplyForFmeditemService.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="75">
@@ -1633,16 +1625,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/neusoft/ssm/service/impl/OutpatientDoctorWorkstationServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1050">
-          <caret line="42" column="8" lean-forward="true" selection-start-line="42" selection-start-column="8" selection-end-line="42" selection-end-column="8" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/neusoft/ssm/service/MedicalRecordHomeService.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="250">
@@ -1653,24 +1635,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/neusoft/ssm/service/LoginService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="125">
-          <caret line="5" column="35" selection-start-line="5" selection-start-column="35" selection-end-line="5" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/neusoft/ssm/service/impl/MedicalRecordHomeServiceImpl.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="125">
           <caret line="8" lean-forward="true" selection-start-line="8" selection-end-line="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/neusoft/ssm/service/impl/LoginServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-225">
-          <caret line="6" column="46" selection-start-line="6" selection-start-column="46" selection-end-line="6" selection-end-column="46" />
         </state>
       </provider>
     </entry>
@@ -1696,13 +1664,6 @@
             <element signature="n#style#0;n#img#0;n#a#0;n#th#1;n#tr#0;n#thead#0;n#table#1;n#form#1;n#div#0;n#div#0;n#div#0;n#div#5;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#3;n#div#0;n#div#1;n#div#1;n#div#2;n#div#5;n#body#0;n#html#0;n#!!top" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/static/js/myJquery/applyForJs.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="280">
-          <caret line="272" column="23" selection-start-line="272" selection-start-column="19" selection-end-line="272" selection-end-column="23" />
         </state>
       </provider>
     </entry>
@@ -1790,47 +1751,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/neusoft/ssm/controller/OutpatientDoctorWorkstationController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="66">
-          <caret line="40" column="53" lean-forward="true" selection-start-line="40" selection-start-column="45" selection-end-line="40" selection-end-column="53" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/neusoft/ssm/util/JwtUtil.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret line="9" column="39" selection-start-line="9" selection-start-column="39" selection-end-line="9" selection-end-column="39" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/outpatientDoctorWorkstation.jsp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
           <caret line="17" column="6" selection-start-line="17" selection-start-column="6" selection-end-line="17" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/neusoft/ssm/controller/SetManageController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="125">
-          <caret line="16" column="26" selection-start-line="16" selection-start-column="17" selection-end-line="16" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/neusoft/ssm/controller/MedicalRecordHomeController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="350">
-          <caret line="14" column="34" selection-start-line="14" selection-start-column="17" selection-end-line="14" selection-end-column="34" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1850,58 +1774,44 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/neusoft/ssm/controller/ApplyForFmeditemController.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/neusoft/ssm/util/HashSaltUtil.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="433">
-          <caret line="20" column="33" selection-start-line="20" selection-start-column="17" selection-end-line="20" selection-end-column="33" />
+        <state relative-caret-position="1429">
+          <caret line="74" column="46" lean-forward="true" selection-start-line="74" selection-start-column="46" selection-end-line="74" selection-end-column="46" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/neusoft/ssm/controller/ApplyForPrescriptionController.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/neusoft/ssm/service/LoginService.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="500">
-          <caret line="20" column="37" selection-start-line="20" selection-start-column="17" selection-end-line="20" selection-end-column="37" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state relative-caret-position="125">
+          <caret line="5" column="9" selection-start-line="5" selection-start-column="9" selection-end-line="5" selection-end-column="9" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/static/js/myJquery/loginJs.js">
+    <entry file="file://$PROJECT_DIR$/test/com/neusoft/ssm/util/HashSaltUtilTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="525">
-          <caret line="39" column="49" lean-forward="true" selection-start-line="39" selection-start-column="49" selection-end-line="39" selection-end-column="49" />
+        <state relative-caret-position="233">
+          <caret line="33" column="10" selection-start-line="33" selection-start-column="10" selection-end-line="33" selection-end-column="10" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/neusoft/ssm/controller/LoginController.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/neusoft/ssm/service/impl/LoginServiceImpl.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="572">
-          <caret line="56" column="19" selection-start-line="56" selection-start-column="19" selection-end-line="56" selection-end-column="19" />
+        <state relative-caret-position="257">
+          <caret line="19" column="42" selection-start-line="19" selection-start-column="42" selection-end-line="19" selection-end-column="42" />
           <folding>
             <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/neusoft/ssm/interceptor/TokenInterceptor.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="80">
-          <caret line="21" selection-start-line="21" selection-end-line="21" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <marker date="1561694112423" expanded="true" signature="1470:1594" ph="{...}" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/static/js/myJquery/outpatientDoctorJs.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="510">
-          <caret line="140" column="81" selection-start-line="140" selection-start-column="81" selection-end-line="140" selection-end-column="81" />
+        <state relative-caret-position="-475">
+          <caret line="17" selection-start-line="17" selection-end-line="17" />
           <folding>
             <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#button#0;n#div#0;n#!!top" expanded="true" />
@@ -1925,6 +1835,105 @@
             <element signature="n#style#0;n#td#2;n#tr#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#td#2;n#tr#0;n#!!top" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/static/js/myJquery/applyForJs.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="483">
+          <caret line="828" column="40" lean-forward="true" selection-start-line="828" selection-start-column="40" selection-end-line="828" selection-end-column="40" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/neusoft/ssm/service/impl/OutpatientDoctorWorkstationServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="280">
+          <caret line="54" column="72" selection-start-line="54" selection-start-column="72" selection-end-line="54" selection-end-column="72" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/neusoft/ssm/interceptor/TokenInterceptor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="175">
+          <caret line="19" selection-start-line="19" selection-end-line="19" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <marker date="1561702719617" expanded="true" signature="1464:1588" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/neusoft/ssm/controller/ApplyForFmeditemController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-2242">
+          <caret line="41" column="19" selection-start-line="41" selection-start-column="19" selection-end-line="41" selection-end-column="19" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/neusoft/ssm/controller/OutpatientDoctorWorkstationController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="350">
+          <caret line="14" column="21" selection-start-line="14" selection-start-column="21" selection-end-line="14" selection-end-column="21" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/neusoft/ssm/util/JwtUtil.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="575">
+          <caret line="58" column="53" lean-forward="true" selection-start-line="58" selection-start-column="53" selection-end-line="58" selection-end-column="53" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/neusoft/ssm/controller/LoginController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1825">
+          <caret line="77" column="51" selection-start-line="77" selection-start-column="51" selection-end-line="77" selection-end-column="51" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/static/js/myJquery/loginJs.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="572">
+          <caret line="44" column="25" selection-start-line="44" selection-start-column="25" selection-end-line="44" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/neusoft/ssm/controller/ApplyForPrescriptionController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="325">
+          <caret line="13" column="1" selection-start-line="13" selection-start-column="1" selection-end-line="13" selection-end-column="45" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/neusoft/ssm/controller/MedicalRecordHomeController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1358">
+          <caret line="215" column="62" selection-start-line="215" selection-start-column="62" selection-end-line="215" selection-end-column="62" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/neusoft/ssm/controller/SetManageController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="183">
+          <caret line="89" column="62" selection-start-line="89" selection-start-column="62" selection-end-line="89" selection-end-column="62" />
         </state>
       </provider>
     </entry>

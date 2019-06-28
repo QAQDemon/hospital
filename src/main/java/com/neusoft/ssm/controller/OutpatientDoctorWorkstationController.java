@@ -1,16 +1,15 @@
 package com.neusoft.ssm.controller;
 
-import com.neusoft.ssm.bean.Diagnosis;
-import com.neusoft.ssm.bean.Patient;
-import com.neusoft.ssm.bean.Prescription;
-import com.neusoft.ssm.bean.VisitItem;
+import com.neusoft.ssm.bean.*;
 import com.neusoft.ssm.service.MedicalRecordHomeService;
 import com.neusoft.ssm.service.OutpatientDoctorWorkstationService;
+import com.neusoft.ssm.util.JwtUtil;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -39,17 +38,15 @@ public class OutpatientDoctorWorkstationController {
      * @return java.lang.String
      **/
     @RequestMapping("searchPatient/{category}/{key}")
-    public Map<String,List<Patient>> searchPatient(@PathVariable("category")char category, @PathVariable("key")String key){
-        int doctorId=1;//todo
-        int departID=1;//
-
+    public Map<String,List<Patient>> searchPatient(HttpServletRequest request,@PathVariable("category")char category, @PathVariable("key")String key){
+        int doctorId=JwtUtil.getHeaderDoctorId(request);
+        int departID = JwtUtil.getHeaderDepartmentId(request);
         return getPatientMap(category,doctorId,departID,key);
     }
     @RequestMapping("searchPatient/{category}")
-    public Map<String,List<Patient>> searchPatient1(@PathVariable("category")char category){
-        int doctorId=1;//todo
-        int departID=1;//
-
+    public Map<String,List<Patient>> searchPatient1(HttpServletRequest request,@PathVariable("category")char category){
+        int doctorId=JwtUtil.getHeaderDoctorId(request);
+        int departID = JwtUtil.getHeaderDepartmentId(request);
         return getPatientMap(category,doctorId,departID,"");
     }
     private Map<String,List<Patient>> getPatientMap(char category,int doctorId,int departID,String key){
@@ -125,9 +122,8 @@ public class OutpatientDoctorWorkstationController {
      * @return java.util.List<int[]>
      **/
     @RequestMapping("statistics/{firstTime}/{lastTime}")
-    public Map<Integer, Double[]> statistics(@PathVariable("firstTime")String firstTime,@PathVariable("lastTime")String lastTime){
-        int doctorId=1; //todo
-
+    public Map<Integer, Double[]> statistics(HttpServletRequest request,@PathVariable("firstTime")String firstTime,@PathVariable("lastTime")String lastTime){
+        int doctorId=JwtUtil.getHeaderDoctorId(request);
         return outpatientDoctorWorkstationService.statisticsList(doctorId,firstTime,lastTime);
     }
 }

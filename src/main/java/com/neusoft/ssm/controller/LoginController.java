@@ -39,7 +39,7 @@ public class LoginController {
     }
 
     /*
-     * @Description 登录验证密码后，将jwt的token放入header//TODO
+     * @Description 登录验证密码后，将jwt的token放入header
      * @Param [httpServletResponse, loginName, password]
      * @return java.util.Map<java.lang.String,java.lang.String>
      **/
@@ -48,8 +48,8 @@ public class LoginController {
         User user=new User();
         user.setLoginName(loginName);
         user.setPassword(password);
-        User loginUser=loginService.checkLogin(user);
         //先到数据库验证
+        User loginUser=loginService.checkLogin(user);
         if(-1 != loginUser.getId()) {
             //给用户jwt加密生成token
             String token = JwtUtil.sign(loginUser, 60L* 1000L* 30L);
@@ -64,7 +64,7 @@ public class LoginController {
     }
 
     /*
-     * @Description 登录成功后，可以进行权限管理//TODO
+     * @Description 登录成功后，可以根据用户角色跳转到不同的工作界面
      * @Param [httpServletResponse, loginName, password]
      * @return java.util.Map<java.lang.String,java.lang.String>
      **/
@@ -73,9 +73,9 @@ public class LoginController {
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.addObject("userId", userId);
         modelAndView.addObject("userName", userName);
-        if (userCategory == '1')//todo
+        if (userCategory == '2')//TODO 往里加
             modelAndView.setViewName("outpatientDoctorWorkstation");
-        else modelAndView.setViewName("index");
+        else modelAndView.setViewName("loginFailure");
         return modelAndView;
     }
 }

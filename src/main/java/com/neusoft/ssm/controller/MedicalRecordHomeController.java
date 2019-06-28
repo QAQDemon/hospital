@@ -4,9 +4,10 @@ import com.github.pagehelper.PageInfo;
 import com.neusoft.ssm.bean.*;
 import com.neusoft.ssm.service.MedicalRecordHomeService;
 import com.neusoft.ssm.service.OutpatientDoctorWorkstationService;
+import com.neusoft.ssm.util.JwtUtil;
 import org.springframework.web.bind.annotation.*;
-
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -70,11 +71,10 @@ public class MedicalRecordHomeController {
      * @return string 1成 2 失败
      **/
     @RequestMapping("saveMedicalRecordInfo/{type}/{medicalRecordNo}/{infoId}/{patientId}")
-    public String searchDiagnosis(@PathVariable("type")char type,@PathVariable("medicalRecordNo")int medicalRecordNo,@PathVariable("infoId")int infoId
-            ,@PathVariable("patientId")int patientId,MedicalRecordInfo medicalRecordInfo, DiagnosisFormDTO diagnosisFormDTO){
-        int doctorId=1;//todo
-        int departID=1;//
-
+    public String searchDiagnosis(@PathVariable("type")char type, @PathVariable("medicalRecordNo")int medicalRecordNo, @PathVariable("infoId")int infoId
+            , @PathVariable("patientId")int patientId, MedicalRecordInfo medicalRecordInfo, DiagnosisFormDTO diagnosisFormDTO, HttpServletRequest request){
+        int doctorId = JwtUtil.getHeaderDoctorId(request);
+        int departID = JwtUtil.getHeaderDepartmentId(request);
         if (type == '1')
             medicalRecordInfo.setStatus("1");
         else
@@ -99,17 +99,16 @@ public class MedicalRecordHomeController {
      * @return void
      **/
     @RequestMapping("getMedrecTemplate/{category}")
-    public Map<Integer ,String> getMedrecTemplate(@PathVariable("category")char category){
-        return getMedrecTemplate1Method(category, "");
+    public Map<Integer ,String> getMedrecTemplate(HttpServletRequest request,@PathVariable("category")char category){
+        return getMedrecTemplate1Method(request,category, "");
     }
     @RequestMapping("getMedrecTemplate/{category}/{key}")
-    public Map<Integer ,String> getMedrecTemplate1(@PathVariable("category")char category,@PathVariable("key")String key){
-        return getMedrecTemplate1Method(category, key);
+    public Map<Integer ,String> getMedrecTemplate1(HttpServletRequest request,@PathVariable("category")char category,@PathVariable("key")String key){
+        return getMedrecTemplate1Method(request,category, key);
     }
-    private Map<Integer ,String> getMedrecTemplate1Method(char category,String key){
-        int doctorId=1;//todo
-        int departID=2;//
-
+    private Map<Integer ,String> getMedrecTemplate1Method(HttpServletRequest request,char category,String key){
+        int doctorId = JwtUtil.getHeaderDoctorId(request);
+        int departID = JwtUtil.getHeaderDepartmentId(request);
         int belongId=0;//1：0；2：科室id；3：医生id
         if(category=='2')
             belongId=departID;
@@ -143,9 +142,8 @@ public class MedicalRecordHomeController {
      * @return void
      **/
     @RequestMapping("getCommonOption")
-    public Map<String,List<Disease>> getCommonOption(){
-        int doctorId=1;//todo
-
+    public Map<String,List<Disease>> getCommonOption(HttpServletRequest request){
+        int doctorId = JwtUtil.getHeaderDoctorId(request);
         Map<String,List<Disease>> map = new HashMap<>();
         map.put("xDiseaseCommonOptionList",medicalRecordHomeService.getCommonDiagnosisList(outpatientDoctorWorkstationService.getCommonOptionById('1', doctorId)));
         map.put("zDiseaseCommonOptionList",medicalRecordHomeService.getCommonDiagnosisList(outpatientDoctorWorkstationService.getCommonOptionById('2', doctorId)));
@@ -158,9 +156,8 @@ public class MedicalRecordHomeController {
      * @return void
      **/
     @RequestMapping("deleteCommonDiagnosis/{type}/{diseaseId}")
-    public int deleteCommonDiagnosis(@PathVariable("type")char type,@PathVariable("diseaseId")int diseaseId){
-        int doctorId=1;//todo
-
+    public int deleteCommonDiagnosis(HttpServletRequest request,@PathVariable("type")char type,@PathVariable("diseaseId")int diseaseId){
+        int doctorId = JwtUtil.getHeaderDoctorId(request);
         return outpatientDoctorWorkstationService.deleteCommonOption(doctorId, type+"", diseaseId);
     }
 
@@ -170,9 +167,8 @@ public class MedicalRecordHomeController {
      * @return java.lang.Boolean
      **/
     @RequestMapping("addCommonDiagnosis/{type}/{diseaseId}")
-    public int addCommonDiagnosis(@PathVariable("type")char type,@PathVariable("diseaseId")int diseaseId){
-        int doctorId=1;//todo
-
+    public int addCommonDiagnosis(HttpServletRequest request,@PathVariable("type")char type,@PathVariable("diseaseId")int diseaseId){
+        int doctorId = JwtUtil.getHeaderDoctorId(request);
         return outpatientDoctorWorkstationService.addCommonOption(doctorId, type+"", diseaseId);
     }
 
@@ -215,10 +211,9 @@ public class MedicalRecordHomeController {
      * @return int 1成功 0更新失败（已删除） 2新增失败（code已存在）
      **/
     @RequestMapping("saveMedrecTemplate/{type}")
-    public int saveMedrecTemplate(@PathVariable("type")char type,MedrecTemplate medrecTemplate,int[] diseaseId0,int[] diseaseId1){
-        int doctorId=1;//todo
-        int departID=2;
-
+    public int saveMedrecTemplate(HttpServletRequest request,@PathVariable("type")char type,MedrecTemplate medrecTemplate,int[] diseaseId0,int[] diseaseId1){
+        int doctorId=JwtUtil.getHeaderDoctorId(request);
+        int departID = JwtUtil.getHeaderDepartmentId(request);
         if(medrecTemplate.getCategory().equals("1"))
             medrecTemplate.setBelongId(0);
         if(medrecTemplate.getCategory().equals("2"))

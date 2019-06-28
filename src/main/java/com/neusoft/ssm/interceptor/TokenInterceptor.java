@@ -23,7 +23,7 @@ public class TokenInterceptor implements HandlerInterceptor{
             token = token.substring(7);
             User loginUser = JwtUtil.unsign(token, User.class);
             if(null != loginUser) {
-                //todo update jwt 权限？
+                //todo  jwt 权限？
                 //update token
                 String newToken = JwtUtil.sign(loginUser, 60L* 1000L* 30L);
                 response.setHeader("Authorization",newToken);

@@ -584,7 +584,7 @@ $("#DiagnosisModal .modal-footer :button:contains('导入结果')").click(functi
     $("#DiagnosisModal button[data-dismiss='modal']").click();
 });
 //保存到模板
-$("#DiagnosisModal .modal-footer :button:contains('保存')").click(function () {//todo
+$("#DiagnosisModal .modal-footer :button:contains('保存')").click(function () {
     var resultNode;
     var num;
     if($("#DiagnosisModal h4").html()==="西医诊断"){

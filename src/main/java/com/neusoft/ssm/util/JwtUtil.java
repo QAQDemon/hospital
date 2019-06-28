@@ -3,8 +3,13 @@ package com.neusoft.ssm.util;
 import com.auth0.jwt.JWTSigner;
 import com.auth0.jwt.JWTVerifier;
 import com.auth0.jwt.internal.com.fasterxml.jackson.databind.ObjectMapper;
+import com.neusoft.ssm.bean.User;
+import org.springframework.http.HttpRequest;
+
+import javax.servlet.http.HttpServletRequest;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Objects;
 
 public class JwtUtil {
     private static final String SECRET = "HIS#$##^%^!!@<>:{{}$&&%#441125896ADDGGBS%*^)(&)$#%^&#+_+0DYYTR";
@@ -44,6 +49,21 @@ public class JwtUtil {
         } catch (Exception e) {
             return null;
         }
+    }
+
+    //获得request中的id和departmentId
+    private static User getObjectFromRequestHeader(HttpServletRequest request){
+        String token=request.getHeader("Authorization");//Bearer token
+        if(!(null == token||!token.startsWith("Bearer "))){
+            token = token.substring(7);
+            return JwtUtil.unsign(token, User.class);
+        }else return null;
+    }
+    public static int getHeaderDoctorId(HttpServletRequest request){
+        return Objects.requireNonNull(Objects.requireNonNull(JwtUtil.getObjectFromRequestHeader(request)).getId());
+    }
+    public static int getHeaderDepartmentId(HttpServletRequest request){
+        return Objects.requireNonNull(Objects.requireNonNull(JwtUtil.getObjectFromRequestHeader(request)).getDepartmentId());
     }
 
 }
