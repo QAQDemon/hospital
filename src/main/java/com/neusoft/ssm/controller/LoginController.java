@@ -29,6 +29,16 @@ public class LoginController {
     }
 
     /*
+     * @Description 跳转到error界面
+     * @Param []
+     * @return org.springframework.web.servlet.ModelAndView
+     **/
+    @RequestMapping("loginFailure")
+    public ModelAndView loginFailure() {
+        return new ModelAndView("loginFailure");
+    }
+
+    /*
      * @Description 登录验证密码后，将jwt的token放入header//TODO
      * @Param [httpServletResponse, loginName, password]
      * @return java.util.Map<java.lang.String,java.lang.String>

@@ -122,7 +122,7 @@ function setPatientList(seenList,listName,num){
 var recordMedRecdNo="";//记录选中的患者病历号,在诊毕后赋值，病人搜索的ajax返回后会使用，使用后设为""
 //根据类别和关键词修改url
 function searchPatientAjax(){
-    var urlS="/outpatientDoctorWorkstation/searchPatient/";
+    var urlS="outpatientDoctorWorkstation/searchPatient/";
     var keyVal=$("#searchPatientKey").val();
     urlS+=($("#patientSearchCategory1").hasClass("active"))?1:2;
     urlS+=(keyVal==="")?"":("/"+keyVal);
@@ -133,7 +133,12 @@ function searchPatientAjax(){
         headers: {
             Authorization:"Bearer "+getCookie("token")
         },
-        success: function (result) {
+        error:function(result){
+            console.log(result);
+            showAlertDiv("alert-warning","警告!","登录失效，请重新登录。");
+        },
+        success: function (result, textStatus, request) {
+            setTokenToCookie("token",request.getResponseHeader('Authorization'));
             var isSeenList = result.isSeenList;
             var notSeenList = result.notSeenList;
             patientList=notSeenList.concat(isSeenList);
