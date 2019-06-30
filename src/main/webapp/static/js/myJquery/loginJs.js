@@ -30,7 +30,7 @@ function submitUserInfo(userId,userName,userCategory){
     $("body").append($form);
     $form.submit();
 }
-$("#submitButton").click(function () {
+function loginAjax(){
     $('form').fadeOut(500);
     $('.wrapper').addClass('form-success');
     var name=$("#loginName").val();
@@ -65,5 +65,11 @@ $("#submitButton").click(function () {
             });
         },1000);
     }
+}
+$("#loginForm").on("click","button",function () {
+    loginAjax();
+}).on("keyup","input[type='password']",function (e) {
+    if(e.keyCode===13){
+        loginAjax();
+    }
 });
-

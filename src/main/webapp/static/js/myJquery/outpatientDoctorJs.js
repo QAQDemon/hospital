@@ -661,7 +661,7 @@ $("#medicalInfoBtnGroup").find(".btn-outline-secondary,.btn-outline-success").cl
             if(result==="1"){
                 showAlertDiv("alert-success","成功!","病历信息保存成功。");
                 //提交成功则暂存提交不可用
-                $("#patientListForm :checked").click();
+                $("#patientListForm :radio:checked").closest("tr").click();
             }
             else showAlertDiv("alert-warning","警告!","病历信息保存失败。");
         }
