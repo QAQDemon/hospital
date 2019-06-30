@@ -4,10 +4,10 @@
 
   <insert id="insertForeach" parameterType="java.util.List" keyProperty="id" useGeneratedKeys="true">
     insert into prescription_detail
-    (id,prescription_id,drug_id,usage_method,consumption,frequent,days,amount,entrustment,is_return_medicine)
+    (id,prescription_id,drug_id,usage_method,consumption,frequent,days,amount,entrustment,is_return_medicine,back_number)
     values
     <foreach collection="list" item="item" index="index" separator=",">
-      (#{item.id},#{item.prescriptionId},#{item.drugId},#{item.usageMethod},#{item.consumption},#{item.frequent},#{item.days},#{item.amount},#{item.entrustment},#{item.isReturnMedicine})
+      (#{item.id},#{item.prescriptionId},#{item.drugId},#{item.usageMethod},#{item.consumption},#{item.frequent},#{item.days},#{item.amount},#{item.entrustment},#{item.isReturnMedicine},#{item.backNumber})
     </foreach>
   </insert>
 
@@ -25,7 +25,7 @@
 
 
 
-  <resultMap id="BaseResultMap" type="com.neusoft.ssm.bean.PrescriptionDetail" >
+  <resultMap id="PrescriptionDetailBaseResultMap" type="com.neusoft.ssm.bean.PrescriptionDetail" >
     <constructor >
       <idArg column="id" jdbcType="INTEGER" javaType="java.lang.Integer" />
       <arg column="prescription_id" jdbcType="INTEGER" javaType="java.lang.Integer" />
@@ -37,6 +37,7 @@
       <arg column="amount" jdbcType="INTEGER" javaType="java.lang.Integer" />
       <arg column="entrustment" jdbcType="VARCHAR" javaType="java.lang.String" />
       <arg column="is_return_medicine" jdbcType="CHAR" javaType="java.lang.String" />
+      <arg column="back_number" jdbcType="INTEGER" javaType="java.lang.Integer" />
     </constructor>
   </resultMap>
   <sql id="Example_Where_Clause" >
@@ -99,9 +100,9 @@
   </sql>
   <sql id="Base_Column_List" >
     id, prescription_id, drug_id, usage_method, consumption, frequent, days, amount, 
-    entrustment, is_return_medicine
+    entrustment, is_return_medicine, back_number
   </sql>
-  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.neusoft.ssm.bean.PrescriptionDetailExample" >
+  <select id="selectByExample" resultMap="PrescriptionDetailBaseResultMap" parameterType="com.neusoft.ssm.bean.PrescriptionDetailExample" >
     select
     <if test="distinct" >
       distinct
@@ -122,7 +123,7 @@
     </if>
   </delete>
   <insert id="insertSelective" parameterType="com.neusoft.ssm.bean.PrescriptionDetail" >
-    <selectKey resultType="java.lang.Integer" keyProperty="id" order="AFTER" >
+    <selectKey resultType="java.lang.Integer" keyProperty="id" order="BEFORE" >
       SELECT LAST_INSERT_ID()
     </selectKey>
     insert into prescription_detail
@@ -155,6 +156,9 @@
       <if test="isReturnMedicine != null" >
         is_return_medicine,
       </if>
+      <if test="backNumber != null" >
+        back_number,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       #{id,jdbcType=INTEGER},
@@ -184,6 +188,9 @@
       </if>
       <if test="isReturnMedicine != null" >
         #{isReturnMedicine,jdbcType=CHAR},
+      </if>
+      <if test="backNumber != null" >
+        #{backNumber,jdbcType=INTEGER},
       </if>
     </trim>
   </insert>
@@ -226,6 +233,9 @@
       <if test="record.isReturnMedicine != null" >
         is_return_medicine = #{record.isReturnMedicine,jdbcType=CHAR},
       </if>
+      <if test="record.backNumber != null" >
+        back_number = #{record.backNumber,jdbcType=INTEGER},
+      </if>
     </set>
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
@@ -242,7 +252,8 @@
       days = #{record.days,jdbcType=INTEGER},
       amount = #{record.amount,jdbcType=INTEGER},
       entrustment = #{record.entrustment,jdbcType=VARCHAR},
-      is_return_medicine = #{record.isReturnMedicine,jdbcType=CHAR}
+      is_return_medicine = #{record.isReturnMedicine,jdbcType=CHAR},
+      back_number = #{record.backNumber,jdbcType=INTEGER}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -276,6 +287,9 @@
       </if>
       <if test="isReturnMedicine != null" >
         is_return_medicine = #{isReturnMedicine,jdbcType=CHAR},
+      </if>
+      <if test="backNumber != null" >
+        back_number = #{backNumber,jdbcType=INTEGER},
       </if>
     </set>
     where id = #{id,jdbcType=INTEGER}

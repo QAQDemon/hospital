@@ -23,7 +23,9 @@ public class PrescriptionDetail {
 
     private String isReturnMedicine;
 
-    public PrescriptionDetail(Integer id, Integer prescriptionId, Integer drugId, String usageMethod, BigDecimal consumption, String frequent, Integer days, Integer amount, String entrustment, String isReturnMedicine) {
+    private Integer backNumber;
+
+    public PrescriptionDetail(Integer id, Integer prescriptionId, Integer drugId, String usageMethod, BigDecimal consumption, String frequent, Integer days, Integer amount, String entrustment, String isReturnMedicine, Integer backNumber) {
         this.id = id;
         this.prescriptionId = prescriptionId;
         this.drugId = drugId;
@@ -34,6 +36,7 @@ public class PrescriptionDetail {
         this.amount = amount;
         this.entrustment = entrustment;
         this.isReturnMedicine = isReturnMedicine;
+        this.backNumber = backNumber;
     }
 
     public PrescriptionDetail() {
@@ -118,5 +121,13 @@ public class PrescriptionDetail {
 
     public void setIsReturnMedicine(String isReturnMedicine) {
         this.isReturnMedicine = isReturnMedicine == null ? null : isReturnMedicine.trim();
+    }
+
+    public Integer getBackNumber() {
+        return backNumber;
+    }
+
+    public void setBackNumber(Integer backNumber) {
+        this.backNumber = backNumber;
     }
 }

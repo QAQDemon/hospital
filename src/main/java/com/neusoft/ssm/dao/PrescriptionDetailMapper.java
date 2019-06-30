@@ -40,12 +40,12 @@ public interface PrescriptionDetailMapper {
         "drug_id, usage_method, ",
         "consumption, frequent, ",
         "days, amount, entrustment, ",
-        "is_return_medicine)",
+        "is_return_medicine, back_number)",
         "values (#{id,jdbcType=INTEGER}, #{prescriptionId,jdbcType=INTEGER}, ",
         "#{drugId,jdbcType=INTEGER}, #{usageMethod,jdbcType=VARCHAR}, ",
         "#{consumption,jdbcType=DECIMAL}, #{frequent,jdbcType=CHAR}, ",
         "#{days,jdbcType=INTEGER}, #{amount,jdbcType=INTEGER}, #{entrustment,jdbcType=VARCHAR}, ",
-        "#{isReturnMedicine,jdbcType=CHAR})"
+        "#{isReturnMedicine,jdbcType=CHAR}, #{backNumber,jdbcType=INTEGER})"
     })
     @SelectKey(statement="SELECT LAST_INSERT_ID()", keyProperty="id", before=true, resultType=Integer.class)
     int insert(PrescriptionDetail record);
@@ -57,11 +57,11 @@ public interface PrescriptionDetailMapper {
     @Select({
         "select",
         "id, prescription_id, drug_id, usage_method, consumption, frequent, days, amount, ",
-        "entrustment, is_return_medicine",
+        "entrustment, is_return_medicine, back_number",
         "from prescription_detail",
         "where id = #{id,jdbcType=INTEGER}"
     })
-    @ResultMap("BaseResultMap")
+    @ResultMap("PrescriptionDetailBaseResultMap")
     PrescriptionDetail selectByPrimaryKey(Integer id);
 
     int updateByExampleSelective(@Param("record") PrescriptionDetail record, @Param("example") PrescriptionDetailExample example);
@@ -80,7 +80,8 @@ public interface PrescriptionDetailMapper {
           "days = #{days,jdbcType=INTEGER},",
           "amount = #{amount,jdbcType=INTEGER},",
           "entrustment = #{entrustment,jdbcType=VARCHAR},",
-          "is_return_medicine = #{isReturnMedicine,jdbcType=CHAR}",
+          "is_return_medicine = #{isReturnMedicine,jdbcType=CHAR},",
+          "back_number = #{backNumber,jdbcType=INTEGER}",
         "where id = #{id,jdbcType=INTEGER}"
     })
     int updateByPrimaryKey(PrescriptionDetail record);

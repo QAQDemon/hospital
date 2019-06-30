@@ -744,6 +744,66 @@ public class PrescriptionDetailExample {
             addCriterion("is_return_medicine not between", value1, value2, "isReturnMedicine");
             return (Criteria) this;
         }
+
+        public Criteria andBackNumberIsNull() {
+            addCriterion("back_number is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andBackNumberIsNotNull() {
+            addCriterion("back_number is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andBackNumberEqualTo(Integer value) {
+            addCriterion("back_number =", value, "backNumber");
+            return (Criteria) this;
+        }
+
+        public Criteria andBackNumberNotEqualTo(Integer value) {
+            addCriterion("back_number <>", value, "backNumber");
+            return (Criteria) this;
+        }
+
+        public Criteria andBackNumberGreaterThan(Integer value) {
+            addCriterion("back_number >", value, "backNumber");
+            return (Criteria) this;
+        }
+
+        public Criteria andBackNumberGreaterThanOrEqualTo(Integer value) {
+            addCriterion("back_number >=", value, "backNumber");
+            return (Criteria) this;
+        }
+
+        public Criteria andBackNumberLessThan(Integer value) {
+            addCriterion("back_number <", value, "backNumber");
+            return (Criteria) this;
+        }
+
+        public Criteria andBackNumberLessThanOrEqualTo(Integer value) {
+            addCriterion("back_number <=", value, "backNumber");
+            return (Criteria) this;
+        }
+
+        public Criteria andBackNumberIn(List<Integer> values) {
+            addCriterion("back_number in", values, "backNumber");
+            return (Criteria) this;
+        }
+
+        public Criteria andBackNumberNotIn(List<Integer> values) {
+            addCriterion("back_number not in", values, "backNumber");
+            return (Criteria) this;
+        }
+
+        public Criteria andBackNumberBetween(Integer value1, Integer value2) {
+            addCriterion("back_number between", value1, value2, "backNumber");
+            return (Criteria) this;
+        }
+
+        public Criteria andBackNumberNotBetween(Integer value1, Integer value2) {
+            addCriterion("back_number not between", value1, value2, "backNumber");
+            return (Criteria) this;
+        }
     }
 
     public static class Criteria extends GeneratedCriteria {

@@ -1336,6 +1336,136 @@ public class RegistrationInfoExample {
             return (Criteria) this;
         }
 
+        public Criteria andIdcardIsNull() {
+            addCriterion("idcard is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andIdcardIsNotNull() {
+            addCriterion("idcard is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andIdcardEqualTo(String value) {
+            addCriterion("idcard =", value, "idcard");
+            return (Criteria) this;
+        }
+
+        public Criteria andIdcardNotEqualTo(String value) {
+            addCriterion("idcard <>", value, "idcard");
+            return (Criteria) this;
+        }
+
+        public Criteria andIdcardGreaterThan(String value) {
+            addCriterion("idcard >", value, "idcard");
+            return (Criteria) this;
+        }
+
+        public Criteria andIdcardGreaterThanOrEqualTo(String value) {
+            addCriterion("idcard >=", value, "idcard");
+            return (Criteria) this;
+        }
+
+        public Criteria andIdcardLessThan(String value) {
+            addCriterion("idcard <", value, "idcard");
+            return (Criteria) this;
+        }
+
+        public Criteria andIdcardLessThanOrEqualTo(String value) {
+            addCriterion("idcard <=", value, "idcard");
+            return (Criteria) this;
+        }
+
+        public Criteria andIdcardLike(String value) {
+            addCriterion("idcard like", value, "idcard");
+            return (Criteria) this;
+        }
+
+        public Criteria andIdcardNotLike(String value) {
+            addCriterion("idcard not like", value, "idcard");
+            return (Criteria) this;
+        }
+
+        public Criteria andIdcardIn(List<String> values) {
+            addCriterion("idcard in", values, "idcard");
+            return (Criteria) this;
+        }
+
+        public Criteria andIdcardNotIn(List<String> values) {
+            addCriterion("idcard not in", values, "idcard");
+            return (Criteria) this;
+        }
+
+        public Criteria andIdcardBetween(String value1, String value2) {
+            addCriterion("idcard between", value1, value2, "idcard");
+            return (Criteria) this;
+        }
+
+        public Criteria andIdcardNotBetween(String value1, String value2) {
+            addCriterion("idcard not between", value1, value2, "idcard");
+            return (Criteria) this;
+        }
+
+        public Criteria andTollmanidIsNull() {
+            addCriterion("tollmanid is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andTollmanidIsNotNull() {
+            addCriterion("tollmanid is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andTollmanidEqualTo(Integer value) {
+            addCriterion("tollmanid =", value, "tollmanid");
+            return (Criteria) this;
+        }
+
+        public Criteria andTollmanidNotEqualTo(Integer value) {
+            addCriterion("tollmanid <>", value, "tollmanid");
+            return (Criteria) this;
+        }
+
+        public Criteria andTollmanidGreaterThan(Integer value) {
+            addCriterion("tollmanid >", value, "tollmanid");
+            return (Criteria) this;
+        }
+
+        public Criteria andTollmanidGreaterThanOrEqualTo(Integer value) {
+            addCriterion("tollmanid >=", value, "tollmanid");
+            return (Criteria) this;
+        }
+
+        public Criteria andTollmanidLessThan(Integer value) {
+            addCriterion("tollmanid <", value, "tollmanid");
+            return (Criteria) this;
+        }
+
+        public Criteria andTollmanidLessThanOrEqualTo(Integer value) {
+            addCriterion("tollmanid <=", value, "tollmanid");
+            return (Criteria) this;
+        }
+
+        public Criteria andTollmanidIn(List<Integer> values) {
+            addCriterion("tollmanid in", values, "tollmanid");
+            return (Criteria) this;
+        }
+
+        public Criteria andTollmanidNotIn(List<Integer> values) {
+            addCriterion("tollmanid not in", values, "tollmanid");
+            return (Criteria) this;
+        }
+
+        public Criteria andTollmanidBetween(Integer value1, Integer value2) {
+            addCriterion("tollmanid between", value1, value2, "tollmanid");
+            return (Criteria) this;
+        }
+
+        public Criteria andTollmanidNotBetween(Integer value1, Integer value2) {
+            addCriterion("tollmanid not between", value1, value2, "tollmanid");
+            return (Criteria) this;
+        }
+
         public Criteria andIfBookIsNull() {
             addCriterion("if_book is null");
             return (Criteria) this;

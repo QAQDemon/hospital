@@ -42,9 +42,13 @@ public class RegistrationInfo {
 
     private String isSeenDocator;
 
+    private String idcard;
+
+    private Integer tollmanid;
+
     private String ifBook;
 
-    public RegistrationInfo(Integer id, Integer medicalRecordNo, String patientName, String patientGender, Integer age, Date birthDate, String settleAccountsCategory, String registrationCategory, String medicalCategory, Integer departId, Integer doctorId, String doctorName, Date registrationDate, String status, String registrationSource, BigDecimal expense, BigDecimal refundAmount, Date seeDoctorDate, String isSeenDocator, String ifBook) {
+    public RegistrationInfo(Integer id, Integer medicalRecordNo, String patientName, String patientGender, Integer age, Date birthDate, String settleAccountsCategory, String registrationCategory, String medicalCategory, Integer departId, Integer doctorId, String doctorName, Date registrationDate, String status, String registrationSource, BigDecimal expense, BigDecimal refundAmount, Date seeDoctorDate, String isSeenDocator, String idcard, Integer tollmanid, String ifBook) {
         this.id = id;
         this.medicalRecordNo = medicalRecordNo;
         this.patientName = patientName;
@@ -64,6 +68,8 @@ public class RegistrationInfo {
         this.refundAmount = refundAmount;
         this.seeDoctorDate = seeDoctorDate;
         this.isSeenDocator = isSeenDocator;
+        this.idcard = idcard;
+        this.tollmanid = tollmanid;
         this.ifBook = ifBook;
     }
 
@@ -221,6 +227,22 @@ public class RegistrationInfo {
 
     public void setIsSeenDocator(String isSeenDocator) {
         this.isSeenDocator = isSeenDocator == null ? null : isSeenDocator.trim();
+    }
+
+    public String getIdcard() {
+        return idcard;
+    }
+
+    public void setIdcard(String idcard) {
+        this.idcard = idcard == null ? null : idcard.trim();
+    }
+
+    public Integer getTollmanid() {
+        return tollmanid;
+    }
+
+    public void setTollmanid(Integer tollmanid) {
+        this.tollmanid = tollmanid;
     }
 
     public String getIfBook() {

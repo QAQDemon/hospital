@@ -32,7 +32,8 @@ public interface RegistrationInfoMapper {
         "registration_date, status, ",
         "registration_source, expense, ",
         "refund_amount, see_doctor_date, ",
-        "is_seen_docator, if_book)",
+        "is_seen_docator, idcard, ",
+        "tollmanid, if_book)",
         "values (#{id,jdbcType=INTEGER}, #{medicalRecordNo,jdbcType=INTEGER}, ",
         "#{patientName,jdbcType=VARCHAR}, #{patientGender,jdbcType=CHAR}, ",
         "#{age,jdbcType=INTEGER}, #{birthDate,jdbcType=TIMESTAMP}, ",
@@ -42,7 +43,8 @@ public interface RegistrationInfoMapper {
         "#{registrationDate,jdbcType=TIMESTAMP}, #{status,jdbcType=CHAR}, ",
         "#{registrationSource,jdbcType=CHAR}, #{expense,jdbcType=DECIMAL}, ",
         "#{refundAmount,jdbcType=DECIMAL}, #{seeDoctorDate,jdbcType=TIMESTAMP}, ",
-        "#{isSeenDocator,jdbcType=CHAR}, #{ifBook,jdbcType=CHAR})"
+        "#{isSeenDocator,jdbcType=CHAR}, #{idcard,jdbcType=VARCHAR}, ",
+        "#{tollmanid,jdbcType=INTEGER}, #{ifBook,jdbcType=CHAR})"
     })
     @SelectKey(statement="SELECT LAST_INSERT_ID()", keyProperty="id", before=true, resultType=Integer.class)
     int insert(RegistrationInfo record);
@@ -56,11 +58,11 @@ public interface RegistrationInfoMapper {
         "id, medical_record_no, patient_name, patient_gender, age, birth_date, settle_accounts_category, ",
         "registration_category, medical_category, depart_id, doctor_id, doctor_name, ",
         "registration_date, status, registration_source, expense, refund_amount, see_doctor_date, ",
-        "is_seen_docator, if_book",
+        "is_seen_docator, idcard, tollmanid, if_book",
         "from registration_info",
         "where id = #{id,jdbcType=INTEGER}"
     })
-    @ResultMap("BaseResultMap")
+    @ResultMap("RegistrationInfoBaseResultMap")
     RegistrationInfo selectByPrimaryKey(Integer id);
 
     int updateByExampleSelective(@Param("record") RegistrationInfo record, @Param("example") RegistrationInfoExample example);
@@ -89,6 +91,8 @@ public interface RegistrationInfoMapper {
           "refund_amount = #{refundAmount,jdbcType=DECIMAL},",
           "see_doctor_date = #{seeDoctorDate,jdbcType=TIMESTAMP},",
           "is_seen_docator = #{isSeenDocator,jdbcType=CHAR},",
+          "idcard = #{idcard,jdbcType=VARCHAR},",
+          "tollmanid = #{tollmanid,jdbcType=INTEGER},",
           "if_book = #{ifBook,jdbcType=CHAR}",
         "where id = #{id,jdbcType=INTEGER}"
     })

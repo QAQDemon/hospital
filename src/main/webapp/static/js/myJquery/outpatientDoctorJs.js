@@ -1251,3 +1251,9 @@ $("#outpatientReLoginBtn").click(function () {
     document.cookie = "token" + "=" + "" + "; " + expires;//清除cookie的token
     window.location.href='loginController/loginPage';
 });
+
+//点击HIS图片
+$("img[alt='logo']").closest("a").click(function () {
+    $("#allNavTab a:first").click();
+    return false;
+});

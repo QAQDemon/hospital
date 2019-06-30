@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.neusoft.ssm.dao.RegistrationInfoMapper" >
-  <resultMap id="BaseResultMap" type="com.neusoft.ssm.bean.RegistrationInfo" >
+  <resultMap id="RegistrationInfoBaseResultMap" type="com.neusoft.ssm.bean.RegistrationInfo" >
     <constructor >
       <idArg column="id" jdbcType="INTEGER" javaType="java.lang.Integer" />
       <arg column="medical_record_no" jdbcType="INTEGER" javaType="java.lang.Integer" />
@@ -22,6 +22,8 @@
       <arg column="refund_amount" jdbcType="DECIMAL" javaType="java.math.BigDecimal" />
       <arg column="see_doctor_date" jdbcType="TIMESTAMP" javaType="java.util.Date" />
       <arg column="is_seen_docator" jdbcType="CHAR" javaType="java.lang.String" />
+      <arg column="idcard" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="tollmanid" jdbcType="INTEGER" javaType="java.lang.Integer" />
       <arg column="if_book" jdbcType="CHAR" javaType="java.lang.String" />
     </constructor>
   </resultMap>
@@ -87,9 +89,9 @@
     id, medical_record_no, patient_name, patient_gender, age, birth_date, settle_accounts_category, 
     registration_category, medical_category, depart_id, doctor_id, doctor_name, registration_date, 
     status, registration_source, expense, refund_amount, see_doctor_date, is_seen_docator, 
-    if_book
+    idcard, tollmanid, if_book
   </sql>
-  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.neusoft.ssm.bean.RegistrationInfoExample" >
+  <select id="selectByExample" resultMap="RegistrationInfoBaseResultMap" parameterType="com.neusoft.ssm.bean.RegistrationInfoExample" >
     select
     <if test="distinct" >
       distinct
@@ -110,7 +112,7 @@
     </if>
   </delete>
   <insert id="insertSelective" parameterType="com.neusoft.ssm.bean.RegistrationInfo" >
-    <selectKey resultType="java.lang.Integer" keyProperty="id" order="BEFORE" >
+    <selectKey resultType="java.lang.Integer" keyProperty="id" order="AFTER" >
       SELECT LAST_INSERT_ID()
     </selectKey>
     insert into registration_info
@@ -169,6 +171,12 @@
       </if>
       <if test="isSeenDocator != null" >
         is_seen_docator,
+      </if>
+      <if test="idcard != null" >
+        idcard,
+      </if>
+      <if test="tollmanid != null" >
+        tollmanid,
       </if>
       <if test="ifBook != null" >
         if_book,
@@ -229,6 +237,12 @@
       </if>
       <if test="isSeenDocator != null" >
         #{isSeenDocator,jdbcType=CHAR},
+      </if>
+      <if test="idcard != null" >
+        #{idcard,jdbcType=VARCHAR},
+      </if>
+      <if test="tollmanid != null" >
+        #{tollmanid,jdbcType=INTEGER},
       </if>
       <if test="ifBook != null" >
         #{ifBook,jdbcType=CHAR},
@@ -301,6 +315,12 @@
       <if test="record.isSeenDocator != null" >
         is_seen_docator = #{record.isSeenDocator,jdbcType=CHAR},
       </if>
+      <if test="record.idcard != null" >
+        idcard = #{record.idcard,jdbcType=VARCHAR},
+      </if>
+      <if test="record.tollmanid != null" >
+        tollmanid = #{record.tollmanid,jdbcType=INTEGER},
+      </if>
       <if test="record.ifBook != null" >
         if_book = #{record.ifBook,jdbcType=CHAR},
       </if>
@@ -330,6 +350,8 @@
       refund_amount = #{record.refundAmount,jdbcType=DECIMAL},
       see_doctor_date = #{record.seeDoctorDate,jdbcType=TIMESTAMP},
       is_seen_docator = #{record.isSeenDocator,jdbcType=CHAR},
+      idcard = #{record.idcard,jdbcType=VARCHAR},
+      tollmanid = #{record.tollmanid,jdbcType=INTEGER},
       if_book = #{record.ifBook,jdbcType=CHAR}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
@@ -391,6 +413,12 @@
       </if>
       <if test="isSeenDocator != null" >
         is_seen_docator = #{isSeenDocator,jdbcType=CHAR},
+      </if>
+      <if test="idcard != null" >
+        idcard = #{idcard,jdbcType=VARCHAR},
+      </if>
+      <if test="tollmanid != null" >
+        tollmanid = #{tollmanid,jdbcType=INTEGER},
       </if>
       <if test="ifBook != null" >
         if_book = #{ifBook,jdbcType=CHAR},
