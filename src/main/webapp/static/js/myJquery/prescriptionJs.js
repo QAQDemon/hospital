@@ -217,6 +217,7 @@ $("#prescriptionBtnGroup button:eq(0)").click(function () {
         '<td></td>\n' +
         '</tr>');
     $("#prescriptionCard :text:last").focus();
+    $("#prescriptionCard td:last").html(0.00);
     changePrescriptionBtns(2);
 });
 //暂存开立
@@ -229,37 +230,39 @@ $("#prescriptionBtnGroup button:gt(0):lt(2)").click(function () {
         return;
     }
     var flag=0;
-    $("#drugsCard [name='entrustment']").each(function () {
-        if($(this).val()===""){
-            showAlertDiv("alert-warning","警告!","请输入用药嘱托。");
-            flag=1;
-            return false;
-        }
-    });
-    $("#drugsCard :selected").each(function () {
-        if($(this).val()==="0"){
-            showAlertDiv("alert-warning","警告!","请完成选择。");
-            flag=1;
-            return false;
-        }
-    });
-    $("#drugsCard [type='number']").each(function () {
-        var num=$(this).val();
-        if(num===""||num<=0||(num%1 !== 0)){
-            showAlertDiv("alert-warning","警告!","天数和数量必须是大于0的整数。");
-            flag=1;
-            return false;
-        }
-    });
-    $("#drugsCard [name='consumption']").each(function () {
-        var num=$(this).val();
-        var reg=/^\d+(\.\d+)?$/;
-        if(!reg.test(num)||num==="0"){
-            showAlertDiv("alert-warning","警告!","用量是必须大于0的数字。");
-            flag=1;
-            return false;
-        }
-    });
+    if($(this).index()===2) {//发送
+        $("#drugsCard [name='entrustment']").each(function () {
+            if($(this).val()===""){
+                showAlertDiv("alert-warning","警告!","请输入用药嘱托。");
+                flag=1;
+                return false;
+            }
+        });
+        $("#drugsCard :selected").each(function () {
+            if($(this).val()==="0"){
+                showAlertDiv("alert-warning","警告!","请完成选择。");
+                flag=1;
+                return false;
+            }
+        });
+        $("#drugsCard [type='number']").each(function () {
+            var num=$(this).val();
+            if(num===""||num<=0||(num%1 !== 0)){
+                showAlertDiv("alert-warning","警告!","天数和数量必须是大于0的整数。");
+                flag=1;
+                return false;
+            }
+        });
+        $("#drugsCard [name='consumption']").each(function () {
+            var num=$(this).val();
+            var reg=/^\d+(\.\d+)?$/;
+            if(!reg.test(num)||num==="0"){
+                showAlertDiv("alert-warning","警告!","用量是必须大于0的数字。");
+                flag=1;
+                return false;
+            }
+        });
+    }
     if(flag===1)
         return;
     var alertNum=showAlertDiv("alert-secondary","","处方信息保存中...");
@@ -553,7 +556,7 @@ $("#DrugsModal .modal-footer :button:contains('导入结果')").click(function (
     //生成空列
     var prescriptionDetailList=[];
     for (var k = 0; k < drugsList.length; k++) {
-        prescriptionDetailList.push({usageMethod:"0", frequent: "0",consumption:"",days:"",amount:"",entrustment:""});
+        prescriptionDetailList.push({usageMethod:"0", frequent: "0",consumption:0,days:0,amount:0,entrustment:""});
     }
     setPrescriptionDetail(prescriptionDetailList,drugsList);
     $("#DrugsModal button[data-dismiss='modal']").click();
@@ -651,7 +654,7 @@ $("#menu3_1").on("dblclick","a",function () {
         return;//重复跳出
     }
     var drugsList=[{id:drugsId,drugsname:$(this).find("span:eq(0)").html(),drugsformat:$(this).next().next().val(),drugsprice:$(this).next().next().next().val()}];
-    var prescriptionDetailList=[{usageMethod:"0", frequent: "0",consumption:"",days:"",amount:"",entrustment:""}];
+    var prescriptionDetailList=[{usageMethod:"0", frequent: "0",consumption:0,days:0,amount:0,entrustment:""}];
     setPrescriptionDetail(prescriptionDetailList,drugsList);
     showAlertDiv("alert-success","成功!","药品插入成功。");
 })//删除常用处方
@@ -842,7 +845,7 @@ function addSetSub1(){
     var drugsList=getSetSubDrugsData();
     var setSubList=[];
     $("#prescriptionContextForm tbody tr").each(function () {
-        setSubList.push({usageMethod:"0", frequent: "0",consumption:"",days:"",amount:"",entrustment:$(this).find("[name='setSubEntrust']").val()});
+        setSubList.push({usageMethod:"0", frequent: "0",consumption:0,days:0,amount:0,entrustment:$(this).find("[name='setSubEntrust']").val()});
     });
     //删除已存在
     $("#drugsCard tbody tr:even").each(function () {

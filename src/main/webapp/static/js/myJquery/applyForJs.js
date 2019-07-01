@@ -192,13 +192,15 @@ $("#applyForBtnGroup button:gt(0):lt(2)").click(function () {
         return;
     }
     var flag=0;
-    $("#visitItemCard :text").each(function () {
-        if($(this).val()===""){
-            showAlertDiv("alert-warning","警告!","请输入医生嘱托。");
-            flag=1;
-            return false;
-        }
-    });
+    if($(this).index()===2) {//开立
+        $("#visitItemCard :text").each(function () {
+            if($(this).val()===""){
+                showAlertDiv("alert-warning","警告!","请输入医生嘱托。");
+                flag=1;
+                return false;
+            }
+        });
+    }
     if(flag===1)
         return;
     var trNode=node.closest("tr");

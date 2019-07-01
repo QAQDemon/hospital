@@ -628,12 +628,29 @@ $("#DiagnosisModal .modal-footer :button:contains('保存')").click(function () 
 $("#medicalInfoBtnGroup :first").click(function () {
     clearMedicalInfoContext();
 });
+//判断是否存在值为空,true存在空
+function ifExistEmpty(node){
+    var flag=0;
+    node.each(function(){
+        if($(this).val()===""){
+            flag=1;
+            return false;//break
+        }
+    });
+    return flag === 1;
+}
 //暂存或提交
 $("#medicalInfoBtnGroup").find(".btn-outline-secondary,.btn-outline-success").click(function () {
     //判断表单完整性
-    if(($("#medicalRecordInfoForm [type='text']").val()==="")||($("#medicalRecordInfoForm textarea").val()==="")||(($("#diagnosisContextTbody1").html()==="")&&($("#diagnosisContextTbody2").html()===""))){
-        showAlertDiv("alert-warning","警告!","表单不完整");
-        return;
+    if(!$(this).hasClass("btn-outline-secondary")){
+        if(($("#medicalRecordInfoForm [type='text']").val()==="")||(($("#diagnosisContextTbody1").html()==="")&&($("#diagnosisContextTbody2").html()===""))){
+            showAlertDiv("alert-warning","警告!","表单不完整");
+            return;
+        }
+        if(ifExistEmpty($("#medicalRecordInfoForm textarea"))){
+            showAlertDiv("alert-warning","警告!","表单不完整");
+            return;
+        }
     }
     //转换hidden时间
     $("#diagnosisContentCard").find("[type='datetime-local']").each(function () {
