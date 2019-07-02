@@ -92,7 +92,7 @@ public class ApplyForPrescriptionServiceImpl implements ApplyForPrescriptionServ
     /*
      * @Description 设置处方项目和明细，暂存开立
      * @Param [prescription id为null则需要创建, prescriptionDetailList 前者为null需要获取对应id]
-     * @return java.lang.Boolean
+     * @return java.lang.int 0失败 1成功
      **/
     public int setPrescriptionAndDetailList(Prescription prescription,List<PrescriptionDetail> prescriptionDetailList){
         int result;
