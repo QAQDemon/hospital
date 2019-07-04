@@ -8,8 +8,15 @@
   <component name="ChangeListManager">
     <list default="true" id="dbf00169-a8e7-473c-9987-97a8297bcd84" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/neusoft/ssm/service/impl/ApplyForFmeditemServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/neusoft/ssm/service/impl/ApplyForFmeditemServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/neusoft/ssm/service/impl/ApplyForPrescriptionServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/neusoft/ssm/service/impl/ApplyForPrescriptionServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/com/neusoft/ssm/util/HashSaltUtilTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/com/neusoft/ssm/util/HashSaltUtilTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/neusoft/ssm/service/impl/OutpatientDoctorWorkstationServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/neusoft/ssm/service/impl/OutpatientDoctorWorkstationServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/js/myJquery/applyForJs.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/static/js/myJquery/applyForJs.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/js/myJquery/finalDiagnosisJs.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/static/js/myJquery/finalDiagnosisJs.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/js/myJquery/prescriptionJs.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/static/js/myJquery/prescriptionJs.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/com/neusoft/ssm/service/impl/ApplyForFmeditemServiceImplTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/com/neusoft/ssm/service/impl/ApplyForFmeditemServiceImplTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/com/neusoft/ssm/service/impl/OutpatientDoctorWorkstationServiceImplTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/com/neusoft/ssm/service/impl/OutpatientDoctorWorkstationServiceImplTest.java" afterDir="false" />
     </list>
     <list id="0d82a619-f3e3-4cc1-9bb7-107a165e2341" name="Revert: new start 6-27-1" comment="" />
     <ignored path="$PROJECT_DIR$/out/" />
@@ -62,14 +69,63 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/neusoft/ssm/service/impl/MedicalRecordHomeServiceImpl.java">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/webapp/static/js/myJquery/applyForJs.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3672">
-              <caret line="246" selection-start-line="246" selection-end-line="246" />
+            <state relative-caret-position="390">
+              <caret line="150" column="11" lean-forward="true" selection-start-line="144" selection-start-column="4" selection-end-line="150" selection-end-column="11" />
               <folding>
-                <element signature="imports" expanded="true" />
+                <element signature="n#style#0;n#td#5;n#tr#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#td#3;n#tr#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#td#5;n#tr#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#img#0;n#a#0;n#td#5;n#tr#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#td#6;n#tr#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#button#0;n#td#6;n#tr#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#td#5;n#tr#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#td#2;n#tr#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#td#0;n#tr#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#td#1;n#tr#0;n#!!top" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/webapp/static/js/myJquery/prescriptionJs.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="100">
+              <caret line="4" column="51" lean-forward="true" selection-start-line="4" selection-start-column="51" selection-end-line="4" selection-end-column="51" />
+              <folding>
+                <element signature="n#style#0;n#td#2;n#tr#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#td#5;n#tr#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#td#7;n#tr#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#td#8;n#tr#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#td#0;n#tr#1;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#td#1;n#tr#1;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#img#0;n#a#0;n#td#1;n#tr#1;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#td#2;n#tr#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#td#2;n#tr#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#td#0;n#tr#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#td#1;n#tr#0;n#!!top" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/pom.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="2193">
+              <caret line="309" column="31" selection-start-line="309" selection-start-column="31" selection-end-line="309" selection-end-column="31" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/outpatientDoctorWorkstation.jsp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="443">
+              <caret line="402" column="104" selection-start-line="402" selection-start-column="89" selection-end-line="402" selection-end-column="104" />
             </state>
           </provider>
         </entry>
@@ -91,8 +147,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>doctorId</find>
-      <find>searchPatient</find>
       <find>searchPatient/</find>
       <find>PBKDF2_ITERATIONS</find>
       <find>pbkdf2</find>
@@ -121,6 +175,8 @@
       <find>hidden</find>
       <find>usageMethod</find>
       <find>histo</find>
+      <find>findbugs</find>
+      <find>warning</find>
     </findStrings>
     <replaceStrings>
       <replace>showAlertDiv1(</replace>
@@ -164,22 +220,16 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/java/com/neusoft/ssm/service/ApplyForFmeditemService.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/neusoft/ssm/service/MedicalRecordHomeService.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/neusoft/ssm/service/impl/SetManageServiceImpl.java" />
         <option value="$PROJECT_DIR$/test/com/neusoft/ssm/service/impl/MedicalRecordHomeServiceImplTest.java" />
-        <option value="$PROJECT_DIR$/test/com/neusoft/ssm/service/impl/ApplyForFmeditemServiceImplTest.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/neusoft/ssm/service/impl/ApplyForFmeditemServiceImpl.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/neusoft/ssm/Util/JwtUtil.java" />
         <option value="$PROJECT_DIR$/src/main/webapp/static/html/tst.html" />
-        <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/src/main/java/com/neusoft/ssm/service/OutpatientDoctorWorkstationService.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/neusoft/ssm/service/LoginService.java" />
         <option value="$PROJECT_DIR$/src/main/webapp/static/html/outpatientDoctorWorkstation.html" />
         <option value="$PROJECT_DIR$/src/main/resources/applicationContext.xml" />
         <option value="$PROJECT_DIR$/src/main/java/com/neusoft/ssm/util/HashSaltUtil.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/neusoft/ssm/service/impl/LoginServiceImpl.java" />
-        <option value="$PROJECT_DIR$/src/main/webapp/static/js/myJquery/finalDiagnosisJs.js" />
         <option value="$PROJECT_DIR$/src/main/webapp/static/js/myJquery/patientFeeJs.js" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/index.jsp" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/outpatientDoctorWorkstation.jsp" />
@@ -201,20 +251,26 @@
         <option value="$PROJECT_DIR$/src/main/java/com/neusoft/ssm/dao/PrescriptionDetailMapper.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/neusoft/ssm/service/ApplyForPrescriptionService.java" />
         <option value="$PROJECT_DIR$/src/main/webapp/static/js/myJquery/outpatientDoctorJs.js" />
-        <option value="$PROJECT_DIR$/src/main/webapp/static/js/myJquery/applyForJs.js" />
-        <option value="$PROJECT_DIR$/src/main/webapp/static/js/myJquery/prescriptionJs.js" />
         <option value="$PROJECT_DIR$/src/main/java/com/neusoft/ssm/util/JwtUtil.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/neusoft/ssm/service/impl/MedicalRecordHomeServiceImpl.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/neusoft/ssm/service/impl/OutpatientDoctorWorkstationServiceImpl.java" />
         <option value="$PROJECT_DIR$/test/com/neusoft/ssm/util/HashSaltUtilTest.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/neusoft/ssm/interceptor/TokenInterceptor.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/neusoft/ssm/service/impl/ApplyForPrescriptionServiceImpl.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/neusoft/ssm/controller/ApplyForFmeditemController.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/neusoft/ssm/controller/ApplyForPrescriptionController.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/neusoft/ssm/controller/LoginController.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/neusoft/ssm/controller/MedicalRecordHomeController.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/neusoft/ssm/controller/OutpatientDoctorWorkstationController.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/neusoft/ssm/controller/SetManageController.java" />
+        <option value="$PROJECT_DIR$/pom.xml" />
+        <option value="$PROJECT_DIR$/src/main/resources/db.properties" />
+        <option value="$PROJECT_DIR$/src/main/java/com/neusoft/ssm/service/impl/OutpatientDoctorWorkstationServiceImpl.java" />
+        <option value="$PROJECT_DIR$/test/com/neusoft/ssm/service/impl/OutpatientDoctorWorkstationServiceImplTest.java" />
+        <option value="$PROJECT_DIR$/src/main/webapp/static/js/myJquery/finalDiagnosisJs.js" />
+        <option value="$PROJECT_DIR$/src/main/java/com/neusoft/ssm/service/impl/ApplyForFmeditemServiceImpl.java" />
+        <option value="$PROJECT_DIR$/test/com/neusoft/ssm/service/impl/ApplyForFmeditemServiceImplTest.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/neusoft/ssm/service/impl/ApplyForPrescriptionServiceImpl.java" />
+        <option value="$PROJECT_DIR$/src/main/webapp/static/js/myJquery/applyForJs.js" />
+        <option value="$PROJECT_DIR$/src/main/webapp/static/js/myJquery/prescriptionJs.js" />
       </list>
     </option>
   </component>
@@ -254,13 +310,12 @@
         <path>
           <item name="" type="16c1761:MavenProjectsStructure$RootNode" />
           <item name="hospital Maven Webapp" type="9519ce18:MavenProjectsStructure$ProjectNode" />
-          <item name="Plugins" type="7aea1407:MavenProjectsStructure$PluginsNode" />
+          <item name="Lifecycle" type="58874e2:MavenProjectsStructure$LifecycleNode" />
         </path>
         <path>
           <item name="" type="16c1761:MavenProjectsStructure$RootNode" />
           <item name="hospital Maven Webapp" type="9519ce18:MavenProjectsStructure$ProjectNode" />
           <item name="Plugins" type="7aea1407:MavenProjectsStructure$PluginsNode" />
-          <item name="deploy" type="36feed69:MavenProjectsStructure$PluginNode" />
         </path>
         <path>
           <item name="" type="16c1761:MavenProjectsStructure$RootNode" />
@@ -271,9 +326,9 @@
       <select />
     </treeState>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="257" />
-    <option name="y" value="46" />
+  <component name="ProjectFrameBounds">
+    <option name="x" value="385" />
+    <option name="y" value="114" />
     <option name="width" value="1410" />
     <option name="height" value="941" />
   </component>
@@ -367,21 +422,6 @@
               <item name="hospital" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="hospital" type="b2602c69:ProjectViewProjectNode" />
-              <item name="hospital" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="mapper" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="hospital" type="b2602c69:ProjectViewProjectNode" />
-              <item name="hospital" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="webapp" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -428,6 +468,11 @@
               <item name="WEB-INF" type="462c0819:PsiDirectoryNode" />
               <item name="jsp" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="hospital" type="b2602c69:ProjectViewProjectNode" />
+              <item name="hospital" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
@@ -448,7 +493,7 @@
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="project.structure.last.edited" value="Global Libraries" />
+    <property name="project.structure.last.edited" value="Artifacts" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2767442" />
     <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors" />
@@ -456,20 +501,10 @@
   </component>
   <component name="RecentsManager">
     <key name="CreateTestDialog.RecentsKey">
-      <recent name="com.neusoft.ssm.util" />
       <recent name="com.neusoft.ssm.service.impl" />
+      <recent name="com.neusoft.ssm.util" />
       <recent name="edu.neu.medical.hospital.service.impl" />
       <recent name="edu.neu.medical.hospital.controller" />
-    </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\demon\Desktop\test\hospital\src\main\java\com\neusoft\ssm\bean" />
-      <recent name="C:\Users\demon\Desktop\test\hospital\src\main\webapp\static\css\font" />
-      <recent name="C:\Users\demon\Desktop\test\hospital\src\main\webapp\static\css" />
-      <recent name="C:\Users\demon\Desktop\test\hospital\src\main\webapp\WEB-INF\jsp" />
-      <recent name="C:\Users\demon\Desktop\test\hospital\src\main\webapp\static\js\myJquery" />
-    </key>
-    <key name="CreateTestDialog.Recents.Supers">
-      <recent name="" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\demon\Desktop\test\hospital\src\main\resources\mapper" />
@@ -477,6 +512,16 @@
       <recent name="C:\Users\demon\Desktop\test\hospital\src\main\webapp\static\js" />
       <recent name="C:\Users\demon\Desktop\test\hospital\src\main\webapp\static\images" />
       <recent name="C:\Users\demon\Desktop\test\hospital\src\main\webapp\WEB-INF\jsp" />
+    </key>
+    <key name="CreateTestDialog.Recents.Supers">
+      <recent name="" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\demon\Desktop\test\hospital\src\main\java\com\neusoft\ssm\bean" />
+      <recent name="C:\Users\demon\Desktop\test\hospital\src\main\webapp\static\css\font" />
+      <recent name="C:\Users\demon\Desktop\test\hospital\src\main\webapp\static\css" />
+      <recent name="C:\Users\demon\Desktop\test\hospital\src\main\webapp\WEB-INF\jsp" />
+      <recent name="C:\Users\demon\Desktop\test\hospital\src\main\webapp\static\js\myJquery" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -492,7 +537,7 @@
     </option>
   </component>
   <component name="RunManager" selected="Tomcat Server.Tomcat 9.0.10">
-    <configuration name="ApplyForFmeditemServiceImplTest.setVisitItemAndDetailList1" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="ApplyForFmeditemServiceImplTest.setVisitItemAndDetailList2" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="hospital" />
       <extension name="coverage">
         <pattern>
@@ -502,7 +547,7 @@
       </extension>
       <option name="PACKAGE_NAME" value="com.neusoft.ssm.service.impl" />
       <option name="MAIN_CLASS_NAME" value="com.neusoft.ssm.service.impl.ApplyForFmeditemServiceImplTest" />
-      <option name="METHOD_NAME" value="setVisitItemAndDetailList1" />
+      <option name="METHOD_NAME" value="setVisitItemAndDetailList2" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -519,22 +564,6 @@
       <option name="PACKAGE_NAME" value="com.neusoft.ssm.util" />
       <option name="MAIN_CLASS_NAME" value="com.neusoft.ssm.util.HashSaltUtilTest" />
       <option name="METHOD_NAME" value="createHash" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="HashSaltUtilTest.ttst" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="hospital" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.neusoft.ssm.util.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.neusoft.ssm.util" />
-      <option name="MAIN_CLASS_NAME" value="com.neusoft.ssm.util.HashSaltUtilTest" />
-      <option name="METHOD_NAME" value="ttst" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -567,6 +596,22 @@
       <option name="PACKAGE_NAME" value="com.neusoft.ssm.service.impl" />
       <option name="MAIN_CLASS_NAME" value="com.neusoft.ssm.service.impl.MedicalRecordHomeServiceImplTest" />
       <option name="METHOD_NAME" value="searchMedrecTemplateList" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="OutpatientDoctorWorkstationServiceImplTest.setFinalDiagnosisList" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="hospital" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.neusoft.ssm.service.impl.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.neusoft.ssm.service.impl" />
+      <option name="MAIN_CLASS_NAME" value="com.neusoft.ssm.service.impl.OutpatientDoctorWorkstationServiceImplTest" />
+      <option name="METHOD_NAME" value="setFinalDiagnosisList" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -734,21 +779,21 @@
       </method>
     </configuration>
     <list>
-      <item itemvalue="JUnit.ApplyForFmeditemServiceImplTest.setVisitItemAndDetailList1" />
       <item itemvalue="JUnit.HashSaltUtilTest.createHash" />
       <item itemvalue="JUnit.HashSaltUtilTest.validatePassword" />
-      <item itemvalue="JUnit.HashSaltUtilTest.ttst" />
+      <item itemvalue="JUnit.MedicalRecordHomeServiceImplTest.searchMedrecTemplateList" />
       <item itemvalue="Maven.hospital-generator" />
       <item itemvalue="Tomcat Server.Tomcat 9.0.10" />
-      <item itemvalue="JUnit.MedicalRecordHomeServiceImplTest.searchMedrecTemplateList" />
+      <item itemvalue="JUnit.OutpatientDoctorWorkstationServiceImplTest.setFinalDiagnosisList" />
+      <item itemvalue="JUnit.ApplyForFmeditemServiceImplTest.setVisitItemAndDetailList2" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.ApplyForFmeditemServiceImplTest.setVisitItemAndDetailList2" />
+        <item itemvalue="JUnit.OutpatientDoctorWorkstationServiceImplTest.setFinalDiagnosisList" />
         <item itemvalue="JUnit.MedicalRecordHomeServiceImplTest.searchMedrecTemplateList" />
         <item itemvalue="JUnit.HashSaltUtilTest.validatePassword" />
         <item itemvalue="JUnit.HashSaltUtilTest.createHash" />
-        <item itemvalue="JUnit.HashSaltUtilTest.ttst" />
-        <item itemvalue="JUnit.ApplyForFmeditemServiceImplTest.setVisitItemAndDetailList1" />
       </list>
     </recent_temporary>
   </component>
@@ -828,14 +873,10 @@
       <workItem from="1561969667582" duration="7253000" />
       <workItem from="1562046119448" duration="212000" />
       <workItem from="1562046603143" duration="7127000" />
-      <workItem from="1562055413386" duration="14075000" />
-    </task>
-    <task id="LOCAL-00046" summary="applyfor itemmodel 6-19-4">
-      <created>1560941711646</created>
-      <option name="number" value="00046" />
-      <option name="presentableId" value="LOCAL-00046" />
-      <option name="project" value="LOCAL" />
-      <updated>1560941711646</updated>
+      <workItem from="1562055413386" duration="14177000" />
+      <workItem from="1562116954787" duration="1821000" />
+      <workItem from="1562207492318" duration="1148000" />
+      <workItem from="1562216314012" duration="10243000" />
     </task>
     <task id="LOCAL-00047" summary="applyfor itemmodel over 6-20">
       <created>1560961540102</created>
@@ -1173,43 +1214,50 @@
       <option name="project" value="LOCAL" />
       <updated>1561986201168</updated>
     </task>
-    <option name="localTasksCounter" value="95" />
+    <task id="LOCAL-00095" summary="final  7-3">
+      <created>1562085085960</created>
+      <option name="number" value="00095" />
+      <option name="presentableId" value="LOCAL-00095" />
+      <option name="project" value="LOCAL" />
+      <updated>1562085085961</updated>
+    </task>
+    <option name="localTasksCounter" value="96" />
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="HashSaltUtilTest_validatePassword - 2019.06.28 at 14h 00m 47s.xml">
-      <configuration name="HashSaltUtilTest.validatePassword" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="HashSaltUtilTest_ttst - 2019.06.28 at 15h 30m 42s.xml">
-      <configuration name="HashSaltUtilTest.ttst" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="HashSaltUtilTest_ttst - 2019.06.28 at 15h 31m 32s.xml">
-      <configuration name="HashSaltUtilTest.ttst" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="HashSaltUtilTest_ttst - 2019.06.28 at 15h 44m 30s.xml">
-      <configuration name="HashSaltUtilTest.ttst" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="HashSaltUtilTest_createHash - 2019.07.02 at 16h 24m 10s.xml">
-      <configuration name="HashSaltUtilTest.createHash" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="HashSaltUtilTest_validatePassword - 2019.07.02 at 16h 28m 34s.xml">
-      <configuration name="HashSaltUtilTest.validatePassword" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="MedicalRecordHomeServiceImplTest_searchMedrecTemplateList - 2019.07.02 at 16h 45m 25s.xml">
-      <configuration name="MedicalRecordHomeServiceImplTest.searchMedrecTemplateList" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="MedicalRecordHomeServiceImplTest_searchMedrecTemplateList - 2019.07.02 at 16h 45m 51s.xml">
-      <configuration name="MedicalRecordHomeServiceImplTest.searchMedrecTemplateList" configurationId="JUnit" />
-    </history-entry>
     <history-entry file="MedicalRecordHomeServiceImplTest_searchMedrecTemplateList - 2019.07.02 at 17h 45m 38s.xml">
       <configuration name="MedicalRecordHomeServiceImplTest.searchMedrecTemplateList" configurationId="JUnit" />
     </history-entry>
     <history-entry file="MedicalRecordHomeServiceImplTest_searchMedrecTemplateList - 2019.07.02 at 21h 28m 25s.xml">
       <configuration name="MedicalRecordHomeServiceImplTest.searchMedrecTemplateList" configurationId="JUnit" />
     </history-entry>
+    <history-entry file="OutpatientDoctorWorkstationServiceImplTest_setFinalDiagnosisList - 2019.07.04 at 13h 42m 40s.xml">
+      <configuration name="OutpatientDoctorWorkstationServiceImplTest.setFinalDiagnosisList" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="OutpatientDoctorWorkstationServiceImplTest_setFinalDiagnosisList - 2019.07.04 at 13h 44m 14s.xml">
+      <configuration name="OutpatientDoctorWorkstationServiceImplTest.setFinalDiagnosisList" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="OutpatientDoctorWorkstationServiceImplTest_setFinalDiagnosisList - 2019.07.04 at 13h 44m 57s.xml">
+      <configuration name="OutpatientDoctorWorkstationServiceImplTest.setFinalDiagnosisList" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="ApplyForFmeditemServiceImplTest_setVisitItemAndDetailList2 - 2019.07.04 at 14h 44m 19s.xml">
+      <configuration name="ApplyForFmeditemServiceImplTest.setVisitItemAndDetailList2" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="ApplyForFmeditemServiceImplTest_setVisitItemAndDetailList2 - 2019.07.04 at 14h 46m 12s.xml">
+      <configuration name="ApplyForFmeditemServiceImplTest.setVisitItemAndDetailList2" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="ApplyForFmeditemServiceImplTest_setVisitItemAndDetailList2 - 2019.07.04 at 14h 47m 14s.xml">
+      <configuration name="ApplyForFmeditemServiceImplTest.setVisitItemAndDetailList2" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="ApplyForFmeditemServiceImplTest_setVisitItemAndDetailList2 - 2019.07.04 at 14h 49m 08s.xml">
+      <configuration name="ApplyForFmeditemServiceImplTest.setVisitItemAndDetailList2" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="ApplyForFmeditemServiceImplTest_setVisitItemAndDetailList2 - 2019.07.04 at 15h 40m 01s.xml">
+      <configuration name="ApplyForFmeditemServiceImplTest.setVisitItemAndDetailList2" configurationId="JUnit" />
+    </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="947329000" />
+    <option name="totallyTimeSpent" value="960643000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1221,10 +1269,9 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
-    <editor active="true" />
+    <frame x="385" y="114" width="1410" height="941" extended-state="0" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.490625" visible="true" weight="0.23933902" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.490625" visible="true" weight="0.34074074" />
       <window_info id="Structure" order="1" sideWeight="0.509375" side_tool="true" weight="0.22014925" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -1232,11 +1279,10 @@
       <window_info id="UI Designer" order="5" />
       <window_info id="Favorites" order="6" sideWeight="0.5039124" side_tool="true" weight="0.25462964" />
       <window_info id="Web" order="7" side_tool="true" />
-      <window_info anchor="bottom" id="Sequence" weight="0.8796095" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.6279827" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49840087" weight="0.34164858" />
-      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.4978678" weight="0.44981414" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49840087" weight="0.44577006" />
+      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.4978678" weight="0.37310195" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.55748373" />
@@ -1252,6 +1298,7 @@
       <window_info anchor="bottom" id="Duplicates" order="16" weight="0.329718" />
       <window_info anchor="bottom" id="REST Client" order="17" weight="0.38720173" />
       <window_info anchor="bottom" id="Messages" order="18" weight="0.29067245" />
+      <window_info anchor="bottom" id="Sequence" order="19" weight="0.8796095" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="1" weight="0.25" />
       <window_info anchor="right" id="Palette" order="2" />
@@ -1261,7 +1308,7 @@
       <window_info anchor="right" id="Palette&#9;" order="6" />
       <window_info anchor="right" id="Theme Preview" order="7" />
       <window_info anchor="right" id="Coverage" order="8" side_tool="true" weight="0.32995737" />
-      <window_info anchor="right" id="Maven" order="9" weight="0.14232409" />
+      <window_info anchor="right" id="Maven" order="9" weight="0.14592592" />
       <window_info anchor="right" id="Bean Validation" order="10" weight="0.3283582" />
       <window_info anchor="right" id="PlantUML" order="11" weight="0.32995737" />
     </layout>
@@ -1322,7 +1369,6 @@
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_NEW_TODO" value="false" />
-    <MESSAGE value="over visit 6-24-3" />
     <MESSAGE value="fee 6-24-4" />
     <MESSAGE value="fee 6-24-5" />
     <MESSAGE value="satis 6-25" />
@@ -1347,38 +1393,39 @@
     <MESSAGE value="login over  6-30" />
     <MESSAGE value="final  6-30-1" />
     <MESSAGE value="final  7-1" />
-    <option name="LAST_COMMIT_MESSAGE" value="final  7-1" />
+    <MESSAGE value="final  7-3" />
+    <option name="LAST_COMMIT_MESSAGE" value="final  7-3" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/test/com/neusoft/ssm/service/impl/ApplyForFmeditemServiceImplTest.java</url>
-          <line>44</line>
+          <line>46</line>
           <properties />
           <option name="timeStamp" value="12" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/test/com/neusoft/ssm/service/impl/ApplyForFmeditemServiceImplTest.java</url>
-          <line>51</line>
+          <line>53</line>
           <properties />
           <option name="timeStamp" value="13" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/test/com/neusoft/ssm/service/impl/ApplyForFmeditemServiceImplTest.java</url>
-          <line>58</line>
+          <line>60</line>
           <properties />
           <option name="timeStamp" value="14" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/test/com/neusoft/ssm/service/impl/ApplyForFmeditemServiceImplTest.java</url>
-          <line>86</line>
+          <line>88</line>
           <properties />
           <option name="timeStamp" value="17" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/test/com/neusoft/ssm/service/impl/ApplyForFmeditemServiceImplTest.java</url>
-          <line>106</line>
+          <line>108</line>
           <properties />
           <option name="timeStamp" value="21" />
         </line-breakpoint>
@@ -1414,7 +1461,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/test/com/neusoft/ssm/service/impl/ApplyForFmeditemServiceImplTest.java</url>
-          <line>127</line>
+          <line>129</line>
           <properties />
           <option name="timeStamp" value="29" />
         </line-breakpoint>
@@ -1470,65 +1517,6 @@
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/resources/mapper/VisitItemDetailMapper.xml">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/login.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="650">
-          <caret line="26" column="37" selection-start-line="26" selection-start-column="29" selection-end-line="26" selection-end-column="37" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/applicationContext.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="422">
-          <caret line="133" column="66" lean-forward="true" selection-start-line="133" selection-start-column="66" selection-end-line="133" selection-end-column="66" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/static/js/myJquery/loginJs.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="425">
-          <caret line="17" column="13" selection-start-line="17" selection-start-column="13" selection-end-line="17" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/neusoft/ssm/dao/RegistrationInfoMapper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="100">
-          <caret line="13" column="17" selection-start-line="13" selection-start-column="17" selection-end-line="13" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/neusoft/ssm/bean/RegistrationInfoExample.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="100">
-          <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/neusoft/ssm/bean/RegistrationInfo.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-950">
-          <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/neusoft/ssm/bean/Patient.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1767">
-          <caret line="6" column="13" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/mapper/SetGroupMapper.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="500">
-          <caret line="20" lean-forward="true" selection-start-line="20" selection-end-line="20" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/generatorConfig.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="97">
@@ -1574,59 +1562,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/outpatientDoctorWorkstation.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-370">
-          <caret line="737" column="20" lean-forward="true" selection-start-line="737" selection-start-column="20" selection-end-line="737" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/../../ts1.uml" />
-    <entry file="file://$USER_HOME$/AppData/Local/Temp/modules.uml">
-      <provider selected="true" editor-type-id="UmlEditorProvider">
-        <state>
-          <ID>MODULES</ID>
-          <OriginalElement />
-          <nodes />
-          <notes />
-          <edges />
-          <settings layout="Hierarchic Group" zoom="1.0" x="263.0" y="58.0" />
-          <SelectedNodes />
-          <Categories />
-          <SCOPE>All</SCOPE>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/AppData/Local/Temp/modules1.uml">
-      <provider selected="true" editor-type-id="UmlEditorProvider">
-        <state>
-          <ID>MODULES</ID>
-          <OriginalElement />
-          <nodes />
-          <notes />
-          <edges />
-          <settings layout="Hierarchic Group" zoom="1.0" x="0.0" y="0.0" />
-          <SelectedNodes />
-          <Categories />
-          <SCOPE>All</SCOPE>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/AppData/Local/Temp/modules2.uml">
-      <provider selected="true" editor-type-id="UmlEditorProvider">
-        <state>
-          <ID>MODULES</ID>
-          <OriginalElement />
-          <nodes />
-          <notes />
-          <edges />
-          <settings layout="Hierarchic Group" zoom="1.0" x="0.0" y="0.0" />
-          <SelectedNodes />
-          <Categories />
-          <SCOPE>All</SCOPE>
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$USER_HOME$/AppData/Local/Temp/modules.uml" />
+    <entry file="file://$USER_HOME$/AppData/Local/Temp/modules1.uml" />
+    <entry file="file://$USER_HOME$/AppData/Local/Temp/modules2.uml" />
     <entry file="file://$PROJECT_DIR$/../../ts2.uml" />
     <entry file="uml://JavaScript-modules-diagram/C:/Users/demon/Desktop/test/hospital/src/main/java/com/neusoft/ssm">
       <provider selected="true" editor-type-id="UmlEditorProvider">
@@ -1698,33 +1637,6 @@
           </Categories>
           <SCOPE>All</SCOPE>
           <VISIBILITY>private</VISIBILITY>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/static/js/myJquery/prescriptionJs.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="190">
-          <caret line="237" column="29" selection-start-line="237" selection-start-column="29" selection-end-line="237" selection-end-column="29" />
-          <folding>
-            <element signature="n#style#0;n#td#2;n#tr#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#td#5;n#tr#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#td#7;n#tr#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#td#8;n#tr#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#td#0;n#tr#1;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#td#1;n#tr#1;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#img#0;n#a#0;n#td#1;n#tr#1;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#td#2;n#tr#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#td#2;n#tr#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#td#0;n#tr#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#td#1;n#tr#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/static/js/myJquery/applyForJs.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="822">
-          <caret line="194" column="33" selection-start-line="194" selection-start-column="3" selection-end-line="194" selection-end-column="33" />
         </state>
       </provider>
     </entry>
@@ -1913,30 +1825,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/test/com/neusoft/ssm/util/HashSaltUtilTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="7" lean-forward="true" selection-start-line="2" selection-start-column="7" selection-end-line="2" selection-end-column="7" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/neusoft/ssm/service/impl/LoginServiceImpl.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="85">
           <caret line="14" column="13" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/neusoft/ssm/service/impl/OutpatientDoctorWorkstationServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2091">
-          <caret line="15" selection-start-line="15" selection-end-line="15" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -2008,27 +1900,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/neusoft/ssm/service/impl/ApplyForFmeditemServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-593">
-          <caret line="11" column="13" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/test/com/neusoft/ssm/service/impl/MedicalRecordHomeServiceImplTest.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="340">
           <caret line="92" selection-start-line="92" selection-end-line="92" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/neusoft/ssm/service/impl/ApplyForPrescriptionServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="329">
-          <caret line="129" column="6" lean-forward="true" selection-start-line="129" selection-start-column="6" selection-end-line="129" selection-end-column="6" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -2092,13 +1967,168 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/neusoft/ssm/service/impl/MedicalRecordHomeServiceImpl.java">
+    <entry file="jar://$APPLICATION_HOME_DIR$/plugins/maven/lib/maven.jar!/schemas/maven-4.0.0.xsd">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3672">
-          <caret line="246" selection-start-line="246" selection-end-line="246" />
+        <state relative-caret-position="18275">
+          <caret line="731" column="6" selection-start-line="731" selection-start-column="6" selection-end-line="731" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/target/ssm/WEB-INF/classes/applicationContext.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-2807" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/db.properties">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="3" column="31" selection-start-line="3" selection-start-column="31" selection-end-line="3" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/com/neusoft/ssm/util/HashSaltUtilTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="100">
+          <caret line="4" column="34" selection-start-line="4" selection-start-column="34" selection-end-line="4" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/com/neusoft/ssm/service/impl/ApplyForPrescriptionServiceImplTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="175">
+          <caret line="15" column="13" selection-start-line="15" selection-start-column="13" selection-end-line="15" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/com/neusoft/ssm/service/impl/OutpatientDoctorWorkstationServiceImplTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="647">
+          <caret line="40" column="28" lean-forward="true" selection-start-line="40" selection-start-column="28" selection-end-line="40" selection-end-column="28" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/neusoft/ssm/service/impl/MedicalRecordHomeServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="177">
+          <caret line="75" column="125" lean-forward="true" selection-start-line="75" selection-start-column="125" selection-end-line="75" selection-end-column="125" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/static/js/myJquery/finalDiagnosisJs.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="872">
+          <caret line="187" column="3" lean-forward="true" selection-start-line="187" selection-start-column="3" selection-end-line="187" selection-end-column="3" />
+          <folding>
+            <element signature="n#style#0;n#td#2;n#tr#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#td#2;n#tr#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#td#3;n#tr#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#img#0;n#a#0;n#td#3;n#tr#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#td#4;n#tr#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#button#0;n#td#4;n#tr#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/neusoft/ssm/service/impl/ApplyForPrescriptionServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="400">
+          <caret line="100" column="56" selection-start-line="100" selection-start-column="56" selection-end-line="100" selection-end-column="56" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/neusoft/ssm/service/impl/ApplyForFmeditemServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="525">
+          <caret line="107" selection-start-line="107" selection-end-line="108" selection-end-column="21" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/neusoft/ssm/service/impl/OutpatientDoctorWorkstationServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="191" column="59" lean-forward="true" selection-start-line="191" selection-start-column="59" selection-end-line="191" selection-end-column="59" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/neusoft/ssm/service/impl/SetManageServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="125">
+          <caret line="17" column="13" selection-start-line="17" selection-start-column="13" selection-end-line="17" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/com/neusoft/ssm/service/impl/ApplyForFmeditemServiceImplTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="572">
+          <caret line="135" selection-start-line="135" selection-end-line="135" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/outpatientDoctorWorkstation.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="443">
+          <caret line="402" column="104" selection-start-line="402" selection-start-column="89" selection-end-line="402" selection-end-column="104" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/static/js/myJquery/applyForJs.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="390">
+          <caret line="150" column="11" lean-forward="true" selection-start-line="144" selection-start-column="4" selection-end-line="150" selection-end-column="11" />
+          <folding>
+            <element signature="n#style#0;n#td#5;n#tr#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#td#3;n#tr#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#td#5;n#tr#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#img#0;n#a#0;n#td#5;n#tr#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#td#6;n#tr#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#button#0;n#td#6;n#tr#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#td#5;n#tr#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#td#2;n#tr#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#td#0;n#tr#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#td#1;n#tr#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/static/js/myJquery/prescriptionJs.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="100">
+          <caret line="4" column="51" lean-forward="true" selection-start-line="4" selection-start-column="51" selection-end-line="4" selection-end-column="51" />
+          <folding>
+            <element signature="n#style#0;n#td#2;n#tr#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#td#5;n#tr#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#td#7;n#tr#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#td#8;n#tr#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#td#0;n#tr#1;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#td#1;n#tr#1;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#img#0;n#a#0;n#td#1;n#tr#1;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#td#2;n#tr#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#td#2;n#tr#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#td#0;n#tr#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#td#1;n#tr#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2193">
+          <caret line="309" column="31" selection-start-line="309" selection-start-column="31" selection-end-line="309" selection-end-column="31" />
         </state>
       </provider>
     </entry>
@@ -2107,12 +2137,20 @@
     <states>
       <state key="ArtifactsStructureConfigurable.UI">
         <settings>
-          <artifact-editor />
-          <last-edited>hospital:war</last-edited>
+          <artifact-editor>
+            <show-content>
+              <type id="jpa-descriptors" />
+              <type id="artifact" />
+              <type id="javaee-facet-resources" />
+              <type id="library" />
+            </show-content>
+          </artifact-editor>
+          <last-edited>hospital:war exploded</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>
                 <option value="0.2767442" />
+                <option value="0.5" />
               </list>
             </option>
           </splitter-proportions>

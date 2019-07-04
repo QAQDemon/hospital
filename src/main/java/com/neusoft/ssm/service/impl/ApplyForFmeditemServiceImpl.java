@@ -20,6 +20,8 @@ public class ApplyForFmeditemServiceImpl implements ApplyForFmeditemService {
     VisitItemResultMapper visitItemResultMapper;
     @Resource
     UserMapper userMapper;
+    @Resource
+    MedicalRecordInfoMapper medicalRecordInfoMapper;
 
     //1检查 2检验 3处置
     private char type;
@@ -103,6 +105,8 @@ public class ApplyForFmeditemServiceImpl implements ApplyForFmeditemService {
      * @return java.lang.Boolean 0失败 1成功
      **/
     public int setVisitItemAndDetailList(VisitItem visitItem,List<VisitItemDetail> visitItemDetailList){
+        if(!medicalRecordInfoMapper.selectByPrimaryKey(visitItem.getMedicalRecordInfoId()).getStatus().equals("2"))//除了初诊完成状态，都是错误
+            return 0;
         int result;
         if(visitItem.getId()==null){//不存在,插入
             result=visitItemMapper.insertSelective(visitItem);

@@ -179,8 +179,10 @@ $("#identifyButton").click(function () {
                 setTokenToCookie("token",request.getResponseHeader('Authorization'));
                 if(result==="1"){
                     showAlertDiv("alert-success","成功!","确定终诊成功。");
-                    $("[href='#menu2']").click();
+                }else{
+                    showAlertDiv("alert-warning","警告!","确定终诊失败，已存在。");
                 }
+                $("[href='#menu2']").click();
             }
         });
 });

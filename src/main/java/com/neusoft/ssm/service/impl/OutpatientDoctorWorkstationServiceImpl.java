@@ -190,6 +190,13 @@ public class OutpatientDoctorWorkstationServiceImpl implements OutpatientDoctorW
      * @return java.lang.Boolean
      **/
     public int setFinalDiagnosisList(List<Diagnosis> diagnosisList) {
+        DiagnosisExample diagnosisExample=new DiagnosisExample();
+        DiagnosisExample.Criteria criteria = diagnosisExample.createCriteria();
+        criteria.andMedicalRecordInfoIdEqualTo(diagnosisList.get(0).getMedicalRecordInfoId());
+        criteria.andCategoryEqualTo("1");
+        criteria.andIsFinalDiagnosisEqualTo("2");
+        if(diagnosisMapper.selectByExample(diagnosisExample).size()>0)//已存在诊毕
+            return 0;
         diagnosisMapper.insertForeach(diagnosisList);
         return 1;
     }

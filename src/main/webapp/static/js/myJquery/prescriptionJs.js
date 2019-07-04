@@ -1,5 +1,6 @@
-//处方主体按钮显示的切换(新增和组套一直在) 1初始(修) 2暂存(暂、发、删、修) 3发送(作) 4作废(无)
+//处方主体按钮显示的切换(新增和组套一直在) 1初始(修) 2暂存(暂、发、删、修) 3发送(作) 4作废(无) 5都无新增,诊毕+暂存(删) 6诊毕+发送（作） 7诊毕+其他（无）
 function changePrescriptionBtns(status){
+    $("#prescriptionForm button:eq(0)").show();
     if(status===1){
         $("#prescriptionForm button:eq(6)").show();
         $("#prescriptionForm button:gt(0):lt(4)").hide();
@@ -11,9 +12,16 @@ function changePrescriptionBtns(status){
         $("#prescriptionForm button:gt(0):lt(3)").hide();
         $("#prescriptionForm button:eq(4)").show();
         $("#prescriptionForm button:eq(6)").hide();
-    }else {
+    }else if(status===4){
         $("#prescriptionForm button:gt(0):lt(4)").hide();
         $("#prescriptionForm button:eq(6)").hide();
+    }else {
+        $("#prescriptionForm button").hide();
+        $("#prescriptionForm button:eq(5)").show();
+        if(status===5)
+            $("#prescriptionForm button:eq(3)").show();
+        else if(status===6)
+            $("#prescriptionForm button:eq(4)").show();
     }
 }
 //添加处方列表
@@ -155,13 +163,21 @@ $("#prescriptionCard").on("click","tr",function () {
     $("#prescriptionCard :radio").prop("checked", false);
     $(this).find(":radio").prop("checked", 'true');
     var status=$(this).find("td:eq(5)").html();
-    //1初始(修) 2暂存(暂、发、删、修) 3发送(作) 4作废(无)
-    if(status===""||status==="暂存")
-        changePrescriptionBtns(2);
-    else if(status==="发送")
-        changePrescriptionBtns(3);
-    else if(status==="作废")
-        changePrescriptionBtns(4);
+    //1初始(修) 2暂存(暂、发、删、修) 3发送(作) 4作废(无) 5都无新增,诊毕+暂存(删) 6诊毕+发送（作） 7诊毕+其他（无）
+    if($("#visitStatusSpan").html()==="诊毕"){
+        if(status==="暂存")
+            changePrescriptionBtns(5);
+        else if(status==="发送")
+            changePrescriptionBtns(6);
+        else changePrescriptionBtns(7);
+    }else {
+        if(status===""||status==="暂存")
+            changePrescriptionBtns(2);
+        else if(status==="发送")
+            changePrescriptionBtns(3);
+        else if(status==="作废")
+            changePrescriptionBtns(4);
+    }
     $.ajax({
         type: "POST",//方法类型
         dataType: "json",//预期服务器返回的数据类型

@@ -10,8 +10,9 @@ function getTime1(t){
     var   minute=(Array(2).join("0") + (_time.getMinutes())).slice(-2);
     return   (year+"-"+month+"-"+date+" "+hour+":"+minute);//2014-01-02 11:42
 }
-//申请主体按钮显示的切换(新增和组套一直在) 1初始(修) 2暂存(暂、开、删、修) 3开立(作) 4作废、完成(无)
+//申请主体按钮显示的切换(新增和组套一直在) 1初始(修) 2暂存(暂、开、删、修) 3开立(作) 4作废、完成(无) 5都无新增,诊毕+暂存(删) 6诊毕+开立（作） 7诊毕+其他（无）
 function changeApplyForBtns(status){
+    $("#visitItemForm button:eq(0)").show();
     if(status===1){
         $("#visitItemForm button:eq(6)").show();
         $("#visitItemForm button:gt(0):lt(4)").hide();
@@ -23,9 +24,16 @@ function changeApplyForBtns(status){
         $("#visitItemForm button:gt(0):lt(3)").hide();
         $("#visitItemForm button:eq(4)").show();
         $("#visitItemForm button:eq(6)").hide();
-    }else {
+    }else if(status===4){
         $("#visitItemForm button:gt(0):lt(4)").hide();
         $("#visitItemForm button:eq(6)").hide();
+    }else {
+        $("#visitItemForm button").hide();
+        $("#visitItemForm button:eq(5)").show();
+        if(status===5)
+            $("#visitItemForm button:eq(3)").show();
+        else if(status===6)
+            $("#visitItemForm button:eq(4)").show();
     }
 }
 //添加申请单列表
@@ -133,13 +141,21 @@ $("#applyForCard").on("click","tr",function () {
     $("#applyForCard :radio").prop("checked", false);
     $(this).find(":radio").prop("checked", 'true');
     var status=$(this).find("td:eq(3)").html();
-    //1初始(修) 2暂存(暂、开、删、修) 3开立(作) 4作废、完成(无)
-    if(status===""||status==="暂存")
-        changeApplyForBtns(2);
-    else if(status==="开立")
-        changeApplyForBtns(3);
-    else if(status==="作废"||status==="完成")
-        changeApplyForBtns(4);
+    //1初始(修) 2暂存(暂、开、删、修) 3开立(作) 4作废、完成(无) 5都无新增,诊毕+暂存(删) 6诊毕+开立（作） 7诊毕+其他（无）
+    if($("#visitStatusSpan").html()==="诊毕"){
+        if(status==="暂存")
+            changeApplyForBtns(5);
+        else if(status==="开立")
+            changeApplyForBtns(6);
+        else changeApplyForBtns(7);
+    }else {
+        if(status===""||status==="暂存")
+            changeApplyForBtns(2);
+        else if(status==="开立")
+            changeApplyForBtns(3);
+        else if(status==="作废"||status==="完成")
+            changeApplyForBtns(4);
+    }
     $.ajax({
         type: "POST",//方法类型
         dataType: "json",//预期服务器返回的数据类型

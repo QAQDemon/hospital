@@ -1,6 +1,7 @@
 package com.neusoft.ssm.service.impl;
 
 import com.neusoft.ssm.bean.*;
+import com.neusoft.ssm.dao.MedicalRecordInfoMapper;
 import com.neusoft.ssm.dao.PrescriptionDetailMapper;
 import com.neusoft.ssm.service.ApplyForPrescriptionService;
 import com.neusoft.ssm.dao.DrugsMapper;
@@ -20,6 +21,8 @@ public class ApplyForPrescriptionServiceImpl implements ApplyForPrescriptionServ
     private PrescriptionDetailMapper prescriptionDetailMapper;
     @Resource
     private DrugsMapper drugsMapper;
+    @Resource
+    private MedicalRecordInfoMapper medicalRecordInfoMapper;
 
     //1成药 2草药
     private char type;
@@ -95,6 +98,8 @@ public class ApplyForPrescriptionServiceImpl implements ApplyForPrescriptionServ
      * @return java.lang.int 0失败 1成功
      **/
     public int setPrescriptionAndDetailList(Prescription prescription,List<PrescriptionDetail> prescriptionDetailList){
+        if(!medicalRecordInfoMapper.selectByPrimaryKey(prescription.getMedicalRecordInfoId()).getStatus().equals("2"))//除了初诊完成状态，都是错误
+            return 0;
         int result;
         if(prescription.getId()==null){//不存在,插入
             result=prescriptionMapper.insertSelective(prescription);

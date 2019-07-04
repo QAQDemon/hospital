@@ -18,6 +18,8 @@ import javax.annotation.Resource;
 import java.util.ArrayList;
 import java.util.List;
 
+import static junit.framework.Assert.assertEquals;
+
 @WebAppConfiguration("src/main/webapp/static")
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration("classpath:applicationContext.xml")
@@ -126,5 +128,15 @@ public class ApplyForFmeditemServiceImplTest {
         visitItemDetailList.add(visitItemDetail2);
         int bol=applyForFmeditemService.setVisitItemAndDetailList(visitItem, visitItemDetailList);
         return;
+    }
+
+    @Test
+    public void setVisitItemAndDetailList2() {
+        VisitItem visitItem = new VisitItem();
+        List<VisitItemDetail> visitItemDetailList = new ArrayList<>();
+        visitItem.setMedicalRecordInfoId(82);
+        assertEquals(0,applyForFmeditemService.setVisitItemAndDetailList(visitItem,visitItemDetailList));
+        visitItem.setMedicalRecordInfoId(81);
+        assertEquals(1,applyForFmeditemService.setVisitItemAndDetailList(visitItem,visitItemDetailList));
     }
 }
