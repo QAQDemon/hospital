@@ -18,13 +18,7 @@
     <mvc:resources location="/static/styles/" mapping="/styles/**"/>
     <mvc:resources location="/static/js/" mapping="/js/**"/>
     <mvc:resources location="/static/html/" mapping="/html/**"/>
-    <!--    拦截器-->
-<!--    <mvc:interceptors>-->
-<!--        <mvc:interceptor>-->
-<!--            <mvc:mapping path="/**"/>-->
-<!--            <bean class="com.neusoft.ssm.interceptor.LoginInterceptor"/>-->
-<!--        </mvc:interceptor>-->
-<!--    </mvc:interceptors>-->
+
     <!-- 配置视图解析器，把控制器的逻辑视频映射为真正的视图 -->
     <!-- /WEB-INF/jsp/start.jsp -->
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
@@ -65,9 +59,7 @@
         </property>
     </bean>
     <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
-        <property name="maxUploadSize">
-            <value>10000000</value>
-        </property>
+        <property name="maxUploadSize" value="10000000"/>
     </bean>
 
     <!-- 配置dbcp数据库连接池 -->
@@ -118,16 +110,7 @@
         <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"/>
     </bean>
 
-    <!-- 配置事务管理器 -->
-<!--    <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">-->
-<!--        <property name="dataSource" ref="dataSource" />-->
-<!--    </bean>-->
-
     <!-- 拦截器 -->
-<!--    <mvc:interceptors>-->
-<!--        &lt;!&ndash; 国际化操作拦截器 如果采用基于（请求/Session/Cookie）则必需配置 &ndash;&gt;-->
-<!--        <bean class="org.springframework.web.servlet.i18n.LocaleChangeInterceptor" />-->
-<!--    </mvc:interceptors>-->
     <mvc:interceptors>
         <mvc:interceptor>
             <!-- 匹配的是url路径， 如果不配置或/**,将拦截所有的Controller -->
@@ -137,7 +120,6 @@
             <mvc:mapping path="/applyForPrescription/**" />
             <mvc:mapping path="/applyForFmeditem/**" />
             <!-- /register 和 /login 不需要拦截-->
-<!--            <mvc:exclude-mapping path="/loginController/login" />-->
             <bean class="com.neusoft.ssm.interceptor.TokenInterceptor" />
         </mvc:interceptor>
         <!-- 当设置多个拦截器时，先按顺序调用preHandle方法，然后逆序调用每个拦截器的postHandle和afterCompletion方法 -->

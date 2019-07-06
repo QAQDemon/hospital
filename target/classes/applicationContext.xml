@@ -86,10 +86,15 @@
         <property name="url" value="${url}"/>
         <property name="username" value="${username}"/>
         <property name="password" value="${password}"/>
-        <property name="initialSize" value="1"/>
-        <property name="maxActive" value="100"/>
-        <property name="maxIdle" value="5"/>
-        <property name="maxWait" value="80000"/>
+        <property name="initialSize" value="5"/>
+        <property name="maxActive" value="15"/>
+        <property name="maxIdle" value="10"/>
+        <property name="minIdle" value="5"/>
+        <property name="maxWait" value="3000"/>
+        <property name="removeAbandoned" value="true"/>
+        <property name="removeAbandonedTimeout" value="180"/>
+        <property name="validationQuery" value="SELECT 1"/>
+        <property name="testOnBorrow" value="true"/>
     </bean>
     <!-- 配置会话工厂SqlSessionFactory -->
     <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
@@ -119,15 +124,11 @@
     </bean>
 
     <!-- 配置事务管理器 -->
-<!--    <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">-->
-<!--        <property name="dataSource" ref="dataSource" />-->
-<!--    </bean>-->
+    <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <property name="dataSource" ref="dataSource" />
+    </bean>
 
     <!-- 拦截器 -->
-<!--    <mvc:interceptors>-->
-<!--        &lt;!&ndash; 国际化操作拦截器 如果采用基于（请求/Session/Cookie）则必需配置 &ndash;&gt;-->
-<!--        <bean class="org.springframework.web.servlet.i18n.LocaleChangeInterceptor" />-->
-<!--    </mvc:interceptors>-->
     <mvc:interceptors>
         <mvc:interceptor>
             <!-- 匹配的是url路径， 如果不配置或/**,将拦截所有的Controller -->
